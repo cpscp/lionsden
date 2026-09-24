@@ -1,0 +1,306 @@
+{
+  "team": "Sporting Clube de Portugal",
+  "matches": [
+    {
+      "utcDate": "2027-01-10T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 17,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "CD Santa Clara",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-01-17T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 18,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "CF Estrela da Amadora",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-01-20T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 7,
+      "competition": "UEFA Champions League",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "FC Barcelona",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-01-24T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 19,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Vitória SC",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-01-27T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 8,
+      "competition": "UEFA Champions League",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Manchester City FC",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-01-31T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 20,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "FC Alverca",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-02-07T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 21,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "Rio Ave FC",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-02-14T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 22,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "CD Nacional",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-02-21T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 23,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "FC Famalicão",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-02-28T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 24,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "FC Arouca",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-03-07T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 25,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "Sporting Clube de Braga",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-03-14T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 26,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Académico de Viseu FC",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-03-21T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 27,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "Casa Pia AC",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-04-04T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 28,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Moreirense FC",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-04-11T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 29,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "FC Porto",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-04-18T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 30,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "CS Marítimo",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-04-25T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 31,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "Gil Vicente FC",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-05-02T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 32,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "GD Estoril Praia",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-05-09T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 33,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "Sporting Clube de Portugal",
+      "awayTeam": "Sport Lisboa e Benfica",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    },
+    {
+      "utcDate": "2027-05-16T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 34,
+      "competition": "Primeira Liga",
+      "venue": null,
+      "referees": [],
+      "homeTeam": "CD Santa Clara",
+      "awayTeam": "Sporting Clube de Portugal",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "minute": null
+    }
+  ],
+  "_updated_at": "2026-09-24T23:35:32.642736+00:00"
+}
