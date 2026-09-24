@@ -2,10 +2,19 @@ name: Atualizar dados do Sporting
 
 on:
   schedule:
-    # A cada 30 minutos. GitHub não garante o minuto exato (pode atrasar
-    # em picos de utilização), e o mínimo suportado é de 5 em 5 minutos.
-    - cron: "*/30 * * * *"
-  workflow_dispatch: {} # permite correr manualmente no separador "Actions"
+    # Core schedule/news every 30 minutes. A full refresh is done separately.
+    - cron: '*/30 * * * *'
+    - cron: '7 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Tipo de atualização'
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - core
 
 permissions:
   contents: write
@@ -15,22 +24,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
+          python-version: '3.12'
       - run: pip install -r scripts/requirements.txt
-
-      - name: Ir buscar dados
+      - name: Atualizar dados
         env:
-          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          LIONS_DEN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.event.schedule == '7 */6 * * *' && 'full' || 'core') }}
         run: python scripts/fetch_data.py
-
-      - name: Fazer commit se houver alterações
+      - name: Commitar alterações
         run: |
-          git config user.name "lions-den-bot"
-          git config user.email "actions@github.com"
+          git config user.name 'lions-den-bot'
+          git config user.email 'actions@github.com'
           git add data/*.json
-          git diff --cached --quiet || git commit -m "dados: atualização automática"
+          git diff --cached --quiet || git commit -m 'dados: atualização automática'
           git push

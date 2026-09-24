@@ -1,260 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<title>Lion's Den</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07100b"><title>Lion's Den</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  :root{
-    --pitch:#070B08; --surface:#0F1712; --surface-2:#141F19; --bezel:#0B120D;
-    --grass:#027F55; --grass-deep:#014B33; --floodlight:#E8C25A; --white:#F3F7F4; --muted:#748A7E;
-    --line:rgba(243,247,244,0.08);
-    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  *{box-sizing:border-box;}
-  html,body{height:100%;}
-  body{ font-family:'Space Grotesk',system-ui,sans-serif; background:var(--pitch); color:var(--white); margin:0; }
-  .tabular{ font-variant-numeric:tabular-nums; }
-  .header{ background:radial-gradient(120% 140% at 15% 0%, #123822 0%, #081008 60%, var(--pitch) 100%);
-    padding-top:calc(env(safe-area-inset-top,0px) + 16px); border-bottom:1px solid var(--line); }
-  .tabbar{ position:fixed; left:0; right:0; bottom:0; z-index:40; background:var(--surface-2);
-    border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0px); }
-  .tab{ color:var(--muted); } .tab.active{ color:var(--white); }
-  .tab.active .dot{ opacity:1; transform:scale(1); }
-  .dot{ width:4px; height:4px; border-radius:50%; background:var(--grass); opacity:0; transform:scale(.4); transition:.2s; }
-  .panel-round{ background:var(--surface); border:1px solid var(--line); border-radius:22px; }
-  .scoreboard{ background:var(--bezel); border-radius:26px; padding:18px 16px; border:1px solid rgba(243,247,244,.06);
-    box-shadow:inset 0 0 0 1px rgba(0,0,0,.4), 0 20px 40px -24px rgba(0,0,0,.7); position:relative; overflow:hidden; }
-  .scoreboard::before{ content:''; position:absolute; top:0; left:16px; right:16px; height:2px;
-    background:linear-gradient(90deg,transparent,var(--grass),transparent); opacity:.6; }
-  .segment{ background:#050A06; border-radius:8px; padding:6px 4px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04); }
-  .badge-live{ color:var(--floodlight); font-weight:600; font-size:11px; letter-spacing:.04em;
-    display:inline-flex; align-items:center; gap:5px; }
-  .badge-live::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--floodlight);
-    box-shadow:0 0 8px var(--floodlight); animation:pulse 1.6s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
-  .screen{ display:none; } .screen.active{ display:block; }
-  a{ text-decoration:none; color:inherit; }
-  table{ width:100%; border-collapse:collapse; font-size:12.5px; }
-  th{ text-align:left; color:var(--muted); font-weight:500; font-size:10px; text-transform:uppercase; letter-spacing:.04em; padding:8px 6px; }
-  td{ padding:8px 6px; border-top:1px solid var(--line); }
-  .stale{ color:var(--floodlight); font-size:10.5px; }
+:root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--green2:#087b54;--text:#f3f7f4;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}.wrap{max-width:520px;margin:auto;min-height:100vh;padding-bottom:92px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}.muted{color:var(--muted)}.screen{display:none}.screen.active{display:block}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(18,29,22,.97);border-top:1px solid var(--line);backdrop-filter:blur(14px)}.navbtn{color:var(--muted)}.navbtn.active{color:var(--text)}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#03130c;font-weight:800}.teamlogo{width:42px;height:42px;object-fit:contain}.row{border-top:1px solid var(--line)}.statbox{background:#09110c;border:1px solid var(--line);border-radius:16px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:80;display:none}.modal.open{display:flex}.modalpanel{max-width:520px;width:100%;margin:auto;max-height:92vh;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:24px 24px 0 0}.bar{height:6px;border-radius:99px;background:#17251c;overflow:hidden}.bar>i{display:block;height:100%;background:var(--green)}a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<div id="app" class="max-w-[480px] mx-auto min-h-screen flex flex-col relative">
-
-  <header class="header sticky top-0 z-30">
-    <div class="flex items-center justify-between px-4 pb-4">
-      <div class="flex items-center gap-2.5">
-        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <polygon points="50.0,12.0 46.1,22.4 38.5,14.3 38.9,25.4 28.8,20.8 33.4,30.9 22.3,30.5 30.4,38.1 20.0,42.0 30.4,45.9 22.3,53.5 33.4,53.1 28.8,63.2 38.9,58.6 38.5,69.7 46.1,61.6 50.0,72.0 53.9,61.6 61.5,69.7 61.1,58.6 71.2,63.2 66.6,53.1 77.7,53.5 69.6,45.9 80.0,42.0 69.6,38.1 77.7,30.5 66.6,30.9 71.2,20.8 61.1,25.4 61.5,14.3 53.9,22.4" fill="var(--grass)"/>
-          <circle cx="50" cy="44" r="17" fill="var(--grass)"/>
-          <circle cx="43.5" cy="42" r="2.3" fill="var(--pitch)"/>
-          <circle cx="56.5" cy="42" r="2.3" fill="var(--pitch)"/>
-          <path d="M45.5 51c2.8 2.4 6.2 2.4 9 0" stroke="var(--pitch)" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M50 46.5v3" stroke="var(--pitch)" stroke-width="2.2" stroke-linecap="round"/>
-        </svg>
-        <span class="text-[20px] font-bold tracking-tight">Lion's Den</span>
-      </div>
-      <div id="dataAge" class="text-[9px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full" style="border:1px solid var(--line); color:var(--muted)">a carregar…</div>
-    </div>
-  </header>
-
-  <main class="flex-1 px-4 pt-4" style="padding-bottom:96px;">
-
-    <section id="screen-home" class="screen active space-y-5">
-      <div class="scoreboard" id="matchWidget">
-        <div class="flex items-center justify-between mb-4 px-1">
-          <span class="text-[10px] font-semibold uppercase tracking-widest" id="matchComp" style="color:var(--muted)">—</span>
-          <span id="matchStatusBadge" class="text-[10px] font-semibold uppercase tracking-widest" style="color:var(--grass)">—</span>
-        </div>
-        <div class="flex items-center justify-between px-1">
-          <div class="text-center w-[30%]"><div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center font-bold" style="background:var(--grass); color:var(--pitch)">S</div><div class="text-[12.5px] font-semibold leading-tight" id="homeTeam">—</div></div>
-          <div class="text-center flex-1" id="matchCenter">
-            <div id="countdownWrap" class="flex justify-center gap-1.5">
-              <div class="segment w-12"><div class="text-[22px] font-bold tabular" id="cd-d">–</div><div class="text-[8px] uppercase tracking-wide" style="color:var(--muted)">dias</div></div>
-              <div class="segment w-12"><div class="text-[22px] font-bold tabular" id="cd-h">–</div><div class="text-[8px] uppercase tracking-wide" style="color:var(--muted)">hor</div></div>
-              <div class="segment w-12"><div class="text-[22px] font-bold tabular" id="cd-m">–</div><div class="text-[8px] uppercase tracking-wide" style="color:var(--muted)">min</div></div>
-              <div class="segment w-12"><div class="text-[22px] font-bold tabular" id="cd-s">–</div><div class="text-[8px] uppercase tracking-wide" style="color:var(--muted)">seg</div></div>
-            </div>
-            <div id="liveScoreWrap" class="hidden">
-              <div class="text-[32px] font-bold tabular" id="liveScore">0 – 0</div>
-              <div class="badge-live justify-center mt-1" id="liveMinute">AO VIVO</div>
-            </div>
-          </div>
-          <div class="text-center w-[30%]"><div class="w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center font-bold" style="background:#22262A; color:var(--white)" id="awayInitial">—</div><div class="text-[12.5px] font-semibold leading-tight" id="awayTeam">—</div></div>
-        </div>
-        <div class="mt-4 pt-3 flex items-center justify-between text-[11.5px] px-1" style="border-top:1px solid var(--line); color:var(--muted)">
-          <span id="matchDateLabel">—</span><span id="matchVenue">—</span>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex items-baseline justify-between mb-3 px-0.5">
-          <h2 class="text-[17px] font-bold">Classificação</h2>
-          <span class="text-[10px] uppercase tracking-widest" style="color:var(--muted)">Primeira Liga</span>
-        </div>
-        <div class="panel-round p-3" id="standingsBox">
-          <table><thead><tr><th>#</th><th>Equipa</th><th>J</th><th>P</th></tr></thead><tbody id="standingsBody"></tbody></table>
-        </div>
-      </div>
-
-      <div class="panel-round p-4">
-        <div class="text-[10px] uppercase tracking-widest font-semibold mb-3" style="color:var(--muted)">Notícias — fontes reais</div>
-        <div class="grid grid-cols-2 gap-2">
-          <a href="https://www.sporting.pt" target="_blank" rel="noopener" class="text-center py-2.5 text-[12px] font-semibold panel-round">Sporting.pt</a>
-          <a href="https://www.record.pt/sporting/" target="_blank" rel="noopener" class="text-center py-2.5 text-[12px] font-semibold panel-round">Record</a>
-          <a href="https://www.abola.pt/" target="_blank" rel="noopener" class="text-center py-2.5 text-[12px] font-semibold panel-round">A Bola</a>
-          <a href="https://www.zerozero.pt/equipa.php?id=13" target="_blank" rel="noopener" class="text-center py-2.5 text-[12px] font-semibold panel-round">Zerozero</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="screen-squad" class="screen">
-      <h2 class="text-[17px] font-bold mb-3">Plantel</h2>
-      <div class="panel-round divide-y" id="squadList" style="border-color:var(--line)"></div>
-    </section>
-
-    <section id="screen-calendar" class="screen">
-      <h2 class="text-[17px] font-bold mb-3">Jogos</h2>
-      <div class="panel-round divide-y" id="fixturesList" style="border-color:var(--line)"></div>
-    </section>
-
-    <section id="screen-more" class="screen space-y-2.5">
-      <a href="https://tickets.sporting.pt/pt" target="_blank" rel="noopener" class="panel-round p-4 flex items-center justify-between"><div><div class="font-semibold text-[14px]">Bilhetes</div><div class="text-[11.5px]" style="color:var(--muted)">tickets.sporting.pt</div></div><span style="color:var(--grass)">↗</span></a>
-      <a href="https://lojaverde.sporting.pt" target="_blank" rel="noopener" class="panel-round p-4 flex items-center justify-between"><div><div class="font-semibold text-[14px]">Loja Verde</div><div class="text-[11.5px]" style="color:var(--muted)">lojaverde.sporting.pt</div></div><span style="color:var(--grass)">↗</span></a>
-      <a href="https://sportingnumminuto.pt/pt" target="_blank" rel="noopener" class="panel-round p-4 flex items-center justify-between"><div><div class="font-semibold text-[14px]">Portal de Sócios</div><div class="text-[11.5px]" style="color:var(--muted)">sportingnumminuto.pt</div></div><span style="color:var(--grass)">↗</span></a>
-      <div class="text-[11px] leading-relaxed px-1 pt-2" style="color:var(--muted)">Lion's Den é um projeto de adeptos, não afiliado oficialmente ao Sporting Clube de Portugal. Dados via football-data.org.</div>
-    </section>
-  </main>
-
-  <nav class="tabbar">
-    <div class="max-w-[480px] mx-auto grid grid-cols-4 text-[10px] font-medium">
-      <button class="tab active flex flex-col items-center gap-1 py-2.5" data-tab="home"><span class="text-[18px]">🏠</span>Início<span class="dot mt-0.5"></span></button>
-      <button class="tab flex flex-col items-center gap-1 py-2.5" data-tab="calendar"><span class="text-[18px]">📅</span>Jogos<span class="dot mt-0.5"></span></button>
-      <button class="tab flex flex-col items-center gap-1 py-2.5" data-tab="squad"><span class="text-[18px]">👕</span>Plantel<span class="dot mt-0.5"></span></button>
-      <button class="tab flex flex-col items-center gap-1 py-2.5" data-tab="more"><span class="text-[18px]">⋯</span>Mais<span class="dot mt-0.5"></span></button>
-    </div>
-  </nav>
+<div class="wrap">
+<header class="header"><div class="px-4 py-3 flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo">S</div><div><div class="text-[20px] font-bold">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted">Sporting CP</div></div></div><span id="updated" class="pill px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span></div></header>
+<main class="px-4 pt-4 space-y-5">
+<section id="home" class="screen active space-y-5">
+<div class="hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
+<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Liga Portugal</span></div><div class="card p-3 overflow-hidden"><div id="standings"></div></div></div>
+<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('stats')">Ver estatísticas →</button></div><div class="grid grid-cols-4 gap-2" id="form"></div></div>
+<div class="card p-4"><div class="flex items-center justify-between mb-3"><h2 class="font-bold">Últimas notícias</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('news')">Ver todas →</button></div><div id="homeNews" class="space-y-3"></div></div>
+</section>
+<section id="games" class="screen space-y-4"><div class="flex items-end justify-between"><div><h2 class="text-[21px] font-bold">Jogos</h2><p class="text-[11px] muted">Próximos e últimos resultados</p></div></div><div id="gamesList" class="space-y-3"></div></section>
+<section id="squad" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Plantel</h2><p class="text-[11px] muted">Época 2026/27</p></div><div id="squadList" class="space-y-2"></div></section>
+<section id="stats" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Estatísticas</h2><p class="text-[11px] muted">Sporting CP · 2026/27</p></div><div id="teamStats"></div></section>
+<section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2><p class="text-[11px] muted">Atualizadas automaticamente</p></div><div id="newsList" class="space-y-2"></div></section>
+</main>
 </div>
-
+<nav class="bottom"><div class="max-w-[520px] mx-auto grid grid-cols-5"><button class="navbtn active py-3 text-[10px]" data-go="home">⌂<br>Início</button><button class="navbtn py-3 text-[10px]" data-go="games">◷<br>Jogos</button><button class="navbtn py-3 text-[10px]" data-go="squad">♟<br>Plantel</button><button class="navbtn py-3 text-[10px]" data-go="stats">▥<br>Stats</button><button class="navbtn py-3 text-[10px]" data-go="news">▤<br>Notícias</button></div></nav>
+<div id="modal" class="modal"><div class="modalpanel"><div class="sticky top-0 z-10 p-4 flex justify-between items-center bg-[var(--bg)] border-b border-white/5"><b id="modalTitle">Jogo</b><button onclick="closeModal()" class="pill w-9 h-9">×</button></div><div id="modalBody" class="p-4"></div></div></div>
 <script>
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-    document.getElementById('screen-'+btn.dataset.tab).classList.add('active');
-  });
-});
-
-async function loadJSON(name){
-  try{
-    const r = await fetch('./data/'+name+'?t='+Date.now());
-    if(!r.ok) throw new Error('sem dados ainda');
-    return await r.json();
-  }catch(e){ return null; }
+const files=['fixtures.json','standings.json','squad.json','team-stats.json','news.json','venues.json','match-details.json','live.json'];
+const D={};
+async function load(){await Promise.all(files.map(async f=>{try{const r=await fetch('./data/'+f+'?t='+Date.now());if(r.ok)D[f]=await r.json()}catch{}}));render();}
+function fmtDate(x){if(!x)return '—';return new Intl.DateTimeFormat('pt-PT',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(x)).replace(',',' ·')}
+function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function navName(id){return id===228?'Sporting CP':id}
+function isFuture(f){return ['NS','TBD','PST'].includes(f.status?.short)}
+function nextFixture(){return (D['fixtures.json']?.fixtures||[]).filter(isFuture).sort((a,b)=>(a.timestamp||0)-(b.timestamp||0))[0]}
+function logo(team){return team?.logo?`<img class="teamlogo" src="${esc(team.logo)}" alt="">`:`<div class="teamlogo rounded-full bg-white/10"></div>`}
+function render(){
+const updated=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=updated?`dados ${timeAgo(updated)}`:'sem dados';
+renderHome();renderGames();renderSquad();renderStats();renderNews();
 }
-
-function timeAgo(iso){
-  if(!iso) return 'sem dados';
-  const mins = Math.round((Date.now()-new Date(iso))/60000);
-  if(mins<1) return 'agora mesmo';
-  if(mins<60) return 'há '+mins+' min';
-  return 'há '+Math.round(mins/60)+' h';
-}
-
-let fixturesData=null;
-
-function renderMatchWidget(){
-  if(!fixturesData){
-    document.getElementById('matchComp').textContent='Sem dados — corre o GitHub Action';
-    return;
-  }
-  const now=new Date();
-  const upcoming = fixturesData.matches.find(m=>m.status==='SCHEDULED' || m.status==='TIMED');
-  const live = fixturesData.matches.find(m=>m.status==='IN_PLAY' || m.status==='PAUSED' || m.status==='LIVE');
-  const match = live || upcoming;
-  if(!match){ document.getElementById('matchComp').textContent='Sem próximo jogo agendado'; return; }
-
-  document.getElementById('matchComp').textContent = match.competition + (match.matchday? ' · J'+match.matchday : '');
-  document.getElementById('homeTeam').textContent = match.homeTeam;
-  document.getElementById('awayTeam').textContent = match.awayTeam;
-  document.getElementById('awayInitial').textContent = match.awayTeam.slice(0,3).toUpperCase();
-  document.getElementById('matchVenue').textContent = match.venue || '—';
-  const d = new Date(match.utcDate);
-  document.getElementById('matchDateLabel').textContent = d.toLocaleString('pt-PT',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-
-  if(live){
-    document.getElementById('countdownWrap').classList.add('hidden');
-    document.getElementById('liveScoreWrap').classList.remove('hidden');
-    document.getElementById('liveScore').textContent = (match.score.home ?? 0)+' – '+(match.score.away ?? 0);
-    document.getElementById('liveMinute').textContent = 'AO VIVO'+(match.minute? ' · '+match.minute+"'" : '');
-    document.getElementById('matchStatusBadge').textContent='A decorrer';
-    document.getElementById('matchStatusBadge').style.color='var(--floodlight)';
-  } else {
-    document.getElementById('countdownWrap').classList.remove('hidden');
-    document.getElementById('liveScoreWrap').classList.add('hidden');
-    document.getElementById('matchStatusBadge').textContent='Por começar';
-    const diff = d - now;
-    if(diff>0){
-      document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
-      document.getElementById('cd-h').textContent = String(Math.floor(diff/3600000)%24).padStart(2,'0');
-      document.getElementById('cd-m').textContent = String(Math.floor(diff/60000)%60).padStart(2,'0');
-      document.getElementById('cd-s').textContent = String(Math.floor(diff/1000)%60).padStart(2,'0');
-    }
-  }
-}
-
-async function init(){
-  const [standings, squad, fixtures] = await Promise.all([
-    loadJSON('standings.json'), loadJSON('squad.json'), loadJSON('fixtures.json')
-  ]);
-
-  const newest = [standings,squad,fixtures].filter(Boolean).map(d=>d._updated_at).sort().pop();
-  document.getElementById('dataAge').textContent = newest ? 'dados '+timeAgo(newest) : 'ainda sem dados';
-
-  if(standings){
-    document.getElementById('standingsBody').innerHTML = standings.table.slice(0,10).map(r=>`
-      <tr${r.team.name.toLowerCase().includes('sporting')?' style="color:var(--grass);font-weight:700"':''}>
-        <td>${r.position}</td><td>${r.team.name}</td><td class="tabular">${r.playedGames}</td><td class="tabular">${r.points}</td>
-      </tr>`).join('');
-  } else {
-    document.getElementById('standingsBody').innerHTML = '<tr><td colspan="4" class="text-center" style="color:var(--muted)">Sem dados ainda — corre o Action em Settings → Actions.</td></tr>';
-  }
-
-  if(squad){
-    document.getElementById('squadList').innerHTML = squad.squad.map(p=>`
-      <div class="p-3.5 flex items-center justify-between">
-        <div><div class="text-[13.5px] font-semibold">${p.name}</div><div class="text-[11px]" style="color:var(--muted)">${p.position||'—'}</div></div>
-        <div class="text-[16px] font-bold tabular" style="color:var(--grass)">${p.shirtNumber ?? ''}</div>
-      </div>`).join('');
-  } else {
-    document.getElementById('squadList').innerHTML = '<div class="p-4 text-center text-[13px]" style="color:var(--muted)">Sem dados ainda.</div>';
-  }
-
-  if(fixtures){
-    fixturesData = fixtures;
-    document.getElementById('fixturesList').innerHTML = fixtures.matches.map(m=>`
-      <div class="p-3.5 flex items-center justify-between">
-        <div>
-          <div class="text-[13px] font-semibold">${m.homeTeam} <span style="color:var(--muted)">–</span> ${m.awayTeam}</div>
-          <div class="text-[11px] mt-0.5" style="color:var(--muted)">${m.competition} · ${new Date(m.utcDate).toLocaleDateString('pt-PT',{day:'2-digit',month:'short'})}</div>
-        </div>
-        <div class="text-[13px] font-bold tabular">${m.score.home ?? m.status.slice(0,3)}${m.score.home!=null?' – '+m.score.away:''}</div>
-      </div>`).join('');
-  }
-
-  renderMatchWidget();
-  setInterval(renderMatchWidget, 1000);
-}
-init();
+function timeAgo(d){const m=Math.floor((Date.now()-d)/60000);return m<1?'agora':m<60?`há ${m} min`:`há ${Math.floor(m/60)} h`}
+function renderHome(){const f=nextFixture();document.getElementById('homeComp').textContent=f?.competition?.name||'—';const el=document.getElementById('nextGame');if(!f){el.innerHTML='<div class="text-center py-8 muted">Sem próximo jogo disponível.</div>';return}el.innerHTML=`<div class="flex items-center justify-between gap-2"><div class="w-[34%] text-center">${logo(f.home)}<div class="text-[12px] font-semibold mt-2">${esc(f.home.name)}</div></div><div class="text-center flex-1"><div class="text-[10px] muted">${fmtDate(f.date)}</div><div class="text-[25px] font-bold my-2">VS</div><div class="text-[10px] muted">${esc(f.competition?.round||'')}</div></div><div class="w-[34%] text-center">${logo(f.away)}<div class="text-[12px] font-semibold mt-2">${esc(f.away.name)}</div></div></div><div class="mt-5 pt-3 row flex items-center justify-between text-[10px] muted"><span>🏟 ${esc(f.venue?.name||'Estádio por confirmar')}</span><span>${esc(f.referee||'Árbitro por confirmar')}</span></div><button onclick="openGame(${f.id})" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>`}
+function renderStandings(){const rows=D['standings.json']?.table||[];return rows.slice(0,8).map(r=>`<div class="grid grid-cols-[28px_1fr_36px_36px] items-center py-2 text-[12px] border-b border-white/5 last:border-0"><span class="muted">${r.rank}</span><div class="flex items-center gap-2"><img src="${esc(r.team?.logo||'')}" class="w-5 h-5 object-contain"><span>${esc(r.team?.name)}</span></div><span>${r.all?.played??'—'}</span><b>${r.points??'—'}</b></div>`).join('')||'<div class="py-6 text-center muted text-sm">Sem dados de classificação.</div>'}
+function renderForm(){const arr=(D['team-stats.json']?.team?.form||'').split('').slice(-6);return arr.map(x=>`<div class="statbox text-center py-3 font-bold ${x==='W'?'text-emerald-400':x==='L'?'text-red-400':'text-amber-300'}">${x==='W'?'V':x==='L'?'D':'E'}</div>`).join('')||'<div class="col-span-4 text-center muted">Sem forma disponível.</div>'}
+function renderHome(){document.getElementById('standings').innerHTML=renderStandings();document.getElementById('form').innerHTML=renderForm();const n=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNews').innerHTML=n.map(newsCard).join('')||'<span class="muted text-sm">Sem notícias.</span>'}
+function renderGames(){const fs=(D['fixtures.json']?.fixtures||[]).sort((a,b)=>(a.timestamp||0)-(b.timestamp||0));const upcoming=fs.filter(isFuture);const past=fs.filter(f=>!isFuture(f)).sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));const out=[...upcoming,...past];document.getElementById('gamesList').innerHTML=out.map(f=>`<button onclick="openGame(${f.id})" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="text-[9px] uppercase tracking-widest muted">${esc(f.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(f.date)}</span></div><div class="flex items-center gap-3"><div class="flex-1 flex items-center justify-end gap-2 text-[12px] font-semibold text-right">${esc(f.home.name)} ${logo(f.home)}</div><div class="font-bold min-w-[54px] text-center">${f.goals?.home!=null?`${f.goals.home} - ${f.goals.away}`:'VS'}</div><div class="flex-1 flex items-center gap-2 text-[12px] font-semibold">${logo(f.away)} ${esc(f.away.name)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(f.venue?.name||'—')}</span><span>${esc(f.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>'}
+function playerStats(p){const s=p.stats||[];let apps=0,g=0,a=0,min=0,y=0,r=0,rating=[];for(const x of s){apps+=x.games?.appearences||0;g+=x.goals?.total||0;a+=x.goals?.assists||0;min+=x.games?.minutes||0;y+=x.cards?.yellow||0;r+=x.cards?.red||0;if(x.games?.rating)rating.push(parseFloat(x.games.rating))}return {apps,g,a,min,y,r,rating:rating.length?(rating.reduce((x,y)=>x+y,0)/rating.length).toFixed(2):'—'}}
+function renderSquad(){const ps=D['squad.json']?.players||[];document.getElementById('squadList').innerHTML=ps.map(p=>{const s=playerStats(p);return `<button onclick="openPlayer(${p.id})" class="card w-full p-3 flex items-center gap-3 text-left"><img src="${esc(p.photo||'')}" class="w-12 h-12 rounded-full object-cover bg-white/5"><div class="flex-1"><div class="font-semibold text-[13px]">${esc(p.name)}</div><div class="text-[10px] muted">${esc(p.position||'—')} · ${esc(p.nationality||'—')}</div></div><div class="text-right"><b class="text-[13px]">${s.g}</b><div class="text-[9px] muted">golos</div></div></button>`}).join('')||'<div class="card p-6 text-center muted">Sem plantel.</div>'}
+function renderStats(){const t=D['team-stats.json']?.team||{};const f=t.fixtures||{},g=t.goals||{},clean=t.clean_sheet||{};document.getElementById('teamStats').innerHTML=`<div class="grid grid-cols-2 gap-2">${metric('Jogos',f.played?.total)}${metric('Vitórias',f.wins?.total)}${metric('Empates',f.draws?.total)}${metric('Derrotas',f.loses?.total)}${metric('Golos marcados',g.for?.total)}${metric('Golos sofridos',g.against?.total)}${metric('Clean sheets',clean.total)}${metric('Não marcou',t.failed_to_score?.total)}</div><div class="card p-4 mt-3"><div class="font-semibold mb-3">Forma recente</div><div class="text-[28px] font-bold tracking-[.3em]">${esc(t.form||'—')}</div></div>`}
+function metric(k,v){return `<div class="statbox p-4"><div class="text-[10px] uppercase tracking-widest muted">${k}</div><div class="text-[24px] font-bold mt-1">${v??'—'}</div></div>`}
+function newsCard(n){return `<a href="${esc(n.url)}" target="_blank" rel="noopener" class="block card p-3"><div class="text-[9px] uppercase tracking-widest muted">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[12px] mt-1 leading-snug">${esc(n.title)}</div><div class="text-[9px] muted mt-2">Abrir artigo ↗</div></a>`}
+function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
+function openPlayer(id){const p=(D['squad.json']?.players||[]).find(x=>x.id===id);if(!p)return;const s=playerStats(p);document.getElementById('modalTitle').textContent=p.name;document.getElementById('modalBody').innerHTML=`<div class="flex items-center gap-4 mb-5"><img src="${esc(p.photo||'')}" class="w-20 h-20 rounded-full object-cover bg-white/5"><div><div class="text-xl font-bold">${esc(p.name)}</div><div class="muted text-sm">${esc(p.position||'—')} · ${esc(p.nationality||'—')}</div><div class="muted text-xs mt-1">${p.height||'—'} · ${p.weight||'—'} · ${p.age||'—'} anos</div></div></div><div class="grid grid-cols-3 gap-2">${metric('Jogos',s.apps)}${metric('Minutos',s.min)}${metric('Golos',s.g)}${metric('Assist.',s.a)}${metric('Amarelos',s.y)}${metric('Vermelhos',s.r)}${metric('Rating',s.rating)}</div><div class="card p-4 mt-4"><div class="font-semibold mb-3">Competições</div>${(p.stats||[]).map(x=>`<div class="row py-2 flex justify-between text-[11px]"><span>${esc(x.league?.name||'')}</span><span>${x.games?.appearences||0} jogos · ${x.goals?.total||0} golos</span></div>`).join('')||'<span class="muted">Sem estatísticas.</span>'}</div>`;openModal()}
+function openGame(id){const base=(D['fixtures.json']?.fixtures||[]).find(x=>x.id===id);const detail=(D['match-details.json']?.fixtures||[]).find(x=>x.fixture?.id===id);const live=(D['live.json']?.fixtures||[]).find(x=>x.fixture?.id===id);const d=detail||live;if(!base)return;document.getElementById('modalTitle').textContent=`${base.home.name} · ${base.away.name}`;let venue=D['venues.json']?.venues?.[`${base.venue?.name}|${base.venue?.city||''}`]||{};let map=venue.lat?`<iframe class="w-full h-56 rounded-2xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=${venue.lon-.015}%2C${venue.lat-.01}%2C${venue.lon+.015}%2C${venue.lat+.01}&layer=mapnik&marker=${venue.lat}%2C${venue.lon}"></iframe>`:`<a class="pill inline-block px-3 py-2 text-xs" target="_blank" href="https://www.openstreetmap.org/search?query=${encodeURIComponent((base.venue?.name||'')+' '+(base.venue?.city||''))}">Abrir mapa ↗</a>`;let events=(d?.events||[]).map(e=>`<div class="row py-2 text-[11px] flex gap-3"><b>${e.time?.elapsed||''}'</b><span>${e.type==='Goal'?'⚽':e.type==='Card'?'🟨':'↔️'}</span><span>${esc(e.player?.name||'')} ${e.assist?.name?`(${esc(e.assist.name)})`:''}</span></div>`).join('');document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><div class="muted text-xs">${fmtDate(base.date)} · ${esc(base.competition?.name||'')}</div><div class="flex items-center justify-center gap-4 mt-4"><div class="w-[38%] text-center">${logo(base.home)}<div class="font-semibold text-sm mt-2">${esc(base.home.name)}</div></div><div class="font-bold text-xl">${base.goals?.home!=null?`${base.goals.home}-${base.goals.away}`:'VS'}</div><div class="w-[38%] text-center">${logo(base.away)}<div class="font-semibold text-sm mt-2">${esc(base.away.name)}</div></div></div></div><div class="card p-4 space-y-2"><div class="font-semibold">Jogo</div><div class="text-xs muted">🏟 ${esc(base.venue?.name||'Por confirmar')} · ${esc(base.venue?.city||'')}</div><div class="text-xs muted">👨‍⚖️ ${esc(base.referee||'Por confirmar')}</div><div class="text-xs muted">🏆 ${esc(base.competition?.round||'')}</div></div><div class="card p-3 mt-3">${map}</div>${events?`<div class="card p-4 mt-3"><div class="font-semibold mb-2">Eventos</div>${events}</div>`:''}<div class="text-[10px] muted mt-3">Dados de futebol: API-Football · mapa: OpenStreetMap</div>`;openModal()}
+function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
+function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(b.dataset.go));document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
+load();setInterval(load,180000);
 </script>
-</body>
-</html>
+</body></html>
