@@ -1,32 +1,35 @@
-# Lion's Den
+# Lion's Den — Sporting CP
 
-App não oficial de adeptos do Sporting CP, feita para GitHub Pages e sem custos de APIs pagas.
+Versão **€0** da app, pensada para GitHub Pages.
 
-## Fonte de futebol
+## Fontes
 
-A app usa **API-Football (plano gratuito)** para fixtures, classificação, plantel, estatísticas de jogadores/equipa, árbitros, estádios e detalhes de jogo. O plano gratuito disponibiliza 100 pedidos/dia e todos os endpoints; por isso o workflow foi desenhado para cachear os dados no repositório em vez de chamar a API a partir do browser.
+- Football Soccer API: fixtures atuais/próximos, estádio, coordenadas e árbitro.
+- FBref: classificação da Primeira Liga, plantel e estatísticas 2026/27.
+- Sporting.pt + Google News RSS: notícias.
+- OpenStreetMap/Nominatim: mapa/localização do estádio.
 
-## Outras fontes gratuitas
-
-- Notícias: Sporting.pt + Google News RSS.
-- Mapas: OpenStreetMap + Nominatim, com cache local.
-- Frontend: GitHub Pages.
+A chave de futebol fica apenas no GitHub Actions.
 
 ## Configuração
 
-1. Cria uma conta gratuita em https://dashboard.api-football.com/register.
-2. Em **Settings → Secrets and variables → Actions**, cria o secret:
-   - `API_FOOTBALL_KEY` = a tua chave API-Football.
-3. Em **Settings → Pages**, usa `Deploy from a branch`, `main`, `/(root)`.
-4. Em **Actions**, executa `Atualizar dados do Sporting` com `full` uma primeira vez.
+1. Cria uma chave gratuita no Football Soccer API.
+2. GitHub → Settings → Secrets and variables → Actions.
+3. Cria:
+   `FSAPI_KEY`
+4. Substitui o conteúdo do teu repositório por esta versão.
+5. Mantém `main` + `/ (root)` em GitHub Pages.
+6. Vai a Actions → **Atualizar futebol e estatísticas** → Run workflow.
+7. Vai a Actions → **Atualizar notícias** → Run workflow.
 
-## Quota
+## Atualização
 
-O free tier tem 100 pedidos/dia. O workflow usa uma atualização core a cada 30 minutos e uma atualização completa a cada 6 horas. Os detalhes de jogos ao vivo só são pedidos quando existe um jogo ao vivo, para evitar desperdiçar quota.
+- Futebol/estatísticas: a cada 6 horas.
+- Notícias: duas vezes por hora.
+- Também podes executar ambos manualmente.
 
-## Estrutura
+## Nota sobre dados
 
-- `index.html` — app inteira.
-- `data/*.json` — cache público consumido pelo frontend.
-- `scripts/fetch_data.py` — pipeline de dados.
-- `.github/workflows/update-data.yml` — automação.
+A camada gratuita do Football Soccer API é limitada a dados recentes/próximos e não inclui estatísticas/standings do arquivo. Por isso o projeto usa FBref para estatísticas e classificação, e a API gratuita apenas onde ela é forte: dados atuais/próximos de jogos, estádio e árbitro.
+
+Se uma fonte externa estiver temporariamente indisponível, o workflow não apaga automaticamente os JSON anteriores.

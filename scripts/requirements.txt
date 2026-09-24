@@ -1,3 +1,5 @@
-requests==2.32.5
-beautifulsoup4==4.13.5
-feedparser==6.0.12
+requests>=2.32
+beautifulsoup4>=4.12
+pandas>=2.2
+lxml>=5.3
+feedparser>=6.0

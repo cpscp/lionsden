@@ -1,8 +1,15 @@
-"""Build the static data layer for Lion's Den using only free services.
+"""
+Lion's Den — zero-cost data pipeline.
 
-Primary football source: API-Football free tier (100 requests/day).
-News: Sporting CP official site + Google News RSS aggregation.
-Maps: OpenStreetMap/Nominatim, cached locally to avoid repeated geocoding.
+Sources:
+- Football Soccer API (free key): current/upcoming fixtures, venue coordinates/capacity,
+  referee and match detail. We deliberately stay within the free plan's recent-data window.
+- FBref: current-season Sporting player/team statistics, squad and Primeira Liga table.
+- Sporting.pt + Google News RSS: news.
+- OpenStreetMap/Nominatim: fallback venue geocoding.
+
+Important:
+The football API key is only used inside GitHub Actions. It is never shipped to the browser.
 """
 from __future__ import annotations
 
@@ -15,178 +22,408 @@ from datetime import datetime, timezone, date, timedelta
 from pathlib import Path
 from urllib.parse import quote_plus
 
-import feedparser
+import pandas as pd
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
-API_KEY = os.environ.get("API_FOOTBALL_KEY")
-if not API_KEY:
-    sys.exit("Missing API_FOOTBALL_KEY secret.")
-
-BASE = "https://v3.football.api-sports.io"
-HEADERS = {"x-apisports-key": API_KEY, "Accept": "application/json"}
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
-TEAM_ID = 228  # Sporting CP
-PRIMEIRA_LIGA = 94
-SEASON = 2026
-USER_AGENT = "LionsDen/2.0 (+https://github.com/cpscp/lionsden)"
+FSAPI_KEY = os.environ.get("FSAPI_KEY")
+FSAPI_BASE = "https://api.footballsoccerapi.com/v1"
+FBREF_TEAM = "https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions"
+FBREF_TEAM_ROSTER = "https://fbref.com/en/squads/13dc44fd/2026-2027/roster/Sporting-CP-Roster-Details"
+FBREF_LEAGUE = "https://fbref.com/en/comps/32/2025/2025-league-Stats"
+FBREF_SCHEDULE = "https://fbref.com/en/squads/13dc44fd/2026-2027/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
+SPORTING_NEWS = "https://www.sporting.pt/pt/noticias/futebol"
+USER_AGENT = "Mozilla/5.0 (compatible; LionsDen/3.0; +https://github.com/cpscp/lionsden)"
 
 session = requests.Session()
-session.headers.update({"User-Agent": USER_AGENT})
+session.headers.update({"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8"})
 
 
-def api(path: str, params: dict | None = None):
-    r = session.get(BASE + path, headers=HEADERS, params=params or {}, timeout=25)
+def now_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def write_json(name, payload):
+    out = {"_updated_at": now_iso(), **payload}
+    (DATA / name).write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def safe_existing(name):
+    p = DATA / name
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def fsapi(path, params=None):
+    if not FSAPI_KEY:
+        raise RuntimeError("Missing FSAPI_KEY GitHub secret.")
+    r = session.get(
+        FSAPI_BASE + path,
+        headers={"X-API-Key": FSAPI_KEY, "Accept": "application/json"},
+        params=params or {},
+        timeout=25,
+    )
     r.raise_for_status()
     payload = r.json()
     if payload.get("errors"):
-        raise RuntimeError(f"API-Football: {payload['errors']}")
+        raise RuntimeError(str(payload["errors"]))
     return payload
 
 
-def write_json(name: str, payload):
-    payload = {"_updated_at": datetime.now(timezone.utc).isoformat(), **payload}
-    (DATA / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+def fnum(v):
+    if v is None or (isinstance(v, float) and pd.isna(v)):
+        return None
+    s = str(v).strip().replace(",", ".")
+    if s in {"", "—", "-", "nan", "None"}:
+        return None
+    try:
+        return float(s)
+    except Exception:
+        return None
 
 
-def normalize_fixture(x):
-    f = x["fixture"]
-    l = x.get("league", {})
-    h = x["teams"]["home"]
-    a = x["teams"]["away"]
-    return {
-        "id": f.get("id"),
-        "date": f.get("date"),
-        "timestamp": f.get("timestamp"),
-        "timezone": f.get("timezone"),
-        "status": f.get("status", {}),
-        "referee": f.get("referee"),
-        "venue": f.get("venue") or {},
-        "competition": {
-            "id": l.get("id"), "name": l.get("name"), "logo": l.get("logo"),
-            "round": l.get("round"), "season": l.get("season")
-        },
-        "home": {"id": h.get("id"), "name": h.get("name"), "logo": h.get("logo"), "winner": h.get("winner")},
-        "away": {"id": a.get("id"), "name": a.get("name"), "logo": a.get("logo"), "winner": a.get("winner")},
-        "goals": x.get("goals", {}),
-        "score": x.get("score", {}),
-    }
+def clean(v):
+    if v is None:
+        return ""
+    s = str(v).strip()
+    if s in {"nan", "None"}:
+        return ""
+    return re.sub(r"\s+", " ", s)
 
 
-def fetch_schedule():
-    # One call covers a rolling window around today, across all Sporting competitions.
-    # This is deliberately used instead of separate next/last calls to protect the 100/day free quota.
-    today = date.today()
-    payload = api("/fixtures", {
-        "team": TEAM_ID, "season": SEASON,
-        "from": today.isoformat(),
-        "to": (today + timedelta(days=60)).isoformat(),
-    })
-    normalized = [normalize_fixture(x) for x in payload.get("response", [])]
-    # Add the previous five results with one additional call only during full refreshes via caller.
-    normalized.sort(key=lambda x: x.get("timestamp") or 0)
-    return normalized
+def fbref_html(url):
+    r = session.get(url, timeout=30)
+    r.raise_for_status()
+    return r.text
 
 
-def fetch_standings_and_team_stats():
-    standings = api("/standings", {"league": PRIMEIRA_LIGA, "season": SEASON, "team": TEAM_ID})
-    table = []
-    for group in standings.get("response", []):
-        for league in group.get("league", {}).get("standings", []):
-            table.extend(league)
-    team_stats = api("/teams/statistics", {"league": PRIMEIRA_LIGA, "season": SEASON, "team": TEAM_ID})
-    write_json("standings.json", {"competition": "Liga Portugal", "table": table})
-    write_json("team-stats.json", {"team": team_stats.get("response", {})})
+def read_fbref_tables(url):
+    html = fbref_html(url)
+    chunks = [html]
+    soup = BeautifulSoup(html, "html.parser")
+    for c in soup.find_all(string=lambda x: isinstance(x, Comment)):
+        if "<table" in c:
+            chunks.append(str(c))
+    tables = []
+    for chunk in chunks:
+        try:
+            tables.extend(pd.read_html(chunk))
+        except Exception:
+            pass
+    # de-duplicate by shape + columns + first row
+    out, seen = [], set()
+    for df in tables:
+        key = (tuple(map(str, df.columns)), len(df), tuple(map(str, df.iloc[0].tolist())) if len(df) else ())
+        if key not in seen:
+            seen.add(key)
+            out.append(df)
+    return out, html
 
 
-def fetch_squad_and_player_stats():
-    squad = api("/players/squads", {"team": TEAM_ID}).get("response", [])
-    pages = []
-    page = 1
-    while True:
-        payload = api("/players", {"team": TEAM_ID, "season": SEASON, "page": page})
-        pages.extend(payload.get("response", []))
-        total = int((payload.get("paging") or {}).get("total", 1))
-        if page >= total:
-            break
-        page += 1
-        time.sleep(0.25)
-    stats_by_id = {}
-    for item in pages:
-        stats_by_id[item["player"]["id"]] = item
+def pick_table(tables, required_columns):
+    req = {str(x) for x in required_columns}
+    for df in tables:
+        cols = {str(c) for c in df.columns}
+        if req.issubset(cols):
+            return df.copy()
+    return None
+
+
+def multi_index_flatten(df):
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = [
+            " ".join(str(x) for x in col if str(x) != "nan").strip()
+            for col in df.columns
+        ]
+    else:
+        df.columns = [str(c) for c in df.columns]
+    return df
+
+
+def normalize_player_name(v):
+    s = clean(v)
+    s = re.sub(r"^[^A-Za-zÀ-ÿ0-9]+", "", s)
+    return s
+
+
+def fetch_fbref_stats():
+    tables, team_html = read_fbref_tables(FBREF_TEAM)
+    for df in tables:
+        multi_index_flatten(df)
+
+    standard = pick_table(tables, ["Player", "MP", "Starts", "Min", "Gls", "Ast"])
+    shooting = pick_table(tables, ["Player", "Sh", "SoT"])
+    playing = pick_table(tables, ["Player", "Min", "Starts", "Subs"])
+    keepers = pick_table(tables, ["Player", "GA", "Saves", "CS"])
+    misc = pick_table(tables, ["Player", "CrdY", "CrdR"])
+    fixtures = pick_table(tables, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent", "Referee"])
+
+    if standard is None:
+        raise RuntimeError("FBref standard player table not found.")
+
+    def rows_for(df):
+        if df is None:
+            return {}
+        out = {}
+        for _, r in df.iterrows():
+            name = normalize_player_name(r.get("Player"))
+            if not name or name == "Squad Total":
+                continue
+            out[name] = {clean(k): (None if pd.isna(v) else v) for k, v in r.to_dict().items()}
+        return out
+
+    sh = rows_for(shooting)
+    pt = rows_for(playing)
+    kg = rows_for(keepers)
+    mi = rows_for(misc)
+
+    # Parse roster photos/profile links. This page is small and usually more stable than individual requests.
+    photo_map = {}
+    profile_map = {}
+    try:
+        roster_tables, roster_html = read_fbref_tables(FBREF_TEAM_ROSTER)
+        soup = BeautifulSoup(roster_html, "html.parser")
+        for a in soup.select('a[href*="/en/players/"]'):
+            name = normalize_player_name(a.get_text(" ", strip=True))
+            if not name:
+                continue
+            href = a.get("href")
+            if href and href.startswith("/"):
+                href = "https://fbref.com" + href
+            img = a.find_previous("img")
+            if img and img.get("src"):
+                photo_map[name] = img.get("src")
+            profile_map[name] = href
+    except Exception as e:
+        print("Roster enrichment warning:", e)
 
     players = []
-    for item in squad:
-        p = item.get("player", {})
-        full = stats_by_id.get(p.get("id"), {})
-        stats = full.get("statistics", [])
+    for _, r in standard.iterrows():
+        name = normalize_player_name(r.get("Player"))
+        if not name or name == "Squad Total":
+            continue
+        s = {clean(k): (None if pd.isna(v) else v) for k, v in r.to_dict().items()}
+        s2 = sh.get(name, {})
+        s3 = pt.get(name, {})
+        s4 = kg.get(name, {})
+        s5 = mi.get(name, {})
         players.append({
-            "id": p.get("id"), "name": p.get("name"), "firstname": p.get("firstname"),
-            "lastname": p.get("lastname"), "age": p.get("age"), "number": p.get("number"),
-            "position": p.get("position"), "photo": p.get("photo"), "nationality": p.get("nationality"),
-            "height": p.get("height"), "weight": p.get("weight"), "injured": p.get("injured"),
-            "stats": stats,
+            "name": name,
+            "nation": clean(s.get("Nation")),
+            "position": clean(s.get("Pos")),
+            "age": clean(s.get("Age")),
+            "matches": int(fnum(s.get("MP")) or 0),
+            "starts": int(fnum(s.get("Starts")) or 0),
+            "minutes": int(fnum(s.get("Min")) or 0),
+            "goals": int(fnum(s.get("Gls")) or 0),
+            "assists": int(fnum(s.get("Ast")) or 0),
+            "yellow": int(fnum(s.get("CrdY")) or fnum(s5.get("CrdY")) or 0),
+            "red": int(fnum(s.get("CrdR")) or fnum(s5.get("CrdR")) or 0),
+            "shots": int(fnum(s2.get("Sh")) or 0),
+            "shots_on_target": int(fnum(s2.get("SoT")) or 0),
+            "saves": int(fnum(s4.get("Saves")) or 0),
+            "goals_against": int(fnum(s4.get("GA")) or 0),
+            "clean_sheets": int(fnum(s4.get("CS")) or 0),
+            "photo": photo_map.get(name),
+            "profile": profile_map.get(name),
         })
-    # Preserve season players that API-Football reports even if squads endpoint lags behind.
-    known = {p["id"] for p in players}
-    for item in pages:
-        p = item.get("player", {})
-        if p.get("id") not in known:
-            players.append({
-                "id": p.get("id"), "name": p.get("name"), "firstname": p.get("firstname"),
-                "lastname": p.get("lastname"), "age": p.get("age"), "number": None,
-                "position": None, "photo": p.get("photo"), "nationality": p.get("nationality"),
-                "height": p.get("height"), "weight": p.get("weight"), "injured": p.get("injured"),
-                "stats": item.get("statistics", []),
+
+    # Team-level values from the player tables + schedule.
+    team = {
+        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))),
+        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()),
+        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()),
+        "assists": sum(p["assists"] for p in players),
+        "shots": sum(p["shots"] for p in players),
+        "shots_on_target": sum(p["shots_on_target"] for p in players),
+        "minutes": sum(p["minutes"] for p in players),
+        "clean_sheets": sum(p["clean_sheets"] for p in players if p["position"] == "GK"),
+    }
+
+    # Possession is available on the match-log table; average only numeric values.
+    poss = []
+    if fixtures is not None and "Poss" in fixtures.columns:
+        for v in fixtures["Poss"].tolist():
+            n = fnum(v)
+            if n is not None:
+                poss.append(n)
+    team["possession_avg"] = round(sum(poss) / len(poss), 1) if poss else None
+
+    # Form from the most recent completed matches.
+    form = []
+    recent_results = []
+    if fixtures is not None:
+        for _, r in fixtures.iterrows():
+            result = clean(r.get("Result"))
+            if result in {"W", "D", "L"}:
+                form.append(result)
+                recent_results.append({
+                    "date": clean(r.get("Date")),
+                    "competition": clean(r.get("Comp")),
+                    "venue": clean(r.get("Venue")),
+                    "result": result,
+                    "gf": int(fnum(r.get("GF")) or 0),
+                    "ga": int(fnum(r.get("GA")) or 0),
+                    "opponent": clean(r.get("Opponent")),
+                    "referee": clean(r.get("Referee")),
+                })
+    team["form"] = form[-6:]
+    team["recent_matches"] = recent_results[-6:]
+
+    # Full schedule from FBref is useful as a fallback for dates beyond the free API's window.
+    schedule_rows = []
+    if fixtures is not None:
+        for _, r in fixtures.iterrows():
+            d = clean(r.get("Date"))
+            if not d:
+                continue
+            schedule_rows.append({
+                "date": d,
+                "time": clean(r.get("Time")),
+                "competition": clean(r.get("Comp")),
+                "round": clean(r.get("Round")),
+                "venue_side": clean(r.get("Venue")),
+                "result": clean(r.get("Result")),
+                "gf": int(fnum(r.get("GF")) or 0) if clean(r.get("Result")) else None,
+                "ga": int(fnum(r.get("GA")) or 0) if clean(r.get("Result")) else None,
+                "opponent": clean(r.get("Opponent")).replace("tr ", "").replace("fr ", "").replace("eng ", "").replace("it ", "").replace("ua ", "").replace("es ", ""),
+                "possession": fnum(r.get("Poss")),
+                "attendance": int(fnum(r.get("Attendance")) or 0) if fnum(r.get("Attendance")) is not None else None,
+                "referee": clean(r.get("Referee")),
+                "match_report": clean(r.get("Match Report")),
             })
-    players.sort(key=lambda p: (p.get("position") or "", p.get("name") or ""))
-    write_json("squad.json", {"team_id": TEAM_ID, "players": players})
+
+    write_json("squad.json", {
+        "season": "2026/27",
+        "competition_scope": "All competitions",
+        "players": players,
+        "source": "FBref",
+    })
+    write_json("team-stats.json", {
+        "season": "2026/27",
+        "team": team,
+        "source": "FBref",
+    })
+    write_json("fbref-schedule.json", {
+        "season": "2026/27",
+        "fixtures": schedule_rows,
+        "source": "FBref",
+    })
 
 
-def geocode_venues(fixtures):
-    cache_path = DATA / "venues.json"
-    try:
-        cache = json.loads(cache_path.read_text(encoding="utf-8"))
-    except Exception:
-        cache = {}
-    changed = False
-    for fx in fixtures:
-        v = fx.get("venue") or {}
-        name, city = v.get("name"), v.get("city")
-        if not name:
+def fetch_standings():
+    tables, html = read_fbref_tables(FBREF_LEAGUE)
+    for df in tables:
+        multi_index_flatten(df)
+    table = pick_table(tables, ["Rk", "Squad", "MP", "W", "D", "L", "GF", "GA", "Pts"])
+    if table is None:
+        raise RuntimeError("FBref Primeira Liga standings table not found.")
+
+    rows = []
+    for _, r in table.iterrows():
+        squad = clean(r.get("Squad"))
+        if not squad or squad in {"Squad", "Opponent"}:
             continue
-        key = f"{name}|{city or ''}"
-        if key in cache:
+        rows.append({
+            "rank": int(fnum(r.get("Rk")) or len(rows) + 1),
+            "team": squad,
+            "played": int(fnum(r.get("MP")) or 0),
+            "wins": int(fnum(r.get("W")) or 0),
+            "draws": int(fnum(r.get("D")) or 0),
+            "losses": int(fnum(r.get("L")) or 0),
+            "gf": int(fnum(r.get("GF")) or 0),
+            "ga": int(fnum(r.get("GA")) or 0),
+            "gd": int(fnum(r.get("GD")) or 0),
+            "points": int(fnum(r.get("Pts")) or 0),
+            "last5": clean(r.get("Last 5")),
+        })
+    write_json("standings.json", {"competition": "Primeira Liga", "season": "2026/27", "table": rows, "source": "FBref"})
+
+
+def fetch_fsa_fixtures():
+    if not FSAPI_KEY:
+        raise RuntimeError("Missing FSAPI_KEY.")
+    teams = fsapi("/teams", {"country": "Portugal", "limit": 100}).get("data", [])
+    sporting = next((x for x in teams if clean(x.get("team_name")).lower() in {"sporting cp", "sporting lisboa", "sporting"}), None)
+    if not sporting:
+        # relaxed fallback
+        sporting = next((x for x in teams if "sporting" in clean(x.get("team_name")).lower()), None)
+    if not sporting:
+        raise RuntimeError("Sporting CP was not found in Football Soccer API.")
+    team_id = sporting["team_id"]
+
+    today = date.today()
+    end = today + timedelta(days=30)
+    payload = fsapi("/matches", {
+        "team_id": team_id,
+        "date_from": today.isoformat(),
+        "date_to": end.isoformat(),
+        "limit": 100,
+        "sort": "kickoff_utc",
+    })
+    rows = payload.get("data", [])
+
+    fixtures = {}
+    for x in rows:
+        mid = str(x.get("match_id"))
+        if not mid:
             continue
+        fixtures[mid] = x
+
+    normalized = []
+    for x in fixtures.values():
+        status = x.get("match_status")
+        normalized.append({
+            "id": x.get("match_id"),
+            "date": x.get("kickoff_utc"),
+            "kickoff_date": x.get("kickoff_date"),
+            "kickoff_local_time": x.get("kickoff_local_time"),
+            "status": {"short": status, "long": status.replace("_", " ").title() if status else ""},
+            "referee": x.get("referee_name"),
+            "venue": {
+                "name": x.get("venue_name"),
+                "city": x.get("city_name"),
+                "lat": x.get("latitude"),
+                "lon": x.get("longitude"),
+                "capacity": x.get("venue_capacity"),
+            },
+            "competition": {"name": x.get("league_name"), "season": x.get("season_start_year")},
+            "home": {"id": x.get("home_team_id"), "name": x.get("home_team_name")},
+            "away": {"id": x.get("away_team_id"), "name": x.get("away_team_name")},
+            "goals": {"home": x.get("home_goals"), "away": x.get("away_goals")},
+            "half_time": {"home": x.get("half_time_home_goals"), "away": x.get("half_time_away_goals")},
+            "travel_km": x.get("away_travel_km"),
+            "source": "Football Soccer API",
+        })
+    normalized.sort(key=lambda x: x.get("date") or 0)
+    write_json("fixtures.json", {"team_id": team_id, "fixtures": normalized, "source": "Football Soccer API"})
+
+
+def enrich_match_details():
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    upcoming = [f for f in fixtures if f.get("status", {}).get("short") == "scheduled"]
+    recent = [f for f in fixtures if f.get("status", {}).get("short") == "finished"]
+    chosen = recent[-1:] + upcoming[:3]
+    details = []
+    for f in chosen:
         try:
-            time.sleep(1.1)  # Nominatim courtesy/rate-limit spacing
-            q = quote_plus(f"{name}, {city or ''}, Portugal")
-            r = session.get(
-                "https://nominatim.openstreetmap.org/search",
-                params={"q": q, "format": "jsonv2", "limit": 1},
-                timeout=15,
-            )
-            r.raise_for_status()
-            rows = r.json()
-            if rows:
-                cache[key] = {"lat": float(rows[0]["lat"]), "lon": float(rows[0]["lon"]), "display": rows[0].get("display_name")}
-            else:
-                cache[key] = {"lat": None, "lon": None}
-            changed = True
+            p = fsapi(f"/matches/{f['id']}").get("data")
+            details.append(p)
         except Exception as e:
-            print(f"Geocode warning for {key}: {e}")
-    if changed:
-        write_json("venues.json", {"venues": cache})
+            print("Match detail warning:", f.get("id"), e)
+    write_json("match-details.json", {"fixtures": details, "source": "Football Soccer API"})
 
 
 def fetch_news():
     items = []
-    # Official Sporting news page: robust link extraction, no dependence on a private API.
     try:
-        r = session.get("https://www.sporting.pt/pt/noticias/futebol", timeout=20)
+        r = session.get(SPORTING_NEWS, timeout=25)
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
         seen = set()
@@ -201,73 +438,105 @@ def fetch_news():
                 continue
             seen.add(href)
             items.append({"title": title[:180], "url": href, "source": "Sporting.pt"})
-            if len(items) >= 10:
+            if len(items) >= 12:
                 break
     except Exception as e:
-        print(f"Official news warning: {e}")
+        print("Sporting news warning:", e)
 
-    # Google News RSS gives a free multi-source stream; only titles + links are stored.
     try:
+        import feedparser
         feed = feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150")
         existing = {x["url"] for x in items}
-        for entry in feed.entries[:20]:
+        for entry in feed.entries[:24]:
             url = entry.get("link")
             title = entry.get("title")
             if not url or not title or url in existing:
                 continue
             source = (entry.get("source") or {}).get("title") or "Google News"
-            items.append({"title": title[:180], "url": url, "source": source, "published": entry.get("published")})
-            if len(items) >= 24:
+            items.append({
+                "title": title[:180],
+                "url": url,
+                "source": source,
+                "published": entry.get("published"),
+            })
+            if len(items) >= 30:
                 break
     except Exception as e:
-        print(f"News RSS warning: {e}")
+        print("Google News warning:", e)
+
     write_json("news.json", {"items": items})
 
 
-
-def fetch_match_details(fixtures):
-    # One batched call can return events, lineups, team stats and player stats for several fixtures.
-    candidates = sorted(fixtures, key=lambda x: x.get("timestamp") or 0)
-    completed = [x for x in candidates if x.get("status", {}).get("short") in {"FT", "AET", "PEN"}]
-    upcoming = [x for x in candidates if x.get("status", {}).get("short") in {"NS", "TBD"}]
-    ids = [x["id"] for x in completed[-3:] + upcoming[:2] if x.get("id")]
-    if not ids:
-        write_json("match-details.json", {"fixtures": []})
-        return
-    payload = api("/fixtures", {"ids": "-".join(map(str, ids))}).get("response", [])
-    write_json("match-details.json", {"fixtures": payload})
-
-
-def fetch_live_detail(fixtures):
-    live = [f for f in fixtures if f.get("status", {}).get("short") in {"1H", "HT", "2H", "ET", "BT", "P"}]
-    if not live:
-        write_json("live.json", {"fixture": None})
-        return
-    ids = "-".join(str(f["id"]) for f in live[:5])
-    payload = api("/fixtures", {"ids": ids}).get("response", [])
-    write_json("live.json", {"fixtures": payload})
+def geocode_missing_venues():
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    cache = safe_existing("venues.json") or {"venues": {}}
+    venues = cache.get("venues", {})
+    changed = False
+    for f in fixtures:
+        v = f.get("venue") or {}
+        name, city = v.get("name"), v.get("city")
+        if not name or v.get("lat") is not None:
+            continue
+        key = f"{name}|{city or ''}"
+        if key in venues:
+            continue
+        try:
+            time.sleep(1.1)
+            q = quote_plus(f"{name}, {city or ''}, Portugal")
+            r = session.get("https://nominatim.openstreetmap.org/search",
+                            params={"q": q, "format": "jsonv2", "limit": 1},
+                            timeout=20)
+            r.raise_for_status()
+            rows = r.json()
+            if rows:
+                venues[key] = {"lat": float(rows[0]["lat"]), "lon": float(rows[0]["lon"]),
+                               "display": rows[0].get("display_name")}
+                changed = True
+        except Exception as e:
+            print("Nominatim warning:", e)
+    if changed or not (DATA / "venues.json").exists():
+        write_json("venues.json", {"venues": venues, "source": "OpenStreetMap Nominatim"})
 
 
 def main():
-    fixtures = fetch_schedule()
     mode = os.environ.get("LIONS_DEN_MODE", "full")
-    if mode == "full":
-        past_payload = api("/fixtures", {"team": TEAM_ID, "season": SEASON, "last": 5})
-        past = [normalize_fixture(x) for x in past_payload.get("response", [])]
-        fixtures = {f["id"]: f for f in fixtures + past}
-        fixtures = list(fixtures.values())
-        fixtures.sort(key=lambda x: x.get("timestamp") or 0)
-    write_json("fixtures.json", {"team_id": TEAM_ID, "fixtures": fixtures})
-    geocode_venues(fixtures[:10])
-    fetch_news()
+    errors = []
 
-    # Full data can be requested less frequently by the workflow to respect 100 calls/day.
-    if mode == "full":
-        fetch_standings_and_team_stats()
-        fetch_squad_and_player_stats()
-        fetch_match_details(fixtures)
-    fetch_live_detail(fixtures)
-    print(f"Updated Lion's Den ({mode})")
+    # News is independent and should not stop football data.
+    try:
+        fetch_news()
+    except Exception as e:
+        errors.append(f"news: {e}")
+
+    if mode in {"full", "football"}:
+        try:
+            fetch_fsa_fixtures()
+            geocode_missing_venues()
+            enrich_match_details()
+        except Exception as e:
+            errors.append(f"football-api: {e}")
+
+        for fn in (fetch_fbref_stats, fetch_standings):
+            try:
+                fn()
+            except Exception as e:
+                errors.append(f"{fn.__name__}: {e}")
+
+    # Always leave a status file so the app can explain which source failed.
+    write_json("status.json", {
+        "mode": mode,
+        "errors": errors,
+        "sources": {
+            "football_api": bool(FSAPI_KEY),
+            "fbref": True,
+            "news": True,
+            "maps": True,
+        }
+    })
+    if errors:
+        print("Completed with warnings:", *errors, sep="\n- ")
+    else:
+        print("Lion's Den data update completed successfully.")
 
 
 if __name__ == "__main__":
