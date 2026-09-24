@@ -1,0 +1,204 @@
+{
+  "team": "Sporting Clube de Portugal",
+  "crest": "https://crests.football-data.org/498.png",
+  "coach": "Rui Borges",
+  "squad": [
+    {
+      "name": "Rui Silva",
+      "position": "Goalkeeper",
+      "nationality": "Portugal",
+      "dateOfBirth": "1994-02-07",
+      "shirtNumber": null
+    },
+    {
+      "name": "Diego Callai",
+      "position": "Goalkeeper",
+      "nationality": "Brazil",
+      "dateOfBirth": "2004-07-18",
+      "shirtNumber": null
+    },
+    {
+      "name": "Kaique",
+      "position": "Goalkeeper",
+      "nationality": "Brazil",
+      "dateOfBirth": "2003-04-16",
+      "shirtNumber": null
+    },
+    {
+      "name": "Maximiliano Araújo",
+      "position": "Defence",
+      "nationality": "Uruguay",
+      "dateOfBirth": "2000-02-15",
+      "shirtNumber": null
+    },
+    {
+      "name": "Nuno Santos",
+      "position": "Defence",
+      "nationality": "Portugal",
+      "dateOfBirth": "1995-02-13",
+      "shirtNumber": null
+    },
+    {
+      "name": "Georgios Vagiannidis",
+      "position": "Defence",
+      "nationality": "Greece",
+      "dateOfBirth": "2001-09-12",
+      "shirtNumber": null
+    },
+    {
+      "name": "Eduardo Simões",
+      "position": "Defence",
+      "nationality": "Portugal",
+      "dateOfBirth": "2002-03-02",
+      "shirtNumber": null
+    },
+    {
+      "name": "Gonçalo Inácio",
+      "position": "Defence",
+      "nationality": "Portugal",
+      "dateOfBirth": "2001-08-25",
+      "shirtNumber": null
+    },
+    {
+      "name": "Zeno Debast",
+      "position": "Defence",
+      "nationality": "Belgium",
+      "dateOfBirth": "2003-10-24",
+      "shirtNumber": null
+    },
+    {
+      "name": "Ivan Fresneda",
+      "position": "Defence",
+      "nationality": "Spain",
+      "dateOfBirth": "2004-09-28",
+      "shirtNumber": null
+    },
+    {
+      "name": "Moncef Zekri",
+      "position": "Defence",
+      "nationality": "Belgium",
+      "dateOfBirth": "2008-09-20",
+      "shirtNumber": null
+    },
+    {
+      "name": "Salvador Blopa",
+      "position": "Defence",
+      "nationality": "Portugal",
+      "dateOfBirth": "2007-06-13",
+      "shirtNumber": null
+    },
+    {
+      "name": "Rodrigo Dias",
+      "position": "Defence",
+      "nationality": "Portugal",
+      "dateOfBirth": "2005-07-12",
+      "shirtNumber": null
+    },
+    {
+      "name": "Rodrigo Zalazar",
+      "position": "Midfield",
+      "nationality": "Uruguay",
+      "dateOfBirth": "1999-08-12",
+      "shirtNumber": null
+    },
+    {
+      "name": "Sotiris Alexandropoulos",
+      "position": "Midfield",
+      "nationality": "Greece",
+      "dateOfBirth": "2001-11-26",
+      "shirtNumber": null
+    },
+    {
+      "name": "Issa Doumbia",
+      "position": "Midfield",
+      "nationality": "Italy",
+      "dateOfBirth": "2003-10-16",
+      "shirtNumber": null
+    },
+    {
+      "name": "Pedro Lima",
+      "position": "Midfield",
+      "nationality": "Brazil",
+      "dateOfBirth": "2003-03-27",
+      "shirtNumber": null
+    },
+    {
+      "name": "Sergi Altimira",
+      "position": "Midfield",
+      "nationality": "Spain",
+      "dateOfBirth": "2001-08-25",
+      "shirtNumber": null
+    },
+    {
+      "name": "Silas Andersen",
+      "position": "Midfield",
+      "nationality": "Denmark",
+      "dateOfBirth": "2004-06-13",
+      "shirtNumber": null
+    },
+    {
+      "name": "João Simões",
+      "position": "Midfield",
+      "nationality": "Portugal",
+      "dateOfBirth": "2007-01-06",
+      "shirtNumber": null
+    },
+    {
+      "name": "Luis Suárez",
+      "position": "Offence",
+      "nationality": "Colombia",
+      "dateOfBirth": "1997-12-02",
+      "shirtNumber": null
+    },
+    {
+      "name": "Geny Catamo",
+      "position": "Offence",
+      "nationality": "Mozambique",
+      "dateOfBirth": "2001-01-26",
+      "shirtNumber": null
+    },
+    {
+      "name": "Nestor Irankunda",
+      "position": "Offence",
+      "nationality": "Australia",
+      "dateOfBirth": "2006-02-09",
+      "shirtNumber": null
+    },
+    {
+      "name": "Fotis Ioannidis",
+      "position": "Offence",
+      "nationality": "Greece",
+      "dateOfBirth": "2000-01-10",
+      "shirtNumber": null
+    },
+    {
+      "name": "Luis Guilherme",
+      "position": "Offence",
+      "nationality": "Brazil",
+      "dateOfBirth": "2006-02-09",
+      "shirtNumber": null
+    },
+    {
+      "name": "Rafael Nel",
+      "position": "Offence",
+      "nationality": "Portugal",
+      "dateOfBirth": "2005-04-03",
+      "shirtNumber": null
+    },
+    {
+      "name": "Flávio Gonçalves",
+      "position": "Offence",
+      "nationality": "France",
+      "dateOfBirth": "2007-05-30",
+      "shirtNumber": null
+    },
+    {
+      "name": "Jesse Derry",
+      "position": "Offence",
+      "nationality": "England",
+      "dateOfBirth": "2007-06-30",
+      "shirtNumber": null
+    }
+  ],
+  "_updated_at": "2026-09-24T23:35:32.146264+00:00"
+}
