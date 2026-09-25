@@ -358,6 +358,22 @@ def _first_list(obj, *keys):
             return v
     return []
 
+def _obj(v):
+    return v if isinstance(v, dict) else {}
+
+def _fixture_competition(x, stamp):
+    raw = x.get("competition") or x.get("league") or x.get("tournament")
+    if isinstance(raw, dict):
+        name = clean(raw.get("name") or raw.get("leagueName") or raw.get("tournamentName"))
+        if name: return name
+    elif isinstance(raw, str) and raw.strip():
+        return raw.strip()
+    d = datetime.fromtimestamp(stamp, timezone.utc).date().isoformat()
+    if d in {"2026-07-14","2026-07-20","2026-07-25","2026-07-31"}: return "Amigável"
+    if d in {"2026-09-09","2026-10-13","2026-10-21","2026-11-03","2026-11-25"}: return "Liga dos Campeões"
+    if d == "2026-10-27": return "Taça da Liga"
+    return "Liga Portugal"
+
 def fetch_fotmob_core():
     """Primary zero-cost source: FotMob public web data."""
     team_id = 9768
@@ -391,7 +407,7 @@ def fetch_fotmob_core():
         if aas is None:
             aas = away.get("score")
         comp = x.get("competition") or x.get("league") or {}
-        venue = x.get("venue") or {}
+        venue = _obj(x.get("venue"))
         fixtures.append({
             "id": x.get("id") or x.get("matchId"),
             "date": stamp,
@@ -410,7 +426,7 @@ def fetch_fotmob_core():
                 "capacity": venue.get("capacity")
             },
             "competition": {
-                "name": clean(comp.get("name")) if isinstance(comp, dict) else clean(comp),
+                "name": _fixture_competition(x, stamp),
                 "round": clean(x.get("round") or x.get("matchday")),
                 "season": "2026/27"
             },
@@ -457,8 +473,18 @@ def fetch_fotmob_core():
     # ---- Squad + player season stats ----
     squad_root = _first_dict(payload, "squad")
     groups = []
-    for key in ("goalkeepers", "defenders", "midfielders", "attackers"):
-        groups.extend(_first_list(squad_root, key))
+    def collect_squad_nodes(obj):
+        if isinstance(obj, dict):
+            pid = obj.get("id") or obj.get("playerId")
+            name = obj.get("name")
+            if pid and name and not isinstance(name, dict): groups.append(obj)
+            for value in obj.values(): collect_squad_nodes(value)
+        elif isinstance(obj, list):
+            for value in obj: collect_squad_nodes(value)
+    collect_squad_nodes(squad_root)
+    dedup = {}
+    for m in groups: dedup[str(m.get("id") or m.get("playerId"))] = m
+    groups = list(dedup.values())
 
     players = []
     for m in groups:
@@ -553,7 +579,7 @@ def fetch_fotmob_core():
 
     # ---- Team stats derived from current fixtures + player totals ----
     now = int(time.time())
-    played = [f for f in fixtures if f["date"] <= now and f["goals"]["home"] is not None]
+    played = [f for f in fixtures if f["date"] <= now and f["goals"]["home"] is not None and f.get("competition",{}).get("name") != "Amigável"]
     team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,
             "assists":0,"shots":0,"shots_on_target":0,"clean_sheets":0,"form":[],"recent_matches":[]}
     for f in played:
