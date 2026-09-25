@@ -1,9 +1,14 @@
 {
-  "_updated_at": "2026-09-25T00:17:06.267067+00:00",
-  "mode": "news",
-  "errors": [],
+  "_updated_at": "2026-09-25T00:26:07.082399+00:00",
+  "mode": "football",
+  "errors": [
+    "fetch_fbref_stats: 403 Client Error: Forbidden for url: https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions",
+    "football-api: Sporting CP was not found in Football Soccer API.",
+    "fixture-fallback: No FBref schedule available for fixture fallback.",
+    "fetch_standings: 403 Client Error: Forbidden for url: https://fbref.com/en/comps/32/2025/2025-league-Stats"
+  ],
   "sources": {
-    "football_api": false,
+    "football_api": true,
     "fbref": true,
     "news": true,
     "maps": true
