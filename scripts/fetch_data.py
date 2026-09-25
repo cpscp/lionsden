@@ -1125,77 +1125,79 @@ def enrich_match_details():
 
 
 def fetch_youtube():
-    """Fetch recent videos from Sporting CP's YouTube channel without relying on the RSS feed."""
+    """Fetch recent/public videos from Sporting CP's official YouTube channel."""
     channel_id = "UCHpcLaddGlZUVdtX302fpHA"
     items = []
-    try:
-        payload = {
-            "context": {
-                "client": {
-                    "clientName": "WEB",
-                    "clientVersion": "2.20260924.01.00",
-                    "hl": "pt-PT",
-                    "gl": "PT",
-                }
-            },
-            "browseId": channel_id,
-        }
-        r = session.post(
-            "https://www.youtube.com/youtubei/v1/browse?prettyPrint=false",
-            json=payload,
-            timeout=30,
-            headers={
-                "Content-Type": "application/json",
-                "Origin": "https://www.youtube.com",
-                "Referer": f"https://www.youtube.com/channel/{channel_id}/videos",
-            },
-        )
-        r.raise_for_status()
-        root = r.json()
 
-        def walk(obj):
-            if isinstance(obj, dict):
-                vr = obj.get("videoRenderer")
-                if isinstance(vr, dict):
-                    vid = clean(vr.get("videoId"))
-                    title = clean("".join(x.get("text","") for x in (vr.get("title",{}).get("runs") or [])))
-                    thumbs = (vr.get("thumbnail",{}).get("thumbnails") or [])
-                    thumb = thumbs[-1].get("url") if thumbs else f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
-                    published = clean(vr.get("publishedTimeText",{}).get("simpleText"))
-                    if vid and title and not any(x["id"] == vid for x in items):
-                        items.append({"id": vid, "title": title, "url": f"https://www.youtube.com/watch?v={vid}", "published": published, "thumbnail": thumb})
-                for v in obj.values():
-                    walk(v)
-            elif isinstance(obj, list):
-                for v in obj:
-                    walk(v)
+    def collect(obj):
+        if isinstance(obj, dict):
+            vr = obj.get("videoRenderer")
+            if isinstance(vr, dict):
+                vid = clean(vr.get("videoId"))
+                runs = (vr.get("title") or {}).get("runs") or []
+                title = clean("".join(x.get("text", "") for x in runs))
+                thumbs = (vr.get("thumbnail") or {}).get("thumbnails") or []
+                thumb = thumbs[-1].get("url") if thumbs else (f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg" if vid else "")
+                if vid and title and not any(x["id"] == vid for x in items):
+                    items.append({"id": vid, "title": title, "url": f"https://www.youtube.com/watch?v={vid}",
+                                  "published": clean((vr.get("publishedTimeText") or {}).get("simpleText")),
+                                  "thumbnail": thumb})
+            for v in obj.values():
+                collect(v)
+        elif isinstance(obj, list):
+            for v in obj:
+                collect(v)
 
-        walk(root)
-        items[:] = items[:12]
-    except Exception as e:
-        print("YouTube browse warning:", e)
+    # First choice: normal channel videos page, which is much more stable than
+    # the undocumented browse API in GitHub Actions.
+    for url in [
+        f"https://www.youtube.com/channel/{channel_id}/videos?hl=pt-PT&gl=PT",
+        f"https://www.youtube.com/channel/{channel_id}?hl=pt-PT&gl=PT",
+    ]:
+        try:
+            r = session.get(url, timeout=30)
+            r.raise_for_status()
+            html = r.text
+            m = re.search(r"ytInitialData\\?\s*=\\?\s*(\\{.*?\\});", html)
+            if not m:
+                m = re.search(r"var ytInitialData = (\\{.*?\\});", html)
+            if m:
+                collect(json.loads(m.group(1)))
+            if items:
+                break
+        except Exception as e:
+            print("YouTube page warning:", e)
 
-    # Keep RSS as a fallback only when the YouTube browse endpoint returned nothing.
+    # Second choice: Innertube browse.
+    if not items:
+        try:
+            payload = {"context":{"client":{"clientName":"WEB","clientVersion":"2.20260924.01.00","hl":"pt-PT","gl":"PT"}},"browseId":channel_id}
+            r = session.post("https://www.youtube.com/youtubei/v1/browse?prettyPrint=false", json=payload, timeout=30)
+            r.raise_for_status()
+            collect(r.json())
+        except Exception as e:
+            print("YouTube browse warning:", e)
+
+    # Third choice: official Atom feed.
     if not items:
         try:
             import xml.etree.ElementTree as ET
-            rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
-            r = session.get(rss_url, timeout=25, headers={"Accept": "application/atom+xml,application/xml;q=0.9,*/*;q=0.8"})
+            r = session.get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}", timeout=25)
             r.raise_for_status()
             root = ET.fromstring(r.content)
-            ns = {"atom": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
-            for entry in root.findall("atom:entry", ns)[:12]:
-                vid = clean(entry.findtext("yt:videoId", "", ns))
-                title = clean(entry.findtext("atom:title", "", ns))
-                published = clean(entry.findtext("atom:published", "", ns))
+            ns = {"atom":"http://www.w3.org/2005/Atom","yt":"http://www.youtube.com/xml/schemas/2015"}
+            for entry in root.findall("atom:entry", ns):
+                vid = clean(entry.findtext("yt:videoId","",ns))
+                title = clean(entry.findtext("atom:title","",ns))
+                published = clean(entry.findtext("atom:published","",ns))
                 if vid and title:
-                    items.append({"id": vid, "title": title, "url": f"https://www.youtube.com/watch?v={vid}", "published": published,
-                                  "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+                    items.append({"id":vid,"title":title,"url":f"https://www.youtube.com/watch?v={vid}","published":published,
+                                  "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
         except Exception as e:
-            print("YouTube RSS fallback warning:", e)
+            print("YouTube RSS warning:", e)
 
-    write_json("youtube.json", {"channel": "Sporting CP", "channel_id": channel_id, "items": items, "source": "YouTube"})
-    print(f"YouTube: {len(items)} videos written.")
+    write_json("youtube.json", {"channel":"Sporting CP","channel_id":channel_id,"items":items[:50],"source":"YouTube"})
+    print(f"YouTube: {len(items[:50])} videos written.")
 
 def fetch_news():
     items = []
