@@ -1,17 +1,18 @@
 {
+  "_updated_at": "2026-09-25T01:36:44.894738+00:00",
   "competition": "Primeira Liga",
+  "season": "2026/27",
   "table": [
     {
       "position": 1,
       "team": {
-        "id": 503,
+        "id": 9773,
         "name": "FC Porto",
-        "shortName": "Porto",
-        "tla": "FCP",
-        "crest": "https://crests.football-data.org/503.png"
+        "shortName": "FC Porto",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 7,
       "draw": 0,
       "lost": 0,
@@ -23,14 +24,13 @@
     {
       "position": 2,
       "team": {
-        "id": 1903,
-        "name": "Sport Lisboa e Benfica",
-        "shortName": "SL Benfica",
-        "tla": "BEN",
-        "crest": "https://crests.football-data.org/1903.png"
+        "id": 9772,
+        "name": "Benfica",
+        "shortName": "Benfica",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 5,
       "draw": 1,
       "lost": 1,
@@ -42,14 +42,13 @@
     {
       "position": 3,
       "team": {
-        "id": 498,
-        "name": "Sporting Clube de Portugal",
+        "id": 9768,
+        "name": "Sporting CP",
         "shortName": "Sporting CP",
-        "tla": "SPO",
-        "crest": "https://crests.football-data.org/498.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 4,
       "draw": 3,
       "lost": 0,
@@ -61,14 +60,13 @@
     {
       "position": 4,
       "team": {
-        "id": 5530,
-        "name": "CD Santa Clara",
+        "id": 1567,
+        "name": "Santa Clara",
         "shortName": "Santa Clara",
-        "tla": "CD ",
-        "crest": "https://crests.football-data.org/5530.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 4,
       "draw": 3,
       "lost": 0,
@@ -80,14 +78,13 @@
     {
       "position": 5,
       "team": {
-        "id": 712,
-        "name": "FC Arouca",
+        "id": 158085,
+        "name": "Arouca",
         "shortName": "Arouca",
-        "tla": "FCA",
-        "crest": "https://crests.football-data.org/712.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/158085.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 3,
       "draw": 2,
       "lost": 2,
@@ -99,14 +96,13 @@
     {
       "position": 6,
       "team": {
-        "id": 5613,
-        "name": "Sporting Clube de Braga",
+        "id": 10264,
+        "name": "Braga",
         "shortName": "Braga",
-        "tla": "SCB",
-        "crest": "https://crests.football-data.org/5613.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
       },
       "playedGames": 6,
-      "form": null,
       "won": 3,
       "draw": 2,
       "lost": 1,
@@ -118,14 +114,13 @@
     {
       "position": 7,
       "team": {
-        "id": 5527,
-        "name": "Académico de Viseu FC",
-        "shortName": "Acad. Viseu",
-        "tla": "ACV",
-        "crest": "https://crests.football-data.org/5527.png"
+        "id": 1786,
+        "name": "Académico Viseu",
+        "shortName": "Académico Viseu",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 3,
       "draw": 2,
       "lost": 2,
@@ -137,14 +132,13 @@
     {
       "position": 8,
       "team": {
-        "id": 9136,
-        "name": "CF Estrela da Amadora",
-        "shortName": "Amadora",
-        "tla": "AMA",
-        "crest": "https://crests.football-data.org/9136.png"
+        "id": 1074320,
+        "name": "Estrela da Amadora",
+        "shortName": "Estrela da Amadora",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1074320.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 2,
       "draw": 4,
       "lost": 1,
@@ -156,14 +150,13 @@
     {
       "position": 9,
       "team": {
-        "id": 5533,
-        "name": "Gil Vicente FC",
+        "id": 9764,
+        "name": "Gil Vicente",
         "shortName": "Gil Vicente",
-        "tla": "GIL",
-        "crest": "https://crests.football-data.org/5533.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
       },
       "playedGames": 6,
-      "form": null,
       "won": 2,
       "draw": 2,
       "lost": 2,
@@ -175,14 +168,13 @@
     {
       "position": 10,
       "team": {
-        "id": 7822,
-        "name": "FC Alverca",
+        "id": 9780,
+        "name": "Alverca",
         "shortName": "Alverca",
-        "tla": "ALV",
-        "crest": "https://crests.football-data.org/7822.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9780.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 2,
       "draw": 2,
       "lost": 3,
@@ -194,14 +186,13 @@
     {
       "position": 11,
       "team": {
-        "id": 5575,
-        "name": "CS Marítimo",
+        "id": 10212,
+        "name": "Marítimo",
         "shortName": "Marítimo",
-        "tla": "CSM",
-        "crest": "https://crests.football-data.org/5575.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 2,
       "draw": 2,
       "lost": 3,
@@ -213,14 +204,13 @@
     {
       "position": 12,
       "team": {
-        "id": 583,
-        "name": "Moreirense FC",
+        "id": 8348,
+        "name": "Moreirense",
         "shortName": "Moreirense",
-        "tla": "MOR",
-        "crest": "https://crests.football-data.org/583.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 2,
       "draw": 2,
       "lost": 3,
@@ -232,14 +222,13 @@
     {
       "position": 13,
       "team": {
-        "id": 5531,
-        "name": "FC Famalicão",
+        "id": 1634,
+        "name": "Famalicão",
         "shortName": "Famalicão",
-        "tla": "FAM",
-        "crest": "https://crests.football-data.org/5531.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 1,
       "draw": 4,
       "lost": 2,
@@ -251,14 +240,13 @@
     {
       "position": 14,
       "team": {
-        "id": 5543,
-        "name": "Vitória SC",
-        "shortName": "Vitória SC",
-        "tla": "GUI",
-        "crest": "https://crests.football-data.org/5543.png"
+        "id": 7844,
+        "name": "Vitória de Guimarães",
+        "shortName": "Vitória de Guimarães",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7844.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 1,
       "draw": 2,
       "lost": 4,
@@ -270,14 +258,13 @@
     {
       "position": 15,
       "team": {
-        "id": 5529,
-        "name": "CD Nacional",
-        "shortName": "CD Nacional",
-        "tla": "CDN",
-        "crest": "https://crests.football-data.org/5529.png"
+        "id": 10214,
+        "name": "Nacional",
+        "shortName": "Nacional",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 1,
       "draw": 1,
       "lost": 5,
@@ -289,14 +276,13 @@
     {
       "position": 16,
       "team": {
-        "id": 496,
-        "name": "Rio Ave FC",
+        "id": 7841,
+        "name": "Rio Ave",
         "shortName": "Rio Ave",
-        "tla": "RIO",
-        "crest": "https://crests.football-data.org/496.png"
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7841.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 1,
       "draw": 1,
       "lost": 5,
@@ -308,14 +294,13 @@
     {
       "position": 17,
       "team": {
-        "id": 6618,
+        "id": 212821,
         "name": "Casa Pia AC",
-        "shortName": "Casa Pia",
-        "tla": "CAS",
-        "crest": "https://crests.football-data.org/6618.png"
+        "shortName": "Casa Pia AC",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 1,
       "draw": 1,
       "lost": 5,
@@ -327,14 +312,13 @@
     {
       "position": 18,
       "team": {
-        "id": 582,
-        "name": "GD Estoril Praia",
-        "shortName": "Estoril Praia",
-        "tla": "EST",
-        "crest": "https://crests.football-data.org/582.png"
+        "id": 7842,
+        "name": "Estoril",
+        "shortName": "Estoril",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7842.png"
       },
       "playedGames": 7,
-      "form": null,
       "won": 0,
       "draw": 2,
       "lost": 5,
@@ -344,5 +328,5 @@
       "goalDifference": -7
     }
   ],
-  "_updated_at": "2026-09-24T23:35:31.554826+00:00"
+  "source": "FotMob"
 }

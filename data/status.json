@@ -1,11 +1,7 @@
 {
-  "_updated_at": "2026-09-25T01:35:18.543992+00:00",
+  "_updated_at": "2026-09-25T01:37:09.853648+00:00",
   "mode": "football",
-  "errors": [
-    "sofascore-fixtures: Sofascore returned no Sporting fixtures.",
-    "sofascore-player-stats: 403 Client Error: Forbidden for url: https://www.sofascore.com/api/v1/team/3001/players",
-    "sofascore-standings: Sofascore Primeira Liga season not found."
-  ],
+  "errors": [],
   "sources": {
     "football_api": true,
     "fbref": true,

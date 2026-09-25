@@ -1,306 +1,1888 @@
 {
-  "team": "Sporting Clube de Portugal",
-  "matches": [
+  "_updated_at": "2026-09-25T01:36:44.481496+00:00",
+  "team_id": 9768,
+  "fixtures": [
     {
-      "utcDate": "2027-01-10T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 17,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "CD Santa Clara",
-      "score": {
+      "id": 5789079,
+      "date": 1784046600,
+      "kickoff_date": "2026-07-14",
+      "kickoff_local_time": "16:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9925,
+        "name": "Celtic"
+      },
+      "goals": {
+        "home": 4,
+        "away": 1
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-01-17T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 18,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "CF Estrela da Amadora",
-      "score": {
+      "id": 5900292,
+      "date": 1784574900,
+      "kickoff_date": "2026-07-20",
+      "kickoff_local_time": "19:15",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9848,
+        "name": "Strasbourg"
+      },
+      "goals": {
+        "home": 7,
+        "away": 0
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-01-20T20:00:00Z",
-      "status": "TIMED",
-      "matchday": 7,
-      "competition": "UEFA Champions League",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "FC Barcelona",
-      "score": {
+      "id": 5900240,
+      "date": 1785004200,
+      "kickoff_date": "2026-07-25",
+      "kickoff_local_time": "18:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9829,
+        "name": "Monaco"
+      },
+      "goals": {
+        "home": 2,
+        "away": 0
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-01-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 19,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Vitória SC",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5899095,
+      "date": 1785523500,
+      "kickoff_date": "2026-07-31",
+      "kickoff_local_time": "18:45",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10203,
+        "name": "Nottm Forest"
+      },
+      "goals": {
+        "home": 4,
+        "away": 1
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-01-27T20:00:00Z",
-      "status": "TIMED",
-      "matchday": 8,
-      "competition": "UEFA Champions League",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Manchester City FC",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887558,
+      "date": 1786217400,
+      "kickoff_date": "2026-08-08",
+      "kickoff_local_time": "19:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 1074320,
+        "name": "Estrela da Amadora"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": 2,
+        "away": 2
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-01-31T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 20,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "FC Alverca",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887599,
+      "date": 1786734900,
+      "kickoff_date": "2026-08-14",
+      "kickoff_local_time": "19:15",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 7844,
+        "name": "Vitória de Guimarães"
+      },
+      "goals": {
+        "home": 3,
+        "away": 2
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-02-07T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 21,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "Rio Ave FC",
-      "score": {
+      "id": 5887607,
+      "date": 1787427000,
+      "kickoff_date": "2026-08-22",
+      "kickoff_local_time": "19:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9780,
+        "name": "Alverca"
+      },
+      "goals": {
+        "home": 3,
+        "away": 1
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-02-14T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 22,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "CD Nacional",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887616,
+      "date": 1787944500,
+      "kickoff_date": "2026-08-28",
+      "kickoff_local_time": "19:15",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 7841,
+        "name": "Rio Ave"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": 0,
+        "away": 4
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-02-21T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 23,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "FC Famalicão",
-      "score": {
+      "id": 5887625,
+      "date": 1788636600,
+      "kickoff_date": "2026-09-05",
+      "kickoff_local_time": "19:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10214,
+        "name": "Nacional"
+      },
+      "goals": {
+        "home": 2,
+        "away": 0
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-02-28T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 24,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "FC Arouca",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 6106280,
+      "date": 1788980400,
+      "kickoff_date": "2026-09-09",
+      "kickoff_local_time": "19:00",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 8637,
+        "name": "Galatasaray"
+      },
+      "goals": {
+        "home": 3,
+        "away": 1
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-03-07T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 25,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "Sporting Clube de Braga",
-      "score": {
+      "id": 5887631,
+      "date": 1789327800,
+      "kickoff_date": "2026-09-13",
+      "kickoff_local_time": "19:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 1634,
+        "name": "Famalicão"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": 1,
+        "away": 1
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-03-14T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 26,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Académico de Viseu FC",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887643,
+      "date": 1789846200,
+      "kickoff_date": "2026-09-19",
+      "kickoff_local_time": "19:30",
+      "status": {
+        "short": "finished",
+        "long": "Terminado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 158085,
+        "name": "Arouca"
+      },
+      "goals": {
+        "home": 2,
+        "away": 2
+      },
+      "half_time": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-03-21T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 27,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "Casa Pia AC",
-      "score": {
+      "id": 5887647,
+      "date": 1791573300,
+      "kickoff_date": "2026-10-09",
+      "kickoff_local_time": "19:15",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio Municipal de Braga', 'city': 'Braga', 'country': 'Portugal', 'lat': 41.562553702, 'long': -8.429903984, 'capacity': 30286, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 10264,
+        "name": "Braga"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-04-04T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 28,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Moreirense FC",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 6106414,
+      "date": 1791909900,
+      "kickoff_date": "2026-10-13",
+      "kickoff_local_time": "16:45",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Stade Bollaert-Delelis', 'city': 'Lens', 'country': 'France', 'lat': 50.432866762, 'long': 2.81494081, 'capacity': 41233, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 8588,
+        "name": "Lens"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-04-11T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 29,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "FC Porto",
-      "score": {
+      "id": 6106281,
+      "date": 1792609200,
+      "kickoff_date": "2026-10-21",
+      "kickoff_local_time": "19:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9977,
+        "name": "LASK"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-04-18T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 30,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "CS Marítimo",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887661,
+      "date": 1792960200,
+      "kickoff_date": "2026-10-25",
+      "kickoff_local_time": "20:30",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 1786,
+        "name": "Académico Viseu"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-04-25T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 31,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "Gil Vicente FC",
-      "score": {
+      "id": 5985964,
+      "date": 1793127600,
+      "kickoff_date": "2026-10-27",
+      "kickoff_local_time": "19:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10212,
+        "name": "Marítimo"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-05-02T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 32,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "GD Estoril Praia",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887666,
+      "date": 1793391300,
+      "kickoff_date": "2026-10-30",
+      "kickoff_local_time": "20:15",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio Municipal de Rio Maior', 'city': 'Rio Maior', 'country': 'Portugal', 'lat': 39.344540974, 'long': -8.935162425, 'capacity': 8500, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 212821,
+        "name": "Casa Pia AC"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-05-09T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 33,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "Sporting Clube de Portugal",
-      "awayTeam": "Sport Lisboa e Benfica",
-      "score": {
+      "id": 6106335,
+      "date": 1793727900,
+      "kickoff_date": "2026-11-03",
+      "kickoff_local_time": "17:45",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Stamford Bridge', 'city': 'London', 'country': 'England', 'lat': 51.481711963, 'long': -0.190974623, 'capacity': 40044, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9728,
+        "name": "Shakhtar Donetsk"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     },
     {
-      "utcDate": "2027-05-16T00:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 34,
-      "competition": "Primeira Liga",
-      "venue": null,
-      "referees": [],
-      "homeTeam": "CD Santa Clara",
-      "awayTeam": "Sporting Clube de Portugal",
-      "score": {
+      "id": 5887679,
+      "date": 1794083400,
+      "kickoff_date": "2026-11-07",
+      "kickoff_local_time": "20:30",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 8348,
+        "name": "Moreirense"
+      },
+      "goals": {
         "home": null,
         "away": null
       },
-      "minute": null
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 6106279,
+      "date": 1795636800,
+      "kickoff_date": "2026-11-25",
+      "kickoff_local_time": "20:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10260,
+        "name": "Man United"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887687,
+      "date": 1795984200,
+      "kickoff_date": "2026-11-29",
+      "kickoff_local_time": "20:30",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9773,
+        "name": "FC Porto"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887698,
+      "date": 1796576400,
+      "kickoff_date": "2026-12-06",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10212,
+        "name": "Marítimo"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 6106275,
+      "date": 1796760000,
+      "kickoff_date": "2026-12-08",
+      "kickoff_local_time": "20:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 8686,
+        "name": "Roma"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887702,
+      "date": 1797181200,
+      "kickoff_date": "2026-12-13",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9764,
+        "name": "Gil Vicente"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887716,
+      "date": 1797786000,
+      "kickoff_date": "2026-12-20",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 7842,
+        "name": "Estoril"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887724,
+      "date": 1798390800,
+      "kickoff_date": "2026-12-27",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9772,
+        "name": "Benfica"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887734,
+      "date": 1799600400,
+      "kickoff_date": "2027-01-10",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 1567,
+        "name": "Santa Clara"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887735,
+      "date": 1800205200,
+      "kickoff_date": "2027-01-17",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 1074320,
+        "name": "Estrela da Amadora"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 6106278,
+      "date": 1800475200,
+      "kickoff_date": "2027-01-20",
+      "kickoff_local_time": "20:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 8634,
+        "name": "Barcelona"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887752,
+      "date": 1800810000,
+      "kickoff_date": "2027-01-24",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 7844,
+        "name": "Vitória de Guimarães"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 6106255,
+      "date": 1801080000,
+      "kickoff_date": "2027-01-27",
+      "kickoff_local_time": "20:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 8456,
+        "name": "Man City"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887760,
+      "date": 1801414800,
+      "kickoff_date": "2027-01-31",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9780,
+        "name": "Alverca"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887769,
+      "date": 1802019600,
+      "kickoff_date": "2027-02-07",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 7841,
+        "name": "Rio Ave"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887778,
+      "date": 1802624400,
+      "kickoff_date": "2027-02-14",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 10214,
+        "name": "Nacional"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887784,
+      "date": 1803229200,
+      "kickoff_date": "2027-02-21",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 1634,
+        "name": "Famalicão"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887796,
+      "date": 1803834000,
+      "kickoff_date": "2027-02-28",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 158085,
+        "name": "Arouca"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887800,
+      "date": 1804438800,
+      "kickoff_date": "2027-03-07",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 10264,
+        "name": "Braga"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887814,
+      "date": 1805043600,
+      "kickoff_date": "2027-03-14",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 1786,
+        "name": "Académico Viseu"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887819,
+      "date": 1805648400,
+      "kickoff_date": "2027-03-21",
+      "kickoff_local_time": "17:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 212821,
+        "name": "Casa Pia AC"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887832,
+      "date": 1806854400,
+      "kickoff_date": "2027-04-04",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 8348,
+        "name": "Moreirense"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887840,
+      "date": 1807459200,
+      "kickoff_date": "2027-04-11",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9773,
+        "name": "FC Porto"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887851,
+      "date": 1808064000,
+      "kickoff_date": "2027-04-18",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 10212,
+        "name": "Marítimo"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887855,
+      "date": 1808668800,
+      "kickoff_date": "2027-04-25",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estadio Jose Alvalade', 'country': ''}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9764,
+        "name": "Gil Vicente"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887869,
+      "date": 1809273600,
+      "kickoff_date": "2027-05-02",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Antonio Coimbra da Mota', 'country': ''}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 7842,
+        "name": "Estoril"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887877,
+      "date": 1809878400,
+      "kickoff_date": "2027-05-09",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estadio Jose Alvalade', 'country': ''}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 9772,
+        "name": "Benfica"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887887,
+      "date": 1810483200,
+      "kickoff_date": "2027-05-16",
+      "kickoff_local_time": "16:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "{'name': 'Estadio do Sao Miguel', 'country': ''}",
+        "city": "",
+        "lat": null,
+        "lon": null,
+        "capacity": null
+      },
+      "competition": {
+        "name": "",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 1567,
+        "name": "Santa Clara"
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
     }
   ],
-  "_updated_at": "2026-09-24T23:35:32.642736+00:00"
+  "source": "FotMob",
+  "season": "2026/27"
 }

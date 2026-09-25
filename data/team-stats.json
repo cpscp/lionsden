@@ -1,20 +1,81 @@
 {
-  "_updated_at": "2026-09-25T01:35:18.188123+00:00",
+  "_updated_at": "2026-09-25T01:36:44.895377+00:00",
   "season": "2026/27",
   "team": {
-    "matches": 0,
-    "wins": 0,
-    "draws": 0,
+    "matches": 12,
+    "wins": 9,
+    "draws": 3,
     "losses": 0,
-    "goals": 0,
-    "goals_against": 0,
-    "clean_sheets": 0,
+    "goals": 37,
+    "goals_against": 11,
     "assists": 0,
     "shots": 0,
     "shots_on_target": 0,
-    "possession_avg": null,
-    "form": [],
-    "recent_matches": []
+    "clean_sheets": 4,
+    "form": [
+      "W",
+      "W",
+      "W",
+      "W",
+      "D",
+      "D"
+    ],
+    "recent_matches": [
+      {
+        "date": "2026-08-22",
+        "competition": "",
+        "venue": "Casa",
+        "result": "W",
+        "gf": 3,
+        "ga": 1,
+        "opponent": "Alverca"
+      },
+      {
+        "date": "2026-08-28",
+        "competition": "",
+        "venue": "Fora",
+        "result": "W",
+        "gf": 4,
+        "ga": 0,
+        "opponent": "Rio Ave"
+      },
+      {
+        "date": "2026-09-05",
+        "competition": "",
+        "venue": "Casa",
+        "result": "W",
+        "gf": 2,
+        "ga": 0,
+        "opponent": "Nacional"
+      },
+      {
+        "date": "2026-09-09",
+        "competition": "",
+        "venue": "Casa",
+        "result": "W",
+        "gf": 3,
+        "ga": 1,
+        "opponent": "Galatasaray"
+      },
+      {
+        "date": "2026-09-13",
+        "competition": "",
+        "venue": "Fora",
+        "result": "D",
+        "gf": 1,
+        "ga": 1,
+        "opponent": "Famalicão"
+      },
+      {
+        "date": "2026-09-19",
+        "competition": "",
+        "venue": "Casa",
+        "result": "D",
+        "gf": 2,
+        "ga": 2,
+        "opponent": "Arouca"
+      }
+    ]
   },
-  "source": "Sofascore"
+  "source": "FotMob"
 }
