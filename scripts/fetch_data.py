@@ -1310,8 +1310,18 @@ def fetch_youtube():
     # D) Last-resort official videos verified from YouTube search results.
     # These prevent an empty TV tab if YouTube blocks GitHub Actions temporarily.
     if not items:
-        add_video("LFMfqhXv8NU", "Sporting CP — vídeo oficial")
-        add_video("q6iKmAL4YFQ", "Sporting CP — vídeo oficial")
+        fallback = [
+            ("mIsTFfn5Xz8", "🎶 Música para os nossos ouvidos 🏀"),
+            ("Gm_CrQhHOfU", "Na História 🫶 Uma centena de vezes com a 🟢⚪️ #SCPFCA"),
+            ("q6iKmAL4YFQ", "Sporting CP — vídeo oficial"),
+            ("LFMfqhXv8NU", "Sporting CP — vídeo oficial"),
+            ("szLeXd-xHBI", "Our POTM: Rodrigo Zalazar 🌟 #SCPGS #UCL"),
+            ("1qER3zdGmvM", "Do not disturb 💆🏻‍♂️ Hoje foi dia de sessão fotográfica"),
+            ("aY7rcRrVftY", "⚽ Golo 🔄 Assistência ✅ #PlayerOfTheMatchSCP"),
+            ("3eMcplcXgG8", "Dentro de campo 🔗 fora de campo 🤝 #UCL")
+        ]
+        for vid, title in fallback:
+            add_video(vid, title)
 
     write_json("youtube.json", {
         "channel":"Sporting CP",
