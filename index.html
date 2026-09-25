@@ -86,12 +86,12 @@ function parseMaybeObject(v){
     const out={}; t.slice(1,-1).split(/,\s*/).forEach(part=>{const i=part.indexOf(':');if(i>0)out[part.slice(0,i).trim().replace(/^['"]|['"]$/g,'')]=part.slice(i+1).trim().replace(/^['"]|['"]$/g,'');}); return out;
   }
 }
-function allFixtures(){
+function normalizeVenue(v){\n  const o=parseMaybeObject(v);\n  if(o && typeof o==='object' && o.name!==undefined) return {name:o.name||'',city:o.city||'',country:o.country||'',lat:o.lat??null,lon:o.lon??o.long??null,capacity:o.capacity??null,surface:o.surface||''};\n  return (v&&typeof v==='object')?v:{};\n}\nfunction normalizeReferee(v){ const o=parseMaybeObject(v); return typeof v==='string' ? (o.text||'') : (o?.text||v?.name||''); }\nfunction allFixtures(){
   const raw=D['fixtures.json']?.fixtures||D['fixtures.json']?.matches||[];
   return raw.map((x,i)=>{
     const date=Number(x.date||0);
     const home=x.home||x.homeTeam||{}, away=x.away||x.awayTeam||{};
-    const venue={...(parseMaybeObject(x.venue)||{})};
+    const venue=normalizeVenue(x.venue);
     if(!venue.name && typeof x.venue==='string') venue.name=x.venue;
     const status=x.status||{};
     const short=String(status.short||'').toLowerCase();
@@ -102,7 +102,7 @@ function allFixtures(){
       kickoff_date:x.kickoff_date||null,
       kickoff_local_time:x.kickoff_local_time||null,
       status:{short:short||(finished?'finished':'scheduled'),long:status.long||(finished?'Terminado':'Agendado')},
-      referee:typeof x.referee==='string'?x.referee:'',
+      referee:normalizeReferee(x.referee),
       venue,
       competition:x.competition||{name:''},
       home:{id:home.id,name:home.name||''},
@@ -115,7 +115,16 @@ function allFixtures(){
 }
 function nextFixture(){return allFixtures().filter(isFuture)[0]}
 function initials(n){return (n||'?').split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
-function badge(n){return `<div class="w-11 h-11 rounded-full bg-white/10 grid place-items-center text-[11px] font-bold">${esc(initials(n))}</div>`}
+function teamLogo(name,id){
+  const known={"Sporting CP":"https://images.fotmob.com/image_resources/logo/teamlogo/9768.png","Braga":"https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"};
+  return known[name]||((id&&String(id).match(/^\d+$/))?\`https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png\`:null);
+}
+function badge(n,id){
+  const logo=teamLogo(n,id);
+  return logo
+    ? \`<div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 grid place-items-center overflow-hidden shrink-0"><img src="${esc(logo)}" class="w-10 h-10 object-contain" alt="${esc(n||'')}"></div>\`
+    : \`<div class="w-14 h-14 rounded-full bg-white/10 grid place-items-center text-[11px] font-bold shrink-0">${esc(initials(n))}</div>\`;
+}
 function metric(k,v){return `<div class="statbox p-4"><div class="text-[10px] uppercase tracking-widest muted">${k}</div><div class="text-[23px] font-bold mt-1">${v??'—'}</div></div>`}
 function render(){
 const u=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=u?`dados ${timeAgo(u)}`:'sem dados';
@@ -126,9 +135,9 @@ function updateCountdown(ts){const el=document.getElementById('nextCountdown');i
 function renderHome(){
 const f=nextFixture();document.getElementById('homeComp').textContent=f?.competition?.name||'—';
 document.getElementById('nextGame').innerHTML=f?`<div class="flex items-center justify-between gap-2">
-<div class="w-[34%] text-center">${badge(f.home?.name)}<div class="text-[12px] font-semibold mt-2">${esc(f.home?.name)}</div></div>
+<div class="w-[34%] text-center">${badge(f.home?.name,f.home?.id)}<div class="text-[12px] font-semibold mt-2">${esc(f.home?.name)}</div></div>
 <div class="text-center flex-1"><div class="text-[10px] muted">${fmtDate(f.date)}</div><div class="text-[25px] font-bold my-2">VS</div><div class="text-[10px] muted">${esc(f.competition?.round||f.kickoff_local_time||'')}</div></div>
-<div class="w-[34%] text-center">${badge(f.away?.name)}<div class="text-[12px] font-semibold mt-2">${esc(f.away?.name)}</div></div></div>
+<div class="w-[34%] text-center">${badge(f.away?.name,f.away?.id)}<div class="text-[12px] font-semibold mt-2">${esc(f.away?.name)}</div></div></div>
 <div class="mt-5 pt-3 row flex items-center justify-between text-[10px] muted gap-3"><span>🏟 ${esc(f.venue?.name||'Estádio por confirmar')}</span><span>${esc(f.referee||'Árbitro por confirmar')}</span></div>
 ${countdownHtml(f.date)}
 <button onclick="openGame('${esc(f.id)}')" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>`:
@@ -142,7 +151,7 @@ const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNew
 }
 function renderGames(){
 const merged=allFixtures();const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
-document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="flex items-center gap-3"><div class="flex-1 flex items-center justify-end gap-2 text-[12px] font-semibold text-right">${esc(x.home?.name)} ${badge(x.home?.name)}</div><div class="font-bold min-w-[54px] text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex-1 flex items-center gap-2 text-[12px] font-semibold">${badge(x.away?.name)} ${esc(x.away?.name)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(x.venue?.name||'ver detalhes')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
+document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="flex items-center gap-3"><div class="flex-1 flex items-center justify-end gap-2 text-[12px] font-semibold text-right">${esc(x.home?.name)} ${badge(x.home?.name,x.home?.id)}</div><div class="font-bold min-w-[54px] text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex-1 flex items-center gap-2 text-[12px] font-semibold">${badge(x.away?.name,x.away?.id)} ${esc(x.away?.name)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(x.venue?.name||'ver detalhes')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
 }
 function renderSquad(){
 const raw=D['squad.json']||{}; const ps=raw.players||raw.squad||[];document.getElementById('squadList').innerHTML=ps.map((p,i)=>`<button onclick="openPlayer(${i})" class="card w-full p-3 flex items-center gap-3 text-left"><div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden">${p.photo?`<img src="${esc(p.photo)}" class="w-full h-full object-cover" alt="">`:badge(p.name)}</div><div class="flex-1"><div class="font-semibold text-[13px]">${esc(p.name)}</div><div class="text-[10px] muted">${esc(p.position||'—')} · ${esc(p.nation||p.nationality||'—')}</div></div><div class="text-right"><b class="text-[13px]">${p.stats?.goals??p.goals??0}</b><div class="text-[9px] muted">golos</div></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem plantel.</div>';
@@ -173,7 +182,7 @@ function openGame(id){
 const base=findFixture(id);const detail=(D['match-details.json']?.fixtures||[]).find(x=>String(x.match_id)===String(id));if(!base){return}
 let v=base.venue||{};const cached=(D['venues.json']?.venues)||{};if((v.lat==null||v.lon==null)&&base.home?.name&&base.away?.name){const opponent=base.home.name==='Sporting CP'?base.away.name:base.home.name;const hit=Object.entries(cached).find(([k])=>k.toLowerCase().includes(opponent.toLowerCase()));if(hit){v={...v,...hit[1]};}}let lat=v.lat,lon=v.lon;let map=lat!=null&&lon!=null?`<iframe class="w-full h-56 rounded-2xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-.015}%2C${lat-.01}%2C${lon+.015}%2C${lat+.01}&layer=mapnik&marker=${lat}%2C${lon}"></iframe>`:`<a class="pill inline-block px-3 py-2 text-xs" target="_blank" href="https://www.openstreetmap.org/search?query=${encodeURIComponent((v.name||'')+' '+(v.city||''))}">Abrir mapa ↗</a>`;
 document.getElementById('modalTitle').textContent=`${base.home?.name||''} · ${base.away?.name||''}`;
-document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><div class="muted text-xs">${fmtDate(base.date)} · ${esc(base.competition?.name||'')}</div><div class="flex items-center justify-center gap-4 mt-4"><div class="w-[38%] text-center">${badge(base.home?.name)}<div class="font-semibold text-sm mt-2">${esc(base.home?.name)}</div></div><div class="font-bold text-xl">${base.goals?.home!=null?`${base.goals.home}-${base.goals.away}`:'VS'}</div><div class="w-[38%] text-center">${badge(base.away?.name)}<div class="font-semibold text-sm mt-2">${esc(base.away?.name)}</div></div></div></div><div class="card p-4 space-y-2"><div class="font-semibold mb-1">Informação do jogo</div><div class="text-xs muted">🏟 ${esc(v.name||'Por confirmar')} ${v.city?'· '+esc(v.city):''}</div><div class="text-xs muted">👨‍⚖️ ${esc(base.referee||detail?.referee_name||'Árbitro por confirmar')}</div><div class="text-xs muted">🏆 ${esc(base.competition?.round||base.competition?.name||'')}</div>${v.capacity?`<div class="text-xs muted">👥 Capacidade: ${esc(v.capacity)}</div>`:''}</div><div class="card p-3 mt-3">${map}</div>${detail?`<div class="card p-4 mt-3"><div class="font-semibold">Fonte do detalhe</div><div class="text-[10px] muted mt-2">Dados do jogo atualizados pelo Football Soccer API.</div></div>`:''}<div class="text-[10px] muted mt-3">Futebol: FotMob · mapa: OpenStreetMap</div>`;
+document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><div class="muted text-xs">${fmtDate(base.date)} · ${esc(base.competition?.name||'')}</div><div class="flex items-center justify-center gap-4 mt-4"><div class="w-[38%] text-center">${badge(base.home?.name,base.home?.id)}<div class="font-semibold text-sm mt-2">${esc(base.home?.name)}</div></div><div class="font-bold text-xl">${base.goals?.home!=null?`${base.goals.home}-${base.goals.away}`:'VS'}</div><div class="w-[38%] text-center">${badge(base.away?.name,base.away?.id)}<div class="font-semibold text-sm mt-2">${esc(base.away?.name)}</div></div></div></div><div class="card p-4 space-y-2"><div class="font-semibold mb-1">Informação do jogo</div><div class="text-xs muted">🏟 ${esc(v.name||'Por confirmar')} ${v.city?'· '+esc(v.city):''}</div><div class="text-xs muted">👨‍⚖️ ${esc(base.referee||detail?.referee_name||'Árbitro por confirmar')}</div><div class="text-xs muted">🏆 ${esc(base.competition?.round||base.competition?.name||'')}</div>${v.capacity?`<div class="text-xs muted">👥 Capacidade: ${esc(v.capacity)}</div>`:''}</div><div class="card p-3 mt-3">${map}</div>${detail?`<div class="card p-4 mt-3"><div class="font-semibold">Fonte do detalhe</div><div class="text-[10px] muted mt-2">Dados do jogo atualizados pelo Football Soccer API.</div></div>`:''}<div class="text-[10px] muted mt-3">Futebol: FotMob · mapa: OpenStreetMap</div>`;
 openModal();
 }
 function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
