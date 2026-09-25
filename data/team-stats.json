@@ -1,22 +1,23 @@
 {
-  "_updated_at": "2026-09-25T03:02:30.517206+00:00",
+  "_updated_at": "2026-09-25T03:03:16.575877+00:00",
   "season": "2026/27",
   "team": {
     "matches": 12,
-    "wins": 9,
+    "wins": 1,
     "draws": 3,
-    "losses": 0,
-    "goals": 37,
-    "goals_against": 11,
+    "losses": 8,
+    "goals": 15,
+    "goals_against": 33,
+    "clean_sheets": 1,
     "assists": 13,
     "shots": 0,
     "shots_on_target": 0,
-    "clean_sheets": 4,
+    "possession_avg": null,
     "form": [
+      "L",
       "W",
-      "W",
-      "W",
-      "W",
+      "L",
+      "L",
       "D",
       "D"
     ],
@@ -24,11 +25,11 @@
       {
         "date": "2026-08-22",
         "competition": "Liga Portugal",
-        "venue": "Casa",
-        "result": "W",
-        "gf": 3,
-        "ga": 1,
-        "opponent": "Alverca"
+        "venue": "Fora",
+        "result": "L",
+        "gf": 1,
+        "ga": 3,
+        "opponent": "Sporting CP"
       },
       {
         "date": "2026-08-28",
@@ -42,20 +43,20 @@
       {
         "date": "2026-09-05",
         "competition": "Liga Portugal",
-        "venue": "Casa",
-        "result": "W",
-        "gf": 2,
-        "ga": 0,
-        "opponent": "Nacional"
+        "venue": "Fora",
+        "result": "L",
+        "gf": 0,
+        "ga": 2,
+        "opponent": "Sporting CP"
       },
       {
         "date": "2026-09-09",
         "competition": "Champions League",
-        "venue": "Casa",
-        "result": "W",
-        "gf": 3,
-        "ga": 1,
-        "opponent": "Galatasaray"
+        "venue": "Fora",
+        "result": "L",
+        "gf": 1,
+        "ga": 3,
+        "opponent": "Sporting CP"
       },
       {
         "date": "2026-09-13",
@@ -69,13 +70,13 @@
       {
         "date": "2026-09-19",
         "competition": "Liga Portugal",
-        "venue": "Casa",
+        "venue": "Fora",
         "result": "D",
         "gf": 2,
         "ga": 2,
-        "opponent": "Arouca"
+        "opponent": "Sporting CP"
       }
     ]
   },
-  "source": "FotMob"
+  "source": "Sofascore"
 }
