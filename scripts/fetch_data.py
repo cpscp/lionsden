@@ -1177,11 +1177,17 @@ def fetch_youtube():
             r = session.get(url, timeout=30)
             r.raise_for_status()
             html = r.text
-            m = re.search(r"ytInitialData\\?\s*=\\?\s*(\\{.*?\\});", html)
-            if not m:
-                m = re.search(r"var ytInitialData = (\\{.*?\\});", html)
-            if m:
-                collect(json.loads(m.group(1)))
+            # YouTube embeds the initial data as JSON. Decode the object
+            # directly from the assignment instead of using a fragile regex.
+            marker = "ytInitialData = "
+            pos = html.find(marker)
+            if pos >= 0:
+                raw = html[pos + len(marker):].lstrip()
+                try:
+                    obj, _ = json.JSONDecoder().raw_decode(raw)
+                    collect(obj)
+                except Exception as e:
+                    print("YouTube initial-data parse warning:", e)
             if items:
                 break
         except Exception as e:
