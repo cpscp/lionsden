@@ -141,7 +141,10 @@ function cleanObjectText(value){
 }
 function venueInfo(v){
   const parsed=cleanObjectText(v);
-  return parsed&&typeof parsed==='object'?parsed:{name:parsed||''};
+  if(parsed&&typeof parsed==='object'){
+    return {...parsed,lon:parsed.lon??parsed.long??null,lat:parsed.lat??null};
+  }
+  return {name:parsed||'',city:'',lat:null,lon:null};
 }
 function refereeInfo(v){
   const parsed=cleanObjectText(v);
