@@ -537,13 +537,15 @@ def fetch_fotmob_core():
 
             birth = deep_find(pd, {"birthDate", "dateOfBirth", "date_of_birth"})
             if isinstance(birth, dict):
-                player["dateOfBirth"] = birth.get("iso") or birth.get("date")
+                player["dateOfBirth"] = birth.get("iso") or birth.get("date") or birth.get("utcTime")
             elif birth:
                 player["dateOfBirth"] = str(birth)
 
             # Try FotMob's career/transfer structures for the club path.
             career_nodes = deep_find(pd, {"careerHistory", "career", "transferHistory", "transfers"})
             career = []
+            if isinstance(career_nodes, dict):
+                career_nodes = career_nodes.get("careerItems") or career_nodes.get("items") or []
             if isinstance(career_nodes, list):
                 for item in career_nodes:
                     if not isinstance(item, dict):
