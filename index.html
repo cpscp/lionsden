@@ -22,7 +22,9 @@
 .team-logo.sm{width:40px;height:40px}
 .team-logo-wrap{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:0 0 64px;margin:0 auto}
 .team-logo-wrap.sm{width:54px;height:54px;flex-basis:54px}
-.match-row{display:grid;grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr);align-items:start;width:100%;gap:8px}
+.match-row{display:grid;grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr);align-items:center;width:100%;gap:10px}
+.match-row .match-team{justify-self:center}
+.match-row .match-vs{align-self:center}
 .match-team{width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center}
 .match-team-name{margin-top:9px;font-size:12px;font-weight:600;line-height:1.2;max-width:100%;overflow-wrap:anywhere}
 .match-vs{width:100%;text-align:center;min-width:0;padding-top:7px}
@@ -93,14 +95,24 @@ const fmtDate=x=>{if(!x)return '—';let d=typeof x==='number'?new Date(x*1000):
 const fmtDay=x=>new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'short'}).format(new Date(x));
 function timeAgo(d){const m=Math.floor((Date.now()-new Date(d))/60000);return m<1?'agora':m<60?`há ${m} min`:`há ${Math.floor(m/60)} h`}
 function isFuture(f){return !!f.date && Number(f.date)>Math.floor(Date.now()/1000) && !['finished','postponed','cancelled','canceled'].includes(String(f.status?.short||'').toLowerCase())}
+function fixtureTimestamp(value){
+  if(value==null||value==='') return 0;
+  if(typeof value==='number'){
+    return value>100000000000?Math.floor(value/1000):Math.floor(value);
+  }
+  const n=Number(value);
+  if(Number.isFinite(n)&&n>1000000000) return n>100000000000?Math.floor(n/1000):Math.floor(n);
+  const t=new Date(value).getTime();
+  return Number.isFinite(t)?Math.floor(t/1000):0;
+}
 function allFixtures(){
   const raw=D['fixtures.json']?.fixtures||D['fixtures.json']?.matches||[];
   const fb=D['fbref-schedule.json']?.fixtures||[];
   const out=raw.map((x,i)=>{
-    const legacy=x.utcDate||x.date;
+    const legacy=x.utcDate??x.date;
     const home=typeof x.homeTeam==='string'?x.homeTeam:(x.home?.name||'');
     const away=typeof x.awayTeam==='string'?x.awayTeam:(x.away?.name||'');
-    const date=legacy?Math.floor(new Date(legacy).getTime()/1000):Number(x.date||0);
+    const date=fixtureTimestamp(legacy);
     const scheduled=!['FINISHED','POSTPONED','CANCELLED'].includes(String(x.status||'').toUpperCase());
     return {id:x.id||x.match_id||('legacy-'+i),date,kickoff_date:date?new Date(date*1000).toISOString().slice(0,10):null,kickoff_local_time:date?new Intl.DateTimeFormat('pt-PT',{hour:'2-digit',minute:'2-digit'}).format(new Date(date*1000)):null,status:{short:x.status?.short||x.status?.toLowerCase?.()||(scheduled?'scheduled':'finished'),long:x.status?.long||x.status||''},referee:refereeInfo(x.referee)||(x.referees?.[0]?.name||''),venue:venueInfo(x.venue),competition:typeof x.competition==='string'?{name:x.competition}:{name:x.competition?.name||''},home:{id:x.home?.id||x.home_team_id||x.homeTeam?.id,name:home},away:{id:x.away?.id||x.away_team_id||x.awayTeam?.id,name:away},goals:x.goals||x.score||{home:null,away:null},source:x.source||'Football-data'}; 
   });
@@ -111,7 +123,7 @@ function allFixtures(){
     const away=String(x.venue_side||'').toLowerCase()==='home'?x.opponent:'Sporting CP';
     const key=String(x.date)+'|'+home+'|'+away;
     if(seen.has(key)) continue;
-    out.push({id:'fb-'+x.date+'-'+x.opponent,date:Math.floor(new Date(x.date+'T'+(x.time||'12:00')+':00').getTime()/1000),kickoff_date:x.date,kickoff_local_time:x.time,status:{short:x.result?'finished':'scheduled',long:x.result?'Terminado':'Agendado'},referee:refereeInfo(x.referee),venue:venueInfo(x.venue),competition:{name:x.competition,round:x.round},home:{id:x.home_team_id||null,name:home},away:{id:x.away_team_id||null,name:away},goals:{home:x.result?x.gf:null,away:x.result?x.ga:null},_fb:true});
+    out.push({id:'fb-'+x.date+'-'+x.opponent,date:fixtureTimestamp(x.date+'T'+(x.time||'12:00')+':00'),kickoff_date:x.date,kickoff_local_time:x.time,status:{short:x.result?'finished':'scheduled',long:x.result?'Terminado':'Agendado'},referee:refereeInfo(x.referee),venue:venueInfo(x.venue),competition:{name:x.competition,round:x.round},home:{id:x.home_team_id||null,name:home},away:{id:x.away_team_id||null,name:away},goals:{home:x.result?x.gf:null,away:x.result?x.ga:null},_fb:true});
     seen.add(key);
   }
   return out.filter(x=>x.date).sort((a,b)=>(a.date||0)-(b.date||0));
@@ -127,8 +139,9 @@ const API_SPORTS_IDS={
 function teamLogoUrl(team){
   const name=String(team?.name||team||'').trim();
   const id=team?.id||team?.team_id;
-  if(name && API_SPORTS_IDS[name]) return `https://media.api-sports.io/football/teams/${API_SPORTS_IDS[name]}.png`;
-  return id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png` : '';
+  // fixtures.json comes from FotMob, so its team IDs are the safest source for logos.
+  if(id) return `https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png`;
+  return '';
 }
 function teamVisual(team,small=false){
   const name=team?.name||team||'';
@@ -146,19 +159,32 @@ function cleanObjectText(value){
   const s=String(value).trim();
   if(!s)return '';
   if((s.startsWith('{')&&s.endsWith('}'))||(s.startsWith('[')&&s.endsWith(']'))){
-    try{
-      const parsed=JSON.parse(s.replace(/'/g,'"'));
-      return parsed;
-    }catch(e){}
+    try{return JSON.parse(s);}catch(e){}
   }
   return s;
+}
+function parsePythonVenueString(s){
+  const out={};
+  const text=String(s||'');
+  const pick=(key)=>{const m=text.match(new RegExp("['\\\"]"+key+"['\\\"]\\s*:\\s*['\\\"]([^'\\\"]*)['\\\"]"));return m?m[1]:''};
+  const num=(key)=>{const m=text.match(new RegExp("['\\\"]"+key+"['\\\"]\\s*:\\s*(-?\\d+(?:\\.\\d+)?)"));return m?Number(m[1]):null};
+  out.name=pick('name'); out.city=pick('city'); out.country=pick('country');
+  out.lat=num('lat'); out.lon=num('lon'); if(out.lon==null) out.lon=num('long');
+  out.capacity=num('capacity');
+  return out.name||out.city||out.lat!=null||out.lon!=null?out:null;
 }
 function venueInfo(v){
   let parsed=cleanObjectText(v);
   if(!parsed) return {name:'',city:'',lat:null,lon:null,capacity:null};
+  if(typeof parsed==='string'){
+    const recovered=parsePythonVenueString(parsed);
+    return recovered||{name:parsed,city:'',lat:null,lon:null,capacity:null};
+  }
   if(typeof parsed!=='object') return {name:String(parsed),city:'',lat:null,lon:null,capacity:null};
-  let nested=cleanObjectText(parsed.name);
-  if(nested && typeof nested==='object') parsed={...nested,...parsed};
+  if(typeof parsed.name==='string' && parsed.name.trim().startsWith('{')){
+    const nested=parsePythonVenueString(parsed.name);
+    if(nested) parsed={...nested,...parsed};
+  }
   return {
     name: typeof parsed.name==='string' ? parsed.name : '',
     city: typeof parsed.city==='string' ? parsed.city : '',
