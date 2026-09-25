@@ -743,6 +743,25 @@ def fetch_sofascore_match_details():
     write_json("match-details.json", {"fixtures": details, "source": "Sofascore"})
     print(f"Sofascore: {len(details)} detailed matches written.")
 
+def enrich_player_profiles():
+    """Add stable biographical fields from SofaScore to the FBref squad."""
+    squad = safe_existing("squad.json") or {}
+    players = squad.get("players") or []
+    for p in players:
+        sid = p.get("sofascore_id") or p.get("id")
+        if not sid:
+            continue
+        try:
+            sp = sofa_get(f"/player/{sid}").get("player") or {}
+            for src, dst in [("dateOfBirth","dateOfBirth"),("shirtNumber","shirtNumber"),("nationality","nationality"),("country","nationality")]:
+                if sp.get(src) and not p.get(dst):
+                    p[dst] = sp.get(src)
+            if sp.get("nationality") and not p.get("nation"):
+                p["nation"] = (sp.get("nationality") or {}).get("name") if isinstance(sp.get("nationality"),dict) else sp.get("nationality")
+        except Exception as e:
+            print("Player profile warning:", p.get("name"), e)
+    write_json("squad.json", squad)
+
 def fetch_sofascore_standings():
     """Fetch the current Primeira Liga table from SofaScore."""
     sid = _sofa_season(17)
@@ -1313,6 +1332,10 @@ def main():
             fetch_sofascore_match_details()
         except Exception as e:
             print(f"SofaScore match details skipped: {e}")
+        try:
+            enrich_player_profiles()
+        except Exception as e:
+            print(f"Player profile enrichment skipped: {e}")
 
         try:
             geocode_missing_venues()
