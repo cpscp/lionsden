@@ -62,6 +62,22 @@ const fmtDay=x=>new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'short'}).f
 function timeAgo(d){const m=Math.floor((Date.now()-new Date(d))/60000);return m<1?'agora':m<60?`há ${m} min`:`há ${Math.floor(m/60)} h`}
 function isFuture(f){return f.status?.short==='scheduled'||(!f.status?.short&&f.date&&f.date>Date.now()/1000)}
 function allFixtures(){const a=D['fixtures.json']?.fixtures||[];const b=D['fbref-schedule.json']?.fixtures||[];const seen=new Set(a.map(x=>`${x.kickoff_date}|${x.home?.name}|${x.away?.name}`));const merged=[...a];for(const x of b){if(!x.date)continue;const home=x.venue_side==='Home'?'Sporting CP':x.opponent;const away=x.venue_side==='Home'?x.opponent:'Sporting CP';const key=`${x.date}|${home}|${away}`;if(!seen.has(key)){let ts=Math.floor(new Date(`${x.date}T${x.time||'12:00'}:00`).getTime()/1000);merged.push({id:'fb-'+x.date+'-'+x.opponent,date:ts,kickoff_date:x.date,kickoff_local_time:x.time,status:{short:x.result?'finished':'scheduled',long:x.result?'Terminado':'Agendado'},referee:x.referee,venue:{name:null,city:null,lat:null,lon:null},competition:{name:x.competition,round:x.round},home:{name:home},away:{name:away},goals:{home:x.result?(x.venue_side==='Home'?x.gf:x.ga):null,away:x.result?(x.venue_side==='Home'?x.ga:x.gf):null},_fb:true});seen.add(key)}}return merged.sort((a,b)=>(a.date||0)-(b.date||0))}
+function allFixtures(){
+  const f=D['fixtures.json']?.fixtures||[];
+  const fb=D['fbref-schedule.json']?.fixtures||[];
+  const out=[...f];
+  const seen=new Set(f.map(x=>String(x.kickoff_date||'')+'|'+String(x.home?.name||'')+'|'+String(x.away?.name||'')));
+  for(const x of fb){
+    if(!x.date) continue;
+    const home=String(x.venue_side||'').toLowerCase()==='home'?'Sporting CP':x.opponent;
+    const away=String(x.venue_side||'').toLowerCase()==='home'?x.opponent:'Sporting CP';
+    const key=String(x.date)+'|'+String(home)+'|'+String(away);
+    if(seen.has(key)) continue;
+    out.push({id:'fb-'+x.date+'-'+x.opponent,date:Math.floor(new Date(x.date+'T'+(x.time||'12:00')+':00').getTime()/1000),kickoff_date:x.date,kickoff_local_time:x.time,status:{short:x.result?'finished':'scheduled',long:x.result?'Terminado':'Agendado'},referee:x.referee,venue:{name:null,city:null,lat:null,lon:null},competition:{name:x.competition,round:x.round},home:{name:home},away:{name:away},goals:{home:x.result?x.gf:null,away:x.result?x.ga:null},_fb:true});
+    seen.add(key);
+  }
+  return out.sort((a,b)=>(a.date||0)-(b.date||0));
+}
 function nextFixture(){return allFixtures().filter(isFuture)[0]}
 function initials(n){return (n||'?').split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function badge(n){return `<div class="w-11 h-11 rounded-full bg-white/10 grid place-items-center text-[11px] font-bold">${esc(initials(n))}</div>`}
@@ -86,10 +102,7 @@ const form=D['team-stats.json']?.team?.form||[];document.getElementById('form').
 const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNews').innerHTML=ns.map(newsCard).join('')||'<span class="muted text-sm">Sem notícias.</span>';
 }
 function renderGames(){
-const f=(D['fixtures.json']?.fixtures||[]);const fb=(D['fbref-schedule.json']?.fixtures||[]);
-const seen=new Set(f.map(x=>`${x.kickoff_date}|${x.home?.name}|${x.away?.name}`));const merged=[...f];
-for(const x of fb){if(!x.date)continue;const home=x.venue_side==='Home'?'Sporting CP':x.opponent;const away=x.venue_side==='Home'?x.opponent:'Sporting CP';const key=`${x.date}|${home}|${away}`;if(!seen.has(key))merged.push({id:'fb-'+x.date+'-'+x.opponent,date:Math.floor(new Date(x.date+'T'+(x.time||'12:00')+':00').getTime()/1000),kickoff_date:x.date,kickoff_local_time:x.time,status:{short:x.result?'finished':'scheduled',long:x.result?'Terminado':'Agendado'},referee:x.referee,venue:{name:null,city:null},competition:{name:x.competition,round:x.round},home:{name:home},away:{name:away},goals:{home:x.result?x.gf:null,away:x.result?x.ga:null},_fb:true});seen.add(key)} 
-merged.sort((a,b)=>(a.date||0)-(b.date||0));const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
+const merged=allFixtures();const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
 document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="flex items-center gap-3"><div class="flex-1 flex items-center justify-end gap-2 text-[12px] font-semibold text-right">${esc(x.home?.name)} ${badge(x.home?.name)}</div><div class="font-bold min-w-[54px] text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex-1 flex items-center gap-2 text-[12px] font-semibold">${badge(x.away?.name)} ${esc(x.away?.name)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(x.venue?.name||'ver detalhes')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
 }
 function renderSquad(){
