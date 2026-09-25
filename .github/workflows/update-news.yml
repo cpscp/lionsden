@@ -1,5 +1,10 @@
 name: Atualizar notícias
 
+concurrency:
+  group: lions-den-data
+  cancel-in-progress: false
+  queue: max
+
 on:
   push:
     branches: [main]
@@ -42,6 +47,7 @@ jobs:
 
           git commit -m 'noticias: atualização automática'
 
+          git reset --hard HEAD
           git fetch origin main
 
           if ! git rebase origin/main; then
