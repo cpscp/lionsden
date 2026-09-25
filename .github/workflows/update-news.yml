@@ -1,6 +1,12 @@
 name: Atualizar notícias
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fetch_data.py'
+      - 'scripts/requirements.txt'
+      - '.github/workflows/update-news.yml'
   schedule:
     - cron: '3,33 * * * *'
   workflow_dispatch:
