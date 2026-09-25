@@ -28,6 +28,22 @@
 .match-row .match-team .match-team-name{display:block !important;width:100% !important;margin:8px auto 0 !important;text-align:center !important;font-size:12px !important;font-weight:600 !important;line-height:1.25 !important;max-width:120px !important;white-space:normal !important;overflow-wrap:anywhere !important}
 .match-row .match-vs{align-self:start !important;width:100% !important;text-align:center !important;min-width:0 !important;padding-top:8px !important}
 .match-row .match-vs .vs-text{font-size:25px;font-weight:700;line-height:1}
+.next-match-layout{display:grid !important;grid-template-columns:minmax(0,1fr) 86px minmax(0,1fr) !important;align-items:start !important;gap:8px !important;width:100% !important;margin-top:22px !important}
+.next-club{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;text-align:center !important;min-width:0 !important}
+.next-club .team-logo-wrap{display:block !important;position:relative !important;flex:0 0 64px !important;width:64px !important;height:64px !important;margin:0 auto !important}
+.next-club-name{display:block !important;position:static !important;width:100% !important;margin:9px auto 0 !important;text-align:center !important;font-size:13px !important;font-weight:600 !important;line-height:1.25 !important;white-space:normal !important;overflow-wrap:anywhere !important;max-width:125px !important}
+.next-match-center{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;min-width:0 !important;padding-top:7px !important}
+.next-match-center .vs-text{font-size:25px !important;font-weight:700 !important;line-height:1 !important;margin:12px 0 !important}
+.next-match-meta{display:grid !important;grid-template-columns:1fr 1fr !important;gap:12px !important;margin-top:22px !important;padding-top:12px !important;border-top:1px solid var(--line) !important;font-size:10px !important;color:var(--muted) !important}
+.next-match-meta span{min-width:0 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+.games-match-layout{display:grid !important;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr) !important;align-items:start !important;gap:8px !important;width:100% !important;margin-top:12px !important}
+.games-team{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;text-align:center !important;min-width:0 !important}
+.games-team .team-logo-wrap{width:52px !important;height:52px !important;flex:0 0 52px !important;margin:0 auto !important}
+.games-team-name{display:block !important;position:static !important;margin:7px auto 0 !important;width:100% !important;max-width:105px !important;font-size:11px !important;font-weight:600 !important;line-height:1.25 !important;white-space:normal !important;overflow-wrap:anywhere !important;text-align:center !important}
+.games-score{display:flex !important;align-items:flex-start !important;justify-content:center !important;text-align:center !important;font-size:13px !important;font-weight:700 !important;padding-top:19px !important;min-width:0 !important}
+.games-meta{display:grid !important;grid-template-columns:minmax(0,1fr) auto !important;gap:10px !important;align-items:center !important;margin-top:12px !important;padding-top:10px !important;border-top:1px solid rgba(255,255,255,.05) !important;font-size:9px !important;color:var(--muted) !important}
+.games-meta .venue{min-width:0 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+.games-meta .status{white-space:nowrap !important;text-align:right !important}
 .game-row{display:grid !important;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) !important;align-items:start !important;gap:8px !important;width:100% !important}
 .game-row > div:first-child,.game-row > div:nth-child(3){min-width:0 !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;text-align:center !important}
 .game-row > div:first-child .team-logo-wrap,.game-row > div:nth-child(3) .team-logo-wrap{margin:0 auto !important}
@@ -222,21 +238,38 @@ function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-cent
 function updateCountdown(ts){const el=document.getElementById('nextCountdown');if(!el)return;const tick=()=>{const diff=Math.max(0,Number(ts)*1000-Date.now());const total=Math.floor(diff/1000);const d=Math.floor(total/86400),h=Math.floor(total%86400/3600),m=Math.floor(total%3600/60),sec=total%60;el.querySelector('div:last-child').textContent=diff?'em '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s':'A começar agora';};tick();clearInterval(window._nextCountdown);window._nextCountdown=setInterval(tick,1000);}
 function renderHome(){
 const f=nextFixture();document.getElementById('homeComp').textContent=f?.competition?.name||'—';
-document.getElementById('nextGame').innerHTML=f?`<div class="match-row"><div class="match-team" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center">${teamVisual(f.home)}<div class="match-team-name">${esc(f.home?.name)}</div></div><div class="match-vs"><div class="text-[10px] muted">${fmtDate(f.date)}</div><div class="vs-text my-2">VS</div><div class="text-[10px] muted">${esc(f.competition?.round||f.kickoff_local_time||'')}</div></div><div class="match-team" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center">${teamVisual(f.away)}<div class="match-team-name">${esc(f.away?.name)}</div></div></div>
-<div class="mt-5 pt-3 row grid grid-cols-2 gap-3 text-[10px] muted"><span class="truncate">🏟 ${esc(venueInfo(f.venue).name||'Estádio por confirmar')}</span><span class="truncate text-right">👨‍⚖️ ${esc(f.referee||'Árbitro por confirmar')}</span></div>
-${countdownHtml(f.date)}
-<button onclick="openGame('${esc(f.id)}')" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>`:
+document.getElementById('nextGame').innerHTML=f?\`<div class="next-match-layout">
+<div class="next-club">\${teamVisual(f.home)}<div class="next-club-name">\${esc(f.home?.name)}</div></div>
+<div class="next-match-center"><div class="text-[10px] muted">\${fmtDate(f.date)}</div><div class="vs-text">VS</div><div class="text-[10px] muted">\${esc(f.kickoff_local_time||f.competition?.round||'')}</div></div>
+<div class="next-club">\${teamVisual(f.away)}<div class="next-club-name">\${esc(f.away?.name)}</div></div>
+</div>
+<div class="next-match-meta"><span>🏟 \${esc(venueInfo(f.venue).name||'Estádio por confirmar')}</span><span class="text-right">👨‍⚖️ \${esc(refereeInfo(f.referee)||'Árbitro por confirmar')}</span></div>
+\${countdownHtml(f.date)}
+<button onclick="openGame('\${esc(f.id)}')" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>\`:
 '<div class="text-center py-8 muted">Sem próximo jogo disponível.</div>';
 if(f) updateCountdown(f.date);
 
 const rows=D['standings.json']?.table||D['standings.json']?.standings||[];
-document.getElementById('standings').innerHTML=rows.slice(0,8).map(r=>{const team=typeof r.team==='object'?(r.team.shortName||r.team.name||'—'):(r.team||r.teamName||'—');const pos=r.position??r.rank??'—';const played=r.playedGames??r.played??'—';return `<div class="grid grid-cols-[28px_1fr_42px_42px] items-center py-2 border-b border-white/5 last:border-0 text-[12px]"><span class="muted">${pos}</span><span>${esc(team)}</span><span class="text-right">${played}</span><b class="text-right">${r.points??'—'}</b></div>`}).join('')||'<div class="py-6 text-center muted">Sem classificação.</div>';
-const form=D['team-stats.json']?.team?.form||[];document.getElementById('form').innerHTML=form.map(x=>`<div class="statbox text-center py-3 font-bold ${x==='W'?'text-emerald-400':x==='L'?'text-red-400':'text-amber-300'}">${x==='W'?'V':x==='L'?'D':'E'}</div>`).join('')||'<div class="col-span-6 text-center muted">—</div>';
+document.getElementById('standings').innerHTML=rows.slice(0,8).map(r=>{const team=typeof r.team==='object'?(r.team.shortName||r.team.name||'—'):(r.team||r.teamName||'—');const pos=r.position??r.rank??'—';const played=r.playedGames??r.played??'—';return \`<div class="grid grid-cols-[28px_1fr_42px_42px] items-center py-2 border-b border-white/5 last:border-0 text-[12px]"><span class="muted">\${pos}</span><span>\${esc(team)}</span><span class="text-right">\${played}</span><b class="text-right">\${r.points??'—'}</b></div>\`}).join('')||'<div class="py-6 text-center muted">Sem classificação.</div>';
+const form=D['team-stats.json']?.team?.form||[];document.getElementById('form').innerHTML=form.map(x=>\`<div class="statbox text-center py-3 font-bold \${x==='W'?'text-emerald-400':x==='L'?'text-red-400':'text-amber-300'}">\${x==='W'?'V':x==='L'?'D':'E'}</div>\`).join('')||'<div class="col-span-6 text-center muted">—</div>';
 const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNews').innerHTML=ns.map(newsCard).join('')||'<span class="muted text-sm">Sem notícias.</span>';
 }
 function renderGames(){
 const merged=allFixtures();const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
-document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="game-row"><div class="flex items-center justify-end gap-2 min-w-0 text-[12px] font-semibold text-right"><span class="truncate">${esc(x.home?.name)}</span>${teamVisual(x.home,true)}</div><div class="font-bold text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex items-center gap-2 min-w-0 text-[12px] font-semibold"><span class="truncate">${esc(x.away?.name)}</span>${teamVisual(x.away,true)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(venueInfo(x.venue).name||'Estádio por confirmar')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
+document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>{
+const v=venueInfo(x.venue);
+const home=esc(x.home?.name||'Casa'),away=esc(x.away?.name||'Fora');
+const score=x.goals?.home!=null?\`\${x.goals.home} - \${x.goals.away}\`:'VS';
+return \`<button onclick="openGame('\${esc(x.id)}')" class="card w-full p-4 text-left">
+<div class="flex items-center justify-between mb-2"><span class="source">\${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">\${fmtDate(x.date)}</span></div>
+<div class="games-match-layout">
+<div class="games-team">\${teamVisual(x.home,true)}<div class="games-team-name">\${home}</div></div>
+<div class="games-score">\${score}</div>
+<div class="games-team">\${teamVisual(x.away,true)}<div class="games-team-name">\${away}</div></div>
+</div>
+<div class="games-meta"><span class="venue">🏟 \${esc(v.name||'Estádio por confirmar')}</span><span class="status">\${esc(x.status?.long||'Agendado')}</span></div>
+</button>\`;
+}).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
 }
 function renderSquad(){
 const raw=D['squad.json']||{}; const ps=raw.players||raw.squad||[];document.getElementById('squadList').innerHTML=ps.map((p,i)=>`<button onclick="openPlayer(${i})" class="card w-full p-3 flex items-center gap-3 text-left"><div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden">${p.photo?`<img src="${esc(p.photo)}" class="w-full h-full object-cover" alt="">`:badge(p.name)}</div><div class="flex-1"><div class="font-semibold text-[13px]">${esc(p.name)}</div><div class="text-[10px] muted">${esc(p.position||'—')} · ${esc(p.nation||p.nationality||'—')}</div></div><div class="text-right"><b class="text-[13px]">${p.stats?.goals??p.goals??0}</b><div class="text-[9px] muted">golos</div></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem plantel.</div>';
