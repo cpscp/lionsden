@@ -319,6 +319,164 @@ def fetch_fbref_stats():
     })
 
 
+def sofa_get(path, params=None):
+    url = "https://www.sofascore.com/api/v1" + path
+    r = session.get(url, params=params or {}, timeout=25,
+                    headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
+    r.raise_for_status()
+    return r.json()
+
+
+def _sofa_season(tournament_id):
+    try:
+        payload = sofa_get(f"/unique-tournament/{tournament_id}/seasons")
+        seasons = payload.get("seasons", [])
+        for season in seasons:
+            if clean(season.get("name")) in {"2026/27", "2026/2027"}:
+                return season.get("id")
+        for season in seasons:
+            if season.get("isCurrent"):
+                return season.get("id")
+    except Exception as e:
+        print("Sofascore season warning:", tournament_id, e)
+    return None
+
+
+def fetch_sofascore_player_stats():
+    """Fetch Sporting player profiles and 2026/27 season stats from public Sofascore endpoints."""
+    team_id = 3001
+    roster = sofa_get(f"/team/{team_id}/players").get("players", [])
+    if not roster:
+        raise RuntimeError("Sofascore returned an empty Sporting roster.")
+
+    tournaments = [
+        (17, "Liga Portugal"),
+        (7, "UEFA Champions League"),
+        (21, "Taça da Liga"),
+        (329, "Taça de Portugal"),
+    ]
+    season_map = {tid: _sofa_season(tid) for tid, _ in tournaments}
+    players = []
+
+    for item in roster:
+        p = item.get("player") or {}
+        pid = p.get("id")
+        if not pid:
+            continue
+        row = {
+            "sofascore_id": pid,
+            "name": clean(p.get("name")),
+            "position": clean(p.get("position")),
+            "nationality": clean((p.get("country") or {}).get("name")),
+            "dateOfBirth": p.get("dateOfBirth"),
+            "height": p.get("height"),
+            "preferredFoot": clean(p.get("preferredFoot")),
+            "shirtNumber": p.get("shirtNumber") or p.get("jerseyNumber"),
+            "photo": f"https://img.sofascore.com/api/v1/player/{pid}/image",
+            "competitions": {},
+        }
+        for tid, tname in tournaments:
+            sid = season_map.get(tid)
+            if not sid:
+                continue
+            try:
+                payload = sofa_get(f"/player/{pid}/unique-tournament/{tid}/season/{sid}/statistics/overall")
+                stats = payload.get("statistics", payload)
+                if not isinstance(stats, dict) or not stats:
+                    continue
+                row["competitions"][tname] = {
+                    "tournament_id": tid,
+                    "season_id": sid,
+                    "appearances": stats.get("appearances"),
+                    "starts": stats.get("startingAppearances"),
+                    "minutes": stats.get("minutesPlayed"),
+                    "goals": stats.get("goals"),
+                    "assists": stats.get("assists"),
+                    "rating": stats.get("rating"),
+                    "yellow": stats.get("yellowCards"),
+                    "red": stats.get("redCards"),
+                    "shots": stats.get("shots"),
+                    "shots_on_target": stats.get("onTargetScoringAttempts"),
+                    "key_passes": stats.get("keyPasses"),
+                    "big_chances_created": stats.get("bigChancesCreated"),
+                    "big_chances_missed": stats.get("bigChancesMissed"),
+                    "accurate_passes": stats.get("accuratePasses"),
+                    "total_passes": stats.get("totalPasses"),
+                    "tackles": stats.get("totalTackles"),
+                    "interceptions": stats.get("interceptions"),
+                    "clearances": stats.get("clearances"),
+                    "saves": stats.get("saves"),
+                    "clean_sheets": stats.get("cleanSheet"),
+                }
+            except Exception as e:
+                print("Sofascore stats warning:", row["name"], tname, e)
+
+        comps = list(row["competitions"].values())
+        def isum(key):
+            vals = [fnum(x.get(key)) for x in comps if fnum(x.get(key)) is not None]
+            return int(sum(vals)) if vals else 0
+        row["stats"] = {
+            "matches": isum("appearances"),
+            "starts": isum("starts"),
+            "minutes": isum("minutes"),
+            "goals": isum("goals"),
+            "assists": isum("assists"),
+            "yellow": isum("yellow"),
+            "red": isum("red"),
+            "shots": isum("shots"),
+            "shots_on_target": isum("shots_on_target"),
+            "key_passes": isum("key_passes"),
+            "big_chances_created": isum("big_chances_created"),
+            "saves": isum("saves"),
+            "clean_sheets": isum("clean_sheets"),
+        }
+        ratings = [(fnum(x.get("rating")), fnum(x.get("minutes")) or 0) for x in comps]
+        ratings = [(r, m) for r, m in ratings if r is not None]
+        row["stats"]["rating"] = round(sum(r * max(m, 1) for r, m in ratings) / sum(max(m, 1) for _, m in ratings), 2) if ratings else None
+        players.append(row)
+
+    if not players:
+        raise RuntimeError("Sofascore returned no usable Sporting players.")
+
+    write_json("squad-stats.json", {
+        "season": "2026/27",
+        "team": "Sporting CP",
+        "team_id": team_id,
+        "players": players,
+        "source": "Sofascore public data",
+    })
+
+    current = safe_existing("squad.json") or {}
+    existing = current.get("squad") or current.get("players") or []
+    by_name = {normalize_player_name(x.get("name")).lower(): x for x in players}
+    merged = []
+    for old in existing:
+        item = dict(old)
+        hit = by_name.get(normalize_player_name(old.get("name")).lower())
+        if hit:
+            item.update({
+                "sofascore_id": hit.get("sofascore_id"),
+                "photo": hit.get("photo"),
+                "stats": hit.get("stats", {}),
+                "competitions": hit.get("competitions", {}),
+                "height": hit.get("height"),
+                "preferredFoot": hit.get("preferredFoot"),
+                "shirtNumber": hit.get("shirtNumber"),
+            })
+            item["nationality"] = hit.get("nationality") or item.get("nationality")
+            item["dateOfBirth"] = hit.get("dateOfBirth") or item.get("dateOfBirth")
+        merged.append(item)
+
+    write_json("squad.json", {
+        "team": current.get("team", "Sporting Clube de Portugal"),
+        "crest": current.get("crest"),
+        "coach": current.get("coach", "Rui Borges"),
+        "season": "2026/27",
+        "squad": merged,
+        "source": "Football-data + Sofascore statistics",
+    })
+    print(f"Sofascore: {len(players)} players enriched; {sum(bool(p.get('stats')) for p in players)} have season stats.")
+
 def fetch_standings():
     tables, html = read_fbref_tables(FBREF_LEAGUE)
     for df in tables:
@@ -622,6 +780,11 @@ def main():
             build_fixtures_from_fbref()
         except Exception as e:
             errors.append(f"fbref-core: {e}")
+
+        try:
+            fetch_sofascore_player_stats()
+        except Exception as e:
+            errors.append(f"sofascore-player-stats: {e}")
 
         # Football Soccer API is optional enrichment only.
         # It must never replace the FBref fixture list.
