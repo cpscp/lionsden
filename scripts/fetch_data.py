@@ -1608,6 +1608,42 @@ def fetch_youtube():
 
 def fetch_news():
     items = []
+
+    def article_metadata(item):
+        """Resolve the final article and extract OG/Twitter preview metadata."""
+        url = item.get("url")
+        if not url:
+            return
+        try:
+            rr = session.get(
+                url,
+                timeout=8,
+                allow_redirects=True,
+                headers={"User-Agent": USER_AGENT},
+            )
+            rr.raise_for_status()
+            final_url = rr.url
+            ss = BeautifulSoup(rr.text, "html.parser")
+
+            og = (
+                ss.find("meta", attrs={"property": "og:image"})
+                or ss.find("meta", attrs={"name": "twitter:image"})
+                or ss.find("meta", attrs={"property": "og:image:url"})
+            )
+            desc = (
+                ss.find("meta", attrs={"property": "og:description"})
+                or ss.find("meta", attrs={"name": "description"})
+            )
+
+            if og and og.get("content"):
+                item["image"] = og.get("content").strip()
+            if desc and desc.get("content"):
+                item["description"] = clean(desc.get("content"))[:280]
+            if final_url and "news.google.com" not in final_url:
+                item["article_url"] = final_url
+        except Exception as e:
+            print("News metadata warning:", item.get("url"), e)
+
     try:
         r = session.get(SPORTING_NEWS, timeout=25)
         r.raise_for_status()
@@ -1631,38 +1667,49 @@ def fetch_news():
 
     try:
         import feedparser
-        feed = feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150")
+        feed = feedparser.parse(
+            "https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150"
+        )
         existing = {x["url"] for x in items}
-        for entry in feed.entries[:24]:
+        for entry in feed.entries[:40]:
             url = entry.get("link")
             title = entry.get("title")
             if not url or not title or url in existing:
                 continue
+
             source = (entry.get("source") or {}).get("title") or "Google News"
-            items.append({
+            item = {
                 "title": title[:180],
                 "url": url,
                 "source": source,
                 "published": entry.get("published"),
-            })
+            }
+
+            # Some RSS responses expose a thumbnail directly.
+            media = entry.get("media_thumbnail") or entry.get("media_content") or []
+            if media and isinstance(media, list) and media[0].get("url"):
+                item["image"] = media[0]["url"]
+
+            items.append(item)
+            existing.add(url)
             if len(items) >= 30:
                 break
     except Exception as e:
         print("Google News warning:", e)
 
-    for item in items[:10]:
-        if item.get("source") != "Sporting.pt": continue
-        try:
-            rr = session.get(item["url"], timeout=10); rr.raise_for_status(); ss = BeautifulSoup(rr.text, "html.parser")
-            og = ss.find("meta", attrs={"property": "og:image"}) or ss.find("meta", attrs={"name": "twitter:image"})
-            desc = ss.find("meta", attrs={"property": "og:description"}) or ss.find("meta", attrs={"name": "description"})
-            if og and og.get("content"): item["image"] = og.get("content")
-            if desc and desc.get("content"): item["description"] = clean(desc.get("content"))[:280]
-        except Exception as e: print("News metadata warning:", item.get("url"), e)
+    # Resolve preview metadata for every item, not only Sporting.pt articles.
+    # This turns Google News redirects into the publisher page and lets the app
+    # display the article's own Open Graph image.
+    for item in items[:30]:
+        article_metadata(item)
+
+    # Keep only useful fields and preserve the Google News URL as the fallback.
+    for item in items:
+        if item.get("article_url"):
+            item["url"] = item["article_url"]
+            item.pop("article_url", None)
 
     write_json("news.json", {"items": items})
-
-
 
 def build_fixtures_from_fbref():
     """Build the main fixtures.json from the current FBref schedule."""
