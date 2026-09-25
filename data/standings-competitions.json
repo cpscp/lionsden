@@ -993,13 +993,327 @@
     "season": "2026/27",
     "table": [],
     "type": "knockout",
-    "note": "Esta competição não tem uma tabela classificativa única nesta fase."
+    "note": "Competição a eliminar; as eliminatórias serão mostradas assim que o calendário oficial da fase estiver disponível.",
+    "source": "FotMob",
+    "tournament_id": 186,
+    "rounds": []
   },
   "taca-liga": {
     "competition": "Taça da Liga",
     "season": "2026/27",
     "table": [],
     "type": "knockout",
-    "note": "Esta competição não tem uma tabela classificativa única nesta fase."
+    "source": "FotMob",
+    "tournament_id": 187,
+    "rounds": [
+      {
+        "stage": "1/4",
+        "label": "1/4",
+        "participantCount": 8,
+        "matchups": [
+          {
+            "drawOrder": 1,
+            "stage": "1/4",
+            "bestOf": 0,
+            "home": {
+              "id": 9773,
+              "name": "FC Porto",
+              "shortName": "POR",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
+            },
+            "away": {
+              "id": 1786,
+              "name": "Académico Viseu",
+              "shortName": "VIS",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985963,
+                "date": null,
+                "home": {
+                  "id": 9773,
+                  "name": "FC Porto",
+                  "shortName": "POR",
+                  "score": 0
+                },
+                "away": {
+                  "id": 1786,
+                  "name": "Académico Viseu",
+                  "shortName": "VIS",
+                  "score": 0
+                },
+                "page_url": "/matches/academico-viseu-vs-fc-porto/13s795#5985963"
+              }
+            ]
+          },
+          {
+            "drawOrder": 2,
+            "stage": "1/4",
+            "bestOf": 0,
+            "home": {
+              "id": 9772,
+              "name": "Benfica",
+              "shortName": "BEN",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
+            },
+            "away": {
+              "id": 9764,
+              "name": "Gil Vicente",
+              "shortName": "GV",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985965,
+                "date": null,
+                "home": {
+                  "id": 9772,
+                  "name": "Benfica",
+                  "shortName": "BEN",
+                  "score": 0
+                },
+                "away": {
+                  "id": 9764,
+                  "name": "Gil Vicente",
+                  "shortName": "GV",
+                  "score": 0
+                },
+                "page_url": "/matches/gil-vicente-vs-benfica/35mims#5985965"
+              }
+            ]
+          },
+          {
+            "drawOrder": 3,
+            "stage": "1/4",
+            "bestOf": 0,
+            "home": {
+              "id": 9768,
+              "name": "Sporting CP",
+              "shortName": "SCP",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+            },
+            "away": {
+              "id": 10212,
+              "name": "Marítimo",
+              "shortName": "MAR",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985964,
+                "date": null,
+                "home": {
+                  "id": 9768,
+                  "name": "Sporting CP",
+                  "shortName": "SCP",
+                  "score": 0
+                },
+                "away": {
+                  "id": 10212,
+                  "name": "Marítimo",
+                  "shortName": "MAR",
+                  "score": 0
+                },
+                "page_url": "/matches/sporting-cp-vs-maritimo/3aujqu#5985964"
+              }
+            ]
+          },
+          {
+            "drawOrder": 4,
+            "stage": "1/4",
+            "bestOf": 0,
+            "home": {
+              "id": 10264,
+              "name": "Braga",
+              "shortName": "BRA",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
+            },
+            "away": {
+              "id": 1634,
+              "name": "Famalicão",
+              "shortName": "FAM",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985966,
+                "date": null,
+                "home": {
+                  "id": 10264,
+                  "name": "Braga",
+                  "shortName": "BRA",
+                  "score": 0
+                },
+                "away": {
+                  "id": 1634,
+                  "name": "Famalicão",
+                  "shortName": "FAM",
+                  "score": 0
+                },
+                "page_url": "/matches/famalicao-vs-braga/1658z5#5985966"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "1/2",
+        "label": "1/2",
+        "participantCount": 4,
+        "matchups": [
+          {
+            "drawOrder": 1,
+            "stage": "1/2",
+            "bestOf": 0,
+            "home": {
+              "id": 2118532,
+              "name": "FC Porto/Academico Viseu",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118532.png"
+            },
+            "away": {
+              "id": 2118534,
+              "name": "Benfica/Gil Vicente",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118534.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985968,
+                "date": null,
+                "home": {
+                  "id": 2118532,
+                  "name": "FC Porto/Academico Viseu",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "away": {
+                  "id": 2118534,
+                  "name": "Benfica/Gil Vicente",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "page_url": "/matches/fc-portoacademico-viseu-vs-benficagil-vicente/36jopyypp#5985968"
+              }
+            ]
+          },
+          {
+            "drawOrder": 2,
+            "stage": "1/2",
+            "bestOf": 0,
+            "home": {
+              "id": 2118533,
+              "name": "Sporting CP/Maritimo",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118533.png"
+            },
+            "away": {
+              "id": 2118535,
+              "name": "Braga/Famalicao",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118535.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985969,
+                "date": null,
+                "home": {
+                  "id": 2118533,
+                  "name": "Sporting CP/Maritimo",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "away": {
+                  "id": 2118535,
+                  "name": "Braga/Famalicao",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "page_url": "/matches/sporting-cpmaritimo-vs-bragafamalicao/36jov0led#5985969"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "final",
+        "label": "final",
+        "participantCount": 2,
+        "matchups": [
+          {
+            "drawOrder": -1,
+            "stage": "final",
+            "bestOf": 0,
+            "home": {
+              "id": 1841372,
+              "name": "Winner SF1",
+              "shortName": "SF1",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1841372.png"
+            },
+            "away": {
+              "id": 1216849,
+              "name": "Winner SF 2",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1216849.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": [
+              {
+                "match_id": 5985970,
+                "date": null,
+                "home": {
+                  "id": 1841372,
+                  "name": "Winner SF1",
+                  "shortName": "SF1",
+                  "score": 0
+                },
+                "away": {
+                  "id": 1216849,
+                  "name": "Winner SF 2",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "page_url": "/matches/winner-sf-2-vs-winner-sf1/1noagq50n#5985970"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
