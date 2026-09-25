@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T22:48:12.249955+00:00",
+  "_updated_at": "2026-09-25T22:51:50.305007+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -20,6 +20,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 1,
       "dateOfBirth": null
     },
     {
@@ -37,6 +38,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 30,
       "dateOfBirth": null
     },
     {
@@ -54,6 +56,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 41,
       "dateOfBirth": null
     },
     {
@@ -71,6 +74,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -88,6 +92,7 @@
         "yellow": 0,
         "red": 1
       },
+      "shirtNumber": 6,
       "dateOfBirth": null
     },
     {
@@ -105,6 +110,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 13,
       "dateOfBirth": null
     },
     {
@@ -122,6 +128,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 20,
       "dateOfBirth": null
     },
     {
@@ -139,6 +146,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 22,
       "dateOfBirth": null
     },
     {
@@ -156,6 +164,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 25,
       "dateOfBirth": null
     },
     {
@@ -173,6 +182,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 50,
       "dateOfBirth": null
     },
     {
@@ -190,6 +200,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 55,
       "dateOfBirth": null
     },
     {
@@ -207,6 +218,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 72,
       "dateOfBirth": null
     },
     {
@@ -224,6 +236,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -241,6 +254,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 4,
       "dateOfBirth": null
     },
     {
@@ -258,6 +272,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 5,
       "dateOfBirth": null
     },
     {
@@ -275,6 +290,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 8,
       "dateOfBirth": null
     },
     {
@@ -292,6 +308,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 19,
       "dateOfBirth": null
     },
     {
@@ -309,6 +326,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 21,
       "dateOfBirth": null
     },
     {
@@ -326,6 +344,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 70,
       "dateOfBirth": null
     },
     {
@@ -343,6 +362,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 77,
       "dateOfBirth": null
     },
     {
@@ -360,6 +380,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -377,6 +398,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -394,6 +416,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 7,
       "dateOfBirth": null
     },
     {
@@ -411,6 +434,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 9,
       "dateOfBirth": null
     },
     {
@@ -428,6 +452,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 10,
       "dateOfBirth": null
     },
     {
@@ -445,6 +470,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 11,
       "dateOfBirth": null
     },
     {
@@ -462,6 +488,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 17,
       "dateOfBirth": null
     },
     {
@@ -479,6 +506,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 28,
       "dateOfBirth": null
     },
     {
@@ -496,6 +524,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 31,
       "dateOfBirth": null
     },
     {
@@ -513,6 +542,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 58,
       "dateOfBirth": null
     },
     {
@@ -530,6 +560,7 @@
         "yellow": 6,
         "red": 0
       },
+      "shirtNumber": 97,
       "dateOfBirth": null
     }
   ],
@@ -550,6 +581,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 1,
       "dateOfBirth": null
     },
     {
@@ -567,6 +599,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 30,
       "dateOfBirth": null
     },
     {
@@ -584,6 +617,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 41,
       "dateOfBirth": null
     },
     {
@@ -601,6 +635,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -618,6 +653,7 @@
         "yellow": 0,
         "red": 1
       },
+      "shirtNumber": 6,
       "dateOfBirth": null
     },
     {
@@ -635,6 +671,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 13,
       "dateOfBirth": null
     },
     {
@@ -652,6 +689,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 20,
       "dateOfBirth": null
     },
     {
@@ -669,6 +707,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 22,
       "dateOfBirth": null
     },
     {
@@ -686,6 +725,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 25,
       "dateOfBirth": null
     },
     {
@@ -703,6 +743,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 50,
       "dateOfBirth": null
     },
     {
@@ -720,6 +761,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 55,
       "dateOfBirth": null
     },
     {
@@ -737,6 +779,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 72,
       "dateOfBirth": null
     },
     {
@@ -754,6 +797,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -771,6 +815,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 4,
       "dateOfBirth": null
     },
     {
@@ -788,6 +833,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 5,
       "dateOfBirth": null
     },
     {
@@ -805,6 +851,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 8,
       "dateOfBirth": null
     },
     {
@@ -822,6 +869,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 19,
       "dateOfBirth": null
     },
     {
@@ -839,6 +887,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 21,
       "dateOfBirth": null
     },
     {
@@ -856,6 +905,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 70,
       "dateOfBirth": null
     },
     {
@@ -873,6 +923,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 77,
       "dateOfBirth": null
     },
     {
@@ -890,6 +941,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -907,6 +959,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": null,
       "dateOfBirth": null
     },
     {
@@ -924,6 +977,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 7,
       "dateOfBirth": null
     },
     {
@@ -941,6 +995,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 9,
       "dateOfBirth": null
     },
     {
@@ -958,6 +1013,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 10,
       "dateOfBirth": null
     },
     {
@@ -975,6 +1031,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 11,
       "dateOfBirth": null
     },
     {
@@ -992,6 +1049,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 17,
       "dateOfBirth": null
     },
     {
@@ -1009,6 +1067,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 28,
       "dateOfBirth": null
     },
     {
@@ -1026,6 +1085,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 31,
       "dateOfBirth": null
     },
     {
@@ -1043,6 +1103,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 58,
       "dateOfBirth": null
     },
     {
@@ -1060,6 +1121,7 @@
         "yellow": 6,
         "red": 0
       },
+      "shirtNumber": 97,
       "dateOfBirth": null
     }
   ]
