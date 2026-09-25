@@ -1470,6 +1470,48 @@ def fetch_youtube():
     except Exception as e:
         print("YouTube uploads playlist warning:", e)
 
+    # C) InnerTube search paginator. This is used when the uploads playlist
+    # is unavailable to Actions. The owner is checked so unrelated Sporting
+    # channels are not mixed into the feed.
+    if len(items) < 40:
+        try:
+            context = {
+                "client": {
+                    "clientName": "WEB",
+                    "clientVersion": "2.20260924.01.00",
+                    "hl": "pt-PT",
+                    "gl": "PT",
+                }
+            }
+            token = None
+            for page in range(10):
+                if token:
+                    body = {"context": context, "continuation": token}
+                else:
+                    body = {
+                        "context": context,
+                        "query": "Sporting Clube de Portugal",
+                        "params": "EgIQAQ==",
+                    }
+                r = session.post(
+                    "https://www.youtube.com/youtubei/v1/search?prettyPrint=false",
+                    json=body,
+                    timeout=30,
+                )
+                r.raise_for_status()
+                data = r.json()
+                before = len(items)
+                collect(data, True)
+                print(f"YouTube search page {page + 1}: +{len(items) - before} videos, total={len(items)}")
+                new_token = continuation_token(data)
+                if not new_token or new_token == token:
+                    break
+                token = new_token
+            if items:
+                print(f"YouTube search paginator succeeded: {len(items)} videos.")
+        except Exception as e:
+            print("YouTube search paginator warning:", e)
+
     contexts = [
         ("WEB", "2.20260924.01.00"),
         ("WEB_EMBEDDED_PLAYER", "1.20260924.01.00"),
