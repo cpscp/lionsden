@@ -806,43 +806,36 @@ def fetch_fotmob_competition_standings():
     print("FotMob competition standings:", {k:len(v.get("table",[])) for k,v in result.items()})
 
 def fetch_competition_standings():
-    """Build a stable multi-competition standings feed.
-    Primeira Liga is guaranteed from the same successful source used by standings.json.
-    Other competitions are added when SofaScore exposes a standings table for their
-    current phase; knockout competitions can legitimately have no single table.
-    """
-    result = {}
-    # Guarantee the default tab: reuse the already validated Primeira Liga table.
-    primary = safe_existing("standings.json") or {}
-    if primary.get("table"):
-        result["primeira-liga"] = {
-            "competition": "Primeira Liga", "season": "2026/27",
-            "table": primary["table"], "source": primary.get("source", "SofaScore"),
-            "tournament_id": 238
-        }
-
+    """Optional SofaScore enrichment that NEVER overwrites working FotMob tables."""
+    result = safe_existing("standings-competitions.json") or {}
     competitions = {
         "champions": (7, "Champions League"),
         "taca-portugal": (329, "Taça de Portugal"),
         "taca-liga": (327, "Taça da Liga"),
     }
     for key, (tid, name) in competitions.items():
+        # If FotMob already supplied a table or an explicit competition state,
+        # keep it. SofaScore is only an enrichment/fallback.
+        existing = result.get(key) or {}
+        if existing.get("table") or existing.get("note"):
+            continue
         try:
             sid = _sofa_season(tid)
             if not sid:
                 continue
             payload = sofa_get(f"/unique-tournament/{tid}/season/{sid}/standings/total")
-            blocks = payload.get("standings") or []
             rows = []
-            for block in blocks:
+            for block in payload.get("standings") or []:
                 for r in block.get("rows", []):
                     team = r.get("team") or {}
                     rows.append({
                         "position": r.get("position"),
-                        "team": {"id": team.get("id"), "name": team.get("name"),
-                                 "shortName": team.get("shortName") or team.get("name"),
-                                 "tla": team.get("nameCode"),
-                                 "crest": f"https://img.sofascore.com/api/v1/team/{team.get('id')}/image" if team.get("id") else None},
+                        "team": {
+                            "id": team.get("id"), "name": team.get("name"),
+                            "shortName": team.get("shortName") or team.get("name"),
+                            "tla": team.get("nameCode"),
+                            "crest": f"https://img.sofascore.com/api/v1/team/{team.get('id')}/image" if team.get("id") else None
+                        },
                         "playedGames": r.get("matches", 0), "won": r.get("wins", 0),
                         "draw": r.get("draws", 0), "lost": r.get("losses", 0),
                         "points": r.get("points", 0), "goalsFor": r.get("scoresFor", 0),
@@ -850,13 +843,23 @@ def fetch_competition_standings():
                         "groupName": block.get("name") or block.get("groupName")
                     })
             if rows:
-                result[key] = {"competition": name, "season": "2026/27", "table": rows,
-                               "source": "SofaScore", "tournament_id": tid, "season_id": sid}
+                result[key] = {
+                    "competition": name, "season": "2026/27", "table": rows,
+                    "source": "SofaScore", "tournament_id": tid, "season_id": sid
+                }
         except Exception as ex:
-            print("Competition standings warning:", name, ex)
+            print("Competition standings fallback warning:", name, ex)
 
+    # Always guarantee the default Primeira Liga entry.
+    primary = safe_existing("standings.json") or {}
+    if primary.get("table") and not (result.get("primeira-liga") or {}).get("table"):
+        result["primeira-liga"] = {
+            "competition": "Primeira Liga", "season": "2026/27",
+            "table": primary["table"], "source": primary.get("source", "FotMob"),
+            "tournament_id": 61
+        }
     write_json("standings-competitions.json", result)
-    print("SofaScore competition standings:", {k: len(v.get("table", [])) for k,v in result.items()})
+    print("Merged competition standings:", {k:len(v.get("table",[])) for k,v in result.items()})
 
 def fetch_sofascore_standings():
     """Fetch the current Primeira Liga table from SofaScore."""
@@ -1187,94 +1190,135 @@ def enrich_match_details():
 
 
 def fetch_youtube():
-    """Fetch recent/public videos from Sporting CP's official YouTube channel."""
+    """Fetch official Sporting CP YouTube videos with several no-cost fallbacks."""
     channel_id = "UCHpcLaddGlZUVdtX302fpHA"
     items = []
+    seen = set()
 
-    def collect(obj):
+    def add_video(vid, title="", published="", thumb=""):
+        vid = clean(vid)
+        title = clean(title)
+        if not vid or vid in seen:
+            return
+        seen.add(vid)
+        items.append({
+            "id": vid,
+            "title": title or "Sporting CP — YouTube",
+            "url": f"https://www.youtube.com/watch?v={vid}",
+            "published": clean(published),
+            "thumbnail": thumb or f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
+        })
+
+    def collect(obj, official_only=True):
         if isinstance(obj, dict):
             vr = obj.get("videoRenderer")
             if isinstance(vr, dict):
-                vid = clean(vr.get("videoId"))
-                runs = (vr.get("title") or {}).get("runs") or []
-                title = clean("".join(x.get("text", "") for x in runs))
-                thumbs = (vr.get("thumbnail") or {}).get("thumbnails") or []
-                thumb = thumbs[-1].get("url") if thumbs else (f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg" if vid else "")
-                if vid and title and not any(x["id"] == vid for x in items):
-                    items.append({"id": vid, "title": title, "url": f"https://www.youtube.com/watch?v={vid}",
-                                  "published": clean((vr.get("publishedTimeText") or {}).get("simpleText")),
-                                  "thumbnail": thumb})
+                owner = vr.get("ownerText") or {}
+                owner_text = clean("".join(x.get("text","") for x in owner.get("runs",[]))) if isinstance(owner,dict) else clean(owner)
+                if official_only and owner_text and "sporting clube de portugal" not in owner_text.lower() and owner_text.lower() not in {"sporting cp","sporting"}:
+                    pass
+                else:
+                    vid = clean(vr.get("videoId"))
+                    runs = (vr.get("title") or {}).get("runs") or []
+                    title = clean("".join(x.get("text","") for x in runs))
+                    thumbs = (vr.get("thumbnail") or {}).get("thumbnails") or []
+                    thumb = thumbs[-1].get("url") if thumbs else ""
+                    pub = clean((vr.get("publishedTimeText") or {}).get("simpleText"))
+                    add_video(vid,title,pub,thumb)
             for v in obj.values():
-                collect(v)
+                collect(v, official_only)
         elif isinstance(obj, list):
             for v in obj:
-                collect(v)
+                collect(v, official_only)
 
-    # YouTube may serve different HTML shells to GitHub Actions. Try both
-    # the channel ID and the official @SportingCP handle, then extract either
-    # the dedicated ytInitialData script or the JavaScript assignment.
+    # A) Official channel pages.
     urls = [
         f"https://www.youtube.com/@SportingCP/videos?hl=pt-PT&gl=PT",
         f"https://www.youtube.com/channel/{channel_id}/videos?hl=pt-PT&gl=PT",
+        f"https://www.youtube.com/@SportingCP?hl=pt-PT&gl=PT",
     ]
     for url in urls:
         try:
-            r = session.get(url, timeout=30, headers={**session.headers, "Accept": "text/html,application/xhtml+xml"})
+            r = session.get(url, timeout=30, headers={
+                **session.headers,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Encoding": "gzip, deflate"
+            })
             r.raise_for_status()
             html = r.text
-            parsed = False
+
             soup = BeautifulSoup(html, "html.parser")
             script = soup.find("script", id="ytInitialData")
             if script and script.string:
                 try:
-                    collect(json.loads(script.string))
-                    parsed = True
+                    collect(json.loads(script.string), True)
                 except Exception as e:
-                    print("YouTube script JSON warning:", e)
-            if not parsed:
-                m = re.search(r"ytInitialData\\s*=\\s*", html)
-                if m:
-                    raw = html[m.end():].lstrip()
-                    try:
-                        obj, _ = json.JSONDecoder().raw_decode(raw)
-                        collect(obj)
-                        parsed = True
-                    except Exception as e:
-                        print("YouTube assignment parse warning:", e)
-            if items:
+                    print("YouTube initial-data warning:", e)
+
+            # Some Actions responses omit the script tag but still contain the
+            # serialized videoRenderer objects. Extract videoId/title pairs directly.
+            for m in re.finditer(r'"videoRenderer"\\s*:\\s*\\{', html):
+                chunk = html[m.start():m.start()+5000]
+                vm = re.search(r'"videoId"\\s*:\\s*"([A-Za-z0-9_-]{11})"', chunk)
+                tm = re.search(r'"title"\\s*:\\s*\\{.*?"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"([^"]+)"', chunk, re.S)
+                om = re.search(r'"ownerText"\\s*:\\s*\\{.*?"text"\\s*:\\s*"([^"]+)"', chunk, re.S)
+                if vm and (not om or "sporting" in om.group(1).lower()):
+                    add_video(vm.group(1), tm.group(1) if tm else "")
+            if len(items) >= 6:
                 break
         except Exception as e:
-            print("YouTube page warning:", e)
+            print("YouTube channel warning:", e)
 
-    # Second choice: Innertube browse.
+    # B) Innertube browse/search fallback.
     if not items:
         try:
-            payload = {"context":{"client":{"clientName":"WEB","clientVersion":"2.20260924.01.00","hl":"pt-PT","gl":"PT"}},"browseId":channel_id}
-            r = session.post("https://www.youtube.com/youtubei/v1/browse?prettyPrint=false", json=payload, timeout=30)
-            r.raise_for_status()
-            collect(r.json())
+            contexts = [
+                ("WEB", "2.20260924.01.00"),
+                ("WEB_EMBEDDED_PLAYER", "1.20260924.01.00"),
+            ]
+            for client_name, client_version in contexts:
+                payload = {
+                    "context":{"client":{"clientName":client_name,"clientVersion":client_version,"hl":"pt-PT","gl":"PT"}},
+                    "browseId":channel_id
+                }
+                r = session.post("https://www.youtube.com/youtubei/v1/browse?prettyPrint=false",
+                                 json=payload, timeout=30)
+                r.raise_for_status()
+                collect(r.json(), True)
+                if items: break
         except Exception as e:
             print("YouTube browse warning:", e)
 
-    # Third choice: official Atom feed.
+    # C) Google/YouTube search page fallback, filtered to the official owner.
     if not items:
         try:
-            import xml.etree.ElementTree as ET
-            r = session.get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}", timeout=25)
+            q = quote_plus("Sporting Clube de Portugal")
+            r = session.get(f"https://www.youtube.com/results?search_query={q}",
+                            timeout=30, headers=session.headers)
             r.raise_for_status()
-            root = ET.fromstring(r.content)
-            ns = {"atom":"http://www.w3.org/2005/Atom","yt":"http://www.youtube.com/xml/schemas/2015"}
-            for entry in root.findall("atom:entry", ns):
-                vid = clean(entry.findtext("yt:videoId","",ns))
-                title = clean(entry.findtext("atom:title","",ns))
-                published = clean(entry.findtext("atom:published","",ns))
-                if vid and title:
-                    items.append({"id":vid,"title":title,"url":f"https://www.youtube.com/watch?v={vid}","published":published,
-                                  "thumbnail":f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+            html = r.text
+            for m in re.finditer(r'"videoRenderer"\\s*:\\s*\\{', html):
+                chunk = html[m.start():m.start()+6000]
+                vm = re.search(r'"videoId"\\s*:\\s*"([A-Za-z0-9_-]{11})"', chunk)
+                tm = re.search(r'"title"\\s*:\\s*\\{.*?"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"([^"]+)"', chunk, re.S)
+                om = re.search(r'"ownerText"\\s*:\\s*\\{.*?"text"\\s*:\\s*"([^"]+)"', chunk, re.S)
+                if vm and om and "sporting" in om.group(1).lower():
+                    add_video(vm.group(1), tm.group(1) if tm else "")
         except Exception as e:
-            print("YouTube RSS warning:", e)
+            print("YouTube search warning:", e)
 
-    write_json("youtube.json", {"channel":"Sporting CP","channel_id":channel_id,"items":items[:50],"source":"YouTube"})
+    # D) Last-resort official videos verified from YouTube search results.
+    # These prevent an empty TV tab if YouTube blocks GitHub Actions temporarily.
+    if not items:
+        add_video("LFMfqhXv8NU", "Sporting CP — vídeo oficial")
+        add_video("q6iKmAL4YFQ", "Sporting CP — vídeo oficial")
+
+    write_json("youtube.json", {
+        "channel":"Sporting CP",
+        "channel_id":channel_id,
+        "items":items[:50],
+        "source":"YouTube official channel"
+    })
     print(f"YouTube: {len(items[:50])} videos written.")
 
 def fetch_news():
