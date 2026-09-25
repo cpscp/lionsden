@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T17:16:18.915712+00:00",
+  "_updated_at": "2026-09-25T21:07:19.147584+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -335,9 +335,9 @@
       "nationality": "Italy",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1339345.png",
       "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 731,
+        "matches": 10,
+        "starts": 10,
+        "minutes": 741,
         "goals": 1,
         "assists": 1,
         "yellow": 0,

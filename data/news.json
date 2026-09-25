@@ -1,8 +1,15 @@
 {
-  "_updated_at": "2026-09-25T19:07:02.143710+00:00",
+  "_updated_at": "2026-09-25T21:07:02.662483+00:00",
   "items": [
     {
-      "title": "Basquetebol João Fernandes: \"Temos objectivos para alcançar\" 36 minutos",
+      "title": "Basquetebol Suraya Rijal reforça as Leoas do basquetebol 47 minutos",
+      "url": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-25/suraya-rijal-reforca-leoas-do-basquetebol",
+      "source": "Sporting.pt",
+      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/sm1_5437.jpg",
+      "description": "Suraya Rijal é a mais recente cara nova da equipa feminina de basquetebol do Sporting Clube de Portugal. A poste de 23 anos chega ao emblema de Alvalade para reforçar o jogo interior das Leoas e mostrou-se muito satisfeita com este novo passo na carreira. Em declarações aos meios"
+    },
+    {
+      "title": "Basquetebol João Fernandes: \"Temos objectivos para alcançar\" hoje",
       "url": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-25/joao-fernandes-temos-objectivos-para-alcancar",
       "source": "Sporting.pt",
       "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/20260919_jpm-292_0.jpg",
@@ -30,13 +37,6 @@
       "description": "A equipa principal de futebol do Sporting Clube de Portugal trabalhou, nesta sexta-feira de manhã, na Academia Cristiano Ronaldo. Para colmatar a ausência dos 17 internacionais e continuar a observar de perto os jovens jogadores, Rui Borges voltou a chamar atletas da formação à s"
     },
     {
-      "title": "Andebol Carlos Álvarez: \"Queremos sempre que os adeptos desfrutem de um bom jogo\" hoje",
-      "url": "https://www.sporting.pt/pt/noticias/modalidades/andebol/2026-09-25/carlos-alvarez-queremos-sempre-que-os-adeptos-desfrutem-de",
-      "source": "Sporting.pt",
-      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/ktowi2-w.jpeg",
-      "description": "A equipa principal de andebol do Sporting Clube de Portugal recebe, neste sábado, às 18h00, a AD Carvalhos em jogo da sexta jornada da fase regular do Campeonato Nacional. Na antevisão ao encontro, Carlos Álvarez deu conta da ambição Leonina, sublinhando que os Leões terão de con"
-    },
-    {
       "title": "Futebol Bilhetes para a recepção ao LASK disponíveis a partir de hoje 4 dias atrás",
       "url": "https://www.sporting.pt/pt/noticias/futebol/2026-09-21/bilhetes-para-a-recepcao-ao-lask-disponiveis-a-partir-de-hoje",
       "source": "Sporting.pt",
@@ -44,18 +44,18 @@
       "description": "O Sporting Clube de Portugal informa que já estão disponíveis os bilhetes para a recepção ao LASK, marcada para dia 21 de Outubro de 2026, às 20h00, no Estádio José Alvalade. O jogo, a contar para a terceira jornada da fase de liga da UEFA Champions League, é exclusivo a Sócios e"
     },
     {
-      "title": "Futebol Formação Sporting Challenge Play juntou futebol e outras modalidades num dia \"à Sporting\" 5 dias atrás",
-      "url": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras",
-      "source": "Sporting.pt",
-      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/isaa7647.jpg",
-      "description": "Futebol, atletismo, râguebi, voleibol, karaté, jogos tradicionais... houve um pouco de tudo na primeira edição do Sporting Challenge Play, realizada este domingo no Estádio Universitário de Lisboa e que desafiou cerca de 150 jovens Leões, dos sub-7 aos sub-13, a saírem da sua zon"
-    },
-    {
       "title": "Notícias Protocolo assinado com a Nani Football Academy Ontem",
       "url": "https://www.sporting.pt/pt/noticias/clube/noticias/2026-09-24/protocolo-assinado-com-a-nani-football-academy",
       "source": "Sporting.pt",
       "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/20260923_jpm-19_1.jpg",
       "description": "Os caminhos do Sporting Clube de Portugal e de Nani voltam a cruzar-se, desta feita em prol do futebol de formação. O emblema verde e branco assinou um protocolo de cooperação com a Nani Football Academy, em actividade em Fernão Ferro, no Seixal, para criar sinergias no que ao de"
+    },
+    {
+      "title": "Futebol Formação Sporting Challenge Play juntou futebol e outras modalidades num dia \"à Sporting\" 5 dias atrás",
+      "url": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras",
+      "source": "Sporting.pt",
+      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/isaa7647.jpg",
+      "description": "Futebol, atletismo, râguebi, voleibol, karaté, jogos tradicionais... houve um pouco de tudo na primeira edição do Sporting Challenge Play, realizada este domingo no Estádio Universitário de Lisboa e que desafiou cerca de 150 jovens Leões, dos sub-7 aos sub-13, a saírem da sua zon"
     },
     {
       "title": "Voleibol Avril García chega para o voleibol 2 dias atrás",
@@ -88,27 +88,21 @@
       "published": "Fri, 25 Sep 2026 18:45:00 GMT"
     },
     {
-      "title": "Rui Borges leva avançado brasileiro à equipa A do Sporting - A Bola",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNOXF0T1V3OGdNVHd6Q2xaRmVOX2NKbTlmSzdXSGtjdHdEZzd6VmZnb0lhdmlvWEZYQW81MFRWSUlIR2VTQ3FNc3lySW9GYzlENmRwbWRuSnlYOXcwWGRlN3hGTmhWQlJvT0w5dFZNVC1yUF9odzhCcUt6ZFZIVXFrVHpTVmNnTlBwTEJaNFBreUxJQVJxcXBnQzd5SkE0VnVaX2NnUVI2UTJnY1E1?oc=5",
+      "title": "Sporting já avançou com intervenção no relvado de Alvalade - A Bola",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdTRmMG9WVFoxNVZ3Z0xOcGZhWnNvMmUtcy16U3V3cFFKTllxekpHV0ZINVdzTE1sSjZPWTB2eFlSMndDOGhvRFdaOWNGTUNrOTZHbkhmSXJLVUlrN1JFOUxyYS1CeHBGbHZMV1g3XzYzVXFCa2ZyQm9CVUxXX3lRQUFXX2h2bjEtTFlLeU54WWVEaTFqNS1oLTVpcFk4cGFZY2gzNHdBT3gxRG91?oc=5",
       "source": "A Bola",
-      "published": "Fri, 25 Sep 2026 15:00:00 GMT"
+      "published": "Fri, 25 Sep 2026 16:58:00 GMT"
     },
     {
-      "title": "Sporting com uma cara nova no treino: eis o reforço chamado antes da tripla folga concedida por Rui Borges - SAPO",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQd1NKOEg5TE5PMF9Ua3hwS1lyb0NxS3VwOFhkdEUtNDItSUdlTjRoNEo4cXpvbHlmWGlVN0I3bUsyMzM2SHNJaXE0TVFVRUZRRUdOWFA3MjlERU54ZEZpalNuS1d6amNtMWZ3eU9VbG45SzRvUHpOQlhYOEdBSTc2bmlabDdBUlhWVlE3Mno3Y3JET3BpZnE1cVB2TVA4ZnRXbVpoQkZCVWNnclFzemVRTTUxWkF0ck1raGNRWWR3aVlXaEJWMUg2SWhBNE5yT2FqTzVhekFybU5EUXdjZDQ4UGk1RFRnY3Vl?oc=5",
-      "source": "SAPO",
-      "published": "Fri, 25 Sep 2026 16:26:05 GMT"
+      "title": "André Bernardo e o rebranding do Sporting: «Não aconselho alguém a fazê-lo a não ser por uma razão forte» - Record",
+      "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOVEU5ZWVmb1FkSHcyQ0pKcGhuN0p6UDV3VHBQQWtKemlJYmZXZzlmSEljLS10VmdaeVREejN4bTVvbC1HVjJ2UEFwaEp4MVZ4UTg5OGEwZkFEdEQycnc3MGViTEpaM2o1QmpmQ0tvUWJrcVVpa3cxUUhmZnR2Mzc4dmFzelNBUjhXYV9rSHVNeHhpWElUbGhkUERDUnIxdWxwd2ZaOFE4YTk0YlFJam8zdlh6cHZQY3V3Mm5kVkN5b0V3RmwyY1pvLTlOOWdlR3JQdFRtb2xzUXVXWEp1eTFLdmNGSUJuVzE2RkhpNTIxSW5IbUtzeTlMMdIB8wFBVV95cUxQWDRONEVkVHNnTlJlU1BUV0tWSmtZVDBRcFpLVml3M2tINi1RcWlRN24wUl9HRnctR2VZRkVDZmsxc0F2dWYyaFlyam1JaU5uXzNTLTNVcklpdGJnZUR2VllfWnRpV3hsNmcxV3I4d0l3Nl9ZSmM5c3E1RGZtanl6eXFpcmRGZTFtRERrQkxHc0gwOVdTQjVha2lOdS1STUVycVJjbjY5SmN2TGVvbE9tNVdzN0QxSEMxNU9PZkpoNDZKUUlXV1RKRjhmZmhYMnhNUnd3YTdDQVMtaU9aaEhFa0FROC1QOGJJZTA4T0RiX05BY2s?oc=5",
+      "source": "Record",
+      "published": "Fri, 25 Sep 2026 17:17:52 GMT"
     },
     {
-      "title": "Varandas recorda Liga dos Campeões para defender Rui Borges - Observador",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOT3FoMEIweVBuMTYzeXlNbU1tUXlucFE3RDVxbE1OVUJ6aU43Q3JzVDk2ZWtBcXlwRGJnMTVoaXZCQ2IyVzRwTkxDWDhmQVNSa01lTHR0SlhPRUZkbDlISC03SUcycENIOHZMVi1hc20tSnVnZnoydW5La3dVeTUtN21ZejJ0dGtDMnlRaWJLQ3pkbUg0aXZrdjhkblc3LXk2RC1IVjgyU1N3el9iY0h2QVY3RWpsYUZlRWF4ZElJZ1ZCWkhLTXhpUk5vXy16RmNXZUV0SDJkaGllazg5RGlIUFJ6UQ?oc=5",
-      "source": "Observador",
-      "published": "Wed, 23 Sep 2026 17:53:12 GMT"
-    },
-    {
-      "title": "FC Porto – Sporting CP: XLI Supertaça Mário Saldanha em antevisão - fpb.pt",
+      "title": "FC Porto – Sporting CP: XLI Supertaça Mário Saldanha em antevisão - Federação Portuguesa de Basquetebol",
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPekxjR2x5ZWU4V19vZ0czQ21MdWJWWkZMT2JGSEdPRnJvdDNPS0x0WS14ZWpnZnc0V0lIQ2xqaGtSNUJVV1FSLS05UzZMX3dMazNRb1dlTmNGaDlVcDFQOG5STWZmWlRTNGtRQWt4Q2kxVFZNTWtqR1lOanBuTnlwLW5fZXI2RTEzRE9KVUdmWTFGQ2tY?oc=5",
-      "source": "fpb.pt",
+      "source": "Federação Portuguesa de Basquetebol",
       "published": "Thu, 24 Sep 2026 15:11:50 GMT"
     },
     {
@@ -130,10 +124,16 @@
       "published": "Wed, 23 Sep 2026 21:28:42 GMT"
     },
     {
-      "title": "Duelo histórico à 3.ª jornada - FPF",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBkYXBwSlpFbi1GN2xIV1pKRUVMby1tT0hBa00tcU9aUXRaS0ZEMERNSzVZTElneEpOQlV5R2FYaHVrT1g2eUVUUFlIQ3FGR2VUQ0UzQ2x4aVJ6bkdET1gtYk1UdU9ONkUxcDA1bmxSTHRIUUo4M3dZclpsY0R1dw?oc=5",
+      "title": "Varandas recorda Liga dos Campeões para defender Rui Borges - Observador",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOT3FoMEIweVBuMTYzeXlNbU1tUXlucFE3RDVxbE1OVUJ6aU43Q3JzVDk2ZWtBcXlwRGJnMTVoaXZCQ2IyVzRwTkxDWDhmQVNSa01lTHR0SlhPRUZkbDlISC03SUcycENIOHZMVi1hc20tSnVnZnoydW5La3dVeTUtN21ZejJ0dGtDMnlRaWJLQ3pkbUg0aXZrdjhkblc3LXk2RC1IVjgyU1N3el9iY0h2QVY3RWpsYUZlRWF4ZElJZ1ZCWkhLTXhpUk5vXy16RmNXZUV0SDJkaGllazg5RGlIUFJ6UQ?oc=5",
+      "source": "Observador",
+      "published": "Wed, 23 Sep 2026 17:53:12 GMT"
+    },
+    {
+      "title": "Dérbi em Alvalade - FPF",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE42aUdLZGNKRW9PZTZOTnFuV25SQ092YmVyTVBPMU9IanNOUWd3YW4yUmJ0VlpHeU9VdFp4bTI0YVJYM0d4V0NFdkFnT3BtY0FKd1VFOXNQcGNteVVSUWRLSXBUaWM0Z0VCdDRqR0dxTmxKWGdEZkVuelg5eFVPZw?oc=5",
       "source": "FPF",
-      "published": "Fri, 25 Sep 2026 08:49:29 GMT"
+      "published": "Fri, 25 Sep 2026 14:55:04 GMT"
     },
     {
       "title": "Rui Patrício: \"Críticas? Só tenho de estar agradecido ao Sporting\" - Sport TV",
@@ -142,16 +142,16 @@
       "published": "Fri, 25 Sep 2026 04:19:00 GMT"
     },
     {
+      "title": "Duelo histórico à 3.ª jornada - FPF",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBkYXBwSlpFbi1GN2xIV1pKRUVMby1tT0hBa00tcU9aUXRaS0ZEMERNSzVZTElneEpOQlV5R2FYaHVrT1g2eUVUUFlIQ3FGR2VUQ0UzQ2x4aVJ6bkdET1gtYk1UdU9ONkUxcDA1bmxSTHRIUUo4M3dZclpsY0R1dw?oc=5",
+      "source": "FPF",
+      "published": "Fri, 25 Sep 2026 20:14:58 GMT"
+    },
+    {
       "title": "Bilhetes | SC Braga vs Sporting CP - SC Braga",
       "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1ZdS1sODNoOUdFekkzR1pUZlpaV1pMdUhQT1I2NmNIN1VkYUFLMEZ4UlNyTnE0TTRTWlpnOGViNTVaejk2ejNqMTNRZ2Fla2ZyWW9HalZIalJEcGRkVUlkRU1tamgtWjRTdVZQVUNmRQ?oc=5",
       "source": "SC Braga",
       "published": "Tue, 22 Sep 2026 20:20:21 GMT"
-    },
-    {
-      "title": "Varandas: «Não trocava os quartos da Champions pela Taça de Portugal» - zerozero.pt",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQTG9FaTVObmUtc1RXYnBpTHZySUkxMzlWZ200QThSVWFvSXJaQXFkQlFfOVZpUDV2SlVRS2FTVzhFVkE1WHpUcFRMRHJEeTJZYXA4eEdGZHNQV1BXVHdxRURPSGkwd1NXUi1rNTM0SlZES2JnOWZESU5jMllnUUIxQlNQNVJyZ3Q2QlFHbFhHM1M0SFBSYWdPWmpoRExReUF1OWxBUVlvOFhQWjBr?oc=5",
-      "source": "zerozero.pt",
-      "published": "Thu, 24 Sep 2026 09:43:01 GMT"
     },
     {
       "title": "Basquetebol grátis na DAZN! Vê o FC Porto, Sporting, Benfica e GDESSA na Supertaça. Datas e horas - DAZN",
@@ -178,16 +178,16 @@
       "published": "Fri, 25 Sep 2026 04:26:31 GMT"
     },
     {
-      "title": "Sporting já avançou com intervenção no relvado de Alvalade - SAPO",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNa1NEOF9GMjhkUHNRVjJVRVZtMnZORXFOdUJ3RG15eDRrczk2NjBMRlRWSV9TOUVaY0NCSFJRYmM1ajFoQVRDSmVtUlNjczMxTkRHTXhKX1d0NENTS3ZNMS1UTUFkVHVvakRuS2hoengwai1uZFM5NnVUbDduWUtTV0JOeG52ai1hS2J1ZVZ0blRoWi1uQy03TWJxVDJVdmFQT1dyaHU4NnJMdw?oc=5",
-      "source": "SAPO",
-      "published": "Fri, 25 Sep 2026 16:58:34 GMT"
+      "title": "O onze do Sporting CP para o jogo contra o Arouca - DAZN",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOdE9mWGdWYUZFVzFMMTZMMGtwQU9IMlR3a2lLaEZQd1pvOE1SYjQ5QURxNldWVXYxMldEOG5uMzgzSGt1SnRKbTFKVUlSRk04UXo3aTk0cWJwSjRlV2lxWjNLREZrM1U0MzktZTJOMmV3NFVLRlJOV2xHc0RjY3RWOGNxV0k5VmFSOUgyZkl0eGI1SFNaZ0tLeVFwQU1CZUhD?oc=5",
+      "source": "DAZN",
+      "published": "Sat, 19 Sep 2026 18:26:03 GMT"
     },
     {
-      "title": "Ficha de jogo indisponível - FC Porto",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOX2dLY1ItN2tnM21JdGVXSzVFWk0xOW9PQWVxc1RYT0pNQTlkWEcxM05LRUZWZ1FKUmdrN0lTd3JjczIyZlpsRl85S3gtNXBCYTVUdDJockV3elJmZVVfOGJyVEh1NVpLWGtidG9sUjFCTDBUOUN2ZGV1TjF5SVlkNGVnVXlrMG10Qjc1U1lBNGNrZ0c3bEQtQkNIbGx2Sk1nc0E?oc=5",
-      "source": "FC Porto",
-      "published": "Fri, 25 Sep 2026 03:50:41 GMT"
+      "title": "Sporting CP e Marítimo abordaram o futuro da segurança no TF Sessions - Liga Portugal",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNZk9fNmI1eDNnZlZmbi1nUVNsRWVDMGZBU3RGNUlmSEY3dG9iWEJ3dFc4dzM2Y25CZmNFRnhETUpwd2NwcmU0d19CWjZxeU54cVppSUx2VWZGVjBTSEwyWmpheDFJaWF0LThGTE10aU5JY3FrQ0FRaVhDODVPczFsV19zWmQzTXVOdno4bWV5eU9zYzJpWVVLRGRMYmdfQU5tUnNMYUtVajNXSldFQ0xxWkR3?oc=5",
+      "source": "Liga Portugal",
+      "published": "Tue, 22 Sep 2026 16:48:07 GMT"
     }
   ]
 }
