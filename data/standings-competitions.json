@@ -1035,7 +1035,7 @@
             "matches": [
               {
                 "match_id": 5985963,
-                "date": 1793219400,
+                "date": null,
                 "home": {
                   "id": 9773,
                   "name": "FC Porto",
@@ -1050,8 +1050,7 @@
                 },
                 "page_url": "/matches/academico-viseu-vs-fc-porto/13s795#5985963"
               }
-            ],
-            "date": 1793219400
+            ]
           },
           {
             "drawOrder": 2,
@@ -1077,7 +1076,7 @@
             "matches": [
               {
                 "match_id": 5985965,
-                "date": 1793306700,
+                "date": null,
                 "home": {
                   "id": 9772,
                   "name": "Benfica",
@@ -1092,8 +1091,7 @@
                 },
                 "page_url": "/matches/gil-vicente-vs-benfica/35mims#5985965"
               }
-            ],
-            "date": 1793306700
+            ]
           },
           {
             "drawOrder": 3,
@@ -1119,7 +1117,7 @@
             "matches": [
               {
                 "match_id": 5985964,
-                "date": 1793132100,
+                "date": null,
                 "home": {
                   "id": 9768,
                   "name": "Sporting CP",
@@ -1134,8 +1132,7 @@
                 },
                 "page_url": "/matches/sporting-cp-vs-maritimo/3aujqu#5985964"
               }
-            ],
-            "date": 1793132100
+            ]
           },
           {
             "drawOrder": 4,
@@ -1161,7 +1158,7 @@
             "matches": [
               {
                 "match_id": 5985966,
-                "date": 1793299500,
+                "date": null,
                 "home": {
                   "id": 10264,
                   "name": "Braga",
@@ -1176,8 +1173,7 @@
                 },
                 "page_url": "/matches/famalicao-vs-braga/1658z5#5985966"
               }
-            ],
-            "date": 1793299500
+            ]
           }
         ]
       },
@@ -1210,6 +1206,7 @@
             "matches": [
               {
                 "match_id": 5985968,
+                "date": null,
                 "home": {
                   "id": 2118532,
                   "name": "FC Porto/Academico Viseu",
@@ -1250,6 +1247,7 @@
             "matches": [
               {
                 "match_id": 5985969,
+                "date": null,
                 "home": {
                   "id": 2118533,
                   "name": "Sporting CP/Maritimo",
@@ -1297,6 +1295,7 @@
             "matches": [
               {
                 "match_id": 5985970,
+                "date": null,
                 "home": {
                   "id": 1841372,
                   "name": "Winner SF1",
