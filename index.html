@@ -56,6 +56,20 @@
 
 .link-card{display:flex;align-items:center;justify-content:space-between;gap:14px}.link-card:hover{background:var(--surface2)}
 @media(min-width:760px){.drawer{width:330px}.wrap{max-width:700px}}
+.knockout-bracket{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:stretch;overflow:hidden}
+.knockout-round{display:flex;flex-direction:column;min-width:0}
+.knockout-round-title{text-align:center;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:2px 0 8px}
+.knockout-match{background:rgba(0,0,0,.14);border:1px solid var(--line);border-radius:14px;padding:9px;min-width:0}
+.knockout-quarter .knockout-match{margin-bottom:10px}
+.knockout-semi{justify-content:space-around}
+.knockout-final{justify-content:center}
+.knockout-team{display:flex;align-items:center;gap:7px;min-width:0;font-size:10px;font-weight:600;line-height:1.15}
+.knockout-team + .knockout-team{margin-top:7px}
+.knockout-team img{width:28px;height:28px;object-fit:contain;flex:0 0 28px}
+.knockout-team .knockout-badge{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:8px;color:var(--muted);flex:0 0 28px}
+.knockout-team span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.knockout-score{text-align:center;font-size:9px;color:var(--muted);margin-top:7px}
+@media(max-width:520px){.knockout-bracket{gap:6px}.knockout-match{padding:7px}.knockout-team{font-size:9px}.knockout-team img,.knockout-team .knockout-badge{width:24px;height:24px;flex-basis:24px}.knockout-team + .knockout-team{margin-top:5px}.knockout-score{font-size:8px}}
 </style>
 </head>
 <body>
@@ -178,8 +192,8 @@ const API_SPORTS_IDS={
 };
 function teamLogoUrl(team){
   const name=String(team?.name||team||'').trim();
+  if(team && typeof team==='object' && team.crest) return team.crest;
   const id=team?.id||team?.team_id;
-  // fixtures.json comes from FotMob, so its team IDs are the safest source for logos.
   if(id) return `https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png`;
   return '';
 }
@@ -289,39 +303,35 @@ function renderClassification(){
  const rounds=comp.rounds||[];
 
  const knockoutHtml=()=>{
-   if(!rounds.length)return '';
-   return '<div class="space-y-3">'+rounds.map((r,ri)=>{
-     const matches=r.matchups||[];
-     return '<div class="card p-3">'+
-       '<div class="flex items-center justify-between mb-3"><b class="text-[12px]">'+esc(r.label||('Eliminatória '+(ri+1)))+'</b>'+
-       '<span class="text-[9px] muted">'+esc(r.participantCount?String(r.participantCount)+' equipas':'')+'</span></div>'+
-       '<div class="space-y-2">'+matches.map(m=>{
-         const h=m.home||{}, a=m.away||{};
-         const legs=m.matches||[];
-         const agg=(m.homeScore!=null||m.awayScore!=null)?(m.homeScore??'—')+' - '+(m.awayScore??'—'):'';
-         const legHtml=legs.map((l,i)=>{
-           const lh=l.home||{},la=l.away||{};
-           const ls=(lh.score!=null||la.score!=null)?(lh.score??'—')+' - '+(la.score??'—'):'VS';
-           return '<div class="text-[9px] muted text-center mt-1">'+
-             (legs.length>1?('Jogo '+(i+1)+' · '):'')+esc(ls)+'</div>';
-         }).join('');
-         return '<div class="rounded-xl border border-white/5 bg-black/10 p-3">'+
-           '<div class="grid grid-cols-[1fr_34px_1fr] items-center gap-2">'+
-             '<div class="flex flex-col items-center text-center gap-1">'+
-               (h.id?teamVisual({id:h.id,name:h.name},true):'')+
-               '<span class="text-[11px] font-semibold leading-tight">'+esc(h.shortName||h.name||'A definir')+'</span>'+
-             '</div>'+
-             '<div class="text-center text-[11px] font-bold">'+(agg||'VS')+'</div>'+
-             '<div class="flex flex-col items-center text-center gap-1">'+
-               (a.id?teamVisual({id:a.id,name:a.name},true):'')+
-               '<span class="text-[11px] font-semibold leading-tight">'+esc(a.shortName||a.name||'A definir')+'</span>'+
-             '</div>'+
-           '</div>'+
-           (agg&&legs.length>1?'<div class="text-center text-[9px] muted mt-1">Agregado: '+esc(agg)+'</div>':'')+
-           legHtml+
-         '</div>';
-       }).join('')+'</div></div>';
-   }).join('')+'</div>';
+   const ordered=[...rounds].sort((a,b)=>{
+     const rank=r=>r.stage==='1/4'?0:r.stage==='1/2'?1:2;
+     return rank(a)-rank(b);
+   });
+   const round=(stage,label)=>ordered.find(r=>r.stage===stage)||{label,matchups:[]};
+   const matchCard=(m)=>{
+     const side=(t)=>{
+       const name=String(t?.name||'A definir');
+       const provisional=/^(winner|fc porto\/academico|benfica\/gil vicente|sporting cp\/maritimo|braga\/famalicao)/i.test(name);
+       const logo=(!provisional&&t?.id)?teamVisual({id:t.id,name:t.name,crest:t.crest},true):'';
+       return '<div class="knockout-team">'+
+         (logo||'<span class="knockout-badge">'+esc((t?.shortName||name).slice(0,3))+'</span>')+
+         '<span title="'+esc(name)+'">'+esc(name)+'</span></div>';
+     };
+     const hs=m.homeScore, as=m.awayScore;
+     const score=(hs!=null||as!=null)?String(hs??'—')+' - '+String(as??'—'):'VS';
+     return '<div class="knockout-match">'+side(m.home)+side(m.away)+'<div class="knockout-score">'+esc(score)+'</div></div>';
+   };
+   const col=(stage,title,cls)=>{
+     const r=round(stage,title);
+     return '<div class="knockout-round '+cls+'"><div class="knockout-round-title">'+esc(r.label||title)+'</div>'+
+       (r.matchups||[]).map(matchCard).join('')+
+       '</div>';
+   };
+   return '<div class="knockout-bracket">'+
+     col('1/4','Quartos-de-final','knockout-quarter')+
+     col('1/2','Meias-finais','knockout-semi')+
+     col('final','Final','knockout-final')+
+     '</div>';
  };
 
  if(!rows.length && !rounds.length){
@@ -369,7 +379,11 @@ function renderTV(){
    el.innerHTML='<div class="card p-6 text-center muted">A carregar vídeos oficiais do Sporting CP…</div>';
    return;
  }
- const cards=items.map(v=>`<button onclick="openVideo('${esc(v.id)}','${esc(v.title).replace(/'/g,'&#39;')}')" class="card overflow-hidden w-full text-left">
+ const cards=[...items].sort((a,b)=>{
+   const ta=new Date(a.published||a.publishedAt||a.date||0).getTime();
+   const tb=new Date(b.published||b.publishedAt||b.date||0).getTime();
+   return (Number.isFinite(tb)?tb:0)-(Number.isFinite(ta)?ta:0);
+ }).map(v=>`<button onclick="openVideo('${esc(v.id)}','${esc(v.title).replace(/'/g,'&#39;')}')" class="card overflow-hidden w-full text-left">
    <div class="relative aspect-video bg-black">
      <img src="${esc(v.thumbnail||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'))}" class="w-full h-full object-cover" alt="">
      <div class="absolute inset-0 flex items-center justify-center"><span class="w-12 h-12 rounded-full bg-black/70 border border-white/20 flex items-center justify-center text-white text-lg">▶</span></div>
