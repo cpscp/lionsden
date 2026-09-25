@@ -477,7 +477,7 @@ def fetch_fotmob_core():
         if isinstance(obj, dict):
             pid = obj.get("id") or obj.get("playerId")
             name = obj.get("name")
-            if pid and name and not isinstance(name, dict): groups.append(obj)
+            if pid and name and not isinstance(name, dict) and not obj.get("isCoach") and name != "Rui Borges": groups.append(obj)
             for value in obj.values(): collect_squad_nodes(value)
         elif isinstance(obj, list):
             for value in obj: collect_squad_nodes(value)
@@ -506,25 +506,33 @@ def fetch_fotmob_core():
             if not season and seasons:
                 season = seasons[0]
             stats = {}
-            if season:
-                tournaments = season.get("tournamentStats") or []
-                for t in tournaments:
-                    if not t.get("isFriendly") and (t.get("leagueName") in {"Liga Portugal", "UEFA Champions League", "Taça de Portugal", "Taça da Liga"}):
-                        for k in ("appearances","goals","assists"):
-                            if t.get(k) is not None:
-                                stats[k] = stats.get(k, 0) + int(fnum(t.get(k)) or 0)
-                        rating = (t.get("rating") or {}).get("num") if isinstance(t.get("rating"), dict) else None
-                        if rating is not None:
-                            stats.setdefault("ratings", []).append(float(rating))
             recent = pd.get("recentMatches") or []
-            stats["matches"] = stats.get("appearances", 0)
-            stats["starts"] = sum(1 for rm in recent if rm.get("started"))
-            stats["minutes"] = int(sum(fnum(rm.get("minutesPlayed")) or 0 for rm in recent))
-            stats["yellow"] = int(sum(fnum(rm.get("yellowCards")) or 0 for rm in recent))
-            stats["red"] = int(sum(fnum(rm.get("redCards")) or 0 for rm in recent))
-            if stats.get("ratings"):
-                stats["rating"] = round(sum(stats["ratings"]) / len(stats["ratings"]), 2)
-            stats.pop("ratings", None)
+            current_matches = []
+            for rm in recent:
+                md = ((rm.get("matchDate") or {}).get("utcTime") if isinstance(rm.get("matchDate"), dict) else None)
+                try:
+                    rts = datetime.fromisoformat(str(md).replace("Z", "+00:00")).timestamp() if md else 0
+                except Exception:
+                    rts = 0
+                if rts >= datetime(2026, 7, 1, tzinfo=timezone.utc).timestamp():
+                    current_matches.append(rm)
+            played = [rm for rm in current_matches if (fnum(rm.get("minutesPlayed")) or 0) > 0]
+            stats["matches"] = len(played)
+            stats["starts"] = sum(1 for rm in played if not rm.get("onBench"))
+            stats["minutes"] = int(sum(fnum(rm.get("minutesPlayed")) or 0 for rm in played))
+            stats["goals"] = int(sum(fnum(rm.get("goals")) or 0 for rm in played))
+            stats["assists"] = int(sum(fnum(rm.get("assists")) or 0 for rm in played))
+            stats["yellow"] = int(sum(fnum(rm.get("yellowCards")) or 0 for rm in played))
+            stats["red"] = int(sum(fnum(rm.get("redCards")) or 0 for rm in played))
+            ratings = []
+            for rm in played:
+                rp = rm.get("ratingProps") or {}
+                fb = (rp.get("num") or {}).get("fallback") if isinstance(rp.get("num"), dict) else None
+                value = (fb or {}).get("number") if isinstance(fb, dict) else None
+                if value is not None:
+                    ratings.append(float(value))
+            if ratings:
+                stats["rating"] = round(sum(ratings) / len(ratings), 2)
             player["stats"] = stats
             dob = _first_dict(pd, "birthDate")
             player["dateOfBirth"] = dob.get("iso") or dob.get("date") if dob else None
@@ -533,6 +541,14 @@ def fetch_fotmob_core():
         players.append(player)
 
     if players:
+        old_squad = safe_existing("squad.json") or {}
+        old_players = old_squad.get("squad") or old_squad.get("players") or []
+        old_by_name = {normalize_player_name(p.get("name")).lower(): p for p in old_players if p.get("name")}
+        for p in players:
+            old = old_by_name.get(normalize_player_name(p.get("name")).lower(), {})
+            p["position"] = p.get("position") or old.get("position")
+            p["nationality"] = p.get("nationality") or old.get("nationality")
+            p["dateOfBirth"] = p.get("dateOfBirth") or old.get("dateOfBirth")
         write_json("squad.json", {
             "team": "Sporting Clube de Portugal",
             "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
