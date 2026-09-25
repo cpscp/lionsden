@@ -1,9 +1,10 @@
 {
-  "_updated_at": "2026-09-25T01:06:18.544984+00:00",
+  "_updated_at": "2026-09-25T01:35:18.543992+00:00",
   "mode": "football",
   "errors": [
-    "fbref-core: 403 Client Error: Forbidden for url: https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions",
-    "fetch_standings: 403 Client Error: Forbidden for url: https://fbref.com/en/comps/32/2026-2027/2026-2027-Primeira-Liga-Stats"
+    "sofascore-fixtures: Sofascore returned no Sporting fixtures.",
+    "sofascore-player-stats: 403 Client Error: Forbidden for url: https://www.sofascore.com/api/v1/team/3001/players",
+    "sofascore-standings: Sofascore Primeira Liga season not found."
   ],
   "sources": {
     "football_api": true,

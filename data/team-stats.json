@@ -1,0 +1,20 @@
+{
+  "_updated_at": "2026-09-25T01:35:18.188123+00:00",
+  "season": "2026/27",
+  "team": {
+    "matches": 0,
+    "wins": 0,
+    "draws": 0,
+    "losses": 0,
+    "goals": 0,
+    "goals_against": 0,
+    "clean_sheets": 0,
+    "assists": 0,
+    "shots": 0,
+    "shots_on_target": 0,
+    "possession_avg": null,
+    "form": [],
+    "recent_matches": []
+  },
+  "source": "Sofascore"
+}
