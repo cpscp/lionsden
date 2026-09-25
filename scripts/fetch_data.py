@@ -548,7 +548,13 @@ def fetch_fotmob_core():
                 for item in career_nodes:
                     if not isinstance(item, dict):
                         continue
-                    club = item.get("teamName") or item.get("team_name") or item.get("clubName") or item.get("club") or item.get("team", {}).get("name") if isinstance(item.get("team"), dict) else None
+                    club = (
+                        item.get("teamName")
+                        or item.get("team_name")
+                        or item.get("clubName")
+                        or item.get("club")
+                        or (item.get("team", {}).get("name") if isinstance(item.get("team"), dict) else None)
+                    )
                     period = item.get("seasonName") or item.get("season") or item.get("year") or item.get("date")
                     if club:
                         career.append({"period": str(period or ""), "club": clean(club)})
