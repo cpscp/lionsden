@@ -368,11 +368,11 @@ function renderTV(){
  }
  const videoTime=v=>{
    if(v.publishedAt) return new Date(v.publishedAt).getTime()||0;
-   const s=String(v.published||'').toLowerCase().replace(/^transmitido\\s*/,'').trim();
+   const s=String(v.published||'').toLowerCase().replace(/^transmitido\s*/,'').trim();
    const now=Date.now();
    let m;
    if(s==='agora'||s==='hoje') return now;
-   if((m=s.match(/há\\s+(\\d+)\\s+(segundo|segundos|minuto|minutos|hora|horas|dia|dias|semana|semanas|mês|meses|ano|anos)/))){
+   if((m=s.match(/há\s+(\d+)\s+(segundo|segundos|minuto|minutos|hora|horas|dia|dias|semana|semanas|mês|meses|ano|anos)/))){
      const n=Number(m[1]),u=m[2];
      const ms=u.startsWith('segundo')?1000:u.startsWith('minuto')?60000:u.startsWith('hora')?3600000:u.startsWith('dia')?86400000:u.startsWith('semana')?604800000:u.startsWith('mês')||u.startsWith('mes')?2592000000:31536000000;
      return now-n*ms;
