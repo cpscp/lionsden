@@ -18,12 +18,16 @@
 .navbtn{color:var(--muted)}.navbtn.active{color:#fff}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#03130c;font-weight:800}
 .row{border-top:1px solid var(--line)}.statbox{background:#09110c;border:1px solid var(--line);border-radius:16px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:80;display:none}.modal.open{display:flex}
 .modalpanel{max-width:540px;width:100%;margin:auto;max-height:94vh;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:24px 24px 0 0}.source{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#698477}
-.team-logo{width:52px;height:52px;object-fit:contain;display:block;margin:0 auto}
-.team-logo.sm{width:42px;height:42px}
-.team-logo-wrap{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:grid;place-items:center;margin:0 auto}
-.match-team{width:34%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;min-width:0}
-.match-team-name{margin-top:8px;font-size:12px;font-weight:600;line-height:1.2}
-.match-vs{flex:1;text-align:center;min-width:70px}
+.team-logo{width:50px;height:50px;object-fit:contain;display:block}
+.team-logo.sm{width:40px;height:40px}
+.team-logo-wrap{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:0 0 64px;margin:0 auto}
+.team-logo-wrap.sm{width:54px;height:54px;flex-basis:54px}
+.match-row{display:grid;grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr);align-items:start;width:100%;gap:8px}
+.match-team{width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center}
+.match-team-name{margin-top:9px;font-size:12px;font-weight:600;line-height:1.2;max-width:100%;overflow-wrap:anywhere}
+.match-vs{width:100%;text-align:center;min-width:0;padding-top:7px}
+.match-vs .vs-text{font-size:25px;font-weight:700;line-height:1}
+.game-row{display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr);align-items:center;gap:6px;width:100%}
 .info-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
 .info-row:last-child{border-bottom:0}
 .info-icon{width:24px;flex:none;text-align:center}
@@ -114,16 +118,26 @@ function allFixtures(){
 }
 function nextFixture(){return allFixtures().filter(isFuture)[0]}
 function initials(n){return (n||'?').split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+const API_SPORTS_IDS={
+  "Sporting CP":228,"Braga":569,"FC Porto":212,"Porto":212,"SL Benfica":211,"Benfica":211,
+  "Vitória de Guimarães":212,"Vitoria de Guimaraes":212,"Rio Ave":242,"Estoril":238,
+  "Gil Vicente":554,"Arouca":558,"Santa Clara":556,"Marítimo":250,"Maritimo":250,
+  "Alverca":102,"Estrela da Amadora":5562,"Casa Pia":239,"Moreirense":2425
+};
 function teamLogoUrl(team){
+  const name=String(team?.name||team||'').trim();
   const id=team?.id||team?.team_id;
+  if(name && API_SPORTS_IDS[name]) return `https://media.api-sports.io/football/teams/${API_SPORTS_IDS[name]}.png`;
   return id ? `https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png` : '';
 }
 function teamVisual(team,small=false){
   const name=team?.name||team||'';
   const url=teamLogoUrl(team);
+  const cls=small?'team-logo-wrap sm':'team-logo-wrap';
+  const img=small?'team-logo sm':'team-logo';
   return url
-    ? `<div class="team-logo-wrap ${small?'!w-[54px] !h-[54px]':''}"><img class="team-logo ${small?'sm':''}" src="${esc(url)}" alt="${esc(name)}" onerror="this.style.display='none';this.parentElement.textContent='${esc(initials(name))}'"></div>`
-    : `<div class="team-logo-wrap ${small?'!w-[54px] !h-[54px]':''} font-bold text-sm">${esc(initials(name))}</div>`;
+    ? `<div class="${cls}"><img class="${img}" src="${esc(url)}" alt="${esc(name)}" onerror="this.onerror=null;this.style.display='none';this.parentElement.classList.add('font-bold');this.parentElement.textContent='${esc(initials(name))}'></div>`
+    : `<div class="${cls} font-bold text-sm">${esc(initials(name))}</div>`;
 }
 function badge(n){return teamVisual(typeof n==='object'?n:{name:n})}
 function cleanObjectText(value){
@@ -140,11 +154,18 @@ function cleanObjectText(value){
   return s;
 }
 function venueInfo(v){
-  const parsed=cleanObjectText(v);
-  if(parsed&&typeof parsed==='object'){
-    return {...parsed,lon:parsed.lon??parsed.long??null,lat:parsed.lat??null};
-  }
-  return {name:parsed||'',city:'',lat:null,lon:null};
+  let parsed=cleanObjectText(v);
+  if(!parsed) return {name:'',city:'',lat:null,lon:null,capacity:null};
+  if(typeof parsed!=='object') return {name:String(parsed),city:'',lat:null,lon:null,capacity:null};
+  let nested=cleanObjectText(parsed.name);
+  if(nested && typeof nested==='object') parsed={...nested,...parsed};
+  return {
+    name: typeof parsed.name==='string' ? parsed.name : '',
+    city: typeof parsed.city==='string' ? parsed.city : '',
+    lat: parsed.lat??null,
+    lon: parsed.lon??parsed.long??null,
+    capacity: parsed.capacity??null
+  };
 }
 function refereeInfo(v){
   const parsed=cleanObjectText(v);
@@ -160,10 +181,7 @@ function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-cent
 function updateCountdown(ts){const el=document.getElementById('nextCountdown');if(!el)return;const tick=()=>{const diff=Math.max(0,Number(ts)*1000-Date.now());const total=Math.floor(diff/1000);const d=Math.floor(total/86400),h=Math.floor(total%86400/3600),m=Math.floor(total%3600/60),sec=total%60;el.querySelector('div:last-child').textContent=diff?'em '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s':'A começar agora';};tick();clearInterval(window._nextCountdown);window._nextCountdown=setInterval(tick,1000);}
 function renderHome(){
 const f=nextFixture();document.getElementById('homeComp').textContent=f?.competition?.name||'—';
-document.getElementById('nextGame').innerHTML=f?`<div class="flex items-center justify-between gap-2">
-<div class="match-team">${teamVisual(f.home)}<div class="match-team-name">${esc(f.home?.name)}</div></div>
-<div class="match-vs"><div class="text-[10px] muted">${fmtDate(f.date)}</div><div class="text-[25px] font-bold my-2">VS</div><div class="text-[10px] muted">${esc(f.competition?.round||f.kickoff_local_time||'')}</div></div>
-<div class="match-team">${teamVisual(f.away)}<div class="match-team-name">${esc(f.away?.name)}</div></div></div>
+document.getElementById('nextGame').innerHTML=f?`<div class="match-row"><div class="match-team">${teamVisual(f.home)}<div class="match-team-name">${esc(f.home?.name)}</div></div><div class="match-vs"><div class="text-[10px] muted">${fmtDate(f.date)}</div><div class="vs-text my-2">VS</div><div class="text-[10px] muted">${esc(f.competition?.round||f.kickoff_local_time||'')}</div></div><div class="match-team">${teamVisual(f.away)}<div class="match-team-name">${esc(f.away?.name)}</div></div></div>
 <div class="mt-5 pt-3 row grid grid-cols-2 gap-3 text-[10px] muted"><span class="truncate">🏟 ${esc(venueInfo(f.venue).name||'Estádio por confirmar')}</span><span class="truncate text-right">👨‍⚖️ ${esc(f.referee||'Árbitro por confirmar')}</span></div>
 ${countdownHtml(f.date)}
 <button onclick="openGame('${esc(f.id)}')" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>`:
@@ -177,7 +195,7 @@ const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNew
 }
 function renderGames(){
 const merged=allFixtures();const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
-document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="flex items-center gap-2"><div class="flex-1 flex items-center justify-end gap-2 text-[12px] font-semibold text-right"><span>${esc(x.home?.name)}</span>${teamVisual(x.home,true)}</div><div class="font-bold min-w-[54px] text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex-1 flex items-center gap-2 text-[12px] font-semibold"><span>${esc(x.away?.name)}</span>${teamVisual(x.away,true)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(x.venue?.name||'ver detalhes')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
+document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="game-row"><div class="flex items-center justify-end gap-2 min-w-0 text-[12px] font-semibold text-right"><span class="truncate">${esc(x.home?.name)}</span>${teamVisual(x.home,true)}</div><div class="font-bold text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex items-center gap-2 min-w-0 text-[12px] font-semibold"><span class="truncate">${esc(x.away?.name)}</span>${teamVisual(x.away,true)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(x.venue?.name||'ver detalhes')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
 }
 function renderSquad(){
 const raw=D['squad.json']||{}; const ps=raw.players||raw.squad||[];document.getElementById('squadList').innerHTML=ps.map((p,i)=>`<button onclick="openPlayer(${i})" class="card w-full p-3 flex items-center gap-3 text-left"><div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden">${p.photo?`<img src="${esc(p.photo)}" class="w-full h-full object-cover" alt="">`:badge(p.name)}</div><div class="flex-1"><div class="font-semibold text-[13px]">${esc(p.name)}</div><div class="text-[10px] muted">${esc(p.position||'—')} · ${esc(p.nation||p.nationality||'—')}</div></div><div class="text-right"><b class="text-[13px]">${p.stats?.goals??p.goals??0}</b><div class="text-[9px] muted">golos</div></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem plantel.</div>';
@@ -197,7 +215,7 @@ function openGame(id){
 const base=findFixture(id);const detail=(D['match-details.json']?.fixtures||[]).find(x=>String(x.match_id)===String(id));if(!base){return}
 let v=venueInfo(base.venue);const cached=(D['venues.json']?.venues)||{};if((v.lat==null||v.lon==null)&&base.home?.name&&base.away?.name){const opponent=base.home.name==='Sporting CP'?base.away.name:base.home.name;const hit=Object.entries(cached).find(([k])=>k.toLowerCase().includes(opponent.toLowerCase()));if(hit){v={...v,...hit[1]};}}let lat=v.lat,lon=v.lon;let map=lat!=null&&lon!=null?`<iframe class="w-full h-56 rounded-2xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-.015}%2C${lat-.01}%2C${lon+.015}%2C${lat+.01}&layer=mapnik&marker=${lat}%2C${lon}"></iframe>`:`<a class="pill inline-block px-3 py-2 text-xs" target="_blank" href="https://www.openstreetmap.org/search?query=${encodeURIComponent((v.name||'')+' '+(v.city||''))}">Abrir mapa ↗</a>`;
 document.getElementById('modalTitle').textContent=`${base.home?.name||''} · ${base.away?.name||''}`;
-document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><div class="muted text-xs">${fmtDate(base.date)} · ${esc(base.competition?.name||'')}</div><div class="flex items-start justify-center gap-2 mt-5"><div class="match-team">${teamVisual(base.home)}<div class="match-team-name">${esc(base.home?.name)}</div></div><div class="match-vs pt-3"><div class="font-bold text-xl">${base.goals?.home!=null?`${base.goals.home} - ${base.goals.away}`:'VS'}</div></div><div class="match-team">${teamVisual(base.away)}<div class="match-team-name">${esc(base.away?.name)}</div></div></div></div><div class="card p-4"><div class="font-semibold mb-2">Informação do jogo</div><div class="info-row"><span class="info-icon">🏟️</span><div class="info-content"><div class="info-label">Estádio</div><div class="info-value">${esc(v.name||'Por confirmar')}${v.city?' · '+esc(v.city):''}</div></div></div><div class="info-row"><span class="info-icon">🏆</span><div class="info-content"><div class="info-label">Competição</div><div class="info-value">${esc(base.competition?.name||'Por confirmar')}${base.competition?.round?' · '+esc(base.competition.round):''}</div></div></div><div class="info-row"><span class="info-icon">👨‍⚖️</span><div class="info-content"><div class="info-label">Árbitro</div><div class="info-value">${esc(base.referee||detail?.referee_name||'Por confirmar')}</div></div></div>${v.capacity?`<div class="info-row"><span class="info-icon">👥</span><div class="info-content"><div class="info-label">Capacidade</div><div class="info-value">${esc(v.capacity)}</div></div></div>`:''}</div><div class="card p-3 mt-3">${map}</div><div class="text-[10px] muted mt-3">Dados: FotMob · mapa: OpenStreetMap</div>`;
+document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><div class="muted text-xs">${fmtDate(base.date)} · ${esc(base.competition?.name||'')}</div><div class="match-row mt-5"><div class="match-team">${teamVisual(base.home)}<div class="match-team-name">${esc(base.home?.name)}</div></div><div class="match-vs"><div class="font-bold text-xl">${base.goals?.home!=null?`${base.goals.home} - ${base.goals.away}`:'VS'}</div></div><div class="match-team">${teamVisual(base.away)}<div class="match-team-name">${esc(base.away?.name)}</div></div></div></div><div class="card p-4"><div class="font-semibold mb-2">Informação do jogo</div><div class="info-row"><span class="info-icon">🏟️</span><div class="info-content"><div class="info-label">Estádio</div><div class="info-value">${esc(v.name||'Por confirmar')}${v.city?' · '+esc(v.city):''}</div></div></div><div class="info-row"><span class="info-icon">🏆</span><div class="info-content"><div class="info-label">Competição</div><div class="info-value">${esc(base.competition?.name||'Por confirmar')}${base.competition?.round?' · '+esc(base.competition.round):''}</div></div></div><div class="info-row"><span class="info-icon">👨‍⚖️</span><div class="info-content"><div class="info-label">Árbitro</div><div class="info-value">${esc(base.referee||detail?.referee_name||'Por confirmar')}</div></div></div>${v.capacity?`<div class="info-row"><span class="info-icon">👥</span><div class="info-content"><div class="info-label">Capacidade</div><div class="info-value">${esc(v.capacity)}</div></div></div>`:''}</div><div class="card p-3 mt-3">${map}</div><div class="text-[10px] muted mt-3">Dados do jogo · mapa: OpenStreetMap</div>`;
 openModal();
 }
 function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
