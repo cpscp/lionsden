@@ -724,6 +724,25 @@ def fetch_sofascore_fixtures():
     })
     print(f"Sofascore: {len(normalized)} Sporting fixtures written.")
 
+def fetch_sofascore_match_details():
+    """Store recent Sporting match details from SofaScore: lineups, incidents and team stats."""
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished" and f.get("id")]
+    selected = sorted(finished, key=lambda x: x.get("date") or 0, reverse=True)[:8]
+    details = []
+    for f in selected:
+        eid = f.get("id")
+        try:
+            event = sofa_get(f"/event/{eid}").get("event") or {}
+            lineups = sofa_get(f"/event/{eid}/lineups")
+            incidents = sofa_get(f"/event/{eid}/incidents")
+            statistics = sofa_get(f"/event/{eid}/statistics")
+            details.append({"match_id": eid, "event": event, "lineups": lineups, "incidents": incidents, "statistics": statistics})
+        except Exception as e:
+            print("Sofascore match detail warning:", eid, e)
+    write_json("match-details.json", {"fixtures": details, "source": "Sofascore"})
+    print(f"Sofascore: {len(details)} detailed matches written.")
+
 def fetch_sofascore_standings():
     """Fetch the current Primeira Liga table from SofaScore."""
     sid = _sofa_season(17)
@@ -1045,6 +1064,21 @@ def enrich_match_details():
     write_json("match-details.json", {"fixtures": details, "source": "Football Soccer API"})
 
 
+def fetch_youtube():
+    """Fetch recent videos from the official Sporting CP YouTube channel via RSS."""
+    channel_id = "UCHpcLaddGlZUVdtX302fpHA"
+    items = []
+    try:
+        import feedparser
+        feed = feedparser.parse(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
+        for entry in feed.entries[:12]:
+            vid = clean(getattr(entry, "yt_videoid", "")); url = clean(getattr(entry, "link", "")); title = clean(getattr(entry, "title", "")); published = clean(getattr(entry, "published", ""))
+            if not vid or not title or not url: continue
+            items.append({"id": vid, "title": title, "url": url, "published": published, "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+    except Exception as e:
+        print("YouTube warning:", e)
+    write_json("youtube.json", {"channel": "Sporting CP", "channel_id": channel_id, "items": items, "source": "YouTube RSS"})
+
 def fetch_news():
     items = []
     try:
@@ -1088,6 +1122,16 @@ def fetch_news():
                 break
     except Exception as e:
         print("Google News warning:", e)
+
+    for item in items[:10]:
+        if item.get("source") != "Sporting.pt": continue
+        try:
+            rr = session.get(item["url"], timeout=10); rr.raise_for_status(); ss = BeautifulSoup(rr.text, "html.parser")
+            og = ss.find("meta", attrs={"property": "og:image"}) or ss.find("meta", attrs={"name": "twitter:image"})
+            desc = ss.find("meta", attrs={"property": "og:description"}) or ss.find("meta", attrs={"name": "description"})
+            if og and og.get("content"): item["image"] = og.get("content")
+            if desc and desc.get("content"): item["description"] = clean(desc.get("content"))[:280]
+        except Exception as e: print("News metadata warning:", item.get("url"), e)
 
     write_json("news.json", {"items": items})
 
@@ -1236,6 +1280,10 @@ def main():
         fetch_news()
     except Exception as e:
         errors.append(f"news: {e}")
+    try:
+        fetch_youtube()
+    except Exception as e:
+        errors.append(f"youtube: {e}")
 
     if mode in {"full", "football"}:
         try:
@@ -1249,6 +1297,22 @@ def main():
             fetch_sofascore_fixtures()
         except Exception as e:
             print(f"SofaScore fixtures skipped: {e}")
+        try:
+            fetch_sofascore_player_stats()
+        except Exception as e:
+            print(f"SofaScore player enrichment skipped: {e}")
+        try:
+            fetch_sofascore_standings()
+        except Exception as e:
+            print(f"SofaScore standings skipped: {e}")
+        try:
+            build_team_stats_from_sofa()
+        except Exception as e:
+            print(f"SofaScore team stats skipped: {e}")
+        try:
+            fetch_sofascore_match_details()
+        except Exception as e:
+            print(f"SofaScore match details skipped: {e}")
 
         try:
             geocode_missing_venues()
