@@ -1,9 +1,13 @@
 {
-  "_updated_at": "2026-09-25T00:05:20.972424+00:00",
-  "mode": "news",
-  "errors": [],
+  "_updated_at": "2026-09-25T00:16:24.182093+00:00",
+  "mode": "football",
+  "errors": [
+    "football-api: Sporting CP was not found in Football Soccer API.",
+    "fetch_fbref_stats: 403 Client Error: Forbidden for url: https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions",
+    "fetch_standings: 403 Client Error: Forbidden for url: https://fbref.com/en/comps/32/stats/Primeira-Liga-Stats"
+  ],
   "sources": {
-    "football_api": false,
+    "football_api": true,
     "fbref": true,
     "news": true,
     "maps": true
