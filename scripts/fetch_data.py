@@ -763,19 +763,30 @@ def enrich_player_profiles():
     write_json("squad.json", squad)
 
 def fetch_competition_standings():
-    """Fetch standings/bracket-table data for Sporting's four requested competitions."""
-    competitions = {
-        "primeira-liga": (238, "Primeira Liga"),
-        "taca-portugal": (336, "Taça de Portugal"),
-        "taca-liga": (327, "Taça da Liga"),
-        "champions": (7, "Champions League"),
-    }
+    """Build a stable multi-competition standings feed.
+    Primeira Liga is guaranteed from the same successful source used by standings.json.
+    Other competitions are added when SofaScore exposes a standings table for their
+    current phase; knockout competitions can legitimately have no single table.
+    """
     result = {}
+    # Guarantee the default tab: reuse the already validated Primeira Liga table.
+    primary = safe_existing("standings.json") or {}
+    if primary.get("table"):
+        result["primeira-liga"] = {
+            "competition": "Primeira Liga", "season": "2026/27",
+            "table": primary["table"], "source": primary.get("source", "SofaScore"),
+            "tournament_id": 238
+        }
+
+    competitions = {
+        "champions": (7, "Champions League"),
+        "taca-portugal": (329, "Taça de Portugal"),
+        "taca-liga": (327, "Taça da Liga"),
+    }
     for key, (tid, name) in competitions.items():
         try:
             sid = _sofa_season(tid)
             if not sid:
-                print("No SofaScore season:", name)
                 continue
             payload = sofa_get(f"/unique-tournament/{tid}/season/{sid}/standings/total")
             blocks = payload.get("standings") or []
@@ -785,16 +796,24 @@ def fetch_competition_standings():
                     team = r.get("team") or {}
                     rows.append({
                         "position": r.get("position"),
-                        "team": {"id": team.get("id"), "name": team.get("name"), "shortName": team.get("shortName") or team.get("name"), "tla": team.get("nameCode"), "crest": f"https://img.sofascore.com/api/v1/team/{team.get('id')}/image" if team.get("id") else None},
-                        "playedGames": r.get("matches", 0), "won": r.get("wins", 0), "draw": r.get("draws", 0), "lost": r.get("losses", 0),
-                        "points": r.get("points", 0), "goalsFor": r.get("scoresFor", 0), "goalsAgainst": r.get("scoresAgainst", 0), "goalDifference": r.get("scoreDiff", 0),
+                        "team": {"id": team.get("id"), "name": team.get("name"),
+                                 "shortName": team.get("shortName") or team.get("name"),
+                                 "tla": team.get("nameCode"),
+                                 "crest": f"https://img.sofascore.com/api/v1/team/{team.get('id')}/image" if team.get("id") else None},
+                        "playedGames": r.get("matches", 0), "won": r.get("wins", 0),
+                        "draw": r.get("draws", 0), "lost": r.get("losses", 0),
+                        "points": r.get("points", 0), "goalsFor": r.get("scoresFor", 0),
+                        "goalsAgainst": r.get("scoresAgainst", 0), "goalDifference": r.get("scoreDiff", 0),
                         "groupName": block.get("name") or block.get("groupName")
                     })
-            result[key] = {"competition": name, "season": "2026/27", "table": rows, "source": "SofaScore", "tournament_id": tid, "season_id": sid}
-        except Exception as e:
-            print("Competition standings warning:", name, e)
+            if rows:
+                result[key] = {"competition": name, "season": "2026/27", "table": rows,
+                               "source": "SofaScore", "tournament_id": tid, "season_id": sid}
+        except Exception as ex:
+            print("Competition standings warning:", name, ex)
+
     write_json("standings-competitions.json", result)
-    print("SofaScore: competition standings written:", ", ".join(result.keys()))
+    print("SofaScore competition standings:", {k: len(v.get("table", [])) for k,v in result.items()})
 
 def fetch_sofascore_standings():
     """Fetch the current Primeira Liga table from SofaScore."""
