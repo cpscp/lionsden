@@ -110,7 +110,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','squad.json','team-stats.json','news.json','venues.json','match-details.json','fbref-schedule.json','status.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','news.json','venues.json','match-details.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -286,8 +286,8 @@ function renderClassification(){
 function renderTV(){
  const el=document.getElementById('tvList');if(!el)return;
  const items=D['youtube.json']?.items||[];
- const playlist='UUHpcLaddGlZUVdtX302fpHA';
- const hero='<div class="card overflow-hidden"><div class="aspect-video bg-black"><iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list='+playlist+'&rel=0" title="Sporting CP — YouTube" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="p-3"><div class="font-semibold text-[13px]">Sporting CP — YouTube</div><div class="text-[10px] muted mt-1">Vídeos do canal oficial · reproduzir dentro da aplicação</div></div></div>';
+ const playlist='UCHpcLaddGlZUVdtX302fpHA';
+ const hero='<div class="card overflow-hidden"><div class="aspect-video bg-black"><iframe class="w-full h-full" src="https://www.youtube.com/embed?listType=user_uploads&list=SportingCP&rel=0" title="Sporting CP — YouTube" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="p-3"><div class="font-semibold text-[13px]">Sporting CP — YouTube</div><div class="text-[10px] muted mt-1">Vídeos do canal oficial · reproduzir dentro da aplicação</div></div></div>';
  const cards=items.map(v=>'<button onclick="openVideo(\''+esc(v.id)+'\',\''+esc(v.title).replace(/'/g,'&#39;')+'\')" class="news-card card w-full text-left"><img src="'+esc(v.thumbnail||'')+'" class="news-thumb" alt=""><div class="p-3"><div class="font-semibold text-[13px] leading-snug">'+esc(v.title)+'</div><div class="text-[9px] muted mt-2">'+esc(v.published||'')+' · reproduzir →</div></div></button>').join('');
  el.innerHTML=hero+(cards?'<div class="mt-4 grid gap-3">'+cards+'</div>':'');
 }
