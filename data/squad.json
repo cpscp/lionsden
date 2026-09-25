@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T11:56:00.690563+00:00",
+  "_updated_at": "2026-09-25T17:16:18.915712+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -284,10 +284,10 @@
       "nationality": "Australia",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
       "stats": {
-        "matches": 6,
-        "starts": 6,
-        "minutes": 200,
-        "goals": 0,
+        "matches": 7,
+        "starts": 7,
+        "minutes": 276,
+        "goals": 1,
         "assists": 0,
         "yellow": 1,
         "red": 0
@@ -420,10 +420,10 @@
       "nationality": "Mozambique",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 662,
-        "goals": 2,
+        "matches": 10,
+        "starts": 10,
+        "minutes": 752,
+        "goals": 3,
         "assists": 3,
         "yellow": 3,
         "red": 0
