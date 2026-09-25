@@ -56,18 +56,22 @@
 
 .link-card{display:flex;align-items:center;justify-content:space-between;gap:14px}.link-card:hover{background:var(--surface2)}
 @media(min-width:760px){.drawer{width:330px}.wrap{max-width:700px}}
-.knockout-section{margin-top:14px}
-.knockout-section-title{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 8px 2px}
-.knockout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.knockout-grid.final-grid{grid-template-columns:minmax(0,1fr);max-width:360px}
-.knockout-match{background:rgba(0,0,0,.12);border:1px solid var(--line);border-radius:14px;padding:10px;min-width:0}
-.knockout-team{display:flex;align-items:center;gap:8px;min-width:0;font-size:11px;font-weight:600;line-height:1.2}
-.knockout-team + .knockout-team{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.05)}
-.knockout-team img{width:30px;height:30px;object-fit:contain;flex:0 0 30px}
-.knockout-team .knockout-badge{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:8px;color:var(--muted);flex:0 0 30px}
-.knockout-team span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.knockout-score{text-align:center;font-size:10px;color:var(--muted);margin-top:8px}
-@media(max-width:520px){.knockout-grid{grid-template-columns:1fr}.knockout-grid.final-grid{max-width:none}.knockout-match{padding:9px}.knockout-team{font-size:10px}.knockout-team img,.knockout-team .knockout-badge{width:28px;height:28px;flex-basis:28px}}
+.knockout-section{margin-top:18px}
+.knockout-section-title{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 10px 2px}
+.knockout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.knockout-grid.final-grid{grid-template-columns:minmax(0,520px);max-width:520px}
+.knockout-match{background:rgba(13,21,16,.72);border:1px solid var(--line);border-radius:16px;padding:12px;min-width:0;overflow:hidden}
+.knockout-date{font-size:9px;color:var(--muted);text-align:center;letter-spacing:.02em;min-height:14px;margin-bottom:10px}
+.knockout-teams{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:center;gap:7px}
+.knockout-team{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;font-size:10px;font-weight:600;line-height:1.2}
+.knockout-team-logo{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.045);border:1px solid var(--line);margin-bottom:6px;overflow:hidden}
+.knockout-team-logo img{width:30px;height:30px;object-fit:contain;display:block}
+.knockout-team .knockout-badge{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:8px;color:var(--muted);margin-bottom:6px}
+.knockout-team-name{width:100%;min-height:24px;display:flex;align-items:flex-start;justify-content:center;overflow-wrap:anywhere}
+.knockout-vs{text-align:center;color:var(--muted);font-size:10px;font-weight:600}
+.knockout-score{text-align:center;font-size:10px;color:var(--muted);margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.05)}
+.knockout-score strong{color:#f3f7f4}
+@media(max-width:620px){.knockout-grid,.knockout-grid.final-grid{grid-template-columns:1fr;max-width:none}.knockout-match{padding:11px}.knockout-team{font-size:10px}.knockout-team-logo,.knockout-team .knockout-badge{width:36px;height:36px}.knockout-team-logo img{width:28px;height:28px}}
 </style>
 </head>
 <body>
@@ -304,20 +308,48 @@ function renderClassification(){
    const rank={quarter:0,'1/4':0,round_of_16:-1,'1/2':1,semi:1,final:2};
    const ordered=[...rounds].sort((a,b)=>(rank[a.stage]??99)-(rank[b.stage]??99));
    const titleFor=r=>r.stage==='1/4'?'Quartos-de-final':r.stage==='1/2'?'Meias-finais':r.stage==='final'?'Final':(r.label||r.stage||'Eliminatória');
-   const matchCard=m=>{
-     const side=t=>{
-       const name=String(t?.name||'A definir');
-       const provisional=/^(winner|fc porto\/academico|benfica\/gil vicente|sporting cp\/maritimo|braga\/famalicao)/i.test(name);
-       const logo=(!provisional&&t?.id)?teamVisual({id:t.id,name:t.name,crest:t.crest},true):'';
-       return '<div class="knockout-team">'+(logo||'<span class="knockout-badge">'+esc((t?.shortName||name).slice(0,3))+'</span>')+'<span title="'+esc(name)+'">'+esc(name)+'</span></div>';
-     };
-     const hs=m.homeScore,as=m.awayScore;
-     const score=(hs!=null||as!=null)?String(hs??'—')+' - '+String(as??'—'):'Por jogar';
-     return '<div class="knockout-match">'+side(m.home)+side(m.away)+'<div class="knockout-score">'+esc(score)+'</div></div>';
+
+   const knockoutMatchDate=m=>{
+     const id=m?.match_id ?? m?.id ?? m?.matches?.[0]?.match_id;
+     const fixture=allFixtures().find(f=>String(f.id)===String(id));
+     if(fixture?.date)return fixture.date;
+     const raw=m?.date ?? m?.matches?.[0]?.date;
+     if(raw==null||raw==='')return 0;
+     return fixtureTimestamp(raw);
    };
+
+   const teamHtml=t=>{
+     const name=String(t?.name||'Por definir').trim();
+     const provisional=!name || /^(winner|tbd|por definir|fc porto\/academico|benfica\/gil vicente|sporting cp\/maritimo|braga\/famalicao)/i.test(name);
+     const logo=(!provisional&&t?.id)?teamLogoUrl({id:t.id,name:t.name,crest:t.crest}):'';
+     const visual=logo
+       ? '<div class="knockout-team-logo"><img src="'+esc(logo)+'" alt="'+esc(name)+'" loading="lazy"></div>'
+       : '<div class="knockout-badge">'+esc((t?.shortName||'TBD').slice(0,4))+'</div>';
+     return '<div class="knockout-team">'+visual+'<div class="knockout-team-name">'+esc(provisional?'Por definir':name)+'</div></div>';
+   };
+
+   const matchCard=m=>{
+     const hs=m.homeScore,as=m.awayScore;
+     const played=hs!=null||as!=null;
+     const score=played?'<strong>'+esc(hs??'—')+' - '+esc(as??'—')+'</strong>':'Por jogar';
+     const ts=knockoutMatchDate(m);
+     const dateText=ts?fmtDate(ts):'Data por confirmar';
+     return '<article class="knockout-match">'+
+       '<div class="knockout-date">'+esc(dateText)+'</div>'+
+       '<div class="knockout-teams">'+
+         teamHtml(m.home)+
+         '<div class="knockout-vs">VS</div>'+
+         teamHtml(m.away)+
+       '</div>'+
+       '<div class="knockout-score">'+score+'</div>'+
+     '</article>';
+   };
+
    return ordered.map(r=>{
      const cls=r.stage==='final'?'final-grid':'';
-     return '<section class="knockout-section"><div class="knockout-section-title">'+esc(titleFor(r))+'</div><div class="knockout-grid '+cls+'">'+(r.matchups||[]).map(matchCard).join('')+'</div></section>';
+     return '<section class="knockout-section"><div class="knockout-section-title">'+esc(titleFor(r))+'</div><div class="knockout-grid '+cls+'">'+
+       (r.matchups||[]).map(matchCard).join('')+
+       '</div></section>';
    }).join('');
  };
 
