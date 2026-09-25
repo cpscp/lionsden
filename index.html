@@ -86,7 +86,13 @@ function parseMaybeObject(v){
     const out={}; t.slice(1,-1).split(/,\s*/).forEach(part=>{const i=part.indexOf(':');if(i>0)out[part.slice(0,i).trim().replace(/^['"]|['"]$/g,'')]=part.slice(i+1).trim().replace(/^['"]|['"]$/g,'');}); return out;
   }
 }
-function normalizeVenue(v){\n  const o=parseMaybeObject(v);\n  if(o && typeof o==='object' && o.name!==undefined) return {name:o.name||'',city:o.city||'',country:o.country||'',lat:o.lat??null,lon:o.lon??o.long??null,capacity:o.capacity??null,surface:o.surface||''};\n  return (v&&typeof v==='object')?v:{};\n}\nfunction normalizeReferee(v){ const o=parseMaybeObject(v); return typeof v==='string' ? (o.text||'') : (o?.text||v?.name||''); }\nfunction allFixtures(){
+function normalizeVenue(v){
+  const o=parseMaybeObject(v);
+  if(o && typeof o==='object' && o.name!==undefined) return {name:o.name||'',city:o.city||'',country:o.country||'',lat:o.lat??null,lon:o.lon??o.long??null,capacity:o.capacity??null,surface:o.surface||''};
+  return (v&&typeof v==='object')?v:{};
+}
+function normalizeReferee(v){ const o=parseMaybeObject(v); return typeof v==='string' ? (o.text||'') : (o?.text||v?.name||''); }
+function allFixtures(){
   const raw=D['fixtures.json']?.fixtures||D['fixtures.json']?.matches||[];
   return raw.map((x,i)=>{
     const date=Number(x.date||0);
