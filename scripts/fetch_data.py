@@ -34,10 +34,8 @@ FSAPI_KEY = os.environ.get("FSAPI_KEY")
 FSAPI_BASE = "https://api.footballsoccerapi.com/v1"
 FBREF_TEAM = "https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions"
 FBREF_TEAM_ROSTER = "https://fbref.com/en/squads/13dc44fd/2026-2027/roster/Sporting-CP-Roster-Details"
-FBREF_LEAGUE = "https://fbref.com/en/comps/32/stats/Primeira-Liga-Stats"
+FBREF_LEAGUE = "https://fbref.com/en/comps/32/2025/2025-league-Stats"
 FBREF_SCHEDULE = "https://fbref.com/en/squads/13dc44fd/2026-2027/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
-FBREF_LEAGUE_SCHEDULE = "https://fbref.com/en/comps/32/schedule/Primeira-Liga-Scores-and-Fixtures"
-SPORTING_STADIUM = "Estádio José Alvalade"
 SPORTING_NEWS = "https://www.sporting.pt/pt/noticias/futebol"
 USER_AGENT = "Mozilla/5.0 (compatible; LionsDen/3.0; +https://github.com/cpscp/lionsden)"
 
@@ -138,13 +136,29 @@ def pick_table(tables, required_columns):
 
 
 def multi_index_flatten(df):
+    """Flatten FBref's grouped headers while keeping leaf column names usable.
+
+    FBref renders headers such as ("Playing Time", "MP"). The old
+    implementation turned that into "Playing Time MP", so lookups for MP/Gls/etc.
+    failed and the previous JSON files stayed in place.
+    """
     if isinstance(df.columns, pd.MultiIndex):
-        df.columns = [
-            " ".join(str(x) for x in col if str(x) != "nan").strip()
-            for col in df.columns
-        ]
+        raw = []
+        for col in df.columns:
+            parts = [str(x).strip() for x in col if str(x).strip() and str(x) != "nan"]
+            raw.append(parts[-1] if parts else "")
     else:
-        df.columns = [str(c) for c in df.columns]
+        raw = [str(c).strip() for c in df.columns]
+
+    # Make duplicate leaf names unique while preserving the first canonical name.
+    seen = {}
+    cols = []
+    for name in raw:
+        base = name or "column"
+        n = seen.get(base, 0) + 1
+        seen[base] = n
+        cols.append(base if n == 1 else f"{base}_{n}")
+    df.columns = cols
     return df
 
 
@@ -165,6 +179,9 @@ def fetch_fbref_stats():
     keepers = pick_table(tables, ["Player", "GA", "Saves", "CS"])
     misc = pick_table(tables, ["Player", "CrdY", "CrdR"])
     fixtures = pick_table(tables, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent", "Referee"])
+    if fixtures is None:
+        # Keep stats generation alive even if FBref changes the match-log columns.
+        fixtures = pd.DataFrame(columns=["Date", "Time", "Comp", "Round", "Venue", "Result", "GF", "GA", "Opponent", "Poss", "Attendance", "Referee", "Match Report"])
 
     if standard is None:
         raise RuntimeError("FBref standard player table not found.")
@@ -238,9 +255,9 @@ def fetch_fbref_stats():
 
     # Team-level values from the player tables + schedule.
     team = {
-        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))) if fixtures is not None else 0,
-        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()) if fixtures is not None else 0,
-        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()) if fixtures is not None else 0,
+        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))),
+        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()),
+        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()),
         "assists": sum(p["assists"] for p in players),
         "shots": sum(p["shots"] for p in players),
         "shots_on_target": sum(p["shots_on_target"] for p in players),
@@ -268,7 +285,7 @@ def fetch_fbref_stats():
                 recent_results.append({
                     "date": clean(r.get("Date")),
                     "competition": clean(r.get("Comp")),
-                    "venue": SPORTING_STADIUM if clean(r.get("Venue")) == "Home" else clean(r.get("Venue")),
+                    "venue": clean(r.get("Venue")),
                     "result": result,
                     "gf": int(fnum(r.get("GF")) or 0),
                     "ga": int(fnum(r.get("GA")) or 0),
@@ -291,7 +308,6 @@ def fetch_fbref_stats():
                 "competition": clean(r.get("Comp")),
                 "round": clean(r.get("Round")),
                 "venue_side": clean(r.get("Venue")),
-                "venue_name": SPORTING_STADIUM if clean(r.get("Venue")) == "Home" else "",
                 "result": clean(r.get("Result")),
                 "gf": int(fnum(r.get("GF")) or 0) if clean(r.get("Result")) else None,
                 "ga": int(fnum(r.get("GA")) or 0) if clean(r.get("Result")) else None,
@@ -301,9 +317,6 @@ def fetch_fbref_stats():
                 "referee": clean(r.get("Referee")),
                 "match_report": clean(r.get("Match Report")),
             })
-
-    league_enrichment = fetch_league_schedule_enrichment()
-    schedule_rows = apply_schedule_enrichment(schedule_rows, league_enrichment)
 
     write_json("squad.json", {
         "season": "2026/27",
@@ -321,53 +334,6 @@ def fetch_fbref_stats():
         "fixtures": schedule_rows,
         "source": "FBref",
     })
-
-
-def fetch_league_schedule_enrichment():
-    """Fetch Primeira Liga match rows so fixture cards can show real venue/referee data."""
-    try:
-        tables, _ = read_fbref_tables(FBREF_LEAGUE_SCHEDULE)
-        for df in tables:
-            multi_index_flatten(df)
-        table = pick_table(tables, ["Date", "Home", "Away", "Venue", "Referee"])
-        if table is None:
-            print("League schedule table not found; continuing without venue enrichment.")
-            return {}
-        out = {}
-        for _, r in table.iterrows():
-            d = clean(r.get("Date"))
-            home = clean(r.get("Home"))
-            away = clean(r.get("Away"))
-            if not d or not home or not away:
-                continue
-            key = f"{d}|{home}|{away}"
-            out[key] = {
-                "venue_name": clean(r.get("Venue")),
-                "referee": clean(r.get("Referee")),
-                "attendance": int(fnum(r.get("Attendance")) or 0) if fnum(r.get("Attendance")) is not None else None,
-            }
-        return out
-    except Exception as e:
-        print("League schedule enrichment warning:", e)
-        return {}
-
-
-def apply_schedule_enrichment(schedule_rows, enrichment):
-    for row in schedule_rows:
-        if row.get("venue_side") == "Home":
-            row["venue_name"] = SPORTING_STADIUM
-        d = row.get("date") or ""
-        # FBref's team schedule gives opponent but not venue name. For Primeira Liga,
-        # the competition schedule supplies the exact stadium and referee.
-        opponent = clean(row.get("opponent"))
-        home = "Sporting CP" if row.get("venue_side") == "Home" else opponent
-        away = opponent if row.get("venue_side") == "Home" else "Sporting CP"
-        e = enrichment.get(f"{d}|{home}|{away}")
-        if e:
-            row["venue_name"] = e.get("venue_name") or row.get("venue_name")
-            row["referee"] = e.get("referee") or row.get("referee")
-            row["attendance"] = e.get("attendance")
-    return schedule_rows
 
 
 def fetch_standings():
@@ -456,6 +422,53 @@ def fetch_fsa_fixtures():
         })
     normalized.sort(key=lambda x: x.get("date") or 0)
     write_json("fixtures.json", {"team_id": team_id, "fixtures": normalized, "source": "Football Soccer API"})
+
+
+
+def build_fixtures_from_fbref():
+    """Build the public fixtures JSON from FBref when the paid/current-season API is unavailable."""
+    schedule = (safe_existing("fbref-schedule.json") or {}).get("fixtures", [])
+    if not schedule:
+        raise RuntimeError("No FBref schedule available for fixture fallback.")
+
+    out = []
+    sporting_names = {"Sporting CP", "SPORTING CP", "Sporting Clube de Portugal"}
+    for i, x in enumerate(schedule):
+        d = clean(x.get("date"))
+        if not d:
+            continue
+        time_s = clean(x.get("time")) or "12:00"
+        try:
+            stamp = int(datetime.fromisoformat(f"{d}T{time_s}").replace(tzinfo=timezone.utc).timestamp())
+        except Exception:
+            try:
+                stamp = int(datetime.fromisoformat(d).replace(tzinfo=timezone.utc).timestamp())
+            except Exception:
+                continue
+        opponent = clean(x.get("opponent"))
+        venue_side = clean(x.get("venue_side"))
+        home_name = "Sporting CP" if venue_side.lower() == "home" else opponent
+        away_name = opponent if venue_side.lower() == "home" else "Sporting CP"
+        result = clean(x.get("result"))
+        out.append({
+            "id": f"fbref-{d}-{i}",
+            "date": stamp,
+            "kickoff_date": d,
+            "kickoff_local_time": time_s,
+            "status": {"short": "finished" if result else "scheduled", "long": "Terminado" if result else "Agendado"},
+            "referee": clean(x.get("referee")),
+            "venue": {"name": None, "city": None, "lat": None, "lon": None, "capacity": None},
+            "competition": {"name": clean(x.get("competition")), "round": clean(x.get("round")), "season": "2026/27"},
+            "home": {"name": home_name},
+            "away": {"name": away_name},
+            "goals": {"home": x.get("gf") if venue_side.lower() == "home" else x.get("ga"),
+                      "away": x.get("ga") if venue_side.lower() == "home" else x.get("gf")},
+            "half_time": {"home": None, "away": None},
+            "source": "FBref fallback",
+        })
+    out.sort(key=lambda x: x.get("date") or 0)
+    write_json("fixtures.json", {"team_id": None, "fixtures": out, "source": "FBref fallback"})
+    return out
 
 
 def enrich_match_details():
@@ -562,18 +575,29 @@ def main():
         errors.append(f"news: {e}")
 
     if mode in {"full", "football"}:
+        # FBref is the zero-cost source of truth for current-season squad stats and schedule.
+        try:
+            fetch_fbref_stats()
+        except Exception as e:
+            errors.append(f"fetch_fbref_stats: {e}")
+
+        # Use the football API only as an enrichment source. If its free plan does not expose
+        # the current season, the app must still have a working schedule.
         try:
             fetch_fsa_fixtures()
             geocode_missing_venues()
             enrich_match_details()
         except Exception as e:
             errors.append(f"football-api: {e}")
-
-        for fn in (fetch_fbref_stats, fetch_standings):
             try:
-                fn()
-            except Exception as e:
-                errors.append(f"{fn.__name__}: {e}")
+                build_fixtures_from_fbref()
+            except Exception as fallback_error:
+                errors.append(f"fixture-fallback: {fallback_error}")
+
+        try:
+            fetch_standings()
+        except Exception as e:
+            errors.append(f"fetch_standings: {e}")
 
     # Always leave a status file so the app can explain which source failed.
     write_json("status.json", {
