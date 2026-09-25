@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T01:36:44.895377+00:00",
+  "_updated_at": "2026-09-25T01:39:14.380219+00:00",
   "season": "2026/27",
   "team": {
     "matches": 12,
@@ -23,7 +23,7 @@
     "recent_matches": [
       {
         "date": "2026-08-22",
-        "competition": "",
+        "competition": "Liga Portugal",
         "venue": "Casa",
         "result": "W",
         "gf": 3,
@@ -32,7 +32,7 @@
       },
       {
         "date": "2026-08-28",
-        "competition": "",
+        "competition": "Liga Portugal",
         "venue": "Fora",
         "result": "W",
         "gf": 4,
@@ -41,7 +41,7 @@
       },
       {
         "date": "2026-09-05",
-        "competition": "",
+        "competition": "Liga Portugal",
         "venue": "Casa",
         "result": "W",
         "gf": 2,
@@ -50,7 +50,7 @@
       },
       {
         "date": "2026-09-09",
-        "competition": "",
+        "competition": "Champions League",
         "venue": "Casa",
         "result": "W",
         "gf": 3,
@@ -59,7 +59,7 @@
       },
       {
         "date": "2026-09-13",
-        "competition": "",
+        "competition": "Liga Portugal",
         "venue": "Fora",
         "result": "D",
         "gf": 1,
@@ -68,7 +68,7 @@
       },
       {
         "date": "2026-09-19",
-        "competition": "",
+        "competition": "Liga Portugal",
         "venue": "Casa",
         "result": "D",
         "gf": 2,
