@@ -1169,6 +1169,21 @@ def fetch_sofascore_player_stats():
             "photo": f"https://img.sofascore.com/api/v1/player/{pid}/image",
             "competitions": {},
         }
+        # International appearances/caps, when Sofascore exposes them.
+        try:
+            nt = sofa_get(f"/player/{pid}/national-team-statistics")
+            nstats = nt.get("statistics", nt) if isinstance(nt, dict) else {}
+            if isinstance(nstats, dict):
+                caps = nstats.get("appearances")
+                if caps is None:
+                    caps = nstats.get("matches")
+                if caps is None:
+                    caps = nstats.get("caps")
+                if fnum(caps) is not None:
+                    row["internationalCaps"] = int(fnum(caps))
+        except Exception as e:
+            print("Sofascore national-team warning:", row["name"], e)
+
         for tid, tname in tournaments:
             sid = season_map.get(tid)
             if not sid:
