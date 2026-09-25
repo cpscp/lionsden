@@ -52,6 +52,8 @@
 .drawer-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;color:#8da097;text-align:left;font-size:13px}.drawer-link.active{background:#10231a;color:#fff}.drawer-section{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#587066;padding:18px 14px 7px}
 .news-card{overflow:hidden}.news-thumb{width:100%;height:150px;object-fit:cover;background:linear-gradient(135deg,#123d29,#09110c)}
 .class-table{width:100%;border-collapse:collapse;font-size:11px}.class-table th{color:var(--muted);font-size:9px;font-weight:500;padding:7px 3px;border-bottom:1px solid var(--line);text-align:right}.class-table th:nth-child(2),.class-table td:nth-child(2){text-align:left}.class-table td{padding:8px 3px;border-bottom:1px solid rgba(255,255,255,.045);text-align:right}.class-table tr:last-child td{border-bottom:0}.class-table .club{font-weight:600}.class-table .sc-row{background:rgba(8,165,110,.08)}
+.class-select{width:100%;background:var(--surface);color:#f3f7f4;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;font-size:12px;outline:none;appearance:auto}.class-select:focus{border-color:rgba(8,165,110,.55);box-shadow:0 0 0 2px rgba(8,165,110,.08)}.class-select option{background:#0d1510;color:#f3f7f4}
+
 .link-card{display:flex;align-items:center;justify-content:space-between;gap:14px}.link-card:hover{background:var(--surface2)}
 @media(min-width:760px){.drawer{width:330px}.wrap{max-width:700px}}
 </style>
@@ -272,7 +274,7 @@ function renderClassification(){
  const configs=[['primeira-liga','Primeira Liga'],['champions','Champions League'],['taca-portugal','Taça de Portugal'],['taca-liga','Taça da Liga']];
  const tabs=document.getElementById('classificationTabs'),el=document.getElementById('classificationList');if(!tabs||!el)return;
  let key=window._classificationKey||'primeira-liga';window._classificationKey=key;
- tabs.innerHTML='<select class="pill w-full" onchange="window._classificationKey=this.value;renderClassification()">'+configs.map(x=>'<option value="'+x[0]+'" '+(x[0]===key?'selected':'')+'>'+x[1]+'</option>').join('')+'</select>';
+ tabs.innerHTML='<select class="class-select" onchange="window._classificationKey=this.value;renderClassification()">'+configs.map(x=>'<option value="'+x[0]+'" '+(x[0]===key?'selected':'')+'>'+x[1]+'</option>').join('')+'</select>';
  let comp=data[key];
  if(key==='primeira-liga' && (!comp||!(comp.table||[]).length)) comp=D['standings.json']||null;
  const rows=comp?.table||[];
@@ -282,6 +284,12 @@ function renderClassification(){
  }
  const grouped={};rows.forEach(r=>{const g=r.groupName||'';(grouped[g]??=[]).push(r)});
  el.innerHTML='<div class="text-[9px] muted mb-2">J = jogos · P = pontos · V/E/D = vitórias/empates/derrotas · GM/GS = golos marcados/sofridos · DG = diferença</div>'+Object.entries(grouped).map(([g,rs])=>(g?'<div class="font-semibold text-[11px] px-2 pt-2 pb-2">'+esc(g)+'</div>':'')+'<table class="class-table mb-4"><thead><tr><th>#</th><th>Clube</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GM</th><th>GS</th><th>DG</th><th>PTS</th></tr></thead><tbody>'+rs.map(r=>{const t=typeof r.team==='object'?r.team:{};const sc=((t.name||'')+' '+(t.shortName||'')).toLowerCase().includes('sporting');return '<tr class="'+(sc?'sc-row':'')+'"><td>'+esc(r.position??'—')+'</td><td class="club">'+esc(t.shortName||t.name||'—')+'</td><td>'+esc(r.playedGames??'—')+'</td><td>'+esc(r.won??'—')+'</td><td>'+esc(r.draw??'—')+'</td><td>'+esc(r.lost??'—')+'</td><td>'+esc(r.goalsFor??'—')+'</td><td>'+esc(r.goalsAgainst??'—')+'</td><td>'+esc(r.goalDifference??'—')+'</td><td><b>'+esc(r.points??'—')+'</b></td></tr>'}).join('')+'</tbody></table>').join('');
+}
+function openVideo(id,title){
+ if(!id)return;
+ document.getElementById('modalTitle').textContent=title||'Sporting CP';
+ document.getElementById('modalBody').innerHTML=`<div class="rounded-2xl overflow-hidden bg-black"><div class="relative aspect-video"><iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="${esc(title||'Sporting CP')}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div><div class="text-[10px] muted mt-3">Vídeo oficial do Sporting CP · reprodução dentro da aplicação.</div>`;
+ openModal();
 }
 function renderTV(){
  const el=document.getElementById('tvList');if(!el)return;
