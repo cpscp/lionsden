@@ -762,6 +762,49 @@ def enrich_player_profiles():
             print("Player profile warning:", p.get("name"), e)
     write_json("squad.json", squad)
 
+def fetch_fotmob_competition_standings():
+    """Fetch competition tables from FotMob, avoiding the SofaScore 403 in Actions."""
+    result = safe_existing("standings-competitions.json") or {}
+    competitions = {
+        "primeira-liga": (61, "Primeira Liga"),
+        "champions": (42, "Champions League"),
+        "taca-portugal": (186, "Taça de Portugal"),
+        "taca-liga": (187, "Taça da Liga"),
+    }
+    def collect(obj, out):
+        if isinstance(obj, dict):
+            table = obj.get("table")
+            if isinstance(table, dict):
+                rows = table.get("all") or table.get("overall") or table.get("rows")
+                if isinstance(rows, list):
+                    for r in rows:
+                        if isinstance(r, dict) and (r.get("name") or r.get("id")):
+                            scores = str(r.get("scoresStr") or "0-0").split("-")
+                            out.append({"position": r.get("idx") or r.get("rank"),
+                                "team": {"id": r.get("id"), "name": r.get("name"), "shortName": r.get("shortName") or r.get("name"),
+                                         "tla": r.get("nameCode"), "crest": f"https://images.fotmob.com/image_resources/logo/teamlogo/{r.get('id')}.png" if r.get("id") else None},
+                                "playedGames": r.get("played",0), "won": r.get("wins",0), "draw": r.get("draws",0), "lost": r.get("losses",0),
+                                "points": r.get("pts",0), "goalsFor": int(scores[0]) if scores and scores[0].isdigit() else 0,
+                                "goalsAgainst": int(scores[1]) if len(scores)>1 and scores[1].isdigit() else 0, "goalDifference": r.get("goalConDiff",0)})
+            for v in obj.values(): collect(v, out)
+        elif isinstance(obj, list):
+            for v in obj: collect(v, out)
+    for key, (lid, name) in competitions.items():
+        try:
+            payload = fotmob_get("/api/data/leagues", {"id": lid, "season": "2026/2027", "ccode3": "PRT"})
+            rows=[]; collect(payload, rows)
+            dedup={str((r.get("team") or {}).get("id")):r for r in rows if (r.get("team") or {}).get("id") is not None}
+            rows=list(dedup.values()); rows.sort(key=lambda x:x.get("position") or 999)
+            if rows: result[key]={"competition":name,"season":"2026/27","table":rows,"source":"FotMob","tournament_id":lid}
+        except Exception as ex:
+            print("FotMob competition warning:", name, ex)
+    for key,name in [("taca-portugal","Taça de Portugal"),("taca-liga","Taça da Liga")]:
+        if key not in result:
+            result[key]={"competition":name,"season":"2026/27","table":[],"type":"knockout",
+                         "note":"Esta competição não tem uma tabela classificativa única nesta fase."}
+    write_json("standings-competitions.json", result)
+    print("FotMob competition standings:", {k:len(v.get("table",[])) for k,v in result.items()})
+
 def fetch_competition_standings():
     """Build a stable multi-competition standings feed.
     Primeira Liga is guaranteed from the same successful source used by standings.json.
@@ -1450,6 +1493,10 @@ def main():
             fetch_sofascore_standings()
         except Exception as e:
             print(f"SofaScore standings skipped: {e}")
+        try:
+            fetch_fotmob_competition_standings()
+        except Exception as e:
+            print(f"FotMob competition standings skipped: {e}")
         try:
             fetch_competition_standings()
         except Exception as e:
