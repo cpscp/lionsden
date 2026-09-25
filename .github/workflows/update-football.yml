@@ -13,23 +13,61 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - run: pip install -r scripts/requirements.txt
+
       - name: Atualizar futebol
         env:
           FSAPI_KEY: ${{ secrets.FSAPI_KEY }}
           LIONS_DEN_MODE: football
         run: python scripts/fetch_data.py
-      - name: Sincronizar com main
-        run: |
-          git pull --rebase origin main
 
-      - name: Commitar dados
+      - name: Commitar e sincronizar dados
         run: |
+          set -e
+
           git config user.name 'lions-den-bot'
           git config user.email 'actions@github.com'
+
           git add data/*.json
-          git diff --cached --quiet || git commit -m 'dados: atualização futebol'
-          git push
+
+          if git diff --cached --quiet; then
+            echo "Sem alterações nos dados."
+            exit 0
+          fi
+
+          git commit -m 'dados: atualização futebol'
+
+          # Atualiza a referência remota antes do push.
+          git fetch origin main
+
+          # Se o remoto mudou entretanto, reaplica o nosso commit por cima.
+          # Em conflitos nos JSON gerados, mantém os dados acabados de gerar.
+          if ! git rebase origin/main; then
+            echo "Conflito durante o rebase; mantendo os JSON gerados nesta execução."
+            git checkout --theirs -- data/*.json || true
+            git add data/*.json
+            GIT_EDITOR=true git rebase --continue
+          fi
+
+          # Tenta o push. Se outro processo tiver atualizado main entre o
+          # fetch e o push, sincroniza novamente e tenta uma segunda vez.
+          if ! git push origin HEAD:main; then
+            echo "O remoto mudou durante o push. A sincronizar e tentar novamente..."
+            git fetch origin main
+
+            if ! git rebase origin/main; then
+              echo "Conflito no segundo rebase; mantendo os JSON gerados."
+              git checkout --theirs -- data/*.json || true
+              git add data/*.json
+              GIT_EDITOR=true git rebase --continue
+            fi
+
+            git push origin HEAD:main
+          fi
