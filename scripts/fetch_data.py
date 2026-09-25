@@ -886,19 +886,26 @@ def build_team_stats_from_sofa():
     })
 
 def _sofa_season(tournament_id):
+    """Return the current 2026/27 SofaScore season id, tolerating tournament-specific names."""
     try:
         payload = sofa_get(f"/unique-tournament/{tournament_id}/seasons")
-        seasons = payload.get("seasons", [])
+        seasons = payload.get("seasons", []) or []
+        # SofaScore commonly names current seasons as e.g. "Liga Portugal Betclic 26/27".
         for season in seasons:
-            if clean(season.get("name")) in {"2026/27", "2026/2027"}:
+            name = clean(season.get("name"))
+            year = clean(season.get("year"))
+            if year in {"26/27", "2026/27", "2026/2027"} or re.search(r"26/27|2026/27|2026-2027", name):
                 return season.get("id")
         for season in seasons:
-            if season.get("isCurrent"):
+            if season.get("isCurrent") is True:
                 return season.get("id")
+        # The endpoint returns seasons newest-first; if no explicit current marker exists,
+        # the first season is the safest current-season fallback.
+        if seasons:
+            return seasons[0].get("id")
     except Exception as e:
         print("Sofascore season warning:", tournament_id, e)
     return None
-
 
 def fetch_sofascore_player_stats():
     """Fetch Sporting player profiles and 2026/27 season stats from public Sofascore endpoints."""
@@ -1122,15 +1129,25 @@ def fetch_youtube():
     channel_id = "UCHpcLaddGlZUVdtX302fpHA"
     items = []
     try:
-        import feedparser
-        feed = feedparser.parse(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
-        for entry in feed.entries[:12]:
-            vid = clean(getattr(entry, "yt_videoid", "")); url = clean(getattr(entry, "link", "")); title = clean(getattr(entry, "title", "")); published = clean(getattr(entry, "published", ""))
-            if not vid or not title or not url: continue
-            items.append({"id": vid, "title": title, "url": url, "published": published, "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
+        import xml.etree.ElementTree as ET
+        rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+        r = session.get(rss_url, timeout=25, headers={"Accept": "application/atom+xml,application/xml;q=0.9,*/*;q=0.8"})
+        r.raise_for_status()
+        root = ET.fromstring(r.content)
+        ns = {"atom": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
+        for entry in root.findall("atom:entry", ns)[:12]:
+            vid = clean(entry.findtext("yt:videoId", "", ns))
+            title = clean(entry.findtext("atom:title", "", ns))
+            published = clean(entry.findtext("atom:published", "", ns))
+            link_el = entry.find("atom:link", ns)
+            url = clean(link_el.get("href")) if link_el is not None else f"https://www.youtube.com/watch?v={vid}"
+            if vid and title:
+                items.append({"id": vid, "title": title, "url": url, "published": published,
+                              "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"})
     except Exception as e:
         print("YouTube warning:", e)
     write_json("youtube.json", {"channel": "Sporting CP", "channel_id": channel_id, "items": items, "source": "YouTube RSS"})
+    print(f"YouTube: {len(items)} videos written.")
 
 def fetch_news():
     items = []
