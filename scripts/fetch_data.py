@@ -1210,27 +1210,37 @@ def fetch_youtube():
             for v in obj:
                 collect(v)
 
-    # First choice: normal channel videos page, which is much more stable than
-    # the undocumented browse API in GitHub Actions.
-    for url in [
+    # YouTube may serve different HTML shells to GitHub Actions. Try both
+    # the channel ID and the official @SportingCP handle, then extract either
+    # the dedicated ytInitialData script or the JavaScript assignment.
+    urls = [
+        f"https://www.youtube.com/@SportingCP/videos?hl=pt-PT&gl=PT",
         f"https://www.youtube.com/channel/{channel_id}/videos?hl=pt-PT&gl=PT",
-        f"https://www.youtube.com/channel/{channel_id}?hl=pt-PT&gl=PT",
-    ]:
+    ]
+    for url in urls:
         try:
-            r = session.get(url, timeout=30)
+            r = session.get(url, timeout=30, headers={**session.headers, "Accept": "text/html,application/xhtml+xml"})
             r.raise_for_status()
             html = r.text
-            # YouTube embeds the initial data as JSON. Decode the object
-            # directly from the assignment instead of using a fragile regex.
-            marker = "ytInitialData = "
-            pos = html.find(marker)
-            if pos >= 0:
-                raw = html[pos + len(marker):].lstrip()
+            parsed = False
+            soup = BeautifulSoup(html, "html.parser")
+            script = soup.find("script", id="ytInitialData")
+            if script and script.string:
                 try:
-                    obj, _ = json.JSONDecoder().raw_decode(raw)
-                    collect(obj)
+                    collect(json.loads(script.string))
+                    parsed = True
                 except Exception as e:
-                    print("YouTube initial-data parse warning:", e)
+                    print("YouTube script JSON warning:", e)
+            if not parsed:
+                m = re.search(r"ytInitialData\\s*=\\s*", html)
+                if m:
+                    raw = html[m.end():].lstrip()
+                    try:
+                        obj, _ = json.JSONDecoder().raw_decode(raw)
+                        collect(obj)
+                        parsed = True
+                    except Exception as e:
+                        print("YouTube assignment parse warning:", e)
             if items:
                 break
         except Exception as e:
