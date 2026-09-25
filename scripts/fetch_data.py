@@ -1274,71 +1274,142 @@ def fetch_sofascore_player_stats():
     print(f"Sofascore: {len(players)} players enriched; {sum(bool(p.get('stats')) for p in players)} have season stats.")
 
 def fetch_sporting_player_profiles():
-    """Enrich the current first-team squad from Sporting CP's official player pages."""
+    """Enrich squad profiles primarily from ZeroZero, with Sporting CP as fallback."""
     squad=safe_existing("squad.json") or {}
     players=squad.get("players") or squad.get("squad") or []
     if not players: return
 
-    try:
-        roster_html=session.get("https://www.sporting.pt/pt/futebol/plantel",timeout=25).text
-        roster_soup=BeautifulSoup(roster_html,"html.parser")
-    except Exception as e:
-        print("Sporting roster warning:",e); return
+    def parse_zerozero_profile(html,url):
+        soup=BeautifulSoup(html,"html.parser")
+        text=soup.get_text("\n",strip=True)
+        out={"profile":url,"profileSource":"ZeroZero"}
 
-    profile_links={}
-    for a in roster_soup.select('a[href*="/futebol/equipa-principal/plantel/"]'):
-        href=a.get("href") or ""; label=" ".join(a.stripped_strings).strip()
-        if not href or not label: continue
-        if href.startswith("/"): href="https://www.sporting.pt"+href
-        m=re.match(r"^\s*(\d+)\s+(.+?)\s*$",label)
-        if m:
-            profile_links[normalize_player_name(m.group(2)).lower()]={"url":href,"shirtNumber":int(m.group(1))}
+        # ZeroZero exposes the current shirt number in the player heading, e.g. "1.Rui Silva".
+        h1=soup.find("h1")
+        heading=clean(h1.get_text(" ",strip=True)) if h1 else ""
+        m=re.match(r"^(\d+)\s*\.",heading)
+        if m: out["shirtNumber"]=int(m.group(1))
 
-    months={"janeiro":1,"fevereiro":2,"março":3,"abril":4,"maio":5,"junho":6,"julho":7,"agosto":8,"setembro":9,"outubro":10,"novembro":11,"dezembro":12}
-    def parse_date(text):
-        m=re.search(r"Data de nascimento\s+(\d{1,2})\s+([A-Za-zÀ-ÿç]+)\s+(\d{4})",text,flags=re.I)
-        if not m: return None
-        month=months.get(m.group(2).lower())
-        return f"{int(m.group(3)):04d}-{month:02d}-{int(m.group(1)):02d}" if month else None
-    def parse_career(text):
-        m=re.search(r"Clubes anteriores\s+(.*?)(?:\nPrémios\b|\nPerguntas Frequentes\b|\Z)",text,flags=re.I|re.S)
-        if not m: return []
-        out=[]
-        for line in m.group(1).splitlines():
-            line=clean(line)
-            if not line or ":" not in line: continue
-            period,club=line.split(":",1); club=clean(club)
-            if club: out.append({"period":clean(period),"club":club})
+        dob=re.search(r"Data de Nascimento\s+(\d{4}-\d{2}-\d{2})",text,re.I)
+        if dob: out["dateOfBirth"]=dob.group(1)
+
+        caps=re.search(r"Internacionalizações\s+A(\d+)\s+Jogos",text,re.I)
+        if caps: out["internationalCaps"]=int(caps.group(1))
+
+        # The main Histórico table gives the player's club path by season.
+        career=[]
+        for table in soup.find_all("table"):
+            headers=[clean(c.get_text(" ",strip=True)).upper() for c in table.find_all(["th","td"],limit=5)]
+            if not any("EQUIPA" in h for h in headers) or not any("ÉPOCA" in h for h in headers):
+                continue
+            for tr in table.find_all("tr"):
+                cells=[clean(c.get_text(" ",strip=True)) for c in tr.find_all(["td","th"])]
+                if len(cells)<2: continue
+                season,club=cells[0],cells[1]
+                if not club or club.upper() in {"EQUIPA","—","-"}: continue
+                # Skip purely statistical duplicate rows.
+                if season and re.match(r"^\d{4}/\d{2,4}$",season) or season=="":
+                    item={"period":season,"club":club}
+                    if item not in career: career.append(item)
+            if career: break
+
+        if career: out["career"]=career
+
+        country=re.search(r"\bNacionalidade\s+([^\n]+)",text,re.I)
+        if country: out["nationality"]=clean(country.group(1))
+
+        pos=re.search(r"•\d+\s+anos•([^•\n]+)•Futebol",text,re.I)
+        if pos: out["officialPosition"]=clean(pos.group(1))
+
         return out
-    def parse_position(text):
-        m=re.search(r"\b\d+\s+Anos\s+([A-Za-zÀ-ÿçãõéíóúâêôüç\- ]+?)\s+Image\b",text,flags=re.I)
-        return clean(m.group(1)) if m else None
+
+    def zerozero_lookup(name):
+        try:
+            params={
+                "op":"all",
+                "search_string":name,
+                "peq":"1",
+                "fem":"0",
+                "mod":"1",
+                "sta":"0",
+                "ord":"i",
+            }
+            rr=session.get("https://www.zerozero.pt/search_player.php",params=params,timeout=15)
+            rr.raise_for_status()
+            soup=BeautifulSoup(rr.text,"html.parser")
+            wanted=normalize_player_name(name).lower()
+            links=[]
+            for a in soup.select('a[href*="/jogador/"]'):
+                href=a.get("href") or ""
+                label=clean(a.get_text(" ",strip=True))
+                if not href: continue
+                if href.startswith("/"): href="https://www.zerozero.pt"+href
+                score=0
+                if normalize_player_name(label).lower()==wanted: score+=10
+                if wanted in normalize_player_name(label).lower(): score+=5
+                if "Sporting" in a.parent.get_text(" ",strip=True): score+=2
+                links.append((score,href))
+            if not links: return None
+            links.sort(key=lambda x:x[0],reverse=True)
+            return links[0][1]
+        except Exception as e:
+            print("ZeroZero search warning:",name,e)
+            return None
 
     by_name={normalize_player_name(p.get("name")).lower():p for p in players if p.get("name")}
-    for key,meta in profile_links.items():
-        p=by_name.get(key)
-        if not p: continue
+    enriched=0
+
+    for key,p in by_name.items():
         try:
-            rr=session.get(meta["url"],timeout=20); rr.raise_for_status()
-            text=BeautifulSoup(rr.text,"html.parser").get_text("\n",strip=True)
-            p["profile"]=meta["url"]; p["shirtNumber"]=meta["shirtNumber"]
-            dob=parse_date(text)
-            if dob: p["dateOfBirth"]=dob
-            pos=parse_position(text)
-            if pos: p["officialPosition"]=pos
-            career=parse_career(text)
-            if career: p["career"]=career
-            if not p.get("nationality") and not p.get("nation"):
-                cm=re.search(r"\bPaís\s+([^\n]+)",text,flags=re.I)
-                if cm: p["nationality"]=clean(cm.group(1))
+            url=zerozero_lookup(p.get("name",""))
+            if not url: continue
+            rr=session.get(url,timeout=15,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            data=parse_zerozero_profile(rr.text,url)
+            for field,value in data.items():
+                if value not in (None,"",[]): p[field]=value
+            enriched+=1
         except Exception as e:
-            print("Sporting player profile warning:",p.get("name"),e)
+            print("ZeroZero profile warning:",p.get("name"),e)
+
+    # Official Sporting fallback for players that ZeroZero could not resolve.
+    unresolved=[p for p in players if not p.get("dateOfBirth") or p.get("shirtNumber") is None]
+    if unresolved:
+        try:
+            roster_rr=session.get("https://www.sporting.pt/pt/futebol/plantel",timeout=20,headers={"User-Agent":USER_AGENT})
+            roster_rr.raise_for_status()
+            roster_soup=BeautifulSoup(roster_rr.text,"html.parser")
+            links={}
+            for a in roster_soup.select('a[href*="/futebol/equipa-principal/plantel/"]'):
+                href=a.get("href") or ""
+                label=clean(a.get_text(" ",strip=True))
+                if href.startswith("/"): href="https://www.sporting.pt"+href
+                m=re.match(r"^\s*(\d+)\s+(.+?)\s*$",label)
+                if m: links[normalize_player_name(m.group(2)).lower()]={"url":href,"shirtNumber":int(m.group(1))}
+            for p in unresolved:
+                meta=links.get(normalize_player_name(p.get("name")).lower())
+                if not meta: continue
+                try:
+                    rr=session.get(meta["url"],timeout=15,headers={"User-Agent":USER_AGENT})
+                    rr.raise_for_status()
+                    txt=BeautifulSoup(rr.text,"html.parser").get_text("\n",strip=True)
+                    p["profile"]=meta["url"]; p["profileSource"]="Sporting CP"; p["shirtNumber"]=meta["shirtNumber"]
+                    m=re.search(r"Data de nascimento\s+(\d{1,2})\s+([A-Za-zÀ-ÿç]+)\s+(\d{4})",txt,re.I)
+                    if m:
+                        months={"janeiro":1,"fevereiro":2,"março":3,"abril":4,"maio":5,"junho":6,"julho":7,"agosto":8,"setembro":9,"outubro":10,"novembro":11,"dezembro":12}
+                        mo=months.get(m.group(2).lower())
+                        if mo: p["dateOfBirth"]=f"{int(m.group(3)):04d}-{mo:02d}-{int(m.group(1)):02d}"
+                except Exception as e:
+                    print("Sporting fallback warning:",p.get("name"),e)
+        except Exception as e:
+            print("Sporting roster fallback warning:",e)
 
     for p in players:
         if p.get("officialPosition") and not p.get("position"): p["position"]=p["officialPosition"]
 
-    write_json("squad.json",{**squad,"squad":players,"players":players,"source":"Sporting CP + FotMob/SofaScore/FBref"})
-    print(f"Sporting CP: enriched {sum(bool(p.get('career')) for p in players)} careers and {sum(p.get('shirtNumber') is not None for p in players)} shirt numbers.")
+    write_json("squad.json",{**squad,"squad":players,"players":players,"source":"ZeroZero + Sporting CP + FotMob/SofaScore/FBref"})
+    print(f"Player profile enrichment: {enriched}/{len(players)} resolved via ZeroZero.")
+
 
 def fetch_standings():
     tables, html = read_fbref_tables(FBREF_LEAGUE)
