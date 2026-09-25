@@ -328,6 +328,255 @@ def sofa_get(path, params=None):
 
 
 
+
+def fotmob_get(path, params=None):
+    url = "https://www.fotmob.com" + path
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json,text/plain,*/*",
+        "Referer": "https://www.fotmob.com/"
+    }
+    r = session.get(url, params=params or {}, headers=headers, timeout=25)
+    r.raise_for_status()
+    return r.json()
+
+def _first_dict(obj, *keys):
+    if not isinstance(obj, dict):
+        return {}
+    for k in keys:
+        v = obj.get(k)
+        if isinstance(v, dict):
+            return v
+    return {}
+
+def _first_list(obj, *keys):
+    if not isinstance(obj, dict):
+        return []
+    for k in keys:
+        v = obj.get(k)
+        if isinstance(v, list):
+            return v
+    return []
+
+def fetch_fotmob_core():
+    """Primary zero-cost source: FotMob public web data."""
+    team_id = 9768
+    payload = fotmob_get("/api/data/teams", {"id": team_id, "ccode3": "PRT"})
+
+    # ---- Fixtures ----
+    fxroot = _first_dict(payload, "fixtures")
+    allfx = _first_dict(fxroot, "allFixtures")
+    raw_fixtures = _first_list(allfx, "fixtures")
+    if not raw_fixtures:
+        raw_fixtures = _first_list(fxroot, "fixtures")
+
+    fixtures = []
+    for x in raw_fixtures:
+        home = x.get("home") or x.get("homeTeam") or {}
+        away = x.get("away") or x.get("awayTeam") or {}
+        st = x.get("status") or {}
+        utc = st.get("utcTime") or x.get("utcTime") or x.get("matchTimeUTCDate")
+        if not utc:
+            continue
+        try:
+            stamp = int(datetime.fromisoformat(str(utc).replace("Z", "+00:00")).timestamp())
+        except Exception:
+            continue
+        finished = bool(st.get("finished")) or str(st.get("reason", "")).lower() in {"ft", "full time"}
+        score = x.get("score") or {}
+        hs = score.get("home") if isinstance(score, dict) else None
+        aas = score.get("away") if isinstance(score, dict) else None
+        if hs is None:
+            hs = home.get("score")
+        if aas is None:
+            aas = away.get("score")
+        comp = x.get("competition") or x.get("league") or {}
+        venue = x.get("venue") or {}
+        fixtures.append({
+            "id": x.get("id") or x.get("matchId"),
+            "date": stamp,
+            "kickoff_date": datetime.fromtimestamp(stamp, timezone.utc).date().isoformat(),
+            "kickoff_local_time": datetime.fromtimestamp(stamp, timezone.utc).strftime("%H:%M"),
+            "status": {
+                "short": "finished" if finished else ("live" if st.get("started") and not finished else "scheduled"),
+                "long": "Terminado" if finished else ("Em direto" if st.get("started") else "Agendado")
+            },
+            "referee": None,
+            "venue": {
+                "name": clean(venue.get("name")),
+                "city": clean(venue.get("city")),
+                "lat": venue.get("latitude"),
+                "lon": venue.get("longitude"),
+                "capacity": venue.get("capacity")
+            },
+            "competition": {
+                "name": clean(comp.get("name")) if isinstance(comp, dict) else clean(comp),
+                "round": clean(x.get("round") or x.get("matchday")),
+                "season": "2026/27"
+            },
+            "home": {"id": home.get("id"), "name": clean(home.get("name"))},
+            "away": {"id": away.get("id"), "name": clean(away.get("name"))},
+            "goals": {"home": hs if finished else None, "away": aas if finished else None},
+            "half_time": {"home": None, "away": None},
+            "source": "FotMob"
+        })
+
+    fixtures = {str(x["id"]): x for x in fixtures if x.get("id")}.values()
+    fixtures = sorted(fixtures, key=lambda x: x.get("date") or 0)
+    if not fixtures:
+        raise RuntimeError("FotMob returned no Sporting fixtures.")
+
+    # Match details for next 8 and last 4 provide referee/venue/map data.
+    for f in list(fixtures)[-4:] + [x for x in fixtures if x["date"] > int(time.time())][:8]:
+        try:
+            md = fotmob_get("/api/data/matchDetails", {"matchId": f["id"]})
+            content = _first_dict(md, "content")
+            facts = _first_dict(content, "matchFacts")
+            info = _first_dict(facts, "infoBox")
+            referee = info.get("Referee") or info.get("referee")
+            if referee:
+                f["referee"] = clean(referee)
+            venue = f.get("venue") or {}
+            for key, value in {
+                "name": venue.get("name") or info.get("Stadium"),
+                "city": venue.get("city") or info.get("Location")
+            }.items():
+                if value:
+                    venue[key] = clean(value)
+            f["venue"] = venue
+        except Exception as e:
+            print("FotMob match detail warning:", f.get("id"), e)
+
+    write_json("fixtures.json", {
+        "team_id": team_id,
+        "fixtures": list(fixtures),
+        "source": "FotMob",
+        "season": "2026/27"
+    })
+
+    # ---- Squad + player season stats ----
+    squad_root = _first_dict(payload, "squad")
+    groups = []
+    for key in ("goalkeepers", "defenders", "midfielders", "attackers"):
+        groups.extend(_first_list(squad_root, key))
+
+    players = []
+    for m in groups:
+        pid = m.get("id") or m.get("playerId")
+        if not pid:
+            continue
+        player = {
+            "fotmob_id": pid,
+            "name": clean(m.get("name")),
+            "position": clean(m.get("rolePosition") or m.get("position")),
+            "nationality": clean(m.get("cname") or m.get("country")),
+            "photo": f"https://images.fotmob.com/image_resources/playerimages/{pid}.png",
+            "stats": {}
+        }
+        try:
+            pd = fotmob_get("/api/data/playerData", {"id": pid, "includeMarketValues": "true"})
+            seasons = pd.get("statSeasons") or []
+            season = next((z for z in seasons if str(z.get("seasonName", "")).replace("-", "/") in {"2026/2027", "2026/27"}), None)
+            if not season and seasons:
+                season = seasons[0]
+            stats = {}
+            if season:
+                tournaments = season.get("tournamentStats") or []
+                for t in tournaments:
+                    if not t.get("isFriendly") and (t.get("leagueName") in {"Liga Portugal", "UEFA Champions League", "Taça de Portugal", "Taça da Liga"}):
+                        for k in ("appearances","goals","assists"):
+                            if t.get(k) is not None:
+                                stats[k] = stats.get(k, 0) + int(fnum(t.get(k)) or 0)
+                        rating = (t.get("rating") or {}).get("num") if isinstance(t.get("rating"), dict) else None
+                        if rating is not None:
+                            stats.setdefault("ratings", []).append(float(rating))
+            recent = pd.get("recentMatches") or []
+            stats["matches"] = stats.get("appearances", 0)
+            stats["starts"] = sum(1 for rm in recent if rm.get("started"))
+            stats["minutes"] = int(sum(fnum(rm.get("minutesPlayed")) or 0 for rm in recent))
+            stats["yellow"] = int(sum(fnum(rm.get("yellowCards")) or 0 for rm in recent))
+            stats["red"] = int(sum(fnum(rm.get("redCards")) or 0 for rm in recent))
+            if stats.get("ratings"):
+                stats["rating"] = round(sum(stats["ratings"]) / len(stats["ratings"]), 2)
+            stats.pop("ratings", None)
+            player["stats"] = stats
+            dob = _first_dict(pd, "birthDate")
+            player["dateOfBirth"] = dob.get("iso") or dob.get("date") if dob else None
+        except Exception as e:
+            print("FotMob player warning:", pid, e)
+        players.append(player)
+
+    if players:
+        write_json("squad.json", {
+            "team": "Sporting Clube de Portugal",
+            "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
+            "coach": "Rui Borges",
+            "season": "2026/27",
+            "squad": players,
+            "source": "FotMob"
+        })
+
+    # ---- Primeira Liga standings ----
+    league = fotmob_get("/api/data/leagues", {"id": 61, "season": "2026/2027", "ccode3": "PRT"})
+    rows = []
+    for block in _first_list(league, "table"):
+        data = _first_dict(block, "data")
+        table = _first_dict(data, "table")
+        for r in _first_list(table, "all"):
+            scores = str(r.get("scoresStr") or "0-0").split("-")
+            rows.append({
+                "position": r.get("idx"),
+                "team": {
+                    "id": r.get("id"),
+                    "name": r.get("name"),
+                    "shortName": r.get("shortName") or r.get("name"),
+                    "tla": None,
+                    "crest": f"https://images.fotmob.com/image_resources/logo/teamlogo/{r.get('id')}.png" if r.get("id") else None
+                },
+                "playedGames": r.get("played", 0),
+                "won": r.get("wins", 0),
+                "draw": r.get("draws", 0),
+                "lost": r.get("losses", 0),
+                "points": r.get("pts", 0),
+                "goalsFor": int(scores[0]) if scores and scores[0].isdigit() else 0,
+                "goalsAgainst": int(scores[1]) if len(scores) > 1 and scores[1].isdigit() else 0,
+                "goalDifference": r.get("goalConDiff", 0)
+            })
+    if rows:
+        rows.sort(key=lambda r: r.get("position") or 999)
+        write_json("standings.json", {
+            "competition": "Primeira Liga",
+            "season": "2026/27",
+            "table": rows,
+            "source": "FotMob"
+        })
+
+    # ---- Team stats derived from current fixtures + player totals ----
+    now = int(time.time())
+    played = [f for f in fixtures if f["date"] <= now and f["goals"]["home"] is not None]
+    team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,
+            "assists":0,"shots":0,"shots_on_target":0,"clean_sheets":0,"form":[],"recent_matches":[]}
+    for f in played:
+        h, a = int(f["goals"]["home"]), int(f["goals"]["away"])
+        home = f["home"].get("id") == team_id
+        gf, ga = (h,a) if home else (a,h)
+        res = "W" if gf > ga else "D" if gf == ga else "L"
+        team["matches"] += 1; team["goals"] += gf; team["goals_against"] += ga
+        team[{"W":"wins","D":"draws","L":"losses"}[res]] += 1
+        team["clean_sheets"] += int(ga == 0); team["form"].append(res)
+        team["recent_matches"].append({
+            "date": f["kickoff_date"], "competition": f["competition"]["name"],
+            "venue": "Casa" if home else "Fora", "result": res, "gf": gf, "ga": ga,
+            "opponent": (f["away"] if home else f["home"])["name"]
+        })
+    for p in players:
+        st = p.get("stats") or {}
+        for k in ("assists","shots","shots_on_target"):
+            team[k] += int(fnum(st.get(k)) or 0)
+    team["form"] = team["form"][-6:]
+    team["recent_matches"] = team["recent_matches"][-6:]
+    write_json("team-stats.json", {"season":"2026/27","team":team,"source":"FotMob"})
+
 def fetch_sofascore_fixtures():
     """Use SofaScore's public team feed as the primary current-season fixture source."""
     team_id = 3001
@@ -947,38 +1196,24 @@ def main():
         errors.append(f"news: {e}")
 
     if mode in {"full", "football"}:
-        # SofaScore is the primary zero-cost source for current fixtures,
-        # standings and player statistics. FBref remains an optional enrichment.
         try:
-            fetch_sofascore_fixtures()
+            fetch_fotmob_core()
         except Exception as e:
-            errors.append(f"sofascore-fixtures: {e}")
+            errors.append(f"fotmob-core: {e}")
 
+        # Optional secondary sources. They must never replace working FotMob data.
         try:
-            fetch_sofascore_player_stats()
+            geocode_missing_venues()
         except Exception as e:
-            errors.append(f"sofascore-player-stats: {e}")
+            print(f"Map enrichment skipped: {e}")
 
-        try:
-            build_team_stats_from_sofa()
-        except Exception as e:
-            errors.append(f"team-stats: {e}")
-
-        try:
-            fetch_sofascore_standings()
-        except Exception as e:
-            errors.append(f"sofascore-standings: {e}")
-
-        # FBref is optional; a 403 must never blank or replace current data.
         try:
             fetch_fbref_stats()
         except Exception as e:
             print(f"FBref enrichment skipped: {e}")
 
-        # Football Soccer API is optional match-detail enrichment only.
         try:
             fetch_fsa_fixtures()
-            geocode_missing_venues()
             enrich_match_details()
         except Exception as e:
             print(f"Football API enrichment skipped: {e}")
