@@ -1,7 +1,22 @@
 {
-  "_updated_at": "2026-09-25T21:38:22.475676+00:00",
+  "_updated_at": "2026-09-25T21:41:23.326242+00:00",
   "channel": "Sporting CP",
   "channel_id": "UCHpcLaddGlZUVdtX302fpHA",
-  "items": [],
-  "source": "YouTube"
+  "items": [
+    {
+      "id": "LFMfqhXv8NU",
+      "title": "Sporting CP — vídeo oficial",
+      "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hqdefault.jpg"
+    },
+    {
+      "id": "q6iKmAL4YFQ",
+      "title": "Sporting CP — vídeo oficial",
+      "url": "https://www.youtube.com/watch?v=q6iKmAL4YFQ",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/q6iKmAL4YFQ/hqdefault.jpg"
+    }
+  ],
+  "source": "YouTube official channel"
 }
