@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T22:46:53.517644+00:00",
+  "_updated_at": "2026-09-25T22:48:12.249955+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -533,7 +533,7 @@
       "dateOfBirth": null
     }
   ],
-  "source": "Sporting CP + FotMob/SofaScore/FBref",
+  "source": "ZeroZero + Sporting CP + FotMob/SofaScore/FBref",
   "players": [
     {
       "fotmob_id": 361717,
