@@ -34,7 +34,7 @@ FSAPI_KEY = os.environ.get("FSAPI_KEY")
 FSAPI_BASE = "https://api.footballsoccerapi.com/v1"
 FBREF_TEAM = "https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions"
 FBREF_TEAM_ROSTER = "https://fbref.com/en/squads/13dc44fd/2026-2027/roster/Sporting-CP-Roster-Details"
-FBREF_LEAGUE = "https://fbref.com/en/comps/32/2025/2025-league-Stats"
+FBREF_LEAGUE = "https://fbref.com/en/comps/32/2026-2027/2026-2027-Primeira-Liga-Stats"
 FBREF_SCHEDULE = "https://fbref.com/en/squads/13dc44fd/2026-2027/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
 SPORTING_NEWS = "https://www.sporting.pt/pt/noticias/futebol"
 USER_AGENT = "Mozilla/5.0 (compatible; LionsDen/3.0; +https://github.com/cpscp/lionsden)"
@@ -169,32 +169,97 @@ def normalize_player_name(v):
 
 
 def fetch_fbref_stats():
-    tables, team_html = read_fbref_tables(FBREF_TEAM)
-    for df in tables:
-        multi_index_flatten(df)
+    """
+    Fetch Sporting CP 2026/27 data from FBref.
 
-    standard = pick_table(tables, ["Player", "MP", "Starts", "Min", "Gls", "Ast"])
-    shooting = pick_table(tables, ["Player", "Sh", "SoT"])
-    playing = pick_table(tables, ["Player", "Min", "Starts", "Subs"])
-    keepers = pick_table(tables, ["Player", "GA", "Saves", "CS"])
-    misc = pick_table(tables, ["Player", "CrdY", "CrdR"])
-    fixtures = pick_table(tables, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent", "Referee"])
-    if fixtures is None:
-        # Keep stats generation alive even if FBref changes the match-log columns.
-        fixtures = pd.DataFrame(columns=["Date", "Time", "Comp", "Round", "Venue", "Result", "GF", "GA", "Opponent", "Poss", "Attendance", "Referee", "Match Report"])
+    FBref is the primary source for:
+    - squad
+    - player statistics
+    - team statistics
+    - complete season schedule
+    """
+
+    tables, team_html = read_fbref_tables(FBREF_TEAM)
+
+    # Normalize all FBref tables immediately.
+    normalized_tables = []
+    for df in tables:
+        try:
+            normalized_tables.append(multi_index_flatten(df.copy()))
+        except Exception:
+            normalized_tables.append(df)
+
+    tables = normalized_tables
+
+    # Find the relevant FBref tables.
+    standard = pick_table(
+        tables,
+        ["Player", "MP", "Starts", "Min", "Gls", "Ast"]
+    )
+
+    shooting = pick_table(
+        tables,
+        ["Player", "Sh", "SoT"]
+    )
+
+    playing = pick_table(
+        tables,
+        ["Player", "Min", "Starts", "Subs"]
+    )
+
+    keepers = pick_table(
+        tables,
+        ["Player", "GA", "Saves", "CS"]
+    )
+
+    misc = pick_table(
+        tables,
+        ["Player", "CrdY", "CrdR"]
+    )
+
+    # FBref match-log table.
+    fixtures = pick_table(
+        tables,
+        [
+            "Date",
+            "Comp",
+            "Venue",
+            "Result",
+            "GF",
+            "GA",
+            "Opponent"
+        ]
+    )
 
     if standard is None:
-        raise RuntimeError("FBref standard player table not found.")
+        raise RuntimeError(
+            "FBref standard player table not found."
+        )
+
+    if fixtures is None:
+        raise RuntimeError(
+            "FBref match schedule table not found."
+        )
 
     def rows_for(df):
         if df is None:
             return {}
+
         out = {}
+
         for _, r in df.iterrows():
             name = normalize_player_name(r.get("Player"))
+
             if not name or name == "Squad Total":
                 continue
-            out[name] = {clean(k): (None if pd.isna(v) else v) for k, v in r.to_dict().items()}
+
+            out[name] = {
+                clean(k): (
+                    None if pd.isna(v) else v
+                )
+                for k, v in r.to_dict().items()
+            }
+
         return out
 
     sh = rows_for(shooting)
@@ -202,138 +267,370 @@ def fetch_fbref_stats():
     kg = rows_for(keepers)
     mi = rows_for(misc)
 
-    # Parse roster photos/profile links. This page is small and usually more stable than individual requests.
+    # ---------------------------------------------------------
+    # Player photos and profile links
+    # ---------------------------------------------------------
+
     photo_map = {}
     profile_map = {}
+
     try:
-        roster_tables, roster_html = read_fbref_tables(FBREF_TEAM_ROSTER)
-        soup = BeautifulSoup(roster_html, "html.parser")
-        for a in soup.select('a[href*="/en/players/"]'):
-            name = normalize_player_name(a.get_text(" ", strip=True))
+        roster_tables, roster_html = read_fbref_tables(
+            FBREF_TEAM_ROSTER
+        )
+
+        soup = BeautifulSoup(
+            roster_html,
+            "html.parser"
+        )
+
+        for a in soup.select(
+            'a[href*="/en/players/"]'
+        ):
+            name = normalize_player_name(
+                a.get_text(" ", strip=True)
+            )
+
             if not name:
                 continue
+
             href = a.get("href")
+
             if href and href.startswith("/"):
                 href = "https://fbref.com" + href
+
             img = a.find_previous("img")
+
             if img and img.get("src"):
                 photo_map[name] = img.get("src")
+
             profile_map[name] = href
+
     except Exception as e:
-        print("Roster enrichment warning:", e)
+        print(
+            "Roster enrichment warning:",
+            e
+        )
+
+    # ---------------------------------------------------------
+    # Players
+    # ---------------------------------------------------------
 
     players = []
+
     for _, r in standard.iterrows():
-        name = normalize_player_name(r.get("Player"))
+
+        name = normalize_player_name(
+            r.get("Player")
+        )
+
         if not name or name == "Squad Total":
             continue
-        s = {clean(k): (None if pd.isna(v) else v) for k, v in r.to_dict().items()}
+
+        s = {
+            clean(k): (
+                None if pd.isna(v) else v
+            )
+            for k, v in r.to_dict().items()
+        }
+
         s2 = sh.get(name, {})
         s3 = pt.get(name, {})
         s4 = kg.get(name, {})
         s5 = mi.get(name, {})
+
         players.append({
+
             "name": name,
-            "nation": clean(s.get("Nation")),
-            "position": clean(s.get("Pos")),
-            "age": clean(s.get("Age")),
-            "matches": int(fnum(s.get("MP")) or 0),
-            "starts": int(fnum(s.get("Starts")) or 0),
-            "minutes": int(fnum(s.get("Min")) or 0),
-            "goals": int(fnum(s.get("Gls")) or 0),
-            "assists": int(fnum(s.get("Ast")) or 0),
-            "yellow": int(fnum(s.get("CrdY")) or fnum(s5.get("CrdY")) or 0),
-            "red": int(fnum(s.get("CrdR")) or fnum(s5.get("CrdR")) or 0),
-            "shots": int(fnum(s2.get("Sh")) or 0),
-            "shots_on_target": int(fnum(s2.get("SoT")) or 0),
-            "saves": int(fnum(s4.get("Saves")) or 0),
-            "goals_against": int(fnum(s4.get("GA")) or 0),
-            "clean_sheets": int(fnum(s4.get("CS")) or 0),
+
+            "nation": clean(
+                s.get("Nation")
+            ),
+
+            "position": clean(
+                s.get("Pos")
+            ),
+
+            "age": clean(
+                s.get("Age")
+            ),
+
+            "matches": int(
+                fnum(s.get("MP")) or 0
+            ),
+
+            "starts": int(
+                fnum(s.get("Starts")) or
+                fnum(s3.get("Starts")) or
+                0
+            ),
+
+            "minutes": int(
+                fnum(s.get("Min")) or
+                fnum(s3.get("Min")) or
+                0
+            ),
+
+            "goals": int(
+                fnum(s.get("Gls")) or 0
+            ),
+
+            "assists": int(
+                fnum(s.get("Ast")) or 0
+            ),
+
+            "yellow": int(
+                fnum(s5.get("CrdY")) or 0
+            ),
+
+            "red": int(
+                fnum(s5.get("CrdR")) or 0
+            ),
+
+            "shots": int(
+                fnum(s2.get("Sh")) or 0
+            ),
+
+            "shots_on_target": int(
+                fnum(s2.get("SoT")) or 0
+            ),
+
+            "saves": int(
+                fnum(s4.get("Saves")) or 0
+            ),
+
+            "goals_against": int(
+                fnum(s4.get("GA")) or 0
+            ),
+
+            "clean_sheets": int(
+                fnum(s4.get("CS")) or 0
+            ),
+
             "photo": photo_map.get(name),
+
             "profile": profile_map.get(name),
         })
 
-    # Team-level values from the player tables + schedule.
+    # ---------------------------------------------------------
+    # Team statistics
+    # ---------------------------------------------------------
+
     team = {
-        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))),
-        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()),
-        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()),
-        "assists": sum(p["assists"] for p in players),
-        "shots": sum(p["shots"] for p in players),
-        "shots_on_target": sum(p["shots_on_target"] for p in players),
-        "minutes": sum(p["minutes"] for p in players),
-        "clean_sheets": sum(p["clean_sheets"] for p in players if p["position"] == "GK"),
+        "matches": 0,
+        "goals": 0,
+        "goals_against": 0,
+        "assists": sum(
+            p["assists"] for p in players
+        ),
+        "shots": sum(
+            p["shots"] for p in players
+        ),
+        "shots_on_target": sum(
+            p["shots_on_target"]
+            for p in players
+        ),
+        "minutes": sum(
+            p["minutes"] for p in players
+        ),
+        "clean_sheets": sum(
+            p["clean_sheets"]
+            for p in players
+            if p["position"] == "GK"
+        ),
     }
 
-    # Possession is available on the match-log table; average only numeric values.
-    poss = []
-    if fixtures is not None and "Poss" in fixtures.columns:
-        for v in fixtures["Poss"].tolist():
-            n = fnum(v)
-            if n is not None:
-                poss.append(n)
-    team["possession_avg"] = round(sum(poss) / len(poss), 1) if poss else None
+    # ---------------------------------------------------------
+    # Schedule
+    # ---------------------------------------------------------
 
-    # Form from the most recent completed matches.
+    schedule_rows = []
+
+    for _, r in fixtures.iterrows():
+
+        d = clean(r.get("Date"))
+
+        if not d:
+            continue
+
+        result = clean(
+            r.get("Result")
+        )
+
+        gf = fnum(r.get("GF"))
+        ga = fnum(r.get("GA"))
+
+        if result:
+            team["matches"] += 1
+            team["goals"] += int(gf or 0)
+            team["goals_against"] += int(ga or 0)
+
+        schedule_rows.append({
+
+            "date": d,
+
+            "time": clean(
+                r.get("Time")
+            ),
+
+            "competition": clean(
+                r.get("Comp")
+            ),
+
+            "round": clean(
+                r.get("Round")
+            ),
+
+            "venue_side": clean(
+                r.get("Venue")
+            ),
+
+            "result": result,
+
+            "gf": (
+                int(gf)
+                if result and gf is not None
+                else None
+            ),
+
+            "ga": (
+                int(ga)
+                if result and ga is not None
+                else None
+            ),
+
+            "opponent": clean(
+                r.get("Opponent")
+            ).replace("tr ", "")
+             .replace("fr ", "")
+             .replace("eng ", "")
+             .replace("it ", "")
+             .replace("ua ", "")
+             .replace("es ", ""),
+
+            "possession": fnum(
+                r.get("Poss")
+            ),
+
+            "attendance": (
+                int(fnum(r.get("Attendance")))
+                if fnum(r.get("Attendance")) is not None
+                else None
+            ),
+
+            "referee": clean(
+                r.get("Referee")
+            ),
+
+            "match_report": clean(
+                r.get("Match Report")
+            ),
+        })
+
+    # ---------------------------------------------------------
+    # Possession
+    # ---------------------------------------------------------
+
+    poss = []
+
+    if "Poss" in fixtures.columns:
+
+        for value in fixtures["Poss"].tolist():
+
+            number = fnum(value)
+
+            if number is not None:
+                poss.append(number)
+
+    team["possession_avg"] = (
+        round(
+            sum(poss) / len(poss),
+            1
+        )
+        if poss
+        else None
+    )
+
+    # ---------------------------------------------------------
+    # Recent form
+    # ---------------------------------------------------------
+
     form = []
     recent_results = []
-    if fixtures is not None:
-        for _, r in fixtures.iterrows():
-            result = clean(r.get("Result"))
-            if result in {"W", "D", "L"}:
-                form.append(result)
-                recent_results.append({
-                    "date": clean(r.get("Date")),
-                    "competition": clean(r.get("Comp")),
-                    "venue": clean(r.get("Venue")),
-                    "result": result,
-                    "gf": int(fnum(r.get("GF")) or 0),
-                    "ga": int(fnum(r.get("GA")) or 0),
-                    "opponent": clean(r.get("Opponent")),
-                    "referee": clean(r.get("Referee")),
-                })
-    team["form"] = form[-6:]
-    team["recent_matches"] = recent_results[-6:]
 
-    # Full schedule from FBref is useful as a fallback for dates beyond the free API's window.
-    schedule_rows = []
-    if fixtures is not None:
-        for _, r in fixtures.iterrows():
-            d = clean(r.get("Date"))
-            if not d:
-                continue
-            schedule_rows.append({
-                "date": d,
-                "time": clean(r.get("Time")),
-                "competition": clean(r.get("Comp")),
-                "round": clean(r.get("Round")),
-                "venue_side": clean(r.get("Venue")),
-                "result": clean(r.get("Result")),
-                "gf": int(fnum(r.get("GF")) or 0) if clean(r.get("Result")) else None,
-                "ga": int(fnum(r.get("GA")) or 0) if clean(r.get("Result")) else None,
-                "opponent": clean(r.get("Opponent")).replace("tr ", "").replace("fr ", "").replace("eng ", "").replace("it ", "").replace("ua ", "").replace("es ", ""),
-                "possession": fnum(r.get("Poss")),
-                "attendance": int(fnum(r.get("Attendance")) or 0) if fnum(r.get("Attendance")) is not None else None,
-                "referee": clean(r.get("Referee")),
-                "match_report": clean(r.get("Match Report")),
+    for row in schedule_rows:
+
+        result = row["result"]
+
+        if result in {"W", "D", "L"}:
+
+            form.append(result)
+
+            recent_results.append({
+
+                "date": row["date"],
+
+                "competition": row["competition"],
+
+                "venue": row["venue_side"],
+
+                "result": result,
+
+                "gf": row["gf"] or 0,
+
+                "ga": row["ga"] or 0,
+
+                "opponent": row["opponent"],
+
+                "referee": row["referee"],
             })
 
-    write_json("squad.json", {
-        "season": "2026/27",
-        "competition_scope": "All competitions",
-        "players": players,
-        "source": "FBref",
-    })
-    write_json("team-stats.json", {
-        "season": "2026/27",
-        "team": team,
-        "source": "FBref",
-    })
-    write_json("fbref-schedule.json", {
-        "season": "2026/27",
-        "fixtures": schedule_rows,
-        "source": "FBref",
-    })
+    team["form"] = form[-6:]
+
+    team["recent_matches"] = recent_results[-6:]
+
+    # ---------------------------------------------------------
+    # Write output files
+    # ---------------------------------------------------------
+
+    if not schedule_rows:
+        raise RuntimeError(
+            "FBref returned no usable fixtures."
+        )
+
+    write_json(
+        "squad.json",
+        {
+            "season": "2026/27",
+            "competition_scope": "All competitions",
+            "players": players,
+            "source": "FBref",
+        }
+    )
+
+    write_json(
+        "team-stats.json",
+        {
+            "season": "2026/27",
+            "team": team,
+            "source": "FBref",
+        }
+    )
+
+    write_json(
+        "fbref-schedule.json",
+        {
+            "season": "2026/27",
+            "fixtures": schedule_rows,
+            "source": "FBref",
+        }
+    )
+
+    print(
+        f"FBref: {len(players)} players, "
+        f"{len(schedule_rows)} fixtures and "
+        "team statistics generated."
+    )
 
 
 def fetch_standings():
@@ -366,108 +663,277 @@ def fetch_standings():
 
 
 def fetch_fsa_fixtures():
+    """
+    Football Soccer API is optional enrichment only.
+
+    IMPORTANT:
+    Never write to fixtures.json here.
+    The current-season fixture list comes from FBref because the
+    free Football Soccer API plan does not provide the current season.
+    """
+
     if not FSAPI_KEY:
-        raise RuntimeError("Missing FSAPI_KEY.")
-    teams = fsapi("/teams", {"country": "Portugal", "limit": 100}).get("data", [])
-    sporting = next((x for x in teams if clean(x.get("team_name")).lower() in {"sporting cp", "sporting lisboa", "sporting"}), None)
-    if not sporting:
-        # relaxed fallback
-        sporting = next((x for x in teams if "sporting" in clean(x.get("team_name")).lower()), None)
-    if not sporting:
-        raise RuntimeError("Sporting CP was not found in Football Soccer API.")
-    team_id = sporting["team_id"]
+        print("Football Soccer API: no API key. Skipping enrichment.")
+        return []
 
-    today = date.today()
-    end = today + timedelta(days=30)
-    payload = fsapi("/matches", {
-        "team_id": team_id,
-        "date_from": today.isoformat(),
-        "date_to": end.isoformat(),
-        "limit": 100,
-        "sort": "kickoff_utc",
-    })
-    rows = payload.get("data", [])
+    try:
+        teams = fsapi("/teams", {
+            "country": "Portugal",
+            "limit": 100
+        }).get("data", [])
 
-    fixtures = {}
-    for x in rows:
-        mid = str(x.get("match_id"))
-        if not mid:
-            continue
-        fixtures[mid] = x
+        sporting = next(
+            (
+                x for x in teams
+                if clean(x.get("team_name")).lower()
+                in {"sporting cp", "sporting lisboa", "sporting"}
+            ),
+            None
+        )
 
-    normalized = []
-    for x in fixtures.values():
-        status = x.get("match_status")
-        normalized.append({
-            "id": x.get("match_id"),
-            "date": x.get("kickoff_utc"),
-            "kickoff_date": x.get("kickoff_date"),
-            "kickoff_local_time": x.get("kickoff_local_time"),
-            "status": {"short": status, "long": status.replace("_", " ").title() if status else ""},
-            "referee": x.get("referee_name"),
-            "venue": {
-                "name": x.get("venue_name"),
-                "city": x.get("city_name"),
-                "lat": x.get("latitude"),
-                "lon": x.get("longitude"),
-                "capacity": x.get("venue_capacity"),
-            },
-            "competition": {"name": x.get("league_name"), "season": x.get("season_start_year")},
-            "home": {"id": x.get("home_team_id"), "name": x.get("home_team_name")},
-            "away": {"id": x.get("away_team_id"), "name": x.get("away_team_name")},
-            "goals": {"home": x.get("home_goals"), "away": x.get("away_goals")},
-            "half_time": {"home": x.get("half_time_home_goals"), "away": x.get("half_time_away_goals")},
-            "travel_km": x.get("away_travel_km"),
-            "source": "Football Soccer API",
+        if not sporting:
+            sporting = next(
+                (
+                    x for x in teams
+                    if "sporting" in clean(x.get("team_name")).lower()
+                ),
+                None
+            )
+
+        if not sporting:
+            print("Football Soccer API: Sporting CP not found. Skipping.")
+            return []
+
+        team_id = sporting["team_id"]
+
+        today = date.today()
+        end = today + timedelta(days=30)
+
+        payload = fsapi("/matches", {
+            "team_id": team_id,
+            "date_from": today.isoformat(),
+            "date_to": end.isoformat(),
+            "limit": 100,
+            "sort": "kickoff_utc",
         })
-    normalized.sort(key=lambda x: x.get("date") or 0)
-    write_json("fixtures.json", {"team_id": team_id, "fixtures": normalized, "source": "Football Soccer API"})
 
+        rows = payload.get("data", [])
+
+        normalized = []
+
+        for x in rows:
+            mid = x.get("match_id")
+
+            if not mid:
+                continue
+
+            status = x.get("match_status")
+
+            normalized.append({
+                "id": x.get("match_id"),
+                "date": x.get("kickoff_utc"),
+                "kickoff_date": x.get("kickoff_date"),
+                "kickoff_local_time": x.get("kickoff_local_time"),
+                "status": {
+                    "short": status,
+                    "long": (
+                        status.replace("_", " ").title()
+                        if status else ""
+                    ),
+                },
+                "referee": x.get("referee_name"),
+                "venue": {
+                    "name": x.get("venue_name"),
+                    "city": x.get("city_name"),
+                    "lat": x.get("latitude"),
+                    "lon": x.get("longitude"),
+                    "capacity": x.get("venue_capacity"),
+                },
+                "competition": {
+                    "name": x.get("league_name"),
+                    "season": x.get("season_start_year"),
+                },
+                "home": {
+                    "id": x.get("home_team_id"),
+                    "name": x.get("home_team_name"),
+                },
+                "away": {
+                    "id": x.get("away_team_id"),
+                    "name": x.get("away_team_name"),
+                },
+                "goals": {
+                    "home": x.get("home_goals"),
+                    "away": x.get("away_goals"),
+                },
+                "half_time": {
+                    "home": x.get("half_time_home_goals"),
+                    "away": x.get("half_time_away_goals"),
+                },
+                "travel_km": x.get("away_travel_km"),
+                "source": "Football Soccer API",
+            })
+
+        normalized.sort(key=lambda x: x.get("date") or "")
+
+        # NEVER overwrite fixtures.json.
+        # Keep API data separate so it can be used only as enrichment.
+        write_json(
+            "fixtures-api.json",
+            {
+                "team_id": team_id,
+                "fixtures": normalized,
+                "source": "Football Soccer API",
+            },
+        )
+
+        print(
+            f"Football Soccer API: {len(normalized)} "
+            "optional enrichment records saved."
+        )
+
+        return normalized
+
+    except Exception as e:
+        print(
+            "Football Soccer API enrichment unavailable. "
+            f"Continuing with FBref data: {e}"
+        )
+        return []
 
 
 def build_fixtures_from_fbref():
-    """Build the public fixtures JSON from FBref when the paid/current-season API is unavailable."""
-    schedule = (safe_existing("fbref-schedule.json") or {}).get("fixtures", [])
+    """Build the main fixtures.json from the current FBref schedule."""
+
+    schedule_data = safe_existing("fbref-schedule.json") or {}
+    schedule = schedule_data.get("fixtures", [])
+
     if not schedule:
-        raise RuntimeError("No FBref schedule available for fixture fallback.")
+        raise RuntimeError(
+            "No FBref schedule available. "
+            "fixtures.json was not overwritten."
+        )
 
     out = []
-    sporting_names = {"Sporting CP", "SPORTING CP", "Sporting Clube de Portugal"}
+
     for i, x in enumerate(schedule):
         d = clean(x.get("date"))
         if not d:
             continue
-        time_s = clean(x.get("time")) or "12:00"
+
+        time_s = clean(x.get("time"))
+
+        # FBref sometimes has no kickoff time.
+        if not time_s or time_s in {"—", "-", "None"}:
+            time_s = "12:00"
+
+        # Convert date + time into Unix timestamp.
         try:
-            stamp = int(datetime.fromisoformat(f"{d}T{time_s}").replace(tzinfo=timezone.utc).timestamp())
+            stamp = int(
+                datetime
+                .fromisoformat(f"{d}T{time_s}")
+                .replace(tzinfo=timezone.utc)
+                .timestamp()
+            )
         except Exception:
             try:
-                stamp = int(datetime.fromisoformat(d).replace(tzinfo=timezone.utc).timestamp())
+                stamp = int(
+                    datetime
+                    .fromisoformat(d)
+                    .replace(tzinfo=timezone.utc)
+                    .timestamp()
+                )
             except Exception:
                 continue
+
         opponent = clean(x.get("opponent"))
-        venue_side = clean(x.get("venue_side"))
-        home_name = "Sporting CP" if venue_side.lower() == "home" else opponent
-        away_name = opponent if venue_side.lower() == "home" else "Sporting CP"
+        venue_side = clean(x.get("venue_side")).lower()
         result = clean(x.get("result"))
+
+        if not opponent:
+            continue
+
+        if venue_side == "home":
+            home_name = "Sporting CP"
+            away_name = opponent
+            home_goals = x.get("gf") if result else None
+            away_goals = x.get("ga") if result else None
+        else:
+            home_name = opponent
+            away_name = "Sporting CP"
+            home_goals = x.get("ga") if result else None
+            away_goals = x.get("gf") if result else None
+
         out.append({
             "id": f"fbref-{d}-{i}",
+
             "date": stamp,
             "kickoff_date": d,
             "kickoff_local_time": time_s,
-            "status": {"short": "finished" if result else "scheduled", "long": "Terminado" if result else "Agendado"},
+
+            "status": {
+                "short": "finished" if result else "scheduled",
+                "long": "Terminado" if result else "Agendado"
+            },
+
             "referee": clean(x.get("referee")),
-            "venue": {"name": None, "city": None, "lat": None, "lon": None, "capacity": None},
-            "competition": {"name": clean(x.get("competition")), "round": clean(x.get("round")), "season": "2026/27"},
-            "home": {"name": home_name},
-            "away": {"name": away_name},
-            "goals": {"home": x.get("gf") if venue_side.lower() == "home" else x.get("ga"),
-                      "away": x.get("ga") if venue_side.lower() == "home" else x.get("gf")},
-            "half_time": {"home": None, "away": None},
-            "source": "FBref fallback",
+
+            "venue": {
+                "name": clean(x.get("venue")),
+                "city": None,
+                "lat": None,
+                "lon": None,
+                "capacity": None
+            },
+
+            "competition": {
+                "name": clean(x.get("competition")),
+                "round": clean(x.get("round")),
+                "season": "2026/27"
+            },
+
+            "home": {
+                "name": home_name
+            },
+
+            "away": {
+                "name": away_name
+            },
+
+            "goals": {
+                "home": home_goals,
+                "away": away_goals
+            },
+
+            "half_time": {
+                "home": None,
+                "away": None
+            },
+
+            "source": "FBref"
         })
+
+    if not out:
+        raise RuntimeError(
+            "FBref schedule was found but contained no usable fixtures. "
+            "fixtures.json was not overwritten."
+        )
+
     out.sort(key=lambda x: x.get("date") or 0)
-    write_json("fixtures.json", {"team_id": None, "fixtures": out, "source": "FBref fallback"})
+
+    write_json(
+        "fixtures.json",
+        {
+            "team_id": None,
+            "fixtures": out,
+            "source": "FBref",
+            "season": "2026/27"
+        }
+    )
+
+    print(
+        f"FBref: {len(out)} fixtures written to fixtures.json."
+    )
+
     return out
 
 
