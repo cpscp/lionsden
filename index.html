@@ -269,14 +269,19 @@ const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNew
 
 function renderClassification(){
  const data=D['standings-competitions.json']||{};
- const configs=[['primeira-liga','Primeira Liga'],['taca-portugal','Taça de Portugal'],['taca-liga','Taça da Liga'],['champions','Champions League']];
+ const configs=[['primeira-liga','Primeira Liga'],['champions','Champions League'],['taca-portugal','Taça de Portugal'],['taca-liga','Taça da Liga']];
  const tabs=document.getElementById('classificationTabs'),el=document.getElementById('classificationList');if(!tabs||!el)return;
- let key=window._classificationKey||'primeira-liga';if(!data[key])key=configs.find(x=>data[x[0]])?.[0]||'primeira-liga';window._classificationKey=key;
- tabs.innerHTML=configs.map(x=>'<button class="pill whitespace-nowrap '+(x[0]===key?'active':'')+'" onclick="window._classificationKey=\''+x[0]+'\';renderClassification()">'+x[1]+'</button>').join('');
- const rows=data[key]?.table||[];
- if(!rows.length){el.innerHTML='<div class="py-6 text-center muted">Sem classificação disponível para esta competição neste momento.</div>';return}
+ let key=window._classificationKey||'primeira-liga';window._classificationKey=key;
+ tabs.innerHTML='<select class="pill w-full" onchange="window._classificationKey=this.value;renderClassification()">'+configs.map(x=>'<option value="'+x[0]+'" '+(x[0]===key?'selected':'')+'>'+x[1]+'</option>').join('')+'</select>';
+ let comp=data[key];
+ if(key==='primeira-liga' && (!comp||!(comp.table||[]).length)) comp=D['standings.json']||null;
+ const rows=comp?.table||[];
+ if(!rows.length){
+   const labels={'champions':'A Champions League tem uma tabela única de 36 equipas na fase de liga.','taca-portugal':'A Taça de Portugal é disputada por eliminatórias; não existe uma tabela classificativa única.','taca-liga':'A Taça da Liga é disputada por grupos/eliminatórias; a classificação aparece por grupo quando essa fase começa.'};
+   el.innerHTML='<div class="card p-6 text-center"><div class="font-semibold">'+esc(configs.find(x=>x[0]===key)?.[1]||'Competição')+'</div><div class="text-[11px] muted mt-2">'+esc(labels[key]||'Sem dados disponíveis.')+'</div></div>';return;
+ }
  const grouped={};rows.forEach(r=>{const g=r.groupName||'';(grouped[g]??=[]).push(r)});
- el.innerHTML=Object.entries(grouped).map(([g,rs])=>(g?'<div class="font-semibold text-[11px] px-2 pt-2 pb-2">'+esc(g)+'</div>':'')+'<table class="class-table mb-4"><thead><tr><th>#</th><th>Clube</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GM</th><th>GS</th><th>DG</th><th>PTS</th></tr></thead><tbody>'+rs.map(r=>{const t=typeof r.team==='object'?r.team:{};const sc=(t.name||'').toLowerCase()==='sporting cp';return '<tr class="'+(sc?'sc-row':'')+'"><td>'+esc(r.position??'—')+'</td><td class="club">'+esc(t.shortName||t.name||'—')+'</td><td>'+esc(r.playedGames??'—')+'</td><td>'+esc(r.won??'—')+'</td><td>'+esc(r.draw??'—')+'</td><td>'+esc(r.lost??'—')+'</td><td>'+esc(r.goalsFor??'—')+'</td><td>'+esc(r.goalsAgainst??'—')+'</td><td>'+esc(r.goalDifference??'—')+'</td><td><b>'+esc(r.points??'—')+'</b></td></tr>'}).join('')+'</tbody></table>').join('');
+ el.innerHTML='<div class="text-[9px] muted mb-2">J = jogos · P = pontos · V/E/D = vitórias/empates/derrotas · GM/GS = golos marcados/sofridos · DG = diferença</div>'+Object.entries(grouped).map(([g,rs])=>(g?'<div class="font-semibold text-[11px] px-2 pt-2 pb-2">'+esc(g)+'</div>':'')+'<table class="class-table mb-4"><thead><tr><th>#</th><th>Clube</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GM</th><th>GS</th><th>DG</th><th>PTS</th></tr></thead><tbody>'+rs.map(r=>{const t=typeof r.team==='object'?r.team:{};const sc=((t.name||'')+' '+(t.shortName||'')).toLowerCase().includes('sporting');return '<tr class="'+(sc?'sc-row':'')+'"><td>'+esc(r.position??'—')+'</td><td class="club">'+esc(t.shortName||t.name||'—')+'</td><td>'+esc(r.playedGames??'—')+'</td><td>'+esc(r.won??'—')+'</td><td>'+esc(r.draw??'—')+'</td><td>'+esc(r.lost??'—')+'</td><td>'+esc(r.goalsFor??'—')+'</td><td>'+esc(r.goalsAgainst??'—')+'</td><td>'+esc(r.goalDifference??'—')+'</td><td><b>'+esc(r.points??'—')+'</b></td></tr>'}).join('')+'</tbody></table>').join('');
 }
 function renderTV(){
  const el=document.getElementById('tvList'); if(!el)return;
