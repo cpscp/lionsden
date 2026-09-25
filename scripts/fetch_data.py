@@ -509,6 +509,52 @@ def fetch_fotmob_core():
         }
         try:
             pd = fotmob_get("/api/data/playerData", {"id": pid, "includeMarketValues": "true"})
+
+            def deep_find(obj, keys):
+                if isinstance(obj, dict):
+                    for k in keys:
+                        if k in obj and obj.get(k) not in (None, "", []):
+                            return obj.get(k)
+                    for value in obj.values():
+                        found = deep_find(value, keys)
+                        if found not in (None, "", []):
+                            return found
+                elif isinstance(obj, list):
+                    for value in obj:
+                        found = deep_find(value, keys)
+                        if found not in (None, "", []):
+                            return found
+                return None
+
+            # FotMob's playerData contains the profile information we need.
+            shirt = deep_find(pd, {"shirtNumber", "shirt_number", "jerseyNumber", "jersey_number", "number"})
+            if shirt is None:
+                shirt = m.get("shirtNumber") or m.get("shirt_number") or m.get("jerseyNumber") or m.get("jersey_number")
+            try:
+                player["shirtNumber"] = int(shirt) if shirt is not None and str(shirt).strip() else None
+            except Exception:
+                player["shirtNumber"] = None
+
+            birth = deep_find(pd, {"birthDate", "dateOfBirth", "date_of_birth"})
+            if isinstance(birth, dict):
+                player["dateOfBirth"] = birth.get("iso") or birth.get("date")
+            elif birth:
+                player["dateOfBirth"] = str(birth)
+
+            # Try FotMob's career/transfer structures for the club path.
+            career_nodes = deep_find(pd, {"careerHistory", "career", "transferHistory", "transfers"})
+            career = []
+            if isinstance(career_nodes, list):
+                for item in career_nodes:
+                    if not isinstance(item, dict):
+                        continue
+                    club = item.get("teamName") or item.get("team_name") or item.get("clubName") or item.get("club") or item.get("team", {}).get("name") if isinstance(item.get("team"), dict) else None
+                    period = item.get("seasonName") or item.get("season") or item.get("year") or item.get("date")
+                    if club:
+                        career.append({"period": str(period or ""), "club": clean(club)})
+            if career:
+                player["career"] = career
+
             seasons = pd.get("statSeasons") or []
             season = next((z for z in seasons if str(z.get("seasonName", "")).replace("-", "/") in {"2026/2027", "2026/27"}), None)
             if not season and seasons:
@@ -542,8 +588,7 @@ def fetch_fotmob_core():
             if ratings:
                 stats["rating"] = round(sum(ratings) / len(ratings), 2)
             player["stats"] = stats
-            dob = _first_dict(pd, "birthDate")
-            player["dateOfBirth"] = dob.get("iso") or dob.get("date") if dob else None
+            # Keep the robust birth-date extraction above; older payloads may not expose a dict.
         except Exception as e:
             print("FotMob player warning:", pid, e)
         players.append(player)
