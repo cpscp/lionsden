@@ -1,0 +1,14 @@
+{
+  "name":"Lion's Den · Sporting CP",
+  "short_name":"Lion's Den",
+  "description":"A companion app para acompanhar o Sporting CP.",
+  "lang":"pt-PT",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#060b08",
+  "theme_color":"#07100b",
+  "icons":[
+    {"src":"./icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
