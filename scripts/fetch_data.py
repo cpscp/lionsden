@@ -1388,6 +1388,16 @@ def fetch_youtube():
                     thumb = thumbs[-1].get("url") if thumbs else ""
                     pub = clean((vr.get("publishedTimeText") or {}).get("simpleText"))
                     add_video(vid, title, pub, thumb)
+
+            pvr = obj.get("playlistVideoRenderer")
+            if isinstance(pvr, dict):
+                vid = clean(pvr.get("videoId"))
+                runs = (pvr.get("title") or {}).get("runs") or []
+                title = clean("".join(x.get("text", "") for x in runs))
+                thumbs = (pvr.get("thumbnail") or {}).get("thumbnails") or []
+                thumb = thumbs[-1].get("url") if thumbs else ""
+                add_video(vid, title, "", thumb)
+
             for v in obj.values():
                 collect(v, official_only)
         elif isinstance(obj, list):
@@ -1423,6 +1433,42 @@ def fetch_youtube():
                         return
         walk(obj)
         return found
+
+    # B) Uploads playlist paginator. A channel's uploads playlist is the
+    # channel id with UC -> UU, exposed through the VL browse id.
+    upload_playlist = "VL" + channel_id.replace("UC", "UU", 1)
+    try:
+        context = {
+            "client": {
+                "clientName": "WEB",
+                "clientVersion": "2.20260924.01.00",
+                "hl": "pt-PT",
+                "gl": "PT",
+            }
+        }
+        token = None
+        for page in range(10):
+            body = {"context": context, "browseId": upload_playlist}
+            if token:
+                body = {"context": context, "continuation": token}
+            r = session.post(
+                "https://www.youtube.com/youtubei/v1/browse?prettyPrint=false",
+                json=body,
+                timeout=30,
+            )
+            r.raise_for_status()
+            data = r.json()
+            before = len(items)
+            collect(data, False)
+            print(f"YouTube uploads page {page + 1}: +{len(items) - before} videos, total={len(items)}")
+            new_token = continuation_token(data)
+            if not new_token or new_token == token:
+                break
+            token = new_token
+        if items:
+            print(f"YouTube uploads playlist succeeded: {len(items)} videos.")
+    except Exception as e:
+        print("YouTube uploads playlist warning:", e)
 
     contexts = [
         ("WEB", "2.20260924.01.00"),
