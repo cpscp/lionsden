@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-25T22:54:22.850451+00:00",
+  "_updated_at": "2026-09-25T22:57:00.030481+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -21,7 +21,7 @@
         "red": 0
       },
       "shirtNumber": 1,
-      "dateOfBirth": null
+      "dateOfBirth": "1994-02-07T00:00:00.000Z"
     },
     {
       "fotmob_id": 1320169,
@@ -39,7 +39,7 @@
         "red": 0
       },
       "shirtNumber": 30,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
       "fotmob_id": 1282449,
@@ -57,7 +57,7 @@
         "red": 0
       },
       "shirtNumber": 41,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
       "fotmob_id": 1755850,
@@ -75,7 +75,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2008-09-20T00:00:00.000Z"
     },
     {
       "fotmob_id": 1232172,
@@ -93,7 +93,7 @@
         "red": 1
       },
       "shirtNumber": 6,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
       "fotmob_id": 1119687,
@@ -111,7 +111,7 @@
         "red": 0
       },
       "shirtNumber": 13,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1031656,
@@ -129,7 +129,7 @@
         "red": 0
       },
       "shirtNumber": 20,
-      "dateOfBirth": null
+      "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
       "fotmob_id": 1325998,
@@ -147,7 +147,7 @@
         "red": 0
       },
       "shirtNumber": 22,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
       "fotmob_id": 1165710,
@@ -165,7 +165,7 @@
         "red": 0
       },
       "shirtNumber": 25,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
       "fotmob_id": 1703622,
@@ -183,7 +183,7 @@
         "red": 0
       },
       "shirtNumber": 50,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1609327,
@@ -201,7 +201,7 @@
         "red": 0
       },
       "shirtNumber": 55,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 1156380,
@@ -219,7 +219,7 @@
         "red": 0
       },
       "shirtNumber": 72,
-      "dateOfBirth": null
+      "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
       "fotmob_id": 1093025,
@@ -237,7 +237,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-11-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 1425101,
@@ -255,7 +255,7 @@
         "red": 0
       },
       "shirtNumber": 4,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1310480,
@@ -273,7 +273,7 @@
         "red": 0
       },
       "shirtNumber": 5,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
       "fotmob_id": 1663855,
@@ -291,7 +291,7 @@
         "red": 0
       },
       "shirtNumber": 8,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
       "fotmob_id": 1327214,
@@ -309,7 +309,7 @@
         "red": 0
       },
       "shirtNumber": 19,
-      "dateOfBirth": null
+      "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
       "fotmob_id": 1459257,
@@ -327,7 +327,7 @@
         "red": 0
       },
       "shirtNumber": 21,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
       "fotmob_id": 1712326,
@@ -345,7 +345,7 @@
         "red": 0
       },
       "shirtNumber": 70,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1339345,
@@ -363,7 +363,7 @@
         "red": 0
       },
       "shirtNumber": 77,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
       "fotmob_id": 1918387,
@@ -381,7 +381,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-20T00:00:00.000Z"
     },
     {
       "fotmob_id": 1759322,
@@ -399,7 +399,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-12-06T00:00:00.000Z"
     },
     {
       "fotmob_id": 899701,
@@ -417,7 +417,7 @@
         "red": 0
       },
       "shirtNumber": 7,
-      "dateOfBirth": null
+      "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
       "fotmob_id": 1525416,
@@ -435,7 +435,7 @@
         "red": 0
       },
       "shirtNumber": 9,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
       "fotmob_id": 1088753,
@@ -453,7 +453,7 @@
         "red": 0
       },
       "shirtNumber": 10,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 554283,
@@ -471,7 +471,7 @@
         "red": 0
       },
       "shirtNumber": 11,
-      "dateOfBirth": null
+      "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1070776,
@@ -489,7 +489,7 @@
         "red": 0
       },
       "shirtNumber": 17,
-      "dateOfBirth": null
+      "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1526704,
@@ -507,7 +507,7 @@
         "red": 0
       },
       "shirtNumber": 28,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
       "fotmob_id": 1458757,
@@ -525,7 +525,7 @@
         "red": 0
       },
       "shirtNumber": 31,
-      "dateOfBirth": null
+      "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
       "fotmob_id": 1691190,
@@ -543,7 +543,7 @@
         "red": 0
       },
       "shirtNumber": 58,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
       "fotmob_id": 792303,
@@ -561,7 +561,7 @@
         "red": 0
       },
       "shirtNumber": 97,
-      "dateOfBirth": null
+      "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ],
   "source": "ZeroZero + Sporting CP + FotMob/SofaScore/FBref",
@@ -582,7 +582,7 @@
         "red": 0
       },
       "shirtNumber": 1,
-      "dateOfBirth": null
+      "dateOfBirth": "1994-02-07T00:00:00.000Z"
     },
     {
       "fotmob_id": 1320169,
@@ -600,7 +600,7 @@
         "red": 0
       },
       "shirtNumber": 30,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
       "fotmob_id": 1282449,
@@ -618,7 +618,7 @@
         "red": 0
       },
       "shirtNumber": 41,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
       "fotmob_id": 1755850,
@@ -636,7 +636,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2008-09-20T00:00:00.000Z"
     },
     {
       "fotmob_id": 1232172,
@@ -654,7 +654,7 @@
         "red": 1
       },
       "shirtNumber": 6,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
       "fotmob_id": 1119687,
@@ -672,7 +672,7 @@
         "red": 0
       },
       "shirtNumber": 13,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1031656,
@@ -690,7 +690,7 @@
         "red": 0
       },
       "shirtNumber": 20,
-      "dateOfBirth": null
+      "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
       "fotmob_id": 1325998,
@@ -708,7 +708,7 @@
         "red": 0
       },
       "shirtNumber": 22,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
       "fotmob_id": 1165710,
@@ -726,7 +726,7 @@
         "red": 0
       },
       "shirtNumber": 25,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
       "fotmob_id": 1703622,
@@ -744,7 +744,7 @@
         "red": 0
       },
       "shirtNumber": 50,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1609327,
@@ -762,7 +762,7 @@
         "red": 0
       },
       "shirtNumber": 55,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 1156380,
@@ -780,7 +780,7 @@
         "red": 0
       },
       "shirtNumber": 72,
-      "dateOfBirth": null
+      "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
       "fotmob_id": 1093025,
@@ -798,7 +798,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-11-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 1425101,
@@ -816,7 +816,7 @@
         "red": 0
       },
       "shirtNumber": 4,
-      "dateOfBirth": null
+      "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1310480,
@@ -834,7 +834,7 @@
         "red": 0
       },
       "shirtNumber": 5,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
       "fotmob_id": 1663855,
@@ -852,7 +852,7 @@
         "red": 0
       },
       "shirtNumber": 8,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
       "fotmob_id": 1327214,
@@ -870,7 +870,7 @@
         "red": 0
       },
       "shirtNumber": 19,
-      "dateOfBirth": null
+      "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
       "fotmob_id": 1459257,
@@ -888,7 +888,7 @@
         "red": 0
       },
       "shirtNumber": 21,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
       "fotmob_id": 1712326,
@@ -906,7 +906,7 @@
         "red": 0
       },
       "shirtNumber": 70,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1339345,
@@ -924,7 +924,7 @@
         "red": 0
       },
       "shirtNumber": 77,
-      "dateOfBirth": null
+      "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
       "fotmob_id": 1918387,
@@ -942,7 +942,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-20T00:00:00.000Z"
     },
     {
       "fotmob_id": 1759322,
@@ -960,7 +960,7 @@
         "red": 0
       },
       "shirtNumber": null,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-12-06T00:00:00.000Z"
     },
     {
       "fotmob_id": 899701,
@@ -978,7 +978,7 @@
         "red": 0
       },
       "shirtNumber": 7,
-      "dateOfBirth": null
+      "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
       "fotmob_id": 1525416,
@@ -996,7 +996,7 @@
         "red": 0
       },
       "shirtNumber": 9,
-      "dateOfBirth": null
+      "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
       "fotmob_id": 1088753,
@@ -1014,7 +1014,7 @@
         "red": 0
       },
       "shirtNumber": 10,
-      "dateOfBirth": null
+      "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
       "fotmob_id": 554283,
@@ -1032,7 +1032,7 @@
         "red": 0
       },
       "shirtNumber": 11,
-      "dateOfBirth": null
+      "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
       "fotmob_id": 1070776,
@@ -1050,7 +1050,7 @@
         "red": 0
       },
       "shirtNumber": 17,
-      "dateOfBirth": null
+      "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
       "fotmob_id": 1526704,
@@ -1068,7 +1068,7 @@
         "red": 0
       },
       "shirtNumber": 28,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
       "fotmob_id": 1458757,
@@ -1086,7 +1086,7 @@
         "red": 0
       },
       "shirtNumber": 31,
-      "dateOfBirth": null
+      "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
       "fotmob_id": 1691190,
@@ -1104,7 +1104,7 @@
         "red": 0
       },
       "shirtNumber": 58,
-      "dateOfBirth": null
+      "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
       "fotmob_id": 792303,
@@ -1122,7 +1122,7 @@
         "red": 0
       },
       "shirtNumber": 97,
-      "dateOfBirth": null
+      "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ]
 }
