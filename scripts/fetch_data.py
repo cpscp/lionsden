@@ -301,11 +301,19 @@ def fetch_fbref_stats():
                 "match_report": clean(r.get("Match Report")),
             })
 
+    old_squad=safe_existing("squad.json") or {}
+    old_players=old_squad.get("players") or old_squad.get("squad") or []
+    old_by_name={normalize_player_name(p.get("name")).lower():p for p in old_players if p.get("name")}
+    for p in players:
+        old=old_by_name.get(normalize_player_name(p.get("name")).lower(),{})
+        for field in ("dateOfBirth","shirtNumber","internationalCaps","career","profile","sofascore_id","height","preferredFoot","nationality","nation"):
+            if not p.get(field) and old.get(field) not in (None,"",[]): p[field]=old[field]
+
     write_json("squad.json", {
         "season": "2026/27",
         "competition_scope": "All competitions",
         "players": players,
-        "source": "FBref",
+        "source": "FBref + profile enrichment",
     })
     write_json("team-stats.json", {
         "season": "2026/27",
@@ -1265,6 +1273,73 @@ def fetch_sofascore_player_stats():
     })
     print(f"Sofascore: {len(players)} players enriched; {sum(bool(p.get('stats')) for p in players)} have season stats.")
 
+def fetch_sporting_player_profiles():
+    """Enrich the current first-team squad from Sporting CP's official player pages."""
+    squad=safe_existing("squad.json") or {}
+    players=squad.get("players") or squad.get("squad") or []
+    if not players: return
+
+    try:
+        roster_html=session.get("https://www.sporting.pt/pt/futebol/plantel",timeout=25).text
+        roster_soup=BeautifulSoup(roster_html,"html.parser")
+    except Exception as e:
+        print("Sporting roster warning:",e); return
+
+    profile_links={}
+    for a in roster_soup.select('a[href*="/futebol/equipa-principal/plantel/"]'):
+        href=a.get("href") or ""; label=" ".join(a.stripped_strings).strip()
+        if not href or not label: continue
+        if href.startswith("/"): href="https://www.sporting.pt"+href
+        m=re.match(r"^\s*(\d+)\s+(.+?)\s*$",label)
+        if m:
+            profile_links[normalize_player_name(m.group(2)).lower()]={"url":href,"shirtNumber":int(m.group(1))}
+
+    months={"janeiro":1,"fevereiro":2,"março":3,"abril":4,"maio":5,"junho":6,"julho":7,"agosto":8,"setembro":9,"outubro":10,"novembro":11,"dezembro":12}
+    def parse_date(text):
+        m=re.search(r"Data de nascimento\s+(\d{1,2})\s+([A-Za-zÀ-ÿç]+)\s+(\d{4})",text,flags=re.I)
+        if not m: return None
+        month=months.get(m.group(2).lower())
+        return f"{int(m.group(3)):04d}-{month:02d}-{int(m.group(1)):02d}" if month else None
+    def parse_career(text):
+        m=re.search(r"Clubes anteriores\s+(.*?)(?:\nPrémios\b|\nPerguntas Frequentes\b|\Z)",text,flags=re.I|re.S)
+        if not m: return []
+        out=[]
+        for line in m.group(1).splitlines():
+            line=clean(line)
+            if not line or ":" not in line: continue
+            period,club=line.split(":",1); club=clean(club)
+            if club: out.append({"period":clean(period),"club":club})
+        return out
+    def parse_position(text):
+        m=re.search(r"\b\d+\s+Anos\s+([A-Za-zÀ-ÿçãõéíóúâêôüç\- ]+?)\s+Image\b",text,flags=re.I)
+        return clean(m.group(1)) if m else None
+
+    by_name={normalize_player_name(p.get("name")).lower():p for p in players if p.get("name")}
+    for key,meta in profile_links.items():
+        p=by_name.get(key)
+        if not p: continue
+        try:
+            rr=session.get(meta["url"],timeout=20); rr.raise_for_status()
+            text=BeautifulSoup(rr.text,"html.parser").get_text("\n",strip=True)
+            p["profile"]=meta["url"]; p["shirtNumber"]=meta["shirtNumber"]
+            dob=parse_date(text)
+            if dob: p["dateOfBirth"]=dob
+            pos=parse_position(text)
+            if pos: p["officialPosition"]=pos
+            career=parse_career(text)
+            if career: p["career"]=career
+            if not p.get("nationality") and not p.get("nation"):
+                cm=re.search(r"\bPaís\s+([^\n]+)",text,flags=re.I)
+                if cm: p["nationality"]=clean(cm.group(1))
+        except Exception as e:
+            print("Sporting player profile warning:",p.get("name"),e)
+
+    for p in players:
+        if p.get("officialPosition") and not p.get("position"): p["position"]=p["officialPosition"]
+
+    write_json("squad.json",{**squad,"squad":players,"players":players,"source":"Sporting CP + FotMob/SofaScore/FBref"})
+    print(f"Sporting CP: enriched {sum(bool(p.get('career')) for p in players)} careers and {sum(p.get('shirtNumber') is not None for p in players)} shirt numbers.")
+
 def fetch_standings():
     tables, html = read_fbref_tables(FBREF_LEAGUE)
     for df in tables:
@@ -1624,107 +1699,100 @@ def fetch_youtube():
 def fetch_news():
     items = []
 
-    def article_metadata(item):
-        """Resolve the final article and extract OG/Twitter preview metadata."""
-        url = item.get("url")
-        if not url:
-            return
+    def decode_google_news(items_to_decode):
+        """Resolve Google News redirect URLs to the publisher article URLs."""
+        google_items=[x for x in items_to_decode if "news.google.com/" in str(x.get("url") or "")]
+        if not google_items: return
         try:
-            rr = session.get(
-                url,
-                timeout=8,
-                allow_redirects=True,
-                headers={"User-Agent": USER_AGENT},
-            )
-            rr.raise_for_status()
-            final_url = rr.url
-            ss = BeautifulSoup(rr.text, "html.parser")
-
-            og = (
-                ss.find("meta", attrs={"property": "og:image"})
-                or ss.find("meta", attrs={"name": "twitter:image"})
-                or ss.find("meta", attrs={"property": "og:image:url"})
-            )
-            desc = (
-                ss.find("meta", attrs={"property": "og:description"})
-                or ss.find("meta", attrs={"name": "description"})
-            )
-
-            if og and og.get("content"):
-                item["image"] = og.get("content").strip()
-            if desc and desc.get("content"):
-                item["description"] = clean(desc.get("content"))[:280]
-            if final_url and "news.google.com" not in final_url:
-                item["article_url"] = final_url
+            import asyncio
+            from googlenewsdecoder import gnews_decoder_async
+            urls=[x["url"] for x in google_items]
+            results=asyncio.run(gnews_decoder_async(urls,interval=0.2,timeout=12.0,concurrency=6))
+            if isinstance(results,dict): results=[results]
+            for item,result in zip(google_items,results):
+                if isinstance(result,dict) and result.get("success") and result.get("decoded_url"):
+                    item["google_news_url"]=item["url"]
+                    item["url"]=result["decoded_url"]
+                    item["source_url"]=result["decoded_url"]
         except Exception as e:
-            print("News metadata warning:", item.get("url"), e)
+            print("Google News decoder warning:",e)
+
+    def article_metadata(item):
+        """Fetch publisher metadata and use the publisher's own preview image."""
+        url=item.get("url")
+        if not url or "news.google.com/" in url: return
+        try:
+            rr=session.get(url,timeout=10,allow_redirects=True,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            final_url=rr.url
+            ss=BeautifulSoup(rr.text,"html.parser")
+            image_candidates=[
+                ss.find("meta",attrs={"property":"og:image"}),
+                ss.find("meta",attrs={"property":"og:image:url"}),
+                ss.find("meta",attrs={"name":"twitter:image"}),
+            ]
+            image=next((m.get("content","").strip() for m in image_candidates if m and m.get("content")),"")
+            desc=ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"})
+            if image:
+                if image.startswith("//"): image="https:"+image
+                elif image.startswith("/"):
+                    from urllib.parse import urljoin
+                    image=urljoin(final_url,image)
+                item["image"]=image
+                item["image_source"]=final_url
+            if desc and desc.get("content"):
+                item["description"]=clean(desc.get("content"))[:280]
+            if final_url and "news.google.com" not in final_url:
+                item["url"]=final_url
+                item["source_url"]=final_url
+        except Exception as e:
+            print("News metadata warning:",item.get("url"),e)
 
     try:
-        r = session.get(SPORTING_NEWS, timeout=25)
+        r=session.get(SPORTING_NEWS,timeout=25)
         r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-        seen = set()
+        soup=BeautifulSoup(r.text,"html.parser")
+        seen=set()
         for a in soup.select("a[href]"):
-            href = a.get("href", "")
-            title = " ".join(a.stripped_strings)
-            if href.startswith("/"):
-                href = "https://www.sporting.pt" + href
-            if "sporting.pt" not in href or "/noticias/" not in href or len(title) < 18:
-                continue
-            if href in seen:
-                continue
+            href=a.get("href","")
+            title=" ".join(a.stripped_strings)
+            if href.startswith("/"): href="https://www.sporting.pt"+href
+            if "sporting.pt" not in href or "/noticias/" not in href or len(title)<18: continue
+            if href in seen: continue
             seen.add(href)
-            items.append({"title": title[:180], "url": href, "source": "Sporting.pt"})
-            if len(items) >= 12:
-                break
+            items.append({"title":title[:180],"url":href,"source":"Sporting.pt"})
+            if len(items)>=12: break
     except Exception as e:
-        print("Sporting news warning:", e)
+        print("Sporting news warning:",e)
 
     try:
         import feedparser
-        feed = feedparser.parse(
-            "https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150"
-        )
-        existing = {x["url"] for x in items}
+        feed=feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150")
+        existing={x["url"] for x in items}
         for entry in feed.entries[:40]:
-            url = entry.get("link")
-            title = entry.get("title")
-            if not url or not title or url in existing:
-                continue
-
-            source = (entry.get("source") or {}).get("title") or "Google News"
-            item = {
-                "title": title[:180],
-                "url": url,
-                "source": source,
-                "published": entry.get("published"),
-            }
-
-            # Some RSS responses expose a thumbnail directly.
-            media = entry.get("media_thumbnail") or entry.get("media_content") or []
-            if media and isinstance(media, list) and media[0].get("url"):
-                item["image"] = media[0]["url"]
-
-            items.append(item)
-            existing.add(url)
-            if len(items) >= 30:
-                break
+            url=entry.get("link"); title=entry.get("title")
+            if not url or not title or url in existing: continue
+            source=(entry.get("source") or {}).get("title") or "Google News"
+            item={"title":title[:180],"url":url,"source":source,"published":entry.get("published")}
+            # Never use media_thumbnail/media_content from Google News:
+            # those are Google-hosted previews, not the publisher's image.
+            items.append(item); existing.add(url)
+            if len(items)>=30: break
     except Exception as e:
-        print("Google News warning:", e)
+        print("Google News warning:",e)
 
-    # Resolve preview metadata for every item, not only Sporting.pt articles.
-    # This turns Google News redirects into the publisher page and lets the app
-    # display the article's own Open Graph image.
+    decode_google_news(items)
+
     for item in items[:30]:
         article_metadata(item)
 
-    # Keep only useful fields and preserve the Google News URL as the fallback.
+    # If Google News could not be resolved, keep its link as fallback but no Google image.
     for item in items:
-        if item.get("article_url"):
-            item["url"] = item["article_url"]
-            item.pop("article_url", None)
+        item.pop("google_news_url",None)
+        if item.get("image"): item["image_source"]=item.get("image_source") or item.get("url")
+        else: item.pop("image_source",None)
 
-    write_json("news.json", {"items": items})
+    write_json("news.json",{"items":items})
 
 def build_fixtures_from_fbref():
     """Build the main fixtures.json from the current FBref schedule."""
@@ -1924,6 +1992,11 @@ def main():
             fetch_fbref_stats()
         except Exception as e:
             print(f"FBref enrichment skipped: {e}")
+
+        try:
+            fetch_sporting_player_profiles()
+        except Exception as e:
+            print(f"Sporting player profile enrichment skipped: {e}")
 
         try:
             fetch_fsa_fixtures()
