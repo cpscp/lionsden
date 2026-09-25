@@ -29,8 +29,8 @@
 .match-row .match-vs{align-self:start !important;width:100% !important;text-align:center !important;min-width:0 !important;padding-top:8px !important}
 .match-row .match-vs .vs-text{font-size:25px;font-weight:700;line-height:1}
 .game-row{display:grid !important;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) !important;align-items:start !important;gap:8px !important;width:100% !important}
-.game-row > .game-team{min-width:0 !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;text-align:center !important}
-.game-row > .game-team .team-logo-wrap{margin:0 auto !important}
+.game-row > div:first-child,.game-row > div:nth-child(3){min-width:0 !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;text-align:center !important}
+.game-row > div:first-child .team-logo-wrap,.game-row > div:nth-child(3) .team-logo-wrap{margin:0 auto !important}
 .game-team-name{display:block !important;font-size:11px !important;font-weight:600 !important;line-height:1.2 !important;margin-top:6px !important;max-width:92px !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;text-align:center !important}
 .game-vs{align-self:start !important;text-align:center !important;font-weight:700 !important;font-size:14px !important;padding-top:20px !important}
 .game-meta{display:flex !important;justify-content:center !important;align-items:center !important;gap:12px !important;flex-wrap:wrap !important;margin-top:10px !important;font-size:9px !important;color:var(--muted) !important}
