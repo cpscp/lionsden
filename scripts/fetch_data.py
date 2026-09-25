@@ -34,8 +34,10 @@ FSAPI_KEY = os.environ.get("FSAPI_KEY")
 FSAPI_BASE = "https://api.footballsoccerapi.com/v1"
 FBREF_TEAM = "https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions"
 FBREF_TEAM_ROSTER = "https://fbref.com/en/squads/13dc44fd/2026-2027/roster/Sporting-CP-Roster-Details"
-FBREF_LEAGUE = "https://fbref.com/en/comps/32/2025/2025-league-Stats"
+FBREF_LEAGUE = "https://fbref.com/en/comps/32/stats/Primeira-Liga-Stats"
 FBREF_SCHEDULE = "https://fbref.com/en/squads/13dc44fd/2026-2027/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
+FBREF_LEAGUE_SCHEDULE = "https://fbref.com/en/comps/32/schedule/Primeira-Liga-Scores-and-Fixtures"
+SPORTING_STADIUM = "Estádio José Alvalade"
 SPORTING_NEWS = "https://www.sporting.pt/pt/noticias/futebol"
 USER_AGENT = "Mozilla/5.0 (compatible; LionsDen/3.0; +https://github.com/cpscp/lionsden)"
 
@@ -236,9 +238,9 @@ def fetch_fbref_stats():
 
     # Team-level values from the player tables + schedule.
     team = {
-        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))),
-        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()),
-        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()),
+        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))) if fixtures is not None else 0,
+        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()) if fixtures is not None else 0,
+        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()) if fixtures is not None else 0,
         "assists": sum(p["assists"] for p in players),
         "shots": sum(p["shots"] for p in players),
         "shots_on_target": sum(p["shots_on_target"] for p in players),
@@ -266,7 +268,7 @@ def fetch_fbref_stats():
                 recent_results.append({
                     "date": clean(r.get("Date")),
                     "competition": clean(r.get("Comp")),
-                    "venue": clean(r.get("Venue")),
+                    "venue": SPORTING_STADIUM if clean(r.get("Venue")) == "Home" else clean(r.get("Venue")),
                     "result": result,
                     "gf": int(fnum(r.get("GF")) or 0),
                     "ga": int(fnum(r.get("GA")) or 0),
@@ -289,6 +291,7 @@ def fetch_fbref_stats():
                 "competition": clean(r.get("Comp")),
                 "round": clean(r.get("Round")),
                 "venue_side": clean(r.get("Venue")),
+                "venue_name": SPORTING_STADIUM if clean(r.get("Venue")) == "Home" else "",
                 "result": clean(r.get("Result")),
                 "gf": int(fnum(r.get("GF")) or 0) if clean(r.get("Result")) else None,
                 "ga": int(fnum(r.get("GA")) or 0) if clean(r.get("Result")) else None,
@@ -298,6 +301,9 @@ def fetch_fbref_stats():
                 "referee": clean(r.get("Referee")),
                 "match_report": clean(r.get("Match Report")),
             })
+
+    league_enrichment = fetch_league_schedule_enrichment()
+    schedule_rows = apply_schedule_enrichment(schedule_rows, league_enrichment)
 
     write_json("squad.json", {
         "season": "2026/27",
@@ -315,6 +321,53 @@ def fetch_fbref_stats():
         "fixtures": schedule_rows,
         "source": "FBref",
     })
+
+
+def fetch_league_schedule_enrichment():
+    """Fetch Primeira Liga match rows so fixture cards can show real venue/referee data."""
+    try:
+        tables, _ = read_fbref_tables(FBREF_LEAGUE_SCHEDULE)
+        for df in tables:
+            multi_index_flatten(df)
+        table = pick_table(tables, ["Date", "Home", "Away", "Venue", "Referee"])
+        if table is None:
+            print("League schedule table not found; continuing without venue enrichment.")
+            return {}
+        out = {}
+        for _, r in table.iterrows():
+            d = clean(r.get("Date"))
+            home = clean(r.get("Home"))
+            away = clean(r.get("Away"))
+            if not d or not home or not away:
+                continue
+            key = f"{d}|{home}|{away}"
+            out[key] = {
+                "venue_name": clean(r.get("Venue")),
+                "referee": clean(r.get("Referee")),
+                "attendance": int(fnum(r.get("Attendance")) or 0) if fnum(r.get("Attendance")) is not None else None,
+            }
+        return out
+    except Exception as e:
+        print("League schedule enrichment warning:", e)
+        return {}
+
+
+def apply_schedule_enrichment(schedule_rows, enrichment):
+    for row in schedule_rows:
+        if row.get("venue_side") == "Home":
+            row["venue_name"] = SPORTING_STADIUM
+        d = row.get("date") or ""
+        # FBref's team schedule gives opponent but not venue name. For Primeira Liga,
+        # the competition schedule supplies the exact stadium and referee.
+        opponent = clean(row.get("opponent"))
+        home = "Sporting CP" if row.get("venue_side") == "Home" else opponent
+        away = opponent if row.get("venue_side") == "Home" else "Sporting CP"
+        e = enrichment.get(f"{d}|{home}|{away}")
+        if e:
+            row["venue_name"] = e.get("venue_name") or row.get("venue_name")
+            row["referee"] = e.get("referee") or row.get("referee")
+            row["attendance"] = e.get("attendance")
+    return schedule_rows
 
 
 def fetch_standings():
