@@ -1,3 +1,335 @@
 {
-  "_updated_at": "2026-09-25T21:07:43.914384+00:00"
+  "_updated_at": "2026-09-25T21:12:10.199025+00:00",
+  "primeira-liga": {
+    "competition": "Primeira Liga",
+    "season": "2026/27",
+    "table": [
+      {
+        "position": 1,
+        "team": {
+          "id": 9773,
+          "name": "FC Porto",
+          "shortName": "FC Porto",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
+        },
+        "playedGames": 7,
+        "won": 7,
+        "draw": 0,
+        "lost": 0,
+        "points": 21,
+        "goalsFor": 18,
+        "goalsAgainst": 3,
+        "goalDifference": 15
+      },
+      {
+        "position": 2,
+        "team": {
+          "id": 9772,
+          "name": "Benfica",
+          "shortName": "Benfica",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
+        },
+        "playedGames": 7,
+        "won": 5,
+        "draw": 1,
+        "lost": 1,
+        "points": 16,
+        "goalsFor": 22,
+        "goalsAgainst": 7,
+        "goalDifference": 15
+      },
+      {
+        "position": 3,
+        "team": {
+          "id": 9768,
+          "name": "Sporting CP",
+          "shortName": "Sporting CP",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+        },
+        "playedGames": 7,
+        "won": 4,
+        "draw": 3,
+        "lost": 0,
+        "points": 15,
+        "goalsFor": 17,
+        "goalsAgainst": 8,
+        "goalDifference": 9
+      },
+      {
+        "position": 4,
+        "team": {
+          "id": 1567,
+          "name": "Santa Clara",
+          "shortName": "Santa Clara",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
+        },
+        "playedGames": 7,
+        "won": 4,
+        "draw": 3,
+        "lost": 0,
+        "points": 15,
+        "goalsFor": 11,
+        "goalsAgainst": 4,
+        "goalDifference": 7
+      },
+      {
+        "position": 5,
+        "team": {
+          "id": 158085,
+          "name": "Arouca",
+          "shortName": "Arouca",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/158085.png"
+        },
+        "playedGames": 7,
+        "won": 3,
+        "draw": 2,
+        "lost": 2,
+        "points": 11,
+        "goalsFor": 10,
+        "goalsAgainst": 7,
+        "goalDifference": 3
+      },
+      {
+        "position": 6,
+        "team": {
+          "id": 10264,
+          "name": "Braga",
+          "shortName": "Braga",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
+        },
+        "playedGames": 6,
+        "won": 3,
+        "draw": 2,
+        "lost": 1,
+        "points": 11,
+        "goalsFor": 7,
+        "goalsAgainst": 5,
+        "goalDifference": 2
+      },
+      {
+        "position": 7,
+        "team": {
+          "id": 1786,
+          "name": "Académico Viseu",
+          "shortName": "Académico Viseu",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
+        },
+        "playedGames": 7,
+        "won": 3,
+        "draw": 2,
+        "lost": 2,
+        "points": 11,
+        "goalsFor": 9,
+        "goalsAgainst": 9,
+        "goalDifference": 0
+      },
+      {
+        "position": 8,
+        "team": {
+          "id": 1074320,
+          "name": "Estrela da Amadora",
+          "shortName": "Estrela da Amadora",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1074320.png"
+        },
+        "playedGames": 7,
+        "won": 2,
+        "draw": 4,
+        "lost": 1,
+        "points": 10,
+        "goalsFor": 14,
+        "goalsAgainst": 14,
+        "goalDifference": 0
+      },
+      {
+        "position": 9,
+        "team": {
+          "id": 9764,
+          "name": "Gil Vicente",
+          "shortName": "Gil Vicente",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
+        },
+        "playedGames": 6,
+        "won": 2,
+        "draw": 2,
+        "lost": 2,
+        "points": 8,
+        "goalsFor": 5,
+        "goalsAgainst": 5,
+        "goalDifference": 0
+      },
+      {
+        "position": 10,
+        "team": {
+          "id": 9780,
+          "name": "Alverca",
+          "shortName": "Alverca",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9780.png"
+        },
+        "playedGames": 7,
+        "won": 2,
+        "draw": 2,
+        "lost": 3,
+        "points": 8,
+        "goalsFor": 9,
+        "goalsAgainst": 11,
+        "goalDifference": -2
+      },
+      {
+        "position": 11,
+        "team": {
+          "id": 10212,
+          "name": "Marítimo",
+          "shortName": "Marítimo",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
+        },
+        "playedGames": 7,
+        "won": 2,
+        "draw": 2,
+        "lost": 3,
+        "points": 8,
+        "goalsFor": 8,
+        "goalsAgainst": 12,
+        "goalDifference": -4
+      },
+      {
+        "position": 12,
+        "team": {
+          "id": 8348,
+          "name": "Moreirense",
+          "shortName": "Moreirense",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
+        },
+        "playedGames": 7,
+        "won": 2,
+        "draw": 2,
+        "lost": 3,
+        "points": 8,
+        "goalsFor": 8,
+        "goalsAgainst": 14,
+        "goalDifference": -6
+      },
+      {
+        "position": 13,
+        "team": {
+          "id": 1634,
+          "name": "Famalicão",
+          "shortName": "Famalicão",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
+        },
+        "playedGames": 7,
+        "won": 1,
+        "draw": 4,
+        "lost": 2,
+        "points": 7,
+        "goalsFor": 9,
+        "goalsAgainst": 7,
+        "goalDifference": 2
+      },
+      {
+        "position": 14,
+        "team": {
+          "id": 7844,
+          "name": "Vitória de Guimarães",
+          "shortName": "Vitória de Guimarães",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7844.png"
+        },
+        "playedGames": 7,
+        "won": 1,
+        "draw": 2,
+        "lost": 4,
+        "points": 5,
+        "goalsFor": 5,
+        "goalsAgainst": 8,
+        "goalDifference": -3
+      },
+      {
+        "position": 15,
+        "team": {
+          "id": 10214,
+          "name": "Nacional",
+          "shortName": "Nacional",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
+        },
+        "playedGames": 7,
+        "won": 1,
+        "draw": 1,
+        "lost": 5,
+        "points": 4,
+        "goalsFor": 7,
+        "goalsAgainst": 15,
+        "goalDifference": -8
+      },
+      {
+        "position": 16,
+        "team": {
+          "id": 7841,
+          "name": "Rio Ave",
+          "shortName": "Rio Ave",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7841.png"
+        },
+        "playedGames": 7,
+        "won": 1,
+        "draw": 1,
+        "lost": 5,
+        "points": 4,
+        "goalsFor": 5,
+        "goalsAgainst": 15,
+        "goalDifference": -10
+      },
+      {
+        "position": 17,
+        "team": {
+          "id": 212821,
+          "name": "Casa Pia AC",
+          "shortName": "Casa Pia AC",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
+        },
+        "playedGames": 7,
+        "won": 1,
+        "draw": 1,
+        "lost": 5,
+        "points": 4,
+        "goalsFor": 3,
+        "goalsAgainst": 16,
+        "goalDifference": -13
+      },
+      {
+        "position": 18,
+        "team": {
+          "id": 7842,
+          "name": "Estoril",
+          "shortName": "Estoril",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7842.png"
+        },
+        "playedGames": 7,
+        "won": 0,
+        "draw": 2,
+        "lost": 5,
+        "points": 2,
+        "goalsFor": 3,
+        "goalsAgainst": 10,
+        "goalDifference": -7
+      }
+    ],
+    "source": "FotMob",
+    "tournament_id": 238
+  }
 }
