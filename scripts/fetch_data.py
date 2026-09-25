@@ -1243,7 +1243,13 @@ def main():
         except Exception as e:
             errors.append(f"fotmob-core: {e}")
 
-        # Optional secondary sources. They must never replace working FotMob data.
+        # SofaScore is a free secondary calendar source. If available, use it to
+        # refresh the public fixture feed; if it fails, keep the FotMob feed.
+        try:
+            fetch_sofascore_fixtures()
+        except Exception as e:
+            print(f"SofaScore fixtures skipped: {e}")
+
         try:
             geocode_missing_venues()
         except Exception as e:
