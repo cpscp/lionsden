@@ -122,8 +122,8 @@ function teamLogo(name,id){
 function badge(n,id){
   const logo=teamLogo(n,id);
   return logo
-    ? \`<div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 grid place-items-center overflow-hidden shrink-0"><img src="${esc(logo)}" class="w-10 h-10 object-contain" alt="${esc(n||'')}"></div>\`
-    : \`<div class="w-14 h-14 rounded-full bg-white/10 grid place-items-center text-[11px] font-bold shrink-0">${esc(initials(n))}</div>\`;
+    ? `<div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 grid place-items-center overflow-hidden shrink-0"><img src="${esc(logo)}" class="w-10 h-10 object-contain" alt="${esc(n||'')}"></div>`
+    : `<div class="w-14 h-14 rounded-full bg-white/10 grid place-items-center text-[11px] font-bold shrink-0">${esc(initials(n))}</div>`;
 }
 function metric(k,v){return `<div class="statbox p-4"><div class="text-[10px] uppercase tracking-widest muted">${k}</div><div class="text-[23px] font-bold mt-1">${v??'—'}</div></div>`}
 function render(){
