@@ -327,6 +327,201 @@ def sofa_get(path, params=None):
     return r.json()
 
 
+
+def fetch_sofascore_fixtures():
+    """Use SofaScore's public team feed as the primary current-season fixture source."""
+    team_id = 3001
+    events = []
+    for direction in ("last", "next"):
+        for page in range(0, 3):
+            try:
+                payload = sofa_get(f"/team/{team_id}/events/{direction}/{page}")
+                batch = payload.get("events", [])
+                if not batch:
+                    break
+                events.extend(batch)
+                if not payload.get("hasNextPage"):
+                    break
+            except Exception as e:
+                print("Sofascore fixtures warning:", direction, page, e)
+                break
+
+    unique = {str(e.get("id")): e for e in events if e.get("id")}
+    normalized = []
+
+    for e in unique.values():
+        home = e.get("homeTeam") or {}
+        away = e.get("awayTeam") or {}
+        if home.get("id") != team_id and away.get("id") != team_id:
+            continue
+
+        ts = e.get("startTimestamp")
+        if not ts:
+            continue
+
+        status = e.get("status") or {}
+        stype = clean(status.get("type")).lower()
+        finished = stype in {"finished", "afterpenalties", "afterextra"}
+        home_score = e.get("homeScore") or {}
+        away_score = e.get("awayScore") or {}
+
+        venue = e.get("venue") or {}
+        normalized.append({
+            "id": e.get("id"),
+            "date": int(ts),
+            "kickoff_date": datetime.fromtimestamp(int(ts), timezone.utc).date().isoformat(),
+            "kickoff_local_time": datetime.fromtimestamp(int(ts), timezone.utc).strftime("%H:%M"),
+            "status": {
+                "short": "finished" if finished else ("live" if stype == "inprogress" else "scheduled"),
+                "long": clean(status.get("description")) or ("Terminado" if finished else "Agendado")
+            },
+            "referee": None,
+            "venue": {
+                "name": clean(venue.get("name")),
+                "city": clean(venue.get("city")),
+                "lat": venue.get("latitude"),
+                "lon": venue.get("longitude"),
+                "capacity": venue.get("capacity"),
+            },
+            "competition": {
+                "name": clean((e.get("tournament") or {}).get("name")),
+                "round": clean((e.get("roundInfo") or {}).get("name")),
+                "season": "2026/27"
+            },
+            "home": {"id": home.get("id"), "name": clean(home.get("name"))},
+            "away": {"id": away.get("id"), "name": clean(away.get("name"))},
+            "goals": {
+                "home": home_score.get("current") if finished else None,
+                "away": away_score.get("current") if finished else None
+            },
+            "half_time": {
+                "home": home_score.get("period1") if finished else None,
+                "away": away_score.get("period1") if finished else None
+            },
+            "source": "Sofascore"
+        })
+
+    normalized.sort(key=lambda x: x.get("date") or 0)
+
+    # Enrich only the small set the UI actually needs.
+    for f in normalized[:12]:
+        try:
+            detail = sofa_get(f"/event/{f['id']}").get("event") or {}
+            ref = detail.get("referee") or {}
+            f["referee"] = clean(ref.get("name")) or None
+            v = detail.get("venue") or {}
+            for key, value in {
+                "name": clean(v.get("name")),
+                "city": clean(v.get("city")),
+                "lat": v.get("latitude"),
+                "lon": v.get("longitude"),
+                "capacity": v.get("capacity"),
+            }.items():
+                if value not in (None, ""):
+                    f["venue"][key] = value
+        except Exception as e:
+            print("Sofascore match detail warning:", f.get("id"), e)
+
+    if not normalized:
+        raise RuntimeError("Sofascore returned no Sporting fixtures.")
+
+    write_json("fixtures.json", {
+        "team_id": team_id,
+        "fixtures": normalized,
+        "source": "Sofascore",
+        "season": "2026/27"
+    })
+    print(f"Sofascore: {len(normalized)} Sporting fixtures written.")
+
+def fetch_sofascore_standings():
+    """Fetch the current Primeira Liga table from SofaScore."""
+    sid = _sofa_season(17)
+    if not sid:
+        raise RuntimeError("Sofascore Primeira Liga season not found.")
+
+    payload = sofa_get(f"/unique-tournament/17/season/{sid}/standings/total")
+    blocks = payload.get("standings") or []
+    rows = []
+    for block in blocks:
+        for r in block.get("rows", []):
+            team = r.get("team") or {}
+            rows.append({
+                "position": r.get("position"),
+                "team": {
+                    "id": team.get("id"),
+                    "name": team.get("name"),
+                    "shortName": team.get("shortName") or team.get("name"),
+                    "tla": team.get("nameCode"),
+                    "crest": f"https://img.sofascore.com/api/v1/team/{team.get('id')}/image" if team.get("id") else None
+                },
+                "playedGames": r.get("matches", 0),
+                "won": r.get("wins", 0),
+                "draw": r.get("draws", 0),
+                "lost": r.get("losses", 0),
+                "points": r.get("points", 0),
+                "goalsFor": r.get("scoresFor", 0),
+                "goalsAgainst": r.get("scoresAgainst", 0),
+                "goalDifference": r.get("scoreDiff", 0)
+            })
+
+    if not rows:
+        raise RuntimeError("Sofascore returned an empty Primeira Liga table.")
+
+    rows.sort(key=lambda x: x.get("position") or 999)
+    write_json("standings.json", {
+        "competition": "Primeira Liga",
+        "season": "2026/27",
+        "table": rows,
+        "source": "Sofascore"
+    })
+    print(f"Sofascore: {len(rows)} standings rows written.")
+
+def build_team_stats_from_sofa():
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished"]
+    team = {"matches": 0, "wins": 0, "draws": 0, "losses": 0, "goals": 0,
+            "goals_against": 0, "clean_sheets": 0, "assists": 0, "shots": 0,
+            "shots_on_target": 0, "possession_avg": None, "form": [], "recent_matches": []}
+
+    for f in finished:
+        h = f.get("goals", {}).get("home")
+        a = f.get("goals", {}).get("away")
+        if h is None or a is None:
+            continue
+        home = (f.get("home") or {}).get("id") == 3001
+        gf, ga = (h, a) if home else (a, h)
+        team["matches"] += 1
+        team["goals"] += int(gf)
+        team["goals_against"] += int(ga)
+        team["clean_sheets"] += int(ga == 0)
+        result = "W" if gf > ga else "D" if gf == ga else "L"
+        team[result_map := {"W":"wins","D":"draws","L":"losses"}[result]] += 1
+        team["form"].append(result)
+        team["recent_matches"].append({
+            "date": f.get("kickoff_date"),
+            "competition": (f.get("competition") or {}).get("name"),
+            "venue": "Casa" if home else "Fora",
+            "result": result,
+            "gf": gf, "ga": ga,
+            "opponent": (f.get("away") if home else f.get("home") or {}).get("name")
+        })
+
+    team["form"] = team["form"][-6:]
+    team["recent_matches"] = team["recent_matches"][-6:]
+
+    squad = (safe_existing("squad.json") or {}).get("squad", [])
+    for p in squad:
+        st = p.get("stats") or {}
+        team["assists"] += int(fnum(st.get("assists")) or 0)
+        team["shots"] += int(fnum(st.get("shots")) or 0)
+        team["shots_on_target"] += int(fnum(st.get("shots_on_target")) or 0)
+
+    write_json("team-stats.json", {
+        "season": "2026/27",
+        "team": team,
+        "source": "Sofascore"
+    })
+
 def _sofa_season(tournament_id):
     try:
         payload = sofa_get(f"/unique-tournament/{tournament_id}/seasons")
@@ -446,34 +641,13 @@ def fetch_sofascore_player_stats():
         "source": "Sofascore public data",
     })
 
-    current = safe_existing("squad.json") or {}
-    existing = current.get("squad") or current.get("players") or []
-    by_name = {normalize_player_name(x.get("name")).lower(): x for x in players}
-    merged = []
-    for old in existing:
-        item = dict(old)
-        hit = by_name.get(normalize_player_name(old.get("name")).lower())
-        if hit:
-            item.update({
-                "sofascore_id": hit.get("sofascore_id"),
-                "photo": hit.get("photo"),
-                "stats": hit.get("stats", {}),
-                "competitions": hit.get("competitions", {}),
-                "height": hit.get("height"),
-                "preferredFoot": hit.get("preferredFoot"),
-                "shirtNumber": hit.get("shirtNumber"),
-            })
-            item["nationality"] = hit.get("nationality") or item.get("nationality")
-            item["dateOfBirth"] = hit.get("dateOfBirth") or item.get("dateOfBirth")
-        merged.append(item)
-
     write_json("squad.json", {
-        "team": current.get("team", "Sporting Clube de Portugal"),
-        "crest": current.get("crest"),
-        "coach": current.get("coach", "Rui Borges"),
+        "team": "Sporting Clube de Portugal",
+        "crest": "https://img.sofascore.com/api/v1/team/3001/image",
+        "coach": "Rui Borges",
         "season": "2026/27",
-        "squad": merged,
-        "source": "Football-data + Sofascore statistics",
+        "squad": players,
+        "source": "Sofascore public data"
     })
     print(f"Sofascore: {len(players)} players enriched; {sum(bool(p.get('stats')) for p in players)} have season stats.")
 
@@ -773,32 +947,41 @@ def main():
         errors.append(f"news: {e}")
 
     if mode in {"full", "football"}:
-        # FBref is the zero-cost source of truth for current-season squad,
-        # player/team statistics and the complete schedule.
+        # SofaScore is the primary zero-cost source for current fixtures,
+        # standings and player statistics. FBref remains an optional enrichment.
         try:
-            fetch_fbref_stats()
-            build_fixtures_from_fbref()
+            fetch_sofascore_fixtures()
         except Exception as e:
-            errors.append(f"fbref-core: {e}")
+            errors.append(f"sofascore-fixtures: {e}")
 
         try:
             fetch_sofascore_player_stats()
         except Exception as e:
             errors.append(f"sofascore-player-stats: {e}")
 
-        # Football Soccer API is optional enrichment only.
-        # It must never replace the FBref fixture list.
+        try:
+            build_team_stats_from_sofa()
+        except Exception as e:
+            errors.append(f"team-stats: {e}")
+
+        try:
+            fetch_sofascore_standings()
+        except Exception as e:
+            errors.append(f"sofascore-standings: {e}")
+
+        # FBref is optional; a 403 must never blank or replace current data.
+        try:
+            fetch_fbref_stats()
+        except Exception as e:
+            print(f"FBref enrichment skipped: {e}")
+
+        # Football Soccer API is optional match-detail enrichment only.
         try:
             fetch_fsa_fixtures()
             geocode_missing_venues()
             enrich_match_details()
         except Exception as e:
             print(f"Football API enrichment skipped: {e}")
-
-        try:
-            fetch_standings()
-        except Exception as e:
-            errors.append(f"fetch_standings: {e}")
 
     # Always leave a status file so the app can explain which source failed.
     write_json("status.json", {
