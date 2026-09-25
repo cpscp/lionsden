@@ -22,6 +22,10 @@ jobs:
           FSAPI_KEY: ${{ secrets.FSAPI_KEY }}
           LIONS_DEN_MODE: football
         run: python scripts/fetch_data.py
+      - name: Sincronizar com main
+        run: |
+          git pull --rebase origin main
+
       - name: Commitar dados
         run: |
           git config user.name 'lions-den-bot'
