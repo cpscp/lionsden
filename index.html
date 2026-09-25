@@ -117,7 +117,7 @@ function nextFixture(){return allFixtures().filter(isFuture)[0]}
 function initials(n){return (n||'?').split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
 function teamLogo(name,id){
   const known={"Sporting CP":"https://images.fotmob.com/image_resources/logo/teamlogo/9768.png","Braga":"https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"};
-  return known[name]||((id&&String(id).match(/^\d+$/))?\`https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png\`:null);
+  return known[name]||((id&&String(id).match(/^\d+$/))?`https://images.fotmob.com/image_resources/logo/teamlogo/${id}.png`:null);
 }
 function badge(n,id){
   const logo=teamLogo(n,id);
