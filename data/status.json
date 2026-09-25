@@ -1,9 +1,12 @@
 {
-  "_updated_at": "2026-09-25T00:26:46.986206+00:00",
-  "mode": "news",
-  "errors": [],
+  "_updated_at": "2026-09-25T00:52:11.213245+00:00",
+  "mode": "football",
+  "errors": [
+    "fbref-core: 403 Client Error: Forbidden for url: https://fbref.com/en/squads/13dc44fd/2026-2027/all_comps/Sporting-CP-Stats-All-Competitions",
+    "fetch_standings: 403 Client Error: Forbidden for url: https://fbref.com/en/comps/32/2026-2027/2026-2027-Primeira-Liga-Stats"
+  ],
   "sources": {
-    "football_api": false,
+    "football_api": true,
     "fbref": true,
     "news": true,
     "maps": true
