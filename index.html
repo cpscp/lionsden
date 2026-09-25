@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100b">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <title>Lion's Den · Sporting CP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,36 +44,66 @@
 .next-center{text-align:center !important;min-width:0 !important;padding-top:8px !important}
 .next-center .vs-text{font-size:25px;font-weight:700;line-height:1}
 .game-meta .status{font-weight:600}
+
+/* Lion's Den navigation */
+.menu-toggle{border:1px solid var(--line);background:rgba(13,21,16,.72);border-radius:999px;width:40px;height:40px;display:grid;place-items:center;color:#c8d5ce}
+.drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:90;display:none}.drawer-backdrop.open{display:block}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(310px,86vw);z-index:100;background:#09110c;border-right:1px solid var(--line);transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(0,0,0,.35);overflow:auto}.drawer.open{transform:translateX(0)}
+.drawer-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;color:#8da097;text-align:left;font-size:13px}.drawer-link.active{background:#10231a;color:#fff}.drawer-section{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#587066;padding:18px 14px 7px}
+.news-card{overflow:hidden}.news-thumb{width:100%;height:150px;object-fit:cover;background:linear-gradient(135deg,#123d29,#09110c)}
+.class-table{width:100%;border-collapse:collapse;font-size:11px}.class-table th{color:var(--muted);font-size:9px;font-weight:500;padding:7px 3px;border-bottom:1px solid var(--line);text-align:right}.class-table th:nth-child(2),.class-table td:nth-child(2){text-align:left}.class-table td{padding:8px 3px;border-bottom:1px solid rgba(255,255,255,.045);text-align:right}.class-table tr:last-child td{border-bottom:0}.class-table .club{font-weight:600}.class-table .sc-row{background:rgba(8,165,110,.08)}
+.link-card{display:flex;align-items:center;justify-content:space-between;gap:14px}.link-card:hover{background:var(--surface2)}
+@media(min-width:760px){.drawer{width:330px}.wrap{max-width:700px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="header"><div class="px-4 py-3 flex items-center justify-between">
-<div class="flex items-center gap-3"><div class="logo">S</div><div><div class="text-[20px] font-bold">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted">Sporting CP</div></div></div>
+<button class="menu-toggle" aria-label="Abrir menu" onclick="toggleDrawer(true)">☰</button>
+<div class="flex items-center gap-3 ml-2"><div class="logo">S</div><div><div class="text-[20px] font-bold">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted">Sporting CP</div></div></div>
 <span id="updated" class="pill px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span>
 </div></header>
 
 <main class="px-4 pt-4 space-y-5">
 <section id="home" class="screen active space-y-5">
 <div class="hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
-<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Primeira Liga</span></div><div class="card p-3" id="standings"></div></div>
+<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Primeira Liga</span></div><div class="card p-3"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div></div></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('stats')">Ver stats →</button></div><div class="grid grid-cols-6 gap-2" id="form"></div></div>
 <div class="card p-4"><div class="flex items-center justify-between mb-3"><h2 class="font-bold">Últimas notícias</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('news')">Ver todas →</button></div><div id="homeNews" class="space-y-3"></div></div>
 </section>
 
-<section id="games" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Jogos</h2><p class="text-[11px] muted">Calendário, estádio, árbitro e mapa</p></div><div id="gamesList" class="space-y-3"></div></section>
+<section id="games" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Calendário</h2></div><div id="gamesList" class="space-y-3"></div></section>
 <section id="squad" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Plantel</h2><p class="text-[11px] muted">Época 2026/27 · todas as competições</p></div><div id="squadList" class="space-y-2"></div></section>
 <section id="stats" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Estatísticas</h2><p class="text-[11px] muted">Sporting CP · 2026/27</p></div><div id="teamStats"></div></section>
-<section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2><p class="text-[11px] muted">Sporting.pt + agregação de notícias</p></div><div id="newsList" class="space-y-2"></div></section>
+<section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2></div><div id="newsList" class="space-y-3"></div></section>
+<section id="classification" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Classificação</h2><div class="text-[10px] muted mt-1">Primeira Liga · 2026/27</div></div><div id="classificationList" class="card p-3 overflow-x-auto"></div></section>
+<section id="tv" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">TV</h2><div class="text-[10px] muted mt-1">Conteúdo oficial do Sporting CP</div></div><div class="card p-4"><div class="font-semibold">Sporting CP TV</div><div class="text-[11px] muted mt-2">Os vídeos oficiais do YouTube podem ser integrados aqui. Até termos um feed de vídeos no pipeline, abre o canal oficial.</div><a class="pill inline-block px-3 py-2 text-[11px] mt-4" target="_blank" rel="noopener" href="https://www.youtube.com/@SportingCP">Abrir canal no YouTube ↗</a></div></section>
+<section id="links" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Sporting</h2><div class="text-[10px] muted mt-1">Acessos rápidos</div></div><div class="space-y-2">
+<a class="card link-card p-4" target="_blank" rel="noopener" href="https://tickets.sporting.pt/pt"><span><b>🎟️ Bilhetes</b><small class="block text-[10px] muted mt-1">Bilheteira oficial</small></span><span class="muted">↗</span></a>
+<a class="card link-card p-4" target="_blank" rel="noopener" href="https://lojaverde.sporting.pt"><span><b>🛍️ Loja</b><small class="block text-[10px] muted mt-1">Loja Verde</small></span><span class="muted">↗</span></a>
+<a class="card link-card p-4" target="_blank" rel="noopener" href="https://sportingnumminuto.pt/pt"><span><b>🦁 Sócios</b><small class="block text-[10px] muted mt-1">Sporting num Minuto</small></span><span class="muted">↗</span></a>
+<a class="card link-card p-4" target="_blank" rel="noopener" href="https://gamebox.sporting.pt/estadio"><span><b>🎫 Gamebox</b><small class="block text-[10px] muted mt-1">Gestão da Gamebox</small></span><span class="muted">↗</span></a>
+</div></section>
 </main></div>
 
-<nav class="bottom"><div class="max-w-[540px] mx-auto grid grid-cols-5">
-<button class="navbtn active py-3 text-[10px]" data-go="home">⌂<br>Início</button>
-<button class="navbtn py-3 text-[10px]" data-go="games">◷<br>Jogos</button>
-<button class="navbtn py-3 text-[10px]" data-go="squad">♟<br>Plantel</button>
-<button class="navbtn py-3 text-[10px]" data-go="stats">▥<br>Stats</button>
-<button class="navbtn py-3 text-[10px]" data-go="news">▤<br>Notícias</button>
-</div></nav>
+<div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+<aside id="drawer" class="drawer" aria-label="Menu principal">
+<div class="p-4 border-b border-white/5 flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo">S</div><div><b>Lion's Den</b><div class="text-[9px] uppercase tracking-[.18em] muted">Sporting CP</div></div></div><button class="pill w-9 h-9" onclick="toggleDrawer(false)">×</button></div>
+<div class="p-3">
+<button class="drawer-link navbtn active" data-go="home">⌂ <span>Início</span></button>
+<div class="drawer-section">Futebol</div>
+<button class="drawer-link navbtn" data-go="games">◷ <span>Calendário</span></button>
+<button class="drawer-link navbtn" data-go="squad">♟ <span>Plantel</span></button>
+<button class="drawer-link navbtn" data-go="stats">▥ <span>Estatísticas</span></button>
+<button class="drawer-link navbtn" data-go="classification">▤ <span>Classificação</span></button>
+<div class="drawer-section">Conteúdo</div>
+<button class="drawer-link navbtn" data-go="news">📰 <span>Notícias</span></button>
+<button class="drawer-link navbtn" data-go="tv">▶ <span>TV</span></button>
+<div class="drawer-section">Sporting</div>
+<button class="drawer-link navbtn" data-go="links">↗ <span>Links</span></button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-4 text-[9px] muted border-t border-white/5">Lion's Den · Sporting CP</div>
+</aside>
 
 <div id="modal" class="modal"><div class="modalpanel">
 <div class="sticky top-0 z-10 p-4 flex justify-between items-center bg-[var(--bg)] border-b border-white/5"><b id="modalTitle">Detalhes</b><button onclick="closeModal()" class="pill w-9 h-9">×</button></div>
@@ -216,7 +248,7 @@ function refereeInfo(v){
 function metric(k,v){return `<div class="statbox p-4"><div class="text-[10px] uppercase tracking-widest muted">${k}</div><div class="text-[23px] font-bold mt-1">${v??'—'}</div></div>`}
 function render(){
 const u=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=u?`dados ${timeAgo(u)}`:'sem dados';
-renderHome();renderGames();renderSquad();renderStats();renderNews();
+renderHome();renderGames();renderSquad();renderStats();renderNews();renderClassification();
 }
 function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-center"><div class="text-[9px] uppercase tracking-[.2em] muted">Contagem decrescente</div><div class="text-xl font-bold mt-1">a calcular…</div></div>';}
 function updateCountdown(ts){const el=document.getElementById('nextCountdown');if(!el)return;const tick=()=>{const diff=Math.max(0,Number(ts)*1000-Date.now());const total=Math.floor(diff/1000);const d=Math.floor(total/86400),h=Math.floor(total%86400/3600),m=Math.floor(total%3600/60),sec=total%60;el.querySelector('div:last-child').textContent=diff?'em '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s':'A começar agora';};tick();clearInterval(window._nextCountdown);window._nextCountdown=setInterval(tick,1000);}
@@ -234,6 +266,12 @@ document.getElementById('standings').innerHTML=rows.slice(0,8).map(r=>{const tea
 const form=D['team-stats.json']?.team?.form||[];document.getElementById('form').innerHTML=form.map(x=>`<div class="statbox text-center py-3 font-bold ${x==='W'?'text-emerald-400':x==='L'?'text-red-400':'text-amber-300'}">${x==='W'?'V':x==='L'?'D':'E'}</div>`).join('')||'<div class="col-span-6 text-center muted">—</div>';
 const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNews').innerHTML=ns.map(newsCard).join('')||'<span class="muted text-sm">Sem notícias.</span>';
 }
+
+function renderClassification(){
+ const rows=D['standings.json']?.table||[];
+ const el=document.getElementById('classificationList'); if(!el)return;
+ el.innerHTML=rows.length?'<table class="class-table"><thead><tr><th>#</th><th>Clube</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GM</th><th>GS</th><th>DG</th><th>PTS</th></tr></thead><tbody>'+rows.map(r=>{const t=typeof r.team==='object'?r.team:{};const sc=t.name==='Sporting CP';return '<tr class="'+(sc?'sc-row':'')+'"><td>'+esc(r.position??'—')+'</td><td class="club">'+esc(t.shortName||t.name||'—')+'</td><td>'+esc(r.playedGames??'—')+'</td><td>'+esc(r.won??'—')+'</td><td>'+esc(r.draw??'—')+'</td><td>'+esc(r.lost??'—')+'</td><td>'+esc(r.goalsFor??'—')+'</td><td>'+esc(r.goalsAgainst??'—')+'</td><td>'+esc(r.goalDifference??'—')+'</td><td><b>'+esc(r.points??'—')+'</b></td></tr>';}).join('')+'</tbody></table>':'<div class="py-6 text-center muted">Sem classificação.</div>';
+}
 function renderGames(){
 const merged=allFixtures();const up=merged.filter(isFuture),past=merged.filter(x=>!isFuture(x)).sort((a,b)=>(b.date||0)-(a.date||0));const out=[...up,...past];
 document.getElementById('gamesList').innerHTML=out.slice(0,28).map(x=>`<button onclick="openGame('${esc(x.id)}')" class="card w-full p-4 text-left"><div class="flex items-center justify-between mb-3"><span class="source">${esc(x.competition?.name||'')}</span><span class="text-[9px] muted">${fmtDate(x.date)}</span></div><div class="game-row"><div class="flex items-center justify-end gap-2 min-w-0 text-[12px] font-semibold text-right"><span class="truncate">${esc(x.home?.name)}</span>${teamVisual(x.home,true)}</div><div class="font-bold text-center">${x.goals?.home!=null?`${x.goals.home} - ${x.goals.away}`:'VS'}</div><div class="flex items-center gap-2 min-w-0 text-[12px] font-semibold"><span class="truncate">${esc(x.away?.name)}</span>${teamVisual(x.away,true)}</div></div><div class="mt-3 text-[10px] muted flex justify-between"><span>🏟 ${esc(venueInfo(x.venue).name||'Estádio por confirmar')}</span><span>${esc(x.status?.long||'')}</span></div></button>`).join('')||'<div class="card p-6 text-center muted">Sem jogos.</div>';
@@ -244,7 +282,8 @@ const raw=D['squad.json']||{}; const ps=raw.players||raw.squad||[];document.getE
 function renderStats(){
 const t=D['team-stats.json']?.team||{},f=allFixtures(),now=Math.floor(Date.now()/1000),played=f.filter(x=>x.date&&Number(x.date)<=now&&String(x.status?.short||'').toLowerCase()!=='postponed');let gf=0,ga=0,w=0,d=0,l=0,cs=0;for(const x of played){const gh=Number(x.goals?.home??x.score?.home),ga0=Number(x.goals?.away??x.score?.away);if(!Number.isFinite(gh)||!Number.isFinite(ga0))continue;const home=String(x.home?.name||'').toLowerCase().includes('sporting'),sg=home?gh:ga0,og=home?ga0:gh;gf+=sg;ga+=og;if(sg>og)w++;else if(sg===og)d++;else l++;if(og===0)cs++;}const ps=D['squad.json']?.players||D['squad.json']?.squad||[],num=k=>ps.reduce((n,p)=>n+Number((p.stats?.[k]??p[k])||0),0),v={matches:t.matches??w+d+l,wins:t.wins??w,draws:t.draws??d,losses:t.losses??l,goals:t.goals??gf,goals_against:t.goals_against??ga,assists:t.assists??num('assists'),shots:t.shots??num('shots'),shots_on_target:t.shots_on_target??num('shots_on_target'),clean_sheets:t.clean_sheets??cs};const el=document.getElementById('teamStats');if(!el)return;el.innerHTML='<div class="grid grid-cols-2 gap-2">'+metric('Jogos',v.matches)+metric('Vitórias',v.wins)+metric('Empates',v.draws)+metric('Derrotas',v.losses)+metric('Golos',v.goals)+metric('Golos sofridos',v.goals_against)+metric('Assistências',v.assists)+metric('Remates',v.shots)+metric('Remates enquadrados',v.shots_on_target)+metric('Clean sheets',v.clean_sheets)+'</div><div class="card p-4 mt-3"><div class="font-semibold">2026/27 · todas as competições</div><div class="text-[11px] muted mt-2">Dados calculados a partir dos jogos e do plantel disponíveis.</div></div></div>';
 }
-function newsCard(n){return `<a href="${esc(n.url)}" target="_blank" rel="noopener" class="block card p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[12px] mt-1 leading-snug">${esc(n.title)}</div><div class="text-[9px] muted mt-2">${esc(n.published||'Abrir artigo')} ↗</div></a>`}
+function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';return `<button onclick="openNews(${JSON.stringify(n).replace(/</g,'\\u003c')})" class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt=""`:'class="news-thumb"'}>${img?'': '📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div><div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
+function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${n.image||n.image_url||n.thumbnail?`<img src="${esc(n.image||n.image_url||n.thumbnail)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}<div class="card p-4 mt-4"><div class="text-sm muted">O feed atual fornece o título e a ligação da notícia. O texto integral será mostrado aqui quando o pipeline passar também a guardar o conteúdo do artigo.</div></div><a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Abrir artigo ↗</a>`;openModal()}
 function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
 function openPlayer(i){
 const p=((D['squad.json']?.players||D['squad.json']?.squad||[]))[i];if(!p)return;document.getElementById('modalTitle').textContent=p.name;
@@ -260,7 +299,8 @@ document.getElementById('modalBody').innerHTML=`<div class="text-center mb-5"><d
 openModal();
 }
 function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
-function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'})}
+function toggleDrawer(open){const d=document.getElementById('drawer'),b=document.getElementById('drawerBackdrop');if(!d||!b)return;d.classList.toggle('open',open);b.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
+function go(id){const screen=document.getElementById(id);if(!screen)return;document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));screen.classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.go===id));toggleDrawer(false);window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(b.dataset.go));document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};load();setInterval(load,300000);
 </script>
 </body></html>
