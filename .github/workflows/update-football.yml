@@ -60,7 +60,7 @@ jobs:
           # Em conflitos nos JSON gerados, mantém os dados acabados de gerar.
           if ! git rebase origin/main; then
             echo "Conflito durante o rebase; mantendo os JSON gerados nesta execução."
-            git checkout --theirs -- data/*.json || true
+            git checkout --ours -- data/*.json || true
             git add data/*.json
             GIT_EDITOR=true git rebase --continue
           fi
