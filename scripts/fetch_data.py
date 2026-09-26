@@ -1323,60 +1323,56 @@ def fetch_sofascore_match_details():
                 facts = content.get("matchFacts") or {}
                 info = facts.get("infoBox") or {}
                 lineup_raw = content.get("lineup") or {}
-                teams = lineup_raw.get("lineups") or []
+                teams = lineup_raw.get("lineups") or lineup_raw.get("lineup") or []
                 if not teams:
                     for key in ("homeTeam", "awayTeam"):
                         if isinstance(lineup_raw.get(key), dict):
                             teams.append(lineup_raw[key])
 
                 home_id = int((f.get("home") or {}).get("id") or 0)
+                def flatten_players(value):
+                    out = []
+                    if isinstance(value, list):
+                        for item in value:
+                            if isinstance(item, list):
+                                out.extend(flatten_players(item))
+                            elif isinstance(item, dict):
+                                out.append(item)
+                    return out
+
+                def norm_player(p, substitute=False):
+                    performance = p.get("performance") if isinstance(p.get("performance"), dict) else {}
+                    rating = performance.get("rating")
+                    if rating is None:
+                        rating = p.get("rating")
+                    return {
+                        "player": {
+                            "name": clean(p.get("name")),
+                            "shortName": clean(p.get("shortName") or p.get("name")),
+                            "id": p.get("id")
+                        },
+                        "shirtNumber": p.get("shirtNumber") or p.get("shirt") or p.get("jerseyNumber"),
+                        "position": clean(p.get("positionStringShort") or p.get("position") or p.get("role") or ""),
+                        "substitute": substitute,
+                        "horizontalLayout": p.get("horizontalLayout"),
+                        "statistics": {"rating": rating}
+                    }
+
                 def norm_team(t):
+                    starters = flatten_players(t.get("starters") or t.get("players") or [])
+                    bench = flatten_players(t.get("subs") or t.get("bench") or [])
+                    coach = t.get("coach") or []
+                    coach_name = ""
+                    if isinstance(coach, list) and coach and isinstance(coach[0], dict):
+                        coach_name = clean(coach[0].get("name"))
+                    elif isinstance(coach, dict):
+                        coach_name = clean(coach.get("name"))
                     return {
                         "id": t.get("teamId") or t.get("id"),
                         "name": clean(t.get("teamName") or t.get("name")),
                         "formation": clean(t.get("formation") or t.get("lineup")),
-                        "players": [
-                            {
-                                "player": {
-                                    "name": clean(p.get("name")),
-                                    "shortName": clean(p.get("shortName") or p.get("name")),
-                                    "id": p.get("id")
-                                },
-                                "shirtNumber": p.get("shirtNumber") or p.get("shirt") or p.get("jerseyNumber"),
-                                "position": clean(p.get("positionStringShort") or p.get("position") or ""),
-                                "substitute": False,
-                                "horizontalLayout": p.get("horizontalLayout"),
-                                "statistics": {
-                                    "rating": (
-                                        p.get("performance", {}).get("rating")
-                                        if isinstance(p.get("performance"), dict)
-                                        else p.get("rating")
-                                    )
-                                }
-                            }
-                            for p in (t.get("starters") or t.get("players") or [])
-                            if isinstance(p, dict) and clean(p.get("name"))
-                        ] + [
-                            {
-                                "player": {
-                                    "name": clean(p.get("name")),
-                                    "shortName": clean(p.get("shortName") or p.get("name")),
-                                    "id": p.get("id")
-                                },
-                                "shirtNumber": p.get("shirtNumber") or p.get("shirt") or p.get("jerseyNumber"),
-                                "position": clean(p.get("positionStringShort") or p.get("position") or ""),
-                                "substitute": True,
-                                "statistics": {
-                                    "rating": (
-                                        p.get("performance", {}).get("rating")
-                                        if isinstance(p.get("performance"), dict)
-                                        else p.get("rating")
-                                    )
-                                }
-                            }
-                            for p in (t.get("subs") or t.get("bench") or [])
-                            if isinstance(p, dict) and clean(p.get("name"))
-                        ]
+                        "coach": coach_name,
+                        "players": [norm_player(p, False) for p in starters if clean(p.get("name"))] + [norm_player(p, True) for p in bench if clean(p.get("name"))]
                     }
 
                 home_lu = None
