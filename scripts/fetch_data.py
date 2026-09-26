@@ -1208,23 +1208,86 @@ def fetch_sofascore_fixtures():
     print(f"Sofascore: {len(normalized)} Sporting fixtures written.")
 
 def fetch_sofascore_match_details():
-    """Store recent Sporting match details from SofaScore: lineups, incidents and team stats."""
+    """Store recent Sporting match details from SofaScore, matching fixtures across sources."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished" and f.get("id")]
     selected = sorted(finished, key=lambda x: x.get("date") or 0, reverse=True)[:8]
+
+    # Build a SofaScore event index. The public fixture feed can come from
+    # FotMob, so its match IDs cannot safely be sent to /event/{id}.
+    events = []
+    for direction in ("last", "next"):
+        for page in range(0, 3):
+            try:
+                payload = sofa_get(f"/team/3001/events/{direction}/{page}")
+                batch = payload.get("events", [])
+                if not batch:
+                    break
+                events.extend(batch)
+                if not payload.get("hasNextPage"):
+                    break
+            except Exception as e:
+                print("SofaScore detail event index warning:", direction, page, e)
+                break
+
+    event_by_id = {str(e.get("id")): e for e in events if e.get("id")}
+
+    def norm_name(value):
+        s = zz_norm(value)
+        return re.sub(r"[^a-z0-9]+", "", s)
+
+    def find_event(fixture):
+        # If the fixture already uses a SofaScore event ID, prefer it.
+        direct = event_by_id.get(str(fixture.get("id")))
+        if direct:
+            return direct
+
+        target_date = int(fixture.get("date") or 0)
+        home = norm_name((fixture.get("home") or {}).get("name"))
+        away = norm_name((fixture.get("away") or {}).get("name"))
+
+        best = None
+        best_delta = None
+        for e in events:
+            ts = int(e.get("startTimestamp") or 0)
+            if not ts or abs(ts - target_date) > 36 * 3600:
+                continue
+            eh = norm_name((e.get("homeTeam") or {}).get("name"))
+            ea = norm_name((e.get("awayTeam") or {}).get("name"))
+            same_order = eh == home and ea == away
+            reverse_order = eh == away and ea == home
+            if not same_order and not reverse_order:
+                continue
+            delta = abs(ts - target_date)
+            if best is None or delta < best_delta:
+                best, best_delta = e, delta
+        return best
+
     details = []
     for f in selected:
-        eid = f.get("id")
+        event = find_event(f)
+        if not event:
+            print("SofaScore detail match not found:", f.get("id"), f.get("home"), f.get("away"))
+            continue
+        sid = event.get("id")
         try:
-            event = sofa_get(f"/event/{eid}").get("event") or {}
-            lineups = sofa_get(f"/event/{eid}/lineups")
-            incidents = sofa_get(f"/event/{eid}/incidents")
-            statistics = sofa_get(f"/event/{eid}/statistics")
-            details.append({"match_id": eid, "event": event, "lineups": lineups, "incidents": incidents, "statistics": statistics})
+            event_detail = sofa_get(f"/event/{sid}").get("event") or event
+            lineups = sofa_get(f"/event/{sid}/lineups")
+            incidents = sofa_get(f"/event/{sid}/incidents")
+            statistics = sofa_get(f"/event/{sid}/statistics")
+            details.append({
+                "match_id": f.get("id"),
+                "sofascore_id": sid,
+                "event": event_detail,
+                "lineups": lineups,
+                "incidents": incidents,
+                "statistics": statistics
+            })
         except Exception as e:
-            print("Sofascore match detail warning:", eid, e)
-    write_json("match-details.json", {"fixtures": details, "source": "Sofascore"})
-    print(f"Sofascore: {len(details)} detailed matches written.")
+            print("SofaScore match detail warning:", f.get("id"), sid, e)
+
+    write_json("match-details.json", {"fixtures": details, "source": "SofaScore"})
+    print(f"SofaScore: {len(details)} detailed matches written.")
 
 def enrich_player_profiles():
     """Enrich player cards from SofaScore: birth date, shirt number, nationality and career."""
