@@ -1,6 +1,16 @@
 name: Atualizar notícias
 
+concurrency:
+  group: lions-den-data
+  cancel-in-progress: false
+
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fetch_data.py'
+      - 'scripts/requirements.txt'
+      - '.github/workflows/update-news.yml'
   schedule:
     - cron: '3,33 * * * *'
   workflow_dispatch:
@@ -13,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -23,8 +35,15 @@ jobs:
         run: python scripts/fetch_data.py
       - name: Commitar notícias
         run: |
+          set -e
           git config user.name 'lions-den-bot'
           git config user.email 'actions@github.com'
           git add data/news.json data/status.json
-          git diff --cached --quiet || git commit -m 'noticias: atualização automática'
-          git push
+          if git diff --cached --quiet; then
+            echo "Sem alterações nas notícias."
+            exit 0
+          fi
+          git commit -m 'noticias: atualização automática'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
