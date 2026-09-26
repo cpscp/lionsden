@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:57:23.791176+00:00",
+  "_updated_at": "2026-09-26T11:04:10.092520+00:00",
   "season": "2026/27",
   "team": {
     "matches": 12,
@@ -9,7 +9,7 @@
     "goals": 15,
     "goals_against": 33,
     "clean_sheets": 1,
-    "assists": 13,
+    "assists": 12,
     "shots": 0,
     "shots_on_target": 0,
     "possession_avg": null,

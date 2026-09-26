@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:57:21.117789+00:00",
+  "_updated_at": "2026-09-26T11:04:07.141662+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -13,12 +13,12 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
         "matches": 9,
-        "starts": 9,
         "minutes": 766,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
-        "red": 0
+        "red": 0,
+        "cleanSheets": 0
       },
       "shirtNumber": 1,
       "career": [
@@ -293,12 +293,12 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1320169.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
-        "red": 0
+        "red": 0,
+        "cleanSheets": 0
       },
       "shirtNumber": 30,
       "career": [
@@ -366,12 +366,12 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1282449.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
-        "red": 0
+        "red": 0,
+        "cleanSheets": 0
       },
       "shirtNumber": 41,
       "career": [
@@ -442,9 +442,8 @@
       "nationality": "Morocco",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1755850.png",
       "stats": {
-        "matches": 1,
-        "starts": 1,
-        "minutes": 90,
+        "matches": 0,
+        "minutes": 0,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -499,7 +498,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1232172.png",
       "stats": {
         "matches": 6,
-        "starts": 6,
         "minutes": 405,
         "goals": 0,
         "assists": 0,
@@ -619,9 +617,8 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
       "stats": {
-        "matches": 6,
-        "starts": 6,
-        "minutes": 393,
+        "matches": 5,
+        "minutes": 303,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -756,10 +753,9 @@
       "nationality": "Uruguay",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1031656.png",
       "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 781,
-        "goals": 2,
+        "matches": 8,
+        "minutes": 697,
+        "goals": 1,
         "assists": 2,
         "yellow": 2,
         "red": 0
@@ -898,7 +894,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1325998.png",
       "stats": {
         "matches": 9,
-        "starts": 9,
         "minutes": 519,
         "goals": 0,
         "assists": 1,
@@ -987,7 +982,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
       "stats": {
         "matches": 8,
-        "starts": 8,
         "minutes": 676,
         "goals": 2,
         "assists": 0,
@@ -1076,7 +1070,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1703622.png",
       "stats": {
         "matches": 2,
-        "starts": 2,
         "minutes": 101,
         "goals": 0,
         "assists": 0,
@@ -1125,7 +1118,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1609327.png",
       "stats": {
         "matches": 1,
-        "starts": 1,
         "minutes": 90,
         "goals": 0,
         "assists": 0,
@@ -1182,7 +1174,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1156380.png",
       "stats": {
         "matches": 6,
-        "starts": 6,
         "minutes": 402,
         "goals": 0,
         "assists": 0,
@@ -1291,7 +1282,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1093025.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -1439,7 +1429,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
       "stats": {
         "matches": 7,
-        "starts": 7,
         "minutes": 175,
         "goals": 0,
         "assists": 0,
@@ -1568,7 +1557,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1310480.png",
       "stats": {
         "matches": 9,
-        "starts": 9,
         "minutes": 807,
         "goals": 1,
         "assists": 0,
@@ -1637,7 +1625,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1663855.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -1729,10 +1716,9 @@
       "nationality": "Australia",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
       "stats": {
-        "matches": 7,
-        "starts": 7,
-        "minutes": 276,
-        "goals": 1,
+        "matches": 5,
+        "minutes": 126,
+        "goals": 0,
         "assists": 0,
         "yellow": 1,
         "red": 0
@@ -1855,7 +1841,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
       "stats": {
         "matches": 3,
-        "starts": 3,
         "minutes": 17,
         "goals": 0,
         "assists": 0,
@@ -1940,7 +1925,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2024,9 +2008,8 @@
       "nationality": "Italy",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1339345.png",
       "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 741,
+        "matches": 9,
+        "minutes": 731,
         "goals": 1,
         "assists": 1,
         "yellow": 0,
@@ -2098,7 +2081,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1918387.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2122,7 +2104,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1759322.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2177,9 +2158,8 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
       "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 320,
+        "matches": 8,
+        "minutes": 293,
         "goals": 2,
         "assists": 2,
         "yellow": 0,
@@ -2311,7 +2291,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
       "stats": {
         "matches": 2,
-        "starts": 2,
         "minutes": 42,
         "goals": 2,
         "assists": 0,
@@ -2411,10 +2390,9 @@
       "nationality": "Mozambique",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 752,
-        "goals": 3,
+        "matches": 9,
+        "minutes": 662,
+        "goals": 2,
         "assists": 3,
         "yellow": 3,
         "red": 0
@@ -2549,7 +2527,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/554283.png",
       "stats": {
         "matches": 0,
-        "starts": 0,
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2685,9 +2662,8 @@
       "nationality": "Uruguay",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
       "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 669,
+        "matches": 9,
+        "minutes": 647,
         "goals": 2,
         "assists": 1,
         "yellow": 0,
@@ -2803,7 +2779,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
       "stats": {
         "matches": 4,
-        "starts": 4,
         "minutes": 54,
         "goals": 0,
         "assists": 0,
@@ -2916,7 +2891,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1458757.png",
       "stats": {
         "matches": 8,
-        "starts": 8,
         "minutes": 287,
         "goals": 0,
         "assists": 0,
@@ -2997,7 +2971,6 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
       "stats": {
         "matches": 8,
-        "starts": 8,
         "minutes": 455,
         "goals": 3,
         "assists": 1,
@@ -3101,12 +3074,11 @@
       "nationality": "Colombia",
       "photo": "https://images.fotmob.com/image_resources/playerimages/792303.png",
       "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 695,
+        "matches": 8,
+        "minutes": 531,
         "goals": 7,
-        "assists": 2,
-        "yellow": 6,
+        "assists": 1,
+        "yellow": 5,
         "red": 0
       },
       "shirtNumber": 97,
