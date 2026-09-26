@@ -857,7 +857,10 @@ def fetch_fotmob_core():
             # The app's player stats are strictly Sporting CP stats.
             played = [
                 rm for rm in current_matches
-                if int(fnum(rm.get("teamId")) or 0) == SPORTING_FOTMOB_ID
+                if (
+                    int(fnum(rm.get("teamId")) or 0) == SPORTING_FOTMOB_ID
+                    or zz_norm(rm.get("teamName")) in {"sporting cp", "sporting"}
+                )
                 and (fnum(rm.get("minutesPlayed")) or 0) > 0
             ]
             stats["matches"] = len(played)
@@ -879,9 +882,9 @@ def fetch_fotmob_core():
                     if hs is None or aw is None:
                         continue
                     is_home = rm.get("isHome")
-                    if is_home is True or str(is_home).lower() == "true":
+                    if is_home is True or str(is_home).lower() in {"true", "1"}:
                         conceded = aw
-                    elif is_home is False or str(is_home).lower() == "false":
+                    elif is_home is False or str(is_home).lower() in {"false", "0"}:
                         conceded = hs
                     else:
                         team_side = str(rm.get("teamSide") or rm.get("side") or "").lower()
