@@ -2224,6 +2224,7 @@ def fetch_youtube():
             "url": f"https://www.youtube.com/watch?v={vid}",
             "published": clean(published),
             "thumbnail": thumb or f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+            "published_text": clean(published),
         })
 
     def collect(obj, official_only=True):
@@ -2505,13 +2506,27 @@ def fetch_match_summary_videos():
                     thumbs = (vr.get("thumbnail") or {}).get("thumbnails") or []
                     thumb = thumbs[-1].get("url") if thumbs else ""
                     if vid and title:
-                        found.append({"id": vid, "title": title, "owner": owner_text, "thumbnail": thumb})
+                        found.append({"id": vid, "title": title, "owner": owner_text, "thumbnail": thumb, "published_text": clean((vr.get("publishedTimeText") or {}).get("simpleText"))})
                 for v in obj.values():
                     if isinstance(v, (dict, list)): walk(v)
             elif isinstance(obj, list):
                 for v in obj: walk(v)
         walk(data)
         return found
+
+    from datetime import datetime, timezone, timedelta
+    def published_date(text):
+        t=zz_norm(text or "")
+        now=datetime.now(timezone.utc)
+        m=re.search(r"(\\d+)\\s+(second|seconds|minute|minutes|hour|hours|day|days|week|weeks|month|months|year|years)",t)
+        if m:
+            n=int(m.group(1)); unit=m.group(2)
+            days=n/24 if "hour" in unit else n/1440 if "minute" in unit else n/86400 if "second" in unit else n if "day" in unit else n*7 if "week" in unit else n*30 if "month" in unit else n*365
+            return now-timedelta(days=days)
+        for fmt in ("%b %d, %Y","%d %b %Y","%b %d %Y"):
+            try:return datetime.strptime(text.strip(),fmt).replace(tzinfo=timezone.utc)
+            except Exception:pass
+        return None
 
     videos = []
     for f in finished:
@@ -2552,12 +2567,22 @@ def fetch_match_summary_videos():
             sporting = int("sporting" in owner_n)
             vsports = int("vsports" in owner_n)
             summary = int("resumo" in title_n or "highlights" in title_n)
+            match_dt=None
+            try: match_dt=datetime.fromtimestamp(float(f.get("date") or 0),tz=timezone.utc)
+            except Exception: pass
+            pub_dt=published_date(v.get("published_text"))
+            if match_dt and pub_dt:
+                delta=abs((pub_dt-match_dt).total_seconds())/86400
+                freshness=int(delta<=21)
+                proximity=max(0,21-delta)
+            else:
+                freshness=0; proximity=0
             source_priority = sporting * 3 if is_sporting_home else vsports * 3
-            return (source_priority, team_hits, score_hit, summary)
+            return (freshness, source_priority, team_hits, score_hit, summary, proximity)
 
         best = None
         for v in candidates:
-            if score_candidate(v)[1] >= 1 and score_candidate(v)[3]:
+            if score_candidate(v)[0] and score_candidate(v)[2] >= 1 and score_candidate(v)[4]:
                 if best is None or score_candidate(v) > score_candidate(best):
                     best = v
 
@@ -2571,14 +2596,15 @@ def fetch_match_summary_videos():
                 "url": f"https://www.youtube.com/watch?v={best['id']}",
                 "embed": f"https://www.youtube.com/embed/{best['id']}",
                 "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg",
-                "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner")))
+                "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner"))),
+                "published_text": best.get("published_text","")
             })
 
     write_json("match-videos.json", {
         "videos": videos,
         "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
         "scope": "Finished Sporting CP matches",
-        "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches."
+        "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches; only summaries published within 21 days of the match are eligible."
     })
     print(f"YouTube match summaries: {len(videos)} videos written.")
 
