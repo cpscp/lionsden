@@ -1,7 +1,7 @@
 name: Atualizar futebol e estatísticas
 
 concurrency:
-  group: lions-den-data
+  group: lions-den-football
   cancel-in-progress: false
 
 on:
