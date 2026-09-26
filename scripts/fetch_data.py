@@ -729,6 +729,21 @@ def fetch_fotmob_core():
     if not fixtures:
         raise RuntimeError("FotMob returned no Sporting fixtures.")
 
+    # Only these completed Sporting CP first-team fixtures are allowed to feed
+    # player statistics. This prevents pre-season/friendly matches from being
+    # counted and also prevents matches belonging to Sporting CP B/U23.
+    official_fixture_ids = {
+        str(f.get("id"))
+        for f in fixtures
+        if f.get("id")
+        and f.get("status", {}).get("short") == "finished"
+        and is_official_sporting_competition((f.get("competition") or {}).get("name"))
+        and (
+            int(f.get("home", {}).get("id") or 0) == SPORTING_FOTMOB_ID
+            or int(f.get("away", {}).get("id") or 0) == SPORTING_FOTMOB_ID
+        )
+    }
+
     # Match details for next 8 and last 4 provide referee/venue/map data.
     for f in list(fixtures)[-4:] + [x for x in fixtures if x["date"] > int(time.time())][:8]:
         try:
@@ -919,14 +934,23 @@ def fetch_fotmob_core():
                     current_matches.append(rm)
             # IMPORTANT: recentMatches also contains national-team matches.
             # The app's player stats are strictly Sporting CP stats.
-            played = [
-                rm for rm in current_matches
-                if (
-                    int(fnum(rm.get("teamId")) or 0) == SPORTING_FOTMOB_ID
-                    or zz_norm(rm.get("teamName")) in {"sporting cp", "sporting"}
-                )
-                and (fnum(rm.get("minutesPlayed")) or 0) > 0
-            ]
+            played = []
+            for rm in current_matches:
+                match_id = rm.get("matchId") or rm.get("id") or rm.get("eventId")
+                team_id = int(fnum(rm.get("teamId")) or 0)
+                team_name = zz_norm(rm.get("teamName"))
+                is_first_team = team_id == SPORTING_FOTMOB_ID or team_name in {"sporting cp", "sporting"}
+                # Explicitly reject B/U23/U19/other Sporting sides.
+                is_reserve = any(x in team_name for x in ("sporting cp b", "sporting b", "sporting u23", "sporting u19", "sporting sub23"))
+                is_official = True
+                if match_id is not None and official_fixture_ids:
+                    is_official = str(match_id) in official_fixture_ids
+                else:
+                    comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
+                    comp_name = comp.get("name") if isinstance(comp, dict) else comp
+                    is_official = is_official_sporting_competition(comp_name)
+                if is_first_team and not is_reserve and is_official and (fnum(rm.get("minutesPlayed")) or 0) > 0:
+                    played.append(rm)
             stats["matches"] = len(played)
             # "Titular" is deliberately not exposed: provider bench/start flags
             # are not considered reliable enough for the app's core statistics.
