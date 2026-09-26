@@ -496,18 +496,35 @@ function renderTV(){
  </button>`).join('');
  el.innerHTML='<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">'+cards+'</div>';
 }
+function stadiumPhotoQuery(f){
+ const v=venueInfo(f?.venue);
+ if(v.name) return v.name;
+ const home=String(f?.home?.name||'').toLowerCase();
+ const map={'sporting cp':'Estádio José Alvalade','braga':'Estádio Municipal de Braga','sc braga':'Estádio Municipal de Braga','fc porto':'Estádio do Dragão','porto':'Estádio do Dragão','benfica':'Estádio da Luz','sl benfica':'Estádio da Luz','alverca':'Estádio Municipal de Alverca','rio ave':'Estádio dos Arcos','vitoria de guimaraes':'Estádio D. Afonso Henriques','vitória de guimarães':'Estádio D. Afonso Henriques','estrela da amadora':'Estádio José Gomes','estoril':'Estádio António Coimbra da Mota','gil vicente':'Estádio Cidade de Barcelos','arouca':'Estádio Municipal de Arouca','santa clara':'Estádio de São Miguel','maritimo':'Estádio do Marítimo','marítimo':'Estádio do Marítimo','casa pia':'Estádio Municipal de Rio Maior','famalicao':'Estádio Municipal 22 de Junho','famalicão':'Estádio Municipal 22 de Junho','boavista':'Estádio do Bessa','nacional':'Estádio da Madeira','moreirense':'Parque Desportivo Comendador Joaquim de Almeida Freitas','tondela':'Estádio João Cardoso','farense':'Estádio de São Luís'};
+ return map[home]||'football stadium '+(f?.home?.name||'stadium');
+}
 function stadiumPhotoUrl(venueName){
  const n=String(venueName||'').toLowerCase();
- const map=[
-  ['municipal de braga','https://commons.wikimedia.org/wiki/Special:FilePath/Estadio%20Municipal%20de%20Braga.jpg'],
-  ['josé alvalade','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20Jos%C3%A9%20Alvalade.jpg'],
-  ['jose alvalade','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20Jos%C3%A9%20Alvalade.jpg'],
-  ['bollaert-delelis','https://commons.wikimedia.org/wiki/Special:FilePath/Stade%20Bollaert-Delelis.jpg'],
-  ['dragão','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20do%20Drag%C3%A3o.jpg'],
-  ['luz','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20da%20Luz.jpg']
- ];
+ const map=[['municipal de braga','https://commons.wikimedia.org/wiki/Special:FilePath/Estadio%20Municipal%20de%20Braga.jpg'],['josé alvalade','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20Jos%C3%A9%20Alvalade.jpg'],['jose alvalade','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20Jos%C3%A9%20Alvalade.jpg'],['dragão','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20do%20Drag%C3%A3o.jpg'],['luz','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20da%20Luz.jpg']];
  return map.find(([key])=>n.includes(key))?.[1]||'';
 }
+async function loadStadiumPhotos(){
+ const cards=[...document.querySelectorAll('[data-stadium-query]')];
+ await Promise.all(cards.map(async card=>{
+  try{
+   const q=card.dataset.stadiumQuery;
+   const api='https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(q)+'&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=1200&format=json&origin=*';
+   const data=await fetch(api).then(r=>r.ok?r.json():null);
+   const pages=Object.values(data?.query?.pages||{});
+   const image=pages.map(p=>p.imageinfo?.[0]?.thumburl||p.imageinfo?.[0]?.url).find(Boolean);
+   if(image){
+    const bg=card.querySelector('.game-card-bg');
+    if(bg){bg.style.backgroundImage="url('"+image.replace(/'/g,"%27")+"')";bg.style.opacity='.34';}
+   }
+  }catch(e){}
+ }));
+}
+
 function fixtureTV(f){
  const v=f?.tv||f?.television||f?.broadcast||f?.transmission;
  if(!v)return '';
@@ -517,12 +534,12 @@ function fixtureTV(f){
 }
 function fixtureDetail(id){return (D['match-details.json']?.fixtures||[]).find(x=>String(x.match_id)===String(id))||null;}
 function gameCard(f){
- const v=venueInfo(f.venue), photo=stadiumPhotoUrl(v.name), tv=fixtureTV(f), past=!isFuture(f);
+ const v=venueInfo(f.venue), photo=stadiumPhotoUrl(v.name), stadiumQuery=stadiumPhotoQuery(f), tv=fixtureTV(f), past=!isFuture(f);
  const score=f.goals?.home!=null?esc(f.goals.home)+' - '+esc(f.goals.away):'VS';
  const detail=fixtureDetail(f.id);
  const homeUrl=teamLogoUrl(f.home),awayUrl=teamLogoUrl(f.away);
  const team=(t,url)=>'<div class="game-card-team"><div class="game-card-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(t?.name||t)+'" loading="lazy">':'<span class="font-bold text-xs">'+esc(initials(t?.name||t))+'</span>')+'</div><div class="game-card-name">'+esc(t?.name||t||'—')+'</div></div>';
- return '<button onclick="openGame(\''+esc(f.id)+'\')" class="game-card w-full text-left">'+(photo?'<div class="game-card-bg" style="background-image:url(\''+esc(photo)+'\')"></div>':'')+'<div class="game-card-overlay"></div><div class="game-card-content"><div class="game-card-top"><span class="game-card-comp">'+esc(f.competition?.name||'')+'</span><span class="game-card-date">'+esc(fmtDate(f.date))+'</span></div><div class="game-card-teams">'+team(f.home,homeUrl)+'<div class="game-card-score"><strong>'+score+'</strong><span>'+esc(past?'Final':'Agendado')+'</span></div>'+team(f.away,awayUrl)+'</div><div class="game-card-bottom"><span class="game-card-venue"><span class="ui-icon">'+stadiumSvg()+'</span>'+esc(v.name||'Estádio por confirmar')+'</span><span class="game-card-tv">'+(tv?'TV · '+esc(tv):'TV · por confirmar')+'</span></div><div class="game-card-action">'+(past?(detail?'Ver 11, incidentes e detalhes →':'Ver detalhes do jogo →'):'Ver detalhes do jogo →')+'</div></div></button>';
+ return '<button data-stadium-query="'+esc(stadiumQuery)+'" onclick="openGame(\''+esc(f.id)+'\')" class="game-card w-full text-left">'+(photo?'<div class="game-card-bg" style="background-image:url(\''+esc(photo)+'\')"></div>':'')+'<div class="game-card-overlay"></div><div class="game-card-content"><div class="game-card-top"><span class="game-card-comp">'+esc(f.competition?.name||'')+'</span><span class="game-card-date">'+esc(fmtDate(f.date))+'</span></div><div class="game-card-teams">'+team(f.home,homeUrl)+'<div class="game-card-score"><strong>'+score+'</strong><span>'+esc(past?'Final':'Agendado')+'</span></div>'+team(f.away,awayUrl)+'</div><div class="game-card-bottom"><span class="game-card-venue"><span class="ui-icon">'+stadiumSvg()+'</span>'+esc(v.name||'Estádio por confirmar')+'</span><span class="game-card-tv">'+(tv?'TV · '+esc(tv):'TV · por confirmar')+'</span></div><div class="game-card-action">'+(past?(detail?'Ver 11, incidentes e detalhes →':'Ver detalhes do jogo →'):'Ver detalhes do jogo →')+'</div></div></button>';
 }
 function setGamesTab(tab){window._gamesTab=tab;document.getElementById('gamesTabUpcoming')?.classList.toggle('active',tab==='upcoming');document.getElementById('gamesTabPast')?.classList.toggle('active',tab==='past');renderGames();}
 function renderGames(){
@@ -535,7 +552,7 @@ function renderGames(){
  if(!list.length){el.innerHTML='<div class="card games-empty muted">Não há jogos nesta secção.</div>';return;}
  const groups=[];
  list.forEach(x=>{const key=x.competition?.name||'Outros';let g=groups.find(y=>y.key===key);if(!g){g={key,items:[]};groups.push(g)}g.items.push(x);});
- el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="space-y-3">'+g.items.map(gameCard).join('')+'</div></div>').join('');
+ el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="space-y-3">'+g.items.map(gameCard).join('')+'</div></div>').join(''); loadStadiumPhotos();
 }
 function stadiumSvg(){return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 16h16M4 16V9l3-2v9M8 16V7l3-2v11M12 16V9l4-2v9M2 9h16"/></svg>';}
 
