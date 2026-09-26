@@ -47,7 +47,7 @@ jobs:
           git reset --hard HEAD
           git fetch origin main
           if ! git rebase origin/main; then
-            git checkout --theirs -- data/news.json data/status.json
+            git checkout --ours -- data/news.json data/status.json
             git add data/news.json data/status.json
             GIT_EDITOR=true git rebase --continue
           fi
