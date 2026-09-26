@@ -1,14 +1,14 @@
 {
-  "_updated_at": "2026-09-26T12:34:40.926912+00:00",
+  "_updated_at": "2026-09-26T12:40:44.496Z",
   "season": "2026/27",
   "team": {
-    "matches": 12,
-    "wins": 9,
+    "matches": 8,
+    "wins": 5,
     "draws": 3,
     "losses": 0,
-    "goals": 37,
-    "goals_against": 11,
-    "clean_sheets": 4,
+    "goals": 20,
+    "goals_against": 9,
+    "clean_sheets": 2,
     "form": [
       "W",
       "W",
@@ -73,10 +73,10 @@
         "opponent": "Arouca"
       }
     ],
-    "points": 30,
-    "win_rate": 75.0,
-    "goals_per_match": 3.08,
-    "goals_against_per_match": 0.92
+    "points": 18,
+    "win_rate": 62.5,
+    "goals_per_match": 2.5,
+    "goals_against_per_match": 1.13
   },
-  "source": "Sporting CP fixture feed"
+  "source": "Sporting CP · competições oficiais · fixture feed"
 }
