@@ -18,6 +18,8 @@ import os
 import re
 import sys
 import time
+import unicodedata
+from difflib import SequenceMatcher
 from datetime import datetime, timezone, date, timedelta
 from pathlib import Path
 from urllib.parse import quote_plus
@@ -95,6 +97,144 @@ def clean(v):
     if s in {"nan", "None"}:
         return ""
     return re.sub(r"\s+", " ", s)
+
+
+
+ZEROZERO_TEAM = "https://www.zerozero.pt/equipa/sporting"
+
+
+def zz_norm(v):
+    s = clean(v).lower()
+    s = unicodedata.normalize("NFKD", s)
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
+
+
+def zz_number(v):
+    s = clean(v).replace(".", "").replace(",", ".")
+    if s in {"", "-", "—"}:
+        return None
+    m = re.search(r"-?\d+(?:\.\d+)?", s)
+    if not m:
+        return None
+    try:
+        return int(float(m.group(0)))
+    except Exception:
+        return None
+
+
+def zerozero_player_index():
+    """Return {normalised player name: zerozero player URL} from Sporting's current squad."""
+    try:
+        html = session.get(ZEROZERO_TEAM, timeout=30).text
+        soup = BeautifulSoup(html, "html.parser")
+        index = {}
+        for a in soup.select('a[href*="/jogador/"]'):
+            href = a.get("href") or ""
+            if not re.search(r"/jogador/[^/]+/\d+", href):
+                continue
+            name = clean(a.get_text(" ", strip=True))
+            if not name:
+                continue
+            if href.startswith("/"):
+                href = "https://www.zerozero.pt" + href
+            index.setdefault(zz_norm(name), href)
+        return index
+    except Exception as e:
+        print("ZeroZero squad warning:", e)
+        return {}
+
+
+def zerozero_player_history(url):
+    """Parse the football career history table from a ZeroZero player page."""
+    html = session.get(url, timeout=30).text
+    soup = BeautifulSoup(html, "html.parser")
+    result = []
+
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        if not rows:
+            continue
+        headers = [zz_norm(x.get_text(" ", strip=True)) for x in rows[0].find_all(["th", "td"])]
+        if not {"epoca", "equipa", "j", "g", "ast"}.issubset(set(headers)):
+            continue
+
+        idx = {h:i for i,h in enumerate(headers)}
+        season = ""
+        for tr in rows[1:]:
+            cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["th", "td"])]
+            if not cells:
+                continue
+            def cell(key):
+                i = idx.get(key)
+                return cells[i] if i is not None and i < len(cells) else ""
+            if cell("epoca"):
+                season = cell("epoca")
+            club = cell("equipa")
+            if not season or not club:
+                continue
+            # The football table is the one containing AST; ignore futsal/other tables.
+            result.append({
+                "season": season.replace("-", "/"),
+                "club": club,
+                "matches": zz_number(cell("j")),
+                "goals": zz_number(cell("g")),
+                "assists": zz_number(cell("ast")),
+            })
+        if result:
+            break
+    return result
+
+
+def enrich_with_zerozero(players):
+    """
+    Enrich the Sporting squad with ZeroZero's historical J/G/AST data.
+    The current team page supplies the canonical player links, avoiding
+    ambiguous name searches such as the many different Rui Silva profiles.
+    """
+    index = zerozero_player_index()
+    if not index:
+        return players
+
+    for player in players:
+        name = clean(player.get("name"))
+        if not name:
+            continue
+
+        key = zz_norm(name)
+        url = index.get(key)
+
+        # Handle minor naming differences between FotMob and ZeroZero.
+        if not url:
+            candidates = sorted(
+                ((SequenceMatcher(None, key, k).ratio(), v) for k, v in index.items()),
+                reverse=True
+            )
+            if candidates and candidates[0][0] >= 0.84:
+                url = candidates[0][1]
+
+        if not url:
+            continue
+
+        try:
+            history = zerozero_player_history(url)
+            if history:
+                player["zerozero_url"] = url
+                player["careerStats"] = history
+                # ZeroZero's team page is also authoritative for the
+                # Portuguese display name of the player's nationality/position.
+                page = session.get(url, timeout=30).text
+                text_content = clean(BeautifulSoup(page, "html.parser").get_text(" ", strip=True))
+                if "Nacionalidade" in text_content:
+                    after = text_content.split("Nacionalidade", 1)[1][:180]
+                    nat = re.split(r"País de Nascimento|Posição", after, maxsplit=1)[0].strip()
+                    nat = clean(re.sub(r"Dupla Nacionalidade", "", nat))
+                    if nat:
+                        player["nationality"] = nat.split("Portugal Portugal")[0].strip()
+        except Exception as e:
+            print("ZeroZero player warning:", name, e)
+        time.sleep(0.15)
+
+    return players
 
 
 def fbref_html(url):
@@ -638,6 +778,28 @@ def fetch_fotmob_core():
             stats["assists"] = int(sum(fnum(rm.get("assists")) or 0 for rm in played))
             stats["yellow"] = int(sum(fnum(rm.get("yellowCards")) or 0 for rm in played))
             stats["red"] = int(sum(fnum(rm.get("redCards")) or 0 for rm in played))
+
+            # Goalkeeper-only metric. Prefer provider value when available;
+            # otherwise count played matches in which the team conceded zero.
+            clean_sheets = deep_find(pd, {"cleanSheets","cleanSheetsTotal","cleanSheet","clean_sheets"})
+            if clean_sheets not in (None, ""):
+                try:
+                    stats["cleanSheets"] = int(float(clean_sheets))
+                except Exception:
+                    pass
+            if "cleanSheets" not in stats and ("goalkeeper" in zz_norm(player.get("position")) or "goalkeeper" in zz_norm(m.get("rolePosition"))):
+                cs = 0
+                for rm in played:
+                    hs = fnum(rm.get("homeScore"))
+                    aw = fnum(rm.get("awayScore"))
+                    if hs is None or aw is None:
+                        continue
+                    team_side = str(rm.get("teamSide") or rm.get("side") or "").lower()
+                    conceded = aw if team_side in {"home","h"} else hs if team_side in {"away","a"} else None
+                    if conceded == 0:
+                        cs += 1
+                stats["cleanSheets"] = cs
+
             ratings = []
             for rm in played:
                 rp = rm.get("ratingProps") or {}
@@ -655,6 +817,9 @@ def fetch_fotmob_core():
         players.append(player)
 
     if players:
+        # ZeroZero is used specifically for career history (season / club / J / G / AST).
+        players = enrich_with_zerozero(players)
+
         old_squad = safe_existing("squad.json") or {}
         old_players = old_squad.get("squad") or old_squad.get("players") or []
         old_by_name = {normalize_player_name(p.get("name")).lower(): p for p in old_players if p.get("name")}
