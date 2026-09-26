@@ -131,7 +131,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','news.json','venues.json','match-details.json','fbref-schedule.json','status.json','youtube.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -531,28 +531,38 @@ function renderSquad(){
     groups.map(([title,arr])=>squadGroup(title,arr,indexMap)).join('')
     + renderCoachCard();
 }
-function donutChart(value,total,label){
-  const pct=total?Math.max(0,Math.min(100,(value/total)*100)):0;
-  return `<div class="flex flex-col items-center gap-2">
-    <div class="relative w-28 h-28 rounded-full" style="background:conic-gradient(#00a878 ${pct}%,rgba(255,255,255,.07) 0)">
-      <div class="absolute inset-[10px] rounded-full bg-[#06100c] flex flex-col items-center justify-center">
-        <b class="text-xl">${value}</b><span class="text-[8px] muted">${esc(label)}</span>
+function resultDonut(st){
+  const w=Number(st.wins||0),d=Number(st.draws||0),l=Number(st.losses||0),total=Math.max(0,Number(st.matches||0));
+  const pw=total?(w/total)*100:0,pd=total?(d/total)*100:0;
+  const p2=pw+pd;
+  const gradient=total
+    ? `conic-gradient(#00a878 0 ${pw}%,#d7a83d ${pw}% ${p2}%,#e05b5b ${p2}% 100%)`
+    : 'conic-gradient(rgba(255,255,255,.08) 0 100%)';
+  return `<div class="flex flex-col items-center">
+    <div class="relative w-32 h-32 rounded-full" style="background:${gradient}">
+      <div class="absolute inset-[11px] rounded-full bg-[#06100c] flex flex-col items-center justify-center">
+        <b class="text-2xl">${total}</b><span class="text-[8px] muted uppercase tracking-widest">jogos</span>
       </div>
     </div>
-    <div class="text-[10px] muted text-center">${pct.toFixed(0)}%</div>
+    <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+      <div><div class="w-2 h-2 rounded-full bg-[#00a878] mx-auto mb-1"></div><b class="text-sm">${w}</b><div class="text-[8px] muted">VITÓRIAS</div></div>
+      <div><div class="w-2 h-2 rounded-full bg-[#d7a83d] mx-auto mb-1"></div><b class="text-sm">${d}</b><div class="text-[8px] muted">EMPATES</div></div>
+      <div><div class="w-2 h-2 rounded-full bg-[#e05b5b] mx-auto mb-1"></div><b class="text-sm">${l}</b><div class="text-[8px] muted">DERROTAS</div></div>
+    </div>
   </div>`;
 }
 function seasonStatsCard(season,st){
   const total=Number(st.matches||0), gf=Number(st.goals||0), ga=Number(st.goals_against||0);
+  const avgGF=total?(gf/total).toFixed(2):'0.00', avgGA=total?(ga/total).toFixed(2):'0.00';
   return `<div class="card p-4">
-    <div class="flex items-center justify-between mb-4"><div><div class="font-semibold">${esc(season)}</div><div class="text-[10px] muted mt-1">Sporting CP · todas as competições</div></div><span class="pill px-2 py-1 text-[9px]">${total} jogos</span></div>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.wins||0),total,'vitórias')}</div>
-      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.draws||0),total,'empates')}</div>
-      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.losses||0),total,'derrotas')}</div>
+    <div class="flex items-center justify-between mb-5">
+      <div><div class="font-semibold text-[16px]">${esc(season)}</div><div class="text-[10px] muted mt-1">Sporting CP · competições oficiais</div></div>
     </div>
-    <div class="grid grid-cols-2 gap-2 mt-4">
-      ${metric('Golos',gf)}${metric('Golos sofridos',ga)}${metric('Clean sheets',st.clean_sheets==null?'—':Number(st.clean_sheets))}${metric('Taxa de vitória',`${Number(st.win_rate||0).toFixed(1)}%`)}
+    <div class="flex justify-center">${resultDonut(st)}</div>
+    <div class="grid grid-cols-2 gap-2 mt-5">
+      ${metric('Golos',gf)}${metric('Golos sofridos',ga)}
+      ${metric('Golos / jogo',avgGF)}${metric('Golos sofridos / jogo',avgGA)}
+      ${metric('Clean sheets',st.clean_sheets==null?'—':Number(st.clean_sheets))}${metric('Taxa de vitória',`${Number(st.win_rate||0).toFixed(1)}%`)}
     </div>
   </div>`;
 }
@@ -563,28 +573,26 @@ function renderStats(){
   const seasons=Object.keys(hist).filter(Boolean).sort((a,b)=>b.localeCompare(a));
   const el=document.getElementById('teamStats');if(!el)return;
   if(!seasons.length){el.innerHTML='<div class="card p-5 muted">Sem estatísticas disponíveis.</div>';return;}
-  const defaultCompare=seasons.slice(0,2);
+  const defaultCompare=seasons.length>1?seasons.slice(0,2):[seasons[0],seasons[0]];
   el.innerHTML=`
     <div class="card p-4">
-      <div class="flex items-center justify-between gap-3 flex-wrap">
-        <div><div class="font-semibold">Comparar épocas</div><div class="text-[10px] muted mt-1">Escolhe duas épocas do Sporting para comparar.</div></div>
-        <div class="flex gap-2 flex-wrap">
-          <select id="statsSeasonA" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[0]?'selected':''}>${esc(x)}</option>`).join('')}</select>
-          <select id="statsSeasonB" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[1]?'selected':''}>${esc(x)}</option>`).join('')}</select>
-        </div>
+      <div class="mb-3">
+        <div class="font-semibold">Comparar épocas</div>
+        <div class="text-[10px] muted mt-1">Compara o desempenho do Sporting entre duas épocas.</div>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <select id="statsSeasonA" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[0]?'selected':''}>${esc(x)}</option>`).join('')}</select>
+        <select id="statsSeasonB" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[1]?'selected':''}>${esc(x)}</option>`).join('')}</select>
       </div>
     </div>
-    <div id="statsComparison" class="space-y-3"></div>
-    <div class="card p-4">
-      <div class="font-semibold">Época atual</div>
-      <div class="text-[10px] muted mt-1">Apenas jogos oficiais e amigáveis do Sporting CP já terminados. Seleções e outras equipas ficam excluídas.</div>
-    </div>`;
+    <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
+    <div class="text-[9px] muted px-1">Fonte: histórico oficial do Sporting CP/ZeroZero e feed de jogos do Sporting. Não inclui seleções, pré-época ou amigáveis.</div>`;
   const draw=()=>{
     const A=document.getElementById('statsSeasonA')?.value||defaultCompare[0],B=document.getElementById('statsSeasonB')?.value||defaultCompare[1];
-    const box=document.getElementById('statsComparison');
-    if(!box)return;
-    const same=A===B;
-    box.innerHTML=same?seasonStatsCard(A,hist[A]||{}):`<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">${seasonStatsCard(A,hist[A]||{})}${seasonStatsCard(B,hist[B]||{})}</div>`;
+    const box=document.getElementById('statsComparison');if(!box)return;
+    box.innerHTML=seasonStatsCard(A,hist[A]||{})+`<div>${A===B?'':seasonStatsCard(B,hist[B]||{})}</div>`;
+    if(A===B) box.className='grid grid-cols-1';
+    else box.className='grid grid-cols-1 lg:grid-cols-2 gap-3';
   };
   document.getElementById('statsSeasonA').onchange=draw;
   document.getElementById('statsSeasonB').onchange=draw;
