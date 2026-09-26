@@ -101,6 +101,39 @@ def clean(v):
 
 
 ZEROZERO_TEAM = "https://www.zerozero.pt/equipa/sporting"
+ZEROZERO_URLS = {
+    "Rui Silva": "https://www.zerozero.pt/jogador/rui-silva/275322",
+    "Kaique Pereira": "https://www.zerozero.pt/jogador/kaique-pereira/721159",
+    "Diego Callai": "https://www.zerozero.pt/jogador/diego-callai/508061",
+    "Moncef Zekri": "https://www.zerozero.pt/jogador/moncef-zekri/2522483",
+    "Zeno Debast": "https://www.zerozero.pt/jogador/zeno-debast/741625",
+    "Georgios Vagiannidis": "https://www.zerozero.pt/jogador/georgios-vagiannidis/768651",
+    "Maxi Araújo": "https://www.zerozero.pt/jogador/maxi-araujo/631995",
+    "Iván Fresneda": "https://www.zerozero.pt/jogador/ivan-fresneda/911570",
+    "Gonçalo Inácio": "https://www.zerozero.pt/jogador/goncalo-inacio/384159",
+    "Rodrigo Dias": "https://www.zerozero.pt/jogador/rodrigo-dias/509010",
+    "Ibrahima Ba": "https://www.zerozero.pt/jogador/ibrahima-ba/1271517",
+    "Eduardo Quaresma": "https://www.zerozero.pt/jogador/eduardo-quaresma/160517",
+    "Sotiris Alexandropoulos": "https://www.zerozero.pt/jogador/sotiris-alexandropoulos/730898",
+    "Silas Andersen": "https://www.zerozero.pt/jogador/silas-andersen/770896",
+    "Sergi Altimira": "https://www.zerozero.pt/jogador/sergi-altimira/900472",
+    "João Simões": "https://www.zerozero.pt/jogador/joao-simoes/643111",
+    "Nestory Irankunda": "https://www.zerozero.pt/jogador/nestory-irankunda/926559",
+    "Pedro Lima": "https://www.zerozero.pt/jogador/pedro-lima/717259",
+    "Salvador Blopa": "https://zerozero.football/jogador/salvador-blopa/664615",
+    "Issa Doumbia": "https://www.zerozero.pt/jogador/issa-doumbia/889152",
+    "Délcio Aurélio": "https://www.zerozero.pt/jogador/delcio-aurelio/1848005",
+    "Rodrigo Rodrigues": "https://www.zerozero.pt/jogador/rodrigo-rodrigues/669551",
+    "Fotis Ioannidis": "https://www.zerozero.pt/jogador/fotis-ioannidis/612628",
+    "Rafael Nel": "https://www.zerozero.pt/jogador/rafael-nel/677872",
+    "Geny Catamo": "https://www.zerozero.pt/jogador/geny-catamo/639363",
+    "Nuno Santos": "https://www.zerozero.pt/jogador/nuno-santos/160873",
+    "Rodrigo Zalazar": "https://www.zerozero.pt/jogador/rodrigo-zalazar/689707",
+    "Jesse Derry": "https://www.zerozero.pt/jogador/jesse-derry/1189058",
+    "Luís Guilherme": "https://www.zerozero.pt/jogador/luis-guilherme/829332",
+    "Flávio Gonçalves": "https://www.zerozero.pt/jogador/flavio-goncalves/641690",
+    "Luis Suárez": "https://www.zerozero.pt/jogador/luis-suarez/504173",
+}
 
 
 def zz_norm(v):
