@@ -1655,6 +1655,25 @@ def fetch_sofascore_player_stats():
     if not players:
         raise RuntimeError("Sofascore returned no usable Sporting players.")
 
+    # Preserve profile/history enrichment already collected earlier in the
+    # pipeline. SofaScore refreshes current-season stats, but must not erase
+    # ZeroZero career history, shirt number, birth date or profile metadata.
+    existing_squad = safe_existing("squad.json") or {}
+    existing_by_name = {
+        zz_norm(p.get("name")): p
+        for p in (existing_squad.get("squad") or existing_squad.get("players") or [])
+        if p.get("name")
+    }
+    for p in players:
+        old = existing_by_name.get(zz_norm(p.get("name")))
+        if not old:
+            continue
+        for field in ("careerStats", "zerozero_url", "career", "dateOfBirth",
+                      "shirtNumber", "internationalCaps", "nationality",
+                      "position", "photo"):
+            if old.get(field) not in (None, "", []):
+                p[field] = old[field]
+
     write_json("squad-stats.json", {
         "season": "2026/27",
         "team": "Sporting CP",
