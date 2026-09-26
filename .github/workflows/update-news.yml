@@ -1,17 +1,6 @@
 name: Atualizar notícias
 
-concurrency:
-  group: lions-den-data
-  cancel-in-progress: false
-  queue: max
-
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/fetch_data.py'
-      - 'scripts/requirements.txt'
-      - '.github/workflows/update-news.yml'
   schedule:
     - cron: '3,33 * * * *'
   workflow_dispatch:
@@ -34,37 +23,8 @@ jobs:
         run: python scripts/fetch_data.py
       - name: Commitar notícias
         run: |
-          set -e
-
           git config user.name 'lions-den-bot'
           git config user.email 'actions@github.com'
           git add data/news.json data/status.json
-
-          if git diff --cached --quiet; then
-            echo "Sem alterações nas notícias."
-            exit 0
-          fi
-
-          git commit -m 'noticias: atualização automática'
-
-          git reset --hard HEAD
-          git fetch origin main
-
-          if ! git rebase origin/main; then
-            echo "Conflito durante o rebase; mantendo os JSON de notícias desta execução."
-            git checkout --theirs -- data/news.json data/status.json || true
-            git add data/news.json data/status.json
-            GIT_EDITOR=true git rebase --continue
-          fi
-
-          if ! git push origin HEAD:main; then
-            echo "O remoto mudou durante o push. A sincronizar e tentar novamente..."
-            git fetch origin main
-            if ! git rebase origin/main; then
-              echo "Conflito no segundo rebase; mantendo os JSON de notícias."
-              git checkout --theirs -- data/news.json data/status.json || true
-              git add data/news.json data/status.json
-              GIT_EDITOR=true git rebase --continue
-            fi
-            git push origin HEAD:main
-          fi
+          git diff --cached --quiet || git commit -m 'noticias: atualização automática'
+          git push
