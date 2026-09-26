@@ -530,10 +530,10 @@ document.getElementById('modalBody').innerHTML=`
   ${shirt}
 </div>
 <div class="grid grid-cols-2 gap-2">
-${metric('Jogos',p.stats?.matches??p.matches)}${metric('Titular',p.stats?.starts??p.starts)}${metric('Minutos',p.stats?.minutes??p.minutes)}${metric('Golos',p.stats?.goals??p.goals)}${metric('Assistências',p.stats?.assists??p.assists)}${metric('Amarelos',p.stats?.yellow??p.yellow)}${metric('Vermelhos',p.stats?.red??p.red)}${isGoalkeeper(p)?metric('Clean sheets',p.stats?.cleanSheets??p.cleanSheets):''}
+${metric('Jogos',p.stats?.matches??p.matches)}${metric('Minutos',p.stats?.minutes??p.minutes)}${metric('Golos',p.stats?.goals??p.goals)}${metric('Assistências',p.stats?.assists??p.assists)}${metric('Amarelos',p.stats?.yellow??p.yellow)}${metric('Vermelhos',p.stats?.red??p.red)}${isGoalkeeper(p)?metric('Clean sheets',p.stats?.cleanSheets??p.cleanSheets):''}
 </div>
 <div class="card p-4 mt-4"><div class="font-semibold mb-3">Percurso</div>${renderCareer(p)}</div>
-<div class="card p-4 mt-3"><div class="font-semibold">Época 2026/27</div><p class="text-[11px] muted mt-2">Estatísticas agregadas das competições cobertas pelo FBref. Os valores são atualizados automaticamente pelo GitHub Action.</p></div>`;
+<div class="card p-4 mt-3"><div class="font-semibold">Época 2026/27</div><p class="text-[11px] muted mt-2">Estatísticas apenas dos jogos do Sporting Clube de Portugal. Jogos de seleções não são incluídos.</p></div>`;
 openModal();
 }
 function findFixture(id){return allFixtures().find(x=>String(x.id)===String(id))}
