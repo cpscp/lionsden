@@ -301,19 +301,11 @@ def fetch_fbref_stats():
                 "match_report": clean(r.get("Match Report")),
             })
 
-    old_squad=safe_existing("squad.json") or {}
-    old_players=old_squad.get("players") or old_squad.get("squad") or []
-    old_by_name={normalize_player_name(p.get("name")).lower():p for p in old_players if p.get("name")}
-    for p in players:
-        old=old_by_name.get(normalize_player_name(p.get("name")).lower(),{})
-        for field in ("dateOfBirth","shirtNumber","internationalCaps","career","profile","sofascore_id","height","preferredFoot","nationality","nation"):
-            if not p.get(field) and old.get(field) not in (None,"",[]): p[field]=old[field]
-
     write_json("squad.json", {
         "season": "2026/27",
         "competition_scope": "All competitions",
         "players": players,
-        "source": "FBref + profile enrichment",
+        "source": "FBref",
     })
     write_json("team-stats.json", {
         "season": "2026/27",
@@ -509,60 +501,6 @@ def fetch_fotmob_core():
         }
         try:
             pd = fotmob_get("/api/data/playerData", {"id": pid, "includeMarketValues": "true"})
-
-            def deep_find(obj, keys):
-                if isinstance(obj, dict):
-                    for k in keys:
-                        if k in obj and obj.get(k) not in (None, "", []):
-                            return obj.get(k)
-                    for value in obj.values():
-                        found = deep_find(value, keys)
-                        if found not in (None, "", []):
-                            return found
-                elif isinstance(obj, list):
-                    for value in obj:
-                        found = deep_find(value, keys)
-                        if found not in (None, "", []):
-                            return found
-                return None
-
-            # FotMob's playerData contains the profile information we need.
-            shirt = deep_find(pd, {"shirtNumber", "shirt_number", "jerseyNumber", "jersey_number", "number"})
-            if shirt is None:
-                shirt = m.get("shirtNumber") or m.get("shirt_number") or m.get("jerseyNumber") or m.get("jersey_number")
-            try:
-                player["shirtNumber"] = int(shirt) if shirt is not None and str(shirt).strip() else None
-            except Exception:
-                player["shirtNumber"] = None
-
-            birth = deep_find(pd, {"birthDate", "dateOfBirth", "date_of_birth"})
-            if isinstance(birth, dict):
-                player["dateOfBirth"] = birth.get("iso") or birth.get("date") or birth.get("utcTime")
-            elif birth:
-                player["dateOfBirth"] = str(birth)
-
-            # Try FotMob's career/transfer structures for the club path.
-            career_nodes = deep_find(pd, {"careerHistory", "career", "transferHistory", "transfers"})
-            career = []
-            if isinstance(career_nodes, dict):
-                career_nodes = career_nodes.get("careerItems") or career_nodes.get("items") or []
-            if isinstance(career_nodes, list):
-                for item in career_nodes:
-                    if not isinstance(item, dict):
-                        continue
-                    club = (
-                        item.get("teamName")
-                        or item.get("team_name")
-                        or item.get("clubName")
-                        or item.get("club")
-                        or (item.get("team", {}).get("name") if isinstance(item.get("team"), dict) else None)
-                    )
-                    period = item.get("seasonName") or item.get("season") or item.get("year") or item.get("date")
-                    if club:
-                        career.append({"period": str(period or ""), "club": clean(club)})
-            if career:
-                player["career"] = career
-
             seasons = pd.get("statSeasons") or []
             season = next((z for z in seasons if str(z.get("seasonName", "")).replace("-", "/") in {"2026/2027", "2026/27"}), None)
             if not season and seasons:
@@ -596,7 +534,8 @@ def fetch_fotmob_core():
             if ratings:
                 stats["rating"] = round(sum(ratings) / len(ratings), 2)
             player["stats"] = stats
-            # Keep the robust birth-date extraction above; older payloads may not expose a dict.
+            dob = _first_dict(pd, "birthDate")
+            player["dateOfBirth"] = dob.get("iso") or dob.get("date") if dob else None
         except Exception as e:
             print("FotMob player warning:", pid, e)
         players.append(player)
@@ -805,23 +744,42 @@ def fetch_sofascore_match_details():
     print(f"Sofascore: {len(details)} detailed matches written.")
 
 def enrich_player_profiles():
-    """Add stable biographical fields from SofaScore to the FBref squad."""
+    """Enrich player cards from SofaScore: birth date, shirt number, nationality and career."""
     squad = safe_existing("squad.json") or {}
     players = squad.get("players") or []
+
     for p in players:
         sid = p.get("sofascore_id") or p.get("id")
         if not sid:
             continue
         try:
             sp = sofa_get(f"/player/{sid}").get("player") or {}
-            for src, dst in [("dateOfBirth","dateOfBirth"),("shirtNumber","shirtNumber"),("nationality","nationality"),("country","nationality")]:
-                if sp.get(src) and not p.get(dst):
-                    p[dst] = sp.get(src)
-            if sp.get("nationality") and not p.get("nation"):
-                p["nation"] = (sp.get("nationality") or {}).get("name") if isinstance(sp.get("nationality"),dict) else sp.get("nationality")
+            dob = sp.get("dateOfBirth")
+            if dob and not p.get("dateOfBirth"): p["dateOfBirth"] = dob
+            shirt = sp.get("shirtNumber")
+            if shirt is not None and p.get("shirtNumber") in (None, ""): p["shirtNumber"] = shirt
+            nat = sp.get("nationality")
+            if nat and not p.get("nation"): p["nation"] = nat.get("name") if isinstance(nat,dict) else nat
+            if nat and not p.get("nationality"): p["nationality"] = nat.get("name") if isinstance(nat,dict) else nat
+            career=[]
+            history=sp.get("teamHistory") or sp.get("previousTeams") or sp.get("career") or sp.get("careerHistory") or []
+            if isinstance(history,dict): history=history.get("items") or history.get("teams") or history.get("careerItems") or []
+            if isinstance(history,list):
+                for item in history:
+                    if not isinstance(item,dict): continue
+                    team=item.get("team") if isinstance(item.get("team"),dict) else {}
+                    club=item.get("teamName") or item.get("clubName") or team.get("name") or item.get("name")
+                    period=item.get("seasonName") or item.get("season") or item.get("period") or item.get("year")
+                    if club: career.append({"period":clean(period),"club":clean(club)})
+            if career:
+                seen=set(); p["career"]=[]
+                for x in career:
+                    key=(x["club"],x["period"])
+                    if key not in seen: seen.add(key); p["career"].append(x)
         except Exception as e:
             print("Player profile warning:", p.get("name"), e)
     write_json("squad.json", squad)
+
 
 def fetch_fotmob_competition_standings():
     """Fetch league tables and knockout brackets from FotMob."""
@@ -1326,144 +1284,6 @@ def fetch_sofascore_player_stats():
     })
     print(f"Sofascore: {len(players)} players enriched; {sum(bool(p.get('stats')) for p in players)} have season stats.")
 
-def fetch_sporting_player_profiles():
-    """Enrich squad profiles primarily from ZeroZero, with Sporting CP as fallback."""
-    squad=safe_existing("squad.json") or {}
-    players=squad.get("players") or squad.get("squad") or []
-    if not players: return
-
-    def parse_zerozero_profile(html,url):
-        soup=BeautifulSoup(html,"html.parser")
-        text=soup.get_text("\n",strip=True)
-        out={"profile":url,"profileSource":"ZeroZero"}
-
-        # ZeroZero exposes the current shirt number in the player heading, e.g. "1.Rui Silva".
-        h1=soup.find("h1")
-        heading=clean(h1.get_text(" ",strip=True)) if h1 else ""
-        m=re.match(r"^(\d+)\s*\.",heading)
-        if m: out["shirtNumber"]=int(m.group(1))
-
-        dob=re.search(r"Data de Nascimento\s+(\d{4}-\d{2}-\d{2})",text,re.I)
-        if dob: out["dateOfBirth"]=dob.group(1)
-
-        caps=re.search(r"Internacionalizações\s+A(\d+)\s+Jogos",text,re.I)
-        if caps: out["internationalCaps"]=int(caps.group(1))
-
-        # The main Histórico table gives the player's club path by season.
-        career=[]
-        for table in soup.find_all("table"):
-            headers=[clean(c.get_text(" ",strip=True)).upper() for c in table.find_all(["th","td"],limit=5)]
-            if not any("EQUIPA" in h for h in headers) or not any("ÉPOCA" in h for h in headers):
-                continue
-            for tr in table.find_all("tr"):
-                cells=[clean(c.get_text(" ",strip=True)) for c in tr.find_all(["td","th"])]
-                if len(cells)<2: continue
-                season,club=cells[0],cells[1]
-                if not club or club.upper() in {"EQUIPA","—","-"}: continue
-                # Skip purely statistical duplicate rows.
-                if season and re.match(r"^\d{4}/\d{2,4}$",season) or season=="":
-                    item={"period":season,"club":club}
-                    if item not in career: career.append(item)
-            if career: break
-
-        if career: out["career"]=career
-
-        country=re.search(r"\bNacionalidade\s+([^\n]+)",text,re.I)
-        if country: out["nationality"]=clean(country.group(1))
-
-        pos=re.search(r"•\d+\s+anos•([^•\n]+)•Futebol",text,re.I)
-        if pos: out["officialPosition"]=clean(pos.group(1))
-
-        return out
-
-    def zerozero_lookup(name):
-        try:
-            params={
-                "op":"all",
-                "search_string":name,
-                "peq":"1",
-                "fem":"0",
-                "mod":"1",
-                "sta":"0",
-                "ord":"i",
-            }
-            rr=session.get("https://www.zerozero.pt/search_player.php",params=params,timeout=15)
-            rr.raise_for_status()
-            soup=BeautifulSoup(rr.text,"html.parser")
-            wanted=normalize_player_name(name).lower()
-            links=[]
-            for a in soup.select('a[href*="/jogador/"]'):
-                href=a.get("href") or ""
-                label=clean(a.get_text(" ",strip=True))
-                if not href: continue
-                if href.startswith("/"): href="https://www.zerozero.pt"+href
-                score=0
-                if normalize_player_name(label).lower()==wanted: score+=10
-                if wanted in normalize_player_name(label).lower(): score+=5
-                if "Sporting" in a.parent.get_text(" ",strip=True): score+=2
-                links.append((score,href))
-            if not links: return None
-            links.sort(key=lambda x:x[0],reverse=True)
-            return links[0][1]
-        except Exception as e:
-            print("ZeroZero search warning:",name,e)
-            return None
-
-    by_name={normalize_player_name(p.get("name")).lower():p for p in players if p.get("name")}
-    enriched=0
-
-    for key,p in by_name.items():
-        try:
-            url=zerozero_lookup(p.get("name",""))
-            if not url: continue
-            rr=session.get(url,timeout=15,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            data=parse_zerozero_profile(rr.text,url)
-            for field,value in data.items():
-                if value not in (None,"",[]): p[field]=value
-            enriched+=1
-        except Exception as e:
-            print("ZeroZero profile warning:",p.get("name"),e)
-
-    # Official Sporting fallback for players that ZeroZero could not resolve.
-    unresolved=[p for p in players if not p.get("dateOfBirth") or p.get("shirtNumber") is None]
-    if unresolved:
-        try:
-            roster_rr=session.get("https://www.sporting.pt/pt/futebol/plantel",timeout=20,headers={"User-Agent":USER_AGENT})
-            roster_rr.raise_for_status()
-            roster_soup=BeautifulSoup(roster_rr.text,"html.parser")
-            links={}
-            for a in roster_soup.select('a[href*="/futebol/equipa-principal/plantel/"]'):
-                href=a.get("href") or ""
-                label=clean(a.get_text(" ",strip=True))
-                if href.startswith("/"): href="https://www.sporting.pt"+href
-                m=re.match(r"^\s*(\d+)\s+(.+?)\s*$",label)
-                if m: links[normalize_player_name(m.group(2)).lower()]={"url":href,"shirtNumber":int(m.group(1))}
-            for p in unresolved:
-                meta=links.get(normalize_player_name(p.get("name")).lower())
-                if not meta: continue
-                try:
-                    rr=session.get(meta["url"],timeout=15,headers={"User-Agent":USER_AGENT})
-                    rr.raise_for_status()
-                    txt=BeautifulSoup(rr.text,"html.parser").get_text("\n",strip=True)
-                    p["profile"]=meta["url"]; p["profileSource"]="Sporting CP"; p["shirtNumber"]=meta["shirtNumber"]
-                    m=re.search(r"Data de nascimento\s+(\d{1,2})\s+([A-Za-zÀ-ÿç]+)\s+(\d{4})",txt,re.I)
-                    if m:
-                        months={"janeiro":1,"fevereiro":2,"março":3,"abril":4,"maio":5,"junho":6,"julho":7,"agosto":8,"setembro":9,"outubro":10,"novembro":11,"dezembro":12}
-                        mo=months.get(m.group(2).lower())
-                        if mo: p["dateOfBirth"]=f"{int(m.group(3)):04d}-{mo:02d}-{int(m.group(1)):02d}"
-                except Exception as e:
-                    print("Sporting fallback warning:",p.get("name"),e)
-        except Exception as e:
-            print("Sporting roster fallback warning:",e)
-
-    for p in players:
-        if p.get("officialPosition") and not p.get("position"): p["position"]=p["officialPosition"]
-
-    write_json("squad.json",{**squad,"squad":players,"players":players,"source":"ZeroZero + Sporting CP + FotMob/SofaScore/FBref"})
-    print(f"Player profile enrichment: {enriched}/{len(players)} resolved via ZeroZero.")
-
-
 def fetch_standings():
     tables, html = read_fbref_tables(FBREF_LEAGUE)
     for df in tables:
@@ -1823,100 +1643,69 @@ def fetch_youtube():
 def fetch_news():
     items = []
 
-    def decode_google_news(items_to_decode):
-        """Resolve Google News redirect URLs to the publisher article URLs."""
-        google_items=[x for x in items_to_decode if "news.google.com/" in str(x.get("url") or "")]
-        if not google_items: return
+    def decode_google_urls(rows):
+        google_rows=[x for x in rows if "news.google.com/" in str(x.get("url") or "")]
+        if not google_rows: return
         try:
             import asyncio
             from googlenewsdecoder import gnews_decoder_async
-            urls=[x["url"] for x in google_items]
+            urls=[x["url"] for x in google_rows]
             results=asyncio.run(gnews_decoder_async(urls,interval=0.2,timeout=12.0,concurrency=6))
             if isinstance(results,dict): results=[results]
-            for item,result in zip(google_items,results):
+            for item,result in zip(google_rows,results):
                 if isinstance(result,dict) and result.get("success") and result.get("decoded_url"):
-                    item["google_news_url"]=item["url"]
                     item["url"]=result["decoded_url"]
-                    item["source_url"]=result["decoded_url"]
         except Exception as e:
             print("Google News decoder warning:",e)
 
     def article_metadata(item):
-        """Fetch publisher metadata and use the publisher's own preview image."""
         url=item.get("url")
         if not url or "news.google.com/" in url: return
         try:
             rr=session.get(url,timeout=10,allow_redirects=True,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            final_url=rr.url
-            ss=BeautifulSoup(rr.text,"html.parser")
-            image_candidates=[
-                ss.find("meta",attrs={"property":"og:image"}),
-                ss.find("meta",attrs={"property":"og:image:url"}),
-                ss.find("meta",attrs={"name":"twitter:image"}),
-            ]
-            image=next((m.get("content","").strip() for m in image_candidates if m and m.get("content")),"")
+            rr.raise_for_status(); final_url=rr.url; ss=BeautifulSoup(rr.text,"html.parser")
+            og=ss.find("meta",attrs={"property":"og:image"}) or ss.find("meta",attrs={"property":"og:image:url"}) or ss.find("meta",attrs={"name":"twitter:image"})
             desc=ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"})
-            if image:
+            if og and og.get("content"):
+                image=og.get("content").strip()
                 if image.startswith("//"): image="https:"+image
                 elif image.startswith("/"):
                     from urllib.parse import urljoin
                     image=urljoin(final_url,image)
-                item["image"]=image
-                item["image_source"]=final_url
-            if desc and desc.get("content"):
-                item["description"]=clean(desc.get("content"))[:280]
-            if final_url and "news.google.com" not in final_url:
-                item["url"]=final_url
-                item["source_url"]=final_url
-        except Exception as e:
-            print("News metadata warning:",item.get("url"),e)
+                item["image"]=image; item["image_source"]=final_url
+            if desc and desc.get("content"): item["description"]=clean(desc.get("content"))[:280]
+            if final_url and "news.google.com" not in final_url: item["url"]=final_url
+        except Exception as e: print("News metadata warning:",item.get("url"),e)
 
     try:
-        r=session.get(SPORTING_NEWS,timeout=25)
-        r.raise_for_status()
-        soup=BeautifulSoup(r.text,"html.parser")
-        seen=set()
+        r=session.get(SPORTING_NEWS,timeout=25); r.raise_for_status(); soup=BeautifulSoup(r.text,"html.parser"); seen=set()
         for a in soup.select("a[href]"):
-            href=a.get("href","")
-            title=" ".join(a.stripped_strings)
+            href=a.get("href",""); title=" ".join(a.stripped_strings)
             if href.startswith("/"): href="https://www.sporting.pt"+href
             if "sporting.pt" not in href or "/noticias/" not in href or len(title)<18: continue
             if href in seen: continue
-            seen.add(href)
-            items.append({"title":title[:180],"url":href,"source":"Sporting.pt"})
+            seen.add(href); items.append({"title":title[:180],"url":href,"source":"Sporting.pt"})
             if len(items)>=12: break
-    except Exception as e:
-        print("Sporting news warning:",e)
+    except Exception as e: print("Sporting news warning:",e)
 
     try:
         import feedparser
-        feed=feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150")
-        existing={x["url"] for x in items}
+        feed=feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150"); existing={x["url"] for x in items}
         for entry in feed.entries[:40]:
             url=entry.get("link"); title=entry.get("title")
             if not url or not title or url in existing: continue
             source=(entry.get("source") or {}).get("title") or "Google News"
-            item={"title":title[:180],"url":url,"source":source,"published":entry.get("published")}
-            # Never use media_thumbnail/media_content from Google News:
-            # those are Google-hosted previews, not the publisher's image.
-            items.append(item); existing.add(url)
+            items.append({"title":title[:180],"url":url,"source":source,"published":entry.get("published")}); existing.add(url)
             if len(items)>=30: break
-    except Exception as e:
-        print("Google News warning:",e)
+    except Exception as e: print("Google News warning:",e)
 
-    decode_google_news(items)
-
-    for item in items[:30]:
-        article_metadata(item)
-
-    # If Google News could not be resolved, keep its link as fallback but no Google image.
+    decode_google_urls(items)
+    for item in items[:30]: article_metadata(item)
     for item in items:
-        item.pop("google_news_url",None)
-        if item.get("image"): item["image_source"]=item.get("image_source") or item.get("url")
-        else: item.pop("image_source",None)
-
+        item.pop("media_thumbnail",None); item.pop("media_content",None)
+        if not item.get("image"): item.pop("image",None)
     write_json("news.json",{"items":items})
+
 
 def build_fixtures_from_fbref():
     """Build the main fixtures.json from the current FBref schedule."""
@@ -2116,11 +1905,6 @@ def main():
             fetch_fbref_stats()
         except Exception as e:
             print(f"FBref enrichment skipped: {e}")
-
-        try:
-            fetch_sporting_player_profiles()
-        except Exception as e:
-            print(f"Sporting player profile enrichment skipped: {e}")
 
         try:
             fetch_fsa_fixtures()
