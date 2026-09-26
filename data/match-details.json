@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:17:42.670989+00:00",
+  "_updated_at": "2026-09-26T16:19:44.381465+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -24,12 +24,14 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "",
+          "coach": "",
           "players": []
         },
         "away": {
           "id": 9925,
           "name": "Celtic",
           "formation": "",
+          "coach": "",
           "players": []
         }
       },
@@ -278,12 +280,14 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "",
+          "coach": "",
           "players": []
         },
         "away": {
           "id": 9829,
           "name": "Monaco",
           "formation": "",
+          "coach": "",
           "players": []
         }
       },
@@ -360,6 +364,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "",
           "players": [
             {
               "player": {
@@ -579,6 +584,7 @@
               "shirtNumber": "12",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -592,6 +598,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -605,6 +612,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -618,6 +626,7 @@
               "shirtNumber": "55",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -631,6 +640,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -644,6 +654,7 @@
               "shirtNumber": "90",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -657,6 +668,7 @@
               "shirtNumber": "58",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -670,6 +682,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -683,6 +696,7 @@
               "shirtNumber": "88",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -696,6 +710,7 @@
               "shirtNumber": "41",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -706,6 +721,7 @@
           "id": 10203,
           "name": "Nottingham Forest",
           "formation": "3-5-2",
+          "coach": "",
           "players": [
             {
               "player": {
@@ -925,6 +941,7 @@
               "shirtNumber": "63",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -938,6 +955,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -951,6 +969,7 @@
               "shirtNumber": "60",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -964,6 +983,7 @@
               "shirtNumber": "6",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -977,6 +997,7 @@
               "shirtNumber": "27",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -990,6 +1011,7 @@
               "shirtNumber": "29",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1306,6 +1328,7 @@
           "id": 1074320,
           "name": "Estrela da Amadora",
           "formation": "4-2-3-1",
+          "coach": "Pepa",
           "players": [
             {
               "player": {
@@ -1525,6 +1548,7 @@
               "shirtNumber": "8",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -1538,6 +1562,7 @@
               "shirtNumber": "17",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.6
               }
@@ -1551,6 +1576,7 @@
               "shirtNumber": "93",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -1564,6 +1590,7 @@
               "shirtNumber": "80",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1577,6 +1604,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1590,6 +1618,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1603,6 +1632,7 @@
               "shirtNumber": "51",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1616,6 +1646,7 @@
               "shirtNumber": "79",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1629,6 +1660,7 @@
               "shirtNumber": "3",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1642,6 +1674,7 @@
               "shirtNumber": "71",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1655,6 +1688,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1668,6 +1702,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1678,6 +1713,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -1897,6 +1933,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -1910,6 +1947,7 @@
               "shirtNumber": "97",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.9
               }
@@ -1923,6 +1961,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -1936,6 +1975,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.4
               }
@@ -1949,6 +1989,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1962,6 +2003,7 @@
               "shirtNumber": "41",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1975,6 +2017,7 @@
               "shirtNumber": "12",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -1988,6 +2031,7 @@
               "shirtNumber": "26",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2001,6 +2045,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2014,6 +2059,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2027,6 +2073,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2615,10 +2662,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Pepa"
         },
         "awayManager": {
-          "name": ""
+          "name": "Rui Borges"
         }
       }
     },
@@ -2647,6 +2694,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -2866,6 +2914,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.4
               }
@@ -2879,6 +2928,7 @@
               "shirtNumber": "97",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.9
               }
@@ -2892,6 +2942,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.7
               }
@@ -2905,6 +2956,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2918,6 +2970,7 @@
               "shirtNumber": "12",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2931,6 +2984,7 @@
               "shirtNumber": "55",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2944,6 +2998,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2957,6 +3012,7 @@
               "shirtNumber": "6",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2970,6 +3026,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2983,6 +3040,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -2996,6 +3054,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3009,6 +3068,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3019,6 +3079,7 @@
           "id": 7844,
           "name": "Vitoria de Guimaraes",
           "formation": "4-2-3-1",
+          "coach": "Tiago Margarido",
           "players": [
             {
               "player": {
@@ -3238,6 +3299,7 @@
               "shirtNumber": "23",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 7.7
               }
@@ -3251,6 +3313,7 @@
               "shirtNumber": "44",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.1
               }
@@ -3264,6 +3327,7 @@
               "shirtNumber": "17",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 7.1
               }
@@ -3277,6 +3341,7 @@
               "shirtNumber": "56",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.9
               }
@@ -3290,6 +3355,7 @@
               "shirtNumber": "29",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3303,6 +3369,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3316,6 +3383,7 @@
               "shirtNumber": "98",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3329,6 +3397,7 @@
               "shirtNumber": "5",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3342,6 +3411,7 @@
               "shirtNumber": "82",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3355,6 +3425,7 @@
               "shirtNumber": "6",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3368,6 +3439,7 @@
               "shirtNumber": "18",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -3994,10 +4066,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Rui Borges"
         },
         "awayManager": {
-          "name": ""
+          "name": "Tiago Margarido"
         }
       }
     },
@@ -4026,6 +4098,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -4245,6 +4318,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 7
               }
@@ -4258,6 +4332,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -4271,6 +4346,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -4284,6 +4360,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -4297,6 +4374,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4310,6 +4388,7 @@
               "shirtNumber": "12",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4323,6 +4402,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4336,6 +4416,7 @@
               "shirtNumber": "25",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4349,6 +4430,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4362,6 +4444,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4375,6 +4458,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4388,6 +4472,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4398,6 +4483,7 @@
           "id": 9780,
           "name": "Alverca",
           "formation": "4-3-3",
+          "coach": "Sérgio Ferreira",
           "players": [
             {
               "player": {
@@ -4617,6 +4703,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -4630,6 +4717,7 @@
               "shirtNumber": "17",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.9
               }
@@ -4643,6 +4731,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -4656,6 +4745,7 @@
               "shirtNumber": "8",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.9
               }
@@ -4669,6 +4759,7 @@
               "shirtNumber": "18",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -4682,6 +4773,7 @@
               "shirtNumber": "23",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4695,6 +4787,7 @@
               "shirtNumber": "91",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4708,6 +4801,7 @@
               "shirtNumber": "20",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4721,6 +4815,7 @@
               "shirtNumber": "15",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4734,6 +4829,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4747,6 +4843,7 @@
               "shirtNumber": "27",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -4760,6 +4857,7 @@
               "shirtNumber": "11",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5348,10 +5446,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Rui Borges"
         },
         "awayManager": {
-          "name": ""
+          "name": "Sérgio Ferreira"
         }
       }
     },
@@ -5380,6 +5478,7 @@
           "id": 7841,
           "name": "Rio Ave",
           "formation": "4-2-3-1",
+          "coach": "Sotiris Sylaidopoulos",
           "players": [
             {
               "player": {
@@ -5599,6 +5698,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.4
               }
@@ -5612,6 +5712,7 @@
               "shirtNumber": "70",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.9
               }
@@ -5625,6 +5726,7 @@
               "shirtNumber": "30",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -5638,6 +5740,7 @@
               "shirtNumber": "60",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5651,6 +5754,7 @@
               "shirtNumber": "79",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5664,6 +5768,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5677,6 +5782,7 @@
               "shirtNumber": "14",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5690,6 +5796,7 @@
               "shirtNumber": "24",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5703,6 +5810,7 @@
               "shirtNumber": "20",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5716,6 +5824,7 @@
               "shirtNumber": "27",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5729,6 +5838,7 @@
               "shirtNumber": "25",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5742,6 +5852,7 @@
               "shirtNumber": "67",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -5752,6 +5863,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -5971,6 +6083,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.7
               }
@@ -5984,6 +6097,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.5
               }
@@ -5997,6 +6111,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.5
               }
@@ -6010,6 +6125,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6023,6 +6139,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6036,6 +6153,7 @@
               "shirtNumber": "41",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6049,6 +6167,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6062,6 +6181,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6075,6 +6195,7 @@
               "shirtNumber": "55",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6088,6 +6209,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6101,6 +6223,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6114,6 +6237,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6678,10 +6802,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Sotiris Sylaidopoulos"
         },
         "awayManager": {
-          "name": ""
+          "name": "Rui Borges"
         }
       }
     },
@@ -6710,6 +6834,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -6929,6 +7054,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -6942,6 +7068,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -6955,6 +7082,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 7.1
               }
@@ -6968,6 +7096,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.1
               }
@@ -6981,6 +7110,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -6994,6 +7124,7 @@
               "shirtNumber": "30",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7007,6 +7138,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7020,6 +7152,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7033,6 +7166,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7046,6 +7180,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7059,6 +7194,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7072,6 +7208,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7082,6 +7219,7 @@
           "id": 10214,
           "name": "Nacional",
           "formation": "3-4-2-1",
+          "coach": "João Gião",
           "players": [
             {
               "player": {
@@ -7301,6 +7439,7 @@
               "shirtNumber": "88",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -7314,6 +7453,7 @@
               "shirtNumber": "15",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.7
               }
@@ -7327,6 +7467,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.5
               }
@@ -7340,6 +7481,7 @@
               "shirtNumber": "20",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -7353,6 +7495,7 @@
               "shirtNumber": "10",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -7366,6 +7509,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7379,6 +7523,7 @@
               "shirtNumber": "2",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7392,6 +7537,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7405,6 +7551,7 @@
               "shirtNumber": "17",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -7957,10 +8104,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Rui Borges"
         },
         "awayManager": {
-          "name": ""
+          "name": "João Gião"
         }
       }
     },
@@ -7989,6 +8136,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -8208,6 +8356,7 @@
               "shirtNumber": "58",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.3
               }
@@ -8221,6 +8370,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.5
               }
@@ -8234,6 +8384,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.5
               }
@@ -8247,6 +8398,7 @@
               "shirtNumber": "22",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8260,6 +8412,7 @@
               "shirtNumber": "6",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8273,6 +8426,7 @@
               "shirtNumber": "30",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8286,6 +8440,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8299,6 +8454,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8312,6 +8468,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8325,6 +8482,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8338,6 +8496,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8351,6 +8510,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8361,6 +8521,7 @@
           "id": 8637,
           "name": "Galatasaray",
           "formation": "4-2-3-1",
+          "coach": "Okan Buruk",
           "players": [
             {
               "player": {
@@ -8580,6 +8741,7 @@
               "shirtNumber": "27",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.9
               }
@@ -8593,6 +8755,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6
               }
@@ -8606,6 +8769,7 @@
               "shirtNumber": "20",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8619,6 +8783,7 @@
               "shirtNumber": "18",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8632,6 +8797,7 @@
               "shirtNumber": "74",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8645,6 +8811,7 @@
               "shirtNumber": "70",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8658,6 +8825,7 @@
               "shirtNumber": "24",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8671,6 +8839,7 @@
               "shirtNumber": "42",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8684,6 +8853,7 @@
               "shirtNumber": "3",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -8697,6 +8867,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9339,10 +9510,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Rui Borges"
         },
         "awayManager": {
-          "name": ""
+          "name": "Okan Buruk"
         }
       }
     },
@@ -9371,6 +9542,7 @@
           "id": 1634,
           "name": "Famalicão",
           "formation": "4-2-3-1",
+          "coach": "Carlos Carvalhal",
           "players": [
             {
               "player": {
@@ -9590,6 +9762,7 @@
               "shirtNumber": "18",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 4.8
               }
@@ -9603,6 +9776,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.7
               }
@@ -9616,6 +9790,7 @@
               "shirtNumber": "11",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9629,6 +9804,7 @@
               "shirtNumber": "33",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9642,6 +9818,7 @@
               "shirtNumber": "1",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9655,6 +9832,7 @@
               "shirtNumber": "2",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9668,6 +9846,7 @@
               "shirtNumber": "5",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9681,6 +9860,7 @@
               "shirtNumber": "3",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9694,6 +9874,7 @@
               "shirtNumber": "36",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9707,6 +9888,7 @@
               "shirtNumber": "24",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9720,6 +9902,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9733,6 +9916,7 @@
               "shirtNumber": "10",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -9743,6 +9927,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -9962,6 +10147,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 7.2
               }
@@ -9975,6 +10161,7 @@
               "shirtNumber": "17",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.4
               }
@@ -9988,6 +10175,7 @@
               "shirtNumber": "19",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -10001,6 +10189,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.4
               }
@@ -10014,6 +10203,7 @@
               "shirtNumber": "30",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10027,6 +10217,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10040,6 +10231,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10053,6 +10245,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10066,6 +10259,7 @@
               "shirtNumber": "73",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10079,6 +10273,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10092,6 +10287,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10105,6 +10301,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10673,10 +10870,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Carlos Carvalhal"
         },
         "awayManager": {
-          "name": ""
+          "name": "Rui Borges"
         }
       }
     },
@@ -10705,6 +10902,7 @@
           "id": 9768,
           "name": "Sporting CP",
           "formation": "4-2-3-1",
+          "coach": "Rui Borges",
           "players": [
             {
               "player": {
@@ -10924,6 +11122,7 @@
               "shirtNumber": "72",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 5.7
               }
@@ -10937,6 +11136,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.8
               }
@@ -10950,6 +11150,7 @@
               "shirtNumber": "21",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10963,6 +11164,7 @@
               "shirtNumber": "7",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10976,6 +11178,7 @@
               "shirtNumber": "30",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -10989,6 +11192,7 @@
               "shirtNumber": "13",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11002,6 +11206,7 @@
               "shirtNumber": "50",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11015,6 +11220,7 @@
               "shirtNumber": "8",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11028,6 +11234,7 @@
               "shirtNumber": "58",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11041,6 +11248,7 @@
               "shirtNumber": "28",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11054,6 +11262,7 @@
               "shirtNumber": "31",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11067,6 +11276,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11077,6 +11287,7 @@
           "id": 158085,
           "name": "Arouca",
           "formation": "4-2-3-1",
+          "coach": "Vasco Seabra",
           "players": [
             {
               "player": {
@@ -11296,6 +11507,7 @@
               "shirtNumber": "20",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.2
               }
@@ -11309,6 +11521,7 @@
               "shirtNumber": "89",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.9
               }
@@ -11322,6 +11535,7 @@
               "shirtNumber": "24",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": 6.7
               }
@@ -11335,6 +11549,7 @@
               "shirtNumber": "23",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11348,6 +11563,7 @@
               "shirtNumber": "9",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11361,6 +11577,7 @@
               "shirtNumber": "1",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11374,6 +11591,7 @@
               "shirtNumber": "71",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11387,6 +11605,7 @@
               "shirtNumber": "5",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11400,6 +11619,7 @@
               "shirtNumber": "4",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11413,6 +11633,7 @@
               "shirtNumber": "37",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11426,6 +11647,7 @@
               "shirtNumber": "27",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -11439,6 +11661,7 @@
               "shirtNumber": "77",
               "position": "",
               "substitute": true,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -12077,10 +12300,10 @@
       },
       "managers": {
         "homeManager": {
-          "name": ""
+          "name": "Rui Borges"
         },
         "awayManager": {
-          "name": ""
+          "name": "Vasco Seabra"
         }
       }
     }
