@@ -1526,50 +1526,114 @@ def fetch_sofascore_standings():
     print(f"Sofascore: {len(rows)} standings rows written.")
 
 def build_team_stats_from_sofa():
+    """Build reliable Sporting CP team stats from the normalized fixture feed.
+    Only finished matches involving Sporting CP are counted; no national-team data.
+    """
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished"]
-    team = {"matches": 0, "wins": 0, "draws": 0, "losses": 0, "goals": 0,
-            "goals_against": 0, "clean_sheets": 0, "assists": 0, "shots": 0,
-            "shots_on_target": 0, "possession_avg": None, "form": [], "recent_matches": []}
+    team_names = {"sporting cp", "sporting", "sporting clube de portugal"}
+    team_ids = {3001, SPORTING_FOTMOB_ID, 9768}
 
-    for f in finished:
+    def is_sporting(side):
+        if not isinstance(side, dict):
+            return False
+        sid = side.get("id")
+        name = zz_norm(side.get("name"))
+        return sid in team_ids or name in team_names
+
+    team = {"matches": 0, "wins": 0, "draws": 0, "losses": 0, "goals": 0,
+            "goals_against": 0, "clean_sheets": 0, "form": [], "recent_matches": []}
+
+    for f in sorted(finished, key=lambda x: x.get("date") or 0):
+        home = f.get("home") or {}
+        away = f.get("away") or {}
+        if not is_sporting(home) and not is_sporting(away):
+            continue
         h = f.get("goals", {}).get("home")
         a = f.get("goals", {}).get("away")
         if h is None or a is None:
             continue
-        home = (f.get("home") or {}).get("id") == 3001
-        gf, ga = (h, a) if home else (a, h)
+        sporting_home = is_sporting(home)
+        gf, ga = (int(h), int(a)) if sporting_home else (int(a), int(h))
         team["matches"] += 1
-        team["goals"] += int(gf)
-        team["goals_against"] += int(ga)
+        team["goals"] += gf
+        team["goals_against"] += ga
         team["clean_sheets"] += int(ga == 0)
         result = "W" if gf > ga else "D" if gf == ga else "L"
-        team[result_map := {"W":"wins","D":"draws","L":"losses"}[result]] += 1
+        team[{"W":"wins","D":"draws","L":"losses"}[result]] += 1
         team["form"].append(result)
         team["recent_matches"].append({
             "date": f.get("kickoff_date"),
             "competition": (f.get("competition") or {}).get("name"),
-            "venue": "Casa" if home else "Fora",
+            "venue": "Casa" if sporting_home else "Fora",
             "result": result,
             "gf": gf, "ga": ga,
-            "opponent": (f.get("away") if home else f.get("home") or {}).get("name")
+            "opponent": (away if sporting_home else home).get("name")
         })
 
     team["form"] = team["form"][-6:]
     team["recent_matches"] = team["recent_matches"][-6:]
-
-    squad = (safe_existing("squad.json") or {}).get("squad", [])
-    for p in squad:
-        st = p.get("stats") or {}
-        team["assists"] += int(fnum(st.get("assists")) or 0)
-        team["shots"] += int(fnum(st.get("shots")) or 0)
-        team["shots_on_target"] += int(fnum(st.get("shots_on_target")) or 0)
+    team["points"] = team["wins"] * 3 + team["draws"]
+    team["win_rate"] = round((team["wins"] / team["matches"]) * 100, 1) if team["matches"] else 0
+    team["goals_per_match"] = round(team["goals"] / team["matches"], 2) if team["matches"] else 0
+    team["goals_against_per_match"] = round(team["goals_against"] / team["matches"], 2) if team["matches"] else 0
 
     write_json("team-stats.json", {
         "season": "2026/27",
         "team": team,
-        "source": "Sofascore"
+        "source": "Sporting CP fixture feed"
     })
+
+
+def fetch_fbref_historical_team_stats():
+    """Aggregate previous Sporting CP seasons from FBref all-competitions schedules."""
+    history = {}
+    for season in ("2025-2026", "2024-2025", "2023-2024"):
+        label = season.replace("-", "/")
+        url = f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
+        try:
+            tables, _ = read_fbref_tables(url)
+            frames = [multi_index_flatten(df.copy()) for df in tables]
+            df = pick_table(frames, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent"])
+            if df is None:
+                print("FBref historical stats: schedule table not found", season)
+                continue
+            team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,"clean_sheets":0}
+            for _, row in df.iterrows():
+                result = clean(row.get("Result"))
+                gf, ga = fnum(row.get("GF")), fnum(row.get("GA"))
+                if not result or gf is None or ga is None:
+                    continue
+                gf, ga = int(gf), int(ga)
+                team["matches"] += 1
+                team["goals"] += gf
+                team["goals_against"] += ga
+                team["clean_sheets"] += int(ga == 0)
+                if result.startswith("W"):
+                    team["wins"] += 1
+                elif result.startswith("D"):
+                    team["draws"] += 1
+                elif result.startswith("L"):
+                    team["losses"] += 1
+            if team["matches"]:
+                team["points"] = team["wins"]*3 + team["draws"]
+                team["win_rate"] = round(team["wins"]/team["matches"]*100,1)
+                team["goals_per_match"] = round(team["goals"]/team["matches"],2)
+                team["goals_against_per_match"] = round(team["goals_against"]/team["matches"],2)
+                history[label] = team
+        except Exception as e:
+            print("FBref historical stats warning:", season, e)
+
+    current = safe_existing("team-stats.json") or {}
+    if current.get("team"):
+        history["2026/27"] = current["team"]
+    ordered = {k: history[k] for k in sorted(history.keys(), reverse=True)}
+    write_json("team-stats-history.json", {
+        "seasons": ordered,
+        "source": "FBref + Sporting CP fixture feed",
+        "scope": "Sporting CP main team, all competitions, finished matches only"
+    })
+    print(f"Historical team stats: {len(ordered)} seasons written.")
 
 def _sofa_season(tournament_id):
     """Return the current 2026/27 SofaScore season id, tolerating tournament-specific names."""
@@ -2344,6 +2408,10 @@ def main():
             build_team_stats_from_sofa()
         except Exception as e:
             print(f"SofaScore team stats skipped: {e}")
+        try:
+            fetch_fbref_historical_team_stats()
+        except Exception as e:
+            print(f"Historical team stats skipped: {e}")
         try:
             fetch_sofascore_match_details()
         except Exception as e:
