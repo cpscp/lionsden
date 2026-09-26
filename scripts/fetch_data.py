@@ -2518,16 +2518,18 @@ def fetch_match_summary_videos():
     def published_date(text):
         t=zz_norm(text or "")
         now=datetime.now(timezone.utc)
-        m=re.search(r"(\\d+)\\s+(second|seconds|minute|minutes|hour|hours|day|days|week|weeks|month|months|year|years|segundo|segundos|minuto|minutos|hora|horas|dia|dias|semana|semanas|mes|meses|ano|anos)",t)
+        m=re.search(r"(\d+)\s+(second|seconds|minute|minutes|hour|hours|day|days|week|weeks|month|months|year|years|segundo|segundos|minuto|minutos|hora|horas|dia|dias|semana|semanas|mes|meses|ano|anos)",t)
         if m:
             n=int(m.group(1)); unit=m.group(2)
             days=n/24 if ("hour" in unit or "hora" in unit) else n/1440 if ("minute" in unit or "minuto" in unit) else n/86400 if ("second" in unit or "segundo" in unit) else n if ("day" in unit or "dia" in unit) else n*7 if ("week" in unit or "semana" in unit) else n*30 if ("month" in unit or "mes" in unit) else n*365
-            return now-timedelta(days=days)
+           return now-timedelta(days=days)
         for fmt in ("%b %d, %Y","%d %b %Y","%b %d %Y"):
             try:return datetime.strptime(text.strip(),fmt).replace(tzinfo=timezone.utc)
             except Exception:pass
         return None
 
+    previous = safe_existing("match-videos.json") or {}
+    previous_by_match = {str(x.get("match_id")): x for x in previous.get("videos", []) if x.get("match_id") and x.get("video_id")}
     videos = []
     for f in finished:
         home = clean((f.get("home") or {}).get("name"))
@@ -2599,6 +2601,10 @@ def fetch_match_summary_videos():
                 "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner"))),
                 "published_text": best.get("published_text","")
             })
+        elif str(f.get("id")) in previous_by_match:
+            # Never erase a previously valid official summary just because YouTube search
+            # temporarily returned no candidates or changed its published-time label.
+            videos.append(previous_by_match[str(f.get("id"))])
 
     write_json("match-videos.json", {
         "videos": videos,
