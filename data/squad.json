@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:43:00.752614+00:00",
+  "_updated_at": "2026-09-26T10:45:36.445Z",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -127,8 +127,164 @@
           "club": "Portugal U21"
         }
       ],
-      "careerStats": [],
-      "dateOfBirth": "1994-02-07T00:00:00.000Z"
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 48,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting (E) [Real Betis]",
+          "matches": 23,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Real Betis",
+          "matches": 17,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Real Betis",
+          "matches": 37,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Real Betis",
+          "matches": 28,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Real Betis",
+          "matches": 32,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Granada",
+          "matches": 46,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2019/20",
+          "club": "Granada",
+          "matches": 37,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Granada",
+          "matches": 40,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Granada",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2016/17",
+          "club": "Nacional",
+          "matches": 20,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2015/16",
+          "club": "Nacional",
+          "matches": 24,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2014/15",
+          "club": "Nacional",
+          "matches": 11,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2013/14",
+          "club": "Nacional",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2012/13",
+          "club": "Nacional [Jun.A S19]",
+          "matches": 20,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2011/12",
+          "club": "FC Maia Lidador [Jun.A S19]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2010/11",
+          "club": "FC Maia Lidador [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2009/10",
+          "club": "FC Maia Lidador [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2008/09",
+          "club": "Maia [Jun.C S15]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2007/08",
+          "club": "Maia [Jun.C S15]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2006/07",
+          "club": "Maia [Jun.D S13]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        }
+      ],
+      "dateOfBirth": "1994-02-07T00:00:00.000Z",
+      "zerozero_url": "https://www.zerozero.pt/jogador/rui-silva/275322"
     },
     {
       "fotmob_id": 1320169,
