@@ -1277,6 +1277,7 @@ def fetch_sofascore_match_details():
             lineups = sofa_get(f"/event/{sid}/lineups")
             incidents = sofa_get(f"/event/{sid}/incidents")
             statistics = sofa_get(f"/event/{sid}/statistics")
+            average_positions = sofa_get(f"/event/{sid}/average-positions")
             managers = {}
             try:
                 managers = sofa_get(f"/event/{sid}/managers")
@@ -1304,6 +1305,7 @@ def fetch_sofascore_match_details():
                 "lineups": lineups,
                 "incidents": incidents,
                 "statistics": statistics,
+                "average_positions": average_positions,
                 "managers": managers
             })
         except Exception as e:
