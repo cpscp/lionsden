@@ -197,6 +197,7 @@ def zerozero_player_history(url):
     html = ""
     text_content = ""
     candidates = [
+        url.rstrip("/") + "/epocas",
         url + ("&" if "?" in url else "?") + "op=zoomstats&redirm=1",
         url + ("&" if "?" in url else "?") + "op=zoomstats&redirm=1&tpstats=club",
         url,
@@ -220,7 +221,12 @@ def zerozero_player_history(url):
             if not rows:
                 continue
             headers = [zz_norm(x.get_text(" ", strip=True)) for x in rows[0].find_all(["th","td"])]
-            if not {"epoca","equipa","j","g","ast"}.issubset(set(headers)):
+            season_key = "epoca" if "epoca" in headers else ("época" if "época" in headers else None)
+            club_key = "equipa" if "equipa" in headers else ("clube" if "clube" in headers else None)
+            games_key = "j" if "j" in headers else None
+            goals_key = "g" if "g" in headers else ("gm" if "gm" in headers else None)
+            assists_key = "ast" if "ast" in headers else None
+            if not all((season_key, club_key, games_key, goals_key, assists_key)):
                 continue
             idx = {h:i for i,h in enumerate(headers)}
             season = ""
@@ -231,15 +237,15 @@ def zerozero_player_history(url):
                 def cell(k):
                     i = idx.get(k)
                     return cells[i] if i is not None and i < len(cells) else ""
-                if cell("epoca"):
-                    season = cell("epoca")
-                if season and cell("equipa"):
+                if cell(season_key):
+                    season = cell(season_key)
+                if season and cell(club_key):
                     result.append({
                         "season": season.replace("-","/"),
-                        "club": cell("equipa"),
-                        "matches": zz_number(cell("j")),
-                        "goals": zz_number(cell("g")),
-                        "assists": zz_number(cell("ast"))
+                        "club": cell(club_key),
+                        "matches": zz_number(cell(games_key)),
+                        "goals": zz_number(cell(goals_key)),
+                        "assists": zz_number(cell(assists_key))
                     })
             if result:
                 return result
@@ -285,7 +291,7 @@ def zerozero_player_history(url):
     for line in lines:
         t = line.strip()
         n = zz_norm(t)
-        if "epoca" in n and "equipa" in n and "| j |" in n:
+        if "epoca" in n and ("equipa" in n or "clube" in n) and "| j |" in n:
             in_history = True
             continue
         if not in_history: continue
