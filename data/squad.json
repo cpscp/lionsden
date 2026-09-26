@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T11:19:50.181652+00:00",
+  "_updated_at": "2026-09-26T11:22:18.229Z",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -355,7 +355,15 @@
           "club": "Brazil U20"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
@@ -432,7 +440,15 @@
           "club": "Sporting CP U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
@@ -487,7 +503,15 @@
           "club": "Morocco U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2008-09-20"
     },
     {
@@ -607,7 +631,15 @@
           "club": "Belgium U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 6,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
@@ -743,7 +775,15 @@
           "club": "Greece U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
@@ -883,7 +923,15 @@
           "club": "Uruguay U20"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 1,
+          "assists": 2
+        }
+      ],
       "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
@@ -971,7 +1019,15 @@
           "club": "Spain U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 0,
+          "assists": 1
+        }
+      ],
       "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
@@ -1059,7 +1115,15 @@
           "club": "Portugal U21"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 2,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -1107,7 +1171,15 @@
           "club": "Sporting Clube de Portugal Under 21"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
@@ -1163,7 +1235,15 @@
           "club": "Valenciennes"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
@@ -1271,7 +1351,15 @@
           "club": "Portugal U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 6,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
@@ -1418,7 +1506,15 @@
           "club": "Greece U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2001-11-26T00:00:00.000Z"
     },
     {
@@ -1546,7 +1642,15 @@
           "club": "Denmark U16"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 7,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
@@ -1614,7 +1718,15 @@
           "club": "Granollers"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 1,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -1706,7 +1818,15 @@
           "club": "Portugal U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
@@ -1830,7 +1950,15 @@
           "club": "Australia U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -1914,7 +2042,15 @@
           "club": "Palmeiras U20"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
@@ -1998,7 +2134,15 @@
           "club": "Portugal Under 18"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
@@ -2070,7 +2214,15 @@
           "club": "Italy U21"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 1,
+          "assists": 1
+        }
+      ],
       "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
@@ -2093,7 +2245,15 @@
           "club": "Sporting CP"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2007-06-20T00:00:00.000Z"
     },
     {
@@ -2148,7 +2308,15 @@
           "club": "Portugal U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2007-12-06T00:00:00.000Z"
     },
     {
@@ -2280,7 +2448,15 @@
           "club": "Greece U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 2,
+          "assists": 2
+        }
+      ],
       "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
@@ -2380,7 +2556,15 @@
           "club": "Portugal U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 2,
+          "goals": 2,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
@@ -2516,7 +2700,15 @@
           "club": "Mozambique"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 2,
+          "assists": 3
+        }
+      ],
       "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
@@ -2652,7 +2844,15 @@
           "club": "Portugal U19"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
@@ -2768,7 +2968,15 @@
           "club": "Uruguay U20"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 2,
+          "assists": 1
+        }
+      ],
       "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
@@ -2880,7 +3088,15 @@
           "club": "England U17"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
@@ -2960,7 +3176,15 @@
           "club": "Brazil U20"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -3064,7 +3288,15 @@
           "club": "Portugal Under 18"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 3,
+          "assists": 1
+        }
+      ],
       "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
@@ -3220,7 +3452,15 @@
           "club": "Colombia"
         }
       ],
-      "careerStats": [],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 7,
+          "assists": 1
+        }
+      ],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ],
