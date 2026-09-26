@@ -186,7 +186,7 @@ def zerozero_player_history(url):
         if r.ok and len(r.text) > 5000:
             html = r.text
         else:
-            proxy = "https://r.jina.ai/http://" + url.split("://", 1)[-1]
+            proxy = "https://r.jina.ai/https://" + url.split("://", 1)[-1]
             pr = session.get(proxy, timeout=45)
             pr.raise_for_status()
             text_content = pr.text
