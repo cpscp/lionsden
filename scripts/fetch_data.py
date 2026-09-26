@@ -536,9 +536,32 @@ def fetch_fotmob_core():
                 except Exception: pass
 
             history = deep_find(pd, {"careerHistory","careerItems","previousTeams","teamHistory","career"})
-            if isinstance(history, dict):
-                history = history.get("careerItems") or history.get("items") or history.get("teams") or []
             career=[]
+            if isinstance(history, dict):
+                history = history.get("careerItems") or history.get("items") or history.get("teams") or history
+
+            # FotMob careerHistory.careerItems is grouped into senior/youth/national-team.
+            if isinstance(history, dict):
+                groups = []
+                for group_name in ("senior","youth","national team","nationalTeam"):
+                    group = history.get(group_name)
+                    if isinstance(group, dict):
+                        groups.append(group)
+                for group in groups:
+                    for item in (group.get("teamEntries") or []):
+                        if not isinstance(item, dict): continue
+                        club=item.get("team") or item.get("teamName") or item.get("clubName")
+                        start=item.get("startDate")
+                        end=item.get("endDate")
+                        period=clean(start)
+                        if end: period=(period+" → "+clean(end)).strip()
+                        if club: career.append({"period":period,"club":clean(club)})
+                    for item in (group.get("seasonEntries") or []):
+                        if not isinstance(item, dict): continue
+                        club=item.get("team") or item.get("teamName") or item.get("clubName")
+                        period=item.get("seasonName") or item.get("season")
+                        if club: career.append({"period":clean(period),"club":clean(club)})
+
             if isinstance(history, list):
                 for item in history:
                     if not isinstance(item, dict): continue
