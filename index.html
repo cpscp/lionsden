@@ -10,9 +10,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script><script>
+(async()=>{try{
+const r=await fetch('./assets/CustomDigits.woff2.b64',{cache:'force-cache'});
+const b=atob((await r.text()).trim()),u=new Uint8Array(b.length);
+for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);
+const f=new FontFace('CustomDigits',u.buffer);
+await f.load();document.fonts.add(f);
+}catch(e){console.warn('CustomDigits font unavailable',e)}})();
+</script>
 <style>
-@font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}.jersey-number,.shirt-number{font-family:'CustomDigits',sans-serif;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
+ .jersey-number,.shirt-number{font-family:'CustomDigits',sans-serif;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
