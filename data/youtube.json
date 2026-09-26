@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:15:27.193990+00:00",
+  "_updated_at": "2026-09-26T10:17:01.438923+00:00",
   "channel": "Sporting CP",
   "channel_id": "UCHpcLaddGlZUVdtX302fpHA",
   "pages_fetched": 10,
@@ -19,13 +19,6 @@
       "thumbnail": "https://i.ytimg.com/vi/8RtqnW4iErs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3GkW8Ukoq3DteJYiI4o-ByE3jqg"
     },
     {
-      "id": "hBG4pKH7DTM",
-      "title": "BACKSTAGE SPORTING | Estágio 2026/2027",
-      "url": "https://www.youtube.com/watch?v=hBG4pKH7DTM",
-      "published": "há 2 meses",
-      "thumbnail": "https://i.ytimg.com/vi/hBG4pKH7DTM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCivahEh_EiCthUDCY3ELm-oEoaIw"
-    },
-    {
       "id": "3344RpbjuyY",
       "title": "SCP. 120 Years. Becoming.",
       "url": "https://www.youtube.com/watch?v=3344RpbjuyY",
@@ -38,6 +31,13 @@
       "url": "https://www.youtube.com/watch?v=XU1fSa3h7ps",
       "published": "há 4 meses",
       "thumbnail": "https://i.ytimg.com/vi/XU1fSa3h7ps/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCrZGbiuP3RFFmo5Hf-uuxjMhBNXw"
+    },
+    {
+      "id": "hBG4pKH7DTM",
+      "title": "BACKSTAGE SPORTING | Estágio 2026/2027",
+      "url": "https://www.youtube.com/watch?v=hBG4pKH7DTM",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/hBG4pKH7DTM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCivahEh_EiCthUDCY3ELm-oEoaIw"
     },
     {
       "id": "si7z28nTcQg",
@@ -68,11 +68,11 @@
       "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ"
     },
     {
-      "id": "LFMfqhXv8NU",
-      "title": "Highlights | Pré-Época: Sporting CP 7-0 RC Strasbourg",
-      "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
-      "published": "há 2 meses",
-      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDqPAyayjUqiE5NDgUbTRNw0Uj5XQ"
+      "id": "PDkW9xuzs-U",
+      "title": "OBRIGADO, POTE!",
+      "url": "https://www.youtube.com/watch?v=PDkW9xuzs-U",
+      "published": "há 3 semanas",
+      "thumbnail": "https://i.ytimg.com/vi/PDkW9xuzs-U/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAhaU_HnGaT9puShFFyZNyZePpQqQ"
     },
     {
       "id": "12gfq0RRM5U",
@@ -89,25 +89,18 @@
       "thumbnail": "https://i.ytimg.com/vi/4KfQOouQDCM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCoLrrC38CtA1kunolViqTazMNqBw"
     },
     {
-      "id": "4zKBW85qZ6M",
-      "title": "Pós-jogo | Liga Portugal Betclic: Rio Ave FC 0-4 Sporting CP",
-      "url": "https://www.youtube.com/watch?v=4zKBW85qZ6M",
-      "published": "há 4 semanas",
-      "thumbnail": "https://i.ytimg.com/vi/4zKBW85qZ6M/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCvuZvloe-i0D4pl5OONlsH1AEayw"
+      "id": "LFMfqhXv8NU",
+      "title": "Highlights | Pré-Época: Sporting CP 7-0 RC Strasbourg",
+      "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDqPAyayjUqiE5NDgUbTRNw0Uj5XQ"
     },
     {
-      "id": "wRrYg7v3G6A",
-      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
-      "url": "https://www.youtube.com/watch?v=wRrYg7v3G6A",
+      "id": "ElyIkaiDhow",
+      "title": "ACABOU A ÉPOCA DO SPORTING! O Sporting não consegue mais que isto...🦁A Análise Sporting 2-2 Arouca🟢🦁",
+      "url": "https://www.youtube.com/watch?v=ElyIkaiDhow",
       "published": "há 6 dias",
-      "thumbnail": "https://i.ytimg.com/vi/wRrYg7v3G6A/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCsaXayHcMLxsm56HnKouKP7H3sRw"
-    },
-    {
-      "id": "PDkW9xuzs-U",
-      "title": "OBRIGADO, POTE!",
-      "url": "https://www.youtube.com/watch?v=PDkW9xuzs-U",
-      "published": "há 3 semanas",
-      "thumbnail": "https://i.ytimg.com/vi/PDkW9xuzs-U/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAhaU_HnGaT9puShFFyZNyZePpQqQ"
+      "thumbnail": "https://i.ytimg.com/vi/ElyIkaiDhow/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDw98wgDg7eVsefmpxT0qfMLtWHyA"
     },
     {
       "id": "CK5FcFBP6Wc",
@@ -117,18 +110,18 @@
       "thumbnail": "https://i.ytimg.com/vi/CK5FcFBP6Wc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCbqL4dp_a8o2pcKKiAgqogDH_wMQ"
     },
     {
-      "id": "AXXVz0rX0_8",
-      "title": "SCP. 120 Anos. Evolução a partir da Essência.",
-      "url": "https://www.youtube.com/watch?v=AXXVz0rX0_8",
-      "published": "há 2 meses",
-      "thumbnail": "https://i.ytimg.com/vi/AXXVz0rX0_8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBaV5l9WDJgioYPkBwJjoslnQ4AlA"
+      "id": "YMNMqm8j5nk",
+      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 3-1 FC Alverca",
+      "url": "https://www.youtube.com/watch?v=YMNMqm8j5nk",
+      "published": "há 1 mês",
+      "thumbnail": "https://i.ytimg.com/vi/YMNMqm8j5nk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBRSCjsnTNi0qseR1kHDcCSh208Pg"
     },
     {
-      "id": "vtLVbqoOeUk",
-      "title": "Antevisão | Liga Portugal Betclic: Sporting CP x FC Arouca",
-      "url": "https://www.youtube.com/watch?v=vtLVbqoOeUk",
-      "published": "Transmitido há 7 dias",
-      "thumbnail": "https://i.ytimg.com/vi/vtLVbqoOeUk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBRSDyLfvyo_cWGUCULC3Cg8vJahw"
+      "id": "0adGh_BrcHs",
+      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 2-0 CD Nacional",
+      "url": "https://www.youtube.com/watch?v=0adGh_BrcHs",
+      "published": "há 2 semanas",
+      "thumbnail": "https://i.ytimg.com/vi/0adGh_BrcHs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCduCR2cxQzyNnACEVmCPPn_euxDA"
     },
     {
       "id": "LblsWW0ujso",
@@ -136,20 +129,6 @@
       "url": "https://www.youtube.com/watch?v=LblsWW0ujso",
       "published": "Transmitido há 2 semanas",
       "thumbnail": "https://i.ytimg.com/vi/LblsWW0ujso/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIKIcrWzUQFlT9sF3Tvlbi1VS_Lg"
-    },
-    {
-      "id": "Sgu7UdPWsO4",
-      "title": "Highlights | UEFA Champions League: Sporting CP 3-1 Galatasaray SK",
-      "url": "https://www.youtube.com/watch?v=Sgu7UdPWsO4",
-      "published": "há 2 semanas",
-      "thumbnail": "https://i.ytimg.com/vi/Sgu7UdPWsO4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD3gycO4FEPDQ_kSMMXyX9v-A_1_g"
-    },
-    {
-      "id": "SzfSyuQs8tI",
-      "title": "120 MINUTOS DE SPORTING CLUBE DE PORTUGAL 💚",
-      "url": "https://www.youtube.com/watch?v=SzfSyuQs8tI",
-      "published": "há 6 meses",
-      "thumbnail": "https://i.ytimg.com/vi/SzfSyuQs8tI/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBRjKjDQl37xOe_HHJYCefOPptTsA"
     },
     {
       "id": "JmN8O7W5CE0",
@@ -166,6 +145,13 @@
       "thumbnail": "https://i.ytimg.com/vi/hhkb3P-vkQc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPi5hpv3U58rSZJkqUtPDObR5fkw"
     },
     {
+      "id": "wRrYg7v3G6A",
+      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
+      "url": "https://www.youtube.com/watch?v=wRrYg7v3G6A",
+      "published": "há 6 dias",
+      "thumbnail": "https://i.ytimg.com/vi/wRrYg7v3G6A/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCsaXayHcMLxsm56HnKouKP7H3sRw"
+    },
+    {
       "id": "prnO0lzEpdo",
       "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
       "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
@@ -178,6 +164,13 @@
       "url": "https://www.youtube.com/watch?v=BQQXJRVNj7E",
       "published": "há 6 dias",
       "thumbnail": "https://i.ytimg.com/vi/BQQXJRVNj7E/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBn9dedCV1_6nroeFbVGMtQp40ziQ"
+    },
+    {
+      "id": "vtLVbqoOeUk",
+      "title": "Antevisão | Liga Portugal Betclic: Sporting CP x FC Arouca",
+      "url": "https://www.youtube.com/watch?v=vtLVbqoOeUk",
+      "published": "Transmitido há 7 dias",
+      "thumbnail": "https://i.ytimg.com/vi/vtLVbqoOeUk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBRSDyLfvyo_cWGUCULC3Cg8vJahw"
     },
     {
       "id": "i5_6Iq_USbA",
@@ -208,11 +201,18 @@
       "thumbnail": "https://i.ytimg.com/vi/DvmIBhmnkcg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA1E8Cva3T-AmzXjCU6khBhEFNJZA"
     },
     {
-      "id": "YMNMqm8j5nk",
-      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 3-1 FC Alverca",
-      "url": "https://www.youtube.com/watch?v=YMNMqm8j5nk",
-      "published": "há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/YMNMqm8j5nk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBRSCjsnTNi0qseR1kHDcCSh208Pg"
+      "id": "AXXVz0rX0_8",
+      "title": "SCP. 120 Anos. Evolução a partir da Essência.",
+      "url": "https://www.youtube.com/watch?v=AXXVz0rX0_8",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/AXXVz0rX0_8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBaV5l9WDJgioYPkBwJjoslnQ4AlA"
+    },
+    {
+      "id": "4zKBW85qZ6M",
+      "title": "Pós-jogo | Liga Portugal Betclic: Rio Ave FC 0-4 Sporting CP",
+      "url": "https://www.youtube.com/watch?v=4zKBW85qZ6M",
+      "published": "há 4 semanas",
+      "thumbnail": "https://i.ytimg.com/vi/4zKBW85qZ6M/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLA_YADwcwdsDYm8ZBrLFJSyp6eghQ"
     }
   ],
   "source": "YouTube official channel"
