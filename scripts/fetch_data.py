@@ -501,6 +501,58 @@ def fetch_fotmob_core():
         }
         try:
             pd = fotmob_get("/api/data/playerData", {"id": pid, "includeMarketValues": "true"})
+
+            def deep_find(obj, keys):
+                if isinstance(obj, dict):
+                    for key in keys:
+                        value = obj.get(key)
+                        if value not in (None, "", []):
+                            return value
+                    for value in obj.values():
+                        found = deep_find(value, keys)
+                        if found not in (None, "", []):
+                            return found
+                elif isinstance(obj, list):
+                    for value in obj:
+                        found = deep_find(value, keys)
+                        if found not in (None, "", []):
+                            return found
+                return None
+
+            shirt = (
+                m.get("shirtNumber")
+                or m.get("shirt_number")
+                or m.get("jerseyNumber")
+                or m.get("jersey_number")
+                or deep_find(pd, {"shirtNumber","shirt_number","jerseyNumber","jersey_number"})
+            )
+            if shirt not in (None, ""):
+                try: player["shirtNumber"] = int(shirt)
+                except Exception: player["shirtNumber"] = shirt
+
+            caps = deep_find(pd, {"internationalCaps","internationalAppearances","nationalTeamAppearances","caps"})
+            if caps not in (None, ""):
+                try: player["internationalCaps"] = int(float(caps))
+                except Exception: pass
+
+            history = deep_find(pd, {"careerHistory","careerItems","previousTeams","teamHistory","career"})
+            if isinstance(history, dict):
+                history = history.get("careerItems") or history.get("items") or history.get("teams") or []
+            career=[]
+            if isinstance(history, list):
+                for item in history:
+                    if not isinstance(item, dict): continue
+                    team=item.get("team") if isinstance(item.get("team"),dict) else {}
+                    club=item.get("teamName") or item.get("clubName") or team.get("name") or item.get("name")
+                    period=item.get("seasonName") or item.get("season") or item.get("period") or item.get("year")
+                    if club: career.append({"period":clean(period),"club":clean(club)})
+            if career:
+                seen=set(); player["career"]=[]
+                for item in career:
+                    key=(item["period"],item["club"])
+                    if key not in seen:
+                        seen.add(key); player["career"].append(item)
+
             seasons = pd.get("statSeasons") or []
             season = next((z for z in seasons if str(z.get("seasonName", "")).replace("-", "/") in {"2026/2027", "2026/27"}), None)
             if not season and seasons:
@@ -549,6 +601,8 @@ def fetch_fotmob_core():
             p["position"] = p.get("position") or old.get("position")
             p["nationality"] = p.get("nationality") or old.get("nationality")
             p["dateOfBirth"] = p.get("dateOfBirth") or old.get("dateOfBirth")
+            for field in ("shirtNumber","internationalCaps","career","sofascore_id"):
+                if not p.get(field) and old.get(field) not in (None,"",[]): p[field] = old[field]
         write_json("squad.json", {
             "team": "Sporting Clube de Portugal",
             "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
