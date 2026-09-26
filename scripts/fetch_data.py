@@ -577,6 +577,45 @@ def fetch_fotmob_core():
                         seen.add(key); player["career"].append(item)
 
             seasons = pd.get("statSeasons") or []
+
+            # Keep a season-by-season career dataset for the player card.
+            # FotMob has changed the exact nesting of statSeasons over time,
+            # so read the common fields defensively.
+            career_stats = []
+            def walk_season_stats(obj, season_name=None, club_name=None):
+                if isinstance(obj, dict):
+                    sn = obj.get("seasonName") or obj.get("season") or season_name
+                    club = obj.get("teamName") or obj.get("clubName") or club_name
+                    team = obj.get("team")
+                    if isinstance(team, dict):
+                        club = club or team.get("name")
+                    stats_obj = obj.get("stats") if isinstance(obj.get("stats"), dict) else obj
+                    games = stats_obj.get("appearances", stats_obj.get("matches", stats_obj.get("games", stats_obj.get("played"))))
+                    goals = stats_obj.get("goals")
+                    assists = stats_obj.get("assists")
+                    if sn and club and any(v is not None for v in (games, goals, assists)):
+                        career_stats.append({
+                            "season": str(sn).replace("-", "/"),
+                            "club": str(club),
+                            "matches": int(fnum(games) or 0),
+                            "goals": int(fnum(goals) or 0),
+                            "assists": int(fnum(assists) or 0)
+                        })
+                    for k,v in obj.items():
+                        if k not in {"stats"}:
+                            walk_season_stats(v, sn, club)
+                elif isinstance(obj, list):
+                    for v in obj:
+                        walk_season_stats(v, season_name, club_name)
+            walk_season_stats(seasons)
+            seen_cs=set()
+            player["careerStats"]=[]
+            for row in career_stats:
+                key=(row["season"],row["club"])
+                if key not in seen_cs:
+                    seen_cs.add(key)
+                    player["careerStats"].append(row)
+
             season = next((z for z in seasons if str(z.get("seasonName", "")).replace("-", "/") in {"2026/2027", "2026/27"}), None)
             if not season and seasons:
                 season = seasons[0]
@@ -624,7 +663,7 @@ def fetch_fotmob_core():
             p["position"] = p.get("position") or old.get("position")
             p["nationality"] = p.get("nationality") or old.get("nationality")
             p["dateOfBirth"] = p.get("dateOfBirth") or old.get("dateOfBirth")
-            for field in ("shirtNumber","internationalCaps","career","sofascore_id"):
+            for field in ("shirtNumber","internationalCaps","career","careerStats","sofascore_id"):
                 if not p.get(field) and old.get(field) not in (None,"",[]): p[field] = old[field]
         write_json("squad.json", {
             "team": "Sporting Clube de Portugal",
