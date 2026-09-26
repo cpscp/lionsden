@@ -92,7 +92,10 @@
 
 <section id="games" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Calendário</h2></div><div id="gamesList" class="space-y-3"></div></section>
 <section id="squad" class="screen space-y-5"><div><h2 class="text-[21px] font-bold">Plantel</h2><p class="text-[11px] muted">Época 2026/27 · todas as competições</p></div><div class="card overflow-hidden h-44 sm:h-52 relative border-white/10"><img src="https://www.wikisporting.com/images/b/b0/Sporting_7.26.jpg" alt="Sporting CP" class="absolute inset-0 w-full h-full object-cover object-[center_24%]"><div class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/65 to-transparent"></div><div class="absolute bottom-0 right-0 w-28 h-10 bg-black/25"></div><div class="absolute bottom-0 left-0 p-4"><div class="text-[10px] uppercase tracking-[.18em] text-white/70">Sporting Clube de Portugal</div></div></div><div id="squadList" class="space-y-6"></div></section>
-<section id="stats" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Estatísticas</h2><p class="text-[11px] muted">Sporting CP · 2026/27</p></div><div id="teamStats"></div></section>
+<section id="stats" class="screen space-y-4">
+<div><h2 class="text-[21px] font-bold">Estatísticas</h2><p class="text-[11px] muted">Sporting CP · todas as competições</p></div>
+<div id="teamStats"></div>
+</section>
 <section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2></div><div id="newsList" class="space-y-3"></div></section>
 <section id="classification" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Classificação</h2><div class="text-[10px] muted mt-1">2026/27 · J = jogos · P = pontos</div></div><div id="classificationTabs"></div><div id="classificationList" class="card p-3 overflow-x-auto"></div></section>
 <section id="tv" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">TV</h2><div class="text-[10px] muted mt-1">Vídeos oficiais do Sporting CP</div></div><div id="tvList" class="space-y-3"></div></section>
@@ -528,8 +531,64 @@ function renderSquad(){
     groups.map(([title,arr])=>squadGroup(title,arr,indexMap)).join('')
     + renderCoachCard();
 }
+function donutChart(value,total,label){
+  const pct=total?Math.max(0,Math.min(100,(value/total)*100)):0;
+  return `<div class="flex flex-col items-center gap-2">
+    <div class="relative w-28 h-28 rounded-full" style="background:conic-gradient(#00a878 ${pct}%,rgba(255,255,255,.07) 0)">
+      <div class="absolute inset-[10px] rounded-full bg-[#06100c] flex flex-col items-center justify-center">
+        <b class="text-xl">${value}</b><span class="text-[8px] muted">${esc(label)}</span>
+      </div>
+    </div>
+    <div class="text-[10px] muted text-center">${pct.toFixed(0)}%</div>
+  </div>`;
+}
+function seasonStatsCard(season,st){
+  const total=Number(st.matches||0), gf=Number(st.goals||0), ga=Number(st.goals_against||0);
+  return `<div class="card p-4">
+    <div class="flex items-center justify-between mb-4"><div><div class="font-semibold">${esc(season)}</div><div class="text-[10px] muted mt-1">Sporting CP · todas as competições</div></div><span class="pill px-2 py-1 text-[9px]">${total} jogos</span></div>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.wins||0),total,'vitórias')}</div>
+      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.draws||0),total,'empates')}</div>
+      <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.losses||0),total,'derrotas')}</div>
+    </div>
+    <div class="grid grid-cols-2 gap-2 mt-4">
+      ${metric('Golos',gf)}${metric('Golos sofridos',ga)}${metric('Clean sheets',Number(st.clean_sheets||0))}${metric('Taxa de vitória',`${Number(st.win_rate||0).toFixed(1)}%`)}
+    </div>
+  </div>`;
+}
 function renderStats(){
-const t=D['team-stats.json']?.team||{},f=allFixtures(),now=Math.floor(Date.now()/1000),played=f.filter(x=>x.date&&Number(x.date)<=now&&String(x.status?.short||'').toLowerCase()!=='postponed');let gf=0,ga=0,w=0,d=0,l=0,cs=0;for(const x of played){const gh=Number(x.goals?.home??x.score?.home),ga0=Number(x.goals?.away??x.score?.away);if(!Number.isFinite(gh)||!Number.isFinite(ga0))continue;const home=String(x.home?.name||'').toLowerCase().includes('sporting'),sg=home?gh:ga0,og=home?ga0:gh;gf+=sg;ga+=og;if(sg>og)w++;else if(sg===og)d++;else l++;if(og===0)cs++;}const ps=D['squad.json']?.players||D['squad.json']?.squad||[],num=k=>ps.reduce((n,p)=>n+Number((p.stats?.[k]??p[k])||0),0),v={matches:t.matches??w+d+l,wins:t.wins??w,draws:t.draws??d,losses:t.losses??l,goals:t.goals??gf,goals_against:t.goals_against??ga,assists:t.assists??num('assists'),shots:t.shots??num('shots'),shots_on_target:t.shots_on_target??num('shots_on_target'),clean_sheets:t.clean_sheets??cs};const el=document.getElementById('teamStats');if(!el)return;el.innerHTML='<div class="grid grid-cols-2 gap-2">'+metric('Jogos',v.matches)+metric('Vitórias',v.wins)+metric('Empates',v.draws)+metric('Derrotas',v.losses)+metric('Golos',v.goals)+metric('Golos sofridos',v.goals_against)+metric('Assistências',v.assists)+metric('Clean sheets',v.clean_sheets)+'</div><div class="card p-4 mt-3"><div class="font-semibold">2026/27 · todas as competições</div><div class="text-[11px] muted mt-2">Dados calculados a partir dos jogos e do plantel disponíveis.</div></div></div>';
+  const current=D['team-stats.json']?.team||{};
+  const hist=D['team-stats-history.json']?.seasons||{};
+  if(!hist['2026/27']) hist['2026/27']=current;
+  const seasons=Object.keys(hist).filter(Boolean).sort((a,b)=>b.localeCompare(a));
+  const el=document.getElementById('teamStats');if(!el)return;
+  if(!seasons.length){el.innerHTML='<div class="card p-5 muted">Sem estatísticas disponíveis.</div>';return;}
+  const defaultCompare=seasons.slice(0,2);
+  el.innerHTML=`
+    <div class="card p-4">
+      <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div><div class="font-semibold">Comparar épocas</div><div class="text-[10px] muted mt-1">Escolhe duas épocas do Sporting para comparar.</div></div>
+        <div class="flex gap-2 flex-wrap">
+          <select id="statsSeasonA" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[0]?'selected':''}>${esc(x)}</option>`).join('')}</select>
+          <select id="statsSeasonB" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[1]?'selected':''}>${esc(x)}</option>`).join('')}</select>
+        </div>
+      </div>
+    </div>
+    <div id="statsComparison" class="space-y-3"></div>
+    <div class="card p-4">
+      <div class="font-semibold">Época atual</div>
+      <div class="text-[10px] muted mt-1">Apenas jogos oficiais e amigáveis do Sporting CP já terminados. Seleções e outras equipas ficam excluídas.</div>
+    </div>`;
+  const draw=()=>{
+    const A=document.getElementById('statsSeasonA')?.value||defaultCompare[0],B=document.getElementById('statsSeasonB')?.value||defaultCompare[1];
+    const box=document.getElementById('statsComparison');
+    if(!box)return;
+    const same=A===B;
+    box.innerHTML=same?seasonStatsCard(A,hist[A]||{}):`<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">${seasonStatsCard(A,hist[A]||{})}${seasonStatsCard(B,hist[B]||{})}</div>`;
+  };
+  document.getElementById('statsSeasonA').onchange=draw;
+  document.getElementById('statsSeasonB').onchange=draw;
+  draw();
 }
 function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
