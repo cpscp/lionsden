@@ -566,6 +566,82 @@ function seasonStatsCard(season,st){
     </div>
   </div>`;
 }
+function currentCompetitionStats(key){
+  const names={
+    'primeira-liga':'Liga Portugal',
+    'champions':'Champions League',
+    'taca-portugal':'Taça de Portugal',
+    'taca-liga':'League Cup'
+  };
+  const fixtures=allFixtures().filter(f=>{
+    const name=String(f.competition?.name||'').trim();
+    const isOfficial=name!=='Club Friendlies'&&name!=='Friendly Match'&&name!=='Friendlies';
+    const same=names[key]===name;
+    const finished=f.goals?.home!=null&&f.goals?.away!=null&&!isFuture(f);
+    return isOfficial&&same&&finished;
+  });
+  const s={matches:fixtures.length,wins:0,draws:0,losses:0,goals:0,goals_against:0,clean_sheets:0,failed_to_score:0,home:{matches:0,wins:0,draws:0,losses:0},away:{matches:0,wins:0,draws:0,losses:0},results:[]};
+  fixtures.forEach(f=>{
+    const home=String(f.home?.name||'').toLowerCase().includes('sporting');
+    const gf=Number(home?f.goals.home:f.goals.away),ga=Number(home?f.goals.away:f.goals.home);
+    const result=gf>ga?'W':gf===ga?'D':'L';
+    s.goals+=gf;s.goals_against+=ga;
+    if(result==='W')s.wins++;else if(result==='D')s.draws++;else s.losses++;
+    if(ga===0)s.clean_sheets++;
+    if(gf===0)s.failed_to_score++;
+    const side=home?'home':'away';s[side].matches++;s[side][result==='W'?'wins':result==='D'?'draws':'losses']++;
+    s.results.push({date:f.date,result,gf,ga,opponent:home?f.away?.name:f.home?.name});
+  });
+  const total=s.matches;
+  s.goal_difference=s.goals-s.goals_against;
+  s.win_rate=total?s.wins/total*100:0;
+  s.points=s.wins*3+s.draws;
+  s.goals_per_match=total?s.goals/total:0;
+  s.goals_against_per_match=total?s.goals_against/total:0;
+  s.avg_goal_difference=total?s.goal_difference/total:0;
+  s.unbeaten=s.losses===0&&total>0;
+  s.form=s.results.slice().sort((a,b)=>a.date-b.date).slice(-6).map(x=>x.result);
+  s.biggest_win=fixtures.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf>ga;}).sort((a,b)=>{
+    const ah=String(a.home?.name||'').toLowerCase().includes('sporting'),bh=String(b.home?.name||'').toLowerCase().includes('sporting');
+    return (Number(bh?b.goals.home:b.goals.away)-Number(bh?b.goals.away:b.goals.home))-(Number(ah?a.goals.home:a.goals.away)-Number(ah?a.goals.away:a.goals.home));
+  })[0]||null;
+  s.biggest_loss=fixtures.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf<ga;}).sort((a,b)=>{
+    const ah=String(a.home?.name||'').toLowerCase().includes('sporting'),bh=String(b.home?.name||'').toLowerCase().includes('sporting');
+    return (Number(bh?b.goals.away:b.goals.home)-Number(bh?b.goals.home:b.goals.away))-(Number(ah?a.goals.away:a.goals.home)-Number(ah?a.goals.home:a.goals.away));
+  })[0]||null;
+  return s;
+}
+function scorelineFor(f){
+  if(!f)return '—';
+  const home=String(f.home?.name||'').toLowerCase().includes('sporting');
+  return (home?f.goals.home:f.goals.away)+'–'+(home?f.goals.away:f.goals.home);
+}
+function currentStatsCard(st,label){
+  const total=st.matches||0, gd=st.goal_difference||0;
+  const record=st.matches?((st.wins*3+st.draws)/st.matches).toFixed(2):'0.00';
+  return `<div class="card p-5 sm:p-6">
+    <div class="flex items-center justify-between gap-4 mb-5">
+      <div><div class="font-semibold text-[17px]">${esc(label)}</div><div class="text-[10px] muted mt-1">Sporting CP · época 2026/27 · jogos oficiais</div></div>
+      <span class="text-[9px] uppercase tracking-widest muted px-2 py-1 rounded-full border border-white/10">Atual</span>
+    </div>
+    <div class="flex justify-center py-1">${resultDonut(st)}</div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-7">
+      ${metric('Pontos*',st.points)}${metric('Golos',st.goals)}${metric('Golos sofridos',st.goals_against)}
+      ${metric('Saldo de golos',gd>0?'+'+gd:gd)}${metric('Golos / jogo',st.goals_per_match.toFixed(2))}${metric('Golos sofridos / jogo',st.goals_against_per_match.toFixed(2))}
+      ${metric('Clean sheets',st.clean_sheets)}${metric('Sem marcar',st.failed_to_score)}${metric('Taxa de vitória',st.win_rate.toFixed(1)+'%')}
+      ${metric('Saldo médio / jogo',(st.avg_goal_difference>=0?'+':'')+st.avg_goal_difference.toFixed(2))}${metric('Invicto',st.unbeaten?'Sim':'Não')}${metric('Rácio de pontos',record)}
+    </div>
+    <div class="mt-6 pt-5 border-t border-white/5">
+      <div class="text-[9px] uppercase tracking-widest muted mb-3">Casa · Fora</div>
+      <div class="grid grid-cols-2 gap-3">
+        ${metric('Casa · jogos',st.home.matches)}${metric('Fora · jogos',st.away.matches)}
+        ${metric('Casa · V/E/D',st.home.wins+'/'+st.home.draws+'/'+st.home.losses)}${metric('Fora · V/E/D',st.away.wins+'/'+st.away.draws+'/'+st.away.losses)}
+      </div>
+    </div>
+    ${total?'<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Melhores / piores resultados</div><div class="grid grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
+    <div class="mt-5 text-[8px] muted">* Pontos calculados em 3/1/0 apenas como indicador comparativo; não representam a pontuação oficial de competições a eliminar.</div>
+  </div>`;
+}
 function renderStats(){
   const current=D['team-stats.json']?.team||{};
   const hist=D['team-stats-history.json']?.seasons||{};
@@ -574,79 +650,65 @@ function renderStats(){
   const el=document.getElementById('teamStats');if(!el)return;
   if(!seasons.length){el.innerHTML='<div class="card p-6 muted">Sem estatísticas disponíveis.</div>';return;}
   const currentSeason='2026/27';
+  const competitions=[
+    ['geral','Todas as competições'],
+    ['primeira-liga','Liga Portugal'],
+    ['champions','Champions League'],
+    ['taca-portugal','Taça de Portugal'],
+    ['taca-liga','Taça da Liga']
+  ];
+  const officialAll=()=>{
+    const keys=['primeira-liga','champions','taca-portugal','taca-liga'];
+    const vals=keys.map(k=>currentCompetitionStats(k));
+    const a={matches:0,wins:0,draws:0,losses:0,goals:0,goals_against:0,clean_sheets:0,failed_to_score:0,home:{matches:0,wins:0,draws:0,losses:0},away:{matches:0,wins:0,draws:0,losses:0},results:[]};
+    vals.forEach(v=>{['matches','wins','draws','losses','goals','goals_against','clean_sheets','failed_to_score'].forEach(k=>a[k]+=v[k]||0);['home','away'].forEach(side=>['matches','wins','draws','losses'].forEach(k=>a[side][k]+=v[side][k]||0));a.results.push(...v.results);});
+    a.goal_difference=a.goals-a.goals_against;a.win_rate=a.matches?a.wins/a.matches*100:0;a.points=a.wins*3+a.draws;a.goals_per_match=a.matches?a.goals/a.matches:0;a.goals_against_per_match=a.matches?a.goals_against/a.matches:0;a.avg_goal_difference=a.matches?a.goal_difference/a.matches:0;a.unbeaten=a.matches>0&&a.losses===0;a.form=a.results.sort((x,y)=>x.date-y.date).slice(-6).map(x=>x.result);
+    const all=allFixtures().filter(f=>f.goals?.home!=null&&f.goals?.away!=null&&!isFuture(f)&&!['Club Friendlies','Friendly Match','Friendlies'].includes(String(f.competition?.name||'')));
+    const wins=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf>ga;});
+    const losses=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf<ga;});
+    a.biggest_win=wins.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.home:y.goals.away)-Number(h2?y.goals.away:y.goals.home))-(Number(h1?x.goals.home:x.goals.away)-Number(h1?x.goals.away:x.goals.home));})[0]||null;
+    a.biggest_loss=losses.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.away:y.goals.home)-Number(h2?y.goals.home:y.goals.away))-(Number(h1?x.goals.away:x.goals.home)-Number(h1?x.goals.home:x.goals.away);})[0]||null;
+    return a;
+  };
+  let compKey=window._statsCompetitionKey||'geral';window._statsCompetitionKey=compKey;
+  const getStats=()=>compKey==='geral'?officialAll():currentCompetitionStats(compKey);
+  const compLabel=()=>competitions.find(x=>x[0]===compKey)?.[1]||'Todas as competições';
   el.innerHTML=`
     <div class="card p-5 sm:p-6">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <div class="font-semibold text-[18px]">Época 2026/27</div>
-          <div class="text-[10px] muted mt-1">Sporting CP · competições oficiais</div>
-        </div>
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div><div class="font-semibold text-[18px]">Época 2026/27</div><div class="text-[10px] muted mt-1">Sporting CP · época atual · competições oficiais</div></div>
         <div class="text-[9px] uppercase tracking-widest muted px-2 py-1 rounded-full border border-white/10">Atual</div>
       </div>
-      <div class="flex justify-center py-2">${resultDonut(current)}</div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-7">
-        ${metric('Golos',current.goals||0)}
-        ${metric('Golos sofridos',current.goals_against||0)}
-        ${metric('Golos / jogo',Number(current.goals_per_match||0).toFixed(2))}
-        ${metric('Golos sofridos / jogo',Number(current.goals_against_per_match||0).toFixed(2))}
-        ${metric('Clean sheets',current.clean_sheets==null?'—':Number(current.clean_sheets))}
-        ${metric('Taxa de vitória',`${Number(current.win_rate||0).toFixed(1)}%`)}
+      <label class="text-[9px] uppercase tracking-widest muted block mb-2">Competição</label>
+      <div class="season-picker" data-stats-competition>
+        <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(compLabel())}</span><i class="chevron"></i></button>
+        <div class="season-options" role="listbox">
+          ${competitions.map(x=>'<button type="button" class="season-option '+(x[0]===compKey?'active':'')+'" data-competition="'+x[0]+'">'+esc(x[1])+'</button>').join('')}
+        </div>
       </div>
+      <div id="currentStatsContent" class="mt-5">${currentStatsCard(getStats(),compLabel())}</div>
     </div>
-
     <details id="seasonCompare" class="card overflow-hidden mt-5">
       <summary class="list-none cursor-pointer p-5 sm:p-6 flex items-center justify-between gap-4">
-        <div>
-          <div class="font-semibold text-[16px]">Comparar épocas</div>
-          <div class="text-[10px] muted mt-1">Ver a evolução do Sporting entre diferentes épocas.</div>
-        </div>
+        <div><div class="font-semibold text-[16px]">Comparar épocas</div><div class="text-[10px] muted mt-1">Ver a evolução do Sporting entre diferentes épocas.</div></div>
         <span class="text-lg muted transition-transform">＋</span>
       </summary>
       <div class="px-5 sm:px-6 pb-6 pt-1 border-t border-white/5">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <div>
-            <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 1</label>
-            <div class="season-picker" data-season-picker="A">
-              <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(currentSeason)}</span><i class="chevron"></i></button>
-              <div class="season-options" role="listbox">
-                ${seasons.map(x=>'<button type="button" class="season-option '+(x===currentSeason?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}
-              </div>
-            </div>
-          </div>
-          <div>
-            <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 2</label>
-            <div class="season-picker" data-season-picker="B">
-              <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(seasons.find(y=>y!==currentSeason)||currentSeason)}</span><i class="chevron"></i></button>
-              <div class="season-options" role="listbox">
-                ${seasons.map(x=>'<button type="button" class="season-option '+(x===(seasons.find(y=>y!==currentSeason)||currentSeason)?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}
-              </div>
-            </div>
-          </div>
+          <div><label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 1</label><div class="season-picker" data-season-picker="A"><button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(currentSeason)}</span><i class="chevron"></i></button><div class="season-options" role="listbox">${seasons.map(x=>'<button type="button" class="season-option '+(x===currentSeason?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}</div></div></div>
+          <div><label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 2</label><div class="season-picker" data-season-picker="B"><button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(seasons.find(y=>y!==currentSeason)||currentSeason)}</span><i class="chevron"></i></button><div class="season-options" role="listbox">${seasons.map(x=>'<button type="button" class="season-option '+(x===(seasons.find(y=>y!==currentSeason)||currentSeason)?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}</div></div></div>
         </div>
-                <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
-        <div class="text-[9px] muted mt-5">Fonte: histórico oficial do Sporting CP/ZeroZero e feed de jogos do Sporting. Não inclui seleções, pré-época ou amigáveis.</div>
+        <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
+        <div class="text-[9px] muted mt-5">Histórico por época. Não inclui seleções, pré-época ou amigáveis.</div>
       </div>
     </details>`;
-  const compare=document.getElementById('seasonCompare');
-  const pickerState={A:currentSeason,B:seasons.find(y=>y!==currentSeason)||currentSeason};
-  const draw=()=>{
-    const A=pickerState.A;
-    const B=pickerState.B;
-    const box=document.getElementById('statsComparison');if(!box)return;
-    box.innerHTML=seasonStatsCard(A,hist[A]||{})+`<div>${A===B?'':seasonStatsCard(B,hist[B]||{})}</div>`;
-    box.className=A===B?'grid grid-cols-1 gap-5':'grid grid-cols-1 lg:grid-cols-2 gap-5';
-  };
-  document.querySelectorAll('.season-picker').forEach(picker=>{
-    const key=picker.dataset.seasonPicker,trigger=picker.querySelector('.season-trigger');
-    trigger.addEventListener('click',e=>{
-      e.stopPropagation(); document.querySelectorAll('.season-picker.open').forEach(x=>{if(x!==picker)x.classList.remove('open');});
-      const open=picker.classList.toggle('open'); trigger.setAttribute('aria-expanded',String(open));
-    });
-    picker.querySelectorAll('.season-option').forEach(option=>option.addEventListener('click',e=>{
-      e.stopPropagation(); pickerState[key]=option.dataset.season; picker.querySelector('.season-value').textContent=option.dataset.season;
-      picker.querySelectorAll('.season-option').forEach(x=>x.classList.toggle('active',x===option)); picker.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); draw();
-    }));
-  });
+  const picker=el.querySelector('[data-stats-competition]');
+  const trigger=picker?.querySelector('.season-trigger');
+  trigger?.addEventListener('click',e=>{e.stopPropagation();document.querySelectorAll('.season-picker.open').forEach(x=>{if(x!==picker)x.classList.remove('open')});const open=picker.classList.toggle('open');trigger.setAttribute('aria-expanded',String(open));});
+  picker?.querySelectorAll('[data-competition]').forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();compKey=o.dataset.competition;window._statsCompetitionKey=compKey;picker.querySelector('.season-value').textContent=compLabel();picker.querySelectorAll('.season-option').forEach(x=>x.classList.toggle('active',x===o));picker.classList.remove('open');trigger.setAttribute('aria-expanded','false');document.getElementById('currentStatsContent').innerHTML=currentStatsCard(getStats(),compLabel());}));
+  const compare=document.getElementById('seasonCompare'),pickerState={A:currentSeason,B:seasons.find(y=>y!==currentSeason)||currentSeason};
+  const draw=()=>{const A=pickerState.A,B=pickerState.B,box=document.getElementById('statsComparison');if(!box)return;box.innerHTML=seasonStatsCard(A,hist[A]||{})+`<div>${A===B?'':seasonStatsCard(B,hist[B]||{})}</div>`;box.className=A===B?'grid grid-cols-1 gap-5':'grid grid-cols-1 lg:grid-cols-2 gap-5';};
+  el.querySelectorAll('[data-season-picker]').forEach(p=>{const key=p.dataset.seasonPicker,t=p.querySelector('.season-trigger');t.addEventListener('click',e=>{e.stopPropagation();document.querySelectorAll('.season-picker.open').forEach(x=>{if(x!==p)x.classList.remove('open')});const o=p.classList.toggle('open');t.setAttribute('aria-expanded',String(o));});p.querySelectorAll('.season-option').forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();pickerState[key]=o.dataset.season;p.querySelector('.season-value').textContent=o.dataset.season;p.querySelectorAll('.season-option').forEach(x=>x.classList.toggle('active',x===o));p.classList.remove('open');t.setAttribute('aria-expanded','false');draw();}));});
   document.addEventListener('click',()=>document.querySelectorAll('.season-picker.open').forEach(x=>x.classList.remove('open')));
   compare?.addEventListener('toggle',()=>{if(compare.open)draw();});
 }
