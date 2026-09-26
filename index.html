@@ -1009,16 +1009,24 @@ function matchVideoFor(id){
   if(!f) return null;
   const home=String(f.home?.name||'').toLowerCase(), away=String(f.away?.name||'').toLowerCase();
   const hg=f.goals?.home, ag=f.goals?.away;
+  const isHomeSporting=/sporting/.test(home);
   const candidates=(D['youtube.json']?.items||[]).filter(v=>{
     const t=String(v.title||'').toLowerCase();
-    const teams=(t.includes(home.replace('fc ','').trim())||t.includes('sporting cp')) && (t.includes(away.replace('fc ','').trim())||t.includes('arouca'));
+    const owner=String(v.channel||v.owner||'Sporting Clube de Portugal').toLowerCase();
+    const officialSporting=/sporting clube de portugal|sporting cp/.test(owner);
+    const officialVsports=/vsports/.test(owner)&&/liga portugal/.test(owner);
+    const official=isHomeSporting?officialSporting:(officialVsports||officialSporting);
+    if(!official) return false;
+    if(/simula[cç][aã]o|efootball|pes\s*21|pes2021|gaming|gameplay|playstation|xbox|\bfc\s*25\b|\bfc\s*26\b/.test(t)) return false;
+    const homeHit=t.includes(home.replace('fc ','').trim())||t.includes('sporting cp');
+    const awayHit=t.includes(away.replace('fc ','').trim());
     const score=hg!=null&&ag!=null&&(t.includes(String(hg)+'-'+String(ag))||t.includes(String(hg)+' - '+String(ag)));
     const summary=/resumo|highlights/.test(t);
-    return teams&&score&&summary;
+    return homeHit&&awayHit&&score&&summary;
   });
   if(!candidates.length) return null;
   const v=candidates[0];
-  return {match_id:id,video_id:v.id,title:v.title,channel:'Sporting Clube de Portugal',url:v.url,embed:'https://www.youtube.com/embed/'+v.id,thumbnail:v.thumbnail,published_text:v.published_text||v.published||''};
+  return {match_id:id,video_id:v.id,title:v.title,channel:v.channel||v.owner||'Fonte oficial',url:v.url,embed:'https://www.youtube.com/embed/'+v.id,thumbnail:v.thumbnail||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'),published_text:v.published_text||v.published||''};
 }
 function compactPlayerName(name){const n=String(name||'').trim();if(!n)return '';const p=n.split(/\s+/).filter(Boolean);if(p.length<=1)return n.length<=16?n:n.slice(0,15)+'…';const surname=p[p.length-1];const initial=p[0].charAt(0);return (initial+'. '+surname).length<=18?(initial+'. '+surname):(initial+'. '+surname.slice(0,14)+'…')}
 function lineupPitchHtml(side,lineup,teamName){if(!lineup?.players?.length)return '<div class="text-[10px] muted">Escalação não disponível.</div>';const starters=lineup.players.filter(x=>x.player&&!x.substitute).slice(0,11);const formation=String(lineup.formation||'').trim();const players=starters.map(p=>{const h=p.horizontalLayout||{},rawX=Number(h.x),rawY=Number(h.y),top=Number.isFinite(rawX)?8+(1-rawX)*84:50,left=Number.isFinite(rawY)?8+rawY*84:50,name=compactPlayerName(p.player?.shortName||p.player?.name||''),num=p.shirtNumber??p.jerseyNumber??'',rating=p.statistics?.rating??p.rating;return '<div class="pitch-player" style="left:'+left.toFixed(2)+'%;top:'+top.toFixed(2)+'%"><div class="pitch-player-dot">'+esc(num||'•')+'</div><div class="pitch-player-name">'+esc(name)+'</div>'+(rating!=null?'<div class="pitch-player-rating">'+Number(rating).toFixed(1)+'</div>':'')+'</div>'}).join('');return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'TÁTICA')+'</div></div><div class="lineup-pitch"><div class="pitch-circle"></div>'+players+'</div></div>'}
