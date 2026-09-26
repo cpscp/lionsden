@@ -667,7 +667,7 @@ function renderStats(){
     const wins=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf>ga;});
     const losses=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf<ga;});
     a.biggest_win=wins.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.home:y.goals.away)-Number(h2?y.goals.away:y.goals.home))-(Number(h1?x.goals.home:x.goals.away)-Number(h1?x.goals.away:x.goals.home));})[0]||null;
-    a.biggest_loss=losses.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.away:y.goals.home)-Number(h2?y.goals.home:y.goals.away))-(Number(h1?x.goals.away:x.goals.home)-Number(h1?x.goals.home:x.goals.away);})[0]||null;
+    a.biggest_loss=losses.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.away:y.goals.home)-Number(h2?y.goals.home:y.goals.away))-(Number(h1?x.goals.away:x.goals.home)-Number(h1?x.goals.home:x.goals.away));})[0]||null;
     return a;
   };
   let compKey=window._statsCompetitionKey||'geral';window._statsCompetitionKey=compKey;
