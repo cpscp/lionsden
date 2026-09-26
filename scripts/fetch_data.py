@@ -108,7 +108,7 @@ POSITION_FALLBACKS = {
     "Maxi Araújo": "DF", "Iván Fresneda": "DF", "Gonçalo Inácio": "DF",
     "Rodrigo Dias": "DF", "Ibrahima Ba": "DF", "Eduardo Quaresma": "DF",
     "Sotiris Alexandropoulos": "MF", "Silas Andersen": "MF", "Sergi Altimira": "MF",
-    "João Simões": "MF", "Nestory Irankunda": "FW", "Pedro Lima": "FW",
+    "João Simões": "MF", "Nestory Irankunda": "FW", "Pedro Lima": "MF",
     "Salvador Blopa": "FW", "Issa Doumbia": "MF", "Délcio Aurélio": "FW",
     "Rodrigo Rodrigues": "MF", "Fotis Ioannidis": "FW", "Rafael Nel": "FW",
     "Geny Catamo": "MF", "Nuno Santos": "MF", "Rodrigo Zalazar": "MF",
