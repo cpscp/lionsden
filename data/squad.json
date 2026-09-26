@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:45:36.445Z",
+  "_updated_at": "2026-09-26T10:50:27.165Z",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -8,7 +8,7 @@
     {
       "fotmob_id": 361717,
       "name": "Rui Silva",
-      "position": "",
+      "position": "GK",
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
@@ -131,7 +131,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 8,
+          "matches": 9,
           "goals": 0,
           "assists": 0
         },
