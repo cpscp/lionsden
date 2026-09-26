@@ -614,11 +614,18 @@ function currentCompetitionStats(key){
 function scorelineFor(f){
   if(!f)return '—';
   const home=String(f.home?.name||'').toLowerCase().includes('sporting');
-  return (home?f.goals.home:f.goals.away)+'–'+(home?f.goals.away:f.goals.home);
+  const sporting=home?(f.home?.name||'Sporting CP'):(f.away?.name||'Sporting CP');
+  const opponent=home?(f.away?.name||'Adversário'):(f.home?.name||'Adversário');
+  const sf=home?f.goals.home:f.goals.away, sa=home?f.goals.away:f.goals.home;
+  const comp=f.competition?.name||'Competição';
+  const date=f.kickoff_date||f.date;
+  const dateLabel=date?new Date(fixtureTimestamp(date)*1000).toLocaleDateString('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
+  return `<span class="block leading-tight">${esc(sporting)} ${sf}–${sa} ${esc(opponent)}</span><span class="block text-[9px] font-normal muted mt-1">${esc(comp)}${dateLabel?' · '+dateLabel:''}</span>`;
 }
 function currentStatsCard(st,label){
   const total=st.matches||0, gd=st.goal_difference||0;
   const record=st.matches?((st.wins*3+st.draws)/st.matches).toFixed(2):'0.00';
+  const showPoints=label==='Liga Portugal'||label==='Champions League';
   return `<div class="card p-5 sm:p-6">
     <div class="flex items-center justify-between gap-4 mb-5">
       <div><div class="font-semibold text-[17px]">${esc(label)}</div><div class="text-[10px] muted mt-1">Sporting CP · época 2026/27 · jogos oficiais</div></div>
@@ -626,10 +633,10 @@ function currentStatsCard(st,label){
     </div>
     <div class="flex justify-center py-1">${resultDonut(st)}</div>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-7">
-      ${metric('Pontos*',st.points)}${metric('Golos',st.goals)}${metric('Golos sofridos',st.goals_against)}
+      ${showPoints?metric('Pontos',st.points):''}${metric('Golos',st.goals)}${metric('Golos sofridos',st.goals_against)}
       ${metric('Saldo de golos',gd>0?'+'+gd:gd)}${metric('Golos / jogo',st.goals_per_match.toFixed(2))}${metric('Golos sofridos / jogo',st.goals_against_per_match.toFixed(2))}
       ${metric('Clean sheets',st.clean_sheets)}${metric('Sem marcar',st.failed_to_score)}${metric('Taxa de vitória',st.win_rate.toFixed(1)+'%')}
-      ${metric('Saldo médio / jogo',(st.avg_goal_difference>=0?'+':'')+st.avg_goal_difference.toFixed(2))}${metric('Invicto',st.unbeaten?'Sim':'Não')}${metric('Rácio de pontos',record)}
+      ${metric('Saldo médio / jogo',(st.avg_goal_difference>=0?'+':'')+st.avg_goal_difference.toFixed(2))}${metric('Invicto',st.unbeaten?'Sim':'Não')}${showPoints?metric('Rácio de pontos',record):''}
     </div>
     <div class="mt-6 pt-5 border-t border-white/5">
       <div class="text-[9px] uppercase tracking-widest muted mb-3">Casa · Fora</div>
@@ -639,7 +646,7 @@ function currentStatsCard(st,label){
       </div>
     </div>
     ${total?'<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Melhores / piores resultados</div><div class="grid grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
-    <div class="mt-5 text-[8px] muted">* Pontos calculados em 3/1/0 apenas como indicador comparativo; não representam a pontuação oficial de competições a eliminar.</div>
+    ${showPoints?'<div class="mt-5 text-[8px] muted">Pontos calculados em 3/1/0 como indicador estatístico da competição.</div>':''}
   </div>`;
 }
 function renderStats(){
