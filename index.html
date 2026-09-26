@@ -539,6 +539,11 @@ openModal();
 function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
 function toggleDrawer(open){const d=document.getElementById('drawer'),b=document.getElementById('drawerBackdrop');if(!d||!b)return;d.classList.toggle('open',open);b.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
 function go(id){const screen=document.getElementById(id);if(!screen)return;document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));screen.classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.go===id));toggleDrawer(false);window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(b.dataset.go));document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};load();setInterval(load,300000);
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const modalEl=document.getElementById('modal');if(modalEl)modalEl.onclick=e=>{if(e.target.id==='modal')closeModal()};
+window.addEventListener('error',e=>{console.error("Lion's Den:",e.error||e.message);const u=document.getElementById('updated');if(u&&!u.textContent.includes('dados'))u.textContent='erro de interface';});
+window.addEventListener('unhandledrejection',e=>console.error("Lion's Den promise:",e.reason));
+setTimeout(()=>load(),0);
+setInterval(load,300000);
 </script>
 </body></html>
