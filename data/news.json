@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T13:41:17.995837+00:00",
+  "_updated_at": "2026-09-26T13:41:17.771893+00:00",
   "items": [
     {
       "title": "Futsal Nuno Dias: “É um privilégio viver um dérbi” 14 minutos",
@@ -116,9 +116,9 @@
       "description": "Ala verde e branco entra numa nova fase do trabalho de recuperação física. Não joga desde 4 de maio e não fez a pré-temporada com os companheiros"
     },
     {
-      "title": "Flop no Sporting que passou por depressão. O que é feito de Hildebrand? - Notícias ao Minuto",
+      "title": "Flop no Sporting que passou por depressão. O que é feito de Hildebrand? - noticiasaominuto.com",
       "url": "https://www.noticiasaominuto.com/desporto/3057488/flop-no-sporting-que-passou-por-depressao-o-que-e-feito-de-hildebrand",
-      "source": "Notícias ao Minuto",
+      "source": "noticiasaominuto.com",
       "published": "Sat, 26 Sep 2026 06:35:09 GMT",
       "image": "https://media-manager.noticiasaominuto.com/960/naom_6ab6a912665e4.webp?crop_params=eyJsYW5kc2NhcGUiOnsiY3JvcFdpZHRoIjo1MDgsImNyb3BIZWlnaHQiOjI4NiwiY3JvcFgiOjEzLCJjcm9wWSI6MH0sInN0YW1wIjp7ImNhdGVnb3J5IjoiZGVzcG9ydG8iLCJsYWJlbCI6Im9fcXVlX2VfZmVpdG9fZGUiLCJjb2xvciI6ImJyYW5jbyIsInBvc2l0aW9uIjoidG9wLXJpZ2h0In19",
       "image_source": "https://www.noticiasaominuto.com/desporto/3057488/flop-no-sporting-que-passou-por-depressao-o-que-e-feito-de-hildebrand",
@@ -200,6 +200,15 @@
       "published": "Tue, 22 Sep 2026 20:20:21 GMT"
     },
     {
+      "title": "Sporting CP B VS AFS - vsports.pt",
+      "url": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
+      "source": "vsports.pt",
+      "published": "Sat, 26 Sep 2026 00:30:45 GMT",
+      "image": "https://www.vsports.pt/images/thumb14_25.png",
+      "image_source": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
+      "description": "Sporting CP B VS AFS - Destaques - Veja o Resumo do Jogo, Golos, Casos e outros lances assim como os últimos Confrontos entre as equipas."
+    },
+    {
       "title": "Duelo histórico à 3.ª jornada - FPF",
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "source": "FPF",
@@ -234,15 +243,6 @@
       "url": "https://scbraga.pt/videos/sc-braga-vs-sporting-cp-or-liga-bpi",
       "source": "SC Braga",
       "published": "Wed, 23 Sep 2026 20:40:18 GMT"
-    },
-    {
-      "title": "Sporting CP e Marítimo abordaram o futuro da segurança no TF Sessions - Liga Portugal",
-      "url": "https://www.ligaportugal.pt/noticias/28726/sporting-cp-e-maritimo-abordaram-o-futuro-da-seguranca-no-tf-sessions",
-      "source": "Liga Portugal",
-      "published": "Tue, 22 Sep 2026 16:48:07 GMT",
-      "image": "https://www.ligaportugal.pt/backoffice/assets/Thumbnail_Site_jpg_4c088515fe.jpeg",
-      "image_source": "https://www.ligaportugal.pt/noticias/28726/sporting-cp-e-maritimo-abordaram-o-futuro-da-seguranca-no-tf-sessions",
-      "description": "Mesa-redonda juntou Diretores de Segurança de leões e insulares com representantes das Forças de Segurança"
     }
   ]
 }
