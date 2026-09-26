@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T11:37:06.738Z",
+  "_updated_at": "2026-09-26T11:37:20.298Z",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -2819,6 +2819,118 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting [B]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 32,
+          "goals": 1,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 18,
+          "goals": 1,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 9,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 32,
+          "goals": 7,
+          "assists": 2
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 32,
+          "goals": 4,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting [Jun.C S15]",
+          "matches": 32,
+          "goals": 10,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Sporting [Jun.C S15 B]",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting [Jun.C S14 B]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2018/19",
+          "club": "Sporting [Fut.9 Jun.D S13]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2018/19",
+          "club": "Sporting [Fut.7 Jun.D S12]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2017/18",
+          "club": "Portimonense [Fut.7 Jun.E S11]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2016/17",
+          "club": "Portimonense [Fut.7 Jun.E S10]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2015/16",
+          "club": "Portimonense [Fut.7 Jun.E S10]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2014/15",
+          "club": "Portimonense [Fut.5 Jun.G S7]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
@@ -3990,6 +4102,83 @@
           "club": "Sporting",
           "matches": 2,
           "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting [B]",
+          "matches": 3,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 11,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 23,
+          "goals": 7,
+          "assists": 4
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 15,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [B]",
+          "matches": 27,
+          "goals": 8,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [S23]",
+          "matches": 8,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 32,
+          "goals": 9,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 2,
+          "goals": 0,
           "assists": 0
         }
       ],
