@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T12:04:53.233944+00:00",
+  "_updated_at": "2026-09-26T12:09:39.684063+00:00",
   "items": [
     {
       "title": "Basquetebol Suraya Rijal reforça as Leoas do basquetebol Ontem",
@@ -198,7 +198,7 @@
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 14:55:04 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260246867928679",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260249735804898",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "description": "Sporting CP e SL Benfica defrontam-se domingo na terceira jornada"
     },
@@ -218,11 +218,20 @@
       "published": "Tue, 22 Sep 2026 20:20:21 GMT"
     },
     {
+      "title": "Sporting CP B VS AFS - vsports.pt",
+      "url": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
+      "source": "vsports.pt",
+      "published": "Sat, 26 Sep 2026 00:30:45 GMT",
+      "image": "https://www.vsports.pt/images/thumb14_25.png",
+      "image_source": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
+      "description": "Sporting CP B VS AFS - Destaques - Veja o Resumo do Jogo, Golos, Casos e outros lances assim como os últimos Confrontos entre as equipas."
+    },
+    {
       "title": "Duelo histórico à 3.ª jornada - FPF",
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 20:14:58 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260246905007390",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260249660956076",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "description": "SC Braga recebe Sporting CP este domingo"
     },
@@ -240,12 +249,6 @@
       "url": "https://www.dazn.com/pt-PT/news/basquetebol/basquetebol-gratis-na-dazn/1zrccl5pkccx1325hdabrxdxr",
       "source": "DAZN",
       "published": "Fri, 25 Sep 2026 15:43:10 GMT"
-    },
-    {
-      "title": "O onze do Sporting CP para o jogo contra o Arouca - DAZN",
-      "url": "https://www.dazn.com/pt-PT/news/futebol/o-onze-do-sporting-cp-para-o-jogo/87de4qny8du81vb9h0bz1k77q",
-      "source": "DAZN",
-      "published": "Sat, 19 Sep 2026 18:26:03 GMT"
     }
   ]
 }
