@@ -609,7 +609,7 @@ function renderStats(){
             <div class="season-picker" data-season-picker="A">
               <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(currentSeason)}</span><i class="chevron"></i></button>
               <div class="season-options" role="listbox">
-                ${seasons.map(x=>\`<button type="button" class="season-option ${x===currentSeason?'active':''}" data-season="${esc(x)}">${esc(x)}</button>\`).join('')}
+                ${seasons.map(x=>'<button type="button" class="season-option '+(x===currentSeason?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}
               </div>
             </div>
           </div>
@@ -618,7 +618,7 @@ function renderStats(){
             <div class="season-picker" data-season-picker="B">
               <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">${esc(seasons.find(y=>y!==currentSeason)||currentSeason)}</span><i class="chevron"></i></button>
               <div class="season-options" role="listbox">
-                ${seasons.map(x=>\`<button type="button" class="season-option ${x===(seasons.find(y=>y!==currentSeason)||currentSeason)?'active':''}" data-season="${esc(x)}">${esc(x)}</button>\`).join('')}
+                ${seasons.map(x=>'<button type="button" class="season-option '+(x===(seasons.find(y=>y!==currentSeason)||currentSeason)?'active':'')+'" data-season="'+esc(x)+'">'+esc(x)+'</button>').join('')}
               </div>
             </div>
           </div>
