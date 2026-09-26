@@ -2301,6 +2301,112 @@ def fetch_youtube():
     })
     print(f"YouTube: {len(items[:200])} videos written.")
 
+def fetch_match_summary_videos():
+    """Find official YouTube match summaries for finished Sporting matches."""
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    details = (safe_existing("match-details.json") or {}).get("fixtures", [])
+    detail_by_id = {str(x.get("match_id")): x for x in details if x.get("match_id")}
+    finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished" and f.get("goals", {}).get("home") is not None]
+
+    context = {
+        "client": {
+            "clientName": "WEB",
+            "clientVersion": "2.20260924.01.00",
+            "hl": "pt-PT",
+            "gl": "PT",
+        }
+    }
+
+    def norm(v):
+        return re.sub(r"[^a-z0-9]+", "", zz_norm(v))
+
+    def search_videos(query):
+        try:
+            r = session.post(
+                "https://www.youtube.com/youtubei/v1/search?prettyPrint=false",
+                json={"context": context, "query": query, "params": "EgIQAQ=="},
+                timeout=30,
+            )
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print("YouTube match summary warning:", query, e)
+            return []
+
+        found = []
+        def walk(obj):
+            if isinstance(obj, dict):
+                vr = obj.get("videoRenderer")
+                if isinstance(vr, dict):
+                    vid = clean(vr.get("videoId"))
+                    runs = (vr.get("title") or {}).get("runs") or []
+                    title = clean("".join(x.get("text", "") for x in runs))
+                    owner = vr.get("ownerText") or {}
+                    owner_text = clean("".join(x.get("text", "") for x in owner.get("runs", []))) if isinstance(owner, dict) else clean(owner)
+                    thumbs = (vr.get("thumbnail") or {}).get("thumbnails") or []
+                    thumb = thumbs[-1].get("url") if thumbs else ""
+                    if vid and title:
+                        found.append({"id": vid, "title": title, "owner": owner_text, "thumbnail": thumb})
+                for v in obj.values():
+                    if isinstance(v, (dict, list)): walk(v)
+            elif isinstance(obj, list):
+                for v in obj: walk(v)
+        walk(data)
+        return found
+
+    videos = []
+    for f in finished:
+        home = clean((f.get("home") or {}).get("name"))
+        away = clean((f.get("away") or {}).get("name"))
+        hg, ag = f.get("goals", {}).get("home"), f.get("goals", {}).get("away")
+        if not home or not away or hg is None or ag is None:
+            continue
+
+        queries = [
+            f"VSPORTS {home} {hg}-{ag} {away} resumo",
+            f"{home} {hg}-{ag} {away} resumo Sporting",
+        ]
+        candidates = []
+        for q in queries:
+            candidates.extend(search_videos(q))
+            if candidates:
+                break
+
+        home_n, away_n = norm(home), norm(away)
+        def score_candidate(v):
+            title_n = norm(v.get("title"))
+            owner_n = norm(v.get("owner"))
+            team_hits = int(home_n in title_n) + int(away_n in title_n)
+            score_hit = int(f"{hg}{ag}" in title_n or f"{hg}{ag}" in title_n.replace("vs",""))
+            official = int("vsports" in owner_n or "sporting" in owner_n)
+            summary = int("resumo" in title_n or "highlights" in title_n)
+            return (official, team_hits, score_hit, summary)
+
+        best = None
+        for v in candidates:
+            if score_candidate(v)[0] and score_candidate(v)[1] >= 1:
+                if best is None or score_candidate(v) > score_candidate(best):
+                    best = v
+
+        if best:
+            videos.append({
+                "match_id": f.get("id"),
+                "sofascore_id": detail_by_id.get(str(f.get("id")), {}).get("sofascore_id"),
+                "video_id": best["id"],
+                "title": best["title"],
+                "channel": best["owner"],
+                "url": f"https://www.youtube.com/watch?v={best['id']}",
+                "embed": f"https://www.youtube.com/embed/{best['id']}",
+                "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg"
+            })
+
+    write_json("match-videos.json", {
+        "videos": videos,
+        "source": "YouTube · VSPORTS Liga Portugal / Sporting CP",
+        "scope": "Finished Sporting CP matches"
+    })
+    print(f"YouTube match summaries: {len(videos)} videos written.")
+
 def fetch_news():
     items = []
 
@@ -2555,6 +2661,12 @@ def main():
             print(f"Historical team stats skipped: {e}")
         try:
             fetch_sofascore_match_details()
+        except Exception as e:
+            print(f"SofaScore match details skipped: {e}")
+        try:
+            fetch_match_summary_videos()
+        except Exception as e:
+            print(f"YouTube match summaries skipped: {e}")
         except Exception as e:
             print(f"SofaScore match details skipped: {e}")
         try:
