@@ -1,7 +1,20 @@
 {
   "_updated_at": "2026-09-26T22:04:37.503824+00:00",
-  "videos": [],
+  "videos": [
+    {
+      "match_id": 5887643,
+      "sofascore_id": null,
+      "video_id": "prnO0lzEpdo",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
+      "embed": "https://www.youtube.com/embed/prnO0lzEpdo",
+      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg",
+      "preferred_for_home": true,
+      "published_text": "há 6 dias"
+    }
+  ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
   "scope": "Finished Sporting CP matches",
-  "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches; only summaries published within 21 days of the match are eligible."
+  "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches; summaries must be date-near the match."
 }
