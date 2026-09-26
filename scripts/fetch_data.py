@@ -1646,6 +1646,9 @@ def fetch_fbref_historical_team_stats():
         st["goals_per_match"] = round(st["goals"] / st["matches"], 2)
         st["goals_against_per_match"] = round(st["goals_against"] / st["matches"], 2)
 
+    # Rebuild the current season from the same official fixture scope before
+    # copying it into the historical comparison file.
+    build_team_stats_from_sofa()
     current = safe_existing("team-stats.json") or {}
     if current.get("team"):
         history["2026/27"] = current["team"]
