@@ -493,7 +493,7 @@ function careerRows(p){
 function renderCareer(p){
   const rows=careerRows(p);
   if(!rows.length)return'<div class="text-[11px] muted">Percurso ainda não disponível.</div>';
-  return \`<div class="overflow-hidden rounded-xl border border-white/10">
+  return \`<div class="overflow-x-auto rounded-xl border border-white/10"><div class="min-w-[520px]">
     <div class="grid grid-cols-[1.05fr_1.8fr_.55fr_.55fr_.8fr] gap-2 px-3 py-2 text-[9px] uppercase tracking-wider muted bg-white/[.025]">
       <span>Época</span><span>Clube</span><span class="text-center">Jogos</span><span class="text-center">Golos</span><span class="text-center">Assistências</span>
     </div>
