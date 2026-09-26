@@ -518,9 +518,32 @@ function competitionLabel(name){
  if(n.includes('taca de portugal')||n.includes('portugal cup')) return 'Taça de Portugal';
  return raw||'Competição';
 }
+function fixtureVenueName(f,detail){
+ const direct=venueInfo(f?.venue||detail?.venue).name;
+ if(direct) return direct;
+ const home=String(f?.home?.name||'').toLowerCase().trim();
+ const venues={
+  'sporting cp':'Estádio José Alvalade',
+  'estrela da amadora':'Estádio José Gomes',
+  'vitória de guimarães':'Estádio D. Afonso Henriques',
+  'vitoria de guimaraes':'Estádio D. Afonso Henriques',
+  'alverca':'Estádio Municipal de Alverca',
+  'rio ave':'Estádio dos Arcos',
+  'nacional':'Estádio da Madeira',
+  'famalicão':'Estádio Municipal 22 de Junho',
+  'famalicao':'Estádio Municipal 22 de Junho',
+  'arouca':'Estádio Municipal de Arouca',
+  'galatasaray':'RAMS Park',
+  'celtic':'Celtic Park',
+  'strasbourg':'Stade de la Meinau',
+  'monaco':'Stade Louis II',
+  'nottm forest':'The City Ground'
+ };
+ return venues[home]||'';
+}
 function gameCard(f){
  const detail=fixtureDetail(f.id), past=!isFuture(f);
- const v=venueInfo(f.venue||detail?.venue), photo=stadiumPhotoUrl(v.name);
+ const venueName=fixtureVenueName(f,detail), v=venueInfo({name:venueName}), photo=stadiumPhotoUrl(v.name);
  const score=f.goals?.home!=null?esc(f.goals.home)+' - '+esc(f.goals.away):'VS';
  const homeUrl=teamLogoUrl(f.home),awayUrl=teamLogoUrl(f.away);
  const team=(t,url)=>'<div class="game-card-team"><div class="game-card-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(t?.name||t)+'" loading="lazy">':'<span class="font-bold text-xs">'+esc(initials(t?.name||t))+'</span>')+'</div><div class="game-card-name">'+esc(t?.name||t||'—')+'</div></div>';
