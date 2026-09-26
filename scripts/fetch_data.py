@@ -1311,6 +1311,151 @@ def fetch_sofascore_match_details():
         except Exception as e:
             print("SofaScore match detail warning:", f.get("id"), sid, e)
 
+    # GitHub Actions may receive 403 from SofaScore. The fixture feed itself
+    # comes from FotMob, whose matchDetails endpoint exposes the same high-value
+    # data (lineups, ratings, events and stats), so use it as a transparent fallback.
+    if not details:
+        print("SofaScore unavailable; falling back to FotMob matchDetails.")
+        for f in sorted(finished, key=lambda x: x.get("date") or 0):
+            try:
+                raw = fotmob_get("/api/data/matchDetails", {"matchId": f.get("id")})
+                content = raw.get("content") or {}
+                facts = content.get("matchFacts") or {}
+                info = facts.get("infoBox") or {}
+                lineup_raw = content.get("lineup") or {}
+                teams = lineup_raw.get("lineups") or []
+                if not teams:
+                    for key in ("homeTeam", "awayTeam"):
+                        if isinstance(lineup_raw.get(key), dict):
+                            teams.append(lineup_raw[key])
+
+                home_id = int((f.get("home") or {}).get("id") or 0)
+                def norm_team(t):
+                    return {
+                        "id": t.get("teamId") or t.get("id"),
+                        "name": clean(t.get("teamName") or t.get("name")),
+                        "formation": clean(t.get("formation") or t.get("lineup")),
+                        "players": [
+                            {
+                                "player": {
+                                    "name": clean(p.get("name")),
+                                    "shortName": clean(p.get("shortName") or p.get("name")),
+                                    "id": p.get("id")
+                                },
+                                "shirtNumber": p.get("shirtNumber") or p.get("shirt") or p.get("jerseyNumber"),
+                                "position": clean(p.get("positionStringShort") or p.get("position") or ""),
+                                "substitute": False,
+                                "horizontalLayout": p.get("horizontalLayout"),
+                                "statistics": {
+                                    "rating": (
+                                        p.get("performance", {}).get("rating")
+                                        if isinstance(p.get("performance"), dict)
+                                        else p.get("rating")
+                                    )
+                                }
+                            }
+                            for p in (t.get("starters") or t.get("players") or [])
+                            if isinstance(p, dict) and clean(p.get("name"))
+                        ] + [
+                            {
+                                "player": {
+                                    "name": clean(p.get("name")),
+                                    "shortName": clean(p.get("shortName") or p.get("name")),
+                                    "id": p.get("id")
+                                },
+                                "shirtNumber": p.get("shirtNumber") or p.get("shirt") or p.get("jerseyNumber"),
+                                "position": clean(p.get("positionStringShort") or p.get("position") or ""),
+                                "substitute": True,
+                                "statistics": {
+                                    "rating": (
+                                        p.get("performance", {}).get("rating")
+                                        if isinstance(p.get("performance"), dict)
+                                        else p.get("rating")
+                                    )
+                                }
+                            }
+                            for p in (t.get("subs") or t.get("bench") or [])
+                            if isinstance(p, dict) and clean(p.get("name"))
+                        ]
+                    }
+
+                home_lu = None
+                away_lu = None
+                for t in teams:
+                    nt = norm_team(t)
+                    tid = int(nt.get("id") or 0)
+                    if tid == home_id:
+                        home_lu = nt
+                    elif not away_lu:
+                        away_lu = nt
+                if home_lu is None and teams:
+                    home_lu = norm_team(teams[0])
+                if away_lu is None and len(teams) > 1:
+                    away_lu = norm_team(teams[1])
+
+                raw_events = ((facts.get("events") or {}).get("events") or [])
+                incidents_norm = []
+                for e in raw_events:
+                    et = clean(e.get("type")).lower()
+                    if et in {"goal", "card", "substitution"}:
+                        incidents_norm.append({
+                            "incidentType": et,
+                            "time": e.get("time"),
+                            "player": e.get("player") or {},
+                            "isHome": e.get("isHome"),
+                            "description": clean(e.get("nameStr") or e.get("type")),
+                            "swap": e.get("swap") or []
+                        })
+
+                stats_all = (((content.get("stats") or {}).get("Periods") or {}).get("All") or {})
+                stats_items = []
+                for group in stats_all.get("stats") or []:
+                    for item in group.get("stats") or []:
+                        if isinstance(item, dict):
+                            vals = item.get("stats") or [None, None]
+                            stats_items.append({
+                                "name": clean(item.get("title")),
+                                "home": vals[0] if len(vals) > 0 else None,
+                                "away": vals[1] if len(vals) > 1 else None
+                            })
+
+                referee = info.get("Referee")
+                if isinstance(referee, dict):
+                    referee = referee.get("text") or referee.get("name")
+                stadium = info.get("Stadium")
+                if isinstance(stadium, dict):
+                    stadium_name = stadium.get("name")
+                    stadium_city = stadium.get("city")
+                else:
+                    stadium_name, stadium_city = stadium, ""
+
+                event_header = raw.get("header") or {}
+                score_parts = clean((event_header.get("status") or {}).get("scoreStr")).split("-")
+                event_obj = {
+                    "referee": {"name": clean(referee)} if referee else None,
+                    "attendance": info.get("Attendance"),
+                    "venue": {"name": clean(stadium_name), "city": clean(stadium_city)}
+                }
+                if len(score_parts) == 2:
+                    event_obj["homeScore"] = {"current": score_parts[0].strip()}
+                    event_obj["awayScore"] = {"current": score_parts[1].strip()}
+
+                details.append({
+                    "match_id": f.get("id"),
+                    "source_match_id": f.get("id"),
+                    "source": "FotMob",
+                    "event": event_obj,
+                    "lineups": {"home": home_lu or {"players": []}, "away": away_lu or {"players": []}},
+                    "incidents": {"incidents": incidents_norm},
+                    "statistics": {"statistics": [{"period": "ALL", "groups": [{"groupName": "FotMob", "statisticsItems": stats_items}]}]},
+                    "managers": {
+                        "homeManager": {"name": clean((home_lu or {}).get("coach") or "")},
+                        "awayManager": {"name": clean((away_lu or {}).get("coach") or "")}
+                    }
+                })
+            except Exception as e:
+                print("FotMob match detail fallback warning:", f.get("id"), e)
+
     write_json("match-details.json", {
         "fixtures": details,
         "source": "SofaScore",
