@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:45:37.965249+00:00",
+  "_updated_at": "2026-09-26T16:49:59.810507+00:00",
   "items": [
     {
       "title": "Futebol Feminino Micael Sequeira: \"Vamos a Braga para ganhar\" 15 minutos",
@@ -122,9 +122,9 @@
       "published": "Fri, 25 Sep 2026 15:43:10 GMT"
     },
     {
-      "title": "AO VIVO: FC Porto-Sporting na Supertaça de basquetebol - Maisfutebol",
+      "title": "AO VIVO: FC Porto-Sporting na Supertaça de basquetebol - maisfutebol.iol.pt",
       "url": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
-      "source": "Maisfutebol",
+      "source": "maisfutebol.iol.pt",
       "published": "Sat, 26 Sep 2026 15:26:00 GMT",
       "image": "https://img.iol.pt/image/id/6a1c7221d34e28842c84ab5c/600",
       "image_source": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
@@ -233,15 +233,6 @@
       "published": "Tue, 22 Sep 2026 20:20:21 GMT"
     },
     {
-      "title": "Sporting CP B VS AFS - vsports.pt",
-      "url": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
-      "source": "vsports.pt",
-      "published": "Sat, 26 Sep 2026 00:30:45 GMT",
-      "image": "https://www.vsports.pt/images/thumb14_25.png",
-      "image_source": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
-      "description": "Sporting CP B VS AFS - Destaques - Veja o Resumo do Jogo, Golos, Casos e outros lances assim como os últimos Confrontos entre as equipas."
-    },
-    {
       "title": "FC Porto – Sporting CP: XLI Supertaça Mário Saldanha em antevisão - Federação Portuguesa de Basquetebol",
       "url": "https://www.fpb.pt/noticia/fc-porto-sporting-cp-xli-supertaca-mario-saldanha-em-antevisao/",
       "source": "Federação Portuguesa de Basquetebol",
@@ -249,6 +240,12 @@
       "image": "https://www.fpb.pt/wp-content/uploads/2026/09/antevisao-supertaca-CAPA-1024x478.png",
       "image_source": "https://www.fpb.pt/noticia/fc-porto-sporting-cp-xli-supertaca-mario-saldanha-em-antevisao/",
       "description": "Vladyslav Voytso e Francisco Amarante na antecâmara do primeiro jogo oficial da temporada 2026/27"
+    },
+    {
+      "title": "SC Braga vs Sporting CP - SC Braga",
+      "url": "https://scbraga.pt/pt/videos/sc-braga-vs-sporting-cp-or-liga-bpi",
+      "source": "SC Braga",
+      "published": "Wed, 23 Sep 2026 22:22:57 GMT"
     }
   ]
 }
