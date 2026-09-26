@@ -107,28 +107,7 @@
 .game-info-icon svg{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .game-info-copy{min-width:0}.game-info-label{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}.game-info-value{font-size:10px;color:#dce5e0;margin-top:2px;line-height:1.35}
 .game-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.game-tactical-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.game-tactical-team{min-width:0}.game-tactical-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.game-tactical-name{font-size:11px;font-weight:700}.game-tactical-formation{font-size:9px;color:var(--muted);letter-spacing:.1em}
-.lineup-pitch{position:relative;aspect-ratio:1/1.22;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#0c4b2d,#0a3c25)}
-.lineup-pitch:before{content:"";position:absolute;inset:7%;border:1px solid rgba(255,255,255,.18);border-radius:3px}
-.lineup-pitch:after{content:"";position:absolute;left:7%;right:7%;top:50%;height:1px;background:rgba(255,255,255,.16);box-shadow:0 0 0 0 rgba(255,255,255,0)}
-.pitch-circle{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;border:1px solid rgba(255,255,255,.15);border-radius:50%;transform:translate(-50%,-50%)}
-.pitch-player{position:absolute;transform:translate(-50%,-50%);width:58px;max-width:24%;display:flex;flex-direction:column;align-items:center;gap:2px;z-index:2}
-.pitch-player-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#eaf4ef;color:#07100b;border:2px solid rgba(8,165,110,.9);font-size:8px;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.25)}
-.pitch-player-name{font-size:7px;line-height:1.1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58px}
-.pitch-player-rating{font-size:7px;color:#b8d9ca}
-.game-bench-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.game-bench{font-size:9px;color:#c7d4cd}.game-bench-row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.game-bench-rating{color:#9fc6b3;font-weight:700}
-.game-sub-row{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px}
-.game-sub-minute{color:var(--muted);font-size:9px}
-.game-stats-row{display:grid;grid-template-columns:1fr 54px 54px;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:9px}
-.game-stats-row span:nth-child(2),.game-stats-row span:nth-child(3){text-align:center;font-weight:700}
-.game-stats-label{text-align:center;color:var(--muted);font-size:8px}
-.game-video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
-.game-video iframe{width:100%;height:100%;border:0}
-@media(max-width:420px){.game-tactical-grid,.game-bench-grid{grid-template-columns:1fr}.lineup-pitch{max-width:290px;margin:auto}}
+.game-tactical-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.game-tactical-team{min-width:0}.game-tactical-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.game-tactical-name{font-size:11px;font-weight:700}.game-tactical-formation{font-size:9px;color:var(--muted);letter-spacing:.1em}.lineup-pitch{position:relative;aspect-ratio:1/1.22;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#0c4b2d,#0a3c25)}.lineup-pitch:before{content:"";position:absolute;inset:7%;border:1px solid rgba(255,255,255,.18);border-radius:3px}.lineup-pitch:after{content:"";position:absolute;left:7%;right:7%;top:50%;height:1px;background:rgba(255,255,255,.16)}.pitch-circle{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;border:1px solid rgba(255,255,255,.15);border-radius:50%;transform:translate(-50%,-50%)}.pitch-player{position:absolute;transform:translate(-50%,-50%);width:46px;max-width:22%;display:flex;flex-direction:column;align-items:center;gap:2px;z-index:2}.pitch-player-dot{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#eaf4ef;color:#07100b;border:2px solid rgba(8,165,110,.9);font-size:8px;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.25)}.pitch-player-name{font-size:6.5px;line-height:1.05;text-align:center;white-space:normal;overflow:hidden;text-overflow:ellipsis;max-width:50px;min-height:13px}.pitch-player-rating{font-size:6.5px;line-height:1;color:#b8d9ca}.game-bench-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.game-bench{font-size:9px;color:#c7d4cd}.game-bench-row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}.game-bench-rating{color:#9fc6b3;font-weight:700}.game-goals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 2px}.game-goals-team{font-size:9px;color:var(--muted);line-height:1.4}.game-goals-team.away{text-align:right}.game-goal{display:flex;align-items:center;gap:6px;margin-top:4px;color:#e8f2ed}.game-goals-team.away .game-goal{justify-content:flex-end}.game-goal-minute{color:var(--green);font-weight:700;font-size:9px}.game-goal-name{font-size:9px}.game-sub-row{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px}.game-sub-minute{color:var(--muted);font-size:9px}.game-sub-team{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}.game-sub-change{line-height:1.3}.game-sub-change .off{color:#b9c7bf}.game-sub-change .on{color:#eaf7f0;font-weight:600}.game-stats-row{display:grid;grid-template-columns:54px minmax(0,1fr) 54px;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:9px}.game-stats-row span:first-child{text-align:left;font-weight:700}.game-stats-row span:last-child{text-align:right;font-weight:700}.game-stats-label{text-align:center!important;color:var(--muted);font-size:8px;line-height:1.2}.game-incident{display:grid;grid-template-columns:22px 34px 1fr;align-items:center;gap:7px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:9px}.game-incident-icon{width:18px;height:18px;display:grid;place-items:center;color:var(--muted)}.game-incident-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.game-incident-time{color:var(--muted);font-size:9px}.game-incident-team{display:block;font-size:8px;color:var(--muted);margin-bottom:2px}.game-card-icon.yellow{color:#f1cf45}.game-card-icon.red{color:#ef625f}.game-card-icon.second_yellow{color:#f1cf45}.game-video-card{overflow:hidden}.game-video-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:13px;overflow:hidden;background:#090d0b}.game-video-thumb img{width:100%;height:100%;object-fit:cover;display:block}.game-video-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.72))}.game-video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#ff0033;color:#fff;font-size:20px;box-shadow:0 6px 22px rgba(0,0,0,.35)}.game-video-title{position:absolute;left:12px;right:12px;bottom:10px;font-size:10px;font-weight:600;color:#fff;line-height:1.25}.game-video-source{font-size:8px;color:var(--muted);margin-top:7px}@media(max-width:420px){.game-tactical-grid,.game-bench-grid{grid-template-columns:1fr}.lineup-pitch{max-width:320px;margin:auto}}.lineup-pitch{max-width:290px;margin:auto}}
 .game-lineup-team{min-width:0}.game-lineup-title{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:7px}
 .game-lineup-player{font-size:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .game-incident{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;font-size:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
@@ -1026,53 +1005,15 @@ function gameInfoIcon(type){
 }
 function gameInfoRow(icon,label,value){return '<div class="game-info-row">'+gameInfoIcon(icon)+'<div class="game-info-copy"><div class="game-info-label">'+esc(label)+'</div><div class="game-info-value">'+esc(value||'Por confirmar')+'</div></div></div>';}
 function matchVideoFor(id){return (D['match-videos.json']?.videos||[]).find(v=>String(v.match_id)===String(id))||null}
-function lineupPitchHtml(side, lineup, teamName){
- if(!lineup?.players?.length)return '<div class="text-[10px] muted">Escalação não disponível.</div>';
- const starters=lineup.players.filter(x=>x.player&&!x.substitute);
- const formation=String(lineup.formation||'').trim();
- const nums=formation.split('-').map(Number).filter(Boolean);
- const buckets={G:[],D:[],M:[],F:[]};
- starters.forEach(x=>{const p=String(x.position||x.player?.position||'').toUpperCase();const k=p.startsWith('G')?'G':p.startsWith('D')?'D':p.startsWith('M')?'M':p.startsWith('F')?'F':'';(buckets[k]||buckets.M).push(x)});
- const remaining=starters.slice();
- const rows=[{count:1,y:88,key:'G'}];
- let ys=[68,48,28];
- nums.forEach((n,i)=>rows.push({count:n,y:ys[i]||20,key:i===0?'D':i===1?'M':'F'}));
- const placed=[];
- const take=(key,count)=>{
-   let arr=buckets[key]||[];
-   let picked=arr.splice(0,count);
-   while(picked.length<count){
-     const fallback=remaining.find(x=>!placed.includes(x)&&!picked.includes(x));
-     if(!fallback)break;picked.push(fallback);
-   }
-   picked.forEach(x=>placed.push(x));return picked;
- };
- rows.forEach(row=>{row.players=take(row.key,row.count)});
- const flat=rows.flatMap(row=>row.players.map((x,i)=>({x,y:row.y,index:i,count:row.players.length})));
- return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'TÁTICA')+'</div></div><div class="lineup-pitch"><div class="pitch-circle"></div>'+flat.map(p=>{const x=100*(p.index+1)/(p.count+1);const name=p.x.player?.shortName||p.x.player?.name||'';const num=p.x.shirtNumber??p.x.jerseyNumber??'';const rating=p.x.statistics?.rating??p.x.rating;return '<div class="pitch-player" style="left:'+x+'%;top:'+p.y+'%"><div class="pitch-player-dot">'+esc(num||'•')+'</div><div class="pitch-player-name">'+esc(name)+'</div>'+(rating!=null?'<div class="pitch-player-rating">'+Number(rating).toFixed(1)+'</div>':'')+'</div>'}).join('')+'</div></div>';
-}
-function benchHtml(lineup){
- const arr=(lineup?.players||[]).filter(x=>x.player&&x.substitute);
- if(!arr.length)return '<div class="text-[10px] muted">Sem suplentes disponíveis.</div>';
- return arr.map(x=>'<div class="game-bench-row"><span>'+esc(x.player?.name||'')+'</span>'+(x.statistics?.rating!=null?'<span class="game-bench-rating">'+Number(x.statistics.rating).toFixed(1)+'</span>':'')+'</div>').join('');
-}
-function matchStatsHtml(detail){
- const all=(detail?.statistics?.statistics||[]).find(x=>x.period==='ALL')||((detail?.statistics?.statistics||[])[0]);
- const items=(all?.groups||[]).flatMap(g=>g.statisticsItems||[]);
- const wanted=['Ball possession','Expected goals (xG)','Expected goals','Total shots','Shots on target','Corner kicks','Fouls','Yellow cards','Big chances'];
- const rows=wanted.map(name=>items.find(x=>String(x.name).toLowerCase()===name.toLowerCase())).filter(Boolean);
- if(!rows.length)return '<div class="text-[10px] muted">Estatísticas detalhadas não disponíveis.</div>';
- return rows.map(x=>'<div class="game-stats-row"><span>'+esc(x.home??'—')+'</span><span class="game-stats-label">'+esc(x.name)+'</span><span>'+esc(x.away??'—')+'</span></div>').join('');
-}
-function substitutionsHtml(detail){
- const arr=(detail?.incidents?.incidents||[]).filter(x=>x.incidentType==='substitution');
- if(!arr.length)return '<div class="text-[10px] muted">Sem substituições disponíveis.</div>';
- return arr.slice().reverse().map(x=>{
-   const swap=(x.swap||[]).map(p=>p?.name||'').filter(Boolean).join(' · ');
-   const text=x.playerOut?.name&&x.playerIn?.name?(x.playerOut.name+' → '+x.playerIn.name):(x.description||x.player?.name||swap||'Substituição');
-   return '<div class="game-sub-row"><span class="game-sub-minute">'+esc(x.time!=null?x.time+"'" :'—')+'</span><span>'+esc(text)+'</span></div>';
- }).join('');
-}
+function compactPlayerName(name){const n=clean(name||'');if(n.length<=15)return n;const p=n.split(/\\s+/).filter(Boolean);return p.length>=2?p[0]+' '+p[p.length-1].charAt(0)+'.':n.slice(0,14)+'…'}
+function lineupPitchHtml(side,lineup,teamName){if(!lineup?.players?.length)return '<div class="text-[10px] muted">Escalação não disponível.</div>';const starters=lineup.players.filter(x=>x.player&&!x.substitute).slice(0,11);const formation=String(lineup.formation||'').trim();const players=starters.map(p=>{const h=p.horizontalLayout||{},rawX=Number(h.x),rawY=Number(h.y),top=Number.isFinite(rawX)?8+(1-rawX)*84:50,left=Number.isFinite(rawY)?8+rawY*84:50,name=compactPlayerName(p.player?.shortName||p.player?.name||''),num=p.shirtNumber??p.jerseyNumber??'',rating=p.statistics?.rating??p.rating;return '<div class="pitch-player" style="left:'+left.toFixed(2)+'%;top:'+top.toFixed(2)+'%"><div class="pitch-player-dot">'+esc(num||'•')+'</div><div class="pitch-player-name">'+esc(name)+'</div>'+(rating!=null?'<div class="pitch-player-rating">'+Number(rating).toFixed(1)+'</div>':'')+'</div>'}).join('');return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'TÁTICA')+'</div></div><div class="lineup-pitch"><div class="pitch-circle"></div>'+players+'</div></div>'}
+function benchHtml(lineup){const arr=(lineup?.players||[]).filter(x=>x.player&&x.substitute);if(!arr.length)return '<div class="text-[10px] muted">Sem suplentes disponíveis.</div>';return arr.map(x=>'<div class="game-bench-row"><span>'+esc(x.player?.name||'')+'</span>'+(x.statistics?.rating!=null?'<span class="game-bench-rating">'+Number(x.statistics.rating).toFixed(1)+'</span>':'')+'</div>').join('')}
+function statLabelPt(name){const map={'ball possession':'Posse de bola','expected goals (xg)':'Golos esperados (xG)','expected goals':'Golos esperados (xG)','total shots':'Remates','shots on target':'Remates à baliza','corner kicks':'Cantos','fouls':'Faltas','yellow cards':'Cartões amarelos','red cards':'Cartões vermelhos','big chances':'Grandes oportunidades','offsides':'Fora de jogo','passes':'Passes','accurate passes':'Passes certos','tackles':'Desarmes','duels won':'Duelos ganhos','saves':'Defesas'};return map[String(name||'').toLowerCase()]||name}
+function matchStatsHtml(detail){const all=(detail?.statistics?.statistics||[]).find(x=>x.period==='ALL')||((detail?.statistics?.statistics||[])[0]);const items=(all?.groups||[]).flatMap(g=>g.statisticsItems||[]);const wanted=['Ball possession','Expected goals (xG)','Expected goals','Total shots','Shots on target','Corner kicks','Fouls','Yellow cards','Red cards','Big chances'];const rows=[],seen=new Set();wanted.forEach(n=>{const hit=items.find(x=>String(x.name).toLowerCase()===n.toLowerCase());if(hit&&!seen.has(statLabelPt(hit.name))){rows.push(hit);seen.add(statLabelPt(hit.name))}});if(!rows.length)return '<div class="text-[10px] muted">Estatísticas detalhadas não disponíveis.</div>';return rows.map(x=>'<div class="game-stats-row"><span>'+esc(x.home??'—')+'</span><span class="game-stats-label">'+esc(statLabelPt(x.name))+'</span><span>'+esc(x.away??'—')+'</span></div>').join('')}
+function substitutionsHtml(detail,homeName,awayName){const arr=(detail?.incidents?.incidents||[]).filter(x=>x.incidentType==='substitution');if(!arr.length)return '<div class="text-[10px] muted">Sem substituições disponíveis.</div>';return arr.slice().reverse().map(x=>{const sw=x.swap||[],out=sw[0]?.name||x.playerOut?.name||'Jogador que saiu',on=sw[1]?.name||x.playerIn?.name||'Jogador que entrou',team=x.isHome?homeName:awayName;return '<div class="game-sub-row"><span class="game-sub-minute">'+esc(x.time!=null?x.time+"'" :'—')+'</span><div><div class="game-sub-team">'+esc(team||'Equipa')+'</div><div class="game-sub-change"><span class="off">↓ '+esc(out)+'</span><br><span class="on">↑ '+esc(on)+'</span></div></div></div>'}).join('')}
+function cardVisual(type){const t=String(type||'').toLowerCase(),cls=t==='red'?'red':t==='second_yellow'?'second_yellow':'yellow';return '<span class="game-card-icon '+cls+'"><svg viewBox="0 0 20 20"><rect x="6" y="3" width="8" height="14" rx="1" fill="currentColor" stroke="none"/></svg></span>'}
+function goalsHtml(detail,base){const goals=(detail?.incidents?.incidents||[]).filter(x=>x.incidentType==='goal').sort((a,b)=>(a.time??0)-(b.time??0));if(!goals.length)return '';const home=goals.filter(x=>x.isHome),away=goals.filter(x=>!x.isHome);const team=(arr,name,cls)=>'<div class="game-goals-team '+cls+'"><div>'+esc(name||'Equipa')+'</div>'+arr.map(g=>'<div class="game-goal"><span class="game-goal-minute">'+esc(g.time!=null?g.time+"'" :'')+'</span><span class="game-goal-name">'+esc(g.player?.name||g.description||'Golo')+'</span></div>').join('')+'</div>';return '<div class="game-goals">'+team(home,base.home?.name,'home')+team(away,base.away?.name,'away')+'</div>'}
+
 function openGame(id){
  const base=findFixture(id);const detail=fixtureDetail(id);if(!base)return;
  let v=venueInfo({name:fixtureVenueName(base,detail)});const cached=(D['venues.json']?.venues)||{};
