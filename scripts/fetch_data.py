@@ -509,16 +509,31 @@ def fetch_fbref_stats():
         })
 
     # Team-level values from the player tables + schedule.
+    official_rows = []
+    if fixtures is not None:
+        for _, r in fixtures.iterrows():
+            comp = zz_norm(r.get("Comp"))
+            result = clean(r.get("Result"))
+            if not result or "friendly" in comp or "amig" in comp:
+                continue
+            gf = fnum(r.get("GF")); ga = fnum(r.get("GA"))
+            if gf is None or ga is None:
+                continue
+            official_rows.append(r)
+
     team = {
-        "matches": sum(1 for _, r in fixtures.iterrows() if clean(r.get("Result"))),
-        "goals": sum(int(fnum(r.get("GF")) or 0) for _, r in fixtures.iterrows()),
-        "goals_against": sum(int(fnum(r.get("GA")) or 0) for _, r in fixtures.iterrows()),
-        "assists": sum(p["assists"] for p in players),
-        "shots": sum(p["shots"] for p in players),
-        "shots_on_target": sum(p["shots_on_target"] for p in players),
-        "minutes": sum(p["minutes"] for p in players),
-        "clean_sheets": sum(p["clean_sheets"] for p in players if p["position"] == "GK"),
+        "matches": len(official_rows),
+        "wins": sum(clean(r.get("Result")) == "W" for r in official_rows),
+        "draws": sum(clean(r.get("Result")) == "D" for r in official_rows),
+        "losses": sum(clean(r.get("Result")) == "L" for r in official_rows),
+        "goals": sum(int(fnum(r.get("GF")) or 0) for r in official_rows),
+        "goals_against": sum(int(fnum(r.get("GA")) or 0) for r in official_rows),
+        "clean_sheets": sum(int(int(fnum(r.get("GA")) or 0) == 0) for r in official_rows),
     }
+    team["points"] = team["wins"] * 3 + team["draws"]
+    team["win_rate"] = round(team["wins"] / team["matches"] * 100, 1) if team["matches"] else 0
+    team["goals_per_match"] = round(team["goals"] / team["matches"], 2) if team["matches"] else 0
+    team["goals_against_per_match"] = round(team["goals_against"] / team["matches"], 2) if team["matches"] else 0
 
     # Possession is available on the match-log table; average only numeric values.
     poss = []
