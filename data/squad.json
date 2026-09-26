@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T09:50:32.263568+00:00",
+  "_updated_at": "2026-09-26T09:53:14.268242+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -20,6 +20,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 1,
       "dateOfBirth": "1994-02-07T00:00:00.000Z"
     },
     {
@@ -37,6 +38,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 30,
       "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
@@ -54,6 +56,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 41,
       "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
@@ -88,6 +91,7 @@
         "yellow": 0,
         "red": 1
       },
+      "shirtNumber": 6,
       "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
@@ -105,6 +109,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 13,
       "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
@@ -122,6 +127,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 20,
       "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
@@ -139,6 +145,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 22,
       "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
@@ -156,6 +163,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 25,
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -173,6 +181,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 50,
       "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
@@ -190,6 +199,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 55,
       "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
@@ -207,6 +217,7 @@
         "yellow": 2,
         "red": 0
       },
+      "shirtNumber": 72,
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
@@ -241,6 +252,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 4,
       "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
@@ -258,6 +270,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 5,
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -275,6 +288,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 8,
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
@@ -292,6 +306,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 19,
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -309,6 +324,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 21,
       "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
@@ -326,6 +342,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 70,
       "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
@@ -343,6 +360,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 77,
       "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
@@ -394,6 +412,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 7,
       "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
@@ -411,6 +430,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 9,
       "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
@@ -428,6 +448,7 @@
         "yellow": 3,
         "red": 0
       },
+      "shirtNumber": 10,
       "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
@@ -445,6 +466,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 11,
       "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
@@ -462,6 +484,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 17,
       "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
@@ -479,6 +502,7 @@
         "yellow": 1,
         "red": 0
       },
+      "shirtNumber": 28,
       "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
@@ -496,6 +520,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 31,
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -513,6 +538,7 @@
         "yellow": 0,
         "red": 0
       },
+      "shirtNumber": 58,
       "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
@@ -530,6 +556,7 @@
         "yellow": 6,
         "red": 0
       },
+      "shirtNumber": 97,
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ],
