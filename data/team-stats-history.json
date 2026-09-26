@@ -1,14 +1,14 @@
 {
-  "_updated_at": "2026-09-26T12:34:41.269152+00:00",
+  "_updated_at": "2026-09-26T12:40:44.496Z",
   "seasons": {
     "2026/27": {
-      "matches": 12,
-      "wins": 9,
+      "matches": 8,
+      "wins": 5,
       "draws": 3,
       "losses": 0,
-      "goals": 37,
-      "goals_against": 11,
-      "clean_sheets": 4,
+      "goals": 20,
+      "goals_against": 9,
+      "clean_sheets": 2,
       "form": [
         "W",
         "W",
@@ -73,12 +73,51 @@
           "opponent": "Arouca"
         }
       ],
-      "points": 30,
-      "win_rate": 75.0,
-      "goals_per_match": 3.08,
-      "goals_against_per_match": 0.92
+      "points": 18,
+      "win_rate": 62.5,
+      "goals_per_match": 2.5,
+      "goals_against_per_match": 1.13
+    },
+    "2025/26": {
+      "matches": 56,
+      "wins": 37,
+      "draws": 10,
+      "losses": 9,
+      "goals": 131,
+      "goals_against": 51,
+      "clean_sheets": null,
+      "points": 121,
+      "win_rate": 66.1,
+      "goals_per_match": 2.34,
+      "goals_against_per_match": 0.91
+    },
+    "2024/25": {
+      "matches": 55,
+      "wins": 37,
+      "draws": 11,
+      "losses": 7,
+      "goals": 127,
+      "goals_against": 52,
+      "clean_sheets": null,
+      "points": 122,
+      "win_rate": 67.3,
+      "goals_per_match": 2.31,
+      "goals_against_per_match": 0.95
+    },
+    "2023/24": {
+      "matches": 54,
+      "wins": 40,
+      "draws": 8,
+      "losses": 6,
+      "goals": 141,
+      "goals_against": 50,
+      "clean_sheets": null,
+      "points": 128,
+      "win_rate": 74.1,
+      "goals_per_match": 2.61,
+      "goals_against_per_match": 0.93
     }
   },
-  "source": "FBref + Sporting CP fixture feed",
-  "scope": "Sporting CP main team, all competitions, finished matches only"
+  "source": "ZeroZero · histórico oficial + Sporting CP fixture feed",
+  "scope": "Sporting CP principal · competições oficiais · sem seleções, pré-época ou amigáveis"
 }
