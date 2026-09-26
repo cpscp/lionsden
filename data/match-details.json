@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:28:02.806379+00:00",
+  "_updated_at": "2026-09-26T16:29:12.556944+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -47,7 +47,8 @@
             },
             "isHome": true,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -59,7 +60,8 @@
             },
             "isHome": false,
             "description": "Camilo Durán",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -71,7 +73,8 @@
             },
             "isHome": true,
             "description": "Daniel Bragança",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -83,7 +86,8 @@
             },
             "isHome": true,
             "description": "Ricardo Mangas",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -95,7 +99,8 @@
             },
             "isHome": true,
             "description": "Daniel Bragança",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           }
         ]
       },
@@ -159,7 +164,8 @@
             },
             "isHome": true,
             "description": "Issa Doumbia",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -171,7 +177,8 @@
             },
             "isHome": true,
             "description": "Sergi Altimira",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -183,7 +190,8 @@
             },
             "isHome": true,
             "description": "Silas Andersen",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -195,7 +203,8 @@
             },
             "isHome": true,
             "description": "Rodrigo Zalazar",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -207,7 +216,8 @@
             },
             "isHome": true,
             "description": "Maxi Araújo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -219,7 +229,8 @@
             },
             "isHome": true,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -231,7 +242,8 @@
             },
             "isHome": true,
             "description": "Fotis Ioannidis",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           }
         ]
       },
@@ -303,7 +315,8 @@
             },
             "isHome": true,
             "description": "Rafael Nel",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -315,7 +328,8 @@
             },
             "isHome": true,
             "description": "Jesse Derry",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           }
         ]
       },
@@ -1031,7 +1045,8 @@
             },
             "isHome": false,
             "description": "Igor Jesus",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -1043,7 +1058,8 @@
             },
             "isHome": true,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1065,7 +1081,8 @@
                 "id": "361717",
                 "profileUrl": "/players/361717/rui-silva"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1087,7 +1104,8 @@
                 "id": "1119687",
                 "profileUrl": "/players/1119687/georgios-vagiannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1109,7 +1127,8 @@
                 "id": "1165710",
                 "profileUrl": "/players/1165710/goncalo-inacio"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -1121,7 +1140,8 @@
             },
             "isHome": true,
             "description": "Issa Doumbia",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1143,7 +1163,8 @@
                 "id": "899701",
                 "profileUrl": "/players/899701/fotis-ioannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1165,7 +1186,8 @@
                 "id": "1425101",
                 "profileUrl": "/players/1425101/silas-andersen"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1187,7 +1209,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -1199,7 +1222,8 @@
             },
             "isHome": true,
             "description": "Rafael Nel",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1221,7 +1245,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1243,7 +1268,8 @@
                 "id": "1031656",
                 "profileUrl": "/players/1031656/maxi-araujo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -1265,7 +1291,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -1277,7 +1304,8 @@
             },
             "isHome": true,
             "description": "Rafael Nel",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           }
         ]
       },
@@ -2093,7 +2121,8 @@
             },
             "isHome": false,
             "description": "Rodrigo Zalazar",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -2105,7 +2134,8 @@
             },
             "isHome": true,
             "description": "Eddy Doué",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -2117,7 +2147,8 @@
             },
             "isHome": false,
             "description": "Fotis Ioannidis",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2139,7 +2170,8 @@
                 "id": "899701",
                 "profileUrl": "/players/899701/fotis-ioannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2161,7 +2193,8 @@
                 "id": "1691190",
                 "profileUrl": "/players/1691190/flavio-goncalves"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2183,7 +2216,8 @@
                 "id": "1797326",
                 "profileUrl": "/players/1797326/santiago-serra"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -2195,7 +2229,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -2207,7 +2242,8 @@
             },
             "isHome": true,
             "description": "Leandro Antonetti",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2229,7 +2265,8 @@
                 "id": "1413926",
                 "profileUrl": "/players/1413926/max-scholze"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2251,7 +2288,8 @@
                 "id": "957122",
                 "profileUrl": "/players/957122/ianis-stoica"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2273,7 +2311,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2295,7 +2334,8 @@
                 "id": "1119687",
                 "profileUrl": "/players/1119687/georgios-vagiannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2317,7 +2357,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -2329,7 +2370,8 @@
             },
             "isHome": true,
             "description": "Beni Souza",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2351,7 +2393,8 @@
                 "id": "1362632",
                 "profileUrl": "/players/1362632/leandro-antonetti"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -2373,7 +2416,8 @@
                 "id": "1187131",
                 "profileUrl": "/players/1187131/abraham-marcus"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -2385,7 +2429,8 @@
             },
             "isHome": false,
             "description": "Jesse Derry",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -2397,7 +2442,8 @@
             },
             "isHome": true,
             "description": "Beni Souza",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           }
         ]
       },
@@ -3459,7 +3505,8 @@
             },
             "isHome": true,
             "description": "Flávio Gonçalves",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -3471,7 +3518,8 @@
             },
             "isHome": true,
             "description": "Fotis Ioannidis",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -3483,7 +3531,8 @@
             },
             "isHome": true,
             "description": "Sergi Altimira",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -3495,7 +3544,8 @@
             },
             "isHome": false,
             "description": "Thiago Balieiro",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -3507,7 +3557,8 @@
             },
             "isHome": false,
             "description": "Óscar Rivas",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -3519,7 +3570,8 @@
             },
             "isHome": true,
             "description": "Sergi Altimira",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3541,7 +3593,8 @@
                 "id": "1692879",
                 "profileUrl": "/players/1692879/oumar-camara"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3563,7 +3616,8 @@
                 "id": "1282445",
                 "profileUrl": "/players/1282445/maga"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3585,7 +3639,8 @@
                 "id": "1372284",
                 "profileUrl": "/players/1372284/beni"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -3597,7 +3652,8 @@
             },
             "isHome": true,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -3609,7 +3665,8 @@
             },
             "isHome": false,
             "description": "Miguel Nogueira",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -3631,7 +3688,8 @@
                 "id": "1691190",
                 "profileUrl": "/players/1691190/flavio-goncalves"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3653,7 +3711,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -3665,7 +3724,8 @@
             },
             "isHome": false,
             "description": "Samu",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -3677,7 +3737,8 @@
             },
             "isHome": false,
             "description": "Alioune Ndoye",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -3689,7 +3750,8 @@
             },
             "isHome": true,
             "description": "Eduardo Quaresma",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -3711,7 +3773,8 @@
                 "id": "899701",
                 "profileUrl": "/players/899701/fotis-ioannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3733,7 +3796,8 @@
                 "id": "1413628",
                 "profileUrl": "/players/1413628/goncalo-nogueira"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -3745,7 +3809,8 @@
             },
             "isHome": false,
             "description": "Gustavo Silva",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -3767,7 +3832,8 @@
                 "id": "1119687",
                 "profileUrl": "/players/1119687/georgios-vagiannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -3789,7 +3855,8 @@
                 "id": "667952",
                 "profileUrl": "/players/667952/samu"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -3801,7 +3868,8 @@
             },
             "isHome": true,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           }
         ]
       },
@@ -4877,7 +4945,8 @@
             },
             "isHome": true,
             "description": "Maxi Araújo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -4889,7 +4958,8 @@
             },
             "isHome": false,
             "description": "Yaya Bojang",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -4901,7 +4971,8 @@
             },
             "isHome": true,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -4913,7 +4984,8 @@
             },
             "isHome": false,
             "description": "Davy Gui",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -4925,7 +4997,8 @@
             },
             "isHome": true,
             "description": "Matheus Mendes",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -4947,7 +5020,8 @@
                 "id": "1402324",
                 "profileUrl": "/players/1402324/vivaldo-semedo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -4969,7 +5043,8 @@
                 "id": "1578180",
                 "profileUrl": "/players/1578180/rayan-lucas"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -4981,7 +5056,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5003,7 +5079,8 @@
                 "id": "1524671",
                 "profileUrl": "/players/1524671/francisco-chissumba"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5025,7 +5102,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5047,7 +5125,8 @@
                 "id": "1691190",
                 "profileUrl": "/players/1691190/flavio-goncalves"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -5059,7 +5138,8 @@
             },
             "isHome": false,
             "description": "Marco Essimi",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -5081,7 +5161,8 @@
                 "id": "1459547",
                 "profileUrl": "/players/1459547/ian-luccas"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5103,7 +5184,8 @@
                 "id": "1232172",
                 "profileUrl": "/players/1232172/zeno-debast"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5125,7 +5207,8 @@
                 "id": "1707494",
                 "profileUrl": "/players/1707494/davy-gui"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5147,7 +5230,8 @@
                 "id": "792303",
                 "profileUrl": "/players/792303/luis-suarez"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -5169,7 +5253,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -5181,7 +5266,8 @@
             },
             "isHome": false,
             "description": "Lucas Figueiredo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           }
         ]
       },
@@ -6257,7 +6343,8 @@
             },
             "isHome": false,
             "description": "Flávio Gonçalves",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -6269,7 +6356,8 @@
             },
             "isHome": false,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -6281,7 +6369,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -6293,7 +6382,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -6305,7 +6395,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -6317,7 +6408,8 @@
             },
             "isHome": true,
             "description": "Tamás Nikitscher",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -6339,7 +6431,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6361,7 +6454,8 @@
                 "id": "1691190",
                 "profileUrl": "/players/1691190/flavio-goncalves"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6383,7 +6477,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6405,7 +6500,8 @@
                 "id": "1693611",
                 "profileUrl": "/players/1693611/diogo-bezerra"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6427,7 +6523,8 @@
                 "id": "1204394",
                 "profileUrl": "/players/1204394/tamas-nikitscher"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6449,7 +6546,8 @@
                 "id": "1067806",
                 "profileUrl": "/players/1067806/dario-spikic"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6471,7 +6569,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6493,7 +6592,8 @@
                 "id": "914964",
                 "profileUrl": "/players/914964/marios-vrousai"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6515,7 +6615,8 @@
                 "id": "1611573",
                 "profileUrl": "/players/1611573/jalen-blesa"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -6537,7 +6638,8 @@
                 "id": "792303",
                 "profileUrl": "/players/792303/luis-suarez"
               }
-            ]
+            ],
+            "cardType": ""
           }
         ]
       },
@@ -7571,7 +7673,8 @@
             },
             "isHome": true,
             "description": "Maxi Araújo",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -7583,7 +7686,8 @@
             },
             "isHome": true,
             "description": "Sergi Altimira",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -7595,7 +7699,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7617,7 +7722,8 @@
                 "id": "756255",
                 "profileUrl": "/players/756255/leo-santos"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -7629,7 +7735,8 @@
             },
             "isHome": false,
             "description": "Markus Gustav Jensen",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -7641,7 +7748,8 @@
             },
             "isHome": true,
             "description": "Flávio Gonçalves",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7663,7 +7771,8 @@
                 "id": "1536269",
                 "profileUrl": "/players/1536269/pablo-ruan"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7685,7 +7794,8 @@
                 "id": "1367941",
                 "profileUrl": "/players/1367941/markus-gustav-jensen"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7707,7 +7817,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7729,7 +7840,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7751,7 +7863,8 @@
                 "id": "792303",
                 "profileUrl": "/players/792303/luis-suarez"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7773,7 +7886,8 @@
                 "id": "1178054",
                 "profileUrl": "/players/1178054/stavros-gavriel"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7795,7 +7909,8 @@
                 "id": "1031656",
                 "profileUrl": "/players/1031656/maxi-araujo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7817,7 +7932,8 @@
                 "id": "1088053",
                 "profileUrl": "/players/1088053/miguel-baeza"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -7839,7 +7955,8 @@
                 "id": "1310480",
                 "profileUrl": "/players/1310480/sergi-altimira"
               }
-            ]
+            ],
+            "cardType": ""
           }
         ]
       },
@@ -8887,7 +9004,8 @@
             },
             "isHome": false,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -8899,7 +9017,8 @@
             },
             "isHome": true,
             "description": "Sergi Altimira",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -8911,7 +9030,8 @@
             },
             "isHome": true,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -8923,7 +9043,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -8935,7 +9056,8 @@
             },
             "isHome": false,
             "description": "Eren Elmalı",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -8947,7 +9069,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -8969,7 +9092,8 @@
                 "id": "530859",
                 "profileUrl": "/players/530859/leroy-sane"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -8981,7 +9105,8 @@
             },
             "isHome": true,
             "description": "Rodrigo Zalazar",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9003,7 +9128,8 @@
                 "id": "1504343",
                 "profileUrl": "/players/1504343/aleksey-batrakov"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9025,7 +9151,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9047,7 +9174,8 @@
                 "id": "792303",
                 "profileUrl": "/players/792303/luis-suarez"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9069,7 +9197,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -9081,7 +9210,8 @@
             },
             "isHome": false,
             "description": "Deniz Gül",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -9093,7 +9223,8 @@
             },
             "isHome": false,
             "description": "Okan Buruk",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -9115,7 +9246,8 @@
                 "id": "1119687",
                 "profileUrl": "/players/1119687/georgios-vagiannidis"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9137,7 +9269,8 @@
                 "id": "1156380",
                 "profileUrl": "/players/1156380/eduardo-quaresma"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9159,7 +9292,8 @@
                 "id": "902710",
                 "profileUrl": "/players/902710/gabriel-sara"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9181,7 +9315,8 @@
                 "id": "845991",
                 "profileUrl": "/players/845991/yunus-akgun"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -9203,7 +9338,8 @@
                 "id": "592909",
                 "profileUrl": "/players/592909/lucas-torreira"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -9215,7 +9351,8 @@
             },
             "isHome": false,
             "description": "Ismail Jakobs",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           }
         ]
       },
@@ -10321,7 +10458,8 @@
             },
             "isHome": true,
             "description": "Gil Dias",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -10343,7 +10481,8 @@
                 "id": "566467",
                 "profileUrl": "/players/566467/gil-dias"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10365,7 +10504,8 @@
                 "id": "1169353",
                 "profileUrl": "/players/1169353/georgios-koutsias"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10387,7 +10527,8 @@
                 "id": "1458757",
                 "profileUrl": "/players/1458757/luis-guilherme"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10409,7 +10550,8 @@
                 "id": "1691190",
                 "profileUrl": "/players/1691190/flavio-goncalves"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -10421,7 +10563,8 @@
             },
             "isHome": false,
             "description": "Geny Catamo",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -10443,7 +10586,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10465,7 +10609,8 @@
                 "id": "1088753",
                 "profileUrl": "/players/1088753/geny-catamo"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -10477,7 +10622,8 @@
             },
             "isHome": true,
             "description": "Sorriso",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -10489,7 +10635,8 @@
             },
             "isHome": true,
             "description": "Carlos Carvalhal",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -10501,7 +10648,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10523,7 +10671,8 @@
                 "id": "1477586",
                 "profileUrl": "/players/1477586/marcos-pena"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -10545,7 +10694,8 @@
                 "id": "1257305",
                 "profileUrl": "/players/1257305/sorriso"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -10557,7 +10707,8 @@
             },
             "isHome": false,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -10569,7 +10720,8 @@
             },
             "isHome": true,
             "description": "Roméo Beney",
-            "swap": []
+            "swap": [],
+            "cardType": "red"
           },
           {
             "incidentType": "card",
@@ -10581,7 +10733,8 @@
             },
             "isHome": false,
             "description": "Nestory Irankunda",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -10593,7 +10746,8 @@
             },
             "isHome": true,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -10605,7 +10759,8 @@
             },
             "isHome": false,
             "description": "Iván Fresneda",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           }
         ]
       },
@@ -11681,7 +11836,8 @@
             },
             "isHome": true,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -11693,7 +11849,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -11705,7 +11862,8 @@
             },
             "isHome": false,
             "description": "Espen van Ee",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -11717,7 +11875,8 @@
             },
             "isHome": false,
             "description": "Javi Sánchez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -11739,7 +11898,8 @@
                 "id": "1664552",
                 "profileUrl": "/players/1664552/mateo-flores"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -11751,7 +11911,8 @@
             },
             "isHome": false,
             "description": "Jose Fontán",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -11763,7 +11924,8 @@
             },
             "isHome": true,
             "description": "Zeno Debast",
-            "swap": []
+            "swap": [],
+            "cardType": "red"
           },
           {
             "incidentType": "substitution",
@@ -11785,7 +11947,8 @@
                 "id": "1327214",
                 "profileUrl": "/players/1327214/nestory-irankunda"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11807,7 +11970,8 @@
                 "id": "1526602",
                 "profileUrl": "/players/1526602/espen-van-ee"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -11819,7 +11983,8 @@
             },
             "isHome": true,
             "description": "Luis Suárez",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -11831,7 +11996,8 @@
             },
             "isHome": false,
             "description": "Pedro Santos",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "substitution",
@@ -11853,7 +12019,8 @@
                 "id": "1070776",
                 "profileUrl": "/players/1070776/rodrigo-zalazar"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11875,7 +12042,8 @@
                 "id": "1139353",
                 "profileUrl": "/players/1139353/alfonso-trezza"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -11887,7 +12055,8 @@
             },
             "isHome": true,
             "description": "Eduardo Quaresma",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "goal",
@@ -11899,7 +12068,8 @@
             },
             "isHome": false,
             "description": "Jose Fontán",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11921,7 +12091,8 @@
                 "id": "683761",
                 "profileUrl": "/players/683761/javi-sanchez"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11943,7 +12114,8 @@
                 "id": "1339345",
                 "profileUrl": "/players/1339345/issa-doumbia"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11965,7 +12137,8 @@
                 "id": "792303",
                 "profileUrl": "/players/792303/luis-suarez"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "substitution",
@@ -11987,7 +12160,8 @@
                 "id": "1027396",
                 "profileUrl": "/players/1027396/barbero"
               }
-            ]
+            ],
+            "cardType": ""
           },
           {
             "incidentType": "goal",
@@ -11999,7 +12173,8 @@
             },
             "isHome": false,
             "description": "Dylan Nandín",
-            "swap": []
+            "swap": [],
+            "cardType": ""
           },
           {
             "incidentType": "card",
@@ -12011,7 +12186,8 @@
             },
             "isHome": false,
             "description": "Brian Mansilla",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -12023,7 +12199,8 @@
             },
             "isHome": true,
             "description": "Maxi Araújo",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           },
           {
             "incidentType": "card",
@@ -12035,7 +12212,8 @@
             },
             "isHome": true,
             "description": "Gonçalo Inácio",
-            "swap": []
+            "swap": [],
+            "cardType": "yellow"
           }
         ]
       },

@@ -1,6 +1,28 @@
 {
-  "_updated_at": "2026-09-26T16:28:07.282627+00:00",
+  "_updated_at": "2026-09-26T16:29:17.765133+00:00",
   "videos": [
+    {
+      "match_id": 5789079,
+      "sofascore_id": null,
+      "video_id": "B8-QVYcgNKc",
+      "title": "Highlights | Pré-Época: Sporting CP 4-1 Celtic FC",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=B8-QVYcgNKc",
+      "embed": "https://www.youtube.com/embed/B8-QVYcgNKc",
+      "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPx2ujTtRPCdoRWTfJO_4JUIgzFg",
+      "preferred_for_home": true
+    },
+    {
+      "match_id": 5900292,
+      "sofascore_id": null,
+      "video_id": "LFMfqhXv8NU",
+      "title": "Highlights | Pré-Época: Sporting CP 7-0 RC Strasbourg",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
+      "embed": "https://www.youtube.com/embed/LFMfqhXv8NU",
+      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDqPAyayjUqiE5NDgUbTRNw0Uj5XQ",
+      "preferred_for_home": true
+    },
     {
       "match_id": 5900240,
       "sofascore_id": null,
@@ -9,27 +31,41 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
-      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ"
+      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
+      "preferred_for_home": true
     },
     {
-      "match_id": 5887558,
+      "match_id": 5899095,
       "sofascore_id": null,
-      "video_id": "3VxGV7yZQkA",
-      "title": "Estrela Amadora, Golo Anulado, E. Doué, 46m | Estrela - Sporting CP (Liga 26/27 #1)",
-      "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=3VxGV7yZQkA",
-      "embed": "https://www.youtube.com/embed/3VxGV7yZQkA",
-      "thumbnail": "https://i.ytimg.com/vi/3VxGV7yZQkA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDoh3oNAyKprePjWwH2OYVfa_gvUA"
+      "video_id": "WmDjGUp2pwY",
+      "title": "Highlights | Pré-Época: Sporting CP 4-1 Nottingham Forest FC",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=WmDjGUp2pwY",
+      "embed": "https://www.youtube.com/embed/WmDjGUp2pwY",
+      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAC7VZj2qXHdB90Vkbw1YnzntE_bQ",
+      "preferred_for_home": true
+    },
+    {
+      "match_id": 5887599,
+      "sofascore_id": null,
+      "video_id": "8HqT95aCHcI",
+      "title": "Resumo | Liga Portugal: Vitória SC 3-2 Sporting CP",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=8HqT95aCHcI",
+      "embed": "https://www.youtube.com/embed/8HqT95aCHcI",
+      "thumbnail": "https://i.ytimg.com/vi/8HqT95aCHcI/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLATEkeFi3iU1yLHUBs4ykztUCao-g",
+      "preferred_for_home": true
     },
     {
       "match_id": 5887607,
       "sofascore_id": null,
-      "video_id": "lBSmFLJ1sEg",
-      "title": "Resumo: Sporting 3-1 Alverca (Liga 26/27 #3)",
-      "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=lBSmFLJ1sEg",
-      "embed": "https://www.youtube.com/embed/lBSmFLJ1sEg",
-      "thumbnail": "https://i.ytimg.com/vi/lBSmFLJ1sEg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDd6BQ19LPqdUrf360ClYGAvH5fOg"
+      "video_id": "9V0I8Ifiiho",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 3-1 FC Alverca",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=9V0I8Ifiiho",
+      "embed": "https://www.youtube.com/embed/9V0I8Ifiiho",
+      "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAc2WuH1MjskfjB9zPoB6QBVk0q-Q",
+      "preferred_for_home": true
     },
     {
       "match_id": 5887616,
@@ -39,17 +75,30 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=WCGez8Kemwg",
       "embed": "https://www.youtube.com/embed/WCGez8Kemwg",
-      "thumbnail": "https://i.ytimg.com/vi/WCGez8Kemwg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBgfzm4sGbJ-LCR_b2Rch7XaodVKw"
+      "thumbnail": "https://i.ytimg.com/vi/WCGez8Kemwg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBgfzm4sGbJ-LCR_b2Rch7XaodVKw",
+      "preferred_for_home": false
     },
     {
       "match_id": 5887625,
       "sofascore_id": null,
-      "video_id": "PhaxP-sMCcc",
-      "title": "Resumo: Sporting 2-0 Nacional (Liga 26/27 #5)",
-      "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=PhaxP-sMCcc",
-      "embed": "https://www.youtube.com/embed/PhaxP-sMCcc",
-      "thumbnail": "https://i.ytimg.com/vi/PhaxP-sMCcc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD1OwxGys6l9sN-g4mPi28eOorBwg"
+      "video_id": "1s7jwCuCZzs",
+      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-0 CD Nacional",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=1s7jwCuCZzs",
+      "embed": "https://www.youtube.com/embed/1s7jwCuCZzs",
+      "thumbnail": "https://i.ytimg.com/vi/1s7jwCuCZzs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCzvz-nnHUdylfnkHCelAYGzcfWEA",
+      "preferred_for_home": true
+    },
+    {
+      "match_id": 6106280,
+      "sofascore_id": null,
+      "video_id": "Sgu7UdPWsO4",
+      "title": "Highlights | UEFA Champions League: Sporting CP 3-1 Galatasaray SK",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=Sgu7UdPWsO4",
+      "embed": "https://www.youtube.com/embed/Sgu7UdPWsO4",
+      "thumbnail": "https://i.ytimg.com/vi/Sgu7UdPWsO4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD3gycO4FEPDQ_kSMMXyX9v-A_1_g",
+      "preferred_for_home": true
     },
     {
       "match_id": 5887631,
@@ -59,19 +108,22 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=Iv5LBsbqEhs",
       "embed": "https://www.youtube.com/embed/Iv5LBsbqEhs",
-      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ"
+      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ",
+      "preferred_for_home": false
     },
     {
       "match_id": 5887643,
       "sofascore_id": null,
-      "video_id": "elNskBgE3Ew",
-      "title": "Resumo: Sporting 2-2 Arouca (Liga 26/27 #7)",
-      "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=elNskBgE3Ew",
-      "embed": "https://www.youtube.com/embed/elNskBgE3Ew",
-      "thumbnail": "https://i.ytimg.com/vi/elNskBgE3Ew/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCWvyWNGnP_8bQ972Ie-cYMaMnI2g"
+      "video_id": "qLRYOUhoHZ4",
+      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=qLRYOUhoHZ4",
+      "embed": "https://www.youtube.com/embed/qLRYOUhoHZ4",
+      "thumbnail": "https://i.ytimg.com/vi/qLRYOUhoHZ4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCene2tmR4E-O_2nv6_0D7e_sDcCw",
+      "preferred_for_home": true
     }
   ],
-  "source": "YouTube · VSPORTS Liga Portugal / Sporting CP",
-  "scope": "Finished Sporting CP matches"
+  "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
+  "scope": "Finished Sporting CP matches",
+  "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches."
 }
