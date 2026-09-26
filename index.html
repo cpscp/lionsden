@@ -978,9 +978,9 @@ openModal();
 function findFixture(id){return allFixtures().find(x=>String(x.id)===String(id))}
 function gameInfoIcon(type){
  const icons={
-  venue:'<g>'+stadiumSvg().match(/<svg[^>]*>([\\s\\S]*)<\\/svg>/)[1]+'</g>',
+  venue:'<path d="M3 10c0-3 4-5.5 9-5.5S21 7 21 10v5c0 3-4 5.5-9 5.5S3 18 3 15z"/><path d="M3 10c0 3 4 5.5 9 5.5S21 13 21 10"/><path d="M6 11.5V16M9 13V18M12 14.5V20M15 13V18M18 11.5V16"/><path d="M5 4V2M19 4V2M5 2h3M16 2h3"/>',
   trophy:'<path d="M6 3h8v3a4 4 0 0 1-8 0V3Z"/><path d="M6 5H3v1a3 3 0 0 0 3 3M14 5h3v1a3 3 0 0 1-3 3M10 10v4M7 17h6"/>',
-  whistle:'<g>'+whistleSvg().match(/<svg[^>]*>([\\s\\S]*)<\\/svg>/)[1]+'</g>',
+  whistle:'<path d="M3 8h8l3 2a5 5 0 1 1-4 8l-2-3H3z"/><path d="M3 8V5h5l3 3"/><path d="M14 10l5-2"/><path d="M18 8.5 21 7v4l-3-1.5"/><path d="M8 15h4"/>',
   people:'<circle cx="7" cy="7" r="2.5"/><circle cx="14" cy="8" r="2"/><path d="M2.5 17c.6-3 2.1-4.5 4.5-4.5s3.9 1.5 4.5 4.5M11 13.5c2.5-.6 5.2.6 6 3.5"/>',
   tv:'<rect x="3" y="5" width="14" height="9" rx="1.5"/><path d="M8 2l2 3 2-3M7 17h6"/>'
  };
