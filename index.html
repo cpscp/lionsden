@@ -468,30 +468,32 @@ function shirtBadge(number){
   </div>`:'';
 }
 function careerRows(p){
-  const stats=p.careerStats||[];
-  const statMap=new Map(stats.map(x=>[(seasonLabel(x.season)+'|'+String(x.club).toLowerCase()),x]));
-  const raw=p.career||[];
-  const rows=[],seen=new Set();
-  for(const x of raw){
-    const club=typeof x==='string'?x:(x?.club||x?.team||x?.name||'');
-    const period=typeof x==='string'?'':(x?.period||x?.season||'');
-    if(!club||/^Portugal(?:\s+U\d+)?$/i.test(club)||/^Portugal\s+sub-\d+$/i.test(club))continue;
-    const season=seasonLabel(period);
-    if(!/^\d{4}\/\d{2}$/.test(season))continue;
-    const key=season+'|'+club.toLowerCase();
-    if(seen.has(key))continue;
-    seen.add(key);
-    const st=statMap.get(key)||{};
-    rows.push({season,club,matches:st.matches??'—',goals:st.goals??'—',assists:st.assists??'—'});
+  const stats=(p.careerStats||[]).map(x=>({...x,season:seasonLabel(x.season)}));
+  const currentSeason='2026/27';
+  const currentClub='Sporting';
+  const current=p.stats||{};
+  let rows=stats.map(st=>({
+    season:st.season,
+    club:st.club,
+    matches:st.season===currentSeason ? (current.matches??st.matches??'—') : (st.matches??'—'),
+    goals:st.season===currentSeason ? (current.goals??st.goals??'—') : (st.goals??'—'),
+    assists:st.season===currentSeason ? (current.assists??st.assists??'—') : (st.assists??'—')
+  }));
+  // If the data source has not returned a current-season row, create it from
+  // the exact same stats used by the cards above.
+  if(!rows.some(r=>r.season===currentSeason) && current.matches!=null){
+    rows.unshift({season:currentSeason,club:currentClub,matches:current.matches,goals:current.goals??0,assists:current.assists??0});
   }
-  stats.forEach(st=>{
-    const season=seasonLabel(st.season),club=st.club;
-    if(!season||!club||!/^\d{4}\/\d{2}$/.test(season))return;
-    const key=season+'|'+club.toLowerCase();
-    if(seen.has(key))return;
-    seen.add(key);rows.push({season,club,matches:st.matches??'—',goals:st.goals??'—',assists:st.assists??'—'});
+  // Normalise the current Sporting naming so the career source and card use
+  // one club label and never produce a duplicate blank row.
+  rows=rows.map(r=>({...r,club:/^Sporting CP$/i.test(String(r.club||''))?'Sporting':r.club}));
+  const seen=new Set();
+  rows=rows.filter(r=>{
+    const key=r.season+'|'+String(r.club||'').toLowerCase();
+    if(seen.has(key))return false;
+    seen.add(key); return true;
   });
-  rows.sort((a,b)=>b.season.localeCompare(a.season)||a.club.localeCompare(b.club));
+  rows.sort((a,b)=>b.season.localeCompare(a.season)||String(a.club).localeCompare(String(b.club)));
   return rows;
 }
 function renderCareer(p){
