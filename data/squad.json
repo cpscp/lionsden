@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T11:33:53.271241+00:00",
+  "_updated_at": "2026-09-26T11:37:06.738Z",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -362,9 +362,129 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2026",
+          "club": "Palmeiras",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2026",
+          "club": "Nacional (E) [Palmeiras]",
+          "matches": 28,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Farense (E) [Palmeiras]",
+          "matches": 7,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Farense (E) [S23] [Palmeiras]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024",
+          "club": "Palmeiras",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024",
+          "club": "Palmeiras [S20]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023",
+          "club": "Palmeiras",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023",
+          "club": "Palmeiras [S20]",
+          "matches": 28,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022",
+          "club": "Palmeiras",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022",
+          "club": "Palmeiras [S20]",
+          "matches": 23,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021",
+          "club": "Palmeiras",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021",
+          "club": "Palmeiras [S20]",
+          "matches": 14,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020",
+          "club": "Palmeiras",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020",
+          "club": "Palmeiras [Jun.B S17]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019",
+          "club": "Palmeiras [S20]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2019",
+          "club": "Palmeiras [Jun.B S17]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2018",
+          "club": "Portuguesa [Jun.C S15]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2003-04-16T00:00:00.000Z"
+      "dateOfBirth": "2003-04-16T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1282449,
@@ -447,9 +567,66 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 25,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 12,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Feirense (E) [Sporting]",
+          "matches": 11,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [B]",
+          "matches": 12,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2004-07-18T00:00:00.000Z"
+      "dateOfBirth": "2004-07-18T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1755850,
@@ -510,9 +687,24 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "KV Mechelen",
+          "matches": 17,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "KV Mechelen",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2008-09-20"
+      "dateOfBirth": "2008-09-20",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1232172,
@@ -638,9 +830,66 @@
           "matches": 6,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 24,
+          "goals": 0,
+          "assists": 2
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 48,
+          "goals": 2,
+          "assists": 4
+        },
+        {
+          "season": "2023/24",
+          "club": "Anderlecht",
+          "matches": 40,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Anderlecht",
+          "matches": 49,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Anderlecht",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Anderlecht",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Anderlecht [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2018/19",
+          "club": "Anderlecht [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2003-10-24T00:00:00.000Z"
+      "dateOfBirth": "2003-10-24T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1119687,
@@ -782,9 +1031,59 @@
           "matches": 5,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 32,
+          "goals": 0,
+          "assists": 7
+        },
+        {
+          "season": "2025/26",
+          "club": "Panathinaikos",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Panathinaikos",
+          "matches": 39,
+          "goals": 1,
+          "assists": 2
+        },
+        {
+          "season": "2023/24",
+          "club": "Panathinaikos",
+          "matches": 36,
+          "goals": 1,
+          "assists": 1
+        },
+        {
+          "season": "2022/23",
+          "club": "Panathinaikos",
+          "matches": 24,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Panathinaikos",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Panathinaikos",
+          "matches": 2,
+          "goals": 1,
+          "assists": 1
         }
       ],
-      "dateOfBirth": "2001-09-12T00:00:00.000Z"
+      "dateOfBirth": "2001-09-12T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1031656,
@@ -930,9 +1229,87 @@
           "matches": 8,
           "goals": 1,
           "assists": 2
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 47,
+          "goals": 7,
+          "assists": 5
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 46,
+          "goals": 4,
+          "assists": 5
+        },
+        {
+          "season": "2024/25",
+          "club": "Toluca",
+          "matches": 5,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Toluca",
+          "matches": 39,
+          "goals": 3,
+          "assists": 5
+        },
+        {
+          "season": "2022/23",
+          "club": "Toluca",
+          "matches": 19,
+          "goals": 6,
+          "assists": 4
+        },
+        {
+          "season": "2022/23",
+          "club": "Puebla",
+          "matches": 19,
+          "goals": 2,
+          "assists": 3
+        },
+        {
+          "season": "2021/22",
+          "club": "Puebla",
+          "matches": 38,
+          "goals": 4,
+          "assists": 4
+        },
+        {
+          "season": "2020/21",
+          "club": "Puebla",
+          "matches": 25,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Puebla",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019",
+          "club": "Montevideo Wanderers",
+          "matches": 18,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2018",
+          "club": "Montevideo Wanderers",
+          "matches": 13,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2000-02-15T00:00:00.000Z"
+      "dateOfBirth": "2000-02-15T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1325998,
@@ -1026,9 +1403,59 @@
           "matches": 9,
           "goals": 0,
           "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 39,
+          "goals": 1,
+          "assists": 2
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 32,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 10,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [B]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2022/23",
+          "club": "Valladolid",
+          "matches": 24,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Valladolid",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Valladolid [B]",
+          "matches": 8,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2004-09-28T00:00:00.000Z"
+      "dateOfBirth": "2004-09-28T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1165710,
@@ -1122,9 +1549,143 @@
           "matches": 8,
           "goals": 2,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 46,
+          "goals": 3,
+          "assists": 3
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 42,
+          "goals": 6,
+          "assists": 3
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 49,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting",
+          "matches": 52,
+          "goals": 4,
+          "assists": 3
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting",
+          "matches": 45,
+          "goals": 5,
+          "assists": 3
+        },
+        {
+          "season": "2020/21",
+          "club": "Sporting",
+          "matches": 25,
+          "goals": 2,
+          "assists": 2
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting [S23]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 23,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Sporting [S23]",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 18,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 6,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2016/17",
+          "club": "Sporting [Jun.B S16]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2015/16",
+          "club": "Sporting [Jun.C S15]",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2014/15",
+          "club": "Sporting [Jun.C S14]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2013/14",
+          "club": "Sporting [Jun.D S13]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2012/13",
+          "club": "Sporting [Fut.7 Jun.D S12]",
+          "matches": 5,
+          "goals": 5,
+          "assists": 0
+        },
+        {
+          "season": "2011/12",
+          "club": "Almada AC [Fut.7 Jun.E S11]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2010/11",
+          "club": "Almada AC [Fut.7 Jun.E S11]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
+      "dateOfBirth": "2001-08-25T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1703622,
@@ -1178,9 +1739,73 @@
           "matches": 2,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting [B]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 30,
+          "goals": 1,
+          "assists": 2
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 16,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [S23]",
+          "matches": 14,
+          "goals": 0,
+          "assists": 2
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [S23]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 27,
+          "goals": 4,
+          "assists": 2
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [S23]",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 26,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 28,
+          "goals": 3,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2005-07-12T00:00:00.000Z"
+      "dateOfBirth": "2005-07-12T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1609327,
@@ -1242,9 +1867,59 @@
           "matches": 1,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "FC Famalicão",
+          "matches": 24,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "FC Famalicão",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "FC Famalicão [S23]",
+          "matches": 12,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "Valenciennes (E) [AJEL Rufisque]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Valenciennes (E) [B] [AJEL Rufisque]",
+          "matches": 10,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Valenciennes (E) [Jun.A S19] [AJEL Rufisque]",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "AJEL de Rufisque",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2005-05-26T00:00:00.000Z"
+      "dateOfBirth": "2005-05-26T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1156380,
@@ -1358,9 +2033,129 @@
           "matches": 6,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 31,
+          "goals": 2,
+          "assists": 3
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 31,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 30,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "TSG Hoffenheim (E) [Sporting]",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "TSG Hoffenheim (E) [B] [Sporting]",
+          "matches": 6,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "CD Tondela (E) [Sporting]",
+          "matches": 30,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2020/21",
+          "club": "Sporting",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Sporting [B]",
+          "matches": 6,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting",
+          "matches": 9,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting [S23]",
+          "matches": 23,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2019/20",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 20,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 11,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2016/17",
+          "club": "Sporting [Jun.C S15]",
+          "matches": 20,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2015/16",
+          "club": "Sporting [Jun.C S14]",
+          "matches": 11,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2013/14",
+          "club": "Sporting [Fut.7 Jun.D S12]",
+          "matches": 2,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2012/13",
+          "club": "Sporting [Fut.7 Jun.E S11]",
+          "matches": 5,
+          "goals": 6,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2002-03-02T00:00:00.000Z"
+      "dateOfBirth": "2002-03-02T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1093025,
@@ -1513,9 +2308,73 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Fortuna Düsseldorf (E) [Sporting]",
+          "matches": 21,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Standard Liège (E) [Sporting]",
+          "matches": 37,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Olympiacos (E) [Sporting]",
+          "matches": 30,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting",
+          "matches": 14,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [B]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Panathinaikos",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Panathinaikos",
+          "matches": 35,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2020/21",
+          "club": "Panathinaikos",
+          "matches": 29,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2019/20",
+          "club": "Panathinaikos",
+          "matches": 11,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2001-11-26T00:00:00.000Z"
+      "dateOfBirth": "2001-11-26T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1425101,
@@ -1649,9 +2508,73 @@
           "matches": 7,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2026",
+          "club": "BK Hacken",
+          "matches": 11,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2025",
+          "club": "BK Hacken",
+          "matches": 46,
+          "goals": 6,
+          "assists": 4
+        },
+        {
+          "season": "2025",
+          "club": "FC Utrecht",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025",
+          "club": "FC Utrecht [B]",
+          "matches": 16,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "FC Utrecht",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "FC Utrecht [B]",
+          "matches": 30,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Internazionale [Jun.A S19]",
+          "matches": 22,
+          "goals": 0,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Genoa (E) [Jun.A S19] [Internazionale]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Internazionale [Jun.A S19]",
+          "matches": 13,
+          "goals": 1,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2004-06-13T00:00:00.000Z"
+      "dateOfBirth": "2004-06-13T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1310480,
@@ -1725,9 +2648,80 @@
           "matches": 9,
           "goals": 1,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Real Betis",
+          "matches": 40,
+          "goals": 2,
+          "assists": 3
+        },
+        {
+          "season": "2024/25",
+          "club": "Real Betis",
+          "matches": 52,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "Real Betis",
+          "matches": 17,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "CE Sabadell",
+          "matches": 33,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "CE Sabadell",
+          "matches": 29,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Granollers (E) [Sabadell]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2019/20",
+          "club": "CE Sabadell [Jun.A S19]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2018/19",
+          "club": "Barcelona [Jun.A S19]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2017/18",
+          "club": "Barcelona [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2016/17",
+          "club": "Barcelona [Jun.B S17 B]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
+      "dateOfBirth": "2001-08-25T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1663855,
@@ -1957,9 +2951,73 @@
           "matches": 5,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Watford",
+          "matches": 42,
+          "goals": 4,
+          "assists": 4
+        },
+        {
+          "season": "2024/25",
+          "club": "Grasshoppers (E) [Bayern München]",
+          "matches": 21,
+          "goals": 1,
+          "assists": 3
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München [B]",
+          "matches": 15,
+          "goals": 4,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München [Jun.A S19]",
+          "matches": 3,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Adelaide United",
+          "matches": 25,
+          "goals": 8,
+          "assists": 6
+        },
+        {
+          "season": "2022/23",
+          "club": "Adelaide United",
+          "matches": 22,
+          "goals": 5,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Adelaide United",
+          "matches": 13,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Adelaide United [S21]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
+      "dateOfBirth": "2006-02-09T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1459257,
@@ -2049,9 +3107,80 @@
           "matches": 3,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "AFS",
+          "matches": 29,
+          "goals": 6,
+          "assists": 2
+        },
+        {
+          "season": "2024/25",
+          "club": "NK Osijek",
+          "matches": 34,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2023",
+          "club": "Palmeiras",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Norwich City [S21] [Palmeiras]",
+          "matches": 19,
+          "goals": 6,
+          "assists": 4
+        },
+        {
+          "season": "2023",
+          "club": "Palmeiras [S20]",
+          "matches": 30,
+          "goals": 12,
+          "assists": 1
+        },
+        {
+          "season": "2022",
+          "club": "Palmeiras [S20]",
+          "matches": 37,
+          "goals": 7,
+          "assists": 0
+        },
+        {
+          "season": "2021",
+          "club": "Palmeiras [S20]",
+          "matches": 13,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2020",
+          "club": "Palmeiras [S20]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2020",
+          "club": "Palmeiras [Jun.B S17]",
+          "matches": 14,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2019",
+          "club": "Palmeiras [Jun.B S17]",
+          "matches": 15,
+          "goals": 4,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2003-03-27T00:00:00.000Z"
+      "dateOfBirth": "2003-03-27T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1712326,
@@ -2137,13 +3266,77 @@
       "careerStats": [
         {
           "season": "2026/27",
-          "club": "Sporting",
+          "club": "Sporting [B]",
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 2,
+          "assists": 2
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 16,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 6,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [S23]",
+          "matches": 21,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 15,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 29,
+          "goals": 7,
+          "assists": 3
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.B S17 B]",
+          "matches": 21,
+          "goals": 3,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2007-06-13T00:00:00.000Z"
+      "dateOfBirth": "2007-06-13T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1339345,
@@ -2221,9 +3414,66 @@
           "matches": 9,
           "goals": 1,
           "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Venezia",
+          "matches": 38,
+          "goals": 10,
+          "assists": 5
+        },
+        {
+          "season": "2024/25",
+          "club": "Venezia",
+          "matches": 25,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "AlbinoLeffe",
+          "matches": 37,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "AlbinoLeffe",
+          "matches": 36,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "AlbinoLeffe",
+          "matches": 9,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "AlbinoLeffe [Jun.A S19]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2019/20",
+          "club": "AlbinoLeffe [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2018/19",
+          "club": "Ciserano [Jun.A S18]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2003-10-16T00:00:00.000Z"
+      "dateOfBirth": "2003-10-16T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1918387,
@@ -2248,13 +3498,49 @@
       "careerStats": [
         {
           "season": "2026/27",
-          "club": "Sporting",
+          "club": "Sporting [S23]",
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [S23]",
+          "matches": 11,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Interclube",
+          "matches": 5,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Petro de Luanda [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2022/23",
+          "club": "Petro de Luanda [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2021/22",
+          "club": "Petro de Luanda [Jun.C S15]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "2007-06-20T00:00:00.000Z"
+      "dateOfBirth": "2007-06-20T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1759322,
@@ -2311,13 +3597,84 @@
       "careerStats": [
         {
           "season": "2026/27",
-          "club": "Sporting",
+          "club": "Sporting [B]",
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Gil Vicente",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Gil Vicente [S23]",
+          "matches": 17,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Gil Vicente",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Gil Vicente [S23]",
+          "matches": 7,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Gil Vicente [Jun.A S19]",
+          "matches": 31,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Estoril Praia [Jun.A S19]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2023/24",
+          "club": "Estoril Praia [Jun.B S17]",
+          "matches": 34,
+          "goals": 8,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Estoril Praia",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Estoril Praia [Jun.B S17 B]",
+          "matches": 25,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Sacavenense [Jun.C S15]",
+          "matches": 24,
+          "goals": 3,
+          "assists": 3
         }
       ],
-      "dateOfBirth": "2007-12-06T00:00:00.000Z"
+      "dateOfBirth": "2007-12-06T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 899701,
@@ -2455,9 +3812,80 @@
           "matches": 8,
           "goals": 2,
           "assists": 2
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 22,
+          "goals": 6,
+          "assists": 3
+        },
+        {
+          "season": "2025/26",
+          "club": "Panathinaikos",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Panathinaikos",
+          "matches": 42,
+          "goals": 11,
+          "assists": 2
+        },
+        {
+          "season": "2023/24",
+          "club": "Panathinaikos",
+          "matches": 44,
+          "goals": 23,
+          "assists": 10
+        },
+        {
+          "season": "2022/23",
+          "club": "Panathinaikos",
+          "matches": 42,
+          "goals": 7,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Panathinaikos",
+          "matches": 33,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2020/21",
+          "club": "Panathinaikos",
+          "matches": 24,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Levadiakos FC",
+          "matches": 20,
+          "goals": 5,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Levadiakos FC",
+          "matches": 20,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Levadiakos FC",
+          "matches": 9,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2000-01-10T00:00:00.000Z"
+      "dateOfBirth": "2000-01-10T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1525416,
@@ -2565,7 +3993,8 @@
           "assists": 0
         }
       ],
-      "dateOfBirth": "2005-04-03T00:00:00.000Z"
+      "dateOfBirth": "2005-04-03T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1088753,
@@ -2707,9 +4136,45 @@
           "matches": 9,
           "goals": 2,
           "assists": 3
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 47,
+          "goals": 8,
+          "assists": 4
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 48,
+          "goals": 7,
+          "assists": 3
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 41,
+          "goals": 6,
+          "assists": 5
+        },
+        {
+          "season": "2022/23",
+          "club": "Marítimo",
+          "matches": 11,
+          "goals": 1,
+          "assists": 1
+        },
+        {
+          "season": "2022/23",
+          "club": "Marítimo [B]",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2001-01-26T00:00:00.000Z"
+      "dateOfBirth": "2001-01-26T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 554283,
@@ -2851,9 +4316,94 @@
           "matches": 0,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 10,
+          "goals": 1,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 50,
+          "goals": 6,
+          "assists": 16
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting",
+          "matches": 49,
+          "goals": 9,
+          "assists": 8
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting",
+          "matches": 50,
+          "goals": 10,
+          "assists": 7
+        },
+        {
+          "season": "2020/21",
+          "club": "Sporting",
+          "matches": 37,
+          "goals": 8,
+          "assists": 10
+        },
+        {
+          "season": "2019/20",
+          "club": "Rio Ave",
+          "matches": 38,
+          "goals": 5,
+          "assists": 6
+        },
+        {
+          "season": "2018/19",
+          "club": "Rio Ave",
+          "matches": 8,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2018/19",
+          "club": "Rio Ave [B]",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Rio Ave",
+          "matches": 32,
+          "goals": 2,
+          "assists": 3
+        },
+        {
+          "season": "2016/17",
+          "club": "Vitória FC (E) [Benfica]",
+          "matches": 32,
+          "goals": 0,
+          "assists": 2
         }
       ],
-      "dateOfBirth": "1995-02-13T00:00:00.000Z"
+      "dateOfBirth": "1995-02-13T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1070776,
@@ -2975,9 +4525,66 @@
           "matches": 9,
           "goals": 2,
           "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "SC Braga",
+          "matches": 47,
+          "goals": 23,
+          "assists": 8
+        },
+        {
+          "season": "2024/25",
+          "club": "SC Braga",
+          "matches": 30,
+          "goals": 8,
+          "assists": 8
+        },
+        {
+          "season": "2023/24",
+          "club": "SC Braga",
+          "matches": 49,
+          "goals": 8,
+          "assists": 10
+        },
+        {
+          "season": "2022/23",
+          "club": "Schalke 04",
+          "matches": 23,
+          "goals": 2,
+          "assists": 6
+        },
+        {
+          "season": "2021/22",
+          "club": "Schalke 04 (E) [Eintracht Frankfurt]",
+          "matches": 32,
+          "goals": 7,
+          "assists": 5
+        },
+        {
+          "season": "2020/21",
+          "club": "FC St. Pauli (E) [Eintracht Frankfurt]",
+          "matches": 35,
+          "goals": 6,
+          "assists": 5
+        },
+        {
+          "season": "2019/20",
+          "club": "Korona Kielce (E) [Eintracht Frankfurt]",
+          "matches": 9,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Korona Kielce (E) [B] [Eintracht Frankfurt]",
+          "matches": 10,
+          "goals": 3,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "1999-08-12T00:00:00.000Z"
+      "dateOfBirth": "1999-08-12T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1526704,
@@ -3091,13 +4698,70 @@
       "careerStats": [
         {
           "season": "2026/27",
-          "club": "Sporting",
+          "club": "Sporting (E) [Chelsea]",
           "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Chelsea",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Chelsea [S21]",
+          "matches": 22,
+          "goals": 7,
+          "assists": 4
+        },
+        {
+          "season": "2025/26",
+          "club": "Chelsea [Jun.A S19]",
+          "matches": 8,
+          "goals": 5,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Crystal Palace [S21]",
+          "matches": 15,
+          "goals": 1,
+          "assists": 2
+        },
+        {
+          "season": "2024/25",
+          "club": "Crystal Palace [Jun.A S18]",
+          "matches": 12,
+          "goals": 12,
+          "assists": 1
+        },
+        {
+          "season": "2023/24",
+          "club": "Crystal Palace [S21]",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Crystal Palace [Jun.A S18]",
+          "matches": 22,
+          "goals": 15,
+          "assists": 4
+        },
+        {
+          "season": "2022/23",
+          "club": "Crystal Palace [Jun.A S18]",
+          "matches": 1,
           "goals": 0,
           "assists": 0
         }
       ],
-      "dateOfBirth": "2007-06-30T00:00:00.000Z"
+      "dateOfBirth": "2007-06-30T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1458757,
@@ -3183,9 +4847,31 @@
           "matches": 8,
           "goals": 0,
           "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 19,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "West Ham",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "West Ham",
+          "matches": 13,
+          "goals": 0,
+          "assists": 0
         }
       ],
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
+      "dateOfBirth": "2006-02-09T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 1691190,
@@ -3295,9 +4981,31 @@
           "matches": 8,
           "goals": 3,
           "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 7,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 24,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 21,
+          "goals": 5,
+          "assists": 1
         }
       ],
-      "dateOfBirth": "2007-05-30T00:00:00.000Z"
+      "dateOfBirth": "2007-05-30T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     },
     {
       "fotmob_id": 792303,
@@ -3459,9 +5167,101 @@
           "matches": 8,
           "goals": 7,
           "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 53,
+          "goals": 38,
+          "assists": 7
+        },
+        {
+          "season": "2024/25",
+          "club": "Almería",
+          "matches": 43,
+          "goals": 31,
+          "assists": 8
+        },
+        {
+          "season": "2023/24",
+          "club": "Almería",
+          "matches": 15,
+          "goals": 6,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Almería (E) [Marseille]",
+          "matches": 21,
+          "goals": 4,
+          "assists": 5
+        },
+        {
+          "season": "2022/23",
+          "club": "Marseille",
+          "matches": 11,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2021/22",
+          "club": "Granada",
+          "matches": 38,
+          "goals": 8,
+          "assists": 5
+        },
+        {
+          "season": "2020/21",
+          "club": "Granada",
+          "matches": 37,
+          "goals": 7,
+          "assists": 1
+        },
+        {
+          "season": "2019/20",
+          "club": "Real Zaragoza (E) [Watford]",
+          "matches": 39,
+          "goals": 19,
+          "assists": 4
+        },
+        {
+          "season": "2018/19",
+          "club": "Nàstic (E) [Watford]",
+          "matches": 37,
+          "goals": 7,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Valladolid (E) [B] [Watford]",
+          "matches": 34,
+          "goals": 11,
+          "assists": 0
+        },
+        {
+          "season": "2016/17",
+          "club": "Recreativo Granada (E) [B] [Itagüí Leones]",
+          "matches": 35,
+          "goals": 5,
+          "assists": 0
+        },
+        {
+          "season": "2015/16",
+          "club": "Granada (E) [Jun.A S19] [Itagüí Leones]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2015",
+          "club": "Leones FC [S20]",
+          "matches": null,
+          "goals": null,
+          "assists": null
         }
       ],
-      "dateOfBirth": "1997-12-02T00:00:00.000Z"
+      "dateOfBirth": "1997-12-02T00:00:00.000Z",
+      "zerozero_history_source": "ZeroZero"
     }
   ],
   "source": "FotMob"
