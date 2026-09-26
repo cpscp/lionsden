@@ -1052,7 +1052,7 @@ def fetch_fotmob_core():
         f for f in fixtures
         if f["date"] <= now
         and f["goals"]["home"] is not None
-        and "friendly" not in zz_norm(f.get("competition",{}).get("name"))
+        and "friendli" not in zz_norm(f.get("competition",{}).get("name"))
         and "amig" not in zz_norm(f.get("competition",{}).get("name"))
     ]
     team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,
