@@ -9,19 +9,10 @@
 <title>Lion's Den · Sporting CP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script><script>
-(async()=>{try{
- const r=await fetch('./assets/CustomDigits.b64',{cache:'force-cache'});
- const b64=(await r.text()).trim();
- const bin=atob(b64), bytes=new Uint8Array(bin.length);
- for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
- const face=new FontFace('CustomDigits',bytes.buffer);
- await face.load(); document.fonts.add(face);
-}catch(e){console.warn('CustomDigits font unavailable',e)}})();
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-.jersey-number{font-family:'CustomDigits',sans-serif;font-variant-numeric:normal;font-feature-settings:normal}
+.jersey-number,.pitch-player-dot,.shirt-number{font-family:'Jersey 10',sans-serif;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -894,7 +885,7 @@ function shirtBadge(number){
       <path d="M21 10l-12 8 6 12 6-3v25h22V27l6 3 6-12-12-8c-2 5-5 8-11 8s-9-3-11-8Z"/>
       <path d="M26 10c1 4 3 6 6 6s5-2 6-6"/>
     </svg>
-    <span class="relative z-10 text-xl font-bold">${esc(number)}</span>
+    <span class="shirt-number relative z-10 text-xl font-normal">${esc(number)}</span>
   </div>`:'';
 }
 function careerRows(p){
