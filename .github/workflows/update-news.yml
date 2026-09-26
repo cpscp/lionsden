@@ -46,5 +46,9 @@ jobs:
           git commit -m 'noticias: atualização automática'
           git reset --hard HEAD
           git fetch origin main
-          git rebase origin/main
+          if ! git rebase origin/main; then
+            git checkout --theirs -- data/news.json data/status.json
+            git add data/news.json data/status.json
+            GIT_EDITOR=true git rebase --continue
+          fi
           git push origin HEAD:main
