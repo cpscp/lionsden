@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T15:21:42.305322+00:00",
+  "_updated_at": "2026-09-26T15:26:21.341422+00:00",
   "items": [
     {
       "title": "Futebol Feminino Micael Sequeira: \"Vamos a Braga para ganhar\" 15 minutos",
@@ -110,7 +110,7 @@
       "title": "AO VIVO: FC Porto-Sporting na Supertaça de basquetebol - Maisfutebol",
       "url": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
       "source": "Maisfutebol",
-      "published": "Sat, 26 Sep 2026 14:04:00 GMT",
+      "published": "Sat, 26 Sep 2026 14:19:00 GMT",
       "image": "https://img.iol.pt/image/id/6a1c7221d34e28842c84ab5c/600",
       "image_source": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
       "description": "Boa tarde! Junte-se ao Maisfutebol para acompanhar a Supertaça de basquetebol, entre FC Porto e Sporting, em Albufeira."
@@ -143,6 +143,15 @@
       "description": "Protocolo assinado com o Sporting, de cooperação na formação, é não mais do que a oficialização de uma ideia já apalavrada. Internacional não esquece as raízes"
     },
     {
+      "title": "Definido o estádio da final four da Taça da Liga - Sport TV",
+      "url": "https://www.sporttv.pt/noticias/803524/eis-o-local-dos-quartos-de-final-da-taca-da-liga",
+      "source": "Sport TV",
+      "published": "Sat, 26 Sep 2026 03:57:00 GMT",
+      "image": "https://www.sporttv.pt/redacao/images/Est%C3%A1dioMunicipalLeiria.webp?v=1785447283",
+      "image_source": "https://www.sporttv.pt/noticias/803524/eis-o-local-dos-quartos-de-final-da-taca-da-liga",
+      "description": "O Estádio Municipal Dr. Magalhães Pessoa, em Leiria, vai acolher novamente a final four da Taça da Liga."
+    },
+    {
       "title": "Flop no Sporting que passou por depressão. O que é feito de Hildebrand? - Notícias ao Minuto",
       "url": "https://www.noticiasaominuto.com/desporto/3057488/flop-no-sporting-que-passou-por-depressao-o-que-e-feito-de-hildebrand",
       "source": "Notícias ao Minuto",
@@ -167,20 +176,11 @@
       "description": "Vladyslav Voytso e Francisco Amarante na antecâmara do primeiro jogo oficial da temporada 2026/27"
     },
     {
-      "title": "Jesse Derry marca e assiste na vitória da Inglaterra - Sport TV",
-      "url": "https://www.sporttv.pt/noticias/802735/jesse-derry-marca-e-assiste-na-vitoria-da-inglaterra",
-      "source": "Sport TV",
-      "published": "Fri, 25 Sep 2026 08:11:00 GMT",
-      "image": "https://www.sporttv.pt/redacao/images/jesse%20derry_Inglaterra.webp?v=1790356189",
-      "image_source": "https://www.sporttv.pt/noticias/802735/jesse-derry-marca-e-assiste-na-vitoria-da-inglaterra",
-      "description": "Extremos dos 'leões' está ao serviço dos sub-20 britânicos"
-    },
-    {
       "title": "Dérbi em Alvalade - FPF",
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 14:55:04 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260364941863405",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260367740882571",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "description": "Sporting CP e SL Benfica defrontam-se domingo na terceira jornada"
     },
@@ -204,7 +204,7 @@
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 20:14:58 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260364980824382",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260367775932700",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "description": "SC Braga recebe Sporting CP este domingo"
     },
