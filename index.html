@@ -91,7 +91,7 @@
 .game-card-score span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
 .game-card-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:13px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07);font-size:9px;color:var(--muted)}
 .game-card-venue{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.game-card-tv{white-space:nowrap}
+
 .game-card-action{margin-top:11px;font-size:9px;color:#9ab0a5;text-align:right}
 .games-empty{padding:28px 16px;text-align:center}
 .game-modal-head{display:grid;grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr);align-items:start;gap:10px;text-align:center}
@@ -508,13 +508,6 @@ function stadiumPhotoUrl(venueName){
   ['luz','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20da%20Luz.jpg']
  ];
  return map.find(([key])=>n.includes(key))?.[1]||'';
-}
-function fixtureTV(f){
- const v=f?.tv||f?.television||f?.broadcast||f?.transmission;
- if(!v)return '';
- if(Array.isArray(v))return v.map(x=>typeof x==='string'?x:x?.name||x?.channel||'').filter(Boolean).join(' · ');
- if(typeof v==='object')return v.name||v.channel||v.portugal||'';
- return String(v);
 }
 function fixtureDetail(id){return (D['match-details.json']?.fixtures||[]).find(x=>String(x.match_id)===String(id))||null;}
 function competitionLabel(name){
