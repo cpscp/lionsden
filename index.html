@@ -107,6 +107,28 @@
 .game-info-icon svg{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .game-info-copy{min-width:0}.game-info-label{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}.game-info-value{font-size:10px;color:#dce5e0;margin-top:2px;line-height:1.35}
 .game-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.game-tactical-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.game-tactical-team{min-width:0}.game-tactical-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.game-tactical-name{font-size:11px;font-weight:700}.game-tactical-formation{font-size:9px;color:var(--muted);letter-spacing:.1em}
+.lineup-pitch{position:relative;aspect-ratio:1/1.22;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#0c4b2d,#0a3c25)}
+.lineup-pitch:before{content:"";position:absolute;inset:7%;border:1px solid rgba(255,255,255,.18);border-radius:3px}
+.lineup-pitch:after{content:"";position:absolute;left:7%;right:7%;top:50%;height:1px;background:rgba(255,255,255,.16);box-shadow:0 0 0 0 rgba(255,255,255,0)}
+.pitch-circle{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;border:1px solid rgba(255,255,255,.15);border-radius:50%;transform:translate(-50%,-50%)}
+.pitch-player{position:absolute;transform:translate(-50%,-50%);width:58px;max-width:24%;display:flex;flex-direction:column;align-items:center;gap:2px;z-index:2}
+.pitch-player-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#eaf4ef;color:#07100b;border:2px solid rgba(8,165,110,.9);font-size:8px;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.pitch-player-name{font-size:7px;line-height:1.1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58px}
+.pitch-player-rating{font-size:7px;color:#b8d9ca}
+.game-bench-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.game-bench{font-size:9px;color:#c7d4cd}.game-bench-row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.game-bench-rating{color:#9fc6b3;font-weight:700}
+.game-sub-row{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px}
+.game-sub-minute{color:var(--muted);font-size:9px}
+.game-stats-row{display:grid;grid-template-columns:1fr 54px 54px;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:9px}
+.game-stats-row span:nth-child(2),.game-stats-row span:nth-child(3){text-align:center;font-weight:700}
+.game-stats-label{text-align:center;color:var(--muted);font-size:8px}
+.game-video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
+.game-video iframe{width:100%;height:100%;border:0}
+@media(max-width:420px){.game-tactical-grid,.game-bench-grid{grid-template-columns:1fr}.lineup-pitch{max-width:290px;margin:auto}}
 .game-lineup-team{min-width:0}.game-lineup-title{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:7px}
 .game-lineup-player{font-size:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .game-incident{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;font-size:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
@@ -199,7 +221,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','fbref-schedule.json','status.json','youtube.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -1003,18 +1025,71 @@ function gameInfoIcon(type){
  return '<span class="game-info-icon"><svg viewBox="0 0 20 20" aria-hidden="true">'+(icons[type]||icons.people)+'</svg></span>';
 }
 function gameInfoRow(icon,label,value){return '<div class="game-info-row">'+gameInfoIcon(icon)+'<div class="game-info-copy"><div class="game-info-label">'+esc(label)+'</div><div class="game-info-value">'+esc(value||'Por confirmar')+'</div></div></div>';}
+function matchVideoFor(id){return (D['match-videos.json']?.videos||[]).find(v=>String(v.match_id)===String(id))||null}
+function lineupPitchHtml(side, lineup, teamName){
+ if(!lineup?.players?.length)return '<div class="text-[10px] muted">Escalação não disponível.</div>';
+ const starters=lineup.players.filter(x=>x.player&&!x.substitute);
+ const formation=String(lineup.formation||'').trim();
+ const nums=formation.split('-').map(Number).filter(Boolean);
+ const buckets={G:[],D:[],M:[],F:[]};
+ starters.forEach(x=>{const p=String(x.position||x.player?.position||'').toUpperCase();const k=p.startsWith('G')?'G':p.startsWith('D')?'D':p.startsWith('M')?'M':p.startsWith('F')?'F':'';(buckets[k]||buckets.M).push(x)});
+ const remaining=starters.slice();
+ const rows=[{count:1,y:88,key:'G'}];
+ let ys=[68,48,28];
+ nums.forEach((n,i)=>rows.push({count:n,y:ys[i]||20,key:i===0?'D':i===1?'M':'F'}));
+ const placed=[];
+ const take=(key,count)=>{
+   let arr=buckets[key]||[];
+   let picked=arr.splice(0,count);
+   while(picked.length<count){
+     const fallback=remaining.find(x=>!placed.includes(x)&&!picked.includes(x));
+     if(!fallback)break;picked.push(fallback);
+   }
+   picked.forEach(x=>placed.push(x));return picked;
+ };
+ rows.forEach(row=>{row.players=take(row.key,row.count)});
+ const flat=rows.flatMap(row=>row.players.map((x,i)=>({x,y:row.y,index:i,count:row.players.length})));
+ return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'TÁTICA')+'</div></div><div class="lineup-pitch"><div class="pitch-circle"></div>'+flat.map(p=>{const x=100*(p.index+1)/(p.count+1);const name=p.x.player?.shortName||p.x.player?.name||'';const num=p.x.shirtNumber??p.x.jerseyNumber??'';const rating=p.x.statistics?.rating??p.x.rating;return '<div class="pitch-player" style="left:'+x+'%;top:'+p.y+'%"><div class="pitch-player-dot">'+esc(num||'•')+'</div><div class="pitch-player-name">'+esc(name)+'</div>'+(rating!=null?'<div class="pitch-player-rating">'+Number(rating).toFixed(1)+'</div>':'')+'</div>'}).join('')+'</div></div>';
+}
+function benchHtml(lineup){
+ const arr=(lineup?.players||[]).filter(x=>x.player&&x.substitute);
+ if(!arr.length)return '<div class="text-[10px] muted">Sem suplentes disponíveis.</div>';
+ return arr.map(x=>'<div class="game-bench-row"><span>'+esc(x.player?.name||'')+'</span>'+(x.statistics?.rating!=null?'<span class="game-bench-rating">'+Number(x.statistics.rating).toFixed(1)+'</span>':'')+'</div>').join('');
+}
+function matchStatsHtml(detail){
+ const all=(detail?.statistics?.statistics||[]).find(x=>x.period==='ALL')||((detail?.statistics?.statistics||[])[0]);
+ const items=(all?.groups||[]).flatMap(g=>g.statisticsItems||[]);
+ const wanted=['Ball possession','Expected goals','Total shots','Shots on target','Corner kicks','Fouls','Yellow cards','Big chances'];
+ const rows=wanted.map(name=>items.find(x=>String(x.name).toLowerCase()===name.toLowerCase())).filter(Boolean);
+ if(!rows.length)return '<div class="text-[10px] muted">Estatísticas detalhadas não disponíveis.</div>';
+ return rows.map(x=>'<div class="game-stats-row"><span>'+esc(x.home??'—')+'</span><span class="game-stats-label">'+esc(x.name)+'</span><span>'+esc(x.away??'—')+'</span></div>').join('');
+}
+function substitutionsHtml(detail){
+ const arr=(detail?.incidents?.incidents||[]).filter(x=>x.incidentType==='substitution');
+ if(!arr.length)return '<div class="text-[10px] muted">Sem substituições disponíveis.</div>';
+ return arr.slice().reverse().map(x=>'<div class="game-sub-row"><span class="game-sub-minute">'+esc(x.time!=null?x.time+"'" :'—')+'</span><span>'+esc(x.playerOut?.name||'—')+' → <b>'+esc(x.playerIn?.name||'—')+'</b></span></div>').join('');
+}
 function openGame(id){
  const base=findFixture(id);const detail=fixtureDetail(id);if(!base)return;
  let v=venueInfo({name:fixtureVenueName(base,detail)});const cached=(D['venues.json']?.venues)||{};
  if((v.lat==null||v.lon==null)&&base.home?.name&&base.away?.name){const opponent=base.home.name==='Sporting CP'?base.away.name:base.home.name;const hit=Object.entries(cached).find(([k])=>k.toLowerCase().includes(opponent.toLowerCase()));if(hit)v={...v,...hit[1],name:v.name||hit[1]?.name||hit[0]};}
-  const photo=stadiumPhotoUrl(v.name),homeUrl=teamLogoUrl(base.home),awayUrl=teamLogoUrl(base.away);
+ const photo=stadiumPhotoUrl(v.name),homeUrl=teamLogoUrl(base.home),awayUrl=teamLogoUrl(base.away);
  const score=base.goals?.home!=null?esc(base.goals.home)+' - '+esc(base.goals.away):'VS';
- const lineupHtml=detail?['home','away'].map(side=>{const arr=(detail.lineups?.[side]?.players||[]).filter(x=>x.player);const starters=arr.filter(x=>!x.substitute).slice(0,11);const bench=arr.filter(x=>x.substitute);return '<div class="game-lineup-team"><div class="game-lineup-title">'+(side==='home'?'Casa':'Fora')+' · 11 inicial</div>'+((starters.length?starters:[]).map((x,i)=>'<div class="game-lineup-player">'+(i+1)+'. '+esc(x.player?.name||'')+'</div>').join('')||'<div class="text-[10px] muted">Sem dados</div>')+(bench.length?'<div class="game-lineup-title mt-4">Suplentes · '+bench.length+'</div><div class="text-[10px] muted">'+bench.map(x=>esc(x.player?.name||'')).join(' · ')+'</div>':'')+'</div>'}).join(''):'<div class="text-[10px] muted">Escalações não disponíveis para este jogo.</div>';
+ const past=!isFuture(base);
+ const event=detail?.event||{};
+ const referee=base.referee||event.referee?.name||'Por confirmar';
+ const lineups=detail?.lineups;
+ const lineupSection=lineups?.home&&lineups?.away?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">11 inicial</div><div class="text-[9px] muted">SofaScore · classificação</div></div><div class="game-tactical-grid">'+lineupPitchHtml('home',lineups.home,base.home?.name)+' '+lineupPitchHtml('away',lineups.away,base.away?.name)+'</div><div class="game-bench-grid mt-4"><div><div class="game-lineup-title">'+esc(base.home?.name)+' · Banco</div><div class="game-bench">'+benchHtml(lineups.home)+'</div></div><div><div class="game-lineup-title">'+esc(base.away?.name)+' · Banco</div><div class="game-bench">'+benchHtml(lineups.away)+'</div></div></div></div>':'';
+ const statsSection=past&&detail?'<div class="card p-4 mt-3"><div class="font-semibold mb-3">Estatísticas</div>'+matchStatsHtml(detail)+'</div>':'';
+ const subsSection=past&&detail?'<div class="card p-4 mt-3"><div class="font-semibold mb-3">Substituições</div>'+substitutionsHtml(detail)+'</div>':'';
  const incidents=detail?.incidents?.incidents||[];
- const incidentHtml=incidents.length?incidents.slice().reverse().slice(0,24).map(x=>{const t=x.incidentType||'';let icon='<circle cx="10" cy="10" r="6"/>';if(t==='goal')icon='<circle cx="10" cy="10" r="6"/><path d="m7 10 2 2 4-5"/>';if(t==='substitution')icon='<path d="M5 7h9M11 4l3 3-3 3M15 13H6M9 10l-3 3 3 3"/>';if(t==='card')icon='<rect x="6" y="3" width="8" height="14" rx="1"/>';const who=x.player?.name||x.playerIn?.name||x.playerOut?.name||x.description||'';return '<div class="game-incident"><span class="game-incident-icon"><svg viewBox="0 0 20 20">'+icon+'</svg></span><span><b class="game-incident-time">'+esc(x.time?x.time+'\'':'')+'</b> '+esc(who)+'</span></div>'}).join(''):'<div class="text-[10px] muted">Sem incidentes disponíveis.</div>';
- const map=v.lat!=null&&v.lon!=null?'<iframe class="w-full h-48 rounded-xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox='+(v.lon-.015)+'%2C'+(v.lat-.01)+'%2C'+(v.lon+.015)+'%2C'+(v.lat+.01)+'&layer=mapnik&marker='+v.lat+'%2C'+v.lon+'"></iframe>':'';
- document.getElementById('modalTitle').textContent='Detalhes do jogo';
- document.getElementById('modalBody').innerHTML='<div class="text-center mb-5">'+(photo?'<div class="absolute inset-x-0 top-0 h-36 opacity-15 pointer-events-none" style="background:url(\''+esc(photo)+'\') center/cover"></div>':'')+'<div class="text-[10px] muted">'+esc(fmtDate(base.date))+' · '+esc(base.competition?.name||'')+'</div><div class="game-modal-head mt-4"><div class="game-modal-team">'+(homeUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(homeUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.home?.name)+'</div></div><div class="game-modal-score">'+score+'</div><div class="game-modal-team">'+(awayUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(awayUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.away?.name)+'</div></div></div></div><div class="card game-info-card">'+gameInfoRow('venue','Estádio',(v.name||'Por confirmar')+(v.city?' · '+v.city:''))+gameInfoRow('trophy','Competição',(base.competition?.name||'Por confirmar')+(base.competition?.round?' · '+base.competition.round:''))+gameInfoRow('whistle','Árbitro',base.referee||'Por confirmar')+(v.capacity?gameInfoRow('people','Capacidade',String(v.capacity)): '')+'</div><div class="card p-4 mt-3"><div class="font-semibold mb-3">11 inicial e banco</div><div class="game-detail-grid">'+lineupHtml+'</div></div><div class="card p-4 mt-3"><div class="font-semibold mb-3">Resumo do jogo</div>'+incidentHtml+'</div>'+(map?'<div class="card p-3 mt-3">'+map+'</div>':'')+'<div class="text-[9px] muted mt-3">Dados avançados apresentados quando disponíveis através da fonte do jogo.</div>';
+ const incidentHtml=incidents.length?incidents.slice().reverse().slice(0,30).map(x=>{const t=x.incidentType||'';let icon='<circle cx="10" cy="10" r="6"/>';if(t==='goal')icon='<circle cx="10" cy="10" r="6"/><path d="m7 10 2 2 4-5"/>';if(t==='substitution')icon='<path d="M5 7h9M11 4l3 3-3 3M15 13H6M9 10l-3 3 3 3"/>';if(t==='card')icon='<rect x="6" y="3" width="8" height="14" rx="1"/>';const who=x.player?.name||x.playerIn?.name||x.playerOut?.name||x.description||'';return '<div class="game-incident"><span class="game-incident-icon"><svg viewBox="0 0 20 20">'+icon+'</svg></span><span><b class="game-incident-time">'+esc(x.time!=null?x.time+"'" :'')+'</b> '+esc(who)+'</span></div>'}).join(''):'<div class="text-[10px] muted">Sem incidentes disponíveis.</div>';
+ const video=matchVideoFor(id);
+ const videoSection=video?'<div class="card p-3 mt-3"><div class="font-semibold px-1 mb-3">Resumo do jogo</div><div class="game-video"><iframe loading="lazy" src="'+esc(video.embed||('https://www.youtube.com/embed/'+video.video_id))+'" title="'+esc(video.title||'Resumo do jogo')+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="text-[9px] muted mt-2 px-1">'+esc(video.channel||'YouTube')+'</div></div>':'';
+ const timelineSection=past?'<div class="card p-4 mt-3"><div class="font-semibold mb-3">Resumo do jogo</div>'+incidentHtml+'</div>':'';
+ const map=v.lat!=null&&v.lon!=null?'<iframe class="w-full h-48 rounded-xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox='+(v.lon-.015)+'%2C'+(v.lat-.01)+'%2C'+(v.lon+.015)+'&layer=mapnik&marker='+v.lat+'%2C'+v.lon+'"></iframe>':'';
+ document.getElementById('modalTitle').textContent=past?'Detalhes do jogo':'Próximo jogo';
+ document.getElementById('modalBody').innerHTML='<div class="text-center mb-5">'+(photo?'<div class="absolute inset-x-0 top-0 h-36 opacity-15 pointer-events-none" style="background:url(\''+esc(photo)+'\') center/cover"></div>':'')+'<div class="text-[10px] muted">'+esc(fmtDate(base.date))+' · '+esc(base.competition?.name||'')+'</div><div class="game-modal-head mt-4"><div class="game-modal-team">'+(homeUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(homeUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.home?.name)+'</div></div><div class="game-modal-score">'+score+'</div><div class="game-modal-team">'+(awayUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(awayUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.away?.name)+'</div></div></div></div><div class="card game-info-card">'+gameInfoRow('venue','Estádio',(v.name||'Por confirmar')+(v.city?' · '+v.city:''))+gameInfoRow('trophy','Competição',(base.competition?.name||'Por confirmar')+(base.competition?.round?' · '+base.competition.round:''))+gameInfoRow('whistle','Árbitro',referee)+(event.attendance?gameInfoRow('people','Assistência',String(event.attendance)): '')+'</div>'+lineupSection+statsSection+subsSection+timelineSection+videoSection+(map?'<div class="card p-3 mt-3">'+map+'</div>':'')+'<div class="text-[9px] muted mt-3">Dados avançados apresentados quando disponíveis através da fonte do jogo.</div>';
  openModal();
 }
 
