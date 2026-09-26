@@ -100,15 +100,15 @@
     {
       "match_id": 5887643,
       "sofascore_id": null,
-      "video_id": "130983",
-      "title": "Liga Portugal Betclic (7ª Jornada): Resumo Sporting 2-2 Arouca",
-      "channel": "VSPORTS - Liga Portugal",
-      "url": "https://sporting.vsports.pt/vod/130983/m/30408/vsports/3307b7b85e481938a20871a1d3f32fe2",
-      "embed": "https://sporting.vsports.pt/vod/130983/m/30408/vsports/3307b7b85e481938a20871a1d3f32fe2",
-      "thumbnail": "",
+      "video_id": "prnO0lzEpdo",
+      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-2 Arouca",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
+      "embed": "https://www.youtube-nocookie.com/embed/prnO0lzEpdo?rel=0",
+      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg",
       "preferred_for_home": true,
       "published_text": "19/09/2026",
-      "provider": "vsports"
+      "provider": "youtube"
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
