@@ -533,9 +533,7 @@ function renderGames(){
  const el=document.getElementById('gamesList');
  if(!el)return;
  if(!list.length){el.innerHTML='<div class="card games-empty muted">Não há jogos nesta secção.</div>';return;}
- const groups=[];
- list.forEach(x=>{const key=x.competition?.name||'Outros';let g=groups.find(y=>y.key===key);if(!g){g={key,items:[]};groups.push(g)}g.items.push(x);});
- el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="games-grid">'+g.items.map(gameCard).join('')+'</div></div>').join('');
+ el.innerHTML='<div class="games-grid">'+list.map(gameCard).join('')+'</div>';
 }
 function stadiumSvg(){return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 16h16M4 16V9l3-2v9M8 16V7l3-2v11M12 16V9l4-2v9M2 9h16"/></svg>';}
 
