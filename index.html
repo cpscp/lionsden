@@ -1004,7 +1004,7 @@ function gameInfoIcon(type){
 function gameInfoRow(icon,label,value){return '<div class="game-info-row">'+gameInfoIcon(icon)+'<div class="game-info-copy"><div class="game-info-label">'+esc(label)+'</div><div class="game-info-value">'+esc(value||'Por confirmar')+'</div></div></div>';}
 function matchVideoFor(id){
   const direct=(D['match-videos.json']?.videos||[]).find(v=>String(v.match_id)===String(id));
-  if(direct?.video_id) return direct;
+  if(direct?.video_id && direct.provider!=='vsports') return direct;
   const f=(D['fixtures.json']?.fixtures||[]).find(x=>String(x.id)===String(id));
   if(!f) return null;
   const home=String(f.home?.name||'').toLowerCase(), away=String(f.away?.name||'').toLowerCase();
@@ -1012,7 +1012,7 @@ function matchVideoFor(id){
   const isHomeSporting=/sporting/.test(home);
   const candidates=(D['youtube.json']?.items||[]).filter(v=>{
     const t=String(v.title||'').toLowerCase();
-    const owner=String(v.channel||v.owner||'Sporting Clube de Portugal').toLowerCase();
+    const owner=String(v.channel||v.owner||'').toLowerCase();
     const officialSporting=/sporting clube de portugal|sporting cp/.test(owner);
     const officialVsports=/vsports/.test(owner)&&/liga portugal/.test(owner);
     const official=isHomeSporting?officialSporting:(officialVsports||officialSporting);
@@ -1024,9 +1024,9 @@ function matchVideoFor(id){
     const summary=/resumo|highlights/.test(t);
     return homeHit&&awayHit&&score&&summary;
   });
-  if(!candidates.length) return null;
+  if(!candidates.length) return direct?.video_id ? direct : null;
   const v=candidates[0];
-  return {match_id:id,video_id:v.id,title:v.title,channel:v.channel||v.owner||'Fonte oficial',url:v.url,embed:'https://www.youtube.com/embed/'+v.id,thumbnail:v.thumbnail||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'),published_text:v.published_text||v.published||''};
+  return {match_id:id,provider:'youtube',video_id:v.id,title:v.title,channel:v.channel||v.owner||'Fonte oficial',url:v.url||('https://www.youtube.com/watch?v='+v.id),embed:'https://www.youtube-nocookie.com/embed/'+v.id+'?rel=0',thumbnail:v.thumbnail||('https://i.ytimg.com/vi/'+v.id+'/hq720.jpg'),published_text:v.published_text||v.published||''};
 }
 function compactPlayerName(name){const n=String(name||'').trim();if(!n)return '';const p=n.split(/\s+/).filter(Boolean);if(p.length<=1)return n.length<=16?n:n.slice(0,15)+'…';const surname=p[p.length-1];const initial=p[0].charAt(0);return (initial+'. '+surname).length<=18?(initial+'. '+surname):(initial+'. '+surname.slice(0,14)+'…')}
 function lineupPitchHtml(side,lineup,teamName){if(!lineup?.players?.length)return '<div class="text-[10px] muted">Escalação não disponível.</div>';const starters=lineup.players.filter(x=>x.player&&!x.substitute).slice(0,11);const formation=String(lineup.formation||'').trim();const players=starters.map(p=>{const h=p.horizontalLayout||{},rawX=Number(h.x),rawY=Number(h.y),top=Number.isFinite(rawX)?8+(1-rawX)*84:50,left=Number.isFinite(rawY)?8+rawY*84:50,name=compactPlayerName(p.player?.shortName||p.player?.name||''),num=p.shirtNumber??p.jerseyNumber??'',rating=p.statistics?.rating??p.rating;return '<div class="pitch-player" style="left:'+left.toFixed(2)+'%;top:'+top.toFixed(2)+'%"><div class="pitch-player-dot">'+esc(num||'•')+'</div><div class="pitch-player-name">'+esc(name)+'</div>'+(rating!=null?'<div class="pitch-player-rating">'+Number(rating).toFixed(1)+'</div>':'')+'</div>'}).join('');return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'TÁTICA')+'</div></div><div class="lineup-pitch"><div class="pitch-circle"></div>'+players+'</div></div>'}
@@ -1069,8 +1069,15 @@ function openGame(id){try{
    return '<div class="game-incident">'+icon+'<b class="game-incident-time">'+esc(x.time!=null?x.time+"'" :'—')+'</b>'+body+'</div>';
  }).join(''):'<div class="text-[10px] muted">Sem incidentes disponíveis.</div>';
 ; const video=matchVideoFor(id);
- const videoSrc=video?.provider==='vsports' ? (video.embed||video.url||'') : (video?.video_id ? 'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.video_id)+'?rel=0' : '');
- const videoSection=video&&videoSrc?safeHtml(()=>'<div class="card game-video-card p-3 mt-3"><div class="font-semibold px-1 mb-3">Resumo em vídeo</div><div class="relative aspect-video rounded-[13px] overflow-hidden bg-black"><iframe class="absolute inset-0 w-full h-full" src="'+esc(videoSrc)+'" title="'+esc(video.title||'Resumo do jogo')+'" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><div class="game-video-source">'+esc(video.channel||'Fonte oficial')+' · reprodução dentro da app</div></div>',''):'';
+ const videoSrc=video?.video_id ? 'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.video_id)+'?rel=0' : '';
+ const videoSection=video?safeHtml(()=>{
+   const thumb=video.thumbnail||('https://i.ytimg.com/vi/'+encodeURIComponent(video.video_id||'')+'/hq720.jpg');
+   const watchUrl=video.url||('https://www.youtube.com/watch?v='+encodeURIComponent(video.video_id||''));
+   return '<div class="card game-video-card p-3 mt-3"><div class="font-semibold px-1 mb-3">Resumo em vídeo</div>'+
+     (videoSrc?'<div class="relative aspect-video rounded-[13px] overflow-hidden bg-black"><iframe class="absolute inset-0 w-full h-full" src="'+esc(videoSrc)+'" title="'+esc(video.title||'Resumo do jogo')+'" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>':'')+
+     '<a href="'+esc(watchUrl)+'" target="_blank" rel="noopener noreferrer" class="block relative aspect-video rounded-[13px] overflow-hidden bg-black mt-0 '+(videoSrc?'hidden':'')+'"><img src="'+esc(thumb)+'" class="w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-black/35"></div><div class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl">▶</span></div><div class="absolute bottom-3 left-3 right-3 text-white font-semibold text-sm">Ver no YouTube →</div></a>'+
+     '<div class="game-video-source">'+esc(video.channel||'Fonte oficial')+' · <a href="'+esc(watchUrl)+'" target="_blank" rel="noopener noreferrer" class="underline">Abrir no YouTube</a></div></div>';
+ },''):'';
 
  const timelineSection=past?safeHtml(()=>'<div class="card p-4 mt-3"><div class="font-semibold mb-3">Resumo do jogo</div>'+incidentHtml+'</div>',''):'';
  const map=v.lat!=null&&v.lon!=null?'<iframe class="w-full h-48 rounded-xl border-0" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox='+(v.lon-.015)+'%2C'+(v.lat-.01)+'%2C'+(v.lon+.015)+'&layer=mapnik&marker='+v.lat+'%2C'+v.lon+'"></iframe>':'';
