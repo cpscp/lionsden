@@ -569,34 +569,65 @@ function seasonStatsCard(season,st){
 function renderStats(){
   const current=D['team-stats.json']?.team||{};
   const hist=D['team-stats-history.json']?.seasons||{};
-  if(!hist['2026/27']) hist['2026/27']=current;
+  if(!hist['2026/27'])hist['2026/27']=current;
   const seasons=Object.keys(hist).filter(Boolean).sort((a,b)=>b.localeCompare(a));
   const el=document.getElementById('teamStats');if(!el)return;
-  if(!seasons.length){el.innerHTML='<div class="card p-5 muted">Sem estatísticas disponíveis.</div>';return;}
-  const defaultCompare=seasons.length>1?seasons.slice(0,2):[seasons[0],seasons[0]];
+  if(!seasons.length){el.innerHTML='<div class="card p-6 muted">Sem estatísticas disponíveis.</div>';return;}
+  const currentSeason='2026/27';
   el.innerHTML=`
-    <div class="card p-4">
-      <div class="mb-3">
-        <div class="font-semibold">Comparar épocas</div>
-        <div class="text-[10px] muted mt-1">Compara o desempenho do Sporting entre duas épocas.</div>
+    <div class="card p-5 sm:p-6">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <div class="font-semibold text-[18px]">Época 2026/27</div>
+          <div class="text-[10px] muted mt-1">Sporting CP · competições oficiais</div>
+        </div>
+        <div class="text-[9px] uppercase tracking-widest muted px-2 py-1 rounded-full border border-white/10">Atual</div>
       </div>
-      <div class="grid grid-cols-2 gap-2">
-        <select id="statsSeasonA" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[0]?'selected':''}>${esc(x)}</option>`).join('')}</select>
-        <select id="statsSeasonB" class="pill bg-transparent px-3 py-2 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===defaultCompare[1]?'selected':''}>${esc(x)}</option>`).join('')}</select>
+      <div class="flex justify-center py-2">${resultDonut(current)}</div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-7">
+        ${metric('Golos',current.goals||0)}
+        ${metric('Golos sofridos',current.goals_against||0)}
+        ${metric('Golos / jogo',Number(current.goals_per_match||0).toFixed(2))}
+        ${metric('Golos sofridos / jogo',Number(current.goals_against_per_match||0).toFixed(2))}
+        ${metric('Clean sheets',current.clean_sheets==null?'—':Number(current.clean_sheets))}
+        ${metric('Taxa de vitória',`${Number(current.win_rate||0).toFixed(1)}%`)}
       </div>
     </div>
-    <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
-    <div class="text-[9px] muted px-1">Fonte: histórico oficial do Sporting CP/ZeroZero e feed de jogos do Sporting. Não inclui seleções, pré-época ou amigáveis.</div>`;
+
+    <details id="seasonCompare" class="card overflow-hidden mt-5">
+      <summary class="list-none cursor-pointer p-5 sm:p-6 flex items-center justify-between gap-4">
+        <div>
+          <div class="font-semibold text-[16px]">Comparar épocas</div>
+          <div class="text-[10px] muted mt-1">Ver a evolução do Sporting entre diferentes épocas.</div>
+        </div>
+        <span class="text-lg muted transition-transform">＋</span>
+      </summary>
+      <div class="px-5 sm:px-6 pb-6 pt-1 border-t border-white/5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+          <div>
+            <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 1</label>
+            <select id="statsSeasonA" class="w-full pill bg-transparent px-3 py-3 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===currentSeason?'selected':''}>${esc(x)}</option>`).join('')}</select>
+          </div>
+          <div>
+            <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 2</label>
+            <select id="statsSeasonB" class="w-full pill bg-transparent px-3 py-3 text-[10px]">${seasons.map((x,i)=>`<option value="${esc(x)}" ${x===((seasons.find(y=>y!==currentSeason))||x)?'selected':''}>${esc(x)}</option>`).join('')}</select>
+          </div>
+        </div>
+        <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
+        <div class="text-[9px] muted mt-5">Fonte: histórico oficial do Sporting CP/ZeroZero e feed de jogos do Sporting. Não inclui seleções, pré-época ou amigáveis.</div>
+      </div>
+    </details>`;
+  const compare=document.getElementById('seasonCompare');
   const draw=()=>{
-    const A=document.getElementById('statsSeasonA')?.value||defaultCompare[0],B=document.getElementById('statsSeasonB')?.value||defaultCompare[1];
+    const A=document.getElementById('statsSeasonA')?.value||currentSeason;
+    const B=document.getElementById('statsSeasonB')?.value||(seasons.find(y=>y!==currentSeason)||currentSeason);
     const box=document.getElementById('statsComparison');if(!box)return;
     box.innerHTML=seasonStatsCard(A,hist[A]||{})+`<div>${A===B?'':seasonStatsCard(B,hist[B]||{})}</div>`;
-    if(A===B) box.className='grid grid-cols-1';
-    else box.className='grid grid-cols-1 lg:grid-cols-2 gap-3';
+    box.className=A===B?'grid grid-cols-1 gap-5':'grid grid-cols-1 lg:grid-cols-2 gap-5';
   };
-  document.getElementById('statsSeasonA').onchange=draw;
-  document.getElementById('statsSeasonB').onchange=draw;
-  draw();
+  compare?.addEventListener('toggle',()=>{if(compare.open)draw();});
+  document.getElementById('statsSeasonA')?.addEventListener('change',draw);
+  document.getElementById('statsSeasonB')?.addEventListener('change',draw);
 }
 function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
