@@ -2553,6 +2553,14 @@ def fetch_match_summary_videos():
                 f"Sporting CP {hg}-{ag} {away} resumo",
             ]
 
+        # Preserve an explicitly configured official VSPORTS player. YouTube may
+        # be searchable, but rights holders can block YouTube embeds; a direct
+        # VSPORTS player is therefore authoritative when already configured.
+        previous_match = previous_by_match.get(str(f.get("id")))
+        if previous_match and previous_match.get("provider") == "vsports" and previous_match.get("embed"):
+            videos.append(previous_match)
+            continue
+
         candidates = []
         for q in queries:
             batch = search_videos(q)
