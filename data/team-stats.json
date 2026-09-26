@@ -1,23 +1,19 @@
 {
-  "_updated_at": "2026-09-26T12:17:03.434310+00:00",
+  "_updated_at": "2026-09-26T12:25:30.820697+00:00",
   "season": "2026/27",
   "team": {
     "matches": 12,
-    "wins": 1,
+    "wins": 9,
     "draws": 3,
-    "losses": 8,
-    "goals": 15,
-    "goals_against": 33,
-    "clean_sheets": 1,
-    "assists": 12,
-    "shots": 0,
-    "shots_on_target": 0,
-    "possession_avg": null,
+    "losses": 0,
+    "goals": 37,
+    "goals_against": 11,
+    "clean_sheets": 4,
     "form": [
-      "L",
       "W",
-      "L",
-      "L",
+      "W",
+      "W",
+      "W",
       "D",
       "D"
     ],
@@ -25,11 +21,11 @@
       {
         "date": "2026-08-22",
         "competition": "Liga Portugal",
-        "venue": "Fora",
-        "result": "L",
-        "gf": 1,
-        "ga": 3,
-        "opponent": "Sporting CP"
+        "venue": "Casa",
+        "result": "W",
+        "gf": 3,
+        "ga": 1,
+        "opponent": "Alverca"
       },
       {
         "date": "2026-08-28",
@@ -43,20 +39,20 @@
       {
         "date": "2026-09-05",
         "competition": "Liga Portugal",
-        "venue": "Fora",
-        "result": "L",
-        "gf": 0,
-        "ga": 2,
-        "opponent": "Sporting CP"
+        "venue": "Casa",
+        "result": "W",
+        "gf": 2,
+        "ga": 0,
+        "opponent": "Nacional"
       },
       {
         "date": "2026-09-09",
         "competition": "Champions League",
-        "venue": "Fora",
-        "result": "L",
-        "gf": 1,
-        "ga": 3,
-        "opponent": "Sporting CP"
+        "venue": "Casa",
+        "result": "W",
+        "gf": 3,
+        "ga": 1,
+        "opponent": "Galatasaray"
       },
       {
         "date": "2026-09-13",
@@ -70,13 +66,17 @@
       {
         "date": "2026-09-19",
         "competition": "Liga Portugal",
-        "venue": "Fora",
+        "venue": "Casa",
         "result": "D",
         "gf": 2,
         "ga": 2,
-        "opponent": "Sporting CP"
+        "opponent": "Arouca"
       }
-    ]
+    ],
+    "points": 30,
+    "win_rate": 75.0,
+    "goals_per_match": 3.08,
+    "goals_against_per_match": 0.92
   },
-  "source": "Sofascore"
+  "source": "Sporting CP fixture feed"
 }

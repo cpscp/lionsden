@@ -1,0 +1,84 @@
+{
+  "_updated_at": "2026-09-26T12:25:31.042494+00:00",
+  "seasons": {
+    "2026/27": {
+      "matches": 12,
+      "wins": 9,
+      "draws": 3,
+      "losses": 0,
+      "goals": 37,
+      "goals_against": 11,
+      "clean_sheets": 4,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "D",
+        "D"
+      ],
+      "recent_matches": [
+        {
+          "date": "2026-08-22",
+          "competition": "Liga Portugal",
+          "venue": "Casa",
+          "result": "W",
+          "gf": 3,
+          "ga": 1,
+          "opponent": "Alverca"
+        },
+        {
+          "date": "2026-08-28",
+          "competition": "Liga Portugal",
+          "venue": "Fora",
+          "result": "W",
+          "gf": 4,
+          "ga": 0,
+          "opponent": "Rio Ave"
+        },
+        {
+          "date": "2026-09-05",
+          "competition": "Liga Portugal",
+          "venue": "Casa",
+          "result": "W",
+          "gf": 2,
+          "ga": 0,
+          "opponent": "Nacional"
+        },
+        {
+          "date": "2026-09-09",
+          "competition": "Champions League",
+          "venue": "Casa",
+          "result": "W",
+          "gf": 3,
+          "ga": 1,
+          "opponent": "Galatasaray"
+        },
+        {
+          "date": "2026-09-13",
+          "competition": "Liga Portugal",
+          "venue": "Fora",
+          "result": "D",
+          "gf": 1,
+          "ga": 1,
+          "opponent": "Famalicão"
+        },
+        {
+          "date": "2026-09-19",
+          "competition": "Liga Portugal",
+          "venue": "Casa",
+          "result": "D",
+          "gf": 2,
+          "ga": 2,
+          "opponent": "Arouca"
+        }
+      ],
+      "points": 30,
+      "win_rate": 75.0,
+      "goals_per_match": 3.08,
+      "goals_against_per_match": 0.92
+    }
+  },
+  "source": "FBref + Sporting CP fixture feed",
+  "scope": "Sporting CP main team, all competitions, finished matches only"
+}
