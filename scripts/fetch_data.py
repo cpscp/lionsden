@@ -101,6 +101,19 @@ def clean(v):
 
 
 ZEROZERO_TEAM = "https://www.zerozero.pt/equipa/sporting"
+POSITION_FALLBACKS = {
+    "Rui Silva": "GK", "Kaique Pereira": "GK", "Diego Callai": "GK",
+    "Moncef Zekri": "DF", "Zeno Debast": "DF", "Georgios Vagiannidis": "DF",
+    "Maxi Araújo": "DF", "Iván Fresneda": "DF", "Gonçalo Inácio": "DF",
+    "Rodrigo Dias": "DF", "Ibrahima Ba": "DF", "Eduardo Quaresma": "DF",
+    "Sotiris Alexandropoulos": "MF", "Silas Andersen": "MF", "Sergi Altimira": "MF",
+    "João Simões": "MF", "Nestory Irankunda": "FW", "Pedro Lima": "FW",
+    "Salvador Blopa": "FW", "Issa Doumbia": "MF", "Délcio Aurélio": "FW",
+    "Rodrigo Rodrigues": "MF", "Fotis Ioannidis": "FW", "Rafael Nel": "FW",
+    "Geny Catamo": "MF", "Nuno Santos": "MF", "Rodrigo Zalazar": "MF",
+    "Jesse Derry": "FW", "Luís Guilherme": "FW", "Flávio Gonçalves": "MF",
+    "Luis Suárez": "FW",
+}
 ZEROZERO_URLS = {
     "Rui Silva": "https://www.zerozero.pt/jogador/rui-silva/275322",
     "Kaique Pereira": "https://www.zerozero.pt/jogador/kaique-pereira/721159",
@@ -280,6 +293,15 @@ def enrich_with_zerozero(players):
             if history:
                 player["zerozero_url"] = url
                 player["careerStats"] = history
+                # Keep the current-season career row synchronized with the
+                # same current-season/all-competitions stats shown on the card.
+                for current in player.get("careerStats", []):
+                    season_key = str(current.get("season") or "").replace("-", "/")
+                    if season_key in {"2026/2027", "2026/27"}:
+                        current["season"] = "2026/27"
+                        current["matches"] = player.get("stats", {}).get("matches", current.get("matches", 0))
+                        current["goals"] = player.get("stats", {}).get("goals", current.get("goals", 0))
+                        current["assists"] = player.get("stats", {}).get("assists", current.get("assists", 0))
                 # ZeroZero's team page is also authoritative for the
                 # Portuguese display name of the player's nationality/position.
                 page = session.get(url, timeout=30).text
@@ -694,7 +716,7 @@ def fetch_fotmob_core():
         player = {
             "fotmob_id": pid,
             "name": clean(m.get("name")),
-            "position": clean(m.get("rolePosition") or m.get("position")),
+            "position": clean(m.get("rolePosition") or m.get("position") or POSITION_FALLBACKS.get(clean(m.get("name")))),
             "nationality": clean(m.get("cname") or m.get("country")),
             "photo": f"https://images.fotmob.com/image_resources/playerimages/{pid}.png",
             "stats": {}
@@ -885,7 +907,7 @@ def fetch_fotmob_core():
         old_by_name = {normalize_player_name(p.get("name")).lower(): p for p in old_players if p.get("name")}
         for p in players:
             old = old_by_name.get(normalize_player_name(p.get("name")).lower(), {})
-            p["position"] = p.get("position") or old.get("position")
+            p["position"] = p.get("position") or old.get("position") or POSITION_FALLBACKS.get(p.get("name"), "")
             p["nationality"] = p.get("nationality") or old.get("nationality")
             p["dateOfBirth"] = p.get("dateOfBirth") or old.get("dateOfBirth")
             for field in ("shirtNumber","internationalCaps","career","careerStats","sofascore_id"):
