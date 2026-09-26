@@ -1546,16 +1546,26 @@ def fetch_sofascore_standings():
     })
     print(f"Sofascore: {len(rows)} standings rows written.")
 
-def build_team_stats_from_sofa():
-    """Build reliable Sporting CP team stats from the normalized fixture feed.
-    Only finished matches involving Sporting CP are counted; no national-team data.
+def is_official_sporting_competition(name):
+    """Return True only for official first-team competitions.
+    Pre-season, friendlies and exhibition trophies are excluded.
     """
+    n = zz_norm(name)
+    excluded = (
+        "friendly", "amig", "pre epoca", "pre-epoca",
+        "trofeu cinco violinos", "trofeio cinco violinos",
+        "trophy cinco violinos", "cinco violinos"
+    )
+    return not any(x in n for x in excluded)
+
+
+def build_team_stats_from_sofa():
+    """Build Sporting CP first-team stats from official completed matches only."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     finished = [
         f for f in fixtures
         if f.get("status", {}).get("short") == "finished"
-        and "friendly" not in zz_norm((f.get("competition") or {}).get("name"))
-        and "amig" not in zz_norm((f.get("competition") or {}).get("name"))
+        and is_official_sporting_competition((f.get("competition") or {}).get("name"))
     ]
     team_names = {"sporting cp", "sporting", "sporting clube de portugal"}
     team_ids = {3001, SPORTING_FOTMOB_ID, 9768}
@@ -1644,7 +1654,7 @@ def fetch_fbref_historical_team_stats():
     write_json("team-stats-history.json", {
         "seasons": ordered,
         "source": "ZeroZero (histórico oficial) + Sporting CP fixture feed",
-        "scope": "Sporting CP principal, competições oficiais, sem seleções, pré-época ou amigáveis"
+        "scope": "Sporting CP principal, primeira equipa, competições oficiais; sem seleções, pré-época ou amigáveis"
     })
     print(f"Historical team stats: {len(ordered)} seasons written.")
 
