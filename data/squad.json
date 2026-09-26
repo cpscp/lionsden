@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T10:06:20.698237+00:00",
+  "_updated_at": "2026-09-26T10:14:10.765326+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -127,6 +127,7 @@
           "club": "Portugal U21"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "1994-02-07T00:00:00.000Z"
     },
     {
@@ -199,6 +200,7 @@
           "club": "Brazil U20"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
@@ -275,6 +277,7 @@
           "club": "Sporting CP U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
@@ -330,6 +333,7 @@
           "club": "Morocco U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2008-09-20"
     },
     {
@@ -450,6 +454,7 @@
           "club": "Belgium U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
@@ -586,6 +591,7 @@
           "club": "Greece U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
@@ -726,6 +732,7 @@
           "club": "Uruguay U20"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
@@ -814,6 +821,7 @@
           "club": "Spain U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
@@ -902,6 +910,7 @@
           "club": "Portugal U21"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -950,6 +959,7 @@
           "club": "Sporting Clube de Portugal Under 21"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
@@ -1006,6 +1016,7 @@
           "club": "Valenciennes"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
@@ -1114,6 +1125,7 @@
           "club": "Portugal U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
@@ -1261,6 +1273,7 @@
           "club": "Greece U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2001-11-26T00:00:00.000Z"
     },
     {
@@ -1389,6 +1402,7 @@
           "club": "Denmark U16"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
@@ -1457,6 +1471,7 @@
           "club": "Granollers"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -1549,6 +1564,7 @@
           "club": "Portugal U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
@@ -1673,6 +1689,7 @@
           "club": "Australia U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -1757,6 +1774,7 @@
           "club": "Palmeiras U20"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
@@ -1841,6 +1859,7 @@
           "club": "Portugal Under 18"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
@@ -1913,6 +1932,7 @@
           "club": "Italy U21"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
@@ -1936,6 +1956,7 @@
           "club": "Sporting CP"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-06-20T00:00:00.000Z"
     },
     {
@@ -1991,6 +2012,7 @@
           "club": "Portugal U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-12-06T00:00:00.000Z"
     },
     {
@@ -2123,6 +2145,7 @@
           "club": "Greece U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
@@ -2223,6 +2246,7 @@
           "club": "Portugal U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
@@ -2359,6 +2383,7 @@
           "club": "Mozambique"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
@@ -2495,6 +2520,7 @@
           "club": "Portugal U19"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
@@ -2611,6 +2637,7 @@
           "club": "Uruguay U20"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
@@ -2723,6 +2750,7 @@
           "club": "England U17"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
@@ -2803,6 +2831,7 @@
           "club": "Brazil U20"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -2907,6 +2936,7 @@
           "club": "Portugal Under 18"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
@@ -3063,6 +3093,7 @@
           "club": "Colombia"
         }
       ],
+      "careerStats": [],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ],
