@@ -912,6 +912,16 @@ def fetch_fotmob_core():
             p["dateOfBirth"] = p.get("dateOfBirth") or old.get("dateOfBirth")
             for field in ("shirtNumber","internationalCaps","career","careerStats","sofascore_id"):
                 if not p.get(field) and old.get(field) not in (None,"",[]): p[field] = old[field]
+            # Keep the career table's current-season row synchronized with
+            # the exact all-competitions stats shown in the player card.
+            current_stats = p.get("stats") or {}
+            for row in p.get("careerStats") or []:
+                season_key = str(row.get("season") or "").replace("-", "/")
+                if season_key in {"2026/2027", "2026/27"}:
+                    row["season"] = "2026/27"
+                    row["matches"] = current_stats.get("matches", row.get("matches", 0))
+                    row["goals"] = current_stats.get("goals", row.get("goals", 0))
+                    row["assists"] = current_stats.get("assists", row.get("assists", 0))
         write_json("squad.json", {
             "team": "Sporting Clube de Portugal",
             "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
