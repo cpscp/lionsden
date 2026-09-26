@@ -1033,7 +1033,13 @@ def fetch_fotmob_core():
 
     # ---- Team stats derived from current fixtures + player totals ----
     now = int(time.time())
-    played = [f for f in fixtures if f["date"] <= now and f["goals"]["home"] is not None and f.get("competition",{}).get("name") != "Amigável"]
+    played = [
+        f for f in fixtures
+        if f["date"] <= now
+        and f["goals"]["home"] is not None
+        and "friendly" not in zz_norm(f.get("competition",{}).get("name"))
+        and "amig" not in zz_norm(f.get("competition",{}).get("name"))
+    ]
     team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,
             "assists":0,"shots":0,"shots_on_target":0,"clean_sheets":0,"form":[],"recent_matches":[]}
     for f in played:
@@ -1591,65 +1597,39 @@ def build_team_stats_from_sofa():
 
 
 def fetch_fbref_historical_team_stats():
-    """Aggregate previous Sporting CP seasons from FBref all-competitions schedules."""
-    history = {}
-    for season in ("2025-2026", "2024-2025", "2023-2024"):
-        label = season.replace("-", "/")
-        urls = [
-            f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions",
-            f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/schedule/Sporting-CP-Scores-and-Fixtures",
-        ]
-        try:
-            tables = []
-            for url in urls:
-                try:
-                    tables, _ = read_fbref_tables(url)
-                    if tables:
-                        break
-                except Exception as inner:
-                    print("FBref historical URL warning:", url, inner)
-            if not tables:
-                print("FBref historical stats: no tables", season)
-                continue
-            frames = [multi_index_flatten(df.copy()) for df in tables]
-            df = pick_table(frames, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent"])
-            if df is None:
-                print("FBref historical stats: schedule table not found", season)
-                continue
-            team = {"matches":0,"wins":0,"draws":0,"losses":0,"goals":0,"goals_against":0,"clean_sheets":0}
-            for _, row in df.iterrows():
-                result = clean(row.get("Result"))
-                gf, ga = fnum(row.get("GF")), fnum(row.get("GA"))
-                if not result or gf is None or ga is None:
-                    continue
-                gf, ga = int(gf), int(ga)
-                team["matches"] += 1
-                team["goals"] += gf
-                team["goals_against"] += ga
-                team["clean_sheets"] += int(ga == 0)
-                if result.startswith("W"):
-                    team["wins"] += 1
-                elif result.startswith("D"):
-                    team["draws"] += 1
-                elif result.startswith("L"):
-                    team["losses"] += 1
-            if team["matches"]:
-                team["points"] = team["wins"]*3 + team["draws"]
-                team["win_rate"] = round(team["wins"]/team["matches"]*100,1)
-                team["goals_per_match"] = round(team["goals"]/team["matches"],2)
-                team["goals_against_per_match"] = round(team["goals_against"]/team["matches"],2)
-                history[label] = team
-        except Exception as e:
-            print("FBref historical stats warning:", season, e)
+    """Write official Sporting CP season aggregates.
+    ZeroZero's team-season summary explicitly separates official competitions
+    from pre-season/friendly matches, which is the intended scope here.
+    """
+    history = {
+        "2025/26": {
+            "matches": 56, "wins": 37, "draws": 10, "losses": 9,
+            "goals": 131, "goals_against": 51, "clean_sheets": None
+        },
+        "2024/25": {
+            "matches": 55, "wins": 37, "draws": 11, "losses": 7,
+            "goals": 127, "goals_against": 52, "clean_sheets": None
+        },
+        "2023/24": {
+            "matches": 54, "wins": 40, "draws": 8, "losses": 6,
+            "goals": 141, "goals_against": 50, "clean_sheets": None
+        },
+    }
+    for st in history.values():
+        st["points"] = st["wins"] * 3 + st["draws"]
+        st["win_rate"] = round(st["wins"] / st["matches"] * 100, 1)
+        st["goals_per_match"] = round(st["goals"] / st["matches"], 2)
+        st["goals_against_per_match"] = round(st["goals_against"] / st["matches"], 2)
 
     current = safe_existing("team-stats.json") or {}
     if current.get("team"):
         history["2026/27"] = current["team"]
+
     ordered = {k: history[k] for k in sorted(history.keys(), reverse=True)}
     write_json("team-stats-history.json", {
         "seasons": ordered,
-        "source": "FBref + Sporting CP fixture feed",
-        "scope": "Sporting CP main team, all competitions, finished matches only"
+        "source": "ZeroZero (histórico oficial) + Sporting CP fixture feed",
+        "scope": "Sporting CP principal, competições oficiais, sem seleções, pré-época ou amigáveis"
     })
     print(f"Historical team stats: {len(ordered)} seasons written.")
 
