@@ -66,7 +66,7 @@
 .home-last-team .home-match-name{font-size:9px;min-height:22px;padding:0;max-width:100px}
 .home-last-teams{display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);align-items:start;gap:8px}
 .home-last-score{align-self:center;text-align:center;padding-top:14px}.home-last-score strong{font-size:19px;line-height:1}
-.games-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.games-grid .game-card{min-width:0}@media(max-width:520px){.games-grid{grid-template-columns:1fr}}.games-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .games-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:3px}
 .games-tab{border:0;background:transparent;color:var(--muted);padding:9px 10px;border-radius:10px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
 .games-tab.active{background:#10281c;color:#fff}
@@ -535,7 +535,7 @@ function renderGames(){
  if(!list.length){el.innerHTML='<div class="card games-empty muted">Não há jogos nesta secção.</div>';return;}
  const groups=[];
  list.forEach(x=>{const key=x.competition?.name||'Outros';let g=groups.find(y=>y.key===key);if(!g){g={key,items:[]};groups.push(g)}g.items.push(x);});
- el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="space-y-3">'+g.items.map(gameCard).join('')+'</div></div>').join('');
+ el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="games-grid">'+g.items.map(gameCard).join('')+'</div></div>').join('');
 }
 function stadiumSvg(){return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 16h16M4 16V9l3-2v9M8 16V7l3-2v11M12 16V9l4-2v9M2 9h16"/></svg>';}
 
