@@ -1530,7 +1530,12 @@ def build_team_stats_from_sofa():
     Only finished matches involving Sporting CP are counted; no national-team data.
     """
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
-    finished = [f for f in fixtures if f.get("status", {}).get("short") == "finished"]
+    finished = [
+        f for f in fixtures
+        if f.get("status", {}).get("short") == "finished"
+        and "friendly" not in zz_norm((f.get("competition") or {}).get("name"))
+        and "amig" not in zz_norm((f.get("competition") or {}).get("name"))
+    ]
     team_names = {"sporting cp", "sporting", "sporting clube de portugal"}
     team_ids = {3001, SPORTING_FOTMOB_ID, 9768}
 
