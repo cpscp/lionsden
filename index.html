@@ -76,7 +76,7 @@
 .game-card{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--surface);isolation:isolate}
 .game-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.34;z-index:-3;filter:saturate(.72)}
 .game-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,55,32,.70),rgba(6,20,13,.78) 72%);z-index:-2}
-.game-card.champions{background:linear-gradient(135deg,#071d46,#0b2b63)}.game-card.taca-portugal{background:linear-gradient(135deg,#54151b,#7a2028)}.game-card.taca-liga{background:linear-gradient(135deg,#082d52,#0d4776)}.game-card.league{background:linear-gradient(135deg,#073d25,#075b36)}
+.game-card.champions{background:linear-gradient(135deg,#071d46,#0b2b63)}.game-card.taca-portugal{background:linear-gradient(135deg,#54151b,#7a2028)}.game-card.taca-liga{background:linear-gradient(135deg,#164f7d,#2878ad)}.game-card.league{background:linear-gradient(135deg,#073d25,#075b36)}
 .game-card-content{position:relative;z-index:1;padding:14px}
 .game-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
 .game-card-comp{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#a6b8af}
@@ -535,9 +535,7 @@ function renderGames(){
  const el=document.getElementById('gamesList');
  if(!el)return;
  if(!list.length){el.innerHTML='<div class="card games-empty muted">Não há jogos nesta secção.</div>';return;}
- const groups=[];
- list.forEach(x=>{const key=x.competition?.name||'Outros';let g=groups.find(y=>y.key===key);if(!g){g={key,items:[]};groups.push(g)}g.items.push(x);});
- el.innerHTML=groups.map(g=>'<div><div class="games-section-label"><h3>'+esc(g.key)+'</h3><span class="games-count">'+g.items.length+' '+(g.items.length===1?'jogo':'jogos')+'</span></div><div class="games-grid">'+g.items.map(gameCard).join('')+'</div></div>').join('');
+ el.innerHTML='<div class="games-grid">'+list.map(gameCard).join('')+'</div>';
 }
 function stadiumSvg(){return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 16h16M4 16V9l3-2v9M8 16V7l3-2v11M12 16V9l4-2v9M2 9h16"/></svg>';}
 
