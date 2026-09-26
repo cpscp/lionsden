@@ -2380,6 +2380,7 @@ def geocode_missing_venues():
         write_json("venues.json", {"venues": venues, "source": "OpenStreetMap Nominatim"})
 
 
+# Historical team stats and competitive-only team metrics are generated for the PWA.
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
     errors = []
