@@ -484,6 +484,12 @@ function careerRows(p){
   if(!rows.some(r=>r.season===currentSeason) && current.matches!=null){
     rows.unshift({season:currentSeason,club:currentClub,matches:current.matches,goals:current.goals??0,assists:current.assists??0});
   }
+  // Every Sporting player must have a career row even when ZeroZero has not
+  // returned historical data yet. This row is built from the same Sporting-only
+  // season stats used by the player card and is replaced/enriched when history exists.
+  if(!rows.length && current.matches!=null){
+    rows=[{season:currentSeason,club:currentClub,matches:current.matches,goals:current.goals??0,assists:current.assists??0}];
+  }
   // Normalise the current Sporting naming so the career source and card use
   // one club label and never produce a duplicate blank row.
   rows=rows.map(r=>({...r,club:/^Sporting CP$/i.test(String(r.club||''))?'Sporting':r.club}));
