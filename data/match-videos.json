@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:50:28.359359+00:00",
+  "_updated_at": "2026-09-26T16:51:39.837404+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -42,7 +42,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=WmDjGUp2pwY",
       "embed": "https://www.youtube.com/embed/WmDjGUp2pwY",
-      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAC7VZj2qXHdB90Vkbw1YnzntE_bQ",
+      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLDeF-rdPpU-0KuouxWH1_Ce4Npmkg",
       "preferred_for_home": true
     },
     {
@@ -114,12 +114,12 @@
     {
       "match_id": 5887643,
       "sofascore_id": null,
-      "video_id": "prnO0lzEpdo",
-      "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
+      "video_id": "qLRYOUhoHZ4",
+      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
       "channel": "Sporting Clube de Portugal",
-      "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
-      "embed": "https://www.youtube.com/embed/prnO0lzEpdo",
-      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCb1V3zuekcCSl-PT-FW8bTWU2Yxw",
+      "url": "https://www.youtube.com/watch?v=qLRYOUhoHZ4",
+      "embed": "https://www.youtube.com/embed/qLRYOUhoHZ4",
+      "thumbnail": "https://i.ytimg.com/vi/qLRYOUhoHZ4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCene2tmR4E-O_2nv6_0D7e_sDcCw",
       "preferred_for_home": true
     }
   ],
