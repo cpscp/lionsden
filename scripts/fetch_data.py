@@ -178,46 +178,73 @@ def zerozero_player_index():
 
 
 def zerozero_player_history(url):
-    """Parse the football career history table from a ZeroZero player page."""
-    html = session.get(url, timeout=30).text
-    soup = BeautifulSoup(html, "html.parser")
+    """Parse ZeroZero career history, using an indexed-content fallback when direct access is blocked."""
+    html = ""
+    text_content = ""
+    try:
+        r = session.get(url, timeout=30)
+        if r.ok and len(r.text) > 5000:
+            html = r.text
+        else:
+            proxy = "https://r.jina.ai/http://" + url.split("://", 1)[-1]
+            pr = session.get(proxy, timeout=45)
+            pr.raise_for_status()
+            text_content = pr.text
+    except Exception as e:
+        try:
+            proxy = "https://r.jina.ai/http://" + url.split("://", 1)[-1]
+            pr = session.get(proxy, timeout=45)
+            pr.raise_for_status()
+            text_content = pr.text
+        except Exception as e2:
+            print("ZeroZero fetch warning:", url, e, e2)
+            return []
+
     result = []
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for table in soup.find_all("table"):
+            rows = table.find_all("tr")
+            if not rows: continue
+            headers = [zz_norm(x.get_text(" ", strip=True)) for x in rows[0].find_all(["th","td"])]
+            if not {"epoca","equipa","j","g","ast"}.issubset(set(headers)): continue
+            idx = {h:i for i,h in enumerate(headers)}
+            season = ""
+            for tr in rows[1:]:
+                cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["th","td"])]
+                if not cells: continue
+                def cell(k):
+                    i = idx.get(k)
+                    return cells[i] if i is not None and i < len(cells) else ""
+                if cell("epoca"): season = cell("epoca")
+                if season and cell("equipa"):
+                    result.append({"season":season.replace("-","/"),"club":cell("equipa"),"matches":zz_number(cell("j")),"goals":zz_number(cell("g")),"assists":zz_number(cell("ast"))})
+            if result: break
+        return result
 
-    for table in soup.find_all("table"):
-        rows = table.find_all("tr")
-        if not rows:
+    lines = text_content.splitlines()
+    in_history = False
+    season = ""
+    for line in lines:
+        t = line.strip()
+        n = zz_norm(t)
+        if "epoca" in n and "equipa" in n and "| j |" in n:
+            in_history = True
             continue
-        headers = [zz_norm(x.get_text(" ", strip=True)) for x in rows[0].find_all(["th", "td"])]
-        if not {"epoca", "equipa", "j", "g", "ast"}.issubset(set(headers)):
+        if not in_history: continue
+        if not t or t.startswith("EDIÇÕES") or t.startswith("Transferências") or t.startswith("Futsal"):
+            if result: break
             continue
-
-        idx = {h:i for i,h in enumerate(headers)}
-        season = ""
-        for tr in rows[1:]:
-            cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["th", "td"])]
-            if not cells:
-                continue
-            def cell(key):
-                i = idx.get(key)
-                return cells[i] if i is not None and i < len(cells) else ""
-            if cell("epoca"):
-                season = cell("epoca")
-            club = cell("equipa")
-            if not season or not club:
-                continue
-            # The football table is the one containing AST; ignore futsal/other tables.
-            result.append({
-                "season": season.replace("-", "/"),
-                "club": club,
-                "matches": zz_number(cell("j")),
-                "goals": zz_number(cell("g")),
-                "assists": zz_number(cell("ast")),
-            })
-        if result:
-            break
+        if "|" not in t:
+            if result: break
+            continue
+        cells = [clean(x) for x in t.strip("|").split("|")]
+        if len(cells) < 5: continue
+        if cells[0]: season = cells[0]
+        club = cells[1]
+        if season and club and zz_norm(cells[0]) != "epoca":
+            result.append({"season":season.replace("-","/"),"club":club,"matches":zz_number(cells[2]),"goals":zz_number(cells[3]),"assists":zz_number(cells[4])})
     return result
-
-
 def enrich_with_zerozero(players):
     """
     Enrich the Sporting squad with ZeroZero's historical J/G/AST data.
