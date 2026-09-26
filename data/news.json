@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T14:16:55.141455+00:00",
+  "_updated_at": "2026-09-26T14:23:35.390406+00:00",
   "items": [
     {
       "title": "Futsal Nuno Dias: “É um privilégio viver um dérbi” 14 minutos",
@@ -176,9 +176,9 @@
       "published": "Fri, 25 Sep 2026 11:10:00 GMT"
     },
     {
-      "title": "FC Porto – Sporting CP: XLI Supertaça Mário Saldanha em antevisão - Federação Portuguesa de Basquetebol",
+      "title": "FC Porto – Sporting CP: XLI Supertaça Mário Saldanha em antevisão - fpb.pt",
       "url": "https://www.fpb.pt/noticia/fc-porto-sporting-cp-xli-supertaca-mario-saldanha-em-antevisao/",
-      "source": "Federação Portuguesa de Basquetebol",
+      "source": "fpb.pt",
       "published": "Thu, 24 Sep 2026 15:11:50 GMT",
       "image": "https://www.fpb.pt/wp-content/uploads/2026/09/antevisao-supertaca-CAPA-1024x478.png",
       "image_source": "https://www.fpb.pt/noticia/fc-porto-sporting-cp-xli-supertaca-mario-saldanha-em-antevisao/",
@@ -198,7 +198,7 @@
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 14:55:04 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260325558074863",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257569&v=639260330081907024",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57959",
       "description": "Sporting CP e SL Benfica defrontam-se domingo na terceira jornada"
     },
@@ -218,20 +218,11 @@
       "published": "Tue, 22 Sep 2026 20:20:21 GMT"
     },
     {
-      "title": "Sporting CP B VS AFS - vsports.pt",
-      "url": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
-      "source": "vsports.pt",
-      "published": "Sat, 26 Sep 2026 00:30:45 GMT",
-      "image": "https://www.vsports.pt/images/thumb14_25.png",
-      "image_source": "https://vsports.pt/liga/jogo/ii-liga/sporting-cp-b-afs/30816",
-      "description": "Sporting CP B VS AFS - Destaques - Veja o Resumo do Jogo, Golos, Casos e outros lances assim como os últimos Confrontos entre as equipas."
-    },
-    {
       "title": "Duelo histórico à 3.ª jornada - FPF",
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "source": "FPF",
       "published": "Fri, 25 Sep 2026 20:14:58 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260326121805299",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=257408&v=639260330124126837",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57879",
       "description": "SC Braga recebe Sporting CP este domingo"
     },
@@ -249,6 +240,12 @@
       "url": "https://www.dazn.com/pt-PT/news/futebol/o-onze-do-sporting-cp-para-o-jogo/87de4qny8du81vb9h0bz1k77q",
       "source": "DAZN",
       "published": "Sat, 19 Sep 2026 18:26:03 GMT"
+    },
+    {
+      "title": "SC Braga vs Sporting CP - SC Braga",
+      "url": "https://scbraga.pt/videos/sc-braga-vs-sporting-cp-or-liga-bpi",
+      "source": "SC Braga",
+      "published": "Wed, 23 Sep 2026 20:40:18 GMT"
     }
   ]
 }
