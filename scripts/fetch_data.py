@@ -1590,9 +1590,22 @@ def fetch_fbref_historical_team_stats():
     history = {}
     for season in ("2025-2026", "2024-2025", "2023-2024"):
         label = season.replace("-", "/")
-        url = f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions"
+        urls = [
+            f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/all_comps/schedule/Sporting-CP-Scores-and-Fixtures-All-Competitions",
+            f"https://fbref.com/en/squads/13dc44fd/{season}/matchlogs/schedule/Sporting-CP-Scores-and-Fixtures",
+        ]
         try:
-            tables, _ = read_fbref_tables(url)
+            tables = []
+            for url in urls:
+                try:
+                    tables, _ = read_fbref_tables(url)
+                    if tables:
+                        break
+                except Exception as inner:
+                    print("FBref historical URL warning:", url, inner)
+            if not tables:
+                print("FBref historical stats: no tables", season)
+                continue
             frames = [multi_index_flatten(df.copy()) for df in tables]
             df = pick_table(frames, ["Date", "Comp", "Venue", "Result", "GF", "GA", "Opponent"])
             if df is None:
