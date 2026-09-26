@@ -234,7 +234,7 @@ def enrich_with_zerozero(players):
             continue
 
         key = zz_norm(name)
-        url = index.get(key)
+        url = ZEROZERO_URLS.get(name) or index.get(key)
 
         # Handle minor naming differences between FotMob and ZeroZero.
         if not url:
