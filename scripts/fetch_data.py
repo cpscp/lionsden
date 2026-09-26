@@ -1391,6 +1391,21 @@ def fetch_sofascore_match_details():
 
                 raw_events = ((facts.get("events") or {}).get("events") or [])
                 incidents_norm = []
+                def extract_card_type(e):
+                    candidates = [
+                        e.get("cardType"), e.get("card"), e.get("cardTypeName"),
+                        e.get("cardDescription"), e.get("bookingType")
+                    ]
+                    for c in candidates:
+                        if isinstance(c, dict):
+                            c = c.get("type") or c.get("name") or c.get("text") or c.get("description")
+                        c = clean(c)
+                        if c:
+                            n = zz_norm(c)
+                            if "second" in n and "yellow" in n: return "second_yellow"
+                            if "red" in n: return "red"
+                            if "yellow" in n: return "yellow"
+                    return ""
                 for e in raw_events:
                     et = clean(e.get("type")).lower()
                     if et in {"goal", "card", "substitution"}:
@@ -1400,7 +1415,8 @@ def fetch_sofascore_match_details():
                             "player": e.get("player") or {},
                             "isHome": e.get("isHome"),
                             "description": clean(e.get("nameStr") or e.get("type")),
-                            "swap": e.get("swap") or []
+                            "swap": e.get("swap") or [],
+                            "cardType": extract_card_type(e) if et == "card" else ""
                         })
 
                 stats_all = (((content.get("stats") or {}).get("Periods") or {}).get("All") or {})
