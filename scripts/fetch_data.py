@@ -2461,7 +2461,7 @@ def fetch_youtube():
     print(f"YouTube: {len(items[:200])} videos written.")
 
 def fetch_match_summary_videos():
-    """Find official YouTube match summaries for finished Sporting matches."""
+    """Find official YouTube match summaries; prefer Sporting CP for home games."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     details = (safe_existing("match-details.json") or {}).get("fixtures", [])
     detail_by_id = {str(x.get("match_id")): x for x in details if x.get("match_id")}
@@ -2521,14 +2521,26 @@ def fetch_match_summary_videos():
         if not home or not away or hg is None or ag is None:
             continue
 
-        queries = [
-            f"VSPORTS {home} {hg}-{ag} {away} resumo",
-            f"{home} {hg}-{ag} {away} resumo Sporting",
-        ]
+        is_sporting_home = norm(home) == norm("Sporting CP")
+        queries = []
+        if is_sporting_home:
+            queries = [
+                f"Sporting CP {hg}-{ag} {away} resumo Sporting",
+                f"Sporting {hg}-{ag} {away} resumo",
+                f"VSPORTS Sporting CP {hg}-{ag} {away} resumo",
+            ]
+        else:
+            queries = [
+                f"VSPORTS {home} {hg}-{ag} Sporting CP resumo",
+                f"{home} {hg}-{ag} Sporting CP resumo",
+                f"Sporting CP {hg}-{ag} {away} resumo",
+            ]
+
         candidates = []
         for q in queries:
-            candidates.extend(search_videos(q))
-            if candidates:
+            batch = search_videos(q)
+            candidates.extend(batch)
+            if batch:
                 break
 
         home_n, away_n = norm(home), norm(away)
@@ -2537,13 +2549,15 @@ def fetch_match_summary_videos():
             owner_n = norm(v.get("owner"))
             team_hits = int(home_n in title_n) + int(away_n in title_n)
             score_hit = int(f"{hg}{ag}" in title_n or f"{hg}{ag}" in title_n.replace("vs",""))
-            official = int("vsports" in owner_n or "sporting" in owner_n)
+            sporting = int("sporting" in owner_n)
+            vsports = int("vsports" in owner_n)
             summary = int("resumo" in title_n or "highlights" in title_n)
-            return (official, team_hits, score_hit, summary)
+            source_priority = sporting * 3 if is_sporting_home else vsports * 3
+            return (source_priority, team_hits, score_hit, summary)
 
         best = None
         for v in candidates:
-            if score_candidate(v)[0] and score_candidate(v)[1] >= 1:
+            if score_candidate(v)[1] >= 1 and score_candidate(v)[3]:
                 if best is None or score_candidate(v) > score_candidate(best):
                     best = v
 
@@ -2556,13 +2570,15 @@ def fetch_match_summary_videos():
                 "channel": best["owner"],
                 "url": f"https://www.youtube.com/watch?v={best['id']}",
                 "embed": f"https://www.youtube.com/embed/{best['id']}",
-                "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg"
+                "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg",
+                "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner")))
             })
 
     write_json("match-videos.json", {
         "videos": videos,
-        "source": "YouTube · VSPORTS Liga Portugal / Sporting CP",
-        "scope": "Finished Sporting CP matches"
+        "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
+        "scope": "Finished Sporting CP matches",
+        "policy": "Sporting CP channel preferred for home matches; VSPORTS preferred for away matches."
     })
     print(f"YouTube match summaries: {len(videos)} videos written.")
 
