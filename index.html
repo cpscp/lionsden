@@ -53,7 +53,7 @@
 .news-card{overflow:hidden}.news-thumb{width:100%;height:150px;object-fit:cover;background:linear-gradient(135deg,#123d29,#09110c)}
 .class-table{width:100%;border-collapse:collapse;font-size:11px}.class-table th{color:var(--muted);font-size:9px;font-weight:500;padding:7px 3px;border-bottom:1px solid var(--line);text-align:right}.class-table th:nth-child(2),.class-table td:nth-child(2){text-align:left}.class-table td{padding:8px 3px;border-bottom:1px solid rgba(255,255,255,.045);text-align:right}.class-table tr:last-child td{border-bottom:0}.class-table .club{font-weight:600}.class-table .sc-row{background:rgba(8,165,110,.08)}
 .class-select{width:100%;background:var(--surface);color:#f3f7f4;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;font-size:12px;outline:none;appearance:auto}.class-select:focus{border-color:rgba(8,165,110,.55);box-shadow:0 0 0 2px rgba(8,165,110,.08)}.class-select option{background:#0d1510;color:#f3f7f4}
-
+.season-picker{position:relative}.season-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);color:#f3f7f4;border:1px solid var(--line);border-radius:999px;padding:12px 15px;font:inherit;font-size:12px;text-align:left;cursor:pointer;transition:.18s ease}.season-trigger:hover,.season-picker.open .season-trigger{border-color:rgba(8,165,110,.55);background:var(--surface2)}.season-trigger .chevron{width:7px;height:7px;border-right:1px solid #8da097;border-bottom:1px solid #8da097;transform:rotate(45deg) translateY(-2px);transition:transform .18s ease}.season-picker.open .chevron{transform:rotate(225deg) translate(-1px,-1px)}.season-options{position:absolute;z-index:60;left:0;right:0;top:calc(100% + 7px);padding:5px;background:#0b1510;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 45px rgba(0,0,0,.45);display:none;overflow:hidden}.season-picker.open .season-options{display:block}.season-option{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#dce5e0;font:inherit;font-size:12px;text-align:left;cursor:pointer}.season-option:hover{background:#10231a;color:#fff}.season-option.active{background:rgba(8,165,110,.14);color:#fff}.season-option.active::after{content:'✓';color:#00a878;font-size:11px}.season-option:focus-visible{outline:1px solid rgba(8,165,110,.7);outline-offset:-1px}
 .link-card{display:flex;align-items:center;justify-content:space-between;gap:14px}.link-card:hover{background:var(--surface2)}
 @media(min-width:760px){.drawer{width:330px}.wrap{max-width:700px}}
 .knockout-section{margin-top:18px}
@@ -603,31 +603,52 @@ function renderStats(){
         <span class="text-lg muted transition-transform">＋</span>
       </summary>
       <div class="px-5 sm:px-6 pb-6 pt-1 border-t border-white/5">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
             <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 1</label>
-            <select id="statsSeasonA" class="w-full pill bg-transparent px-3 py-3 text-[10px]">${seasons.map(x=>`<option value="${esc(x)}" ${x===currentSeason?'selected':''}>${esc(x)}</option>`).join('')}</select>
+            <div class="season-picker" data-season-picker="A">
+              <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">\${esc(currentSeason)}</span><i class="chevron"></i></button>
+              <div class="season-options" role="listbox">
+                \${seasons.map(x=>\`<button type="button" class="season-option \${x===currentSeason?'active':''}" data-season="\${esc(x)}">\${esc(x)}</button>\`).join('')}
+              </div>
+            </div>
           </div>
           <div>
             <label class="text-[9px] uppercase tracking-widest muted block mb-2">Época 2</label>
-            <select id="statsSeasonB" class="w-full pill bg-transparent px-3 py-3 text-[10px]">${seasons.map((x,i)=>`<option value="${esc(x)}" ${x===((seasons.find(y=>y!==currentSeason))||x)?'selected':''}>${esc(x)}</option>`).join('')}</select>
+            <div class="season-picker" data-season-picker="B">
+              <button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">\${esc(seasons.find(y=>y!==currentSeason)||currentSeason)}</span><i class="chevron"></i></button>
+              <div class="season-options" role="listbox">
+                \${seasons.map(x=>\`<button type="button" class="season-option \${x===(seasons.find(y=>y!==currentSeason)||currentSeason)?'active':''}" data-season="\${esc(x)}">\${esc(x)}</button>\`).join('')}
+              </div>
+            </div>
           </div>
         </div>
-        <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
+                <div id="statsComparison" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
         <div class="text-[9px] muted mt-5">Fonte: histórico oficial do Sporting CP/ZeroZero e feed de jogos do Sporting. Não inclui seleções, pré-época ou amigáveis.</div>
       </div>
     </details>`;
   const compare=document.getElementById('seasonCompare');
+  const pickerState={A:currentSeason,B:seasons.find(y=>y!==currentSeason)||currentSeason};
   const draw=()=>{
-    const A=document.getElementById('statsSeasonA')?.value||currentSeason;
-    const B=document.getElementById('statsSeasonB')?.value||(seasons.find(y=>y!==currentSeason)||currentSeason);
+    const A=pickerState.A;
+    const B=pickerState.B;
     const box=document.getElementById('statsComparison');if(!box)return;
     box.innerHTML=seasonStatsCard(A,hist[A]||{})+`<div>${A===B?'':seasonStatsCard(B,hist[B]||{})}</div>`;
     box.className=A===B?'grid grid-cols-1 gap-5':'grid grid-cols-1 lg:grid-cols-2 gap-5';
   };
+  document.querySelectorAll('.season-picker').forEach(picker=>{
+    const key=picker.dataset.seasonPicker,trigger=picker.querySelector('.season-trigger');
+    trigger.addEventListener('click',e=>{
+      e.stopPropagation(); document.querySelectorAll('.season-picker.open').forEach(x=>{if(x!==picker)x.classList.remove('open');});
+      const open=picker.classList.toggle('open'); trigger.setAttribute('aria-expanded',String(open));
+    });
+    picker.querySelectorAll('.season-option').forEach(option=>option.addEventListener('click',e=>{
+      e.stopPropagation(); pickerState[key]=option.dataset.season; picker.querySelector('.season-value').textContent=option.dataset.season;
+      picker.querySelectorAll('.season-option').forEach(x=>x.classList.toggle('active',x===option)); picker.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); draw();
+    }));
+  });
+  document.addEventListener('click',()=>document.querySelectorAll('.season-picker.open').forEach(x=>x.classList.remove('open')));
   compare?.addEventListener('toggle',()=>{if(compare.open)draw();});
-  document.getElementById('statsSeasonA')?.addEventListener('change',draw);
-  document.getElementById('statsSeasonB')?.addEventListener('change',draw);
 }
 function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
