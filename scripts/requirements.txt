@@ -3,4 +3,3 @@ beautifulsoup4>=4.12
 pandas>=2.2
 lxml>=5.3
 feedparser>=6.0
-googlenewsdecoder==0.2.1
