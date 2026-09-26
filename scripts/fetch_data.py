@@ -101,6 +101,7 @@ def clean(v):
 
 
 ZEROZERO_TEAM = "https://www.zerozero.pt/equipa/sporting"
+SPORTING_FOTMOB_ID = 9768
 POSITION_FALLBACKS = {
     "Rui Silva": "GK", "Kaique Pereira": "GK", "Diego Callai": "GK",
     "Moncef Zekri": "DF", "Zeno Debast": "DF", "Georgios Vagiannidis": "DF",
@@ -852,32 +853,39 @@ def fetch_fotmob_core():
                     rts = 0
                 if rts >= datetime(2026, 7, 1, tzinfo=timezone.utc).timestamp():
                     current_matches.append(rm)
-            played = [rm for rm in current_matches if (fnum(rm.get("minutesPlayed")) or 0) > 0]
+            # IMPORTANT: recentMatches also contains national-team matches.
+            # The app's player stats are strictly Sporting CP stats.
+            played = [
+                rm for rm in current_matches
+                if int(fnum(rm.get("teamId")) or 0) == SPORTING_FOTMOB_ID
+                and (fnum(rm.get("minutesPlayed")) or 0) > 0
+            ]
             stats["matches"] = len(played)
-            stats["starts"] = sum(1 for rm in played if not rm.get("onBench"))
+            # "Titular" is deliberately not exposed: provider bench/start flags
+            # are not considered reliable enough for the app's core statistics.
             stats["minutes"] = int(sum(fnum(rm.get("minutesPlayed")) or 0 for rm in played))
             stats["goals"] = int(sum(fnum(rm.get("goals")) or 0 for rm in played))
             stats["assists"] = int(sum(fnum(rm.get("assists")) or 0 for rm in played))
             stats["yellow"] = int(sum(fnum(rm.get("yellowCards")) or 0 for rm in played))
             stats["red"] = int(sum(fnum(rm.get("redCards")) or 0 for rm in played))
 
-            # Goalkeeper-only metric. Prefer provider value when available;
-            # otherwise count played matches in which the team conceded zero.
-            clean_sheets = deep_find(pd, {"cleanSheets","cleanSheetsTotal","cleanSheet","clean_sheets"})
-            if clean_sheets not in (None, ""):
-                try:
-                    stats["cleanSheets"] = int(float(clean_sheets))
-                except Exception:
-                    pass
-            if "cleanSheets" not in stats and ("goalkeeper" in zz_norm(player.get("position")) or "goalkeeper" in zz_norm(m.get("rolePosition"))):
+            # Clean sheets are calculated only from Sporting matches in which
+            # the goalkeeper actually played: Sporting conceded 0 = 1 CS.
+            if "goalkeeper" in zz_norm(player.get("position")) or player.get("position") == "GK" or "goalkeeper" in zz_norm(m.get("rolePosition")):
                 cs = 0
                 for rm in played:
                     hs = fnum(rm.get("homeScore"))
                     aw = fnum(rm.get("awayScore"))
                     if hs is None or aw is None:
                         continue
-                    team_side = str(rm.get("teamSide") or rm.get("side") or "").lower()
-                    conceded = aw if team_side in {"home","h"} else hs if team_side in {"away","a"} else None
+                    is_home = rm.get("isHome")
+                    if is_home is True or str(is_home).lower() == "true":
+                        conceded = aw
+                    elif is_home is False or str(is_home).lower() == "false":
+                        conceded = hs
+                    else:
+                        team_side = str(rm.get("teamSide") or rm.get("side") or "").lower()
+                        conceded = aw if team_side in {"home","h"} else hs if team_side in {"away","a"} else None
                     if conceded == 0:
                         cs += 1
                 stats["cleanSheets"] = cs
