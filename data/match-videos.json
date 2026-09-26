@@ -108,7 +108,8 @@
       "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg",
       "preferred_for_home": true,
       "published_text": "19/09/2026",
-      "provider": "youtube"
+      "provider": "youtube",
+      "embed_allowed": false
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
