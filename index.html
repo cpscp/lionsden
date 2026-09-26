@@ -75,7 +75,8 @@
 .games-count{font-size:9px;color:var(--muted)}
 .game-card{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--surface);isolation:isolate}
 .game-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.34;z-index:-3;filter:saturate(.72)}
-.game-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,55,32,.70),rgba(6,20,13,.78) 72%);z-index:-2}
+.game-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,var(--game-bg-1,rgba(5,55,32,.70)),var(--game-bg-2,rgba(6,20,13,.78)) 72%);z-index:-2}
+.game-card.champions{--game-bg-1:rgba(8,29,68,.88);--game-bg-2:rgba(4,15,38,.94)}.game-card.taca-portugal{--game-bg-1:rgba(85,18,23,.88);--game-bg-2:rgba(42,8,13,.94)}.game-card.taca-liga{--game-bg-1:rgba(10,48,82,.88);--game-bg-2:rgba(5,22,42,.94)}.game-card.league{--game-bg-1:rgba(5,55,32,.70);--game-bg-2:rgba(6,20,13,.78)}
 .game-card-content{position:relative;z-index:1;padding:14px}
 .game-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
 .game-card-comp{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#a6b8af}
@@ -517,12 +518,12 @@ function fixtureTV(f){
 }
 function fixtureDetail(id){return (D['match-details.json']?.fixtures||[]).find(x=>String(x.match_id)===String(id))||null;}
 function gameCard(f){
- const v=venueInfo(f.venue), photo=stadiumPhotoUrl(v.name), tv=fixtureTV(f), past=!isFuture(f);
+ const v=venueInfo(f.venue), photo=stadiumPhotoUrl(v.name), tv=fixtureTV(f), past=!isFuture(f); const comp=String(f.competition?.name||'').toLowerCase(); const theme=comp.includes('champions')?'champions':comp.includes('taça de portugal')||comp.includes('taca de portugal')?'taca-portugal':comp.includes('taça da liga')||comp.includes('taca da liga')?'taca-liga':'league';
  const score=f.goals?.home!=null?esc(f.goals.home)+' - '+esc(f.goals.away):'VS';
  const detail=fixtureDetail(f.id);
  const homeUrl=teamLogoUrl(f.home),awayUrl=teamLogoUrl(f.away);
  const team=(t,url)=>'<div class="game-card-team"><div class="game-card-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(t?.name||t)+'" loading="lazy">':'<span class="font-bold text-xs">'+esc(initials(t?.name||t))+'</span>')+'</div><div class="game-card-name">'+esc(t?.name||t||'—')+'</div></div>';
- return '<button onclick="openGame(\''+esc(f.id)+'\')" class="game-card w-full text-left">'+(photo?'<div class="game-card-bg" style="background-image:url(\''+esc(photo)+'\')"></div>':'')+'<div class="game-card-overlay"></div><div class="game-card-content"><div class="game-card-top"><span class="game-card-comp">'+esc(f.competition?.name||'')+'</span><span class="game-card-date">'+esc(fmtDate(f.date))+'</span></div><div class="game-card-teams">'+team(f.home,homeUrl)+'<div class="game-card-score"><strong>'+score+'</strong><span>'+esc(past?'Final':'Agendado')+'</span></div>'+team(f.away,awayUrl)+'</div><div class="game-card-bottom"><span class="game-card-venue"><span class="ui-icon">'+stadiumSvg()+'</span>'+esc(v.name||'Estádio por confirmar')+'</span><span class="game-card-tv">'+(tv?'TV · '+esc(tv):'TV · por confirmar')+'</span></div><div class="game-card-action">'+(past?(detail?'Ver 11, incidentes e detalhes →':'Ver detalhes do jogo →'):'Ver detalhes do jogo →')+'</div></div></button>';
+ return '<button onclick="openGame(\''+esc(f.id)+'\')" class="game-card w-full text-left '+theme+'">'+(photo?'<div class="game-card-bg" style="background-image:url(\''+esc(photo)+'\')"></div>':'')+'<div class="game-card-overlay"></div><div class="game-card-content"><div class="game-card-top"><span class="game-card-comp">'+esc(f.competition?.name||'')+'</span><span class="game-card-date">'+esc(fmtDate(f.date))+'</span></div><div class="game-card-teams">'+team(f.home,homeUrl)+'<div class="game-card-score"><strong>'+score+'</strong><span>'+esc(past?'Final':'Agendado')+'</span></div>'+team(f.away,awayUrl)+'</div><div class="game-card-bottom"><span class="game-card-venue"><span class="ui-icon">'+stadiumSvg()+'</span>'+esc(v.name||'Estádio por confirmar')+'</span><span class="game-card-tv">'+(tv?'TV · '+esc(tv):'TV · por confirmar')+'</span></div><div class="game-card-action">'+(past?(detail?'Ver 11, incidentes e detalhes →':'Ver detalhes do jogo →'):'Ver detalhes do jogo →')+'</div></div></button>';
 }
 function setGamesTab(tab){window._gamesTab=tab;document.getElementById('gamesTabUpcoming')?.classList.toggle('active',tab==='upcoming');document.getElementById('gamesTabPast')?.classList.toggle('active',tab==='past');renderGames();}
 function renderGames(){
@@ -980,7 +981,7 @@ function openGame(id){
  const base=findFixture(id);const detail=fixtureDetail(id);if(!base)return;
  let v=venueInfo(base.venue);const cached=(D['venues.json']?.venues)||{};
  if((v.lat==null||v.lon==null)&&base.home?.name&&base.away?.name){const opponent=base.home.name==='Sporting CP'?base.away.name:base.home.name;const hit=Object.entries(cached).find(([k])=>k.toLowerCase().includes(opponent.toLowerCase()));if(hit)v={...v,...hit[1]};}
- const tv=fixtureTV(base),photo=stadiumPhotoUrl(v.name),homeUrl=teamLogoUrl(base.home),awayUrl=teamLogoUrl(base.away);
+ const tv=fixtureTV(base),photo=stadiumPhotoUrl(v.name),homeUrl=teamLogoUrl(base.home),awayUrl=teamLogoUrl(base.away);; const comp=String(base.competition?.name||'').toLowerCase(); const theme=comp.includes('champions')?'champions':comp.includes('taça de portugal')||comp.includes('taca de portugal')?'taca-portugal':comp.includes('taça da liga')||comp.includes('taca da liga')?'taca-liga':'league'
  const score=base.goals?.home!=null?esc(base.goals.home)+' - '+esc(base.goals.away):'VS';
  const lineupHtml=detail?['home','away'].map(side=>{const arr=(detail.lineups?.[side]?.players||[]).filter(x=>x.player);const starters=arr.filter(x=>!x.substitute).slice(0,11);const bench=arr.filter(x=>x.substitute);return '<div class="game-lineup-team"><div class="game-lineup-title">'+(side==='home'?'Casa':'Fora')+' · 11 inicial</div>'+((starters.length?starters:[]).map((x,i)=>'<div class="game-lineup-player">'+(i+1)+'. '+esc(x.player?.name||'')+'</div>').join('')||'<div class="text-[10px] muted">Sem dados</div>')+(bench.length?'<div class="game-lineup-title mt-4">Suplentes · '+bench.length+'</div><div class="text-[10px] muted">'+bench.map(x=>esc(x.player?.name||'')).join(' · ')+'</div>':'')+'</div>'}).join(''):'<div class="text-[10px] muted">Escalações não disponíveis para este jogo.</div>';
  const incidents=detail?.incidents?.incidents||[];
