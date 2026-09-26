@@ -1069,7 +1069,7 @@ function openGame(id){try{
    return '<div class="game-incident">'+icon+'<b class="game-incident-time">'+esc(x.time!=null?x.time+"'" :'—')+'</b>'+body+'</div>';
  }).join(''):'<div class="text-[10px] muted">Sem incidentes disponíveis.</div>';
 ; const video=matchVideoFor(id);
- const videoSrc=video?.video_id ? 'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.video_id)+'?rel=0' : '';
+ const videoSrc=video?.video_id && video.embed_allowed!==false ? 'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.video_id)+'?rel=0' : '';
  const videoSection=video?safeHtml(()=>{
    const thumb=video.thumbnail||('https://i.ytimg.com/vi/'+encodeURIComponent(video.video_id||'')+'/hq720.jpg');
    const watchUrl=video.url||('https://www.youtube.com/watch?v='+encodeURIComponent(video.video_id||''));
