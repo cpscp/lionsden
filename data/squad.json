@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T05:05:43.398553+00:00",
+  "_updated_at": "2026-09-25T22:32:22.550733+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -20,8 +20,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 1,
-      "dateOfBirth": "1994-02-07T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1320169,
@@ -38,8 +37,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 30,
-      "dateOfBirth": "2003-04-16T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1282449,
@@ -56,8 +54,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 41,
-      "dateOfBirth": "2004-07-18T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1755850,
@@ -74,10 +71,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 18,
-      "dateOfBirth": "2008-09-20",
-      "profile": "https://www.sporting.pt/pt/futebol/equipa-principal/plantel/moncef-zekri",
-      "profileSource": "Sporting CP"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1232172,
@@ -94,8 +88,7 @@
         "yellow": 0,
         "red": 1
       },
-      "shirtNumber": 6,
-      "dateOfBirth": "2003-10-24T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1119687,
@@ -112,8 +105,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 13,
-      "dateOfBirth": "2001-09-12T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1031656,
@@ -130,8 +122,7 @@
         "yellow": 2,
         "red": 0
       },
-      "shirtNumber": 20,
-      "dateOfBirth": "2000-02-15T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1325998,
@@ -148,8 +139,7 @@
         "yellow": 1,
         "red": 0
       },
-      "shirtNumber": 22,
-      "dateOfBirth": "2004-09-28T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1165710,
@@ -166,8 +156,7 @@
         "yellow": 2,
         "red": 0
       },
-      "shirtNumber": 25,
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1703622,
@@ -184,8 +173,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 50,
-      "dateOfBirth": "2005-07-12T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1609327,
@@ -202,8 +190,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 55,
-      "dateOfBirth": "2005-05-26T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1156380,
@@ -220,8 +207,7 @@
         "yellow": 2,
         "red": 0
       },
-      "shirtNumber": 72,
-      "dateOfBirth": "2002-03-02T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1093025,
@@ -238,8 +224,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": null,
-      "dateOfBirth": "2001-11-26T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1425101,
@@ -256,8 +241,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 4,
-      "dateOfBirth": "2004-06-13T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1310480,
@@ -274,8 +258,7 @@
         "yellow": 3,
         "red": 0
       },
-      "shirtNumber": 5,
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1663855,
@@ -292,8 +275,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 8,
-      "dateOfBirth": "2007-01-06T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1327214,
@@ -310,8 +292,7 @@
         "yellow": 1,
         "red": 0
       },
-      "shirtNumber": 19,
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1459257,
@@ -328,8 +309,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 21,
-      "dateOfBirth": "2003-03-27T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1712326,
@@ -346,8 +326,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 70,
-      "dateOfBirth": "2007-06-13T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1339345,
@@ -364,8 +343,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 77,
-      "dateOfBirth": "2003-10-16T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1918387,
@@ -382,8 +360,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": null,
-      "dateOfBirth": "2007-06-20T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1759322,
@@ -400,8 +377,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": null,
-      "dateOfBirth": "2007-12-06T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 899701,
@@ -418,8 +394,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 7,
-      "dateOfBirth": "2000-01-10T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1525416,
@@ -436,8 +411,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 9,
-      "dateOfBirth": "2005-04-03T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1088753,
@@ -454,8 +428,7 @@
         "yellow": 3,
         "red": 0
       },
-      "shirtNumber": 10,
-      "dateOfBirth": "2001-01-26T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 554283,
@@ -472,8 +445,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 11,
-      "dateOfBirth": "1995-02-13T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1070776,
@@ -490,8 +462,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 17,
-      "dateOfBirth": "1999-08-12T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1526704,
@@ -508,8 +479,7 @@
         "yellow": 1,
         "red": 0
       },
-      "shirtNumber": 28,
-      "dateOfBirth": "2007-06-30T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1458757,
@@ -526,8 +496,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 31,
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1691190,
@@ -544,8 +513,7 @@
         "yellow": 0,
         "red": 0
       },
-      "shirtNumber": 58,
-      "dateOfBirth": "2007-05-30T00:00:00.000Z"
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 792303,
@@ -562,571 +530,8 @@
         "yellow": 6,
         "red": 0
       },
-      "shirtNumber": 97,
-      "dateOfBirth": "1997-12-02T00:00:00.000Z"
+      "dateOfBirth": null
     }
   ],
-  "source": "ZeroZero + Sporting CP + FotMob/SofaScore/FBref",
-  "players": [
-    {
-      "fotmob_id": 361717,
-      "name": "Rui Silva",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
-      "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 766,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 1,
-      "dateOfBirth": "1994-02-07T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1320169,
-      "name": "Kaique Pereira",
-      "position": "",
-      "nationality": "Brazil",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1320169.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 30,
-      "dateOfBirth": "2003-04-16T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1282449,
-      "name": "Diego Callai",
-      "position": "",
-      "nationality": "Brazil",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1282449.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 41,
-      "dateOfBirth": "2004-07-18T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1755850,
-      "name": "Moncef Zekri",
-      "position": "",
-      "nationality": "Morocco",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1755850.png",
-      "stats": {
-        "matches": 1,
-        "starts": 1,
-        "minutes": 90,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 18,
-      "dateOfBirth": "2008-09-20",
-      "profile": "https://www.sporting.pt/pt/futebol/equipa-principal/plantel/moncef-zekri",
-      "profileSource": "Sporting CP"
-    },
-    {
-      "fotmob_id": 1232172,
-      "name": "Zeno Debast",
-      "position": "",
-      "nationality": "Belgium",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1232172.png",
-      "stats": {
-        "matches": 6,
-        "starts": 6,
-        "minutes": 405,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 1
-      },
-      "shirtNumber": 6,
-      "dateOfBirth": "2003-10-24T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1119687,
-      "name": "Georgios Vagiannidis",
-      "position": "",
-      "nationality": "Greece",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
-      "stats": {
-        "matches": 6,
-        "starts": 6,
-        "minutes": 393,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 13,
-      "dateOfBirth": "2001-09-12T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1031656,
-      "name": "Maxi Araújo",
-      "position": "",
-      "nationality": "Uruguay",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1031656.png",
-      "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 781,
-        "goals": 2,
-        "assists": 2,
-        "yellow": 2,
-        "red": 0
-      },
-      "shirtNumber": 20,
-      "dateOfBirth": "2000-02-15T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1325998,
-      "name": "Iván Fresneda",
-      "position": "",
-      "nationality": "Spain",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1325998.png",
-      "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 519,
-        "goals": 0,
-        "assists": 1,
-        "yellow": 1,
-        "red": 0
-      },
-      "shirtNumber": 22,
-      "dateOfBirth": "2004-09-28T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1165710,
-      "name": "Gonçalo Inácio",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
-      "stats": {
-        "matches": 8,
-        "starts": 8,
-        "minutes": 676,
-        "goals": 2,
-        "assists": 0,
-        "yellow": 2,
-        "red": 0
-      },
-      "shirtNumber": 25,
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1703622,
-      "name": "Rodrigo Dias",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1703622.png",
-      "stats": {
-        "matches": 2,
-        "starts": 2,
-        "minutes": 101,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 50,
-      "dateOfBirth": "2005-07-12T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1609327,
-      "name": "Ibrahima Ba",
-      "position": "",
-      "nationality": "Senegal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1609327.png",
-      "stats": {
-        "matches": 1,
-        "starts": 1,
-        "minutes": 90,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 55,
-      "dateOfBirth": "2005-05-26T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1156380,
-      "name": "Eduardo Quaresma",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1156380.png",
-      "stats": {
-        "matches": 6,
-        "starts": 6,
-        "minutes": 402,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 2,
-        "red": 0
-      },
-      "shirtNumber": 72,
-      "dateOfBirth": "2002-03-02T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1093025,
-      "name": "Sotiris Alexandropoulos",
-      "position": "",
-      "nationality": "Greece",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1093025.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": null,
-      "dateOfBirth": "2001-11-26T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1425101,
-      "name": "Silas Andersen",
-      "position": "",
-      "nationality": "Denmark",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
-      "stats": {
-        "matches": 7,
-        "starts": 7,
-        "minutes": 175,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 4,
-      "dateOfBirth": "2004-06-13T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1310480,
-      "name": "Sergi Altimira",
-      "position": "",
-      "nationality": "Spain",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1310480.png",
-      "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 807,
-        "goals": 1,
-        "assists": 0,
-        "yellow": 3,
-        "red": 0
-      },
-      "shirtNumber": 5,
-      "dateOfBirth": "2001-08-25T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1663855,
-      "name": "João Simões",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1663855.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 8,
-      "dateOfBirth": "2007-01-06T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1327214,
-      "name": "Nestory Irankunda",
-      "position": "",
-      "nationality": "Australia",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
-      "stats": {
-        "matches": 7,
-        "starts": 7,
-        "minutes": 276,
-        "goals": 1,
-        "assists": 0,
-        "yellow": 1,
-        "red": 0
-      },
-      "shirtNumber": 19,
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1459257,
-      "name": "Pedro Lima",
-      "position": "",
-      "nationality": "Brazil",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
-      "stats": {
-        "matches": 3,
-        "starts": 3,
-        "minutes": 17,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 21,
-      "dateOfBirth": "2003-03-27T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1712326,
-      "name": "Salvador Blopa",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 70,
-      "dateOfBirth": "2007-06-13T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1339345,
-      "name": "Issa Doumbia",
-      "position": "",
-      "nationality": "Italy",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1339345.png",
-      "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 741,
-        "goals": 1,
-        "assists": 1,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 77,
-      "dateOfBirth": "2003-10-16T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1918387,
-      "name": "Delcio Aurelio",
-      "position": "",
-      "nationality": "Angola",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1918387.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": null,
-      "dateOfBirth": "2007-06-20T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1759322,
-      "name": "Rodrigo Rodrigues",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1759322.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": null,
-      "dateOfBirth": "2007-12-06T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 899701,
-      "name": "Fotis Ioannidis",
-      "position": "",
-      "nationality": "Greece",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
-      "stats": {
-        "matches": 9,
-        "starts": 9,
-        "minutes": 320,
-        "goals": 2,
-        "assists": 2,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 7,
-      "dateOfBirth": "2000-01-10T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1525416,
-      "name": "Rafael Nel",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
-      "stats": {
-        "matches": 2,
-        "starts": 2,
-        "minutes": 42,
-        "goals": 2,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 9,
-      "dateOfBirth": "2005-04-03T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1088753,
-      "name": "Geny Catamo",
-      "position": "",
-      "nationality": "Mozambique",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
-      "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 752,
-        "goals": 3,
-        "assists": 3,
-        "yellow": 3,
-        "red": 0
-      },
-      "shirtNumber": 10,
-      "dateOfBirth": "2001-01-26T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 554283,
-      "name": "Nuno Santos",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/554283.png",
-      "stats": {
-        "matches": 0,
-        "starts": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 11,
-      "dateOfBirth": "1995-02-13T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1070776,
-      "name": "Rodrigo Zalazar",
-      "position": "",
-      "nationality": "Uruguay",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
-      "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 669,
-        "goals": 2,
-        "assists": 1,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 17,
-      "dateOfBirth": "1999-08-12T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1526704,
-      "name": "Jesse Derry",
-      "position": "",
-      "nationality": "England",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
-      "stats": {
-        "matches": 4,
-        "starts": 4,
-        "minutes": 54,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 1,
-        "red": 0
-      },
-      "shirtNumber": 28,
-      "dateOfBirth": "2007-06-30T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1458757,
-      "name": "Luís Guilherme",
-      "position": "",
-      "nationality": "Brazil",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1458757.png",
-      "stats": {
-        "matches": 8,
-        "starts": 8,
-        "minutes": 287,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 31,
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1691190,
-      "name": "Flávio Gonçalves",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
-      "stats": {
-        "matches": 8,
-        "starts": 8,
-        "minutes": 455,
-        "goals": 3,
-        "assists": 1,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 58,
-      "dateOfBirth": "2007-05-30T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 792303,
-      "name": "Luis Suárez",
-      "position": "",
-      "nationality": "Colombia",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/792303.png",
-      "stats": {
-        "matches": 10,
-        "starts": 10,
-        "minutes": 695,
-        "goals": 7,
-        "assists": 2,
-        "yellow": 6,
-        "red": 0
-      },
-      "shirtNumber": 97,
-      "dateOfBirth": "1997-12-02T00:00:00.000Z"
-    }
-  ]
+  "source": "FotMob"
 }
