@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:29:17.765133+00:00",
+  "_updated_at": "2026-09-26T16:30:58.106149+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -20,7 +20,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
       "embed": "https://www.youtube.com/embed/LFMfqhXv8NU",
-      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDqPAyayjUqiE5NDgUbTRNw0Uj5XQ",
+      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLCf4AODKD6RYUwXvmJYmEiawuq7QQ",
       "preferred_for_home": true
     },
     {
@@ -31,7 +31,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
-      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
+      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ&usqp=CBQ",
       "preferred_for_home": true
     },
     {
@@ -81,12 +81,12 @@
     {
       "match_id": 5887625,
       "sofascore_id": null,
-      "video_id": "1s7jwCuCZzs",
-      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-0 CD Nacional",
+      "video_id": "dxpcW8HJgGo",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-0 CD Nacional",
       "channel": "Sporting Clube de Portugal",
-      "url": "https://www.youtube.com/watch?v=1s7jwCuCZzs",
-      "embed": "https://www.youtube.com/embed/1s7jwCuCZzs",
-      "thumbnail": "https://i.ytimg.com/vi/1s7jwCuCZzs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCzvz-nnHUdylfnkHCelAYGzcfWEA",
+      "url": "https://www.youtube.com/watch?v=dxpcW8HJgGo",
+      "embed": "https://www.youtube.com/embed/dxpcW8HJgGo",
+      "thumbnail": "https://i.ytimg.com/vi/dxpcW8HJgGo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDBIo4mKDVFG3DNvjqphKr2Bj29NQ",
       "preferred_for_home": true
     },
     {
@@ -114,12 +114,12 @@
     {
       "match_id": 5887643,
       "sofascore_id": null,
-      "video_id": "qLRYOUhoHZ4",
-      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
+      "video_id": "prnO0lzEpdo",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
       "channel": "Sporting Clube de Portugal",
-      "url": "https://www.youtube.com/watch?v=qLRYOUhoHZ4",
-      "embed": "https://www.youtube.com/embed/qLRYOUhoHZ4",
-      "thumbnail": "https://i.ytimg.com/vi/qLRYOUhoHZ4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCene2tmR4E-O_2nv6_0D7e_sDcCw",
+      "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
+      "embed": "https://www.youtube.com/embed/prnO0lzEpdo",
+      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCb1V3zuekcCSl-PT-FW8bTWU2Yxw",
       "preferred_for_home": true
     }
   ],
