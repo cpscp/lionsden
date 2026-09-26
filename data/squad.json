@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T09:53:14.268242+00:00",
+  "_updated_at": "2026-09-26T09:56:01.977164+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -21,6 +21,112 @@
         "red": 0
       },
       "shirtNumber": 1,
+      "career": [
+        {
+          "period": "2025-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-01-14T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2025-01-14T00:00:00",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2017-01-27T00:00:00 → 2021-06-30T00:00:00",
+          "club": "Granada"
+        },
+        {
+          "period": "2012-07-01T00:00:00 → 2017-01-27T00:00:00",
+          "club": "Nacional"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Granada"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Granada"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Granada"
+        },
+        {
+          "period": "2017/2018",
+          "club": "Granada"
+        },
+        {
+          "period": "2016/2017",
+          "club": "Nacional"
+        },
+        {
+          "period": "2015/2016",
+          "club": "Nacional"
+        },
+        {
+          "period": "2014/2015",
+          "club": "Nacional"
+        },
+        {
+          "period": "2013/2014",
+          "club": "Nacional"
+        },
+        {
+          "period": "2020-08-24T00:00:00",
+          "club": "Portugal"
+        },
+        {
+          "period": "2014-01-01T00:00:00 → 2015-12-31T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2013-01-01T00:00:00 → 2013-07-31T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal"
+        },
+        {
+          "period": "2021",
+          "club": "Portugal"
+        },
+        {
+          "period": "2014",
+          "club": "Portugal U21"
+        }
+      ],
       "dateOfBirth": "1994-02-07T00:00:00.000Z"
     },
     {
@@ -39,6 +145,60 @@
         "red": 0
       },
       "shirtNumber": 30,
+      "career": [
+        {
+          "period": "2026-08-29T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026-07-01T00:00:00 → 2026-08-29T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2025-07-14T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Nacional"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-14T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Farense"
+        },
+        {
+          "period": "2021-12-05T00:00:00 → 2024-07-01T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Nacional"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Farense"
+        },
+        {
+          "period": "2023-06-30T00:00:00 → 2024-07-01T00:00:00",
+          "club": "Palmeiras U20"
+        },
+        {
+          "period": "2023",
+          "club": "Palmeiras U20"
+        },
+        {
+          "period": "2024-01-05T00:00:00",
+          "club": "Brazil U23"
+        },
+        {
+          "period": "2023-01-01T00:00:00 → 2024-12-31T00:00:00",
+          "club": "Brazil U20"
+        },
+        {
+          "period": "2023",
+          "club": "Brazil U20"
+        }
+      ],
       "dateOfBirth": "2003-04-16T00:00:00.000Z"
     },
     {
@@ -57,6 +217,64 @@
         "red": 0
       },
       "shirtNumber": 41,
+      "career": [
+        {
+          "period": "2024-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-01-11T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Feirense"
+        },
+        {
+          "period": "2021-10-01T00:00:00 → 2024-01-11T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2024-01-11T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Feirense"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP U19"
+        }
+      ],
       "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
@@ -74,6 +292,44 @@
         "yellow": 0,
         "red": 0
       },
+      "career": [
+        {
+          "period": "2026-08-25T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-05-09T00:00:00 → 2026-08-25T00:00:00",
+          "club": "KV Mechelen"
+        },
+        {
+          "period": "2026/2027",
+          "club": "KV Mechelen"
+        },
+        {
+          "period": "2025/2026",
+          "club": "KV Mechelen"
+        },
+        {
+          "period": "2024/2025",
+          "club": "KV Mechelen"
+        },
+        {
+          "period": "2025-08-30T00:00:00",
+          "club": "Morocco Under 18"
+        },
+        {
+          "period": "2025-03-24T00:00:00 → 2026-04-30T00:00:00",
+          "club": "Morocco U17"
+        },
+        {
+          "period": "2025",
+          "club": "Morocco Under 18"
+        },
+        {
+          "period": "2025",
+          "club": "Morocco U17"
+        }
+      ],
       "dateOfBirth": "2008-09-20"
     },
     {
@@ -92,6 +348,108 @@
         "red": 1
       },
       "shirtNumber": 6,
+      "career": [
+        {
+          "period": "2024-07-04T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021-02-20T00:00:00 → 2024-07-03T00:00:00",
+          "club": "Anderlecht"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Anderlecht"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Anderlecht"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Anderlecht"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Anderlecht"
+        },
+        {
+          "period": "2022-09-16T00:00:00",
+          "club": "Belgium"
+        },
+        {
+          "period": "2022-05-18T00:00:00 → 2023-09-02T00:00:00",
+          "club": "Belgium U21"
+        },
+        {
+          "period": "2021-10-08T00:00:00 → 2021-11-30T00:00:00",
+          "club": "Belgium U19"
+        },
+        {
+          "period": "2019-10-08T00:00:00 → 2020-09-02T00:00:00",
+          "club": "Belgium U17"
+        },
+        {
+          "period": "2026",
+          "club": "Belgium"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Belgium"
+        },
+        {
+          "period": "2024/2026",
+          "club": "Belgium"
+        },
+        {
+          "period": "2024",
+          "club": "Belgium"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Belgium"
+        },
+        {
+          "period": "2023",
+          "club": "Belgium"
+        },
+        {
+          "period": "2022/2024",
+          "club": "Belgium"
+        },
+        {
+          "period": "2022",
+          "club": "Belgium"
+        },
+        {
+          "period": "2023",
+          "club": "Belgium U21"
+        },
+        {
+          "period": "2022",
+          "club": "Belgium U19"
+        },
+        {
+          "period": "2021",
+          "club": "Belgium U19"
+        },
+        {
+          "period": "2020",
+          "club": "Belgium U17"
+        }
+      ],
       "dateOfBirth": "2003-10-24T00:00:00.000Z"
     },
     {
@@ -110,6 +468,124 @@
         "red": 0
       },
       "shirtNumber": 13,
+      "career": [
+        {
+          "period": "2025-08-06T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021-09-03T00:00:00 → 2025-08-06T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021-09-03T00:00:00 → 2022-06-30T00:00:00",
+          "club": "Panathinaikos B"
+        },
+        {
+          "period": "2020-10-01T00:00:00 → 2021-06-30T00:00:00",
+          "club": "St.Truiden"
+        },
+        {
+          "period": "2020-09-01T00:00:00 → 2020-09-14T00:00:00",
+          "club": "Inter"
+        },
+        {
+          "period": "2019-08-17T00:00:00 → 2020-06-30T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos B"
+        },
+        {
+          "period": "2020/2021",
+          "club": "St.Truiden"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2020-09-01T00:00:00 → 2020-10-01T00:00:00",
+          "club": "Inter U19"
+        },
+        {
+          "period": "2023-11-08T00:00:00",
+          "club": "Greece"
+        },
+        {
+          "period": "2022-05-24T00:00:00 → 2023-03-14T00:00:00",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019-09-04T00:00:00 → 2019-11-30T00:00:00",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2017-10-17T00:00:00 → 2018-03-13T00:00:00",
+          "club": "Greece U17"
+        },
+        {
+          "period": "2026/2028",
+          "club": "Greece"
+        },
+        {
+          "period": "2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2025",
+          "club": "Greece"
+        },
+        {
+          "period": "2024/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2020",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2019",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2018",
+          "club": "Greece U17"
+        }
+      ],
       "dateOfBirth": "2001-09-12T00:00:00.000Z"
     },
     {
@@ -128,6 +604,128 @@
         "red": 0
       },
       "shirtNumber": 20,
+      "career": [
+        {
+          "period": "2024-08-27T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-01-01T00:00:00 → 2024-08-27T00:00:00",
+          "club": "Toluca"
+        },
+        {
+          "period": "2020-01-01T00:00:00 → 2022-12-31T00:00:00",
+          "club": "Puebla"
+        },
+        {
+          "period": "2018-03-01T00:00:00 → 2019-12-26T00:00:00",
+          "club": "Montevideo Wanderers"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Toluca"
+        },
+        {
+          "period": "2024",
+          "club": "Toluca"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Toluca"
+        },
+        {
+          "period": "2023",
+          "club": "Toluca"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Toluca"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Puebla"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Puebla"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Puebla"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Puebla"
+        },
+        {
+          "period": "2019",
+          "club": "Montevideo Wanderers"
+        },
+        {
+          "period": "2018",
+          "club": "Montevideo Wanderers"
+        },
+        {
+          "period": "2022-10-21T00:00:00",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2019-12-01T00:00:00 → 2023-10-18T00:00:00",
+          "club": "Uruguay U23"
+        },
+        {
+          "period": "2019-07-01T00:00:00 → 2019-12-31T00:00:00",
+          "club": "Uruguay U22"
+        },
+        {
+          "period": "2018-01-01T00:00:00 → 2019-12-31T00:00:00",
+          "club": "Uruguay U20"
+        },
+        {
+          "period": "2026",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2025",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2024",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2023",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2020",
+          "club": "Uruguay U23"
+        },
+        {
+          "period": "2019",
+          "club": "Uruguay U22"
+        },
+        {
+          "period": "2019",
+          "club": "Uruguay U20"
+        }
+      ],
       "dateOfBirth": "2000-02-15T00:00:00.000Z"
     },
     {
@@ -146,6 +744,76 @@
         "red": 0
       },
       "shirtNumber": 22,
+      "career": [
+        {
+          "period": "2023-08-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-02-24T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022-01-01T00:00:00 → 2023-08-30T00:00:00",
+          "club": "Real Valladolid"
+        },
+        {
+          "period": "2021-10-01T00:00:00 → 2022-06-30T00:00:00",
+          "club": "Real Valladolid B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Real Valladolid"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Real Valladolid"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Real Valladolid B"
+        },
+        {
+          "period": "2026-09-20T00:00:00",
+          "club": "Spain"
+        },
+        {
+          "period": "2025-10-01T00:00:00 → 2026-09-21T00:00:00",
+          "club": "Spain U21"
+        },
+        {
+          "period": "2022-09-20T00:00:00 → 2023-11-02T00:00:00",
+          "club": "Spain U19"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Spain U21"
+        },
+        {
+          "period": "2023",
+          "club": "Spain U19"
+        }
+      ],
       "dateOfBirth": "2004-09-28T00:00:00.000Z"
     },
     {
@@ -164,6 +832,76 @@
         "red": 0
       },
       "shirtNumber": 25,
+      "career": [
+        {
+          "period": "2020-07-05T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020-08-03T00:00:00 → 2021-02-05T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021-08-29T00:00:00",
+          "club": "Portugal"
+        },
+        {
+          "period": "2021-11-09T00:00:00 → 2023-03-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Portugal"
+        },
+        {
+          "period": "2024/2026",
+          "club": "Portugal"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Portugal"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Portugal U21"
+        }
+      ],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -182,6 +920,36 @@
         "red": 0
       },
       "shirtNumber": 50,
+      "career": [
+        {
+          "period": "2026-01-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-01-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-01T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        }
+      ],
       "dateOfBirth": "2005-07-12T00:00:00.000Z"
     },
     {
@@ -200,6 +968,44 @@
         "red": 0
       },
       "shirtNumber": 55,
+      "career": [
+        {
+          "period": "2026-07-22T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-07-03T00:00:00 → 2026-07-22T00:00:00",
+          "club": "Famalicão"
+        },
+        {
+          "period": "2023-10-02T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Valenciennes B"
+        },
+        {
+          "period": "2023-10-02T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Valenciennes"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Famalicão"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Famalicão"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Valenciennes B"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Valenciennes"
+        }
+      ],
       "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
@@ -218,6 +1024,96 @@
         "red": 0
       },
       "shirtNumber": 72,
+      "career": [
+        {
+          "period": "2023-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022-09-08T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Hoffenheim II"
+        },
+        {
+          "period": "2022-08-04T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Hoffenheim"
+        },
+        {
+          "period": "2021-07-27T00:00:00 → 2022-06-30T00:00:00",
+          "club": "Tondela"
+        },
+        {
+          "period": "2020-11-07T00:00:00 → 2021-07-27T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2019-07-24T00:00:00 → 2021-07-27T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Hoffenheim II"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Hoffenheim"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Tondela"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020-08-24T00:00:00 → 2025-06-09T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2018-09-01T00:00:00 → 2019-05-30T00:00:00",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2019",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2018",
+          "club": "Portugal U17"
+        }
+      ],
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
     },
     {
@@ -235,6 +1131,136 @@
         "yellow": 0,
         "red": 0
       },
+      "career": [
+        {
+          "period": "2025-07-02T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Fortuna Düsseldorf"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-02T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-07-30T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Standard Liège"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2024-07-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-08-03T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Olympiacos"
+        },
+        {
+          "period": "2023-02-10T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022-08-30T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2019-07-01T00:00:00 → 2022-08-29T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Fortuna Düsseldorf"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Standard Liège"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Olympiacos"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021-03-26T00:00:00 → 2025-08-25T00:00:00",
+          "club": "Greece"
+        },
+        {
+          "period": "2020-07-01T00:00:00 → 2021-08-25T00:00:00",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019-09-04T00:00:00 → 2021-08-25T00:00:00",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2017-03-10T00:00:00 → 2018-10-23T00:00:00",
+          "club": "Greece U17"
+        },
+        {
+          "period": "2025",
+          "club": "Greece"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022",
+          "club": "Greece"
+        },
+        {
+          "period": "2021",
+          "club": "Greece"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019/2021",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2020",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2019",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2018",
+          "club": "Greece U17"
+        },
+        {
+          "period": "2017",
+          "club": "Greece U17"
+        }
+      ],
       "dateOfBirth": "2001-11-26T00:00:00.000Z"
     },
     {
@@ -253,6 +1279,116 @@
         "red": 0
       },
       "shirtNumber": 4,
+      "career": [
+        {
+          "period": "2026-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-01-30T00:00:00 → 2026-07-01T00:00:00",
+          "club": "Häcken"
+        },
+        {
+          "period": "2024-01-13T00:00:00 → 2025-01-30T00:00:00",
+          "club": "FC Utrecht"
+        },
+        {
+          "period": "2023-09-01T00:00:00 → 2025-01-30T00:00:00",
+          "club": "Jong FC Utrecht"
+        },
+        {
+          "period": "2022-12-04T00:00:00 → 2022-12-08T00:00:00",
+          "club": "Inter"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026",
+          "club": "Häcken"
+        },
+        {
+          "period": "2025",
+          "club": "Häcken"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Häcken"
+        },
+        {
+          "period": "2024/2025",
+          "club": "FC Utrecht"
+        },
+        {
+          "period": "2023/2024",
+          "club": "FC Utrecht"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Jong FC Utrecht"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Jong FC Utrecht"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2023-09-01T00:00:00",
+          "club": "Inter U19"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Inter U19"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Inter U19"
+        },
+        {
+          "period": "2025-08-26T00:00:00",
+          "club": "Denmark U21"
+        },
+        {
+          "period": "2022-09-01T00:00:00 → 2023-10-13T00:00:00",
+          "club": "Denmark U19"
+        },
+        {
+          "period": "2022-03-01T00:00:00 → 2023-10-13T00:00:00",
+          "club": "Denmark Under 18"
+        },
+        {
+          "period": "2020-02-01T00:00:00 → 2021-09-30T00:00:00",
+          "club": "Denmark U17"
+        },
+        {
+          "period": "2019-08-01T00:00:00 → 2020-02-20T00:00:00",
+          "club": "Denmark U16"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Denmark U21"
+        },
+        {
+          "period": "2023",
+          "club": "Denmark U19"
+        },
+        {
+          "period": "2022",
+          "club": "Denmark Under 18"
+        },
+        {
+          "period": "2020",
+          "club": "Denmark U17"
+        },
+        {
+          "period": "2020",
+          "club": "Denmark U16"
+        },
+        {
+          "period": "2019",
+          "club": "Denmark U16"
+        }
+      ],
       "dateOfBirth": "2004-06-13T00:00:00.000Z"
     },
     {
@@ -271,6 +1407,56 @@
         "red": 0
       },
       "shirtNumber": 5,
+      "career": [
+        {
+          "period": "2026-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-08-11T00:00:00 → 2026-07-01T00:00:00",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2023-07-06T00:00:00 → 2023-08-18T00:00:00",
+          "club": "Getafe"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2023-07-06T00:00:00",
+          "club": "Sabadell"
+        },
+        {
+          "period": "2020-07-01T00:00:00 → 2021-06-30T00:00:00",
+          "club": "Granollers"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Real Betis"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sabadell"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sabadell"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Granollers"
+        }
+      ],
       "dateOfBirth": "2001-08-25T00:00:00.000Z"
     },
     {
@@ -289,6 +1475,80 @@
         "red": 0
       },
       "shirtNumber": 8,
+      "career": [
+        {
+          "period": "2024-07-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-09-21T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024-08-01T00:00:00 → 2024-08-01T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2025-10-03T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2024-10-08T00:00:00 → 2025-11-04T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2022-11-12T00:00:00 → 2024-11-07T00:00:00",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2023",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Portugal U17"
+        }
+      ],
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
@@ -307,6 +1567,112 @@
         "red": 0
       },
       "shirtNumber": 19,
+      "career": [
+        {
+          "period": "2026-08-15T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-07-18T00:00:00 → 2026-08-15T00:00:00",
+          "club": "Watford"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-18T00:00:00",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2025-01-15T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Grasshopper"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2025-01-15T00:00:00",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2024-12-31T00:00:00",
+          "club": "Bayern München"
+        },
+        {
+          "period": "2021-09-23T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2024-05-15T00:00:00 → 2024-05-25T00:00:00",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2022-05-20T00:00:00 → 2022-05-26T00:00:00",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Watford"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Grasshopper"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2023",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2023/2024",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2024-12-31T00:00:00",
+          "club": "Bayern München U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Bayern München U19"
+        },
+        {
+          "period": "2023-03-23T00:00:00",
+          "club": "Australia"
+        },
+        {
+          "period": "2022-10-01T00:00:00 → 2025-03-29T00:00:00",
+          "club": "Australia U17"
+        },
+        {
+          "period": "2026",
+          "club": "Australia"
+        },
+        {
+          "period": "2025",
+          "club": "Australia"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Australia"
+        },
+        {
+          "period": "2023",
+          "club": "Australia U17"
+        }
+      ],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -325,6 +1691,72 @@
         "red": 0
       },
       "shirtNumber": 21,
+      "career": [
+        {
+          "period": "2026-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-07-11T00:00:00 → 2026-07-01T00:00:00",
+          "club": "AVS Futebol SAD"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-11T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2024-07-09T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Osijek"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2024-07-08T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2024-06-26T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Osijek"
+        },
+        {
+          "period": "2024-04-12T00:00:00 → 2024-06-25T00:00:00",
+          "club": "Norwich City"
+        },
+        {
+          "period": "2020-09-01T00:00:00 → 2023-08-23T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "AVS Futebol SAD"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Osijek"
+        },
+        {
+          "period": "2023",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2023-08-23T00:00:00 → 2024-05-31T00:00:00",
+          "club": "Norwich City U21"
+        },
+        {
+          "period": "2023-06-30T00:00:00 → 2023-08-23T00:00:00",
+          "club": "Palmeiras U20"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Norwich City U21"
+        },
+        {
+          "period": "2023",
+          "club": "Palmeiras U20"
+        }
+      ],
       "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
@@ -343,6 +1775,72 @@
         "red": 0
       },
       "shirtNumber": 70,
+      "career": [
+        {
+          "period": "2025-04-11T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025-10-27T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-01T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025-09-01T00:00:00 → 2025-11-30T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024-09-02T00:00:00 → 2025-10-31T00:00:00",
+          "club": "Portugal Under 18"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal Under 18"
+        }
+      ],
       "dateOfBirth": "2007-06-13T00:00:00.000Z"
     },
     {
@@ -361,6 +1859,60 @@
         "red": 0
       },
       "shirtNumber": 77,
+      "career": [
+        {
+          "period": "2026-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2026-07-01T00:00:00",
+          "club": "Venezia"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2024-06-30T00:00:00",
+          "club": "AlbinoLeffe"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Venezia"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Venezia"
+        },
+        {
+          "period": "2023/2024",
+          "club": "AlbinoLeffe"
+        },
+        {
+          "period": "2022/2023",
+          "club": "AlbinoLeffe"
+        },
+        {
+          "period": "2021/2022",
+          "club": "AlbinoLeffe"
+        },
+        {
+          "period": "2026-09-18T00:00:00",
+          "club": "Italy"
+        },
+        {
+          "period": "2025-03-14T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Italy U21"
+        },
+        {
+          "period": "2026/2028",
+          "club": "Italy"
+        },
+        {
+          "period": "2025",
+          "club": "Italy U21"
+        }
+      ],
       "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
@@ -378,6 +1930,12 @@
         "yellow": 0,
         "red": 0
       },
+      "career": [
+        {
+          "period": "1769990400000",
+          "club": "Sporting CP"
+        }
+      ],
       "dateOfBirth": "2007-06-20T00:00:00.000Z"
     },
     {
@@ -395,6 +1953,44 @@
         "yellow": 0,
         "red": 0
       },
+      "career": [
+        {
+          "period": "2026-09-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026-07-07T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025-05-15T00:00:00 → 2026-07-07T00:00:00",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2025-09-01T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        }
+      ],
       "dateOfBirth": "2007-12-06T00:00:00.000Z"
     },
     {
@@ -413,6 +2009,120 @@
         "red": 0
       },
       "shirtNumber": 7,
+      "career": [
+        {
+          "period": "2025-09-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020-08-11T00:00:00 → 2025-09-01T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2017-08-30T00:00:00 → 2020-08-10T00:00:00",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2017/2018",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2022-09-13T00:00:00",
+          "club": "Greece"
+        },
+        {
+          "period": "2019-11-06T00:00:00 → 2022-03-31T00:00:00",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2018-11-07T00:00:00 → 2019-10-31T00:00:00",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2026/2028",
+          "club": "Greece"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2025",
+          "club": "Greece"
+        },
+        {
+          "period": "2024/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022",
+          "club": "Greece"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019/2021",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019",
+          "club": "Greece U19"
+        }
+      ],
       "dateOfBirth": "2000-01-10T00:00:00.000Z"
     },
     {
@@ -431,6 +2141,88 @@
         "red": 0
       },
       "shirtNumber": 9,
+      "career": [
+        {
+          "period": "2024-02-13T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-07-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-12-21T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2022-09-01T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2026-09-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026-05-26T00:00:00",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2023-11-01T00:00:00 → 2024-03-14T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2023",
+          "club": "Portugal U19"
+        }
+      ],
       "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
@@ -449,6 +2241,124 @@
         "red": 0
       },
       "shirtNumber": 10,
+      "career": [
+        {
+          "period": "2023-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-02-11T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Marítimo B"
+        },
+        {
+          "period": "2022-09-01T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Marítimo"
+        },
+        {
+          "period": "2022-07-01T00:00:00 → 2022-09-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022-01-31T00:00:00 → 2022-06-30T00:00:00",
+          "club": "Vitória de Guimarães"
+        },
+        {
+          "period": "2021-09-04T00:00:00 → 2022-01-31T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020-08-03T00:00:00 → 2022-01-31T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2018-07-02T00:00:00 → 2019-08-15T00:00:00",
+          "club": "Amora FC"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Marítimo B"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Marítimo"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Vitória de Guimarães"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Amora FC"
+        },
+        {
+          "period": "2019-08-26T00:00:00",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2021-02-05T00:00:00 → 2021-02-13T00:00:00",
+          "club": "Mozambique U20"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2025",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2024",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2023",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Mozambique"
+        },
+        {
+          "period": "2019/2022",
+          "club": "Mozambique"
+        }
+      ],
       "dateOfBirth": "2001-01-26T00:00:00.000Z"
     },
     {
@@ -467,6 +2377,124 @@
         "red": 0
       },
       "shirtNumber": 11,
+      "career": [
+        {
+          "period": "2020-09-15T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026-01-31T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2017-07-02T00:00:00 → 2020-08-21T00:00:00",
+          "club": "Rio Ave"
+        },
+        {
+          "period": "2017-07-01T00:00:00 → 2017-07-02T00:00:00",
+          "club": "Benfica"
+        },
+        {
+          "period": "2016-07-01T00:00:00 → 2017-06-30T00:00:00",
+          "club": "Vitória de Setúbal"
+        },
+        {
+          "period": "2015-07-01T00:00:00 → 2016-06-30T00:00:00",
+          "club": "Benfica"
+        },
+        {
+          "period": "2014-07-01T00:00:00 → 2016-06-30T00:00:00",
+          "club": "Benfica B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Rio Ave"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Rio Ave"
+        },
+        {
+          "period": "2017/2018",
+          "club": "Rio Ave"
+        },
+        {
+          "period": "2016/2017",
+          "club": "Vitória de Setúbal"
+        },
+        {
+          "period": "2015/2016",
+          "club": "Benfica"
+        },
+        {
+          "period": "2015/2016",
+          "club": "Benfica B"
+        },
+        {
+          "period": "2014/2015",
+          "club": "Benfica B"
+        },
+        {
+          "period": "2013-09-01T00:00:00 → 2014-06-30T00:00:00",
+          "club": "Benfica U19"
+        },
+        {
+          "period": "2013/2014",
+          "club": "Benfica U19"
+        },
+        {
+          "period": "2015-01-01T00:00:00 → 2017-03-20T00:00:00",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2015-01-01T00:00:00 → 2015-12-31T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2013-01-01T00:00:00 → 2014-10-31T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2015",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2015/2017",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2014",
+          "club": "Portugal U19"
+        }
+      ],
       "dateOfBirth": "1995-02-13T00:00:00.000Z"
     },
     {
@@ -485,6 +2513,104 @@
         "red": 0
       },
       "shirtNumber": 17,
+      "career": [
+        {
+          "period": "2026-07-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-07-14T00:00:00 → 2026-07-01T00:00:00",
+          "club": "Braga"
+        },
+        {
+          "period": "2022-07-01T00:00:00 → 2023-07-13T00:00:00",
+          "club": "Schalke 04"
+        },
+        {
+          "period": "2021-08-04T00:00:00 → 2022-06-30T00:00:00",
+          "club": "Schalke 04"
+        },
+        {
+          "period": "2021-07-01T00:00:00 → 2021-08-04T00:00:00",
+          "club": "Eintracht Frankfurt"
+        },
+        {
+          "period": "2020-08-06T00:00:00 → 2021-06-30T00:00:00",
+          "club": "St. Pauli"
+        },
+        {
+          "period": "2020-05-01T00:00:00 → 2020-08-06T00:00:00",
+          "club": "Eintracht Frankfurt"
+        },
+        {
+          "period": "2019-07-05T00:00:00 → 2020-04-30T00:00:00",
+          "club": "Korona Kielce"
+        },
+        {
+          "period": "2019-07-01T00:00:00 → 2019-07-02T00:00:00",
+          "club": "Eintracht Frankfurt"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Braga"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Braga"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Braga"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Schalke 04"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Schalke 04"
+        },
+        {
+          "period": "2020/2021",
+          "club": "St. Pauli"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Korona Kielce"
+        },
+        {
+          "period": "2023-06-02T00:00:00",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2019-01-01T00:00:00 → 2019-02-28T00:00:00",
+          "club": "Uruguay U20"
+        },
+        {
+          "period": "2026",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2025",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2023",
+          "club": "Uruguay"
+        },
+        {
+          "period": "2019",
+          "club": "Uruguay U20"
+        }
+      ],
       "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
@@ -503,6 +2629,100 @@
         "red": 0
       },
       "shirtNumber": 28,
+      "career": [
+        {
+          "period": "2026-07-11T00:00:00 → 2027-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026-02-12T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Chelsea"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Chelsea"
+        },
+        {
+          "period": "2025-07-31T00:00:00 → 2026-07-11T00:00:00",
+          "club": "Chelsea U21"
+        },
+        {
+          "period": "2025-07-31T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Chelsea U19"
+        },
+        {
+          "period": "2023-09-01T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Crystal Palace U21"
+        },
+        {
+          "period": "2023-04-28T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Crystal Palace U18"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Chelsea U21"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Chelsea U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Crystal Palace U21"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Crystal Palace U18"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Crystal Palace U18"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Crystal Palace U18"
+        },
+        {
+          "period": "2026-09-18T00:00:00",
+          "club": "England U20"
+        },
+        {
+          "period": "2024-11-08T00:00:00 → 2026-09-18T00:00:00",
+          "club": "England U19"
+        },
+        {
+          "period": "2024-08-30T00:00:00 → 2025-05-31T00:00:00",
+          "club": "England Under 18"
+        },
+        {
+          "period": "2023-11-02T00:00:00 → 2024-05-20T00:00:00",
+          "club": "England U17"
+        },
+        {
+          "period": "2026",
+          "club": "England U19"
+        },
+        {
+          "period": "2025",
+          "club": "England U19"
+        },
+        {
+          "period": "2025",
+          "club": "England Under 18"
+        },
+        {
+          "period": "2024",
+          "club": "England Under 18"
+        },
+        {
+          "period": "2024",
+          "club": "England U17"
+        }
+      ],
       "dateOfBirth": "2007-06-30T00:00:00.000Z"
     },
     {
@@ -521,6 +2741,68 @@
         "red": 0
       },
       "shirtNumber": 31,
+      "career": [
+        {
+          "period": "2026-01-04T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-06-14T00:00:00 → 2026-01-04T00:00:00",
+          "club": "West Ham United"
+        },
+        {
+          "period": "2023-01-01T00:00:00 → 2024-06-14T00:00:00",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "West Ham United"
+        },
+        {
+          "period": "2024/2025",
+          "club": "West Ham United"
+        },
+        {
+          "period": "2024",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2023",
+          "club": "Palmeiras"
+        },
+        {
+          "period": "2024-09-23T00:00:00 → 2025-06-30T00:00:00",
+          "club": "West Ham United U21"
+        },
+        {
+          "period": "2024/2025",
+          "club": "West Ham United U21"
+        },
+        {
+          "period": "2022-03-18T00:00:00",
+          "club": "Brazil Under 16"
+        },
+        {
+          "period": "2023-01-01T00:00:00 → 2023-05-01T00:00:00",
+          "club": "Brazil U20"
+        },
+        {
+          "period": "2022",
+          "club": "Brazil Under 16"
+        },
+        {
+          "period": "2023",
+          "club": "Brazil U20"
+        }
+      ],
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
@@ -539,6 +2821,92 @@
         "red": 0
       },
       "shirtNumber": 58,
+      "career": [
+        {
+          "period": "2025-10-27T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-10-17T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024-10-17T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024-01-03T00:00:00 → 2024-05-25T00:00:00",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2026-09-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026-05-26T00:00:00",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2025-09-01T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025-03-21T00:00:00 → 2025-10-31T00:00:00",
+          "club": "Portugal Under 18"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal Under 18"
+        }
+      ],
       "dateOfBirth": "2007-05-30T00:00:00.000Z"
     },
     {
@@ -557,6 +2925,144 @@
         "red": 0
       },
       "shirtNumber": 97,
+      "career": [
+        {
+          "period": "2025-07-28T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-07-01T00:00:00 → 2025-07-28T00:00:00",
+          "club": "Almería"
+        },
+        {
+          "period": "2022-12-05T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Almería"
+        },
+        {
+          "period": "2022-07-19T00:00:00 → 2022-12-05T00:00:00",
+          "club": "Marseille"
+        },
+        {
+          "period": "2020-10-02T00:00:00 → 2022-07-19T00:00:00",
+          "club": "Granada"
+        },
+        {
+          "period": "2020-08-07T00:00:00 → 2020-10-02T00:00:00",
+          "club": "Watford"
+        },
+        {
+          "period": "2019-07-01T00:00:00 → 2020-08-06T00:00:00",
+          "club": "Real Zaragoza"
+        },
+        {
+          "period": "2018-07-09T00:00:00 → 2019-06-30T00:00:00",
+          "club": "Gimnàstic"
+        },
+        {
+          "period": "2018-07-01T00:00:00 → 2018-07-09T00:00:00",
+          "club": "Watford"
+        },
+        {
+          "period": "2017-07-11T00:00:00 → 2018-07-01T00:00:00",
+          "club": "Real Valladolid"
+        },
+        {
+          "period": "2017-07-11T00:00:00 → 2018-06-30T00:00:00",
+          "club": "Real Valladolid B"
+        },
+        {
+          "period": "2017-07-01T00:00:00 → 2017-07-02T00:00:00",
+          "club": "Watford"
+        },
+        {
+          "period": "2016-07-01T00:00:00 → 2017-06-30T00:00:00",
+          "club": "Granada B"
+        },
+        {
+          "period": "2016-03-01T00:00:00 → 2016-03-02T00:00:00",
+          "club": "Granada"
+        },
+        {
+          "period": "2015-04-27T00:00:00 → 2016-03-01T00:00:00",
+          "club": "Leones"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Almería"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Almería"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Almería"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Marseille"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Granada"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Granada"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Real Zaragoza"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Gimnàstic"
+        },
+        {
+          "period": "2017/2018",
+          "club": "Real Valladolid B"
+        },
+        {
+          "period": "2016/2017",
+          "club": "Granada B"
+        },
+        {
+          "period": "2015",
+          "club": "Leones"
+        },
+        {
+          "period": "2020-11-08T00:00:00",
+          "club": "Colombia"
+        },
+        {
+          "period": "2026",
+          "club": "Colombia"
+        },
+        {
+          "period": "2025",
+          "club": "Colombia"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Colombia"
+        },
+        {
+          "period": "2022",
+          "club": "Colombia"
+        },
+        {
+          "period": "2020/2022",
+          "club": "Colombia"
+        }
+      ],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
     }
   ],
