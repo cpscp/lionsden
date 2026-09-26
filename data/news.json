@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-26T16:35:03.456652+00:00",
+  "_updated_at": "2026-09-26T16:45:37.965249+00:00",
   "items": [
     {
       "title": "Futebol Feminino Micael Sequeira: \"Vamos a Braga para ganhar\" 15 minutos",
@@ -125,7 +125,7 @@
       "title": "AO VIVO: FC Porto-Sporting na Supertaça de basquetebol - Maisfutebol",
       "url": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
       "source": "Maisfutebol",
-      "published": "Sat, 26 Sep 2026 14:19:00 GMT",
+      "published": "Sat, 26 Sep 2026 15:26:00 GMT",
       "image": "https://img.iol.pt/image/id/6a1c7221d34e28842c84ab5c/600",
       "image_source": "https://maisfutebol.iol.pt/cronologia/6ab7dd1fd34e53c759c73e60",
       "description": "Boa tarde! Junte-se ao Maisfutebol para acompanhar a Supertaça de basquetebol, entre FC Porto e Sporting, em Albufeira."
@@ -200,15 +200,6 @@
       "description": "Leões exercitatram-se na manhã desta sexta-feira em Alcochete, onde regressam apenas na próxima semana"
     },
     {
-      "title": "Sporting testa liderança em dérbi lotado - SAPO",
-      "url": "https://sapo.pt/artigo/sporting-testa-lideranca-em-derbi-lotado-6ab7ead79a39cd87add4f164",
-      "source": "SAPO",
-      "published": "Sat, 26 Sep 2026 15:53:02 GMT",
-      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/26092026/8dcc2782-af3a-43e4-8e70-fd8a1f5e11cf.jpg?operations=crop(0:0:924:520),fit(960:)",
-      "image_source": "https://sapo.pt/artigo/sporting-testa-lideranca-em-derbi-lotado-6ab7ead79a39cd87add4f164",
-      "description": "Pavilhão João Rocha acolhe leões e águias, amanhã, domingo, em jogo do campeonato nacional"
-    },
-    {
       "title": "St. Juste, a saída do Sporting, a hipótese Bayern e a seleção: \"Vais para Portugal e sais de cena\" - SAPO",
       "url": "https://sapo.pt/artigo/st-juste-a-saida-do-sporting-a-hipotese-bayern-e-a-selecao-vais-para-portugal-e-sais-de-cena-6ab7cbfe2b83b8dc3cca4a6b",
       "source": "SAPO",
@@ -216,6 +207,15 @@
       "image": "https://staticx.noticiasilimitadas.pt/oj/image.jpg?brand=oj&type=generate&guid=dfb99668-ded2-4b52-af3c-4db505877437&w=1200&h=675",
       "image_source": "https://sapo.pt/artigo/st-juste-a-saida-do-sporting-a-hipotese-bayern-e-a-selecao-vais-para-portugal-e-sais-de-cena-6ab7cbfe2b83b8dc3cca4a6b",
       "description": "Jeremiah St. Juste, defesa-central do Feyenoord, em entrevista à Voetbal International, uma revista de futebol dos Países Baixos"
+    },
+    {
+      "title": "Sporting testa liderança em dérbi lotado - SAPO",
+      "url": "https://sapo.pt/artigo/sporting-testa-lideranca-em-derbi-lotado-6ab7ead79a39cd87add4f164",
+      "source": "SAPO",
+      "published": "Sat, 26 Sep 2026 15:53:02 GMT",
+      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/26092026/8dcc2782-af3a-43e4-8e70-fd8a1f5e11cf.jpg?operations=crop(0:0:924:520),fit(960:)",
+      "image_source": "https://sapo.pt/artigo/sporting-testa-lideranca-em-derbi-lotado-6ab7ead79a39cd87add4f164",
+      "description": "Pavilhão João Rocha acolhe leões e águias, amanhã, domingo, em jogo do campeonato nacional"
     },
     {
       "title": "Sporting CP 2021-2022 - Liga Portugal",
