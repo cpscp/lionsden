@@ -880,8 +880,13 @@ def fetch_fotmob_core():
                     hs = fnum(rm.get("homeScore"))
                     aw = fnum(rm.get("awayScore"))
                     if hs is None or aw is None:
+                        score_text = str(rm.get("score") or rm.get("scoreStr") or "")
+                        sm = re.search(r"(\\d+)\\s*[-:]\\s*(\\d+)", score_text)
+                        if sm:
+                            hs, aw = int(sm.group(1)), int(sm.group(2))
+                    if hs is None or aw is None:
                         continue
-                    is_home = rm.get("isHome")
+                    is_home = rm.get("isHome", rm.get("isHomeTeam"))
                     if is_home is True or str(is_home).lower() in {"true", "1"}:
                         conceded = aw
                     elif is_home is False or str(is_home).lower() in {"false", "0"}:
