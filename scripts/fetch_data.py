@@ -2564,11 +2564,28 @@ def fetch_match_summary_videos():
         def score_candidate(v):
             title_n = norm(v.get("title"))
             owner_n = norm(v.get("owner"))
+            # Only official sources are eligible for match summaries.
+            # Home matches: Sporting CP is the preferred source.
+            # Away matches: VSPORTS - Liga Portugal is preferred, with Sporting CP
+            # as an official fallback when VSPORTS has no suitable summary.
+            is_sporting_source = "sporting clube de portugal" in owner_n or owner_n == "sporting cp"
+            is_vsports_source = "vsports" in owner_n and "liga portugal" in owner_n
+            if is_sporting_home:
+                if not is_sporting_source:
+                    return (-1, -1, -1, -1, -1, -1)
+            else:
+                if not (is_vsports_source or is_sporting_source):
+                    return (-1, -1, -1, -1, -1, -1)
             team_hits = int(home_n in title_n) + int(away_n in title_n)
-            score_hit = int(f"{hg}{ag}" in title_n or f"{hg}{ag}" in title_n.replace("vs",""))
-            sporting = int("sporting" in owner_n)
-            vsports = int("vsports" in owner_n)
+            score_hit = int(f"{hg}{ag}" in title_n or f"{hg} - {ag}" in title_n)
+            sporting = int(is_sporting_source)
+            vsports = int(is_vsports_source)
             summary = int("resumo" in title_n or "highlights" in title_n)
+            # Never accept gaming/simulation content even if the title contains the
+            # exact teams and score.
+            forbidden = any(x in title_n for x in ("simulacao", "simulação", "efootball", "pes 21", "pes2021", "gaming"))
+            if forbidden:
+                return (-1, -1, -1, -1, -1, -1)
             match_dt=None
             try: match_dt=datetime.fromtimestamp(float(f.get("date") or 0),tz=timezone.utc)
             except Exception: pass
