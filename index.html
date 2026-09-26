@@ -1059,7 +1059,7 @@ function benchHtml(lineup){
 function matchStatsHtml(detail){
  const all=(detail?.statistics?.statistics||[]).find(x=>x.period==='ALL')||((detail?.statistics?.statistics||[])[0]);
  const items=(all?.groups||[]).flatMap(g=>g.statisticsItems||[]);
- const wanted=['Ball possession','Expected goals','Total shots','Shots on target','Corner kicks','Fouls','Yellow cards','Big chances'];
+ const wanted=['Ball possession','Expected goals (xG)','Expected goals','Total shots','Shots on target','Corner kicks','Fouls','Yellow cards','Big chances'];
  const rows=wanted.map(name=>items.find(x=>String(x.name).toLowerCase()===name.toLowerCase())).filter(Boolean);
  if(!rows.length)return '<div class="text-[10px] muted">Estatísticas detalhadas não disponíveis.</div>';
  return rows.map(x=>'<div class="game-stats-row"><span>'+esc(x.home??'—')+'</span><span class="game-stats-label">'+esc(x.name)+'</span><span>'+esc(x.away??'—')+'</span></div>').join('');
@@ -1067,7 +1067,11 @@ function matchStatsHtml(detail){
 function substitutionsHtml(detail){
  const arr=(detail?.incidents?.incidents||[]).filter(x=>x.incidentType==='substitution');
  if(!arr.length)return '<div class="text-[10px] muted">Sem substituições disponíveis.</div>';
- return arr.slice().reverse().map(x=>'<div class="game-sub-row"><span class="game-sub-minute">'+esc(x.time!=null?x.time+"'" :'—')+'</span><span>'+esc(x.playerOut?.name||'—')+' → <b>'+esc(x.playerIn?.name||'—')+'</b></span></div>').join('');
+ return arr.slice().reverse().map(x=>{
+   const swap=(x.swap||[]).map(p=>p?.name||'').filter(Boolean).join(' · ');
+   const text=x.playerOut?.name&&x.playerIn?.name?(x.playerOut.name+' → '+x.playerIn.name):(x.description||x.player?.name||swap||'Substituição');
+   return '<div class="game-sub-row"><span class="game-sub-minute">'+esc(x.time!=null?x.time+"'" :'—')+'</span><span>'+esc(text)+'</span></div>';
+ }).join('');
 }
 function openGame(id){
  const base=findFixture(id);const detail=fixtureDetail(id);if(!base)return;
