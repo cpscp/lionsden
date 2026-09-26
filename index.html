@@ -436,6 +436,10 @@ const t=D['team-stats.json']?.team||{},f=allFixtures(),now=Math.floor(Date.now()
 function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
 function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
+const nationalityPT={"Portugal":"Portugal","Brazil":"Brasil","Spain":"Espanha","France":"França","Germany":"Alemanha","England":"Inglaterra","Italy":"Itália","Netherlands":"Países Baixos","Belgium":"Bélgica","Denmark":"Dinamarca","Sweden":"Suécia","Norway":"Noruega","Poland":"Polónia","Croatia":"Croácia","Serbia":"Sérvia","Switzerland":"Suíça","Austria":"Áustria","Greece":"Grécia","Turkey":"Turquia","Ukraine":"Ucrânia","Czech Republic":"Chéquia","Czechia":"Chéquia","Slovakia":"Eslováquia","Hungary":"Hungria","Romania":"Roménia","Bulgaria":"Bulgária","Georgia":"Geórgia","Senegal":"Senegal","Morocco":"Marrocos","Mozambique":"Moçambique","Angola":"Angola","Guinea-Bissau":"Guiné-Bissau","Cape Verde":"Cabo Verde","Ivory Coast":"Costa do Marfim","Côte d'Ivoire":"Costa do Marfim","Colombia":"Colômbia","Uruguay":"Uruguai","Argentina":"Argentina","Chile":"Chile","Mexico":"México","United States":"Estados Unidos","Canada":"Canadá","Australia":"Austrália","Japan":"Japão","South Korea":"Coreia do Sul","Nigeria":"Nigéria","Ghana":"Gana","Cameroon":"Camarões","Mali":"Mali","Guinea":"Guiné","DR Congo":"RD Congo","Democratic Republic of the Congo":"RD Congo","Equatorial Guinea":"Guiné Equatorial","Algeria":"Argélia","Tunisia":"Tunísia","South Africa":"África do Sul"};
+function nationalityLabel(v){const s=String(v||'').trim();return s?(nationalityPT[s]||s):'—';}
+function positionLabel(v){const s=String(v||'').trim();if(!s)return'—';const x=s.toLowerCase();if(x.includes('goalkeeper')||x.includes('goal keeper')||x.includes('guarda-redes')||x.includes('guarda redes'))return'Guarda-redes';if(x.includes('defender')||x==='defesa')return'Defesa';if(x.includes('midfielder')||x.includes('midfield')||x.includes('médio'))return'Médio';if(x.includes('forward')||x.includes('attacker')||x.includes('striker')||x.includes('winger')||x.includes('avançado')||x.includes('extremo'))return'Avançado';return s;}
+function isGoalkeeper(p){const x=String(p?.position||p?.officialPosition||'').toLowerCase();return x.includes('goalkeeper')||x.includes('guarda-redes')||x.includes('guarda redes');}
 function playerAge(date){
   if(!date)return'—';
   const d=new Date(date), now=new Date();
@@ -508,13 +512,15 @@ document.getElementById('modalTitle').textContent=p.name;
 const dob=p.dateOfBirth?esc(new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(p.dateOfBirth))):'—';
 const age=playerAge(p.dateOfBirth);
 const shirt=p.shirtNumber!=null?shirtBadge(p.shirtNumber):'';
+const nationality=nationalityLabel(p.nationality||p.nation);
+const position=positionLabel(p.position||p.officialPosition);
 const caps=p.internationalCaps!=null?`<div class="text-[11px] muted mt-2">${esc(p.internationalCaps)} internacionalizações</div>`:'';
 document.getElementById('modalBody').innerHTML=`
 <div class="flex items-center gap-4 mb-5">
   <div class="w-28 h-32 shrink-0 rounded-2xl bg-white/5 overflow-hidden">${p.photo?`<img src="${esc(p.photo)}" class="w-full h-full object-cover" alt="">`:badge(p.name)}</div>
   <div class="min-w-0 flex-1">
     <div class="text-xl font-bold">${esc(p.name)}</div>
-    <div class="muted text-sm mt-1">${esc(p.position||p.officialPosition||'—')} · ${esc(p.nationality||p.nation||'—')}</div>
+    <div class="muted text-sm mt-1">${esc(position)} · ${esc(nationality)}</div>
     <div class="text-sm text-white/80 mt-3">${age}</div>
     <div class="text-[11px] muted mt-1">${dob}</div>
     ${caps}
@@ -522,7 +528,7 @@ document.getElementById('modalBody').innerHTML=`
   ${shirt}
 </div>
 <div class="grid grid-cols-2 gap-2">
-${metric('Jogos',p.stats?.matches??p.matches)}${metric('Titular',p.stats?.starts??p.starts)}${metric('Minutos',p.stats?.minutes??p.minutes)}${metric('Golos',p.stats?.goals??p.goals)}${metric('Assistências',p.stats?.assists??p.assists)}${metric('Amarelos',p.stats?.yellow??p.yellow)}${metric('Vermelhos',p.stats?.red??p.red)}
+${metric('Jogos',p.stats?.matches??p.matches)}${metric('Titular',p.stats?.starts??p.starts)}${metric('Minutos',p.stats?.minutes??p.minutes)}${metric('Golos',p.stats?.goals??p.goals)}${metric('Assistências',p.stats?.assists??p.assists)}${metric('Amarelos',p.stats?.yellow??p.yellow)}${metric('Vermelhos',p.stats?.red??p.red)}${isGoalkeeper(p)?metric('Clean sheets',p.stats?.cleanSheets??p.cleanSheets):''}
 </div>
 <div class="card p-4 mt-4"><div class="font-semibold mb-3">Percurso</div>${renderCareer(p)}</div>
 <div class="card p-4 mt-3"><div class="font-semibold">Época 2026/27</div><p class="text-[11px] muted mt-2">Estatísticas agregadas das competições cobertas pelo FBref. Os valores são atualizados automaticamente pelo GitHub Action.</p></div>`;
