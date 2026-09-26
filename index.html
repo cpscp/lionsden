@@ -436,27 +436,96 @@ const t=D['team-stats.json']?.team||{},f=allFixtures(),now=Math.floor(Date.now()
 function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'📰'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
 function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
-function formatCareer(c){
-if(!c)return'';
-if(!Array.isArray(c))return esc(String(c));
-const seen=new Set(),clubs=[];
-for(const x of c){
-  const club=typeof x==='string'?x:(x?.club||x?.team||x?.name||'');
-  const name=String(club).trim();
-  if(!name||/^Portugal(?:\s+U\d+)?$/i.test(name)||/^Portugal\s+sub-\d+$/i.test(name))continue;
-  const key=name.toLowerCase();
-  if(!seen.has(key)){seen.add(key);clubs.push(name);}
+function playerAge(date){
+  if(!date)return'—';
+  const d=new Date(date), now=new Date();
+  let age=now.getFullYear()-d.getFullYear();
+  const beforeBirthday=now.getMonth()<d.getMonth() || (now.getMonth()===d.getMonth()&&now.getDate()<d.getDate());
+  if(beforeBirthday)age--;
+  return age+' anos';
 }
-return clubs.map(esc).join(' → ');
+function seasonLabel(value){
+  const s=String(value||'').trim();
+  if(/^\d{4}\/\d{4}$/.test(s))return s.slice(0,4)+'/'+s.slice(5);
+  const m=s.match(/^(\d{4})[-\/]\d{2}[-\/]\d{2}/);
+  if(m){
+    const y=Number(m[1]), month=Number(s.slice(5,7));
+    return month>=7?y+'/'+String((y+1)%100).padStart(2,'0'):(y-1)+'/'+String(y%100).padStart(2,'0');
+  }
+  return s;
+}
+function shirtBadge(number){
+  return number!=null?\`<div class="relative w-16 h-16 shrink-0 flex items-center justify-center" aria-label="Camisola \${esc(number)}">
+    <svg viewBox="0 0 64 64" class="absolute inset-0 w-full h-full text-emerald-400/80" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M21 10l-12 8 6 12 6-3v25h22V27l6 3 6-12-12-8c-2 5-5 8-11 8s-9-3-11-8Z"/>
+      <path d="M26 10c1 4 3 6 6 6s5-2 6-6"/>
+    </svg>
+    <span class="relative z-10 text-xl font-bold">\${esc(number)}</span>
+  </div>\`:'';
+}
+function careerRows(p){
+  const stats=p.careerStats||[];
+  const statMap=new Map(stats.map(x=>[(seasonLabel(x.season)+'|'+String(x.club).toLowerCase()),x]));
+  const raw=p.career||[];
+  const rows=[],seen=new Set();
+  for(const x of raw){
+    const club=typeof x==='string'?x:(x?.club||x?.team||x?.name||'');
+    const period=typeof x==='string'?'':(x?.period||x?.season||'');
+    if(!club||/^Portugal(?:\s+U\d+)?$/i.test(club)||/^Portugal\s+sub-\d+$/i.test(club))continue;
+    const season=seasonLabel(period);
+    if(!/^\d{4}\/\d{2}$/.test(season))continue;
+    const key=season+'|'+club.toLowerCase();
+    if(seen.has(key))continue;
+    seen.add(key);
+    const st=statMap.get(key)||{};
+    rows.push({season,club,matches:st.matches??'—',goals:st.goals??'—',assists:st.assists??'—'});
+  }
+  stats.forEach(st=>{
+    const season=seasonLabel(st.season),club=st.club;
+    if(!season||!club||!/^\d{4}\/\d{2}$/.test(season))return;
+    const key=season+'|'+club.toLowerCase();
+    if(seen.has(key))return;
+    seen.add(key);rows.push({season,club,matches:st.matches??'—',goals:st.goals??'—',assists:st.assists??'—'});
+  });
+  rows.sort((a,b)=>b.season.localeCompare(a.season)||a.club.localeCompare(b.club));
+  return rows;
+}
+function renderCareer(p){
+  const rows=careerRows(p);
+  if(!rows.length)return'<div class="text-[11px] muted">Percurso ainda não disponível.</div>';
+  return \`<div class="overflow-hidden rounded-xl border border-white/10">
+    <div class="grid grid-cols-[1.05fr_1.8fr_.55fr_.55fr_.8fr] gap-2 px-3 py-2 text-[9px] uppercase tracking-wider muted bg-white/[.025]">
+      <span>Época</span><span>Clube</span><span class="text-center">Jogos</span><span class="text-center">Golos</span><span class="text-center">Assistências</span>
+    </div>
+    \${rows.map(r=>\`<div class="grid grid-cols-[1.05fr_1.8fr_.55fr_.55fr_.8fr] gap-2 items-center px-3 py-3 border-t border-white/5 text-[11px]">
+      <span class="font-semibold">\${esc(r.season)}</span><span class="truncate">\${esc(r.club)}</span><span class="text-center">\${esc(r.matches)}</span><span class="text-center">\${esc(r.goals)}</span><span class="text-center">\${esc(r.assists)}</span>
+    </div>\`).join('')}
+  </div>\`;
 }
 function openPlayer(i){
 const p=((D['squad.json']?.players||D['squad.json']?.squad||[]))[i];if(!p)return;
 document.getElementById('modalTitle').textContent=p.name;
-const dob=p.dateOfBirth?esc(new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(p.dateOfBirth))):'Data de nascimento —';
-const shirt=p.shirtNumber!=null?'Camisola '+esc(p.shirtNumber):'Camisola —';
-const caps=p.internationalCaps!=null?` · ${esc(p.internationalCaps)} internacionalizações`:'';
-const career=p.career?.length?formatCareer(p.career):'Percurso de clubes ainda não disponível no feed atual.';
-document.getElementById('modalBody').innerHTML=`<div class="flex items-start gap-4 mb-5"><div class="w-36 h-40 shrink-0 rounded-2xl bg-white/5 overflow-hidden">${p.photo?`<img src="${esc(p.photo)}" class="w-full h-full object-cover" alt="">`:badge(p.name)}</div><div class="min-w-0 pt-1"><div class="text-xl font-bold">${esc(p.name)}</div><div class="muted text-sm mt-1">${esc(p.position||p.officialPosition||'—')} · ${esc(p.nationality||p.nation||'—')}</div><div class="muted text-xs mt-2">${dob}</div><div class="muted text-xs mt-1">${shirt}${caps}</div>${p.profile?`<a class="text-[10px] text-emerald-400 inline-block mt-2" target="_blank" rel="noopener" href="${esc(p.profile)}">Perfil Sporting CP ↗</a>`:''}</div></div><div class="grid grid-cols-2 gap-2">${metric('Jogos',p.stats?.matches??p.matches)}${metric('Titular',p.stats?.starts??p.starts)}${metric('Minutos',p.stats?.minutes??p.minutes)}${metric('Golos',p.stats?.goals??p.goals)}${metric('Assistências',p.stats?.assists??p.assists)}${metric('Amarelos',p.stats?.yellow??p.yellow)}${metric('Vermelhos',p.stats?.red??p.red)}${p.position==='GK'?metric('Defesas',p.stats?.saves??p.saves)+metric('Clean sheets',p.stats?.clean_sheets??p.clean_sheets):''}</div><div class="card p-4 mt-4"><div class="font-semibold">Percurso</div><div class="text-[11px] muted mt-2 leading-6">${career}</div></div><div class="card p-4 mt-3"><div class="font-semibold">Época 2026/27</div><p class="text-[11px] muted mt-2">Estatísticas agregadas das competições cobertas pelo FBref. Os valores são atualizados automaticamente pelo GitHub Action.</p></div>`;
+const dob=p.dateOfBirth?esc(new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(p.dateOfBirth))):'—';
+const age=playerAge(p.dateOfBirth);
+const shirt=p.shirtNumber!=null?shirtBadge(p.shirtNumber):'';
+const caps=p.internationalCaps!=null?\`<div class="text-[11px] muted mt-2">\${esc(p.internationalCaps)} internacionalizações</div>\`:'';
+document.getElementById('modalBody').innerHTML=\`
+<div class="flex items-center gap-4 mb-5">
+  <div class="w-28 h-32 shrink-0 rounded-2xl bg-white/5 overflow-hidden">\${p.photo?\`<img src="\${esc(p.photo)}" class="w-full h-full object-cover" alt="">\`:badge(p.name)}</div>
+  <div class="min-w-0 flex-1">
+    <div class="text-xl font-bold">\${esc(p.name)}</div>
+    <div class="muted text-sm mt-1">\${esc(p.position||p.officialPosition||'—')} · \${esc(p.nationality||p.nation||'—')}</div>
+    <div class="text-sm text-white/80 mt-3">\${age}</div>
+    <div class="text-[11px] muted mt-1">\${dob}</div>
+    \${caps}
+  </div>
+  \${shirt}
+</div>
+<div class="grid grid-cols-2 gap-2">
+\${metric('Jogos',p.stats?.matches??p.matches)}\${metric('Titular',p.stats?.starts??p.starts)}\${metric('Minutos',p.stats?.minutes??p.minutes)}\${metric('Golos',p.stats?.goals??p.goals)}\${metric('Assistências',p.stats?.assists??p.assists)}\${metric('Amarelos',p.stats?.yellow??p.yellow)}\${metric('Vermelhos',p.stats?.red??p.red)}
+</div>
+<div class="card p-4 mt-4"><div class="font-semibold mb-3">Percurso</div>\${renderCareer(p)}</div>
+<div class="card p-4 mt-3"><div class="font-semibold">Época 2026/27</div><p class="text-[11px] muted mt-2">Estatísticas agregadas das competições cobertas pelo FBref. Os valores são atualizados automaticamente pelo GitHub Action.</p></div>\`;
 openModal();
 }
 function findFixture(id){return allFixtures().find(x=>String(x.id)===String(id))}
