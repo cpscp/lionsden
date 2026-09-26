@@ -2362,7 +2362,8 @@
           "assists": 0
         }
       ],
-      "dateOfBirth": "2001-11-26T00:00:00.000Z"
+      "dateOfBirth": "2001-11-26T00:00:00.000Z",
+      "shirtNumber": 52
     },
     {
       "fotmob_id": 1425101,
@@ -3766,7 +3767,8 @@
           "assists": 3
         }
       ],
-      "dateOfBirth": "2007-12-06T00:00:00.000Z"
+      "dateOfBirth": "2007-12-06T00:00:00.000Z",
+      "shirtNumber": 76
     },
     {
       "fotmob_id": 899701,
