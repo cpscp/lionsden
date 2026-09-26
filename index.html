@@ -552,7 +552,7 @@ function seasonStatsCard(season,st){
       <div class="flex flex-col items-center"><div class="text-[9px] muted mb-2">RESULTADOS</div>${donutChart(Number(st.losses||0),total,'derrotas')}</div>
     </div>
     <div class="grid grid-cols-2 gap-2 mt-4">
-      ${metric('Golos',gf)}${metric('Golos sofridos',ga)}${metric('Clean sheets',Number(st.clean_sheets||0))}${metric('Taxa de vitória',`${Number(st.win_rate||0).toFixed(1)}%`)}
+      ${metric('Golos',gf)}${metric('Golos sofridos',ga)}${metric('Clean sheets',st.clean_sheets==null?'—':Number(st.clean_sheets))}${metric('Taxa de vitória',`${Number(st.win_rate||0).toFixed(1)}%`)}
     </div>
   </div>`;
 }
