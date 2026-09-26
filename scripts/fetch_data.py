@@ -192,29 +192,72 @@ def zerozero_player_index():
 
 
 def zerozero_player_history(url):
-    """Parse ZeroZero career history, using an indexed-content fallback when direct access is blocked."""
+    """Parse ZeroZero career history from the player's zoomstats/history view."""
+    result = []
     html = ""
     text_content = ""
-    try:
-        r = session.get(url, timeout=30)
-        if r.ok and len(r.text) > 5000:
-            html = r.text
-        else:
-            proxy = "https://r.jina.ai/https://" + url.split("://", 1)[-1]
-            pr = session.get(proxy, timeout=45)
-            pr.raise_for_status()
-            text_content = pr.text
-    except Exception as e:
+    candidates = [
+        url + ("&" if "?" in url else "?") + "op=zoomstats&redirm=1",
+        url + ("&" if "?" in url else "?") + "op=zoomstats&redirm=1&tpstats=club",
+        url,
+    ]
+    # Direct ZeroZero first. Only accept HTML that actually contains the
+    # historical table; otherwise try the indexed text proxy.
+    for candidate in candidates:
         try:
-            proxy = "https://r.jina.ai/http://" + url.split("://", 1)[-1]
-            pr = session.get(proxy, timeout=45)
+            rr = session.get(candidate, timeout=30, headers={"User-Agent": USER_AGENT})
+            if rr.ok and len(rr.text) > 5000:
+                html = rr.text
+                if "Histórico" in rr.text or "HISTÓRICO" in rr.text:
+                    break
+        except Exception:
+            continue
+
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for table in soup.find_all("table"):
+            rows = table.find_all("tr")
+            if not rows:
+                continue
+            headers = [zz_norm(x.get_text(" ", strip=True)) for x in rows[0].find_all(["th","td"])]
+            if not {"epoca","equipa","j","g","ast"}.issubset(set(headers)):
+                continue
+            idx = {h:i for i,h in enumerate(headers)}
+            season = ""
+            for tr in rows[1:]:
+                cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["th","td"])]
+                if not cells:
+                    continue
+                def cell(k):
+                    i = idx.get(k)
+                    return cells[i] if i is not None and i < len(cells) else ""
+                if cell("epoca"):
+                    season = cell("epoca")
+                if season and cell("equipa"):
+                    result.append({
+                        "season": season.replace("-","/"),
+                        "club": cell("equipa"),
+                        "matches": zz_number(cell("j")),
+                        "goals": zz_number(cell("g")),
+                        "assists": zz_number(cell("ast"))
+                    })
+            if result:
+                return result
+
+    # Jina fallback is useful when ZeroZero serves a challenge page to Actions.
+    for scheme in ("https://", "http://"):
+        try:
+            target = url.split("://", 1)[-1]
+            proxy = "https://r.jina.ai/" + scheme + target + "?op=zoomstats&redirm=1"
+            pr = session.get(proxy, timeout=45, headers={"User-Agent": USER_AGENT})
             pr.raise_for_status()
             text_content = pr.text
-        except Exception as e2:
-            print("ZeroZero fetch warning:", url, e, e2)
-            return []
+            break
+        except Exception:
+            continue
 
-    result = []
+    if not text_content:
+        return []
     if html:
         soup = BeautifulSoup(html, "html.parser")
         for table in soup.find_all("table"):
