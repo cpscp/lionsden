@@ -2781,8 +2781,64 @@ def fetch_news():
             # already contain the correct editorial photo. NEVER delete that
             # image just because we are enriching the article.
             # Only try external recovery when no usable image was discovered.
+            if not item.get("image"):
+                # 1) Direct Zerozero fetch with a real-browser TLS fingerprint.
+                # requests receives 403 from the current Zerozero edge, while
+                # curl_cffi can reproduce Chrome/Safari HTTP2/TLS handshakes.
+                try:
+                    from curl_cffi import requests as curl_requests
+                    for browser in ("chrome","safari"):
+                        if item.get("image"):
+                            break
+                        try:
+                            cr=curl_requests.get(url,impersonate=browser,timeout=20,headers={"Accept":"text/html,application/xhtml+xml"})
+                            if not cr.ok:
+                                continue
+                            cs=BeautifulSoup(cr.text,"html.parser")
+                            for attrs in (
+                                {"property":"og:image"},{"property":"og:image:url"},
+                                {"name":"twitter:image"},{"name":"twitter:image:src"},
+                                {"itemprop":"image"}
+                            ):
+                                n=cs.find("meta",attrs=attrs)
+                                if n and n.get("content"):
+                                    src=n.get("content").strip()
+                                    if src and not re.search(r"(logo|favicon|cloudflare|captcha)",src,re.I):
+                                        item["image"]=urljoin(url,src)
+                                        item["image_source"]="Zerozero direct browser TLS"
+                                        break
+                            if not item.get("image"):
+                                for script in cs.find_all("script",attrs={"type":"application/ld+json"}):
+                                    try:
+                                        data=json.loads(script.string or script.get_text())
+                                        vals=data if isinstance(data,list) else [data]
+                                        for obj in vals:
+                                            if not isinstance(obj,dict):
+                                                continue
+                                            val=obj.get("image")
+                                            if isinstance(val,str):
+                                                src=val
+                                            elif isinstance(val,dict):
+                                                src=val.get("url")
+                                            elif isinstance(val,list) and val:
+                                                src=val[0]
+                                            else:
+                                                src=None
+                                            if src:
+                                                item["image"]=urljoin(url,str(src))
+                                                item["image_source"]="Zerozero direct JSON-LD"
+                                                break
+                                        if item.get("image"):
+                                            break
+                                    except Exception:
+                                        pass
+                        except Exception as ex:
+                            print("Zerozero browser TLS attempt warning:",browser,item.get("url"),ex)
+                except Exception as ex:
+                    print("Zerozero curl_cffi unavailable:",ex)
+
             if not item.get("image") and item.get("_google_url"):
-                # 1) Google News wrapper: this is the strongest recovery path
+                # 2) Google News wrapper: this is the strongest recovery path
                 # when Zerozero blocks GitHub Actions. The wrapper is tied to the
                 # exact publisher article and can expose its editorial thumbnail
                 # even when the publisher HTML itself returns 403.
