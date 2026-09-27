@@ -2902,22 +2902,6 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
-                        if item.get("source")=="Zerozero":
-                            try:
-                                cards=gs.select("a.iusc")
-                                cdn_hits=re.findall(r'https?://[^"\\s<>]*cdn-img[^"\\s<>]*',gr.text,re.I)
-                                print("ZZ_GOOGLE_DEBUG", item.get("url"), "STATUS", gr.status_code, "LEN", len(gr.text), "IUSC", len(cards), "CDN", len(cdn_hits), "TBM", gr.text.lower().count("encrypted-tbn"), "STATICZZ", gr.text.lower().count("staticzz"), "ZEROZERO", gr.text.lower().count("zerozero.pt"))
-                                for dbg in cards[:8]:
-                                    raw_dbg=dbg.get("m") or ""
-                                    try:
-                                        md=json.loads(raw_dbg)
-                                        print("ZZ_CARD", (md.get("purl") or "")[:180], (md.get("murl") or "")[:220])
-                                    except Exception:
-                                        pass
-                                if cdn_hits:
-                                    print("ZZ_CDN_SAMPLE", cdn_hits[:5])
-                            except Exception as dbg_ex:
-                                print("ZZ_GOOGLE_DEBUG_ERROR",dbg_ex)
                         # Zerozero's current editorial photos are hosted on
                         # cdn-img.staticzz.com (and, on some results, cdn-img.zerozero.pt).
                         # Google may serialize the original CDN URL in the raw HTML
@@ -2982,7 +2966,47 @@ def fetch_news():
                     print("Zerozero Google image search warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 6) Bing Images fallback. Prefer an original image whose
+                # 6) Modern Google Images fallback using Google's current
+                # udm=2 endpoint. Match the thumbnail to this exact article.
+                try:
+                    from urllib.parse import quote
+                    q=quote('"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/')
+                    gu="https://www.google.com/search?udm=2&q="+q+"&hl=pt-PT"
+                    gr2=session.get(gu,timeout=20,headers={"User-Agent":USER_AGENT})
+                    if gr2.ok:
+                        gs2=BeautifulSoup(gr2.text,"html.parser")
+                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
+                        words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
+                        for im in gs2.find_all("img"):
+                            src=im.get("data-src") or im.get("data-iurl") or im.get("src")
+                            if not src or str(src).startswith("data:"):
+                                continue
+                            low=str(src).lower()
+                            if any(x in low for x in ("favicon","logo","google.com/images","google.com/search")):
+                                continue
+                            parent=im
+                            hrefs=[]
+                            texts=[]
+                            for _ in range(6):
+                                parent=parent.parent
+                                if parent is None:
+                                    break
+                                if parent.get("href"):
+                                    hrefs.append(str(parent.get("href")))
+                                t=parent.get_text(" ",strip=True) if hasattr(parent,"get_text") else ""
+                                if t:
+                                    texts.append(t)
+                            exact=any(target and target in h.split("?",1)[0].rstrip("/").lower() for h in hrefs)
+                            text_match=any(sum(1 for w in words if w in t.lower()) >= max(4,min(8,len(words))) for t in texts)
+                            if exact or text_match:
+                                item["image"]=src
+                                item["image_source"]="Google Images modern thumbnail"
+                                break
+                except Exception as ex:
+                    print("Zerozero modern Google Images warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 7) Bing Images fallback. Prefer an original image whose
                 # source page or result title clearly belongs to this exact
                 # Zerozero article.
                 try:
