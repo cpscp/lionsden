@@ -3055,14 +3055,21 @@ ZEROZERO_TEAM_ALIASES = {
 _zerozero_team_cache = {}
 
 def zerozero_get(url):
-    """Fetch ZeroZero with a single direct attempt and a Jina fallback."""
-    candidates = [url, "https://r.jina.ai/" + url]
+    """Fetch ZeroZero with multiple network fallbacks for GitHub Actions."""
+    encoded = quote_plus(url)
+    candidates = [
+        url,
+        f"https://api.allorigins.win/raw?url={encoded}",
+        f"https://api.codetabs.com/v1/proxy?quest={encoded}",
+        "https://r.jina.ai/" + url,
+        f"https://corsproxy.io/?url={encoded}",
+    ]
     last = None
     for candidate in candidates:
         try:
             rr = session.get(
                 candidate,
-                timeout=20,
+                timeout=18,
                 headers={
                     "User-Agent": USER_AGENT,
                     "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
@@ -3072,10 +3079,12 @@ def zerozero_get(url):
             rr.raise_for_status()
             body = rr.text
             if body and len(body) > 500:
+                print("ZeroZero fetch OK:", candidate.split("/")[2])
                 return body
         except Exception as e:
             last = e
-    raise RuntimeError(f"ZeroZero request failed through direct/proxy: {url}: {last}")
+    raise RuntimeError(f"ZeroZero request failed through all fallbacks: {url}: {last}")
+
 
 
 def _zz_name_key(value):
