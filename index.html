@@ -1077,8 +1077,8 @@ function h2hSection(ctx){
 }
 function oddsSection(id,base){
   const o=betanoFor(id);
-  if(!o?.bookmakers?.Betano?.length)return '';
-  const markets=o.bookmakers.Betano;
+  const markets=o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano||[];
+  if(!markets.length)return '';
   const ml=markets.find(x=>String(x.name).toLowerCase()==='ml');
   const total=markets.find(x=>String(x.name).toLowerCase()==='totals');
   const mlv=ml?.odds?.[0];
