@@ -1,9 +1,9 @@
 {
-  "_updated_at": "2026-09-27T14:01:47.290085+00:00",
-  "mode": "news",
+  "_updated_at": "2026-09-27T14:02:29.704145+00:00",
+  "mode": "football",
   "errors": [],
   "sources": {
-    "football_api": false,
+    "football_api": true,
     "fbref": true,
     "news": true,
     "maps": true
