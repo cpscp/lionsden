@@ -2820,7 +2820,22 @@ def fetch_news():
         # both Premium and free articles under the same listing/feed.
         item.pop("premium", None)
         item.pop("article_text", None)
-        candidates = [url, "https://r.jina.ai/" + url]
+        candidates = [url]
+        # Record exposes an AMP version with the article body rendered directly
+        # in the HTML. Prefer it for extraction, while keeping the canonical URL
+        # as the source shown to users.
+        if item.get("source") == "Record":
+            try:
+                from urllib.parse import urlparse
+                parsed_record = urlparse(url)
+                marker = "/detalhe/"
+                if marker in parsed_record.path:
+                    slug = parsed_record.path.split(marker, 1)[1].strip("/")
+                    amp_path = "/".join(parsed_record.path.split(marker, 1)[0].rstrip("/").split("/") + ["amp", slug])
+                    candidates.append(parsed_record._replace(path=amp_path, query="", fragment="").geturl())
+            except Exception:
+                pass
+        candidates.append("https://r.jina.ai/" + url)
         try:
             from urllib.parse import urlparse
             parsed = urlparse(url)
