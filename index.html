@@ -1097,7 +1097,7 @@ function downloadMatchCalendar(id){
   const summary=(f.home?.name||'')+' vs '+(f.away?.name||'');
   const location=[f.venue?.name,f.venue?.city].filter(Boolean).join(', ');
   const desc=[f.competition?.name,f.competition?.round].filter(Boolean).join(' · ');
-  const ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Lion\\'s Den//PT\r\nCALSCALE:GREGORIAN\r\nBEGIN:VEVENT\r\nUID:lionsden-'+esc(String(f.id))+'@cpscp.github.io\r\nDTSTAMP:'+z(new Date())+'\r\nDTSTART:'+z(start)+'\r\nDTEND:'+z(end)+'\r\nSUMMARY:'+icsEscape(summary)+'\r\nLOCATION:'+icsEscape(location)+'\r\nDESCRIPTION:'+icsEscape(desc)+'\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n';
+  const ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Lions Den//PT\r\nCALSCALE:GREGORIAN\r\nBEGIN:VEVENT\r\nUID:lionsden-'+esc(String(f.id))+'@cpscp.github.io\r\nDTSTAMP:'+z(new Date())+'\r\nDTSTART:'+z(start)+'\r\nDTEND:'+z(end)+'\r\nSUMMARY:'+icsEscape(summary)+'\r\nLOCATION:'+icsEscape(location)+'\r\nDESCRIPTION:'+icsEscape(desc)+'\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n';
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download='lions-den-'+String(f.id)+'.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
