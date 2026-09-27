@@ -2702,11 +2702,17 @@ def fetch_news():
                     for field in ("image","image_source","description","published"):
                         if item.get(field) and not old.get(field):
                             old[field] = item[field]
+                    # Prefer a precise timestamp over a date-only value.
+                    if item.get("published") and old.get("published"):
+                        old_value = str(old["published"])
+                        new_value = str(item["published"])
+                        if ("T" in new_value or ":" in new_value) and "T" not in old_value:
+                            old["published"] = item["published"]
                     break
             return
         seen.add(key)
         item["url"] = url
-        item["title"] = title[:180]
+        item["title"] = re.sub(r"\s*[-–—]\s*(?:record|a bola|abola\.pt|sporting\.pt)\s*$", "", title, flags=re.I).strip()[:180]
         item["source"] = source
         if item.get("description"):
             item["description"] = clean(BeautifulSoup(str(item["description"]), "html.parser").get_text(" ", strip=True))[:300]
@@ -2961,6 +2967,27 @@ def fetch_news():
                     print("News RSS decode warning:", source, ex)
     except Exception as ex:
         print("News RSS transport warning:", ex)
+
+    # Merge copies discovered through the listing and RSS transports.
+    # The same article can have slightly different canonical URLs or source
+    # suffixes in its title.
+    title_dedup = {}
+    for item in items:
+        norm_title = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", item.get("title","").lower()).strip()
+        norm_title = re.sub(r"\\b(?:record|a bola|abola pt|sporting pt)\\b", "", norm_title).strip()
+        key = (item.get("source",""), norm_title)
+        old = title_dedup.get(key)
+        if old is None:
+            title_dedup[key] = item
+        else:
+            for field in ("image","image_source","description","published"):
+                if item.get(field) and not old.get(field):
+                    old[field] = item[field]
+            old_pub = str(old.get("published") or "")
+            new_pub = str(item.get("published") or "")
+            if ("T" in new_pub or ":" in new_pub) and "T" not in old_pub:
+                old["published"] = item["published"]
+    items = list(title_dedup.values())
 
     # Enrich the discovered articles concurrently. This is intentionally
     # source-neutral: every source gets the same metadata treatment.
