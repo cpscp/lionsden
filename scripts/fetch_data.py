@@ -3370,7 +3370,7 @@ def fetch_zerozero_h2h(upcoming):
 
         return key, rows[:4], summary[:3] if isinstance(summary, list) else summary, source
 
-    # Six concurrent pairs keeps the collector fast without hammering a source.
+    # Four concurrent pairs keeps the collector fast without triggering source rate limits.
     collected = {}
     with ThreadPoolExecutor(max_workers=4) as pool:
         futures = [pool.submit(collect, item) for item in representatives.items()]
