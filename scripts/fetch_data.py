@@ -2815,11 +2815,12 @@ def fetch_news():
     # Targeted Google News RSS for each publisher. This catches O Jogo and
     # provides a second, fresher route for the other three newspapers.
     targeted_queries = [
-        ('site:record.pt Sporting futebol', 'Record'),
-        ('site:abola.pt Sporting futebol', 'A Bola'),
-        ('site:ojogo.pt Sporting futebol', 'O Jogo'),
-        ('site:zerozero.pt Sporting futebol', 'Zerozero'),
-        ('"Sporting CP" futebol Portugal', 'Google News'),
+        ('site:record.pt "Sporting CP"', 'Record'),
+        ('site:abola.pt "Sporting CP"', 'A Bola'),
+        ('site:ojogo.pt "Sporting CP"', 'O Jogo'),
+        ('site:zerozero.pt "Sporting CP"', 'Zerozero'),
+        ('"Sporting Clube de Portugal" Portugal', 'Google News'),
+        ('"Sporting CP" modalidades Portugal', 'Google News'),
     ]
     try:
         import feedparser
@@ -2901,11 +2902,7 @@ def fetch_news():
         for future in as_completed(futures):
             enriched.append(future.result())
     # Restore ranking after concurrent enrichment.
-    enriched.sort(key=lambda x:(
-        1 if x.get("_football") else 0,
-        pub_ts(x),
-        source_priority.get(x.get("source"),50)
-    ), reverse=True)
+    enriched.sort(key=pub_ts, reverse=True)
 
     for item in enriched:
         item.pop("_priority",None)
