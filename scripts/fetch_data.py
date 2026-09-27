@@ -2840,7 +2840,7 @@ def fetch_news():
                 record_premium = (
                     item.get("source") == "Record"
                     and bool(re.search(
-                        r"Record\\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
+                        r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
                         page_text,
                         re.I,
                     ))
