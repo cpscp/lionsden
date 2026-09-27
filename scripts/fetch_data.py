@@ -2819,7 +2819,29 @@ def fetch_news():
                                timeout=15,headers={"User-Agent":USER_AGENT})
                 if gr.ok:
                     gs=BeautifulSoup(gr.text,"html.parser")
-                    for im in gs.find_all("img"):
+                    # Google Images can expose the publisher CDN URL in the
+                    # result HTML even when it does not create a normal <img>.
+                    # Accept only Zerozero's own image CDN.
+                    raw=gr.text
+                    pos=0
+                    while True:
+                        pos=raw.lower().find("cdn-img.zerozero",pos)
+                        if pos<0:
+                            break
+                        left=max(0,pos-40)
+                        tail=raw[left:]
+                        end=tail.find('"')
+                        if end<0:
+                            end=tail.find("'")
+                        if end>0:
+                            candidate=tail[:end]
+                            if candidate.startswith("https://"):
+                                candidate=candidate.replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
+                                if candidate.lower().endswith((".jpg",".jpeg",".png",".webp")):
+                                    item["image"]=candidate
+                                    item["image_source"]="Zerozero article CDN"
+                                    break
+                        pos+=15
                         src=(im.get("data-iurl") or im.get("data-original") or
                              im.get("data-src") or im.get("src"))
                         if not src or str(src).startswith("data:"):
