@@ -2914,6 +2914,12 @@ def fetch_news():
                 raw_desc = desc_node.decode_contents() if desc_node else ""
                 ds = BeautifulSoup(raw_desc, "html.parser")
                 desc = clean(ds.get_text(" ", strip=True))[:300]
+                blob = (title + " " + desc).lower()
+                if source == "A Bola" and not any(term in blob for term in (
+                    "sporting", "alvalade", "rui borges", "leão", "leoes", "leões",
+                    "leoas", "leonino", "verde e branco", "verde-e-branco"
+                )):
+                    continue
                 image = None
                 for tag_name in ("media:content","media:thumbnail","enclosure"):
                     mn = node.find(tag_name)
