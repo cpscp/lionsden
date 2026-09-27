@@ -3239,14 +3239,14 @@ def fetch_news():
                     if media and isinstance(media,list):
                         for m in media:
                             u=m.get("url")
-                            if u and not re.search(r"(google|gstatic|favicon|logo)",u,re.I):
+                            if u and not re.search(r"(favicon|logo)",u,re.I):
                                 image=u
                                 break
                     # Google News may expose an image URL in the raw RSS even when
                     # feedparser does not populate media_content.
                     if not image:
                         m=re.search(r'<media:content[^>]+url="([^"]+)"',raw.text,re.I)
-                        if m and not re.search(r"(google|gstatic|favicon|logo)",m.group(1),re.I):
+                        if m and not re.search(r"(favicon|logo)",m.group(1),re.I):
                             image=m.group(1)
                     add({"title":title,"url":link,"source":"Zerozero",
                          "published":entry.get("published"),
