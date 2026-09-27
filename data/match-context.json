@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T01:46:01.740719+00:00",
+  "_updated_at": "2026-09-27T01:52:00.317493+00:00",
   "fixtures": {
     "5887647": {
       "home": {
@@ -109,26 +109,17 @@
       "h2h": {
         "matches": [
           {
-            "id": "5887647",
-            "date": "",
+            "id": null,
+            "date": "2026-03-07T18:00:00.000Z",
             "home": "Braga",
             "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
+            "home_score": 2,
+            "away_score": 2,
             "competition": "Liga Portugal"
           },
           {
-            "id": "5887800",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "Braga",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "4844231",
-            "date": "",
+            "id": null,
+            "date": "2025-10-05T18:15:00.000Z",
             "home": "Sporting CP",
             "away": "Braga",
             "home_score": 1,
@@ -136,20 +127,30 @@
             "competition": "Liga Portugal"
           },
           {
-            "id": "4844384",
-            "date": "",
+            "id": null,
+            "date": "2025-04-07T19:45:00.000Z",
+            "home": "Sporting CP",
+            "away": "Braga",
+            "home_score": 1,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2024-11-10T18:45:00.000Z",
             "home": "Braga",
             "away": "Sporting CP",
             "home_score": 2,
-            "away_score": 2,
+            "away_score": 4,
             "competition": "Liga Portugal"
           }
         ],
-        "home_wins": 0,
-        "draws": 4,
-        "away_wins": 0
+        "home_wins": 10,
+        "draws": 8,
+        "away_wins": 24,
+        "total": 42
       },
-      "updated_at": "2026-09-27T01:46:00.003135+00:00"
+      "updated_at": "2026-09-27T01:52:00.244872+00:00"
     },
     "6106414": {
       "home": {
@@ -260,9 +261,10 @@
         "matches": [],
         "home_wins": 0,
         "draws": 0,
-        "away_wins": 0
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:00.158623+00:00"
+      "updated_at": "2026-09-27T01:52:00.251737+00:00"
     },
     "6106281": {
       "home": {
@@ -370,12 +372,41 @@
         }
       },
       "h2h": {
-        "matches": [],
-        "home_wins": 0,
+        "matches": [
+          {
+            "id": null,
+            "date": "2020-10-01T19:00:00.000Z",
+            "home": "Sporting CP",
+            "away": "LASK",
+            "home_score": 1,
+            "away_score": 4,
+            "competition": "Europa League Qualification"
+          },
+          {
+            "id": null,
+            "date": "2019-12-12T17:55:00.000Z",
+            "home": "LASK",
+            "away": "Sporting CP",
+            "home_score": 3,
+            "away_score": 0,
+            "competition": "Europa League Grp. D"
+          },
+          {
+            "id": null,
+            "date": "2019-10-03T19:00:00.000Z",
+            "home": "Sporting CP",
+            "away": "LASK",
+            "home_score": 2,
+            "away_score": 1,
+            "competition": "Europa League Grp. D"
+          }
+        ],
+        "home_wins": 1,
         "draws": 0,
-        "away_wins": 0
+        "away_wins": 2,
+        "total": 3
       },
-      "updated_at": "2026-09-27T01:46:00.304629+00:00"
+      "updated_at": "2026-09-27T01:52:00.258659+00:00"
     },
     "5887661": {
       "home": {
@@ -483,31 +514,13 @@
         }
       },
       "h2h": {
-        "matches": [
-          {
-            "id": "5887661",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "Académico Viseu",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "5887814",
-            "date": "",
-            "home": "Académico Viseu",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          }
-        ],
+        "matches": [],
         "home_wins": 0,
-        "draws": 2,
-        "away_wins": 0
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:00.474631+00:00"
+      "updated_at": "2026-09-27T01:52:00.264252+00:00"
     },
     "5985964": {
       "home": {
@@ -617,29 +630,48 @@
       "h2h": {
         "matches": [
           {
-            "id": "5887698",
-            "date": "",
+            "id": null,
+            "date": "2023-05-13T19:30:00.000Z",
             "home": "Sporting CP",
             "away": "Marítimo",
-            "home_score": 0,
+            "home_score": 2,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2023-01-08T18:00:00.000Z",
+            "home": "Marítimo",
+            "away": "Sporting CP",
+            "home_score": 1,
             "away_score": 0,
             "competition": "Liga Portugal"
           },
           {
-            "id": "5887851",
-            "date": "",
+            "id": null,
+            "date": "2022-12-13T20:45:00.000Z",
+            "home": "Sporting CP",
+            "away": "Marítimo",
+            "home_score": 5,
+            "away_score": 0,
+            "competition": "League Cup"
+          },
+          {
+            "id": null,
+            "date": "2022-02-26T18:00:00.000Z",
             "home": "Marítimo",
             "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
+            "home_score": 1,
+            "away_score": 1,
             "competition": "Liga Portugal"
           }
         ],
-        "home_wins": 0,
-        "draws": 2,
-        "away_wins": 0
+        "home_wins": 20,
+        "draws": 7,
+        "away_wins": 6,
+        "total": 33
       },
-      "updated_at": "2026-09-27T01:46:00.653747+00:00"
+      "updated_at": "2026-09-27T01:52:00.271851+00:00"
     },
     "5887666": {
       "home": {
@@ -749,26 +781,17 @@
       "h2h": {
         "matches": [
           {
-            "id": "5887666",
-            "date": "",
-            "home": "Casa Pia AC",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "5887819",
-            "date": "",
+            "id": null,
+            "date": "2026-01-16T20:15:00.000Z",
             "home": "Sporting CP",
             "away": "Casa Pia AC",
-            "home_score": 0,
+            "home_score": 3,
             "away_score": 0,
             "competition": "Liga Portugal"
           },
           {
-            "id": "4844161",
-            "date": "",
+            "id": null,
+            "date": "2025-08-08T19:15:00.000Z",
             "home": "Casa Pia AC",
             "away": "Sporting CP",
             "home_score": 0,
@@ -776,20 +799,30 @@
             "competition": "Liga Portugal"
           },
           {
-            "id": "4844314",
-            "date": "",
+            "id": null,
+            "date": "2025-03-09T18:00:00.000Z",
+            "home": "Casa Pia AC",
+            "away": "Sporting CP",
+            "home_score": 1,
+            "away_score": 3,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2024-10-05T19:30:00.000Z",
             "home": "Sporting CP",
             "away": "Casa Pia AC",
-            "home_score": 3,
+            "home_score": 2,
             "away_score": 0,
             "competition": "Liga Portugal"
           }
         ],
-        "home_wins": 1,
-        "draws": 2,
-        "away_wins": 1
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 9,
+        "total": 9
       },
-      "updated_at": "2026-09-27T01:46:00.813811+00:00"
+      "updated_at": "2026-09-27T01:52:00.277679+00:00"
     },
     "6106335": {
       "home": {
@@ -900,9 +933,10 @@
         "matches": [],
         "home_wins": 0,
         "draws": 0,
-        "away_wins": 0
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:00.974519+00:00"
+      "updated_at": "2026-09-27T01:52:00.282984+00:00"
     },
     "5887679": {
       "home": {
@@ -1012,26 +1046,17 @@
       "h2h": {
         "matches": [
           {
-            "id": "5887679",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "Moreirense",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "5887832",
-            "date": "",
+            "id": null,
+            "date": "2026-02-21T18:00:00.000Z",
             "home": "Moreirense",
             "away": "Sporting CP",
             "home_score": 0,
-            "away_score": 0,
+            "away_score": 3,
             "competition": "Liga Portugal"
           },
           {
-            "id": "4844213",
-            "date": "",
+            "id": null,
+            "date": "2025-09-22T19:15:00.000Z",
             "home": "Sporting CP",
             "away": "Moreirense",
             "home_score": 3,
@@ -1039,20 +1064,30 @@
             "competition": "Liga Portugal"
           },
           {
-            "id": "4844366",
-            "date": "",
+            "id": null,
+            "date": "2025-04-18T19:30:00.000Z",
+            "home": "Sporting CP",
+            "away": "Moreirense",
+            "home_score": 3,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2024-12-05T20:15:00.000Z",
             "home": "Moreirense",
             "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 3,
+            "home_score": 2,
+            "away_score": 1,
             "competition": "Liga Portugal"
           }
         ],
-        "home_wins": 1,
-        "draws": 2,
-        "away_wins": 1
+        "home_wins": 18,
+        "draws": 6,
+        "away_wins": 1,
+        "total": 25
       },
-      "updated_at": "2026-09-27T01:46:01.129150+00:00"
+      "updated_at": "2026-09-27T01:52:00.289976+00:00"
     },
     "6106279": {
       "home": {
@@ -1163,9 +1198,10 @@
         "matches": [],
         "home_wins": 0,
         "draws": 0,
-        "away_wins": 0
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:01.285385+00:00"
+      "updated_at": "2026-09-27T01:52:00.297125+00:00"
     },
     "5887687": {
       "home": {
@@ -1273,49 +1309,13 @@
         }
       },
       "h2h": {
-        "matches": [
-          {
-            "id": "5887687",
-            "date": "",
-            "home": "FC Porto",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "5887840",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "FC Porto",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "4844195",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "FC Porto",
-            "home_score": 1,
-            "away_score": 2,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "4844348",
-            "date": "",
-            "home": "FC Porto",
-            "away": "Sporting CP",
-            "home_score": 1,
-            "away_score": 1,
-            "competition": "Liga Portugal"
-          }
-        ],
+        "matches": [],
         "home_wins": 0,
-        "draws": 3,
-        "away_wins": 1
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:01.439417+00:00"
+      "updated_at": "2026-09-27T01:52:00.304458+00:00"
     },
     "5887698": {
       "home": {
@@ -1423,31 +1423,13 @@
         }
       },
       "h2h": {
-        "matches": [
-          {
-            "id": "5887698",
-            "date": "",
-            "home": "Sporting CP",
-            "away": "Marítimo",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          },
-          {
-            "id": "5887851",
-            "date": "",
-            "home": "Marítimo",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Liga Portugal"
-          }
-        ],
+        "matches": [],
         "home_wins": 0,
-        "draws": 2,
-        "away_wins": 0
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:01.594902+00:00"
+      "updated_at": "2026-09-27T01:52:00.311113+00:00"
     },
     "6106275": {
       "home": {
@@ -1558,9 +1540,10 @@
         "matches": [],
         "home_wins": 0,
         "draws": 0,
-        "away_wins": 0
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-09-27T01:46:01.740710+00:00"
+      "updated_at": "2026-09-27T01:52:00.317485+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
