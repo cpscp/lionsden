@@ -367,9 +367,28 @@ function renderClassification(){
  let key=window._classificationKey||'primeira-liga';
  window._classificationKey=key;
 
- tabs.innerHTML='<select class="class-select" onchange="window._classificationKey=this.value;renderClassification()">'+
-   configs.map(x=>'<option value="'+x[0]+'" '+(x[0]===key?'selected':'')+'>'+x[1]+'</option>').join('')+
-   '</select>';
+ tabs.innerHTML='<div class="season-picker" data-classification-picker>'+
+   '<button type="button" class="season-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="season-value">'+esc(configs.find(x=>x[0]===key)?.[1]||'Competição')+'</span><i class="chevron"></i></button>'+
+   '<div class="season-options" role="listbox">'+
+   configs.map(x=>'<button type="button" class="season-option '+(x[0]===key?'active':'')+'" data-classification="'+x[0]+'">'+esc(x[1])+'</button>').join('')+
+   '</div></div>';
+ const classPicker=tabs.querySelector('[data-classification-picker]');
+ const classTrigger=classPicker?.querySelector('.season-trigger');
+ classTrigger?.addEventListener('click',e=>{
+   e.stopPropagation();
+   document.querySelectorAll('.season-picker.open').forEach(x=>{if(x!==classPicker)x.classList.remove('open')});
+   const open=classPicker.classList.toggle('open');
+   classTrigger.setAttribute('aria-expanded',String(open));
+ });
+ classPicker?.querySelectorAll('[data-classification]').forEach(o=>o.addEventListener('click',e=>{
+   e.stopPropagation();
+   window._classificationKey=o.dataset.classification;
+   classPicker.querySelector('.season-value').textContent=o.textContent;
+   classPicker.querySelectorAll('.season-option').forEach(x=>x.classList.toggle('active',x===o));
+   classPicker.classList.remove('open');
+   classTrigger.setAttribute('aria-expanded','false');
+   renderClassification();
+ }));
 
  let comp=data[key];
  if(key==='primeira-liga' && (!comp||!(comp.table||[]).length)) comp=D['standings.json']||null;
