@@ -3723,7 +3723,7 @@ def fetch_news():
             # Multiple discovery paths can find the same article (Zerozero RSS,
             # Google News RSS, section scraping, etc.). Never discard richer
             # metadata just because another copy has the same canonical URL.
-            for field in ("image","image_source","description","published"):
+            for field in ("image","image_source","description","published","_google_url"):
                 if item.get(field) and not old.get(field):
                     old[field]=item[field]
             if item.get("title") and len(item.get("title","")) > len(old.get("title","")):
