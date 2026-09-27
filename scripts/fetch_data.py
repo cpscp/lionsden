@@ -2702,6 +2702,16 @@ def fetch_news():
         # Prefer decoded/canonical article URLs when available.
         key = re.sub(r"[?#].*$", "", str(url).rstrip("/")).lower()
         if key in seen:
+            for existing in items:
+                ekey=re.sub(r"[?#].*$", "", str(existing.get("url") or "").rstrip("/")).lower()
+                if ekey == key:
+                    # Merge richer discovery metadata instead of discarding it.
+                    for field in ("image","image_source","description","published"):
+                        if item.get(field) and not existing.get(field):
+                            existing[field]=item[field]
+                    if item.get("title") and len(item.get("title","")) > len(existing.get("title","")):
+                        existing["title"]=item["title"][:180]
+                    break
             return
         item["title"] = title[:180]
         item["source"] = source_from_url(url, item.get("source") or "Google News")
