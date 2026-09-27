@@ -3462,8 +3462,24 @@ def fetch_news():
         ))
         item["_priority"]=p + (25 if item["_football"] else 0) + (40 if item["_sporting"] else 0)
         old=dedup.get(key)
-        if old is None or item["_priority"] > old["_priority"]:
+        if old is None:
             dedup[key]=item
+        else:
+            # Multiple discovery paths can find the same article (Zerozero RSS,
+            # Google News RSS, section scraping, etc.). Never discard richer
+            # metadata just because another copy has the same canonical URL.
+            for field in ("image","image_source","description","published"):
+                if item.get(field) and not old.get(field):
+                    old[field]=item[field]
+            if item.get("title") and len(item.get("title","")) > len(old.get("title","")):
+                old["title"]=item["title"][:180]
+            if item["_priority"] > old["_priority"]:
+                for field in ("image","image_source","description","published"):
+                    if old.get(field) and not item.get(field):
+                        item[field]=old[field]
+                if old.get("title") and len(old.get("title","")) > len(item.get("title","")):
+                    item["title"]=old["title"][:180]
+                dedup[key]=item
     items=list(dedup.values())
 
     # Newest first within the football/source priority. This prevents a large
