@@ -3226,15 +3226,33 @@ def fetch_news():
                     if len(local)>=18:
                         break
                 if not local and candidate.startswith("https://r.jina.ai/"):
-                    # Jina Reader may return Markdown rather than HTML.
-                    for m in re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)", r.text):
+                    # Jina Reader may return Markdown rather than HTML. Keep the
+                    # editorial image when it is embedded as ![alt](image) next
+                    # to the article link. This is the important Zerozero fallback
+                    # when the publisher blocks the Actions runner with 403.
+                    md=r.text
+                    link_matches=list(re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)", md))
+                    for m in link_matches:
                         title=clean(m.group(1))
                         href=m.group(2)
                         if source_from_url(href) != source or len(title)<18:
                             continue
                         if source == "O Jogo" and "sporting" not in title.lower():
                             continue
-                        local.append({"title":title,"url":href,"source":source})
+                        image=None
+                        # Search the local Markdown window around the article
+                        # link, preferring an image immediately before the title.
+                        window=md[max(0,m.start()-1400):m.end()+700]
+                        imgs=list(re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)",window))
+                        if imgs:
+                            # Prefer the closest image before the article link.
+                            before=[x for x in imgs if x.end() <= (m.start()-max(0,m.start()-1400))]
+                            chosen=before[-1] if before else imgs[0]
+                            image=chosen.group(1)
+                            if image.startswith("//"):
+                                image="https:"+image
+                        local.append({"title":title,"url":href,"source":source,
+                                      **({"image":image,"image_source":"Jina Zerozero listing"} if image else {})})
                         if len(local)>=18:
                             break
                 if local:
