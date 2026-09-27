@@ -2828,6 +2828,25 @@ def fetch_news():
                     # explicitly tied to Sporting CP so other clubs never leak.
                     if source == "O Jogo" and "sporting" not in title.lower():
                         continue
+                    # sporting.pt contains corporate, academy, membership,
+                    # foundation and other institutional content. Keep it only
+                    # when the item is clearly an editorial Sporting CP story.
+                    if source == "Sporting.pt":
+                        low_title = title.lower()
+                        low_href = href.lower()
+                        blocked_terms = (
+                            "corporate", "sporting corporate", "fundação",
+                            "fundacao", "foundation", "business", "parceiros",
+                            "parceiro", "membership", "bilhetes", "ticketing",
+                            "academia", "formação", "formacao", "e-learning",
+                            "sustentabilidade", "responsabilidade social",
+                            "sporting solidário", "sporting solidario"
+                        )
+                        editorial_paths = ("/futebol/", "/modalidades/", "/noticias/")
+                        if any(term in low_title for term in blocked_terms):
+                            continue
+                        if not any(path in low_href for path in editorial_paths):
+                            continue
                     if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
                         continue
                     image = None
