@@ -2974,7 +2974,7 @@ def fetch_news():
     title_dedup = {}
     for item in items:
         norm_title = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", item.get("title","").lower()).strip()
-        norm_title = re.sub(r"\\b(?:record|a bola|abola pt|sporting pt)\\b", "", norm_title).strip()
+        norm_title = re.sub(r"\b(?:record|a bola|abola pt|sporting pt)\b", "", norm_title).strip()
         key = (item.get("source",""), norm_title)
         old = title_dedup.get(key)
         if old is None:
