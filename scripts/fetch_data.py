@@ -2883,27 +2883,27 @@ def fetch_news():
 
                         if not item.get("image"):
                         # Google Images exposes the original result page (purl)
-                        # and the source image (murl) in serialized result cards.
-                        # Prefer an image whose source page is the exact Zerozero
-                        # article; this is more reliable than guessing the CDN host.
-                        for node in gs.select("a.iusc"):
-                            raw=node.get("m")
-                            if not raw:
-                                continue
-                            try:
-                                meta=json.loads(raw)
-                            except Exception:
-                                continue
-                            src=meta.get("murl")
-                            origin=meta.get("purl") or ""
-                            if not src or "zerozero.pt/noticias/" not in origin:
-                                continue
-                            low=str(src).lower()
-                            if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
-                                continue
-                            item["image"]=src
-                            item["image_source"]="Zerozero article image search"
-                            break
+                            # and the source image (murl) in serialized result cards.
+                            # Prefer an image whose source page is the exact Zerozero
+                            # article; this is more reliable than guessing the CDN host.
+                            for node in gs.select("a.iusc"):
+                                raw=node.get("m")
+                                if not raw:
+                                    continue
+                                try:
+                                    meta=json.loads(raw)
+                                except Exception:
+                                    continue
+                                src=meta.get("murl")
+                                origin=meta.get("purl") or ""
+                                if not src or "zerozero.pt/noticias/" not in origin:
+                                    continue
+                                low=str(src).lower()
+                                if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
+                                    continue
+                                item["image"]=src
+                                item["image_source"]="Zerozero article image search"
+                                break
 
                         if not item.get("image"):
                             # Fallback to the original thumbnail only when it is
