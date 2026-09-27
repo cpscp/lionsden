@@ -2978,7 +2978,43 @@ def fetch_match_contexts():
         except Exception as e:
             print("H2H detail warning:", fid, e)
 
-        h2h = sorted(h2h, key=lambda x: x.get("date") or "", reverse=True)[:5]
+        # Fallback: query current + previous Primeira Liga seasons when the
+        # match-detail H2H block is unavailable.
+        if not h2h:
+            for season_name in ("2026/2027", "2025/2026"):
+                try:
+                    league = fotmob_get("/api/data/leagues", {"id": 61, "season": season_name, "ccode3": "PRT"})
+                    candidates = []
+                    def walk_league(obj):
+                        if isinstance(obj, dict):
+                            h = obj.get("home") or {}
+                            a = obj.get("away") or {}
+                            if isinstance(h, dict) and isinstance(a, dict):
+                                hn, an = zz_norm(h.get("name")), zz_norm(a.get("name"))
+                                if {hn, an} == {zz_norm((f.get("home") or {}).get("name")), zz_norm((f.get("away") or {}).get("name"))}:
+                                    hs = h.get("score")
+                                    aas = a.get("score")
+                                    if hs is not None and aas is not None:
+                                        candidates.append({
+                                            "id": obj.get("id") or obj.get("matchId"),
+                                            "date": clean(obj.get("utcTime") or obj.get("matchDate")),
+                                            "home": clean(h.get("name")),
+                                            "away": clean(a.get("name")),
+                                            "home_score": hs,
+                                            "away_score": aas,
+                                            "competition": clean(obj.get("tournamentName") or obj.get("competitionName") or "Liga Portugal")
+                                        })
+                            for v in obj.values():
+                                if isinstance(v, (dict, list)): walk_league(v)
+                        elif isinstance(obj, list):
+                            for v in obj: walk_league(v)
+                    walk_league(league)
+                    h2h.extend(candidates)
+                except Exception as e:
+                    print("H2H league fallback warning:", season_name, e)
+
+        h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
+                     key=lambda x: x.get("date") or "", reverse=True)[:5]
         hw = dw = aw = 0
         home_name = clean((f.get("home") or {}).get("name"))
         for x in h2h:
@@ -3023,7 +3059,7 @@ def fetch_betano_odds():
     try:
         r = session.get(
             "https://api.odds-api.io/v3/events",
-            params={"apiKey": api_key, "sport": "football", "bookmaker": "Betano"},
+            params={"apiKey": api_key, "sport": "football", "bookmaker": "Betano PT"},
             timeout=30
         )
         r.raise_for_status()
@@ -3066,7 +3102,7 @@ def fetch_betano_odds():
         try:
             rr = session.get(
                 "https://api.odds-api.io/v3/odds",
-                params={"apiKey": api_key, "eventId": e.get("id"), "bookmakers": "Betano"},
+                params={"apiKey": api_key, "eventId": e.get("id"), "bookmakers": "Betano PT"},
                 timeout=25
             )
             rr.raise_for_status()
