@@ -1,15 +1,6 @@
 {
-  "_updated_at": "2026-09-27T20:43:22.986409+00:00",
+  "_updated_at": "2026-09-27T20:50:01.531249+00:00",
   "items": [
-    {
-      "title": "Nuno Dias elogia «belíssimo jogo» do Sporting, Cassiano Klein destaca «alma»",
-      "source": "A Bola",
-      "published": "2026-09-27T18:44:25Z",
-      "description": "Ambos os treinadores saíram do João Rocha satisfeitos com a atitude das respetivas equipas. Comandante leonino lamenta, ainda assim, os dois pontos perdidos",
-      "url": "https://www.abola.pt/noticias/nuno-dias-elogia-belissimo-jogo-do-sporting-cassiano-klein-destaca-alma-2026092718442528785",
-      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/27092026/8436f22f-06e2-4fcb-8871-f0c8ba40d656.jpg?operations=autocrop(1200:630)",
-      "image_source": "A Bola article"
-    },
     {
       "title": "Futsal Nuno Dias: \"O Sporting CP perde dois pontos\"",
       "url": "https://www.sporting.pt/pt/noticias/modalidades/futsal/2026-09-27/nuno-dias-o-sporting-cp-perde-dois-pontos",
@@ -36,6 +27,15 @@
       "image_source": "Sporting.pt listing",
       "description": "A equipa de futsal do Sporting Clube de Portugal recebeu e empatou com o SL Benfica por 3-3, na tarde deste domingo, em jogo a contar para a terceira jornada da fase regular da Liga. Um resultado frustrante para os Leões, que somaram inúmeras oportunidades para vencer a partida, mas acabaram por mos",
       "published": "2026-09-27T18:45:48+01:00"
+    },
+    {
+      "title": "Filha de peso pesado do Sporting casa-se com promessa 'made in Alcochete' (fotos)",
+      "source": "A Bola",
+      "published": "2026-09-27T16:12:34Z",
+      "description": "Vitória Merlim, filha de Alex Merlim, deu o nó com Guilherme Santos, jogador formado em Alcochete e que deixou o Sporting no último defeso",
+      "url": "https://www.abola.pt/noticias/filha-de-peso-pesado-do-sporting-casa-se-com-promessa-made-in-alcochete-fotos-2026092716123483248",
+      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/27092026/068a72b0-6781-4cd3-aadc-469cc092afce.jpg?operations=crop(0:1018:3070:2744),autocrop(1200:630)",
+      "image_source": "A Bola article"
     },
     {
       "title": "SC Braga impõe primeiro deslize ao Sporting e há novo líder",
@@ -92,21 +92,21 @@
       "published": "2026-09-27"
     },
     {
-      "title": "Projeto Altimira em marcha: Sporting quer tornar espanhol numa referência",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/projeto-altimira-em-marcha-sporting-quer-tornar-espanhol-numa-referencia?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-05-11-33-27-2460704.jpg",
-      "image_source": "Record listing",
-      "description": "Com poucos meses de trabalho, estrutura entende que reforço é líder dentro e fora do relvado, pelo que perspetiva ainda maior protagonismo",
-      "published": "2026-09-27"
-    },
-    {
       "title": "Luis Suárez deixou dedicatória especial no regresso aos golos pela seleção da Colômbia",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/luis-suarez-deixou-dedicatoria-especial-no-regresso-aos-golos-pela-selecao-da-colombia?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
       "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-24-11-58-44-2446601-im-639178995144585184.jpg",
       "image_source": "Record listing",
       "description": "Avançado do Sporting faturou no empate (1-1) diante do México",
+      "published": "2026-09-27"
+    },
+    {
+      "title": "Projeto Altimira em marcha: Sporting quer tornar espanhol numa referência",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/projeto-altimira-em-marcha-sporting-quer-tornar-espanhol-numa-referencia?ref=Sporting_DestaquesPrincipais",
+      "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-05-11-33-27-2460704.jpg",
+      "image_source": "Record listing",
+      "description": "Com poucos meses de trabalho, estrutura entende que reforço é líder dentro e fora do relvado, pelo que perspetiva ainda maior protagonismo",
       "published": "2026-09-27"
     },
     {
@@ -254,21 +254,21 @@
       "published": "2026-09-26"
     },
     {
+      "title": "Leões de Portugal recebem galardão de cristal",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
+      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
+      "image_source": "Record article"
+    },
+    {
       "title": "Sporting adia pagamento ao Valladolid: Fresneda fora de jogo por Espanha 'ajuda' cofres dos leões",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-18-17-07-17-2463281.jpg",
       "image_source": "Record listing",
       "description": "SAD dos verdes e brancos terá de desembolsar 250 mil euros caso o lateral seja utilizado na La Roja",
-      "published": "2026-09-26"
-    },
-    {
-      "title": "Imprensa italiana garante que Milan tentará Gonçalo Inácio no mercado de transferências de inverno",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/imprensa-italiana-garante-que-milan-tentara-goncalo-inacio-no-mercado-de-transferencias-de-inverno?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-19-22-44-48-2463507.jpg",
-      "image_source": "Record listing",
-      "description": "Central do Sporting é apontado como uma 'prioridade' para Ruben Amorim",
       "published": "2026-09-26"
     },
     {
@@ -290,13 +290,13 @@
       "image_source": "Record article"
     },
     {
-      "title": "Leões de Portugal recebem galardão de cristal",
+      "title": "Imprensa italiana garante que Milan tentará Gonçalo Inácio no mercado de transferências de inverno",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/imprensa-italiana-garante-que-milan-tentara-goncalo-inacio-no-mercado-de-transferencias-de-inverno?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
-      "published": "2026-09-26",
-      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
-      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
-      "image_source": "Record article"
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-19-22-44-48-2463507.jpg",
+      "image_source": "Record listing",
+      "description": "Central do Sporting é apontado como uma 'prioridade' para Ruben Amorim",
+      "published": "2026-09-26"
     },
     {
       "title": "Saltador Tiago Matos junta-se à equipa de atletismo do Sporting CP",
