@@ -199,7 +199,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -1041,7 +1041,12 @@ function goalListHtml(detail,base,isHome){const goals=(Array.isArray(detail?.inc
 function goalsHtml(detail,base){const goals=(Array.isArray(detail?.incidents?.incidents)?detail.incidents.incidents:[]).filter(x=>x.incidentType==='goal').sort((a,b)=>(a.time??0)-(b.time??0));if(!goals.length)return '';const home=goals.filter(x=>x.isHome),away=goals.filter(x=>!x.isHome);const team=(arr,cls)=>'<div class="game-goals-team '+cls+'">'+arr.map(g=>'<div class="game-goal"><span class="game-goal-ball"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 3 2-1 3h-4L9 9zM9 9 6.5 8M15 9l2.5-1M10 12l-2 3 2 2M14 12l2 3-2 2"/></svg></span><span class="game-goal-minute">'+esc(g.time!=null?g.time+"'" :'')+'</span><span class="game-goal-name">'+esc(g.player?.name||g.description||'Golo')+'</span></div>').join('')+'</div>';return '<div class="game-goals">'+team(home,'home')+team(away,'away')+'</div>'}
 
 
-function matchContextFor(id){return (D['match-context.json']?.fixtures||{})[String(id)]||null}
+function matchContextFor(id){
+  const base=(D['match-context.json']?.fixtures||{})[String(id)]||null;
+  const dedicated=(D['h2h.json']?.fixtures||{})[String(id)]||null;
+  if(!base && !dedicated)return null;
+  return {...(base||{}),h2h:dedicated || base?.h2h || null};
+}
 function betanoFor(id){return (D['betano-odds.json']?.fixtures||{})[String(id)] || (D['public-odds.json']?.fixtures||{})[String(id)] || null}
 function formChip(r){
   const v=String(r||'').toUpperCase();
