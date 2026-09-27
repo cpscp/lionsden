@@ -3006,6 +3006,25 @@ def fetch_news():
     except Exception as e:
         print("Web discovery warning:",e)
 
+    # Search discovery fallback for publishers that block GitHub Actions.
+    # Search is only transport; the stored URL/source is the original publisher.
+    try:
+        from urllib.parse import quote
+        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
+            qurl="https://www.google.com/search?q="+quote("site:"+domain+" Sporting")+"&num=20&hl=pt-PT"
+            rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            soup=BeautifulSoup(rr.text,"html.parser")
+            for a in soup.select("a[href]"):
+                href=a.get("href","")
+                title=clean(a.get_text(" ",strip=True))
+                if href.startswith("/url?q="):
+                    href=href.split("/url?q=",1)[1].split("&",1)[0]
+                if href.startswith("http") and domain in href.lower() and "sporting" in title.lower():
+                    add({"title":title,"url":href,"source":expected_source})
+    except Exception as e:
+        print("Search discovery warning:",e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
