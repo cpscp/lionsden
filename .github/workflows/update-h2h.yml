@@ -1,0 +1,41 @@
+name: Atualizar H2H
+
+on:
+  schedule:
+    - cron: '47 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  h2h:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Atualizar H2H
+        run: python scripts/update_h2h.py
+
+      - name: Guardar H2H
+        run: |
+          set -e
+          git config user.name 'lions-den-h2h'
+          git config user.email 'actions@github.com'
+          git add data/match-context.json
+          if git diff --cached --quiet; then
+            echo 'Sem alterações H2H.'
+            exit 0
+          fi
+          git commit -m 'dados: atualizar confrontos diretos'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
