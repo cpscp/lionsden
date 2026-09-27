@@ -3118,12 +3118,17 @@ def fetch_news():
     try:
         import feedparser
         from urllib.parse import quote
-        rss="https://news.google.com/rss/search?q="+quote("site:zerozero.pt Sporting")+"&hl=pt-PT&gl=PT&ceid=PT:pt"
-        feed=feedparser.parse(rss)
-        for entry in feed.entries[:40]:
+        queries=("site:zerozero.pt/noticias/ Sporting","site:zerozero.pt/noticias/ Sporting CP","site:zerozero.pt/noticias/ Sporting modalidades")
+        feeds=[]
+        for query in queries:
+            rss="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
+            feeds.append(feedparser.parse(rss))
+        seen=set()
+        for feed in feeds:
+            for entry in feed.entries[:40]:
             title=clean(entry.get("title") or "")
             link=entry.get("link")
-            if link and title and "sporting" in title.lower() and "/noticias/" in link:
+            if link and title and "sporting" in (title + " " + (entry.get("summary") or "")).lower():
                 media=entry.get("media_content") or entry.get("media_thumbnail") or []
                 image=(media[0].get("url") if media and isinstance(media,list) else None)
                 add({"title":title,"url":link,"source":"Zerozero",
