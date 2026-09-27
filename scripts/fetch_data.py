@@ -2790,10 +2790,11 @@ def fetch_news():
                             except Exception:
                                 continue
                             src=meta.get("murl")
-                            if not src:
+                            origin=meta.get("purl") or ""
+                            if not src or "zerozero.pt/noticias/" not in origin:
                                 continue
                             low=str(src).lower()
-                            if any(x in low for x in ("bing.com","microsoft.com","favicon","logo")):
+                            if any(x in low for x in ("bing.com","microsoft.com","favicon","logo","ytimg.com","youtube.com","pngimg.com")):
                                 continue
                             item["image"]=src
                             item["image_source"]="Zerozero article image search"
