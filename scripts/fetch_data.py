@@ -2863,33 +2863,18 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
-                # Record's global page contains Premium navigation everywhere.
-                # Determine Premium only from the text window belonging to this
-                # article: from its H1 until the Related/author section.
-                record_article_window = article_text_for_flags
+                # The word "Premium" also exists in hidden/global Record markup.
+                # Only a visible article-level subscription heading counts.
+                premium_heading = None
                 if item.get("source") == "Record":
-                    h1 = soup.find("h1")
-                    if h1:
-                        window_parts = []
-                        for node in h1.find_all_next(["h1","h2","h3","h4","p"]):
-                            txt = clean(node.get_text(" ", strip=True))
-                            low = txt.lower()
-                            if low == "relacionadas" or low.startswith("últimas notícias"):
-                                break
-                            if txt:
-                                window_parts.append(txt)
-                            if len(window_parts) >= 40:
-                                break
-                        if window_parts:
-                            record_article_window = " ".join(window_parts)
-                candidate_premium = (
-                    item.get("source") == "Record"
-                    and bool(re.search(
-                        r"Funcionalidade exclusiva para assinantes Record Premium|Este conteúdo é exclusivo para assinantes Record Premium",
-                        record_article_window,
-                        re.I,
-                    ))
-                )
+                    premium_heading = soup.find(
+                        ["h3", "h4", "h5"],
+                        string=re.compile(
+                            r"Funcionalidade exclusiva para assinantes Record Premium|Este conteúdo é exclusivo para assinantes Record Premium",
+                            re.I,
+                        ),
+                    )
+                candidate_premium = bool(premium_heading) and item.get("source") == "Record"
                 record_premium = record_premium or candidate_premium
                 if record_premium:
                     item["premium"] = True
