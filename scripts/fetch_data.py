@@ -2858,9 +2858,37 @@ def fetch_news():
         ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
         ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
         ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
-        ("https://www.ojogo.pt/futebol/1a-liga/sporting/", "O Jogo"),
+        ("https://www.ojogo.pt/ultimas", "O Jogo"),
         (SPORTING_NEWS, "Sporting.pt"),
     ]
+    # Zerozero publishes an official RSS feed. It is much lighter and more
+    # reliable from Actions than scraping the site.
+    try:
+        import feedparser
+        feed=feedparser.parse("https://www.zerozero.pt/rss.php")
+        for entry in feed.entries[:80]:
+            title=clean(entry.get("title") or "")
+            link=entry.get("link")
+            summary=clean(entry.get("summary") or "")
+            blob=(title+" "+summary).lower()
+            if not link or "sporting" not in blob:
+                continue
+            image=None
+            media=entry.get("media_content") or entry.get("media_thumbnail") or []
+            if media and isinstance(media,list):
+                image=media[0].get("url")
+            if not image:
+                image=(entry.get("image") or {}).get("href") if isinstance(entry.get("image"),dict) else None
+            add({
+                "title":title,
+                "url":link,
+                "source":"Zerozero",
+                "published":entry.get("published"),
+                **({"image":image,"image_source":"https://www.zerozero.pt/rss.php"} if image else {}),
+            })
+    except Exception as e:
+        print("Zerozero RSS warning:",e)
+
     with ThreadPoolExecutor(max_workers=4) as pool:
         futures=[pool.submit(scrape_page,u,s) for u,s in direct_sources]
         for future in as_completed(futures):
