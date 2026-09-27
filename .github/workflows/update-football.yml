@@ -34,6 +34,7 @@ jobs:
       - name: Atualizar futebol
         env:
           FSAPI_KEY: ${{ secrets.FSAPI_KEY }}
+          BETANO_ODDS_API_KEY: ${{ secrets.BETANO_ODDS_API_KEY }}
           LIONS_DEN_MODE: football
         run: python scripts/fetch_data.py
 
