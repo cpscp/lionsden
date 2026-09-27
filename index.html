@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<style>
+<style>.stadium-menu-icon svg{width:20px;height:20px;display:block}.stadium-menu-icon svg path{vector-effect:non-scaling-stroke}\n
 @font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}.jersey-number,.shirt-number{font-family:'CustomDigits'!important;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
@@ -259,7 +259,7 @@
 <button class="drawer-link navbtn" data-go="stats"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 17V9M10 17V5M16 17v-6"/></svg></span><span>Estatísticas</span></button>
 <button class="drawer-link navbtn" data-go="classification"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12M12 4v12"/></svg></span><span>Classificação</span></button>
 <div class="drawer-section">Estádio</div>
-<button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5c.7 4.8 3.2 7.5 7 7.5s6.3-2.7 7-7.5"/><path d="M4 8c1.8-2 3.8-3 6-3s4.2 1 6 3"/><path d="M5.2 8.5v3.3M8 7.1v4.8M12 7.1v4.8M14.8 8.5v3.3"/><path d="M5.2 4.2V2.5l1.4.7M14.8 4.2V2.5l-1.4.7"/></svg></span><span>Estádio</span></button>
+<button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon stadium-menu-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5c.7 4.8 3.2 7.5 7 7.5s6.3-2.7 7-7.5"/><path d="M4 8c1.8-2 3.8-3 6-3s4.2 1 6 3"/><path d="M5.2 8.5v3.3M8 7.1v4.8M12 7.1v4.8M14.8 8.5v3.3"/><path d="M5.2 4.2V2.5l1.4.7M14.8 4.2V2.5l-1.4.7"/></svg></span><span>Estádio</span></button>
 <div class="drawer-section">Conteúdo</div>
 <button class="drawer-link navbtn" data-go="news"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h6M7 14h4"/></svg></span><span>Notícias</span></button>
 <button class="drawer-link navbtn" data-go="tv"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="9" rx="1.5"/><path d="m8 2 2 3 2-3M7 17h6"/></svg></span><span>TV</span></button>
