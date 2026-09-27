@@ -2836,12 +2836,16 @@ def fetch_news():
                 # Record Premium: the public page exposes the lead but not the
                 # subscriber-only body. Keep this flag so the PWA never presents
                 # a lead as if it were the full article.
-                page_text = clean(soup.get_text(" ", strip=True))
+                # Only inspect the article/main content for Premium markers.
+                # The Record site has a global "Premium" navigation item on every
+                # page, so scanning the whole document creates false positives.
+                article_scope = soup.find("article") or soup.find("main") or soup
+                article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
                 record_premium = bool(item.get("premium")) or (
                     item.get("source") == "Record"
                     and bool(re.search(
                         r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
-                        page_text,
+                        article_text_for_flags,
                         re.I,
                     ))
                 )
