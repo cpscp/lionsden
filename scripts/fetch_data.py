@@ -27,6 +27,7 @@ from urllib.parse import quote_plus
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup, Comment
+from fbref_h2h import fetch_fbref_h2h
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -3353,7 +3354,7 @@ def fetch_match_contexts():
         except Exception as e:
             print("Team context warning:", tid, e)
 
-    zerozero_h2h_cache = fetch_zerozero_h2h(upcoming)
+    fbref_h2h_cache = fetch_fbref_h2h(upcoming)
     contexts = {}
     for f in upcoming:
         fid = str(f["id"])
@@ -3394,12 +3395,12 @@ def fetch_match_contexts():
 
         # ZeroZero is the authoritative fallback for all competitions and
         # remains usable when SofaScore blocks GitHub Actions with HTTP 403.
-        zz_h2h = zerozero_h2h_cache.get(fid)
-        if zz_h2h:
-            if zz_h2h.get("matches"):
-                h2h = zz_h2h["matches"]
-            if zz_h2h.get("summary"):
-                h2h_summary = zz_h2h["summary"][:3]
+        fb_h2h = fbref_h2h_cache.get(fid)
+        if fb_h2h is not None:
+            if fb_h2h.get("matches"):
+                h2h = fb_h2h["matches"]
+            if fb_h2h.get("summary") is not None:
+                h2h_summary = fb_h2h["summary"][:3]
 
 
         h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
