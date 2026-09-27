@@ -2912,7 +2912,7 @@ def fetch_news():
     # reliable from Actions than scraping the site.
     try:
         import feedparser
-        feed=feedparser.parse("https://www.zerozero.pt/rss.php")
+        feed=feedparser.parse("https://www.zerozero.pt/rss_list.php")
         for entry in feed.entries[:80]:
             title=clean(entry.get("title") or "")
             link=entry.get("link")
