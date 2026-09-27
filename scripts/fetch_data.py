@@ -3088,7 +3088,7 @@ def _zz_parse_games(html):
     found = []
 
     def add_cells(cells):
-        cells = [clean(re.sub(r"\\[([^\\]]+)\\]\\([^)]*\\)", r"\\1", x)) for x in cells if clean(x)]
+        cells = [clean(re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\\1", x)) for x in cells if clean(x)]
         if len(cells) < 4:
             return
         date_value = next((x for x in cells if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x)), None)
