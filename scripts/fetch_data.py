@@ -2683,8 +2683,7 @@ def fetch_news():
         if source == "Record":
             return "/futebol/futebol-nacional/liga-betclic/sporting/detalhe/" in h
         if source == "A Bola":
-            return "/noticias/" in h and ("sporting" in h or "sporting" in t or
-                   any(x in t for x in ("leão", "leoes", "leões", "rui borges", "alvalade")))
+            return "/noticias/" in h
         if source == "Sporting.pt":
             return "/noticias/" in h and h.rstrip("/") != "https://www.sporting.pt/pt/noticias"
         return False
@@ -2755,6 +2754,21 @@ def fetch_news():
                 for a in soup.select("a[href]"):
                     href = urljoin(url, a.get("href") or "")
                     title = clean(a.get_text(" ", strip=True))
+                    parent = a
+                    heading_title = ""
+                    for _ in range(6):
+                        if parent is None:
+                            break
+                        hnode = parent.find(["h1","h2","h3","h4","h5"])
+                        if hnode:
+                            candidate_title = clean(hnode.get_text(" ", strip=True))
+                            if len(candidate_title) >= 18:
+                                heading_title = candidate_title
+                                break
+                        parent = parent.parent
+                    if heading_title:
+                        title = heading_title
+                    title = re.sub(r"\s+(?:há|ontem|hoje|\d+\s*(?:minutos?|horas?|dias?))\s*$", "", title, flags=re.I).strip()
                     if href in local_seen or not is_article(source, href, title):
                         continue
                     local_seen.add(href)
@@ -2815,10 +2829,9 @@ def fetch_news():
                     {"name":"publishdate"},
                     {"name":"date"},
                 )
-                if not published:
-                    time_node = soup.find("time", attrs={"datetime": True})
-                    if time_node:
-                        published = time_node.get("datetime")
+                time_node = soup.find("time", attrs={"datetime": True})
+                if time_node and time_node.get("datetime"):
+                    published = time_node.get("datetime")
                 if published:
                     item["published"] = published
 
@@ -2830,8 +2843,8 @@ def fetch_news():
                         for obj in objs:
                             if not isinstance(obj, dict):
                                 continue
-                            if not item.get("published"):
-                                item["published"] = obj.get("datePublished") or obj.get("dateCreated") or item.get("published")
+                            if obj.get("datePublished") or obj.get("dateCreated"):
+                                item["published"] = obj.get("datePublished") or obj.get("dateCreated")
                             if not item.get("image"):
                                 val = obj.get("image")
                                 if isinstance(val, str):
