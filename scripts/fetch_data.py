@@ -2897,44 +2897,80 @@ def _standings_context(competition_name=""):
     return out
 
 
+
 def _h2h_rows(value, home_id, away_id, home_name, away_name):
-    """Recursively collect finished H2H-looking match rows from FotMob h2h data."""
+    """Parse FotMob content.h2h.matches across competitions."""
     found = []
+    if not isinstance(value, dict):
+        return found
+    target_ids = {str(home_id), str(away_id)}
+    target_names = {zz_norm(home_name), zz_norm(away_name)}
+
+    def add_match(obj):
+        if not isinstance(obj, dict):
+            return
+        h = obj.get("home") or obj.get("homeTeam") or {}
+        a = obj.get("away") or obj.get("awayTeam") or {}
+        if not isinstance(h, dict) or not isinstance(a, dict):
+            return
+        hid, aid = h.get("id"), a.get("id")
+        hn, an = zz_norm(h.get("name")), zz_norm(a.get("name"))
+        same = ((hid is not None and aid is not None and
+                 {str(hid), str(aid)} == target_ids)
+                or ({hn, an} == target_names))
+        if not same:
+            return
+
+        status = obj.get("status") or {}
+        score_str = status.get("scoreStr") or obj.get("scoreStr") or ""
+        hs = aas = None
+        if isinstance(score_str, str) and "-" in score_str:
+            parts = [p.strip() for p in score_str.split("-", 1)]
+            try:
+                hs, aas = int(parts[0]), int(parts[1])
+            except Exception:
+                pass
+        score = obj.get("score") if isinstance(obj.get("score"), dict) else {}
+        hs = h.get("score", score.get("home", hs))
+        aas = a.get("score", score.get("away", aas))
+        if hs is None or aas is None:
+            return
+
+        tm = obj.get("time") or obj.get("date") or {}
+        utc = tm.get("utcTime") if isinstance(tm, dict) else tm
+        league = obj.get("league") or obj.get("tournament") or {}
+        comp = league.get("name") if isinstance(league, dict) else league
+        found.append({
+            "id": obj.get("id") or obj.get("matchId"),
+            "date": clean(utc or obj.get("matchDate")),
+            "home": clean(h.get("name") or home_name),
+            "away": clean(a.get("name") or away_name),
+            "home_score": hs,
+            "away_score": aas,
+            "competition": clean(comp or obj.get("tournamentName") or obj.get("competitionName") or ""),
+        })
+
+    matches = value.get("matches")
+    if isinstance(matches, list):
+        for m in matches:
+            add_match(m)
+
     def walk(obj):
         if isinstance(obj, dict):
-            h = obj.get("home") or obj.get("homeTeam")
-            a = obj.get("away") or obj.get("awayTeam")
-            if isinstance(h, dict) and isinstance(a, dict):
-                hid, aid = h.get("id"), a.get("id")
-                hn, an = zz_norm(h.get("name")), zz_norm(a.get("name"))
-                same = ((hid is not None and aid is not None and
-                         {str(hid), str(aid)} == {str(home_id), str(away_id)})
-                        or ({hn, an} == {zz_norm(home_name), zz_norm(away_name)}))
-                score = obj.get("score") if isinstance(obj.get("score"), dict) else {}
-                hs = h.get("score", score.get("home"))
-                aas = a.get("score", score.get("away"))
-                status = obj.get("status") or {}
-                finished = status.get("finished") or obj.get("finished")
-                if same and hs is not None and aas is not None and (finished is not False):
-                    found.append({
-                        "id": obj.get("id") or obj.get("matchId"),
-                        "date": clean(((obj.get("date") or {}).get("utcTime") if isinstance(obj.get("date"), dict) else obj.get("utcTime") or obj.get("matchDate"))),
-                        "home": clean(h.get("name") or home_name),
-                        "away": clean(a.get("name") or away_name),
-                        "home_score": hs,
-                        "away_score": aas,
-                        "competition": clean(obj.get("tournamentName") or obj.get("competitionName") or obj.get("leagueName") or ""),
-                    })
+            if obj is not value:
+                add_match(obj)
             for v in obj.values():
                 if isinstance(v, (dict, list)):
                     walk(v)
         elif isinstance(obj, list):
             for v in obj:
                 walk(v)
-    walk(value)
+
+    walk(matches if isinstance(matches, (dict, list)) else value)
     dedup = {}
     for row in found:
-        key = str(row.get("id") or (row.get("date"), row.get("home"), row.get("away"), row.get("home_score"), row.get("away_score")))
+        key = str(row.get("id") or (row.get("date"), row.get("home"), row.get("away"),
+                                    row.get("home_score"), row.get("away_score")))
         dedup[key] = row
     return list(dedup.values())
 
@@ -2975,66 +3011,45 @@ def fetch_match_contexts():
             table = standings.get("id:"+tid) or standings.get("name:"+zz_norm(name))
             sides[side] = {"id": team.get("id"), "name": name, "form": form, "table": table}
 
+
         h2h = []
+        h2h_summary = None
         try:
             raw = fotmob_get("/api/data/matchDetails", {"matchId": f["id"]})
             content = _first_dict(raw, "content")
-            h2h = _h2h_rows(content.get("h2h"), (f.get("home") or {}).get("id"), (f.get("away") or {}).get("id"),
+            h2h_payload = content.get("h2h") or {}
+            if isinstance(h2h_payload, dict):
+                summary = h2h_payload.get("summary")
+                if isinstance(summary, list) and len(summary) >= 3:
+                    try:
+                        h2h_summary = [int(summary[0]), int(summary[1]), int(summary[2])]
+                    except Exception:
+                        h2h_summary = None
+            h2h = _h2h_rows(h2h_payload, (f.get("home") or {}).get("id"), (f.get("away") or {}).get("id"),
                              (f.get("home") or {}).get("name"), (f.get("away") or {}).get("name"))
         except Exception as e:
             print("H2H detail warning:", fid, e)
 
-        # Fallback: query current + previous Primeira Liga seasons when the
-        # match-detail H2H block is unavailable.
-        if not h2h:
-            for season_name in ("2026/2027", "2025/2026"):
-                try:
-                    league = fotmob_get("/api/data/leagues", {"id": 61, "season": season_name, "ccode3": "PRT"})
-                    candidates = []
-                    def walk_league(obj):
-                        if isinstance(obj, dict):
-                            h = obj.get("home") or {}
-                            a = obj.get("away") or {}
-                            if isinstance(h, dict) and isinstance(a, dict):
-                                hn, an = zz_norm(h.get("name")), zz_norm(a.get("name"))
-                                if {hn, an} == {zz_norm((f.get("home") or {}).get("name")), zz_norm((f.get("away") or {}).get("name"))}:
-                                    hs = h.get("score")
-                                    aas = a.get("score")
-                                    if hs is not None and aas is not None:
-                                        candidates.append({
-                                            "id": obj.get("id") or obj.get("matchId"),
-                                            "date": clean(obj.get("utcTime") or obj.get("matchDate")),
-                                            "home": clean(h.get("name")),
-                                            "away": clean(a.get("name")),
-                                            "home_score": hs,
-                                            "away_score": aas,
-                                            "competition": clean(obj.get("tournamentName") or obj.get("competitionName") or "Liga Portugal")
-                                        })
-                            for v in obj.values():
-                                if isinstance(v, (dict, list)): walk_league(v)
-                        elif isinstance(obj, list):
-                            for v in obj: walk_league(v)
-                    walk_league(league)
-                    h2h.extend(candidates)
-                except Exception as e:
-                    print("H2H league fallback warning:", season_name, e)
-
         h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
-                     key=lambda x: x.get("date") or "", reverse=True)[:5]
-        hw = dw = aw = 0
-        home_name = clean((f.get("home") or {}).get("name"))
-        for x in h2h:
-            hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
-            if hs is None or aas is None:
-                continue
-            if hs > aas: hw += 1
-            elif hs < aas: aw += 1
-            else: dw += 1
+                     key=lambda x: x.get("date") or "", reverse=True)
+
+        if h2h_summary:
+            hw, dw, aw = h2h_summary
+        else:
+            hw = dw = aw = 0
+            for x in h2h:
+                hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
+                if hs is None or aas is None:
+                    continue
+                if hs > aas: hw += 1
+                elif hs < aas: aw += 1
+                else: dw += 1
+
 
         contexts[fid] = {
             "home": sides["home"],
             "away": sides["away"],
-            "h2h": {"matches": h2h, "home_wins": hw, "draws": dw, "away_wins": aw},
+            "h2h": {"matches": h2h[:4], "home_wins": hw, "draws": dw, "away_wins": aw, "total": hw+dw+aw},
             "updated_at": now_iso(),
         }
 
@@ -3065,7 +3080,7 @@ def fetch_betano_odds():
     try:
         r = session.get(
             "https://api.odds-api.io/v3/events",
-            params={"apiKey": api_key, "sport": "football", "bookmaker": "Betano PT"},
+            params={"apiKey": api_key, "sport": "football", "bookmaker": "Betano"},
             timeout=30
         )
         r.raise_for_status()
@@ -3108,7 +3123,7 @@ def fetch_betano_odds():
         try:
             rr = session.get(
                 "https://api.odds-api.io/v3/odds",
-                params={"apiKey": api_key, "eventId": e.get("id"), "bookmakers": "Betano PT"},
+                params={"apiKey": api_key, "eventId": e.get("id"), "bookmakers": "Betano"},
                 timeout=25
             )
             rr.raise_for_status()
