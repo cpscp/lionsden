@@ -3088,7 +3088,7 @@ def _zz_parse_games(html):
     found = []
 
     def add_cells(cells):
-        cells = [clean(x) for x in cells if clean(x)]
+        cells = [clean(re.sub(r"\\[([^\\]]+)\\]\\([^)]*\\)", r"\\1", x)) for x in cells if clean(x)]
         if len(cells) < 4:
             return
         date_value = next((x for x in cells if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x)), None)
@@ -3171,6 +3171,19 @@ def zerozero_team_ref(name):
             if m:
                 href = m.group(1)
                 break
+
+        # r.jina.ai returns Markdown when ZeroZero blocks the runner.
+        # In that case there are no HTML href attributes; recover the team
+        # reference from Markdown/plain URLs instead.
+        if not href:
+            m = re.search(r"https?://www\\.zerozero\\.pt/equipa/([^/\\s)]+)/([0-9]+)", page)
+            if m:
+                href = m.group(0)
+            else:
+                m = re.search(r"\\]\\((/equipa/[^/\\s)]+/[0-9]+)\\)", page)
+                if m:
+                    href = m.group(1)
+
         if href:
             if href.startswith("/"):
                 href = "https://www.zerozero.pt" + href
