@@ -2974,6 +2974,22 @@ def fetch_news():
     except Exception as e:
         print("Publisher RSS import warning:", e)
 
+    # Fallback discovery for publishers that block their listing pages.
+    try:
+        from urllib.parse import quote
+        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
+            qurl="https://html.duckduckgo.com/html/?q="+quote("site:"+domain+" Sporting")
+            rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            soup=BeautifulSoup(rr.text,"html.parser")
+            for a in soup.select("a.result__a")[:30]:
+                href=a.get("href","")
+                title=clean(a.get_text(" ",strip=True))
+                if href and title and domain in href.lower() and "sporting" in title.lower():
+                    add({"title":title,"url":href,"source":expected_source})
+    except Exception as e:
+        print("Web discovery warning:",e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
