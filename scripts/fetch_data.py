@@ -2814,6 +2814,12 @@ def fetch_news():
         url = item.get("url")
         if not url:
             return item
+
+        # Recompute article availability on every run. Do not carry a previous
+        # Premium classification or article body into a fresh scrape: Record has
+        # both Premium and free articles under the same listing/feed.
+        item.pop("premium", None)
+        item.pop("article_text", None)
         candidates = [url, "https://r.jina.ai/" + url]
         try:
             from urllib.parse import urlparse
@@ -2841,7 +2847,7 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
-                record_premium = bool(item.get("premium")) or (
+                record_premium = (
                     item.get("source") == "Record"
                     and bool(re.search(
                         r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
