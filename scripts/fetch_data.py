@@ -3347,6 +3347,8 @@ def fetch_news():
                 title=clean(entry.get("title") or "")
                 link=entry.get("link")
                 summary_raw=entry.get("summary") or ""
+                if expected_source=="Zerozero" and "sporting x benfica" in title.lower():
+                    print("ZEROZERO_RSS_DEBUG", entry.get("title"), summary_raw[:3000], entry.get("media_content"), entry.get("media_thumbnail"), entry.get("links"))
                 summary_soup=BeautifulSoup(summary_raw,"html.parser")
                 summary=clean(summary_soup.get_text(" ",strip=True))
                 if not link or len(title)<18:
