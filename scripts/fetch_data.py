@@ -184,7 +184,7 @@ def zerozero_player_index():
             if not name:
                 continue
             if href.startswith("/"):
-                href = "https://www.zerozero.pt" + href
+                href = "https://zerozero.dk" + href
             index.setdefault(zz_norm(name), href)
         return index
     except Exception as e:
@@ -3072,11 +3072,14 @@ def zerozero_get(url):
     produces empty H2H data.
     """
     encoded = quote_plus(url)
+    mirror_url = url.replace("https://www.zerozero.pt", "https://zerozero.dk").replace("https://zerozero.pt", "https://zerozero.dk")
+    mirror_encoded = quote_plus(mirror_url)
     candidates = [
-        "https://r.jina.ai/" + url,
-        f"https://api.allorigins.win/raw?url={encoded}",
-        f"https://api.codetabs.com/v1/proxy?quest={encoded}",
-        f"https://corsproxy.io/?url={encoded}",
+        mirror_url,
+        "https://r.jina.ai/" + mirror_url,
+        f"https://api.allorigins.win/raw?url={mirror_encoded}",
+        f"https://api.codetabs.com/v1/proxy?quest={mirror_encoded}",
+        f"https://corsproxy.io/?url={mirror_encoded}",
         url,
     ]
 
@@ -3211,7 +3214,7 @@ def zerozero_team_ref(name):
         page = zerozero_get(f"https://www.zerozero.pt/equipa/{slug}")
         patterns = [
             r'href=["\'](/equipa/[^"\']+/\d+)["\']',
-            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https://www\.zerozero\.pt/equipa/[^"\']+/\d+)',
+            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https?://(?:www\.)?zerozero\.(?:pt|dk)/equipa/[^"\']+/\d+)',
         ]
         href = None
         for pat in patterns:
@@ -3224,7 +3227,7 @@ def zerozero_team_ref(name):
         # In that case there are no HTML href attributes; recover the team
         # reference from Markdown/plain URLs instead.
         if not href:
-            m = re.search(r"https?://www\.zerozero\.pt/equipa/([^/\s)]+)/([0-9]+)", page)
+            m = re.search(r"https?://(?:www\.)?zerozero\.(?:pt|dk)/equipa/([^/\s)]+)/([0-9]+)", page)
             if m:
                 href = m.group(0)
             else:
@@ -3251,7 +3254,8 @@ def _zz_xray_for_fixture(f):
     h = zerozero_team_ref(home)
     a = zerozero_team_ref(away)
     if not h or not a:
-        return [], None
+        raise RuntimeError(f"ZeroZero team reference unavailable: {home} / {away}")
+
     url = f"https://www.zerozero.pt/estatisticas/{h['slug']}-{a['slug']}/t{h['id']}-t{a['id']}"
     html = zerozero_get(url)
     games = _zz_parse_games(html)
@@ -3290,6 +3294,8 @@ def _zz_xray_for_fixture(f):
                 aw += 1
         if rows:
             summary = [hw, dw, aw, len(rows)]
+    if not rows and summary is None:
+        raise RuntimeError(f"ZeroZero H2H page parsed without history data: {home} / {away}")
     return rows[:4], summary
 
 
