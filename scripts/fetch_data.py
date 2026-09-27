@@ -2872,6 +2872,24 @@ def fetch_news():
                                     cards.append(raw_dbg[:1200])
                             except Exception:
                                 pass
+                        # Zerozero's current editorial photos are hosted on
+                        # cdn-img.staticzz.com (and, on some results, cdn-img.zerozero.pt).
+                        # Google may serialize the original CDN URL in the raw HTML
+                        # without creating an a.iusc card. This was the working
+                        # extraction path in the earlier Lions Den implementation.
+                        for m in re.finditer(
+                            r"https://cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/[^\\s<>\\\\]+",
+                            gr.text,
+                            re.I,
+                        ):
+                            src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
+                            src=src.rstrip('.,;)"\\'')
+                            if re.search(r"\\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
+                                item["image"]=src
+                                item["image_source"]="Zerozero article CDN"
+                                break
+
+                        if not item.get("image"):
                         # Google Images exposes the original result page (purl)
                         # and the source image (murl) in serialized result cards.
                         # Prefer an image whose source page is the exact Zerozero
