@@ -2746,11 +2746,21 @@ def fetch_news():
             if isinstance(results,dict):
                 results=[results]
             for item,result in zip(google_rows,results):
-                if isinstance(result,dict) and result.get("success") and result.get("decoded_url"):
-                    item["url"]=result["decoded_url"]
-                    item["source"]=source_from_url(item["url"], item.get("source"))
+                if not isinstance(result,dict) or not result.get("success") or not result.get("decoded_url"):
+                    # Never expose an undecoded Google News URL as a publisher.
+                    item["_decode_failed"]=True
+                    continue
+                decoded=result["decoded_url"]
+                src=source_from_url(decoded,"")
+                if src not in ("Record","A Bola","O Jogo","Zerozero","Sporting.pt"):
+                    item["_decode_failed"]=True
+                    continue
+                item["url"]=decoded
+                item["source"]=src
         except Exception as e:
             print("Google News decoder warning:",e)
+            for item in google_rows:
+                item["_decode_failed"]=True
 
     def article_metadata(item):
         url=item.get("url")
@@ -3430,9 +3440,9 @@ def fetch_news():
     # those links now so the final feed contains only the original publisher URL.
     decode_google_urls(items)
 
-    # Re-score after URL decoding because Google News initially labels every
-    # item as the expected feed source, while the final URL reveals the actual
-    # publisher. Deduplicate again after decoding.
+    # Re-score after URL decoding. Any Google News item that could not be
+    # resolved to a real publisher URL is discarded rather than mislabelled.
+    items=[x for x in items if not x.get("_decode_failed") and "news.google.com/" not in str(x.get("url") or "")]
     dedup={}
     for item in items:
         url=item.get("url")
