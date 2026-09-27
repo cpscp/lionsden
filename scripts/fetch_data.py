@@ -2975,6 +2975,85 @@ def _h2h_rows(value, home_id, away_id, home_name, away_name):
     return list(dedup.values())
 
 
+def _sofa_h2h_for_fixture(f):
+    """Fallback H2H via SofaScore when FotMob does not expose H2H."""
+    home = f.get("home") or {}
+    away = f.get("away") or {}
+    hid, aid = home.get("id"), away.get("id")
+    if not hid or not aid:
+        return [], None
+
+    def norm(v):
+        return zz_norm(str(v or "")).replace("sporting clube de portugal", "sporting cp")
+
+    target = {norm(home.get("name")), norm(away.get("name"))}
+    event_id = None
+    try:
+        # Upcoming events are paginated; cache each team's pages in this run.
+        for page in range(0, 3):
+            data = sofa_get(f"/team/{hid}/events/next/{page}")
+            events = data.get("events") if isinstance(data, dict) else []
+            for ev in events or []:
+                ht = ev.get("homeTeam") or {}
+                at = ev.get("awayTeam") or {}
+                names = {norm(ht.get("name")), norm(at.get("name"))}
+                if names == target:
+                    event_id = ev.get("id")
+                    break
+            if event_id:
+                break
+            if isinstance(data, dict) and data.get("hasNextPage") is False:
+                break
+    except Exception as e:
+        print("Sofa H2H event lookup warning:", hid, aid, e)
+
+    if not event_id:
+        return [], None
+
+    try:
+        summary_raw = sofa_get(f"/event/{event_id}/h2h")
+        duel = summary_raw.get("teamDuel") if isinstance(summary_raw, dict) else {}
+        # SofaScore's duel is from the scheduled match's home/away perspective.
+        summary = [
+            int(duel.get("homeWins") or 0),
+            int(duel.get("draws") or 0),
+            int(duel.get("awayWins") or 0)
+        ] if isinstance(duel, dict) else None
+    except Exception as e:
+        print("Sofa H2H summary warning:", event_id, e)
+        summary = None
+
+    try:
+        raw = sofa_get(f"/event/{event_id}/h2h/events")
+        matches = raw.get("events") if isinstance(raw, dict) else []
+        if not matches and isinstance(raw, dict):
+            matches = raw.get("matches") or []
+        rows = []
+        for m in matches or []:
+            ht = m.get("homeTeam") or {}
+            at = m.get("awayTeam") or {}
+            hs = (m.get("homeScore") or {}).get("current")
+            aas = (m.get("awayScore") or {}).get("current")
+            if hs is None or aas is None:
+                continue
+            ts = m.get("startTimestamp")
+            date = datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace("+00:00", "Z") if ts else ""
+            tournament = m.get("tournament") or {}
+            rows.append({
+                "id": m.get("id"),
+                "date": date,
+                "home": clean(ht.get("name")),
+                "away": clean(at.get("name")),
+                "home_score": hs,
+                "away_score": aas,
+                "competition": clean(tournament.get("name") if isinstance(tournament, dict) else ""),
+            })
+        return rows, summary
+    except Exception as e:
+        print("Sofa H2H matches warning:", event_id, e)
+        return [], summary
+
+
 def fetch_match_contexts():
     """Build form, standings, H2H and optional Betano odds for upcoming matches."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
@@ -3029,6 +3108,16 @@ def fetch_match_contexts():
                              (f.get("home") or {}).get("name"), (f.get("away") or {}).get("name"))
         except Exception as e:
             print("H2H detail warning:", fid, e)
+
+        if not h2h:
+            try:
+                sofa_rows, sofa_summary = _sofa_h2h_for_fixture(f)
+                if sofa_rows:
+                    h2h = sofa_rows
+                if not h2h_summary and sofa_summary:
+                    h2h_summary = sofa_summary
+            except Exception as e:
+                print("H2H fallback warning:", fid, e)
 
         h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
                      key=lambda x: x.get("date") or "", reverse=True)
