@@ -4,3 +4,5 @@ pandas>=2.2
 lxml>=5.3
 feedparser>=6.0
 googlenewsdecoder==0.2.1
+
+curl_cffi>=0.14.0
