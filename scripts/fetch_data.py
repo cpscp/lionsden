@@ -3247,37 +3247,56 @@ def fetch_betano_odds():
 
 
 def fetch_public_match_odds():
-    """Public SofaScore 1X2 fallback. Used when Betano's external feed is not configured."""
+    """Public SofaScore 1X2 fallback when the optional Betano feed is unavailable."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     upcoming = sorted(
         [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")],
         key=lambda x: x.get("date") or 0
     )[:30]
     result = {}
+
+    def odd_value(choice):
+        v = choice.get("decimalValue", choice.get("odds"))
+        if v not in (None, ""):
+            return v
+        frac = clean(choice.get("fractionalValue") or "")
+        if "/" in frac:
+            try:
+                a,b=frac.split("/",1)
+                return round(1 + float(a)/float(b), 3)
+            except Exception:
+                pass
+        return None
+
     for f in upcoming:
         try:
             raw = sofa_get(f"/event/{f['id']}/odds/1/all")
-            markets = raw.get("markets") or raw.get("featured") or []
+            markets = raw.get("markets") or []
             if isinstance(markets, dict):
                 markets = list(markets.values())
             parsed = []
             for market in markets if isinstance(markets, list) else []:
-                name = clean(market.get("marketName") or market.get("name") or "")
-                choices = market.get("choices") or market.get("outcomes") or []
+                market_name = clean(market.get("marketName") or market.get("name") or "")
+                if zz_norm(market_name) not in {"full time","match winner","1x2","ml","moneyline"}:
+                    continue
+                choices = market.get("choices") or []
                 if not isinstance(choices, list):
                     continue
                 vals = {}
                 for choice in choices:
                     cname = clean(choice.get("name") or choice.get("label") or "").lower()
-                    val = choice.get("decimalValue", choice.get("odds"))
-                    if cname in {"1","home","1x2 home"}:
+                    val = odd_value(choice)
+                    if val is None:
+                        continue
+                    if cname in {"1","home"}:
                         vals["home"] = val
                     elif cname in {"x","draw","tie"}:
                         vals["draw"] = val
-                    elif cname in {"2","away","1x2 away"}:
+                    elif cname in {"2","away"}:
                         vals["away"] = val
-                if vals:
-                    parsed.append({"name": name or "ML", "odds": [vals]})
+                if all(k in vals for k in ("home","draw","away")):
+                    parsed.append({"name":"ML","odds":[vals]})
+                    break
             if parsed:
                 result[str(f["id"])] = {
                     "updated_at": now_iso(),
@@ -3286,6 +3305,7 @@ def fetch_public_match_odds():
                 }
         except Exception as e:
             print("Public odds warning:", f.get("id"), e)
+
     write_json("public-odds.json", {
         "fixtures": result,
         "source": "SofaScore public odds fallback",
