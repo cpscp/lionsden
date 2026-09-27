@@ -2842,7 +2842,7 @@ def fetch_news():
                             "sustentabilidade", "responsabilidade social",
                             "sporting solidário", "sporting solidario"
                         )
-                        editorial_paths = ("/futebol/", "/modalidades/", "/noticias/")
+                        editorial_paths = ("/noticias/",)
                         if any(term in low_title for term in blocked_terms):
                             continue
                         if not any(path in low_href for path in editorial_paths):
