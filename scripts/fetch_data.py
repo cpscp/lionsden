@@ -2764,6 +2764,11 @@ def fetch_news():
                                 item["image"]=src
                                 item["image_source"]="Jina Reader"
                                 break
+                    if not item.get("image"):
+                        for m in re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)", jr.text):
+                            item["image"]=m.group(1)
+                            item["image_source"]="Jina Reader"
+                            break
             except Exception as ex:
                 print("Zerozero Jina metadata warning:",item.get("url"),ex)
 
