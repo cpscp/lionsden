@@ -2669,7 +2669,6 @@ def fetch_news():
     source_priority = {
         "Record": 100,
         "A Bola": 98,
-        "O Jogo": 96,
         "Zerozero": 94,
         "Sporting.pt": 92,
     }
@@ -3192,7 +3191,6 @@ def fetch_news():
         ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
         ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
         ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
-        ("https://www.ojogo.pt/futebol/1a-liga/sporting/", "O Jogo"),
         (SPORTING_NEWS, "Sporting.pt"),
     ]
     # Zerozero publishes an official RSS feed. It is much lighter and more
@@ -3237,7 +3235,6 @@ def fetch_news():
         from urllib.parse import quote
         publisher_queries = [
             ("abola.pt", "A Bola"),
-            ("ojogo.pt", "O Jogo"),
             ("zerozero.pt", "Zerozero"),
         ]
         for domain, expected_source in publisher_queries:
@@ -3280,7 +3277,7 @@ def fetch_news():
     # Fallback discovery for publishers that block their listing pages.
     try:
         from urllib.parse import quote
-        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
+        for domain, expected_source in (("zerozero.pt","Zerozero"),):
             qurl="https://html.duckduckgo.com/html/?q="+quote("site:"+domain+" Sporting")
             rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
             rr.raise_for_status()
@@ -3297,7 +3294,7 @@ def fetch_news():
     # Search is only transport; the stored URL/source is the original publisher.
     try:
         from urllib.parse import quote
-        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
+        for domain, expected_source in (("zerozero.pt","Zerozero"),):
             qurl="https://www.google.com/search?q="+quote("site:"+domain+" Sporting")+"&num=20&hl=pt-PT"
             rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
             rr.raise_for_status()
