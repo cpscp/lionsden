@@ -3315,6 +3315,22 @@ def fetch_zerozero_h2h(upcoming):
         key = tuple(sorted((zz_norm(home), zz_norm(away))))
         representatives.setdefault(key, f)
 
+    # Resolve every distinct team once before starting the pair collector.
+    # In particular, Sporting's ZeroZero page must never be fetched once per
+    # opponent: that repetition is what triggers Jina 429 from Actions.
+    team_refs = {}
+    team_names = set()
+    for f in upcoming:
+        team_names.add(clean((f.get("home") or {}).get("name")))
+        team_names.add(clean((f.get("away") or {}).get("name")))
+    for team_name in team_names:
+        if not team_name:
+            continue
+        try:
+            team_refs[zz_norm(team_name)] = zerozero_team_ref(team_name)
+        except Exception:
+            team_refs[zz_norm(team_name)] = None
+
     def collect(item):
         key, f = item
         home = clean((f.get("home") or {}).get("name"))
@@ -3324,7 +3340,38 @@ def fetch_zerozero_h2h(upcoming):
         # Use the proven low-request ZeroZero path first. Only if it fails do
         # we spend calls on SofaScore/FotMob fallbacks.
         try:
-            rows, summary = _zz_xray_for_fixture(f)
+            h = team_refs.get(zz_norm(home))
+            a = team_refs.get(zz_norm(away))
+            if not h or not a:
+                raise RuntimeError(f"ZeroZero team reference unavailable: {home} / {away}")
+            url = f"https://www.zerozero.pt/estatisticas/{h['slug']}-{a['slug']}/t{h['id']}-t{a['id']}"
+            html = zerozero_get(url)
+            games = _zz_parse_games(html)
+            wanted = {_zz_name_key(home), _zz_name_key(away)}
+            rows = [g for g in games if {_zz_name_key(g.get("home")), _zz_name_key(g.get("away"))} == wanted]
+            rows.sort(key=lambda x: x.get("date") or "", reverse=True)
+            text_content = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))
+            if "nunca se defrontaram" in zz_norm(text_content):
+                rows, summary = [], [0, 0, 0, 0]
+            else:
+                summary = None
+                pat = re.search(r"Em todas as competições .*?(\d+) jogos.*?(\d+) vitórias do (.*?), (\d+) empates e (\d+) (?:triunfos|vitórias) do (.*?)(?:\.|\s+Em casa)", text_content, re.I)
+                if pat:
+                    first_team = clean(pat.group(3))
+                    vals = [int(pat.group(2)), int(pat.group(4)), int(pat.group(5)), int(pat.group(1))]
+                    summary = vals if _zz_name_key(first_team) == _zz_name_key(home) else [vals[2], vals[1], vals[0], vals[3]]
+                if summary is None and rows:
+                    hw = dw = aw = 0
+                    for x in rows:
+                        hs, ascore = fnum(x.get("home_score")), fnum(x.get("away_score"))
+                        if hs is None or ascore is None:
+                            continue
+                        if hs == ascore: dw += 1
+                        elif _zz_name_key(x.get("home")) == _zz_name_key(home): hw += 1
+                        else: aw += 1
+                    summary = [hw, dw, aw, len(rows)]
+            if not rows and summary is None:
+                raise RuntimeError(f"ZeroZero H2H page parsed without history data: {home} / {away}")
             source = "ZeroZero"
             print("H2H ZeroZero primary:", home, "vs", away, "=>", len(rows))
         except Exception as e:
