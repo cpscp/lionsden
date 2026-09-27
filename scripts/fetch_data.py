@@ -2798,6 +2798,7 @@ def fetch_news():
                     image=urljoin(final_url,image)
                 item["image"]=image
                 item["image_source"]=final_url
+            desc = (ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"}) or ss.find("meta",attrs={"name":"twitter:description"}))
             if desc and desc.get("content"):
                 item["description"]=clean(desc.get("content"))[:280]
             if final_url and "news.google.com" not in final_url:
@@ -2864,8 +2865,15 @@ def fetch_news():
                     if image:
                         from urllib.parse import urljoin
                         image=urljoin(url,str(image))
+                    preview = None
+                    for attr in ("data-description","data-summary","data-excerpt","aria-label"):
+                        val=a.get(attr)
+                        if val and len(str(val)) > 20:
+                            preview=clean(val)
+                            break
                     local.append({"title":title,"url":href,"source":source,
-                                  **({"image":image,"image_source":url} if image else {})})
+                                  **({"image":image,"image_source":url} if image else {}),
+                                  **({"description":preview} if preview else {})})
                     if len(local)>=18:
                         break
                 if local:
