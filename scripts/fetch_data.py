@@ -2875,7 +2875,7 @@ def fetch_news():
                             re.I,
                         ):
                             src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
-                            src=src.rstrip('.,;)"\\'')
+                            src=src.rstrip(".,;)'\"")
                             if re.search(r"\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
                                 item["image"]=src
                                 item["image_source"]="Zerozero article CDN"
