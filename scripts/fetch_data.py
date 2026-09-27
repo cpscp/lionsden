@@ -2710,7 +2710,12 @@ def fetch_news():
         football = any(t in blob for t in football_terms)
         modalities = any(t in blob for t in non_football_penalty)
         item["_football"] = football and not (modalities and "futebol" not in blob)
+        item["_sporting"] = any(t in blob for t in (
+            "sporting", "alvalade", "rui borges", "leões", "leoes",
+            "verde e branco", "verde-e-branco"
+        ))
         item["_priority"] += 25 if item["_football"] else 0
+        item["_priority"] += 40 if item["_sporting"] else 0
         seen.add(key)
         items.append(item)
 
@@ -2848,8 +2853,14 @@ def fetch_news():
         item["source"]=source_from_url(url,item.get("source") or "Google News")
         p=source_priority.get(item["source"],50)
         title=item.get("title","").lower()
-        item["_football"]=any(t in title for t in football_terms)
-        item["_priority"]=p + (25 if item["_football"] else 0)
+        item["_football"]=any(t in title for t in football_terms) and not (
+            any(t in title for t in non_football_penalty) and "futebol" not in title
+        )
+        item["_sporting"]=any(t in title for t in (
+            "sporting", "alvalade", "rui borges", "leões", "leoes",
+            "verde e branco", "verde-e-branco"
+        ))
+        item["_priority"]=p + (25 if item["_football"] else 0) + (40 if item["_sporting"] else 0)
         old=dedup.get(key)
         if old is None or item["_priority"] > old["_priority"]:
             dedup[key]=item
@@ -2868,6 +2879,7 @@ def fetch_news():
     # Source priority is only a tie-breaker, otherwise one publisher can crowd
     # the whole feed with older articles.
     items.sort(key=lambda x:(
+        1 if x.get("_sporting") else 0,
         1 if x.get("_football") else 0,
         pub_ts(x),
         source_priority.get(x.get("source"),50)
@@ -2891,6 +2903,7 @@ def fetch_news():
     for item in enriched:
         item.pop("_priority",None)
         item.pop("_football",None)
+        item.pop("_sporting",None)
         item.pop("media_thumbnail",None)
         item.pop("media_content",None)
         if not item.get("image"):
