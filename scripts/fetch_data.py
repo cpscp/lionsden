@@ -2798,6 +2798,37 @@ def fetch_news():
                     image=urljoin(final_url,image)
                 item["image"]=image
                 item["image_source"]=final_url
+            # Always recover the publication timestamp from the article,
+            # because listing feeds from some sources omit it.
+            published = None
+            for tag, attrs in [
+                ("meta", {"property":"article:published_time"}),
+                ("meta", {"name":"article:published_time"}),
+                ("meta", {"property":"og:published_time"}),
+            ]:
+                node=ss.find(tag,attrs=attrs)
+                if node and node.get("content"):
+                    published=node.get("content").strip()
+                    break
+            if not published:
+                time_node=ss.find("time")
+                if time_node:
+                    published=time_node.get("datetime") or time_node.get_text(" ",strip=True)
+            if not published:
+                import json as _json
+                for script in ss.find_all("script",attrs={"type":"application/ld+json"}):
+                    try:
+                        data=_json.loads(script.string or script.get_text())
+                        candidates=data if isinstance(data,list) else [data]
+                        for obj in candidates:
+                            if isinstance(obj,dict) and obj.get("datePublished"):
+                                published=obj["datePublished"]
+                                break
+                        if published: break
+                    except Exception:
+                        pass
+            if published:
+                item["published"]=published
             desc = (ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"}) or ss.find("meta",attrs={"name":"twitter:description"}))
             if desc and desc.get("content"):
                 item["description"]=clean(desc.get("content"))[:280]
