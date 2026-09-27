@@ -3324,21 +3324,21 @@ def fetch_zerozero_h2h(upcoming):
         rows, summary, source = [], None, "unavailable"
 
         try:
-            rows, summary = _zz_xray_for_fixture(f)
-            source = "ZeroZero"
-            print("H2H ZeroZero:", home, "vs", away, "=>", len(rows))
+            event_id = _sofa_scheduled_event_for_fixture(f)
+            rows, summary = _sofa_h2h_from_event(event_id, f)
+            if rows or summary is not None:
+                source = "SofaScore"
+                print("H2H SofaScore scheduled-event:", home, "vs", away, "=>", len(rows))
         except Exception as e:
-            print("H2H ZeroZero failed:", home, "vs", away, e)
+            print("H2H SofaScore scheduled-event failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
-                event_id = _sofa_scheduled_event_for_fixture(f)
-                rows, summary = _sofa_h2h_from_event(event_id, f)
-                if rows or summary is not None:
-                    source = "SofaScore"
-                    print("H2H SofaScore scheduled-event fallback:", home, "vs", away, "=>", len(rows))
+                rows, summary = _zz_xray_for_fixture(f)
+                source = "ZeroZero"
+                print("H2H ZeroZero fallback:", home, "vs", away, "=>", len(rows))
             except Exception as e:
-                print("H2H SofaScore scheduled-event failed:", home, "vs", away, e)
+                print("H2H ZeroZero failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
