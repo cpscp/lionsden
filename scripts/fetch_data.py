@@ -2770,93 +2770,112 @@ def fetch_news():
         # from the article metadata, recover the image through Google Images using
         # the exact article title; the article/source shown to users remains Zerozero.
         if item.get("source")=="Zerozero":
-            item.pop("image",None)
-            item.pop("image_source",None)
-            try:
-                from urllib.parse import quote as _quote
-                proxy="https://translate.google.com/translate?sl=pt&tl=en&u="+_quote(url,safe="")
-                zr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
-                if zr.ok:
-                    zs=BeautifulSoup(zr.text,"html.parser")
-                    for tag, attrs in [
-                        ("meta",{"property":"og:image"}),
-                        ("meta",{"property":"og:image:url"}),
-                        ("meta",{"name":"twitter:image"}),
-                    ]:
-                        node=zs.find(tag,attrs=attrs)
-                        if node and node.get("content"):
-                            src=node.get("content").strip()
-                            if "zerozero" in src.lower():
-                                item["image"]=src
-                                item["image_source"]="Zerozero article via Google Translate"
-                                break
-                    if not item.get("description"):
-                        d=zs.find("meta",attrs={"property":"og:description"}) or zs.find("meta",attrs={"name":"description"})
-                        if d and d.get("content"):
-                            item["description"]=clean(d.get("content"))[:280]
-            except Exception as ex:
-                print("Zerozero Translate image warning:",item.get("url"),ex)
+            # Zerozero can block GitHub Actions, but its RSS/listing feeds often
+            # already contain the correct editorial photo. NEVER delete that
+            # image just because we are enriching the article.
+            # Only try external recovery when no usable image was discovered.
             if not item.get("image"):
+                # 1) Google Translate proxy: fetch the original article and read
+                # its own OpenGraph/Twitter image metadata.
+                try:
+                    from urllib.parse import quote as _quote
+                    proxy="https://translate.google.com/translate?sl=pt&tl=en&u="+_quote(url,safe="")
+                    zr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
+                    if zr.ok:
+                        zs=BeautifulSoup(zr.text,"html.parser")
+                        for tag, attrs in [
+                            ("meta",{"property":"og:image"}),
+                            ("meta",{"property":"og:image:url"}),
+                            ("meta",{"name":"twitter:image"}),
+                            ("meta",{"itemprop":"image"}),
+                        ]:
+                            node=zs.find(tag,attrs=attrs)
+                            if node and node.get("content"):
+                                src=node.get("content").strip()
+                                if src and not re.search(r"(logo|favicon|cloudflare|translate|google)",src,re.I):
+                                    item["image"]=urljoin(url,src)
+                                    item["image_source"]="Zerozero article og:image"
+                                    break
+                        if not item.get("description"):
+                            d=zs.find("meta",attrs={"property":"og:description"}) or zs.find("meta",attrs={"name":"description"})
+                            if d and d.get("content"):
+                                item["description"]=clean(d.get("content"))[:280]
+                except Exception as ex:
+                    print("Zerozero Translate image warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 2) The alternate Zerozero domain has historically exposed the
+                # same article metadata without the main site's protection.
+                try:
+                    alt=url.replace("https://www.zerozero.pt/","https://zerozero.football/")
+                    ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
+                    if ar.ok:
+                        ass=BeautifulSoup(ar.text,"html.parser")
+                        for attrs in (
+                            {"property":"og:image"},{"property":"og:image:url"},
+                            {"name":"twitter:image"},{"itemprop":"image"}
+                        ):
+                            node=ass.find("meta",attrs=attrs)
+                            if node and node.get("content"):
+                                u=node.get("content").strip()
+                                if u and not re.search(r"(logo|favicon|cloudflare|google)",u,re.I):
+                                    item["image"]=urljoin(alt,u)
+                                    item["image_source"]="Zerozero article og:image"
+                                    break
+                except Exception as ex:
+                    print("Zerozero alternate-domain warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 3) Microlink metadata fallback.
                 try:
                     from urllib.parse import quote as _q
                     mr=session.get("https://api.microlink.io/?url="+_q(url,safe="")+"&meta=true",
                                    timeout=20,headers={"User-Agent":USER_AGENT})
                     if mr.ok:
                         md=mr.json().get("data",{})
-                        image=((md.get("image") or {}).get("url") if isinstance(md.get("image"),dict) else md.get("image"))
+                        image=((md.get("image") or {}).get("url")
+                               if isinstance(md.get("image"),dict) else md.get("image"))
                         desc=md.get("description")
                         if image and not re.search(r"(google|gstatic|cloudflare|captcha|favicon|logo)",str(image),re.I):
                             item["image"]=image
                             item["image_source"]="Zerozero article metadata"
-                        if desc and not re.search(r"(just a moment|captcha|cloudflare)",str(desc),re.I):
+                        if not item.get("description") and desc and not re.search(r"(just a moment|captcha|cloudflare)",str(desc),re.I):
                             item["description"]=clean(desc)[:280]
                 except Exception as ex:
                     print("Zerozero metadata service warning:",item.get("url"),ex)
-            try:
-                q=quote((item.get("title") or "")+" site:zerozero.pt")
-                gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
-                               timeout=15,headers={"User-Agent":USER_AGENT})
-                if gr.ok:
-                    gs=BeautifulSoup(gr.text,"html.parser")
-                    # Google Images can expose the publisher CDN URL in the
-                    # result HTML even when it does not create a normal <img>.
-                    # Accept only Zerozero's own image CDN.
-                    raw=gr.text
-                    pos=0
-                    while True:
-                        pos=raw.lower().find("cdn-img.zerozero",pos)
-                        if pos<0:
-                            break
-                        left=max(0,pos-40)
-                        tail=raw[left:]
-                        end=tail.find('"')
-                        if end<0:
-                            end=tail.find("'")
-                        if end>0:
-                            candidate=tail[:end]
-                            if candidate.startswith("https://"):
-                                candidate=candidate.replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
-                                if candidate.lower().endswith((".jpg",".jpeg",".png",".webp")):
-                                    item["image"]=candidate
-                                    item["image_source"]="Zerozero article CDN"
-                                    break
-                        pos+=15
-                        src=(im.get("data-iurl") or im.get("data-original") or
-                             im.get("data-src") or im.get("src"))
-                        if not src or str(src).startswith("data:"):
-                            continue
-                        low=str(src).lower()
-                        if any(x in low for x in ("favicon","logo","googleusercontent")):
-                            continue
-                        if im.get("width") and int(im.get("width")) < 200:
-                            continue
-                        item["image"]=src
-                        item["image_source"]="Zerozero article image search"
-                        break
-            except Exception as ex:
-                print("Zerozero Google image search warning:",item.get("url"),ex)
+
             if not item.get("image"):
+                # 4) Google Images fallback, but ONLY accept a Zerozero CDN image.
+                # The previous implementation accidentally referenced 'im' after
+                # removing the loop, so this path could never work reliably.
                 try:
+                    from urllib.parse import quote
+                    q=quote((item.get("title") or "")+" site:zerozero.pt")
+                    gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
+                                   timeout=15,headers={"User-Agent":USER_AGENT})
+                    if gr.ok:
+                        gs=BeautifulSoup(gr.text,"html.parser")
+                        for im in gs.find_all("img"):
+                            src=(im.get("data-iurl") or im.get("data-original") or
+                                 im.get("data-src") or im.get("src"))
+                            if not src or str(src).startswith("data:"):
+                                continue
+                            low=str(src).lower()
+                            if "cdn-img.zerozero" not in low:
+                                continue
+                            if any(x in low for x in ("favicon","logo","googleusercontent")):
+                                continue
+                            item["image"]=src
+                            item["image_source"]="Zerozero article image search"
+                            break
+                except Exception as ex:
+                    print("Zerozero Google image search warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 5) Bing Images fallback. Keep the article-origin check so an
+                # unrelated image can never be attached to a Zerozero article.
+                try:
+                    from urllib.parse import quote
                     bq=quote((item.get("title") or "").replace(" - zerozero.pt","")+" zerozero")
                     br=session.get("https://www.bing.com/images/search?q="+bq,
                                    timeout=15,headers={"User-Agent":USER_AGENT})
@@ -2883,106 +2902,51 @@ def fetch_news():
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
 
-        if item.get("source")=="Zerozero" and not item.get("image"):
-            try:
-                alt=url.replace("https://www.zerozero.pt/","https://zerozero.football/")
-                ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
-                if ar.ok:
-                    ass=BeautifulSoup(ar.text,"html.parser")
-                    for attrs in (
-                        {"property":"og:image"},{"property":"og:image:url"},
-                        {"name":"twitter:image"},{"itemprop":"image"}
-                    ):
-                        node=ass.find("meta",attrs=attrs)
-                        if node and node.get("content"):
-                            u=node.get("content").strip()
-                            if u and not re.search(r"(logo|favicon|cloudflare)",u,re.I):
-                                item["image"]=urljoin(alt,u)
-                                item["image_source"]="Zerozero article og:image"
-                                break
-            except Exception as ex:
-                print("Zerozero alternate-domain warning:",item.get("url"),ex)
-
-        # Zerozero blocks GitHub Actions directly. First try the Google
-        # Translate web proxy, which fetches the ORIGINAL article and lets us
-        # recover its own og:image instead of guessing via image search.
-        if item.get("source")=="Zerozero" and not item.get("image"):
-            try:
-                from urllib.parse import urlsplit
-                p=urlsplit(url)
-                proxy="https://"+p.netloc.replace(".","-")+".translate.goog"+p.path
-                if p.query:
-                    proxy+="?"+p.query+"&_x_tr_sl=pt&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wapp"
-                else:
-                    proxy+="?_x_tr_sl=pt&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wapp"
-                pr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
-                if pr.ok:
-                    ps=BeautifulSoup(pr.text,"html.parser")
-                    for tag,attrs in [
-                        ("meta",{"property":"og:image"}),
-                        ("meta",{"property":"og:image:url"}),
-                        ("meta",{"name":"twitter:image"}),
-                        ("meta",{"itemprop":"image"}),
-                    ]:
-                        node=ps.find(tag,attrs=attrs)
-                        if node and node.get("content"):
-                            u=node.get("content").strip()
-                            if u and not re.search(r"(logo|favicon|cloudflare|translate)",u,re.I):
-                                item["image"]=urljoin(url,u)
-                                item["image_source"]="Zerozero article og:image"
-                                break
-                    if not item.get("description"):
+            if not item.get("image"):
+                # 6) Jina / AllOrigins are last-resort exact-article fetches.
+                for proxy_url, label in [
+                    ("https://r.jina.ai/"+url, "Zerozero article via Jina"),
+                    ("https://api.allorigins.win/get?url="+quote(url), "Zerozero article via AllOrigins"),
+                ]:
+                    if item.get("image"):
+                        break
+                    try:
+                        pr=session.get(proxy_url,timeout=25,headers={"User-Agent":USER_AGENT})
+                        if not pr.ok:
+                            continue
+                        if "allorigins" in proxy_url:
+                            html=(pr.json().get("contents") or "")
+                        else:
+                            html=pr.text
+                        if not html:
+                            continue
+                        ps=BeautifulSoup(html,"html.parser")
                         for tag,attrs in [
-                            ("meta",{"property":"og:description"}),
-                            ("meta",{"name":"description"}),
-                            ("meta",{"name":"twitter:description"}),
+                            ("meta",{"property":"og:image"}),
+                            ("meta",{"property":"og:image:url"}),
+                            ("meta",{"name":"twitter:image"}),
+                            ("meta",{"itemprop":"image"}),
                         ]:
                             node=ps.find(tag,attrs=attrs)
                             if node and node.get("content"):
-                                d=clean(node.get("content"))
-                                if d and not re.search(r"(just a moment|captcha|cloudflare)",d,re.I):
-                                    item["description"]=d[:280]
+                                u=node.get("content").strip()
+                                if u and not re.search(r"(logo|favicon|cloudflare|translate|google)",u,re.I):
+                                    item["image"]=urljoin(url,u)
+                                    item["image_source"]=label
                                     break
-            except Exception as ex:
-                print("Zerozero Translate proxy warning:",item.get("url"),ex)
-            # Last-resort public HTML proxy: fetch the exact Zerozero article
-            # and read its own og:image. No image-search guessing.
-            if not item.get("image"):
-                try:
-                    ao="https://api.allorigins.win/get?url="+quote(url)
-                    ar=session.get(ao,timeout=25,headers={"User-Agent":USER_AGENT})
-                    if ar.ok:
-                        payload=ar.json()
-                        html=payload.get("contents") or ""
-                        if html:
-                            aos=BeautifulSoup(html,"html.parser")
-                            for tag,attrs in [
-                                ("meta",{"property":"og:image"}),
-                                ("meta",{"property":"og:image:url"}),
-                                ("meta",{"name":"twitter:image"}),
-                                ("meta",{"itemprop":"image"}),
-                            ]:
-                                node=aos.find(tag,attrs=attrs)
-                                if node and node.get("content"):
-                                    u=node.get("content").strip()
-                                    if u and not re.search(r"(logo|favicon|cloudflare|allorigins)",u,re.I):
-                                        item["image"]=urljoin(url,u)
-                                        item["image_source"]="Zerozero article og:image"
-                                        break
-                            if not item.get("description"):
-                                for tag,attrs in [
-                                    ("meta",{"property":"og:description"}),
-                                    ("meta",{"name":"description"}),
-                                    ("meta",{"name":"twitter:description"}),
-                                ]:
-                                    node=aos.find(tag,attrs=attrs)
-                                    if node and node.get("content"):
-                                        d=clean(node.get("content"))
-                                        if d and not re.search(r"(just a moment|captcha|cloudflare)",d,re.I):
-                                            item["description"]=d[:280]
-                                            break
-                except Exception as ex:
-                    print("Zerozero AllOrigins warning:",item.get("url"),ex)
+                        if not item.get("description"):
+                            d=ps.find("meta",attrs={"property":"og:description"}) or ps.find("meta",attrs={"name":"description"})
+                            if d and d.get("content"):
+                                item["description"]=clean(d.get("content"))[:280]
+                        if not item.get("image") and "r.jina.ai/" in proxy_url:
+                            for m in re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)",pr.text):
+                                src=m.group(1)
+                                if not re.search(r"(logo|favicon|google|cloudflare)",src,re.I):
+                                    item["image"]=src
+                                    item["image_source"]=label
+                                    break
+                    except Exception as ex:
+                        print("Zerozero proxy warning:",item.get("url"),ex)
 
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
