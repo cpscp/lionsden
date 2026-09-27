@@ -2824,6 +2824,10 @@ def fetch_news():
                     # Jina may expose canonical absolute links.
                     if source_from_url(href) != source or len(title)<18:
                         continue
+                    # O Jogo's "Últimas" page is broad; keep only articles
+                    # explicitly tied to Sporting CP so other clubs never leak.
+                    if source == "O Jogo" and "sporting" not in title.lower():
+                        continue
                     if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
                         continue
                     image = None
