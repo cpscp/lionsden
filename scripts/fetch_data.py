@@ -2983,8 +2983,6 @@ def fetch_news():
                             if not src or str(src).startswith("data:"):
                                 continue
                             low=str(src).lower()
-                            if any(x in low for x in ("google","gstatic","favicon","logo")):
-                                continue
                             parent=im
                             found_origin=""
                             for _ in range(6):
