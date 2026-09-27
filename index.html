@@ -51,7 +51,7 @@
 .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:90;display:none}.drawer-backdrop.open{display:block}
 .drawer{position:fixed;top:0;bottom:0;left:0;width:min(310px,86vw);z-index:100;background:#09110c;border-right:1px solid var(--line);transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(0,0,0,.35);overflow:auto}.drawer.open{transform:translateX(0)}
 .drawer-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;color:#8da097;text-align:left;font-size:13px}.drawer-link.active{background:#10231a;color:#fff}.drawer-section{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#587066;padding:18px 14px 7px}
-.news-card{overflow:hidden}.news-thumb{width:100%;height:150px;object-fit:cover;background:linear-gradient(135deg,#123d29,#09110c)}
+.news-card{overflow:hidden}.news-thumb{width:100%;height:170px;object-fit:cover;background:linear-gradient(135deg,#123d29,#09110c)}.news-card .source{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#5fae8a}.news-card .news-date{font-size:9px;color:var(--muted)}.news-reader-frame{width:100%;height:min(62vh,620px);border:1px solid var(--line);border-radius:16px;background:#fff}.news-reader-fallback{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:16px}.news-source-badge{display:inline-flex;align-items:center;padding:5px 8px;border-radius:999px;background:rgba(8,165,110,.10);border:1px solid rgba(8,165,110,.18);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7fc6a8}
 .home-last-card{background:linear-gradient(135deg,#10281c,#0b1510);border:1px solid rgba(8,165,110,.18);border-radius:16px}.home-last-teams{display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);align-items:center;gap:6px}.home-last-team{min-width:0;text-align:center}.home-last-team .team-logo-wrap{margin:0 auto 8px;width:40px;height:40px;min-height:40px;flex-basis:40px}.home-last-team .team-logo{width:28px;height:28px}.home-last-team-name{font-size:9px;font-weight:600;line-height:1.2;max-width:110px;margin:0 auto}.home-last-score{text-align:center}.home-last-score strong{font-size:19px;line-height:1}.form-order{display:flex;justify-content:space-between;margin:-4px 2px 7px;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.home-standings .sc-row{background:rgba(8,165,110,.08)}.ui-icon{width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;vertical-align:-4px;flex:0 0 17px;margin-right:5px}.ui-icon svg{width:17px;height:17px;display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.drawer-link{display:flex;align-items:center;gap:11px}.home-match-teams{display:grid;grid-template-columns:minmax(0,1fr) 76px minmax(0,1fr);align-items:start;gap:16px;width:100%;padding:6px 8px 0}
 .home-match-team{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center}
 .home-match-logo{width:64px;height:64px;flex:0 0 64px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.045);border:1px solid var(--line);overflow:hidden;margin:0 auto 10px}
@@ -854,7 +854,39 @@ function renderStats(){
   document.addEventListener('click',()=>document.querySelectorAll('.season-picker.open').forEach(x=>x.classList.remove('open')));
   compare?.addEventListener('toggle',()=>{if(compare.open)draw();});
 }
-function newsCard(n){const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';const payload=JSON.stringify(n).replace(/'/g,"&#39;");return `<button onclick='openNews(${payload})' class="news-card card w-full text-left"><${img?'img':'div'} ${img?`src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'"`:'class="news-thumb"'}>${img?'':'<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 4h12v12H4z\"/><path d=\"M7 8h6M7 11h6M7 14h4\"/></svg>'}</${img?'img':'div'}><div class="p-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="font-semibold text-[13px] mt-1 leading-snug">${esc(n.title)}</div>${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}<div class="text-[9px] muted mt-2">${esc(n.published||'Ver notícia')} →</div></div></button>`}
+function newsDate(v){if(!v)return'';const d=new Date(v);if(Number.isNaN(d.getTime()))return String(v);return d.toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});}
+function newsCard(n){
+  const img=n.image||n.image_url||n.thumbnail||'';
+  const desc=n.description||n.summary||'';
+  const payload=JSON.stringify(n).replace(/'/g,"&#39;");
+  return `<button onclick='openNews(${payload})' class="news-card card w-full text-left">
+    ${img?`<img src="${esc(img)}" class="news-thumb" alt="" loading="lazy" onerror="this.style.display='none'">`:'<div class="news-thumb flex items-center justify-center"><svg viewBox="0 0 20 20" aria-hidden="true" class="w-8 h-8 opacity-30"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h6M7 14h4"/></svg></div>'}
+    <div class="p-4">
+      <div class="flex items-center justify-between gap-3"><div class="source">${esc(n.source||'Notícia')}</div><div class="news-date">${esc(newsDate(n.published))}</div></div>
+      <div class="font-semibold text-[14px] mt-2 leading-snug">${esc(n.title)}</div>
+      ${desc?`<div class="text-[11px] muted mt-2 leading-5 line-clamp-3">${esc(desc)}</div>`:''}
+      <div class="text-[10px] mt-3 font-medium">Abrir notícia →</div>
+    </div>
+  </button>`;
+}
+function openNews(n){
+  const title=n.title||'Notícia', img=n.image||n.image_url||n.thumbnail||'', desc=n.description||n.summary||'', url=n.url||'#';
+  document.getElementById('modalTitle').textContent=title;
+  const reader=`<div class="news-source-badge">${esc(n.source||'Notícia')}</div>
+    <div class="text-[9px] muted mt-2">${esc(newsDate(n.published))}</div>
+    <h2 class="text-xl font-bold mt-3 leading-snug">${esc(title)}</h2>
+    ${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}
+    <div class="news-reader-fallback mt-4 p-4">
+      ${desc?`<div class="text-sm leading-6">${esc(desc)}</div>`:'<div class="text-sm muted">Pré-visualização indisponível.</div>'}
+    </div>
+    <iframe class="news-reader-frame mt-4" src="${esc(url)}" title="${esc(title)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="flex gap-2 mt-4">
+      <a class="pill inline-flex items-center justify-center px-4 py-2 text-xs font-semibold" target="_blank" rel="noopener noreferrer" href="${esc(url)}">Leia o artigo completo ↗</a>
+    </div>`;
+  document.getElementById('modalBody').innerHTML=reader;
+  openModal();
+}
+function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
 function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
 function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
 const nationalityPT={"Portugal":"Portugal","Brazil":"Brasil","Spain":"Espanha","France":"França","Germany":"Alemanha","England":"Inglaterra","Italy":"Itália","Netherlands":"Países Baixos","Belgium":"Bélgica","Denmark":"Dinamarca","Sweden":"Suécia","Norway":"Noruega","Poland":"Polónia","Croatia":"Croácia","Serbia":"Sérvia","Switzerland":"Suíça","Austria":"Áustria","Greece":"Grécia","Turkey":"Turquia","Ukraine":"Ucrânia","Czech Republic":"Chéquia","Czechia":"Chéquia","Slovakia":"Eslováquia","Hungary":"Hungria","Romania":"Roménia","Bulgaria":"Bulgária","Georgia":"Geórgia","Senegal":"Senegal","Morocco":"Marrocos","Mozambique":"Moçambique","Angola":"Angola","Guinea-Bissau":"Guiné-Bissau","Cape Verde":"Cabo Verde","Ivory Coast":"Costa do Marfim","Côte d'Ivoire":"Costa do Marfim","Colombia":"Colômbia","Uruguay":"Uruguai","Argentina":"Argentina","Chile":"Chile","Mexico":"México","United States":"Estados Unidos","Canada":"Canadá","Australia":"Austrália","Japan":"Japão","South Korea":"Coreia do Sul","Nigeria":"Nigéria","Ghana":"Gana","Cameroon":"Camarões","Mali":"Mali","Guinea":"Guiné","DR Congo":"RD Congo","Democratic Republic of the Congo":"RD Congo","Equatorial Guinea":"Guiné Equatorial","Algeria":"Argélia","Tunisia":"Tunísia","South Africa":"África do Sul"};
