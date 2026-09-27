@@ -29,6 +29,49 @@ KNOWN_H2H = {
         ],
         "source": "UEFA historical H2H fallback",
     },
+    ("gil vicente", "sporting cp"): {
+        "matches": [
+            {"id": None, "date": "2026-05-16", "home": "Sporting CP", "away": "Gil Vicente", "home_score": 3, "away_score": 0, "competition": "Primeira Liga"},
+            {"id": None, "date": "2026-01-02", "home": "Gil Vicente", "away": "Sporting CP", "home_score": 1, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-05-04", "home": "Sporting CP", "away": "Gil Vicente", "home_score": 2, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2024-12-22", "home": "Gil Vicente", "away": "Sporting CP", "home_score": 0, "away_score": 0, "competition": "Primeira Liga"},
+        ],
+        "source": "FBref historical H2H fallback",
+    },
+    ("sporting cp", "estoril"): {
+        "matches": [
+            {"id": None, "date": "2026-02-27", "home": "Sporting CP", "away": "Estoril", "home_score": 3, "away_score": 0, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-09-27", "home": "Estoril", "away": "Sporting CP", "home_score": 0, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-03-03", "home": "Sporting CP", "away": "Estoril", "home_score": 3, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2024-09-27", "home": "Estoril", "away": "Sporting CP", "home_score": 0, "away_score": 3, "competition": "Primeira Liga"},
+        ],
+        "source": "FBref historical H2H fallback",
+    },
+    ("benfica", "sporting cp"): {
+        "matches": [
+            {"id": None, "date": "2026-04-19", "home": "Sporting CP", "away": "Benfica", "home_score": 1, "away_score": 2, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-12-05", "home": "Benfica", "away": "Sporting CP", "home_score": 1, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-05-10", "home": "Benfica", "away": "Sporting CP", "home_score": 1, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2024-12-29", "home": "Sporting CP", "away": "Benfica", "home_score": 1, "away_score": 0, "competition": "Primeira Liga"},
+        ],
+        "source": "FBref historical H2H fallback",
+    },
+    ("santa clara", "sporting cp"): {
+        "matches": [
+            {"id": None, "date": "2026-04-03", "home": "Sporting CP", "away": "Santa Clara", "home_score": 4, "away_score": 2, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-11-08", "home": "Santa Clara", "away": "Sporting CP", "home_score": 1, "away_score": 2, "competition": "Primeira Liga"},
+            {"id": None, "date": "2025-04-12", "home": "Santa Clara", "away": "Sporting CP", "home_score": 0, "away_score": 1, "competition": "Primeira Liga"},
+            {"id": None, "date": "2024-11-30", "home": "Sporting CP", "away": "Santa Clara", "home_score": 0, "away_score": 1, "competition": "Primeira Liga"},
+        ],
+        "source": "FBref historical H2H fallback",
+    },
+    ("shakhtar donetsk", "sporting cp"): {
+        "matches": [
+            {"id": None, "date": "2008-11-04", "home": "Sporting CP", "away": "Shakhtar Donetsk", "home_score": 1, "away_score": 0, "competition": "Champions League"},
+            {"id": None, "date": "2008-10-22", "home": "Shakhtar Donetsk", "away": "Sporting CP", "home_score": 0, "away_score": 1, "competition": "Champions League"},
+        ],
+        "source": "WorldFootball historical H2H fallback",
+    },
     ("fc porto", "sporting cp"): {
         "matches": [
             {"id": None, "date": "2026-04-22", "home": "FC Porto", "away": "Sporting CP", "home_score": 0, "away_score": 0, "competition": "Taça de Portugal"},
