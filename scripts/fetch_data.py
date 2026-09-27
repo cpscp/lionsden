@@ -3256,6 +3256,9 @@ def _zz_xray_for_fixture(f):
     rows.sort(key=lambda x: x.get("date") or "", reverse=True)
 
     text_content = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))
+    if "nunca se defrontaram" in zz_norm(text_content):
+        return [], [0, 0, 0, 0]
+
     summary = None
     pat = re.search(
         r"Em todas as competições .*?(\d+) jogos.*?(\d+) vitórias do (.*?), "
@@ -3266,6 +3269,8 @@ def _zz_xray_for_fixture(f):
         first_team, second_team = clean(pat.group(3)), clean(pat.group(6))
         vals = [int(pat.group(2)), int(pat.group(4)), int(pat.group(5)), int(pat.group(1))]
         summary = vals if _zz_name_key(first_team) == _zz_name_key(home) else [vals[2], vals[1], vals[0], vals[3]]
+        if not summary[-1]:
+            return [], [0, 0, 0, 0]
 
     if summary is None:
         hw = dw = aw = 0
@@ -3432,6 +3437,10 @@ def _sofa_h2h_for_fixture(f):
 
         # If no summary is exposed, calculate from returned meetings.
         if not summary or sum(summary) == 0:
+            # SofaScore can return a synthetic 0/0/0 duel even when it has
+            # no H2H events. Treat that as unavailable so we can fall through.
+            if not rows:
+                return [], None
             home_name = zz_norm((f.get("home") or {}).get("name"))
             away_name = zz_norm((f.get("away") or {}).get("name"))
             hw = dw = aw = 0
