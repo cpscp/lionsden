@@ -2815,6 +2815,18 @@ def fetch_news():
         if not url:
             return item
         candidates = [url, "https://r.jina.ai/" + url]
+        try:
+            from urllib.parse import urlparse
+            parsed = urlparse(url)
+            host = parsed.netloc.replace(".", "-")
+            translate_url = "https://" + host + ".translate.goog" + parsed.path
+            if parsed.query:
+                translate_url += "?" + parsed.query + "&_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en"
+            else:
+                translate_url += "?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en"
+            candidates.append(translate_url)
+        except Exception:
+            pass
         for candidate in candidates:
             try:
                 rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
