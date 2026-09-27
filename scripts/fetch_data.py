@@ -364,7 +364,7 @@ def enrich_with_zerozero(players):
                         player["nationality"] = nat.split("Portugal Portugal")[0].strip()
         except Exception as e:
             print("ZeroZero player warning:", name, e)
-        time.sleep(0.15)
+        time.sleep(0.5)
 
     return players
 
@@ -3055,26 +3055,30 @@ ZEROZERO_TEAM_ALIASES = {
 _zerozero_team_cache = {}
 
 def zerozero_get(url):
-    """Fetch a ZeroZero page with browser-like headers and small retry/backoff."""
+    """Fetch ZeroZero with a proxy fallback because GitHub runners are intermittently 403-blocked."""
+    candidates = [url, "https://r.jina.ai/" + url]
     last = None
-    for attempt in range(3):
-        try:
-            rr = session.get(
-                url,
-                timeout=35,
-                headers={
-                    "User-Agent": USER_AGENT,
-                    "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
-                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                },
-            )
-            rr.raise_for_status()
-            return rr.text
-        except Exception as e:
-            last = e
-            if attempt < 2:
-                time.sleep(1.5 * (attempt + 1))
-    raise RuntimeError(f"ZeroZero request failed: {url}: {last}")
+    for candidate in candidates:
+        for attempt in range(2):
+            try:
+                rr = session.get(
+                    candidate,
+                    timeout=45,
+                    headers={
+                        "User-Agent": USER_AGENT,
+                        "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
+                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    },
+                )
+                rr.raise_for_status()
+                body = rr.text
+                if body and len(body) > 500:
+                    return body
+            except Exception as e:
+                last = e
+                if attempt == 0:
+                    time.sleep(1.0)
+    raise RuntimeError(f"ZeroZero request failed through direct/proxy: {url}: {last}")
 
 def _zz_name_key(value):
     return zz_norm(value)
@@ -3178,16 +3182,16 @@ def zerozero_team_ref(name):
         return _zerozero_team_cache[key]
     slug = ZEROZERO_TEAM_ALIASES.get(key) or re.sub(r"[^a-z0-9]+", "-", key).strip("-")
     try:
-        rr = session.get(f"https://www.zerozero.pt/equipa/{slug}", timeout=30, headers={"User-Agent": USER_AGENT})
-        rr.raise_for_status()
-        m = re.search(r'href=["\'](/equipa/[^"\']+/\d+)["\']', rr.text)
+        page_url = f"https://www.zerozero.pt/equipa/{slug}"
+        page = zerozero_get(page_url)
+        m = re.search(r'href=["\'](/equipa/[^"\']+/\d+)["\']', page)
         if not m:
-            m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https://www\.zerozero\.pt/equipa/[^"\']+/\d+)', rr.text, re.I)
+            m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https://www\.zerozero\.pt/equipa/[^"\']+/\d+)', page, re.I)
         if m:
             href = m.group(1)
             if href.startswith("/"):
                 href = "https://www.zerozero.pt" + href
-            mm = re.search(r"/equipa/([^/]+)/(\d+)", href)
+            mm = re.search(r"/equipa/([^/]+)/(d+)", href)
             if mm:
                 ref = {"slug": mm.group(1), "id": int(mm.group(2)), "url": href}
                 _zerozero_team_cache[key] = ref
