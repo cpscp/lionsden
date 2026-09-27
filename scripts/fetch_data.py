@@ -3100,46 +3100,69 @@ def fetch_news():
                     print("Zerozero Jina Google Images warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 8) DuckDuckGo Images fallback. DDG exposes a lightweight
-                # JSON image endpoint after a vqd token is obtained from the
-                # image search page. Prefer the exact Zerozero source URL.
+                # 8) DuckDuckGo Images fallback. Try exact publisher query first,
+                # then exact headline, then a compact headline variant.
                 try:
                     from urllib.parse import quote
-                    dq='"'+(item.get("title") or "").replace('"',"")+'" site:zerozero.pt/noticias/'
-                    home="https://duckduckgo.com/?q="+quote(dq)+"&iar=images&iax=images&ia=images"
-                    dh=session.get(home,timeout=15,headers={"User-Agent":USER_AGENT})
-                    if dh.ok:
+                    queries=[
+                        '"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/',
+                        '"' + (item.get("title") or "").replace('"',"") + '"',
+                        (item.get("title") or "").replace(" - zerozero.pt","").strip(),
+                    ]
+                    words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
+                    chosen=None
+                    for dq in queries:
+                        if chosen:
+                            break
+                        home="https://duckduckgo.com/?q="+quote(dq)+"&iar=images&iax=images&ia=images"
+                        dh=session.get(home,timeout=15,headers={"User-Agent":USER_AGENT})
+                        if not dh.ok:
+                            continue
                         vqd=None
-                        for pat in (r'vqd=([0-9-]+)',r'vqd\\?"\\?:\\?"([0-9-]+)',r'vqd=\\?\'([^\\?\']+)'):
+                        for pat in (r'vqd=([0-9-]+)',r'vqd\?"\?:\?"([0-9-]+)'):
                             m=re.search(pat,dh.text,re.I)
                             if m:
                                 vqd=m.group(1)
                                 break
-                        if vqd:
-                            api="https://duckduckgo.com/i.js?q="+quote(dq)+"&o=json&l=pt-pt&vqd="+quote(vqd)+"&f=,,,,,&p=1"
-                            ih=session.get(api,timeout=20,headers={
-                                "User-Agent":USER_AGENT,
-                                "Referer":home,
-                                "Accept":"application/json, text/javascript, */*; q=0.01",
-                            })
-                            if ih.ok:
-                                results=ih.json().get("results") or []
-                                words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
-                                for res in results[:30]:
-                                    src=res.get("image") or res.get("thumbnail")
-                                    origin=res.get("url") or ""
-                                    rtitle=clean(res.get("title") or "")
-                                    if not src:
-                                        continue
-                                    low=str(src).lower()
-                                    if any(x in low for x in ("favicon","logo","sprite")):
-                                        continue
-                                    exact="zerozero.pt/noticias/" in origin.lower()
-                                    title_match=sum(1 for w in words if w in rtitle.lower()) >= max(4,min(7,len(words)))
-                                    if exact or title_match:
-                                        item["image"]=src
-                                        item["image_source"]="DuckDuckGo Images"
-                                        break
+                        if not vqd:
+                            continue
+                        api="https://duckduckgo.com/i.js?q="+quote(dq)+"&o=json&l=pt-pt&vqd="+quote(vqd)+"&f=,,,,,&p=1"
+                        ih=session.get(api,timeout=20,headers={
+                            "User-Agent":USER_AGENT,
+                            "Referer":home,
+                            "Accept":"application/json, text/javascript, */*; q=0.01",
+                        })
+                        if not ih.ok:
+                            continue
+                        results=ih.json().get("results") or []
+                        fallback=None
+                        for res in results[:50]:
+                            src=res.get("image") or res.get("thumbnail")
+                            origin=res.get("url") or ""
+                            rtitle=clean(res.get("title") or "")
+                            if not src:
+                                continue
+                            low=str(src).lower()
+                            if any(x in low for x in ("favicon","logo","sprite","avatar")):
+                                continue
+                            exact="zerozero.pt/noticias/" in origin.lower()
+                            title_match=sum(1 for w in words if w in rtitle.lower()) >= max(3,min(6,len(words)))
+                            if exact:
+                                chosen=src
+                                break
+                            if title_match and fallback is None:
+                                fallback=src
+                        if not chosen and fallback:
+                            chosen=fallback
+                        if not chosen and results:
+                            for res in results[:20]:
+                                src=res.get("image") or res.get("thumbnail")
+                                if src and not re.search(r"(favicon|logo|sprite|avatar)",str(src),re.I):
+                                    chosen=src
+                                    break
+                    if chosen:
+                        item["image"]=chosen
+                        item["image_source"]="DuckDuckGo Images"
                 except Exception as ex:
                     print("Zerozero DuckDuckGo Images warning:",item.get("url"),ex)
 
