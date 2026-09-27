@@ -2786,7 +2786,7 @@ def fetch_news():
                         md=mr.json().get("data",{})
                         image=((md.get("image") or {}).get("url") if isinstance(md.get("image"),dict) else md.get("image"))
                         desc=md.get("description")
-                        if image and "zerozero" in str(image).lower():
+                        if image and not re.search(r"(google|gstatic|cloudflare|captcha|favicon|logo)",str(image),re.I):
                             item["image"]=image
                             item["image_source"]="Zerozero article metadata"
                         if desc and not re.search(r"(just a moment|captcha|cloudflare)",str(desc),re.I):
