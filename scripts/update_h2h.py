@@ -71,9 +71,15 @@ def build_entry(f, p):
             if hs == aas:
                 dw += 1
             elif norm(m.get("home")) == home_name:
-                hw += 1
+                if hs > aas:
+                    hw += 1
+                else:
+                    aw += 1
             elif norm(m.get("away")) == home_name:
-                aw += 1
+                if aas > hs:
+                    hw += 1
+                else:
+                    aw += 1
             else:
                 continue
         s = [hw, dw, aw]
