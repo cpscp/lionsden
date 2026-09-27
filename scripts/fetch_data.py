@@ -2962,10 +2962,16 @@ def fetch_news():
     # out of the app.
     from email.utils import parsedate_to_datetime
     def pub_ts(item):
-        try:
-            return parsedate_to_datetime(item.get("published")).timestamp()
-        except Exception:
+        value=item.get("published")
+        if not value:
             return 0
+        try:
+            return parsedate_to_datetime(value).timestamp()
+        except Exception:
+            try:
+                return datetime.fromisoformat(str(value).replace("Z","+00:00")).timestamp()
+            except Exception:
+                return 0
     # Only Sporting Clube de Portugal news is allowed into the app.
     # Football and all Sporting CP modalities are intentionally treated equally.
     items = [x for x in items if x.get("_sporting")]
