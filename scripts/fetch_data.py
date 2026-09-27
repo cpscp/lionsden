@@ -2983,6 +2983,235 @@ def _h2h_rows(value, home_id, away_id, home_name, away_name):
     return list(dedup.values())
 
 
+ZEROZERO_AGENDA = "https://www.zerozero.pt/equipa/sporting/agenda"
+
+def zerozero_get(url):
+    rr = session.get(url, timeout=30, headers={
+        "User-Agent": USER_AGENT,
+        "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8",
+        "Referer": "https://www.zerozero.pt/"
+    })
+    rr.raise_for_status()
+    return rr.text
+
+
+def _zz_name_key(v):
+    s = zz_norm(v)
+    aliases = {
+        "manunited": "manchesterunited",
+        "manutd": "manchesterunited",
+        "lask": "lasklinz",
+        "academico": "academicoviseu",
+        "academicodeviseu": "academicoviseu",
+        "estamadora": "estrelaamadora",
+        "estreladaamadora": "estrelaamadora",
+        "maritimo": "maritimo",
+        "scbraga": "braga",
+        "braga": "braga",
+    }
+    return aliases.get(re.sub(r"[^a-z0-9]", "", s), re.sub(r"[^a-z0-9]", "", s))
+
+
+def _zz_parse_games(html):
+    soup = BeautifulSoup(html, "html.parser")
+    games = []
+    for tr in soup.find_all("tr"):
+        cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["th", "td"])]
+        if len(cells) < 4:
+            continue
+        date_idx = next((i for i,x in enumerate(cells) if re.fullmatch(r"\d{2}[/-]\d{2}(?:[/-]\d{4})?", x)), None)
+        if date_idx is None:
+            date_idx = next((i for i,x in enumerate(cells) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", x)), None)
+        if date_idx is None:
+            continue
+        score_idx = next((i for i,x in enumerate(cells) if re.search(r"\b\d+\s*-\s*\d+\b", x)), None)
+        if score_idx is None or score_idx <= date_idx:
+            continue
+        m = re.search(r"(\d+)\s*-\s*(\d+)", cells[score_idx])
+        if not m:
+            continue
+        before = [x for x in cells[date_idx+1:score_idx] if x]
+        after = [x for x in cells[score_idx+1:] if x]
+        if not before or not after:
+            continue
+        home = before[-1]
+        away = after[0]
+        # Competition is normally the final non-empty cell after the away team.
+        competition = after[-1] if len(after) > 1 else ""
+        raw_date = cells[date_idx]
+        if re.fullmatch(r"\d{2}[/-]\d{2}", raw_date):
+            # The xray page is current-season-first and may omit the year.
+            # Caller can replace it using the surrounding page season if needed.
+            raw_date = ""
+        games.append({
+            "id": None,
+            "date": raw_date,
+            "home": home,
+            "away": away,
+            "home_score": int(m.group(1)),
+            "away_score": int(m.group(2)),
+            "competition": competition,
+        })
+    return games
+
+
+def _zz_extract_team_links(html):
+    soup = BeautifulSoup(html, "html.parser")
+    out = []
+    for a in soup.select('a[href*="/equipa/"]'):
+        href = a.get("href") or ""
+        m = re.search(r"/equipa/([^/?#]+)/(?:(\d+))", href)
+        if not m:
+            continue
+        name = clean(a.get_text(" ", strip=True))
+        if not name:
+            continue
+        out.append({"name": name, "slug": m.group(1), "id": int(m.group(2))})
+    # de-duplicate
+    seen = set()
+    result = []
+    for x in out:
+        k = (x["id"], x["slug"])
+        if k not in seen:
+            seen.add(k)
+            result.append(x)
+    return result
+
+
+def _zz_find_match_urls():
+    """Index upcoming Sporting match pages from ZeroZero's live agenda."""
+    html = zerozero_get(ZEROZERO_AGENDA)
+    soup = BeautifulSoup(html, "html.parser")
+    items = []
+    for a in soup.find_all("a", href=True):
+        href = a.get("href") or ""
+        if "/jogo/" not in href and "/estatisticas/" not in href:
+            continue
+        if href.startswith("/"):
+            href = "https://www.zerozero.pt" + href
+        parent = a
+        for _ in range(4):
+            parent = parent.parent if parent else None
+            if not parent:
+                break
+        text = clean((parent or a).get_text(" ", strip=True))
+        items.append({"url": href, "text": text})
+    return items
+
+
+def _zz_parse_fixture_page(url, fixture):
+    html = zerozero_get(url)
+    teams = _zz_extract_team_links(html)
+    home_name = clean((fixture.get("home") or {}).get("name"))
+    away_name = clean((fixture.get("away") or {}).get("name"))
+    target = {_zz_name_key(home_name), _zz_name_key(away_name)}
+    chosen = []
+    seen = set()
+    for t in teams:
+        key = _zz_name_key(t["name"])
+        if key in target and t["id"] not in seen:
+            chosen.append(t)
+            seen.add(t["id"])
+    if len(chosen) < 2:
+        # Fall back to fuzzy matching for abbreviated names.
+        for t in teams:
+            if t["id"] in seen:
+                continue
+            key = _zz_name_key(t["name"])
+            if any(SequenceMatcher(None, key, k).ratio() >= 0.82 for k in target):
+                chosen.append(t)
+                seen.add(t["id"])
+    if len(chosen) < 2:
+        return [], None
+
+    # Preserve fixture home/away order.
+    def pick(name):
+        k = _zz_name_key(name)
+        exact = next((t for t in chosen if _zz_name_key(t["name"]) == k), None)
+        return exact or chosen[0]
+
+    hteam, ateam = pick(home_name), pick(away_name)
+    xray = f"https://www.zerozero.pt/estatisticas/{hteam['slug']}-{ateam['slug']}/t{hteam['id']}-t{ateam['id']}"
+    xhtml = zerozero_get(xray)
+
+    games = _zz_parse_games(xhtml)
+    if not games:
+        games = _zz_parse_games(html)
+
+    # Parse the all-time summary directly from the xray page text.
+    text_content = clean(BeautifulSoup(xhtml, "html.parser").get_text(" ", strip=True))
+    summary = None
+    pat = re.search(
+        r"Em todas as competições (?:realizaram-se|foram disputados) (\d+) jogos.*?"
+        r"com (\d+) vitórias do (.*?), (\d+) empates e (\d+) (?:triunfos|vitórias) do (.*?)(?:\.|\s+Em casa)",
+        text_content, re.I
+    )
+    if pat:
+        total = int(pat.group(1))
+        first_w = int(pat.group(2))
+        draws = int(pat.group(4))
+        second_w = int(pat.group(6))
+        first_team = clean(pat.group(3))
+        second_team = clean(pat.group(5))
+        if _zz_name_key(first_team) == _zz_name_key(home_name):
+            summary = [first_w, draws, second_w, total]
+        elif _zz_name_key(second_team) == _zz_name_key(home_name):
+            summary = [second_w, draws, first_w, total]
+
+    # The xray list is paginated. The first page is enough for the latest four.
+    # If the summary exists, it provides the all-time total independently.
+    return games, summary
+
+
+def fetch_zerozero_h2h(upcoming):
+    """All-competition H2H from ZeroZero, independent of SofaScore."""
+    try:
+        index = _zz_find_match_urls()
+    except Exception as e:
+        print("ZeroZero agenda warning:", e)
+        return {}
+
+    result = {}
+    for f in upcoming:
+        fid = str(f["id"])
+        home = clean((f.get("home") or {}).get("name"))
+        away = clean((f.get("away") or {}).get("name"))
+        wanted = {_zz_name_key(home), _zz_name_key(away)}
+        date = clean(f.get("kickoff_date"))
+        candidates = []
+        for item in index:
+            t = _zz_name_key(item.get("text"))
+            score = 0
+            if date and date.replace("-", "/") in item.get("text",""):
+                score += 4
+            if _zz_name_key(away) in t:
+                score += 3
+            if _zz_name_key(home) in t:
+                score += 3
+            if score:
+                candidates.append((score, item["url"]))
+        candidates.sort(reverse=True)
+        if not candidates:
+            continue
+        try:
+            games, summary = _zz_parse_fixture_page(candidates[0][1], f)
+            # Normalize and keep only genuine meetings of these two teams.
+            rows = []
+            for g in games:
+                if {_zz_name_key(g.get("home")), _zz_name_key(g.get("away"))} != wanted:
+                    continue
+                if not g.get("date"):
+                    continue
+                rows.append(g)
+            rows.sort(key=lambda x: x.get("date") or "", reverse=True)
+            if rows or summary:
+                result[fid] = {"matches": rows[:4], "summary": summary}
+        except Exception as e:
+            print("ZeroZero H2H warning:", fid, home, away, e)
+        time.sleep(0.15)
+    return result
+
+
 def _sofa_h2h_for_fixture(f):
     """SofaScore H2H using the event customId when available, with numeric-id fallback."""
     event_id = f.get("id")
@@ -3090,6 +3319,7 @@ def fetch_match_contexts():
         except Exception as e:
             print("Team context warning:", tid, e)
 
+    zerozero_h2h_cache = fetch_zerozero_h2h(upcoming)
     contexts = {}
     for f in upcoming:
         fid = str(f["id"])
@@ -3118,20 +3348,25 @@ def fetch_match_contexts():
                         h2h_summary = [int(summary[0]), int(summary[1]), int(summary[2])]
                     except Exception:
                         h2h_summary = None
-            h2h = _h2h_rows(h2h_payload, (f.get("home") or {}).get("id"), (f.get("away") or {}).get("id"),
-                             (f.get("home") or {}).get("name"), (f.get("away") or {}).get("name"))
+            h2h = _h2h_rows(
+                h2h_payload,
+                (f.get("home") or {}).get("id"),
+                (f.get("away") or {}).get("id"),
+                (f.get("home") or {}).get("name"),
+                (f.get("away") or {}).get("name")
+            )
         except Exception as e:
             print("H2H detail warning:", fid, e)
 
-        if not h2h:
-            try:
-                sofa_rows, sofa_summary = _sofa_h2h_for_fixture(f)
-                if sofa_rows:
-                    h2h = sofa_rows
-                if not h2h_summary and sofa_summary:
-                    h2h_summary = sofa_summary
-            except Exception as e:
-                print("H2H fallback warning:", fid, e)
+        # ZeroZero is the authoritative fallback for all competitions and
+        # remains usable when SofaScore blocks GitHub Actions with HTTP 403.
+        zz_h2h = zerozero_h2h_cache.get(fid)
+        if zz_h2h:
+            if zz_h2h.get("matches"):
+                h2h = zz_h2h["matches"]
+            if zz_h2h.get("summary"):
+                h2h_summary = zz_h2h["summary"][:3]
+
 
         h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
                      key=lambda x: x.get("date") or "", reverse=True)
