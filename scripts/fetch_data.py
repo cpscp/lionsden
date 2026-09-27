@@ -2983,52 +2983,10 @@ def _h2h_rows(value, home_id, away_id, home_name, away_name):
 
 
 def _sofa_h2h_for_fixture(f):
-    """Fallback H2H via SofaScore when FotMob does not expose H2H."""
-    home = f.get("home") or {}
-    away = f.get("away") or {}
-    hid, aid = home.get("id"), away.get("id")
-    if not hid or not aid:
-        return [], None
-
-    def norm(v):
-        return zz_norm(str(v or "")).replace("sporting clube de portugal", "sporting cp")
-
-    target = {norm(home.get("name")), norm(away.get("name"))}
-    event_id = None
-    try:
-        # Upcoming events are paginated; cache each team's pages in this run.
-        for page in range(0, 3):
-            data = sofa_get(f"/team/{hid}/events/next/{page}")
-            events = data.get("events") if isinstance(data, dict) else []
-            for ev in events or []:
-                ht = ev.get("homeTeam") or {}
-                at = ev.get("awayTeam") or {}
-                names = {norm(ht.get("name")), norm(at.get("name"))}
-                if names == target:
-                    event_id = ev.get("id")
-                    break
-            if event_id:
-                break
-            if isinstance(data, dict) and data.get("hasNextPage") is False:
-                break
-    except Exception as e:
-        print("Sofa H2H event lookup warning:", hid, aid, e)
-
+    """Reliable H2H fallback using the SofaScore event id already stored in fixtures.json."""
+    event_id = f.get("id")
     if not event_id:
         return [], None
-
-    try:
-        summary_raw = sofa_get(f"/event/{event_id}/h2h")
-        duel = summary_raw.get("teamDuel") if isinstance(summary_raw, dict) else {}
-        # SofaScore's duel is from the scheduled match's home/away perspective.
-        summary = [
-            int(duel.get("homeWins") or 0),
-            int(duel.get("draws") or 0),
-            int(duel.get("awayWins") or 0)
-        ] if isinstance(duel, dict) else None
-    except Exception as e:
-        print("Sofa H2H summary warning:", event_id, e)
-        summary = None
 
     try:
         raw = sofa_get(f"/event/{event_id}/h2h/events")
@@ -3044,7 +3002,7 @@ def _sofa_h2h_for_fixture(f):
             if hs is None or aas is None:
                 continue
             ts = m.get("startTimestamp")
-            date = datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace("+00:00", "Z") if ts else ""
+            date = datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace("+00:00","Z") if ts else ""
             tournament = m.get("tournament") or {}
             rows.append({
                 "id": m.get("id"),
@@ -3055,11 +3013,29 @@ def _sofa_h2h_for_fixture(f):
                 "away_score": aas,
                 "competition": clean(tournament.get("name") if isinstance(tournament, dict) else ""),
             })
-        return rows, summary
-    except Exception as e:
-        print("Sofa H2H matches warning:", event_id, e)
-        return [], summary
 
+        # Always calculate the global record from the actual historical meetings.
+        # This avoids relying on a home/away-oriented summary with ambiguous ordering.
+        home_name = clean((f.get("home") or {}).get("name"))
+        away_name = clean((f.get("away") or {}).get("name"))
+        hw = dw = aw = 0
+        home_key, away_key = zz_norm(home_name), zz_norm(away_name)
+        for x in rows:
+            hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
+            if hs is None or aas is None:
+                continue
+            xhome, xaway = zz_norm(x.get("home")), zz_norm(x.get("away"))
+            if hs == aas:
+                dw += 1
+            elif xhome == home_key:
+                hw += 1
+            elif xaway == home_key:
+                aw += 1
+
+        return rows, [hw, dw, aw]
+    except Exception as e:
+        print("Sofa H2H events warning:", event_id, e)
+        return [], None
 
 def fetch_match_contexts():
     """Build form, standings, H2H and optional Betano odds for upcoming matches."""
