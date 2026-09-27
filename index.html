@@ -199,7 +199,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','fbref-schedule.json','status.json','youtube.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','betano-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -1040,6 +1040,68 @@ function cardVisual(type){const t=String(type||'').toLowerCase(),cls=t==='red'?'
 function goalListHtml(detail,base,isHome){const goals=(Array.isArray(detail?.incidents?.incidents)?detail.incidents.incidents:[]).filter(x=>x.incidentType==='goal'&&!!x.isHome===!!isHome).sort((a,b)=>(a.time??0)-(b.time??0));return goals.length?'<div class="game-goals-inline">'+goals.map(g=>'<div class="game-goal"><span class="game-goal-ball"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 3 2-1 3h-4L9 9zM9 9 6.5 8M15 9l2.5-1M10 12l-2 3 2 2M14 12l2 3-2 2"/></svg></span><span class="game-goal-minute">'+esc(g.time!=null?g.time+"'" :'')+'</span><span class="game-goal-name">'+esc(g.player?.name||g.description||'Golo')+'</span></div>').join('')+'</div>':''}
 function goalsHtml(detail,base){const goals=(Array.isArray(detail?.incidents?.incidents)?detail.incidents.incidents:[]).filter(x=>x.incidentType==='goal').sort((a,b)=>(a.time??0)-(b.time??0));if(!goals.length)return '';const home=goals.filter(x=>x.isHome),away=goals.filter(x=>!x.isHome);const team=(arr,cls)=>'<div class="game-goals-team '+cls+'">'+arr.map(g=>'<div class="game-goal"><span class="game-goal-ball"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 3 2-1 3h-4L9 9zM9 9 6.5 8M15 9l2.5-1M10 12l-2 3 2 2M14 12l2 3-2 2"/></svg></span><span class="game-goal-minute">'+esc(g.time!=null?g.time+"'" :'')+'</span><span class="game-goal-name">'+esc(g.player?.name||g.description||'Golo')+'</span></div>').join('')+'</div>';return '<div class="game-goals">'+team(home,'home')+team(away,'away')+'</div>'}
 
+
+function matchContextFor(id){return (D['match-context.json']?.fixtures||{})[String(id)]||null}
+function betanoFor(id){return (D['betano-odds.json']?.fixtures||{})[String(id)]||null}
+function formChip(r){
+  const v=String(r||'').toUpperCase();
+  const cls=v==='W'?'bg-emerald-500/15 text-emerald-300 border-emerald-400/20':v==='D'?'bg-amber-500/15 text-amber-300 border-amber-400/20':'bg-red-500/15 text-red-300 border-red-400/20';
+  return '<span class="w-7 h-7 rounded-full border flex items-center justify-center text-[10px] font-bold '+cls+'">'+esc(v)+'</span>';
+}
+function formTeamHtml(side,label){
+  const form=side?.form||[];
+  return '<div class="flex-1 min-w-0"><div class="text-[10px] muted uppercase tracking-wider mb-2">'+esc(label)+'</div>'+
+    '<div class="flex gap-1.5">'+(form.length?form.map(x=>formChip(x.result)).join(''):'<span class="text-[10px] muted">Sem dados</span>')+'</div>'+
+    (form.length?'<div class="text-[9px] muted mt-2">'+form.map(x=>esc(x.result==='W'?'Vitória':x.result==='D'?'Empate':'Derrota')+' · '+esc(x.score||'')).join('  ·  ')+'</div>':'')+
+    '</div>';
+}
+function formSection(ctx){
+  if(!ctx)return '';
+  return '<div class="card p-4 mt-3"><div class="font-semibold mb-3">Forma atual <span class="text-[9px] muted font-normal">· últimos 5 jogos</span></div><div class="flex gap-5">'+formTeamHtml(ctx.home,'Casa · '+ctx.home?.name)+formTeamHtml(ctx.away,'Fora · '+ctx.away?.name)+'</div></div>';
+}
+function tableSection(ctx){
+  if(!ctx)return '';
+  const row=(side)=>{
+    const t=side?.table;
+    return '<div class="flex-1 card-inset p-3"><div class="text-[10px] muted">'+esc(side?.name||'Equipa')+'</div><div class="flex items-end gap-2 mt-1"><b class="text-2xl">'+esc(t?.position??'—')+'º</b><span class="text-[10px] muted mb-1">posição</span></div><div class="text-[9px] muted mt-1">'+esc(t?.points??'—')+' pts · '+esc(t?.played??'—')+' jogos</div></div>';
+  };
+  return '<div class="card p-4 mt-3"><div class="font-semibold mb-3">Posição na tabela</div><div class="flex gap-3">'+row(ctx.home)+row(ctx.away)+'</div></div>';
+}
+function h2hSection(ctx){
+  const h=ctx?.h2h;
+  if(!h)return '';
+  const matches=h.matches||[];
+  const summary='<div class="flex gap-2 text-[9px] muted mb-3"><span class="pill px-2 py-1">'+esc(ctx.home?.name||'Casa')+' '+esc(h.home_wins??0)+'</span><span class="pill px-2 py-1">Empates '+esc(h.draws??0)+'</span><span class="pill px-2 py-1">'+esc(ctx.away?.name||'Fora')+' '+esc(h.away_wins??0)+'</span></div>';
+  const rows=matches.slice(0,5).map(m=>'<div class="flex items-center justify-between py-2 border-t border-white/5 text-[10px]"><span class="muted">'+esc(m.date?new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(m.date)):'—')+'</span><span class="text-center flex-1 px-3">'+esc(m.home)+' <b>'+esc(m.home_score)+'-'+esc(m.away_score)+'</b> '+esc(m.away)+'</span></div>').join('');
+  return '<div class="card p-4 mt-3"><div class="font-semibold mb-2">Confronto direto <span class="text-[9px] muted font-normal">· últimos '+esc(matches.length||0)+'</span></div>'+summary+(rows||'<div class="text-[10px] muted">Sem confrontos disponíveis.</div>')+'</div>';
+}
+function oddsSection(id,base){
+  const o=betanoFor(id);
+  if(!o?.bookmakers?.Betano?.length)return '';
+  const markets=o.bookmakers.Betano;
+  const ml=markets.find(x=>String(x.name).toLowerCase()==='ml');
+  const total=markets.find(x=>String(x.name).toLowerCase()==='totals');
+  const mlv=ml?.odds?.[0];
+  const tv=total?.odds?.[0];
+  let body='';
+  if(mlv) body+='<div class="grid grid-cols-3 gap-2">'+[['1',base.home?.name,mlv.home],['X','Empate',mlv.draw],['2',base.away?.name,mlv.away]].map(x=>'<div class="card-inset p-3 text-center"><div class="text-[9px] muted">'+esc(x[0])+'</div><div class="text-[9px] mt-1 truncate">'+esc(x[1])+'</div><b class="text-lg">'+esc(x[2]??'—')+'</b></div>').join('')+'</div>';
+  if(tv?.over||tv?.under) body+='<div class="grid grid-cols-2 gap-2 mt-2">'+[['Mais '+tv.hdp,tv.over],['Menos '+tv.hdp,tv.under]].map(x=>'<div class="card-inset p-3 flex items-center justify-between"><span class="text-[9px]">'+esc(x[0])+'</span><b>'+esc(x[1]??'—')+'</b></div>').join('')+'</div>';
+  return body?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">Odds Betano</div><span class="text-[9px] muted">atualizadas '+esc(o.updated_at?fmtDate(o.updated_at):'—')+'</span></div>'+body+'</div>':'';
+}
+function icsEscape(v){return String(v??'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
+function downloadMatchCalendar(id){
+  const f=findFixture(id); if(!f)return;
+  const start=new Date(Number(f.date)*1000);
+  const end=new Date(start.getTime()+120*60000);
+  const z=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
+  const summary=(f.home?.name||'')+' vs '+(f.away?.name||'');
+  const location=[f.venue?.name,f.venue?.city].filter(Boolean).join(', ');
+  const desc=[f.competition?.name,f.competition?.round].filter(Boolean).join(' · ');
+  const ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Lion\\'s Den//PT\r\nCALSCALE:GREGORIAN\r\nBEGIN:VEVENT\r\nUID:lionsden-'+esc(String(f.id))+'@cpscp.github.io\r\nDTSTAMP:'+z(new Date())+'\r\nDTSTART:'+z(start)+'\r\nDTEND:'+z(end)+'\r\nSUMMARY:'+icsEscape(summary)+'\r\nLOCATION:'+icsEscape(location)+'\r\nDESCRIPTION:'+icsEscape(desc)+'\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n';
+  const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='lions-den-'+String(f.id)+'.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
 function openGame(id){try{
  const base=findFixture(id);const detail=fixtureDetail(id);if(!base)return;
  let v=venueInfo(base?.venue||detail?.venue);if(!v.name)v={...v,name:fixtureVenueName(base,detail)};const cached=(D['venues.json']?.venues)||{};
@@ -1087,8 +1149,9 @@ function openGame(id){try{
 
  const timelineSection=past?safeHtml(()=>'<div class="card p-4 mt-3"><div class="font-semibold mb-3">Resumo do jogo</div>'+incidentHtml+'</div>',''):'';
  const map=v.lat!=null&&v.lon!=null?'<div class="card p-3 mt-3"><div class="flex items-center justify-between px-1 mb-3"><div><div class="font-semibold">Localização do estádio</div><div class="text-[9px] muted mt-1">'+esc((v.name||'Estádio')+(v.city?' · '+v.city:''))+'</div></div><a class="text-[9px] muted underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query='+v.lat+'%2C'+v.lon+'">Abrir no Google Maps →</a></div><iframe class="w-full h-56 rounded-xl border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q='+v.lat+'%2C'+v.lon+'&z=15&output=embed"></iframe></div>':'';
+ const ctx=matchContextFor(id); const formSectionHtml=formSection(ctx); const tableSectionHtml=tableSection(ctx); const h2hSectionHtml=h2hSection(ctx); const calendarButton='<div class="card p-3 mt-3"><button onclick="downloadMatchCalendar('+esc(String(id))+')" class="w-full pill py-3 flex items-center justify-center gap-2"><span>＋</span><span>Adicionar ao Calendário</span></button></div>'; const oddsHtml=oddsSection(id,base);
  document.getElementById('modalTitle').textContent=past?'Detalhes do jogo':'Próximo jogo';
- document.getElementById('modalBody').innerHTML='<div class="text-center mb-5">'+(photo?'<div class="absolute inset-x-0 top-0 h-36 opacity-15 pointer-events-none" style="background:url(\''+esc(photo)+'\') center/cover"></div>':'')+'<div class="text-[10px] muted">'+esc(fmtDate(base.date))+' · '+esc(base.competition?.name||'')+'</div><div class="game-modal-head mt-4"><div class="game-modal-team">'+(homeUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(homeUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.home?.name)+'</div>'+goalListHtml(detail,base,true)+'</div><div class="game-modal-score">'+score+'</div><div class="game-modal-team">'+(awayUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(awayUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.away?.name)+'</div>'+goalListHtml(detail,base,false)+'</div></div></div>'+'<div class="card game-info-card">'+gameInfoRow('venue','Estádio',(v.name||'Por confirmar')+(v.city?' · '+v.city:''))+gameInfoRow('trophy','Competição',(base.competition?.name||'Por confirmar')+(round?' · '+round:''))+gameInfoRow('clock','Data e hora',fmtDate(base.date))+(homeAway?gameInfoRow('home','Jogo',homeAway):'')+(season?gameInfoRow('calendar','Época',season):'')+(v.capacity?gameInfoRow('people','Capacidade',Number(v.capacity).toLocaleString('pt-PT')):'')+(surface?gameInfoRow('field','Piso',surface):'')+gameInfoRow('whistle','Árbitro',referee)+(event.attendance?gameInfoRow('people','Assistência',Number(event.attendance).toLocaleString('pt-PT')): '')+((event.homeScore?.period1!=null&&event.awayScore?.period1!=null)?gameInfoRow('clock','Intervalo',String(event.homeScore.period1)+' - '+String(event.awayScore.period1)):'')+'</div>'+((homeManager||awayManager)?'<div class="card game-info-card mt-3">'+(homeManager?gameInfoRow('person','Treinador · '+esc(base.home?.name),homeManager):'')+(awayManager?gameInfoRow('person','Treinador · '+esc(base.away?.name),awayManager):'')+'</div>':'')+lineupSection+statsSection+subsSection+timelineSection+videoSection+map+'<div class="text-[9px] muted mt-3">Dados avançados apresentados quando disponíveis através da fonte do jogo.</div>';
+ document.getElementById('modalBody').innerHTML='<div class="text-center mb-5">'+(photo?'<div class="absolute inset-x-0 top-0 h-36 opacity-15 pointer-events-none" style="background:url(\''+esc(photo)+'\') center/cover"></div>':'')+'<div class="text-[10px] muted">'+esc(fmtDate(base.date))+' · '+esc(base.competition?.name||'')+'</div><div class="game-modal-head mt-4"><div class="game-modal-team">'+(homeUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(homeUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.home?.name)+'</div>'+goalListHtml(detail,base,true)+'</div><div class="game-modal-score">'+score+'</div><div class="game-modal-team">'+(awayUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(awayUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.away?.name)+'</div>'+goalListHtml(detail,base,false)+'</div></div></div>'+formSectionHtml+tableSectionHtml+h2hSectionHtml+'<div class="card game-info-card">'+gameInfoRow('venue','Estádio',(v.name||'Por confirmar')+(v.city?' · '+v.city:''))+gameInfoRow('trophy','Competição',(base.competition?.name||'Por confirmar')+(round?' · '+round:''))+gameInfoRow('clock','Data e hora',fmtDate(base.date))+(homeAway?gameInfoRow('home','Jogo',homeAway):'')+(season?gameInfoRow('calendar','Época',season):'')+(v.capacity?gameInfoRow('people','Capacidade',Number(v.capacity).toLocaleString('pt-PT')):'')+(surface?gameInfoRow('field','Piso',surface):'')+gameInfoRow('whistle','Árbitro',referee)+(event.attendance?gameInfoRow('people','Assistência',Number(event.attendance).toLocaleString('pt-PT')): '')+((event.homeScore?.period1!=null&&event.awayScore?.period1!=null)?gameInfoRow('clock','Intervalo',String(event.homeScore.period1)+' - '+String(event.awayScore.period1)):'')+'</div>'+((homeManager||awayManager)?'<div class="card game-info-card mt-3">'+(homeManager?gameInfoRow('person','Treinador · '+esc(base.home?.name),homeManager):'')+(awayManager?gameInfoRow('person','Treinador · '+esc(base.away?.name),awayManager):'')+'</div>':'')+lineupSection+statsSection+subsSection+timelineSection+videoSection+map+calendarButton+oddsHtml+'<div class="text-[9px] muted mt-3">Dados avançados apresentados quando disponíveis através das fontes do jogo.</div>';
  openModal();
 }catch(err){console.error("Lion's Den openGame:",err);const mt=document.getElementById('modalTitle'),mb=document.getElementById('modalBody');if(mt)mt.textContent='Detalhes do jogo';if(mb)mb.innerHTML='<div class="card p-5"><div class="font-semibold">Detalhes indisponíveis</div><div class="text-xs muted mt-2">Os dados deste jogo ainda não estão totalmente disponíveis. Tenta novamente em instantes.</div></div>';openModal();}}
 
