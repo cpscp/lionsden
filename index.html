@@ -135,6 +135,23 @@
 .knockout-score{text-align:center;font-size:10px;color:var(--muted);margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.05)}
 .knockout-score strong{color:#f3f7f4}
 @media(max-width:620px){.knockout-grid,.knockout-grid.final-grid{grid-template-columns:1fr;max-width:none}.knockout-match{padding:11px}.knockout-team{font-size:10px}.knockout-team-logo,.knockout-team .knockout-badge{width:36px;height:36px}.knockout-team-logo img{width:28px;height:28px}}
+
+/* Stadium */
+.stadium-hero{background:radial-gradient(circle at 50% 30%,rgba(0,132,79,.18),transparent 55%),linear-gradient(145deg,#07100d,#050807);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;min-height:280px}
+.stadium-viewer{position:relative;height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stadium-viewer .stadium-fallback{width:82%;max-width:520px;aspect-ratio:1.7;transform:perspective(700px) rotateX(48deg) rotateZ(-4deg);border:12px solid #29332f;border-radius:45% 45% 40% 40%;box-shadow:0 24px 50px rgba(0,0,0,.55),inset 0 0 0 5px #111816;background:repeating-linear-gradient(90deg,#16784e 0 12px,#0e603f 12px 24px);position:relative}
+.stadium-viewer .stadium-fallback:before{content:"";position:absolute;inset:18%;border:7px solid #d7ddd8;border-radius:48%;background:repeating-linear-gradient(0deg,#15834f 0 7px,#126c43 7px 14px);box-shadow:0 0 0 7px rgba(255,255,255,.12)}
+.stadium-viewer .stadium-fallback:after{content:"ALVALADE";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotateZ(4deg);font-size:10px;font-weight:800;letter-spacing:.18em;color:#fff;opacity:.65}
+.stadium-3d-note{position:absolute;bottom:12px;left:14px;right:14px;text-align:center;font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.08em}
+.stadium-map{position:relative;width:100%;aspect-ratio:1.45;background:#07100d;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;padding:20px}
+.stadium-map .pitch{position:absolute;left:24%;right:24%;top:29%;bottom:29%;border:2px solid rgba(255,255,255,.75);border-radius:8px;background:linear-gradient(90deg,rgba(20,130,78,.8),rgba(12,94,58,.8))}
+.stadium-map .pitch:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid rgba(255,255,255,.55)}
+.stadium-map .pitch:after{content:"";position:absolute;width:22%;aspect-ratio:1;border:1px solid rgba(255,255,255,.55);border-radius:50%;left:39%;top:38%}
+.stadium-map .stand{position:absolute;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,rgba(21,121,76,.8),rgba(9,47,31,.9));border-radius:12px;color:#dce8e2;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;text-align:center}
+.stadium-map .north{left:16%;right:16%;top:5%;height:21%}.stadium-map .south{left:16%;right:16%;bottom:5%;height:21%}.stadium-map .west{left:5%;top:25%;bottom:25%;width:17%}.stadium-map .east{right:5%;top:25%;bottom:25%;width:17%}
+.stadium-door{position:absolute;z-index:4;width:34px;height:22px;border-radius:7px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.18);font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.stadium-door.n1{top:1%;left:48%}.stadium-door.n2{top:17%;left:24%}.stadium-door.n3{top:17%;right:24%}.stadium-door.s5{bottom:1%;left:31%}.stadium-door.s6{bottom:1%;right:31%}.stadium-door.w7{left:1%;top:46%}.stadium-door.e4{right:1%;top:46%}
+.access-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:16px;padding:14px}
 </style>
 </head>
 <body>
@@ -167,6 +184,50 @@
 <section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2></div><div id="newsList" class="space-y-3"></div></section>
 <section id="classification" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Classificação</h2><div class="text-[10px] muted mt-1">2026/27 · J = jogos · P = pontos</div></div><div id="classificationTabs"></div><div id="classificationList" class="card p-3 overflow-x-auto"></div></section>
 <section id="tv" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">TV</h2><div class="text-[10px] muted mt-1">Vídeos oficiais do Sporting CP</div></div><div id="tvList" class="space-y-3"></div></section>
+<section id="stadium" class="screen space-y-5">
+<div><h2 class="text-[21px] font-bold">Estádio</h2><p class="text-[11px] muted mt-1">José Alvalade · Alvalade XXI</p></div>
+<div class="stadium-hero">
+  <div class="stadium-viewer">
+    <div class="stadium-fallback" aria-label="Representação 3D estilizada do Estádio José Alvalade"></div>
+    <div class="stadium-3d-note">MODELO 3D · visualizador preparado para modelo GLB/Gltf</div>
+  </div>
+  <div class="p-4 border-t border-white/5 flex items-center justify-between"><div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 50.095 lugares</div></div><span class="pill text-[9px]">ALVALADE XXI</span></div>
+</div>
+<div class="space-y-3">
+  <div><h3 class="font-bold">Mapa do estádio</h3><p class="text-[10px] muted mt-1">Setores e principais portas de acesso</p></div>
+  <div class="stadium-map">
+    <div class="stand north">SUPERIOR NORTE<br><span class="opacity-60">A13–A21 · B15–B23</span></div>
+    <div class="stand south">SUPERIOR SUL<br><span class="opacity-60">A8–A20 · B10–B22</span></div>
+    <div class="stand west">POENTE<br><span class="opacity-60">A1–A7<br>B1–B8</span></div>
+    <div class="stand east">NASCENTE<br><span class="opacity-60">A22–A32<br>B24–B32</span></div>
+    <div class="pitch"><span class="sr-only">Relvado</span></div>
+    <div class="stadium-door n1">P2</div><div class="stadium-door n2">P2</div><div class="stadium-door n3">P3</div>
+    <div class="stadium-door s5">P5</div><div class="stadium-door s6">P6</div><div class="stadium-door w7">P7</div><div class="stadium-door e4">P4</div>
+  </div>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 1</div><div class="text-xs mt-1">A1 · A3 · A5 · A7<br>B1 · B3 · B5</div></div>
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 2</div><div class="text-xs mt-1">Superior Norte</div></div>
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 3</div><div class="text-xs mt-1">Nascente · A23–A28</div></div>
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 4</div><div class="text-xs mt-1">A22 · A24 · B24–B28</div></div>
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 5</div><div class="text-xs mt-1">Superior Sul A</div></div>
+    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 6</div><div class="text-xs mt-1">Superior Sul B</div></div>
+    <div class="access-card col-span-2"><div class="text-[9px] uppercase tracking-widest muted">Porta 7</div><div class="text-xs mt-1">A2 · A4 · A6 · B2 · B4 · B6 · B8</div></div>
+  </div>
+</div>
+<div class="space-y-3">
+  <div><h3 class="font-bold">Acessos</h3><p class="text-[10px] muted mt-1">Como chegar ao Estádio José Alvalade</p></div>
+  <div class="access-card"><b>🚇 Metro</b><div class="text-[11px] muted mt-1">Linhas Verde e Amarela · Estação Campo Grande</div></div>
+  <div class="access-card"><b>🚌 Autocarro</b><div class="text-[11px] muted mt-1">Terminal Rodoviário do Campo Grande, com ligações urbanas, suburbanas e interurbanas.</div></div>
+  <div class="access-card"><b>🚗 Automóvel</b><div class="text-[11px] muted mt-1">2.ª Circular, Eixo Norte-Sul, IC19 e CRIL. Acesso por Campo Grande ou Telheiras.</div></div>
+  <div class="access-card">
+    <b>📍 Mapa</b>
+    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20">
+      <iframe title="Mapa do Estádio José Alvalade" src="https://www.openstreetmap.org/export/embed.html?bbox=-9.1645%2C38.7580%2C-9.1500%2C38.7648&layer=mapnik&marker=38.7600%2C-9.1583" style="width:100%;height:240px;border:0" loading="lazy"></iframe>
+    </div>
+    <a class="pill inline-flex mt-3 px-3 py-2 text-[10px]" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat=38.7600&mlon=-9.1583#map=17/38.7600/-9.1583">Abrir mapa completo ↗</a>
+  </div>
+</div>
+</section>
 <section id="links" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Sporting</h2><div class="text-[10px] muted mt-1">Acessos rápidos</div></div><div class="space-y-2">
 <a class="card link-card p-4" target="_blank" rel="noopener" href="https://tickets.sporting.pt/pt"><span><b><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 13 5.5 14.5a3 3 0 0 0 4.2 4.2l2.1-2.1"/><path d="m13 7 1.5-1.5a3 3 0 0 0-4.2-4.2L8.2 3.4"/><path d="m7.5 12.5 5-5"/></svg></span> Bilhetes</b><small class="block text-[10px] muted mt-1">Bilheteira oficial</small></span><span class="muted">↗</span></a>
 <a class="card link-card p-4" target="_blank" rel="noopener" href="https://lojaverde.sporting.pt"><span><b><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 13 5.5 14.5a3 3 0 0 0 4.2 4.2l2.1-2.1"/><path d="m13 7 1.5-1.5a3 3 0 0 0-4.2-4.2L8.2 3.4"/><path d="m7.5 12.5 5-5"/></svg></span> Loja</b><small class="block text-[10px] muted mt-1">Loja Verde</small></span><span class="muted">↗</span></a>
@@ -185,6 +246,8 @@
 <button class="drawer-link navbtn" data-go="squad"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c.8-3 2.8-4.5 6-4.5s5.2 1.5 6 4.5"/></svg></span><span>Plantel</span></button>
 <button class="drawer-link navbtn" data-go="stats"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 17V9M10 17V5M16 17v-6"/></svg></span><span>Estatísticas</span></button>
 <button class="drawer-link navbtn" data-go="classification"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12M12 4v12"/></svg></span><span>Classificação</span></button>
+<div class="drawer-section">Estádio</div>
+<button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16V7l7-4 7 4v9"/><path d="M6 16v-4h8v4M5 8h10"/></svg></span><span>Estádio</span></button>
 <div class="drawer-section">Conteúdo</div>
 <button class="drawer-link navbtn" data-go="news"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h6M7 14h4"/></svg></span><span>Notícias</span></button>
 <button class="drawer-link navbtn" data-go="tv"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="9" rx="1.5"/><path d="m8 2 2 3 2-3M7 17h6"/></svg></span><span>TV</span></button>
