@@ -3091,13 +3091,13 @@ def _zz_parse_games(html):
         cells = [clean(x) for x in cells if clean(x)]
         if len(cells) < 4:
             return
-        date_value = next((x for x in cells if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", x)), None)
+        date_value = next((x for x in cells if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x)), None)
         if not date_value:
             return
         score_idx = None
         score_home = score_away = None
         for idx, cell in enumerate(cells):
-            m = re.fullmatch(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})(?:a\\.p\\.|\\s*)?", cell, re.I)
+            m = re.fullmatch(r"(\d{1,2})\s*-\s*(\d{1,2})(?:a\.p\.|\s*)?", cell, re.I)
             if m:
                 score_idx = idx
                 score_home, score_away = int(m.group(1)), int(m.group(2))
@@ -3105,18 +3105,18 @@ def _zz_parse_games(html):
         if score_idx is None or score_idx < 1 or score_idx + 1 >= len(cells):
             return
         home_name, away_name = cells[score_idx - 1], cells[score_idx + 1]
-        if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", home_name):
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", home_name):
             return
 
         competition = ""
         season = ""
         round_name = ""
         for cell in cells:
-            sm = re.search(r"\\b(\\d{2}/\\d{2})\\b", cell)
+            sm = re.search(r"\b(\d{2}/\d{2})\b", cell)
             if sm:
                 season = sm.group(1)
-                competition = clean(re.sub(r"\\s*\\d{2}/\\d{2}\\s*", " ", cell))
-            elif re.fullmatch(r"(?:J\\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\\d+)", cell, re.I):
+                competition = clean(re.sub(r"\s*\d{2}/\d{2}\s*", " ", cell))
+            elif re.fullmatch(r"(?:J\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\d+)", cell, re.I):
                 round_name = cell
         if not competition:
             for cell in cells:
@@ -3139,11 +3139,11 @@ def _zz_parse_games(html):
     if not found:
         lines = [clean(x) for x in soup.get_text("\n", strip=True).splitlines() if clean(x)]
         for idx, line in enumerate(lines):
-            if not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", line):
+            if not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", line):
                 continue
             window = lines[idx:idx+12]
             score_pos = next((j for j,x in enumerate(window)
-                              if re.fullmatch(r"\\d{1,2}\\s*-\\s*\\d{1,2}(?:a\\.p\\.)?", x, re.I)), None)
+                              if re.fullmatch(r"\d{1,2}\s*-\s*\d{1,2}(?:a\.p\.)?", x, re.I)), None)
             if score_pos is not None and score_pos >= 1 and score_pos + 1 < len(window):
                 add_cells([line, window[score_pos-1], window[score_pos], window[score_pos+1], *window[score_pos+2:]])
 
@@ -3162,8 +3162,8 @@ def zerozero_team_ref(name):
     try:
         page = zerozero_get(f"https://www.zerozero.pt/equipa/{slug}")
         patterns = [
-            r'href=["\\'](/equipa/[^"\\']+/\\d+)["\\']',
-            r'<link[^>]+rel=["\\']canonical["\\'][^>]+href=["\\'](https://www\\.zerozero\\.pt/equipa/[^"\\']+/\\d+)',
+            r'href=["\'](/equipa/[^"\']+/\d+)["\']',
+            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https://www\.zerozero\.pt/equipa/[^"\']+/\d+)',
         ]
         href = None
         for pat in patterns:
@@ -3201,8 +3201,8 @@ def _zz_xray_for_fixture(f):
     text_content = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))
     summary = None
     pat = re.search(
-        r"Em todas as competições .*?(\\d+) jogos.*?(\\d+) vitórias do (.*?), "
-        r"(\\d+) empates e (\\d+) (?:triunfos|vitórias) do (.*?)(?:\\.|\\s+Em casa)",
+        r"Em todas as competições .*?(\d+) jogos.*?(\d+) vitórias do (.*?), "
+        r"(\d+) empates e (\d+) (?:triunfos|vitórias) do (.*?)(?:\.|\s+Em casa)",
         text_content, re.I
     )
     if pat:
