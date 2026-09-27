@@ -2866,24 +2866,20 @@ def fetch_news():
                                 out.append(txt)
                         return "\\n\\n".join(out)
 
-                    # Some modern publisher pages keep the article body in
-                    # serialized application state instead of visible HTML.
+                    # Some publishers (including Record) serialize the article body
+                    # inside application state instead of exposing it as normal HTML.
                     for script in soup_obj.find_all("script"):
                         raw_text = script.string or script.get_text() or ""
-                        if len(raw_text) < 300:
+                        if len(raw_text) < 300 or "articleBody" not in raw_text:
                             continue
-                        for key in ('"articleBody":"','"articleBody": "'):
-                            pos = raw_text.find(key)
-                            if pos >= 0:
-                                tail = raw_text[pos + len(key):]
-                                end = tail.find('"')
-                                if end > 180:
-                                    try:
-                                        candidate = json.loads('"'+tail[:end].replace('\\','\\\\').replace('"','\\\"')+'"')
-                                        if len(candidate.strip()) >= 300:
-                                            return clean(candidate).replace("\\r","")
-                                    except Exception:
-                                        pass
+                        for match in re.finditer(r'"articleBody"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"', raw_text):
+                            try:
+                                candidate = json.loads('"'+match.group(1)+'"')
+                            except Exception:
+                                continue
+                            candidate = clean(candidate).replace("\\r","").strip()
+                            if len(candidate) >= 300:
+                                return candidate
 
                     # JSON-LD articleBody is the cleanest source when publishers expose it.
                     for script in soup_obj.find_all("script", attrs={"type":"application/ld+json"}):
@@ -2909,6 +2905,10 @@ def fetch_news():
                         '[data-testid*="article"]','[class*="articleBody"]','[class*="article-body"]',
                         '[class*="article-content"]','[class*="article__body"]',
                         '[class*="story-body"]','[class*="story-content"]',
+                        '[class*="articleBody"] p','[class*="article-body"] p',
+                        '[class*="article-content"] p','[class*="article__body"] p',
+                        '[class*="story-body"] p','[class*="story-content"] p',
+                        '[data-testid*="article"] p','[data-testid*="article-body"] p',
                         # A Bola
                         '[class*="articleDetail"]','[class*="article-detail"]',
                         '[class*="news-body"]','[class*="news-content"]',
