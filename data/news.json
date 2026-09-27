@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T10:41:12.288503+00:00",
+  "_updated_at": "2026-09-27T10:42:19.506029+00:00",
   "items": [
     {
       "title": "Basquetebol Projecto GUTS chega ao Sporting CP hoje",
@@ -189,7 +189,7 @@
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57998",
       "source": "FPF",
       "published": "Sat, 26 Sep 2026 20:28:26 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=210191&v=639261060652530386",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=210191&v=639261061333272106",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57998",
       "description": "Jogo da 2.ª jornada do Campeonato Sub-19 da II Divisão"
     },
@@ -207,12 +207,6 @@
       "image": "https://www.ligaportugal.pt/favicon.png",
       "image_source": "https://www.ligaportugal.pt/match/20262027/ligaportugalmeusuper/12/9",
       "description": "Liga Portugal"
-    },
-    {
-      "title": "- FC Porto vs Sporting CP - FC Porto",
-      "url": "https://www.fcporto.pt/en/sports/basketball/game-sheet/420260926470-fc-porto-vs-sporting-cp",
-      "source": "FC Porto",
-      "published": "Sun, 27 Sep 2026 02:44:11 GMT"
     },
     {
       "title": "Bilhetes | SC Braga vs Sporting CP - SC Braga",
@@ -238,13 +232,19 @@
       "description": "Acompanhe as mais recentes informações da UEFA Women's Europa Cup 2026/2027 no site oficial do UEFA.com. Inclui últimas notícias, vídeos, crónicas dos jogos e muito mais."
     },
     {
-      "title": "Jesse Derry marca e assiste na vitória da Inglaterra - Sport TV",
-      "url": "https://www.sporttv.pt/noticias/802735/jesse-derry-marca-e-assiste-na-vitoria-da-inglaterra",
-      "source": "Sport TV",
-      "published": "Fri, 25 Sep 2026 08:11:00 GMT",
-      "image": "https://www.sporttv.pt/redacao/images/jesse%20derry_Inglaterra.webp?v=1790356189",
-      "image_source": "https://www.sporttv.pt/noticias/802735/jesse-derry-marca-e-assiste-na-vitoria-da-inglaterra",
-      "description": "Extremos dos 'leões' está ao serviço dos sub-20 britânicos"
+      "title": "Sporting CP 2021-2022 - Liga Portugal",
+      "url": "https://www.ligaportugal.pt/team/303/sporting-cp/ligaportugalbwin/20212022",
+      "source": "Liga Portugal",
+      "published": "Fri, 25 Sep 2026 20:22:32 GMT",
+      "image": "https://www.ligaportugal.pt/backoffice/assets/Sporting_Site_Letras_1330565ca0.png",
+      "image_source": "https://www.ligaportugal.pt/team/303/sporting-cp/ligaportugalbwin/20212022",
+      "description": "Sporting Clube de Portugal - Futebol, SAD - 2021-2022"
+    },
+    {
+      "title": "SC Braga vs Sporting CP - SC Braga",
+      "url": "https://scbraga.pt/pt/videos/sc-braga-vs-sporting-cp-or-liga-bpi",
+      "source": "SC Braga",
+      "published": "Wed, 23 Sep 2026 22:22:57 GMT"
     }
   ]
 }
