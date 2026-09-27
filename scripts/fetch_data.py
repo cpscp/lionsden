@@ -2859,12 +2859,12 @@ def fetch_news():
                         # cdn-img.staticzz.com. Google may serialize that URL
                         # in result data instead of exposing it on an <img>.
                         for m in re.finditer(
-                            r"https://cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/[^\\"'\\s<>\\\\]+",
+                            r"https://cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/[^\\s<>\\\\]+",
                             gr.text,
                             re.I,
                         ):
-                            src=m.group(0).replace(r"\\u003d","=").replace(r"\\u0026","&").replace(r"\\/","/")
-                            src=src.rstrip(".,;)")
+                            src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
+                            src=src.rstrip('.,;)"\\'')
                             if re.search(r"\\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
                                 item["image"]=src
                                 item["image_source"]="Zerozero article image search"
