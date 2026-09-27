@@ -3108,7 +3108,7 @@ def zerozero_get(url):
                 # A generic challenge shell can still contain the page title,
                 # so the title alone is NOT a valid response.
                 has_summary = bool(re.search(
-                    r"Em todas as competições.*?(?:\\d+ jogos|nunca se defrontaram)",
+                    r"Em todas as competições.*?(?:\d+ jogos|nunca se defrontaram)",
                     body, re.I | re.S
                 ))
                 has_no_history = "nunca se defrontaram" in zz_norm(body)
