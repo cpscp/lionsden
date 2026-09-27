@@ -2848,6 +2848,7 @@ def fetch_news():
             candidates.append(translate_url)
         except Exception:
             pass
+        record_premium = False
         for candidate in candidates:
             try:
                 rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
@@ -2862,7 +2863,7 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
-                record_premium = (
+                candidate_premium = (
                     item.get("source") == "Record"
                     and bool(re.search(
                         r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
@@ -2870,6 +2871,7 @@ def fetch_news():
                         re.I,
                     ))
                 )
+                record_premium = record_premium or candidate_premium
                 if record_premium:
                     item["premium"] = True
 
@@ -2905,6 +2907,26 @@ def fetch_news():
                                 seen_chunks.add(key)
                                 out.append(txt)
                         return "\\n\\n".join(out)
+
+                    # Record AMP has a very clean, linear article structure.
+                    # Use the paragraphs following the H1 before falling back to
+                    # generic publisher selectors.
+                    if item.get("source") == "Record":
+                        h1 = soup_obj.find("h1")
+                        if h1:
+                            parts = []
+                            for node in h1.find_all_next(["p","h2","h3"]):
+                                txt = clean(node.get_text(" ", strip=True))
+                                low = txt.lower()
+                                if low in {"relacionadas","publicidade","partilhar"} or low.startswith("por "):
+                                    break
+                                if len(txt) >= 25:
+                                    parts.append(txt)
+                                if len(parts) >= 20:
+                                    break
+                            candidate_body = "\n\n".join(parts)
+                            if len(candidate_body) >= 300:
+                                return candidate_body
 
                     # Some publishers (including Record) serialize the article body
                     # inside application state instead of exposing it as normal HTML.
