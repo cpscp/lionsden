@@ -2855,13 +2855,30 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
-                        for im in gs.find_all("img"):
+                        # Current Zerozero editorial photos are hosted on
+                        # cdn-img.staticzz.com. Google may serialize that URL
+                        # in result data instead of exposing it on an <img>.
+                        for m in re.finditer(
+                            r"https://cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/[^\\"'\\s<>\\\\]+",
+                            gr.text,
+                            re.I,
+                        ):
+                            src=m.group(0).replace(r"\\u003d","=").replace(r"\\u0026","&").replace(r"\\/","/")
+                            src=src.rstrip(".,;)")
+                            if re.search(r"\\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
+                                item["image"]=src
+                                item["image_source"]="Zerozero article image search"
+                                break
+                        if item.get("image"):
+                            pass
+                        else:
+                            for im in gs.find_all("img"):
                             src=(im.get("data-iurl") or im.get("data-original") or
                                  im.get("data-src") or im.get("src"))
                             if not src or str(src).startswith("data:"):
                                 continue
                             low=str(src).lower()
-                            if "cdn-img.zerozero" not in low:
+                            if not re.search(r"cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/", low):
                                 continue
                             if any(x in low for x in ("favicon","logo","googleusercontent")):
                                 continue
