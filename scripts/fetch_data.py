@@ -2863,11 +2863,15 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
+                # Do not look for the generic word "Premium": it is part of the
+                # Record global navigation. Only these explicit article-level
+                # subscription messages count as Premium.
+                record_page_text = clean(soup.get_text(" ", strip=True))
                 candidate_premium = (
                     item.get("source") == "Record"
                     and bool(re.search(
-                        r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
-                        article_text_for_flags,
+                        r"Funcionalidade exclusiva para assinantes Record Premium|Este conteúdo é exclusivo para assinantes Record Premium",
+                        record_page_text,
                         re.I,
                     ))
                 )
