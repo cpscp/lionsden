@@ -2815,6 +2815,70 @@ def fetch_news():
                             return clean(n.get("content"))
                     return ""
 
+                # Extract the readable article body for the in-app reader.
+                # Prefer structured articleBody, then publisher-specific containers,
+                # then a conservative generic <article> fallback.
+                def extract_article_text(soup_obj):
+                    def normalize_nodes(container):
+                        if not container:
+                            return ""
+                        for bad in container.select("script,style,noscript,nav,header,footer,aside,form,figure,figcaption,.share,.social,.related,.comments,.comment,.advert,.ads,.ad,.newsletter"):
+                            bad.decompose()
+                        chunks = []
+                        for node in container.find_all(["p","h2","h3","blockquote","li"]):
+                            txt = clean(node.get_text(" ", strip=True))
+                            if len(txt) >= 25:
+                                chunks.append(txt)
+                        if not chunks:
+                            txt = clean(container.get_text(" ", strip=True))
+                            return txt if len(txt) >= 180 else ""
+                        out = []
+                        seen_chunks = set()
+                        for txt in chunks:
+                            key = re.sub(r"\\s+"," ",txt).strip().lower()
+                            if key not in seen_chunks:
+                                seen_chunks.add(key)
+                                out.append(txt)
+                        return "\\n\\n".join(out)
+
+                    # JSON-LD articleBody is the cleanest source when publishers expose it.
+                    for script in soup_obj.find_all("script", attrs={"type":"application/ld+json"}):
+                        try:
+                            raw = json.loads(script.string or script.get_text())
+                            objs = raw if isinstance(raw,list) else [raw]
+                            stack = list(objs)
+                            while stack:
+                                obj = stack.pop(0)
+                                if isinstance(obj, list):
+                                    stack.extend(obj)
+                                elif isinstance(obj, dict):
+                                    if isinstance(obj.get("articleBody"), str) and len(obj["articleBody"].strip()) >= 180:
+                                        return clean(obj["articleBody"]).replace("\\r","")
+                                    for value in obj.values():
+                                        if isinstance(value,(dict,list)):
+                                            stack.append(value)
+                        except Exception:
+                            pass
+
+                    selectors = [
+                        '[itemprop="articleBody"]',
+                        'article .article-body','article .article-content','article .article__body',
+                        '.article-body','.article-content','.article__body',
+                        '.article-detail-body','.news-detail-body',
+                        '.field--name-body',
+                        'article'
+                    ]
+                    for selector in selectors:
+                        node = soup_obj.select_one(selector)
+                        text_body = normalize_nodes(node)
+                        if len(text_body) >= 300:
+                            return text_body
+                    return ""
+
+                article_text = extract_article_text(soup)
+                if len(article_text) >= 300:
+                    item["article_text"] = article_text[:30000]
+
                 image = meta(
                     {"property":"og:image"},
                     {"property":"og:image:url"},
@@ -2864,6 +2928,18 @@ def fetch_news():
                                     item["image_source"] = item["source"] + " JSON-LD"
                     except Exception:
                         pass
+
+                if candidate.startswith("https://r.jina.ai/") and not item.get("article_text"):
+                    # Jina Markdown fallback: retain readable paragraphs while
+                    # removing navigation and image-only lines.
+                    md_lines=[]
+                    for line in rr.text.splitlines():
+                        line=clean(re.sub(r"^#{1,6}\\s*","",line))
+                        line=re.sub(r"^!\\[[^\\]]*\\]\\([^)]*\\)$","",line)
+                        if len(line)>=40 and not re.match(r"^(menu|pesquisar|publicidade|partilhar|comentários?)$",line,re.I):
+                            md_lines.append(line)
+                    if len(md_lines)>=4:
+                        item["article_text"]="\\n\\n".join(md_lines)[:30000]
 
                 if candidate.startswith("https://r.jina.ai/"):
                     # Jina Markdown can expose the lead image even when the
@@ -3032,6 +3108,8 @@ def fetch_news():
         item.pop("_google_url", None)
         item.pop("media_thumbnail", None)
         item.pop("media_content", None)
+        if item.get("article_text"):
+            item["article_text"] = str(item["article_text"])[:30000]
 
     write_json("news.json", {"items": final})
     print("News feed:", len(final), "items;",
