@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T02:14:05.827473+00:00",
+  "_updated_at": "2026-09-27T02:20:29.099543+00:00",
   "fixtures": {
     "5887647": {
       "home": {
@@ -150,7 +150,7 @@
         "away_wins": 24,
         "total": 42
       },
-      "updated_at": "2026-09-27T02:14:05.448990+00:00"
+      "updated_at": "2026-09-27T02:20:21.790455+00:00"
     },
     "6106414": {
       "home": {
@@ -264,7 +264,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.499927+00:00"
+      "updated_at": "2026-09-27T02:20:21.893118+00:00"
     },
     "6106281": {
       "home": {
@@ -406,7 +406,7 @@
         "away_wins": 2,
         "total": 3
       },
-      "updated_at": "2026-09-27T02:14:05.507906+00:00"
+      "updated_at": "2026-09-27T02:20:21.899567+00:00"
     },
     "5887661": {
       "home": {
@@ -520,7 +520,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.558000+00:00"
+      "updated_at": "2026-09-27T02:20:22.005199+00:00"
     },
     "5985964": {
       "home": {
@@ -671,7 +671,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-09-27T02:14:05.566686+00:00"
+      "updated_at": "2026-09-27T02:20:22.013239+00:00"
     },
     "5887666": {
       "home": {
@@ -822,7 +822,7 @@
         "away_wins": 9,
         "total": 9
       },
-      "updated_at": "2026-09-27T02:14:05.573848+00:00"
+      "updated_at": "2026-09-27T02:20:22.019985+00:00"
     },
     "6106335": {
       "home": {
@@ -936,7 +936,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.622056+00:00"
+      "updated_at": "2026-09-27T02:20:22.125608+00:00"
     },
     "5887679": {
       "home": {
@@ -1087,7 +1087,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-09-27T02:14:05.630448+00:00"
+      "updated_at": "2026-09-27T02:20:22.137456+00:00"
     },
     "6106279": {
       "home": {
@@ -1201,7 +1201,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.678918+00:00"
+      "updated_at": "2026-09-27T02:20:22.243944+00:00"
     },
     "5887687": {
       "home": {
@@ -1315,7 +1315,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.728074+00:00"
+      "updated_at": "2026-09-27T02:20:22.349974+00:00"
     },
     "5887698": {
       "home": {
@@ -1429,7 +1429,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.777762+00:00"
+      "updated_at": "2026-09-27T02:20:22.454077+00:00"
     },
     "6106275": {
       "home": {
@@ -1543,7 +1543,2115 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-09-27T02:14:05.827459+00:00"
+      "updated_at": "2026-09-27T02:20:22.561092+00:00"
+    },
+    "5887702": {
+      "home": {
+        "id": 9764,
+        "name": "Gil Vicente",
+        "form": [
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-08-24T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-08-30T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 1",
+            "date": "2026-09-06T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "3 - 1",
+            "date": "2026-09-13T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-19T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 9,
+          "played": 6,
+          "points": 8,
+          "name": "Gil Vicente"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:23.144887+00:00"
+    },
+    "5887716": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 7842,
+        "name": "Estoril",
+        "form": [
+          {
+            "result": "L",
+            "score": "0 - 2",
+            "date": "2026-08-22T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 1",
+            "date": "2026-08-31T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-07T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-09-14T19:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-09-20T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 18,
+          "played": 7,
+          "points": 2,
+          "name": "Estoril"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:23.577015+00:00"
+    },
+    "5887724": {
+      "home": {
+        "id": 9772,
+        "name": "Benfica",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 3",
+            "date": "2026-09-05T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-09-09T19:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-13T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-09-16T19:00:00.000Z",
+            "competition": "Europa League",
+            "opponent": "Milan",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "3 - 1",
+            "date": "2026-09-20T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 2,
+          "played": 7,
+          "points": 16,
+          "name": "Benfica"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:23.987370+00:00"
+    },
+    "5887734": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 1567,
+        "name": "Santa Clara",
+        "form": [
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-08-23T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-08-29T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-09-06T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-09-13T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-20T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 4,
+          "played": 7,
+          "points": 15,
+          "name": "Santa Clara"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:24.280065+00:00"
+    },
+    "5887735": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 1074320,
+        "name": "Estrela da Amadora",
+        "form": [
+          {
+            "result": "W",
+            "score": "2 - 3",
+            "date": "2026-08-30T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-05T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 1",
+            "date": "2026-09-10T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "3 - 3",
+            "date": "2026-09-14T17:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 2",
+            "date": "2026-09-20T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 8,
+          "played": 7,
+          "points": 10,
+          "name": "Estrela da Amadora"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:24.840758+00:00"
+    },
+    "6106278": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 6,
+          "played": 1,
+          "points": 3,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 8634,
+        "name": "Barcelona",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 5",
+            "date": "2026-09-06T14:15:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Valencia",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "5 - 1",
+            "date": "2026-09-09T16:45:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Feyenoord",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 4",
+            "date": "2026-09-13T14:15:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Levante",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "7 - 2",
+            "date": "2026-09-16T19:30:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Racing Santander",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 3",
+            "date": "2026-09-19T19:00:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Sevilla",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 1,
+          "points": 3,
+          "name": "Barcelona"
+        }
+      },
+      "h2h": {
+        "matches": [
+          {
+            "id": null,
+            "date": "2017-12-05T19:45:00.000Z",
+            "home": "Barcelona",
+            "away": "Sporting CP",
+            "home_score": 2,
+            "away_score": 0,
+            "competition": "Champions League"
+          },
+          {
+            "id": null,
+            "date": "2017-09-27T18:45:00.000Z",
+            "home": "Sporting CP",
+            "away": "Barcelona",
+            "home_score": 0,
+            "away_score": 1,
+            "competition": "Champions League"
+          }
+        ],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 2,
+        "total": 2
+      },
+      "updated_at": "2026-09-27T02:20:25.052539+00:00"
+    },
+    "5887752": {
+      "home": {
+        "id": 7844,
+        "name": "Vitória de Guimarães",
+        "form": [
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-08-23T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-08-31T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-06T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 1",
+            "date": "2026-09-12T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-20T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 14,
+          "played": 7,
+          "points": 5,
+          "name": "Vitória de Guimarães"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:25.507070+00:00"
+    },
+    "6106255": {
+      "home": {
+        "id": 8456,
+        "name": "Man City",
+        "form": [
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-09-05T14:00:00.000Z",
+            "competition": "Premier League",
+            "opponent": "Coventry City",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-09-08T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "FC Porto",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 1",
+            "date": "2026-09-13T15:30:00.000Z",
+            "competition": "Premier League",
+            "opponent": "Manchester United",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "5 - 0",
+            "date": "2026-09-17T18:30:00.000Z",
+            "competition": "EFL Cup",
+            "opponent": "Norwich City",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "5 - 3",
+            "date": "2026-09-20T13:00:00.000Z",
+            "competition": "Premier League",
+            "opponent": "Sunderland",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 8,
+          "played": 1,
+          "points": 3,
+          "name": "Manchester City"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 6,
+          "played": 1,
+          "points": 3,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [
+          {
+            "id": null,
+            "date": "2024-11-05T20:00:00.000Z",
+            "home": "Sporting CP",
+            "away": "Manchester City",
+            "home_score": 4,
+            "away_score": 1,
+            "competition": "Champions League"
+          },
+          {
+            "id": null,
+            "date": "2022-03-09T20:00:00.000Z",
+            "home": "Manchester City",
+            "away": "Sporting CP",
+            "home_score": 0,
+            "away_score": 0,
+            "competition": "Champions League"
+          },
+          {
+            "id": null,
+            "date": "2022-02-15T20:00:00.000Z",
+            "home": "Sporting CP",
+            "away": "Manchester City",
+            "home_score": 0,
+            "away_score": 5,
+            "competition": "Champions League"
+          },
+          {
+            "id": null,
+            "date": "2012-03-15T20:05:00.000Z",
+            "home": "Manchester City",
+            "away": "Sporting CP",
+            "home_score": 3,
+            "away_score": 2,
+            "competition": "Europa League"
+          }
+        ],
+        "home_wins": 2,
+        "draws": 1,
+        "away_wins": 3,
+        "total": 6
+      },
+      "updated_at": "2026-09-27T02:20:25.706918+00:00"
+    },
+    "5887760": {
+      "home": {
+        "id": 9780,
+        "name": "Alverca",
+        "form": [
+          {
+            "result": "L",
+            "score": "3 - 1",
+            "date": "2026-08-22T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-08-29T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-09-05T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 3",
+            "date": "2026-09-12T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-09-19T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 10,
+          "played": 7,
+          "points": 8,
+          "name": "Alverca"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:26.130662+00:00"
+    },
+    "5887769": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 7841,
+        "name": "Rio Ave",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-08-22T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "4 - 0",
+            "date": "2026-09-06T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "3 - 3",
+            "date": "2026-09-14T17:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estrela da Amadora",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-09-19T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 16,
+          "played": 7,
+          "points": 4,
+          "name": "Rio Ave"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:26.471246+00:00"
+    },
+    "5887778": {
+      "home": {
+        "id": 10214,
+        "name": "Nacional",
+        "form": [
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-08-23T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-08-30T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estrela da Amadora",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 3",
+            "date": "2026-09-12T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 4",
+            "date": "2026-09-19T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 15,
+          "played": 7,
+          "points": 4,
+          "name": "Nacional"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:26.765087+00:00"
+    },
+    "5887784": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 1634,
+        "name": "Famalicão",
+        "form": [
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-08-23T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-08-30T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-05T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estrela da Amadora",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-09-19T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 13,
+          "played": 7,
+          "points": 7,
+          "name": "Famalicão"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:27.103466+00:00"
+    },
+    "5887796": {
+      "home": {
+        "id": 158085,
+        "name": "Arouca",
+        "form": [
+          {
+            "result": "L",
+            "score": "2 - 0",
+            "date": "2026-08-23T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 1",
+            "date": "2026-08-29T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-07T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-09-13T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 5,
+          "played": 7,
+          "points": 11,
+          "name": "Arouca"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:27.548033+00:00"
+    },
+    "5887800": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 10264,
+        "name": "Braga",
+        "form": [
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-08-31T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-09-05T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 1",
+            "date": "2026-09-10T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estrela da Amadora",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-09-14T19:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-20T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 6,
+          "played": 6,
+          "points": 11,
+          "name": "Braga"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:27.843252+00:00"
+    },
+    "5887814": {
+      "home": {
+        "id": 1786,
+        "name": "Académico Viseu",
+        "form": [
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-08-22T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 3",
+            "date": "2026-08-29T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 1",
+            "date": "2026-09-06T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 1",
+            "date": "2026-09-12T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-09-20T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estrela da Amadora",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 7,
+          "played": 7,
+          "points": 11,
+          "name": "Académico Viseu"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:28.181333+00:00"
+    },
+    "5887819": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 212821,
+        "name": "Casa Pia AC",
+        "form": [
+          {
+            "result": "L",
+            "score": "2 - 0",
+            "date": "2026-08-24T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 1",
+            "date": "2026-08-30T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-06T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 4",
+            "date": "2026-09-12T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-09-20T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 17,
+          "played": 7,
+          "points": 4,
+          "name": "Casa Pia AC"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:28.500771+00:00"
+    },
+    "5887832": {
+      "home": {
+        "id": 8348,
+        "name": "Moreirense",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 1",
+            "date": "2026-08-30T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 1",
+            "date": "2026-09-04T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 4",
+            "date": "2026-09-09T19:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-14T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-20T14:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 12,
+          "played": 7,
+          "points": 8,
+          "name": "Moreirense"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:28.810191+00:00"
+    },
+    "5887840": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 4",
+            "date": "2026-08-28T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 0",
+            "date": "2026-09-05T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-09T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Galatasaray",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 7,
+          "points": 15,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 9773,
+        "name": "FC Porto",
+        "form": [
+          {
+            "result": "W",
+            "score": "0 - 3",
+            "date": "2026-08-29T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "2 - 1",
+            "date": "2026-09-04T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 2",
+            "date": "2026-09-08T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester City",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 4",
+            "date": "2026-09-12T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 1",
+            "date": "2026-09-20T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 1,
+          "played": 7,
+          "points": 21,
+          "name": "FC Porto"
+        }
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-09-27T02:20:29.099523+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
