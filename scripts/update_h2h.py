@@ -13,7 +13,7 @@ upcoming = [
     f for f in fixtures
     if f.get("status", {}).get("short") == "scheduled" and f.get("id")
 ]
-upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)[:30]
+upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)
 
 h2h = fetch_zerozero_h2h(upcoming)
 out = {}
