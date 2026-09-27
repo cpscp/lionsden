@@ -3154,6 +3154,8 @@ def fetch_news():
                         break
             except Exception as e2:
                 print("News metadata warning:",item.get("url"),e2)
+        if item.get("source")=="Zerozero":
+            print("ZZ_IMAGE_TRACE", item.get("url"), "IMAGE=", item.get("image"), "SOURCE=", item.get("image_source"))
         return item
 
     def scrape_page(url, source):
