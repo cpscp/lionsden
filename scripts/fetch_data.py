@@ -3006,7 +3006,45 @@ def fetch_news():
                     print("Zerozero modern Google Images warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 7) Bing Images fallback. Prefer an original image whose
+                # 7) Google Images through Jina. This keeps Google as the
+                # discovery engine while avoiding Google's constantly changing
+                # browser HTML. Jina returns the result page as Markdown and
+                # preserves image URLs.
+                try:
+                    from urllib.parse import quote
+                    jq=quote('"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/')
+                    ju="https://r.jina.ai/http://www.google.com/search?udm=2&q="+jq+"&hl=pt-PT"
+                    jr=session.get(ju,timeout=30,headers={"User-Agent":USER_AGENT,"Accept":"text/markdown"})
+                    if jr.ok:
+                        body=jr.text
+                        words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
+                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
+                        candidates=[]
+                        for m in re.finditer(r"!\[([^\]]*)\]\((https?://[^)\s]+)",body):
+                            candidates.append((m.group(1),m.group(2)))
+                        for alt,src in candidates:
+                            low=src.lower()
+                            if any(x in low for x in ("favicon","logo","sprite","google.com/search")):
+                                continue
+                            context=(alt+" "+body[max(0,m.start()-300):m.end()+300] if False else alt).lower()
+                            score=sum(1 for w in words if w in context)
+                            if score >= max(3,min(6,len(words))):
+                                item["image"]=src
+                                item["image_source"]="Google Images via Jina"
+                                break
+                        if not item.get("image"):
+                            for m in re.finditer(r"\((https?://[^)\s]+\.(?:jpg|jpeg|png|webp)(?:\?[^)]*)?)\)",body,re.I):
+                                src=m.group(1)
+                                if any(x in src.lower() for x in ("favicon","logo","sprite")):
+                                    continue
+                                item["image"]=src
+                                item["image_source"]="Google Images via Jina"
+                                break
+                except Exception as ex:
+                    print("Zerozero Jina Google Images warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 8) Bing Images fallback. Prefer an original image whose
                 # source page or result title clearly belongs to this exact
                 # Zerozero article.
                 try:
