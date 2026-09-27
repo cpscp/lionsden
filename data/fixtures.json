@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T02:43:35.949673+00:00",
+  "_updated_at": "2026-09-27T02:46:15.342053+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -13,10 +13,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -53,10 +53,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -93,10 +93,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -133,10 +133,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -213,10 +213,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -253,10 +253,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -333,10 +333,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -373,10 +373,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -453,10 +453,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -493,11 +493,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio Municipal de Braga', 'city': 'Braga', 'country': 'Portugal', 'lat': 41.562553702, 'long': -8.429903984, 'capacity': 30286, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio Municipal de Braga",
+        "city": "Braga",
+        "lat": 41.562553702,
+        "lon": -8.429903984,
+        "capacity": 30286.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -533,11 +534,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Stade Bollaert-Delelis', 'city': 'Lens', 'country': 'France', 'lat': 50.432866762, 'long': 2.81494081, 'capacity': 41233, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Stade Bollaert-Delelis",
+        "city": "Lens",
+        "lat": 50.432866762,
+        "lon": 2.81494081,
+        "capacity": 41233.0,
+        "country": "France"
       },
       "competition": {
         "name": "Champions League",
@@ -573,11 +575,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Champions League",
@@ -613,11 +616,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -653,11 +657,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "League Cup",
@@ -693,11 +698,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio Municipal de Rio Maior', 'city': 'Rio Maior', 'country': 'Portugal', 'lat': 39.344540974, 'long': -8.935162425, 'capacity': 8500, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio Municipal de Rio Maior",
+        "city": "Rio Maior",
+        "lat": 39.344540974,
+        "lon": -8.935162425,
+        "capacity": 8500.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -733,11 +739,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Stamford Bridge', 'city': 'London', 'country': 'England', 'lat': 51.481711963, 'long': -0.190974623, 'capacity': 40044, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Stamford Bridge",
+        "city": "London",
+        "lat": 51.481711963,
+        "lon": -0.190974623,
+        "capacity": 40044.0,
+        "country": "England"
       },
       "competition": {
         "name": "Champions League",
@@ -773,11 +780,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estádio José Alvalade', 'city': 'Lisboa', 'country': 'Portugal', 'lat': 38.761207228, 'long': -9.160875678, 'capacity': 52095, 'surface': 'grass'}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -813,10 +821,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -853,10 +861,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio do Dragão",
+        "city": "Porto",
+        "lat": 41.161778,
+        "lon": -8.584028,
         "capacity": null
       },
       "competition": {
@@ -893,10 +901,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -933,10 +941,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Stadio Olimpico",
+        "city": "Roma",
+        "lat": 41.933886,
+        "lon": 12.454786,
         "capacity": null
       },
       "competition": {
@@ -973,10 +981,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio Cidade de Barcelos",
+        "city": "Barcelos",
+        "lat": 41.55123,
+        "lon": -8.62311,
         "capacity": null
       },
       "competition": {
@@ -1013,10 +1021,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1053,10 +1061,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio da Luz",
+        "city": "Lisboa",
+        "lat": 38.752778,
+        "lon": -9.184722,
         "capacity": null
       },
       "competition": {
@@ -1093,10 +1101,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1133,10 +1141,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1173,10 +1181,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1333,10 +1341,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1413,10 +1421,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1493,10 +1501,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1533,10 +1541,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio do Fontelo",
+        "city": "Viseu",
+        "lat": 40.6572,
+        "lon": -7.9065,
         "capacity": null
       },
       "competition": {
@@ -1573,10 +1581,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1613,10 +1621,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Parque Desportivo Comendador Joaquim de Almeida Freitas",
+        "city": "Moreira de Cónegos",
+        "lat": 41.388889,
+        "lon": -8.343611,
         "capacity": null
       },
       "competition": {
@@ -1653,10 +1661,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
         "capacity": null
       },
       "competition": {
@@ -1693,10 +1701,10 @@
       },
       "referee": null,
       "venue": {
-        "name": "",
-        "city": "",
-        "lat": null,
-        "lon": null,
+        "name": "Estádio do Marítimo",
+        "city": "Funchal",
+        "lat": 32.6495,
+        "lon": -16.9219,
         "capacity": null
       },
       "competition": {
@@ -1733,11 +1741,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estadio Jose Alvalade', 'country': ''}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estadio Jose Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1773,11 +1782,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Antonio Coimbra da Mota', 'country': ''}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Antonio Coimbra da Mota",
+        "city": "Estoril",
+        "lat": 38.705278,
+        "lon": -9.393889,
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1813,11 +1823,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estadio Jose Alvalade', 'country': ''}",
-        "city": "",
-        "lat": null,
-        "lon": null,
-        "capacity": null
+        "name": "Estadio Jose Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1853,11 +1864,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "{'name': 'Estadio do Sao Miguel', 'country': ''}",
+        "name": "Estadio do Sao Miguel",
         "city": "",
         "lat": null,
         "lon": null,
-        "capacity": null
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
