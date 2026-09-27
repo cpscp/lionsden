@@ -2837,7 +2837,7 @@ def fetch_news():
                 # subscriber-only body. Keep this flag so the PWA never presents
                 # a lead as if it were the full article.
                 page_text = clean(soup.get_text(" ", strip=True))
-                record_premium = (
+                record_premium = bool(item.get("premium")) or (
                     item.get("source") == "Record"
                     and bool(re.search(
                         r"Record\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
