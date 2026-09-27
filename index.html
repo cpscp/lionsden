@@ -199,7 +199,7 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','betano-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
     const ctl=new AbortController();
@@ -1042,7 +1042,7 @@ function goalsHtml(detail,base){const goals=(Array.isArray(detail?.incidents?.in
 
 
 function matchContextFor(id){return (D['match-context.json']?.fixtures||{})[String(id)]||null}
-function betanoFor(id){return (D['betano-odds.json']?.fixtures||{})[String(id)]||null}
+function betanoFor(id){return (D['betano-odds.json']?.fixtures||{})[String(id)] || (D['public-odds.json']?.fixtures||{})[String(id)] || null}
 function formChip(r){
   const v=String(r||'').toUpperCase();
   const cls=v==='W'?'bg-emerald-500/15 text-emerald-300 border-emerald-400/20':v==='D'?'bg-amber-500/15 text-amber-300 border-amber-400/20':'bg-red-500/15 text-red-300 border-red-400/20';
@@ -1085,7 +1085,8 @@ function h2hSection(ctx){
 }
 function oddsSection(id,base){
   const o=betanoFor(id);
-  const markets=o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano||[];
+  const isBetano=!!(o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano);
+  const markets=o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano||o?.bookmakers?.SofaScore||[];
   if(!markets.length)return '';
   const ml=markets.find(x=>String(x.name).toLowerCase()==='ml');
   const total=markets.find(x=>String(x.name).toLowerCase()==='totals');
@@ -1094,7 +1095,7 @@ function oddsSection(id,base){
   let body='';
   if(mlv) body+='<div class="grid grid-cols-3 gap-2">'+[['1',base.home?.name,mlv.home],['X','Empate',mlv.draw],['2',base.away?.name,mlv.away]].map(x=>'<div class="card-inset p-3 text-center"><div class="text-[9px] muted">'+esc(x[0])+'</div><div class="text-[9px] mt-1 truncate">'+esc(x[1])+'</div><b class="text-lg">'+esc(x[2]??'—')+'</b></div>').join('')+'</div>';
   if(tv?.over||tv?.under) body+='<div class="grid grid-cols-2 gap-2 mt-2">'+[['Mais '+tv.hdp,tv.over],['Menos '+tv.hdp,tv.under]].map(x=>'<div class="card-inset p-3 flex items-center justify-between"><span class="text-[9px]">'+esc(x[0])+'</span><b>'+esc(x[1]??'—')+'</b></div>').join('')+'</div>';
-  return body?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">Odds Betano</div><span class="text-[9px] muted">atualizadas '+esc(o.updated_at?fmtDate(o.updated_at):'—')+'</span></div>'+body+'</div>':'';
+  return body?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">Odds ${isBetano?'Betano':'Mercado'}</div><span class="text-[9px] muted">atualizadas '+esc(o.updated_at?fmtDate(o.updated_at):'—')+'</span></div>'+body+'</div>':'';
 }
 function icsEscape(v){return String(v??'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
 function downloadMatchCalendar(id){
