@@ -2705,7 +2705,7 @@ def fetch_news():
                 ekey=re.sub(r"[?#].*$", "", str(existing.get("url") or "").rstrip("/")).lower()
                 if ekey == key:
                     # Merge richer discovery metadata instead of discarding it.
-                    for field in ("image","image_source","description","published"):
+                    for field in ("image","image_source","description","published","_google_url"):
                         if item.get(field) and not existing.get(field):
                             existing[field]=item[field]
                     if item.get("title") and len(item.get("title","")) > len(existing.get("title","")):
