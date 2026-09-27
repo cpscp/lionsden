@@ -2715,7 +2715,7 @@ def fetch_news():
             "sporting de gijón", "sporting gijon"
         )
         item["_sporting"] = any(t in blob for t in (
-            "sporting", "alvalade", "rui borges", "leões", "leoes",
+            "sporting", "alvalade", "rui borges", "leões", "leoes", "leoas", "leonino",
             "verde e branco", "verde-e-branco"
         )) and not any(t in blob for t in excluded_sporting)
         item["_priority"] += 25 if item["_football"] else 0
@@ -2889,7 +2889,7 @@ def fetch_news():
         ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
         ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
         ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
-        ("https://www.ojogo.pt/ultimas", "O Jogo"),
+        ("https://www.ojogo.pt/futebol/1a-liga/sporting/", "O Jogo"),
         (SPORTING_NEWS, "Sporting.pt"),
     ]
     # Zerozero publishes an official RSS feed. It is much lighter and more
@@ -2945,7 +2945,7 @@ def fetch_news():
             any(t in title for t in non_football_penalty) and "futebol" not in title
         )
         item["_sporting"]=any(t in title for t in (
-            "sporting", "alvalade", "rui borges", "leões", "leoes",
+            "sporting", "alvalade", "rui borges", "leões", "leoes", "leoas", "leonino",
             "verde e branco", "verde-e-branco"
         )) and not any(t in title for t in (
             "sporting kansas city", "sporting kc", "sporting seis de diciembre",
