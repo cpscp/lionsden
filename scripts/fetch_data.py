@@ -2754,6 +2754,30 @@ def fetch_news():
             item.pop("image",None)
             item.pop("image_source",None)
             try:
+                from urllib.parse import quote as _quote
+                proxy="https://translate.google.com/translate?sl=pt&tl=en&u="+_quote(url,safe="")
+                zr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
+                if zr.ok:
+                    zs=BeautifulSoup(zr.text,"html.parser")
+                    for tag, attrs in [
+                        ("meta",{"property":"og:image"}),
+                        ("meta",{"property":"og:image:url"}),
+                        ("meta",{"name":"twitter:image"}),
+                    ]:
+                        node=zs.find(tag,attrs=attrs)
+                        if node and node.get("content"):
+                            src=node.get("content").strip()
+                            if "zerozero" in src.lower():
+                                item["image"]=src
+                                item["image_source"]="Zerozero article via Google Translate"
+                                break
+                    if not item.get("description"):
+                        d=zs.find("meta",attrs={"property":"og:description"}) or zs.find("meta",attrs={"name":"description"})
+                        if d and d.get("content"):
+                            item["description"]=clean(d.get("content"))[:280]
+            except Exception as ex:
+                print("Zerozero Translate image warning:",item.get("url"),ex)
+            try:
                 q=quote((item.get("title") or "")+" site:zerozero.pt")
                 gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
                                timeout=15,headers={"User-Agent":USER_AGENT})
