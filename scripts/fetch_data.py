@@ -1142,6 +1142,7 @@ def fetch_sofascore_fixtures():
         venue = e.get("venue") or {}
         normalized.append({
             "id": e.get("id"),
+            "custom_id": clean(e.get("customId")),
             "date": int(ts),
             "kickoff_date": datetime.fromtimestamp(int(ts), timezone.utc).date().isoformat(),
             "kickoff_local_time": datetime.fromtimestamp(int(ts), timezone.utc).strftime("%H:%M"),
@@ -2983,65 +2984,95 @@ def _h2h_rows(value, home_id, away_id, home_name, away_name):
 
 
 def _sofa_h2h_for_fixture(f):
-    """Reliable H2H fallback using the SofaScore event id already stored in fixtures.json."""
+    """SofaScore H2H using the event customId when available, with numeric-id fallback."""
     event_id = f.get("id")
-    if not event_id:
-        return [], None
-
+    custom_id = clean(f.get("custom_id") or f.get("customId"))
+    refs = [custom_id, event_id]
+    seen_refs = set()
     try:
-        raw = sofa_get(f"/event/{event_id}/h2h/events")
-        matches = raw.get("events") if isinstance(raw, dict) else []
-        if not matches and isinstance(raw, dict):
-            matches = raw.get("matches") or []
+        summary_raw = None
         rows = []
-        for m in matches or []:
-            ht = m.get("homeTeam") or {}
-            at = m.get("awayTeam") or {}
-            hs = (m.get("homeScore") or {}).get("current")
-            aas = (m.get("awayScore") or {}).get("current")
-            if hs is None or aas is None:
+        for ref in refs:
+            if not ref or str(ref) in seen_refs:
                 continue
-            ts = m.get("startTimestamp")
-            date = datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace("+00:00","Z") if ts else ""
-            tournament = m.get("tournament") or {}
-            rows.append({
-                "id": m.get("id"),
-                "date": date,
-                "home": clean(ht.get("name")),
-                "away": clean(at.get("name")),
-                "home_score": hs,
-                "away_score": aas,
-                "competition": clean(tournament.get("name") if isinstance(tournament, dict) else ""),
-            })
-
-        # Always calculate the global record from the actual historical meetings.
-        # This avoids relying on a home/away-oriented summary with ambiguous ordering.
-        home_name = clean((f.get("home") or {}).get("name"))
-        away_name = clean((f.get("away") or {}).get("name"))
-        hw = dw = aw = 0
-        home_key, away_key = zz_norm(home_name), zz_norm(away_name)
-        for x in rows:
-            hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
-            if hs is None or aas is None:
+            seen_refs.add(str(ref))
+            try:
+                summary_raw = sofa_get(f"/event/{quote_plus(str(ref))}/h2h")
+                if summary_raw:
+                    break
+            except Exception:
                 continue
-            xhome, xaway = zz_norm(x.get("home")), zz_norm(x.get("away"))
-            if hs == aas:
-                dw += 1
-            elif xhome == home_key:
-                hw += 1
-            elif xaway == home_key:
-                aw += 1
 
-        return rows, [hw, dw, aw]
+        for ref in refs:
+            if not ref:
+                continue
+            try:
+                raw = sofa_get(f"/event/{quote_plus(str(ref))}/h2h/events")
+                matches = raw.get("events") if isinstance(raw, dict) else []
+                if not matches and isinstance(raw, dict):
+                    matches = raw.get("matches") or []
+                if matches:
+                    for m in matches:
+                        ht = m.get("homeTeam") or {}
+                        at = m.get("awayTeam") or {}
+                        hs = (m.get("homeScore") or {}).get("current")
+                        aas = (m.get("awayScore") or {}).get("current")
+                        if hs is None or aas is None:
+                            continue
+                        ts = m.get("startTimestamp")
+                        dt = datetime.fromtimestamp(int(ts), timezone.utc).isoformat().replace("+00:00","Z") if ts else ""
+                        tournament = m.get("tournament") or {}
+                        rows.append({
+                            "id": m.get("id"),
+                            "date": dt,
+                            "home": clean(ht.get("name")),
+                            "away": clean(at.get("name")),
+                            "home_score": hs,
+                            "away_score": aas,
+                            "competition": clean(tournament.get("name") if isinstance(tournament, dict) else ""),
+                        })
+                    if rows:
+                        break
+            except Exception as ex:
+                print("Sofa H2H events warning:", ref, ex)
+
+        # Prefer SofaScore's official duel summary when available.
+        duel = (summary_raw or {}).get("teamDuel") if isinstance(summary_raw, dict) else {}
+        if not isinstance(duel, dict):
+            duel = {}
+        summary = [
+            int(duel.get("homeWins") or 0),
+            int(duel.get("draws") or 0),
+            int(duel.get("awayWins") or 0),
+        ] if duel else None
+
+        # If no summary is exposed, calculate from returned meetings.
+        if not summary or sum(summary) == 0:
+            home_name = zz_norm((f.get("home") or {}).get("name"))
+            away_name = zz_norm((f.get("away") or {}).get("name"))
+            hw = dw = aw = 0
+            for x in rows:
+                hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
+                if hs is None or aas is None:
+                    continue
+                if hs == aas:
+                    dw += 1
+                elif zz_norm(x.get("home")) == home_name:
+                    hw += 1
+                elif zz_norm(x.get("away")) == home_name:
+                    aw += 1
+            summary = [hw, dw, aw]
+
+        return rows, summary
     except Exception as e:
-        print("Sofa H2H events warning:", event_id, e)
+        print("Sofa H2H warning:", event_id, e)
         return [], None
 
 def fetch_match_contexts():
     """Build form, standings, H2H and optional Betano odds for upcoming matches."""
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     upcoming = [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")]
-    upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)[:12]
+    upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)[:30]
     standings_cache = {}
 
     # Reuse Sporting's team payload and only fetch unique opponents.
@@ -3215,6 +3246,53 @@ def fetch_betano_odds():
     })
 
 
+def fetch_public_match_odds():
+    """Public SofaScore 1X2 fallback. Used when Betano's external feed is not configured."""
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    upcoming = sorted(
+        [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")],
+        key=lambda x: x.get("date") or 0
+    )[:30]
+    result = {}
+    for f in upcoming:
+        try:
+            raw = sofa_get(f"/event/{f['id']}/odds/1/all")
+            markets = raw.get("markets") or raw.get("featured") or []
+            if isinstance(markets, dict):
+                markets = list(markets.values())
+            parsed = []
+            for market in markets if isinstance(markets, list) else []:
+                name = clean(market.get("marketName") or market.get("name") or "")
+                choices = market.get("choices") or market.get("outcomes") or []
+                if not isinstance(choices, list):
+                    continue
+                vals = {}
+                for choice in choices:
+                    cname = clean(choice.get("name") or choice.get("label") or "").lower()
+                    val = choice.get("decimalValue", choice.get("odds"))
+                    if cname in {"1","home","1x2 home"}:
+                        vals["home"] = val
+                    elif cname in {"x","draw","tie"}:
+                        vals["draw"] = val
+                    elif cname in {"2","away","1x2 away"}:
+                        vals["away"] = val
+                if vals:
+                    parsed.append({"name": name or "ML", "odds": [vals]})
+            if parsed:
+                result[str(f["id"])] = {
+                    "updated_at": now_iso(),
+                    "source": "SofaScore",
+                    "bookmakers": {"SofaScore": parsed}
+                }
+        except Exception as e:
+            print("Public odds warning:", f.get("id"), e)
+    write_json("public-odds.json", {
+        "fixtures": result,
+        "source": "SofaScore public odds fallback",
+        "status": "ok"
+    })
+
+
 # Historical team stats and competitive-only team metrics are generated for the PWA.
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
@@ -3258,6 +3336,10 @@ def main():
             fetch_betano_odds()
         except Exception as e:
             print(f"Betano odds skipped: {e}")
+        try:
+            fetch_public_match_odds()
+        except Exception as e:
+            print(f"Public odds fallback skipped: {e}")
         try:
             fetch_fotmob_competition_standings()
         except Exception as e:
