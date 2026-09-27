@@ -3155,17 +3155,33 @@ def fetch_news():
         feeds=[]
         for query in queries:
             rss="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
-            feeds.append(feedparser.parse(rss))
-        seen=set()
+            raw=session.get(rss,timeout=20,headers={"User-Agent":USER_AGENT})
+            raw.raise_for_status()
+            parsed=feedparser.parse(raw.text)
+            feeds.append(parsed)
         for feed in feeds:
             for entry in feed.entries[:40]:
                 title=clean(entry.get("title") or "")
                 link=entry.get("link")
-                if link and title and "sporting" in (title + " " + (entry.get("summary") or "")).lower():
+                summary=clean(entry.get("summary") or "")
+                if link and title and "sporting" in (title+" "+summary).lower():
                     media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                    image=(media[0].get("url") if media and isinstance(media,list) else None)
+                    image=None
+                    if media and isinstance(media,list):
+                        for m in media:
+                            u=m.get("url")
+                            if u and not re.search(r"(google|gstatic|favicon|logo)",u,re.I):
+                                image=u
+                                break
+                    # Google News may expose an image URL in the raw RSS even when
+                    # feedparser does not populate media_content.
+                    if not image:
+                        m=re.search(r'<media:content[^>]+url="([^"]+)"',raw.text,re.I)
+                        if m and not re.search(r"(google|gstatic|favicon|logo)",m.group(1),re.I):
+                            image=m.group(1)
                     add({"title":title,"url":link,"source":"Zerozero",
                          "published":entry.get("published"),
+                         "description":summary[:280] if summary else None,
                          **({"image":image,"image_source":"Zerozero RSS"} if image else {})})
     except Exception as e:
         print("Zerozero Google RSS warning:",e)
