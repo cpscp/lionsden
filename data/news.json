@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T21:24:08.950121+00:00",
+  "_updated_at": "2026-09-27T21:25:29.668008+00:00",
   "items": [
     {
       "title": "Futsal Nuno Dias: \"O Sporting CP perde dois pontos\"",
@@ -282,6 +282,16 @@
       "premium": true
     },
     {
+      "title": "Leões de Portugal recebem galardão de cristal",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
+      "premium": true,
+      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
+      "image_source": "Record article"
+    },
+    {
       "title": "Sporting adia pagamento ao Valladolid: Fresneda fora de jogo por Espanha 'ajuda' cofres dos leões",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
@@ -292,23 +302,13 @@
       "premium": true
     },
     {
-      "title": "Imprensa italiana garante que Milan tentará Gonçalo Inácio no mercado de transferências de inverno",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/imprensa-italiana-garante-que-milan-tentara-goncalo-inacio-no-mercado-de-transferencias-de-inverno?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-19-22-44-48-2463507.jpg",
-      "image_source": "Record listing",
-      "description": "Central do Sporting é apontado como uma 'prioridade' para Ruben Amorim",
-      "published": "2026-09-26",
-      "premium": true
-    },
-    {
-      "title": "Leões de Portugal recebem galardão de cristal",
+      "title": "Jogadores do Sporting na Academia reagem às notas no FC27: «Dava para aumentar um pouquinho»",
       "source": "Record",
       "published": "2026-09-26",
-      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
+      "description": "João Simões, Altimira, Blopa ou Luís Guilherme foram alguns dos atletas dos leões que receberam caixas especiais",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/jogadores-do-sporting-na-academia-reagem-as-notas-no-fc27-dava-para-aumentar-um-pouquinho",
       "premium": true,
-      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
+      "image": "https://cdn.record.pt/images/2026-07/img_1200x721uu2026-07-08-19-02-19-2449875.jpg",
       "image_source": "Record article"
     },
     {
@@ -322,14 +322,14 @@
       "image_source": "Record article"
     },
     {
-      "title": "Jogadores do Sporting na Academia reagem às notas no FC27: «Dava para aumentar um pouquinho»",
+      "title": "Imprensa italiana garante que Milan tentará Gonçalo Inácio no mercado de transferências de inverno",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/imprensa-italiana-garante-que-milan-tentara-goncalo-inacio-no-mercado-de-transferencias-de-inverno?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-19-22-44-48-2463507.jpg",
+      "image_source": "Record listing",
+      "description": "Central do Sporting é apontado como uma 'prioridade' para Ruben Amorim",
       "published": "2026-09-26",
-      "description": "João Simões, Altimira, Blopa ou Luís Guilherme foram alguns dos atletas dos leões que receberam caixas especiais",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/jogadores-do-sporting-na-academia-reagem-as-notas-no-fc27-dava-para-aumentar-um-pouquinho",
-      "premium": true,
-      "image": "https://cdn.record.pt/images/2026-07/img_1200x721uu2026-07-08-19-02-19-2449875.jpg",
-      "image_source": "Record article"
+      "premium": true
     },
     {
       "title": "Saltador Tiago Matos junta-se à equipa de atletismo do Sporting CP",
