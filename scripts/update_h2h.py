@@ -17,7 +17,8 @@ h2h = fetch_zerozero_h2h(upcoming)
 for f in upcoming:
     fid = str(f["id"])
     p = h2h.get(fid)
-    if p is None:
+    if p is None or not p.get("source_ok"):
+        # Never turn a transient source failure into a fake 0-0-0 history.
         continue
     s = p.get("summary")
     if s is None:
@@ -28,6 +29,8 @@ for f in upcoming:
         "draws": int(s[1]),
         "away_wins": int(s[2]),
         "total": int(s[0]) + int(s[1]) + int(s[2]),
+        "source": p.get("source"),
+        "history_found": bool(p.get("history_found")),
     }
 
 write_json("match-context.json", {
