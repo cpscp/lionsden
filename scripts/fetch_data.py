@@ -2649,71 +2649,244 @@ def fetch_match_summary_videos():
     print(f"YouTube match summaries: {len(videos)} videos written.")
 
 def fetch_news():
+    """Build a fast, football-first Sporting news feed.
+
+    Priority:
+      1) Sporting football news from Record, A Bola, O Jogo and Zerozero
+      2) Sporting.pt football
+      3) other Sporting news from Google News
+    Source-specific Google RSS queries are intentional: a generic Sporting
+    query is too broad and under-represents the Portuguese football press.
+    """
+    import asyncio
+    import re
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from urllib.parse import quote
+
     items = []
+    seen = set()
+
+    source_priority = {
+        "Record": 100,
+        "A Bola": 98,
+        "O Jogo": 96,
+        "Zerozero": 94,
+        "Sporting.pt": 92,
+    }
+    football_terms = (
+        "futebol", "sporting", "rui borges", "jogador", "jogadores",
+        "treino", "alvalade", "liga", "champions", "champions league",
+        "taça", "uefa", "mercado", "transferência", "contratação",
+        "convocados", "lesão", "onze", "jogo", "golo", "defesa",
+        "avançado", "médio", "guarda-redes", "futebolista"
+    )
+    non_football_penalty = (
+        "futsal", "andebol", "hóquei", "voleibol", "basquetebol",
+        "atletismo", "natação", "modalidades"
+    )
+
+    def source_from_url(url, fallback="Google News"):
+        u = str(url or "").lower()
+        if "record.pt" in u: return "Record"
+        if "abola.pt" in u: return "A Bola"
+        if "ojogo.pt" in u: return "O Jogo"
+        if "zerozero.pt" in u: return "Zerozero"
+        if "sporting.pt" in u: return "Sporting.pt"
+        return fallback
+
+    def add(item):
+        url = item.get("url")
+        title = clean(item.get("title") or "")
+        if not url or not title or len(title) < 18:
+            return
+        # Prefer decoded/canonical article URLs when available.
+        key = re.sub(r"[?#].*$", "", str(url).rstrip("/")).lower()
+        if key in seen:
+            return
+        item["title"] = title[:180]
+        item["source"] = source_from_url(url, item.get("source") or "Google News")
+        item["_priority"] = source_priority.get(item["source"], 50)
+        blob = title.lower()
+        football = any(t in blob for t in football_terms)
+        modalities = any(t in blob for t in non_football_penalty)
+        item["_football"] = football and not (modalities and "futebol" not in blob)
+        item["_priority"] += 25 if item["_football"] else 0
+        seen.add(key)
+        items.append(item)
 
     def decode_google_urls(rows):
         google_rows=[x for x in rows if "news.google.com/" in str(x.get("url") or "")]
-        if not google_rows: return
+        if not google_rows:
+            return
         try:
-            import asyncio
             from googlenewsdecoder import gnews_decoder_async
             urls=[x["url"] for x in google_rows]
-            results=asyncio.run(gnews_decoder_async(urls,interval=0.2,timeout=12.0,concurrency=6))
-            if isinstance(results,dict): results=[results]
+            results=asyncio.run(gnews_decoder_async(
+                urls, interval=0.15, timeout=10.0, concurrency=8
+            ))
+            if isinstance(results,dict):
+                results=[results]
             for item,result in zip(google_rows,results):
                 if isinstance(result,dict) and result.get("success") and result.get("decoded_url"):
                     item["url"]=result["decoded_url"]
+                    item["source"]=source_from_url(item["url"], item.get("source"))
         except Exception as e:
             print("Google News decoder warning:",e)
 
     def article_metadata(item):
         url=item.get("url")
-        if not url or "news.google.com/" in url: return
+        if not url or "news.google.com/" in url:
+            return item
         try:
-            rr=session.get(url,timeout=10,allow_redirects=True,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status(); final_url=rr.url; ss=BeautifulSoup(rr.text,"html.parser")
-            og=ss.find("meta",attrs={"property":"og:image"}) or ss.find("meta",attrs={"property":"og:image:url"}) or ss.find("meta",attrs={"name":"twitter:image"})
-            desc=ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"})
+            rr=session.get(url,timeout=8,allow_redirects=True,
+                            headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            final_url=rr.url
+            ss=BeautifulSoup(rr.text,"html.parser")
+            item["source"]=source_from_url(final_url,item.get("source"))
+            og=ss.find("meta",attrs={"property":"og:image"}) or ss.find(
+                "meta",attrs={"property":"og:image:url"}) or ss.find(
+                "meta",attrs={"name":"twitter:image"})
+            desc=ss.find("meta",attrs={"property":"og:description"}) or ss.find(
+                "meta",attrs={"name":"description"})
             if og and og.get("content"):
                 image=og.get("content").strip()
                 if image.startswith("//"): image="https:"+image
                 elif image.startswith("/"):
                     from urllib.parse import urljoin
                     image=urljoin(final_url,image)
-                item["image"]=image; item["image_source"]=final_url
-            if desc and desc.get("content"): item["description"]=clean(desc.get("content"))[:280]
-            if final_url and "news.google.com" not in final_url: item["url"]=final_url
-        except Exception as e: print("News metadata warning:",item.get("url"),e)
+                item["image"]=image
+                item["image_source"]=final_url
+            if desc and desc.get("content"):
+                item["description"]=clean(desc.get("content"))[:280]
+            if final_url and "news.google.com" not in final_url:
+                item["url"]=final_url
+        except Exception as e:
+            print("News metadata warning:",item.get("url"),e)
+        return item
 
-    try:
-        r=session.get(SPORTING_NEWS,timeout=25); r.raise_for_status(); soup=BeautifulSoup(r.text,"html.parser"); seen=set()
-        for a in soup.select("a[href]"):
-            href=a.get("href",""); title=" ".join(a.stripped_strings)
-            if href.startswith("/"): href="https://www.sporting.pt"+href
-            if "sporting.pt" not in href or "/noticias/" not in href or len(title)<18: continue
-            if href in seen: continue
-            seen.add(href); items.append({"title":title[:180],"url":href,"source":"Sporting.pt"})
-            if len(items)>=12: break
-    except Exception as e: print("Sporting news warning:",e)
+    def scrape_page(url, source):
+        try:
+            r=session.get(url,timeout=15,headers={"User-Agent":USER_AGENT})
+            r.raise_for_status()
+            soup=BeautifulSoup(r.text,"html.parser")
+            local=[]
+            for a in soup.select("a[href]"):
+                href=a.get("href","")
+                title=" ".join(a.stripped_strings)
+                if href.startswith("/"):
+                    from urllib.parse import urljoin
+                    href=urljoin(url,href)
+                if source_from_url(href) != source or len(title)<18:
+                    continue
+                if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
+                    continue
+                local.append({"title":title,"url":href,"source":source})
+                if len(local)>=18:
+                    break
+            return local
+        except Exception as e:
+            print(f"{source} news warning:",e)
+            return []
 
+    # Direct source pages. These are deliberately football-specific where the
+    # publisher exposes a Sporting football section.
+    direct_sources = [
+        ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
+        ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
+        ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
+        (SPORTING_NEWS, "Sporting.pt"),
+    ]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        futures=[pool.submit(scrape_page,u,s) for u,s in direct_sources]
+        for future in as_completed(futures):
+            for item in future.result():
+                add(item)
+
+    # Targeted Google News RSS for each publisher. This catches O Jogo and
+    # provides a second, fresher route for the other three newspapers.
+    targeted_queries = [
+        ('site:record.pt Sporting futebol', 'Record'),
+        ('site:abola.pt Sporting futebol', 'A Bola'),
+        ('site:ojogo.pt Sporting futebol', 'O Jogo'),
+        ('site:zerozero.pt Sporting futebol', 'Zerozero'),
+        ('"Sporting CP" futebol Portugal', 'Google News'),
+    ]
     try:
         import feedparser
-        feed=feedparser.parse("https://news.google.com/rss/search?q=Sporting%20CP&hl=pt-PT&gl=PT&ceid=PT:pt-150"); existing={x["url"] for x in items}
-        for entry in feed.entries[:40]:
-            url=entry.get("link"); title=entry.get("title")
-            if not url or not title or url in existing: continue
-            source=(entry.get("source") or {}).get("title") or "Google News"
-            items.append({"title":title[:180],"url":url,"source":source,"published":entry.get("published")}); existing.add(url)
-            if len(items)>=30: break
-    except Exception as e: print("Google News warning:",e)
+        for query, expected_source in targeted_queries:
+            rss = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt-150"
+            try:
+                feed=feedparser.parse(rss)
+                for entry in feed.entries[:20]:
+                    url=entry.get("link")
+                    title=entry.get("title")
+                    if not url or not title:
+                        continue
+                    add({
+                        "title":title,
+                        "url":url,
+                        "source":expected_source,
+                        "published":entry.get("published"),
+                    })
+            except Exception as e:
+                print("Google News source warning:",expected_source,e)
+    except Exception as e:
+        print("Google News import warning:",e)
 
     decode_google_urls(items)
-    for item in items[:30]: article_metadata(item)
-    for item in items:
-        item.pop("media_thumbnail",None); item.pop("media_content",None)
-        if not item.get("image"): item.pop("image",None)
-    write_json("news.json",{"items":items})
 
+    # Re-score after URL decoding because Google News initially labels every
+    # item as the expected feed source, while the final URL reveals the actual
+    # publisher. Deduplicate again after decoding.
+    dedup={}
+    for item in items:
+        url=item.get("url")
+        if not url:
+            continue
+        key=re.sub(r"[?#].*$","",str(url).rstrip("/")).lower()
+        item["source"]=source_from_url(url,item.get("source") or "Google News")
+        p=source_priority.get(item["source"],50)
+        title=item.get("title","").lower()
+        item["_football"]=any(t in title for t in football_terms)
+        item["_priority"]=p + (25 if item["_football"] else 0)
+        old=dedup.get(key)
+        if old is None or item["_priority"] > old["_priority"]:
+            dedup[key]=item
+    items=list(dedup.values())
+
+    # Newest first within the football/source priority. This prevents a large
+    # volume of old generic Google results from pushing current football news
+    # out of the app.
+    from email.utils import parsedate_to_datetime
+    def pub_ts(item):
+        try:
+            return parsedate_to_datetime(item.get("published")).timestamp()
+        except Exception:
+            return 0
+    items.sort(key=lambda x:(x.get("_priority",0),pub_ts(x)), reverse=True)
+
+    # Metadata enrichment is the expensive part. Only enrich the visible top
+    # 24 and do it concurrently so a slow publisher cannot stall the whole feed.
+    top=items[:24]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        futures=[pool.submit(article_metadata,item) for item in top]
+        enriched=[]
+        for future in as_completed(futures):
+            enriched.append(future.result())
+    # Restore ranking after concurrent enrichment.
+    enriched.sort(key=lambda x:(x.get("_priority",0),pub_ts(x)), reverse=True)
+
+    for item in enriched:
+        item.pop("_priority",None)
+        item.pop("_football",None)
+        item.pop("media_thumbnail",None)
+        item.pop("media_content",None)
+        if not item.get("image"):
+            item.pop("image",None)
+    write_json("news.json",{"items":enriched[:30]})
+    print("News feed:", len(enriched[:30]), "items;",
+          "football:", sum(1 for x in enriched[:30] if source_from_url(x.get("url")) in source_priority))
 
 def build_fixtures_from_fbref():
     """Build the main fixtures.json from the current FBref schedule."""
