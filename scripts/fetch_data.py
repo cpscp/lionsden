@@ -2883,15 +2883,12 @@ def fetch_news():
             return parsedate_to_datetime(item.get("published")).timestamp()
         except Exception:
             return 0
-    # Football relevance comes first; freshness is the main ordering signal.
-    # Source priority is only a tie-breaker, otherwise one publisher can crowd
-    # the whole feed with older articles.
-    items.sort(key=lambda x:(
-        1 if x.get("_sporting") else 0,
-        1 if x.get("_football") else 0,
-        pub_ts(x),
-        source_priority.get(x.get("source"),50)
-    ), reverse=True)
+    # Only Sporting Clube de Portugal news is allowed into the app.
+    # Football and all Sporting CP modalities are intentionally treated equally.
+    items = [x for x in items if x.get("_sporting")]
+
+    # Strict chronological order: newest publication first.
+    items.sort(key=pub_ts, reverse=True)
 
     # Metadata enrichment is the expensive part. Only enrich the visible top
     # 24 and do it concurrently so a slow publisher cannot stall the whole feed.
