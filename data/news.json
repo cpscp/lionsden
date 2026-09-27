@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T21:20:14.573450+00:00",
+  "_updated_at": "2026-09-27T21:24:08.950121+00:00",
   "items": [
     {
       "title": "Futsal Nuno Dias: \"O Sporting CP perde dois pontos\"",
@@ -78,7 +78,8 @@
       "image": "https://cdn.record.pt/images/2026-05/img_1200x721uu2026-05-01-12-35-04-2436244.jpg",
       "image_source": "Record listing",
       "description": "Presidente da sociedade leonina passou a receber 776.500 euros. Prémios monetários pelas prestações desportiva e financeira pesaram na subida",
-      "published": "2026-09-27"
+      "published": "2026-09-27",
+      "premium": true
     },
     {
       "title": "Issa Doumbia mantém-se nas escolhas de Roberto Mancini após 'corte' a pensar na visita à Turquia",
@@ -87,7 +88,8 @@
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-22-42-10-2464739.jpg",
       "image_source": "Record listing",
       "description": "De modo a gerir o plantel de Itália, selecionador deixou 10 futebolistas em solo transalpino e rumou com a restante comitiva até Bursa",
-      "published": "2026-09-27"
+      "published": "2026-09-27",
+      "premium": true
     },
     {
       "title": "Colega de seleção admite que Irankunda está nas nuvens: «Ainda não parou de ver repetições do golo ao Brasil»",
@@ -96,16 +98,8 @@
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-16-46-06-2464639.jpg",
       "image_source": "Record listing",
       "description": "Extremo do Sporting esteve em destaque com golaço de livre direto pela Austrália frente à canarinha",
-      "published": "2026-09-27"
-    },
-    {
-      "title": "Luis Suárez deixou dedicatória especial no regresso aos golos pela seleção da Colômbia",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/luis-suarez-deixou-dedicatoria-especial-no-regresso-aos-golos-pela-selecao-da-colombia?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-24-11-58-44-2446601-im-639178995144585184.jpg",
-      "image_source": "Record listing",
-      "description": "Avançado do Sporting faturou no empate (1-1) diante do México",
-      "published": "2026-09-27"
+      "published": "2026-09-27",
+      "premium": true
     },
     {
       "title": "Projeto Altimira em marcha: Sporting quer tornar espanhol numa referência",
@@ -114,7 +108,18 @@
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-05-11-33-27-2460704.jpg",
       "image_source": "Record listing",
       "description": "Com poucos meses de trabalho, estrutura entende que reforço é líder dentro e fora do relvado, pelo que perspetiva ainda maior protagonismo",
-      "published": "2026-09-27"
+      "published": "2026-09-27",
+      "premium": true
+    },
+    {
+      "title": "Luis Suárez deixou dedicatória especial no regresso aos golos pela seleção da Colômbia",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/luis-suarez-deixou-dedicatoria-especial-no-regresso-aos-golos-pela-selecao-da-colombia?ref=Sporting_DestaquesPrincipais",
+      "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-24-11-58-44-2446601-im-639178995144585184.jpg",
+      "image_source": "Record listing",
+      "description": "Avançado do Sporting faturou no empate (1-1) diante do México",
+      "published": "2026-09-27",
+      "premium": true
     },
     {
       "title": "Basquetebol Projecto GUTS chega ao Sporting CP",
@@ -273,7 +278,8 @@
       "image": "https://cdn.record.pt/images/2026-08/img_1200x721uu2026-08-22-19-49-02-2458279.jpg",
       "image_source": "Record listing",
       "description": "Além da intervenção no tapete verde do recinto leonino, prossegue a renovação das zonas interiores",
-      "published": "2026-09-26"
+      "published": "2026-09-26",
+      "premium": true
     },
     {
       "title": "Sporting adia pagamento ao Valladolid: Fresneda fora de jogo por Espanha 'ajuda' cofres dos leões",
@@ -282,7 +288,8 @@
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-18-17-07-17-2463281.jpg",
       "image_source": "Record listing",
       "description": "SAD dos verdes e brancos terá de desembolsar 250 mil euros caso o lateral seja utilizado na La Roja",
-      "published": "2026-09-26"
+      "published": "2026-09-26",
+      "premium": true
     },
     {
       "title": "Imprensa italiana garante que Milan tentará Gonçalo Inácio no mercado de transferências de inverno",
@@ -291,16 +298,8 @@
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-19-22-44-48-2463507.jpg",
       "image_source": "Record listing",
       "description": "Central do Sporting é apontado como uma 'prioridade' para Ruben Amorim",
-      "published": "2026-09-26"
-    },
-    {
-      "title": "Vitamina F: Sporting já tem acordos com Flávio Gonçalves e Fresneda para renovar os seus contratos até 2031",
-      "source": "Record",
       "published": "2026-09-26",
-      "description": "SAD espera anunciar novas ligações depois da primeira pausa FIFA da temporada. O que muda nos vínculos do criativo e lateral-direito",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/vitamina-f-sporting-ja-tem-acordos-com-flavio-goncalves-e-fresneda-para-renovar-os-seus-contratos-ate-2031",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-20-30-17-2464691.jpg",
-      "image_source": "Record article"
+      "premium": true
     },
     {
       "title": "Leões de Portugal recebem galardão de cristal",
@@ -308,7 +307,18 @@
       "published": "2026-09-26",
       "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
+      "premium": true,
       "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
+      "image_source": "Record article"
+    },
+    {
+      "title": "Vitamina F: Sporting já tem acordos com Flávio Gonçalves e Fresneda para renovar os seus contratos até 2031",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "SAD espera anunciar novas ligações depois da primeira pausa FIFA da temporada. O que muda nos vínculos do criativo e lateral-direito",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/vitamina-f-sporting-ja-tem-acordos-com-flavio-goncalves-e-fresneda-para-renovar-os-seus-contratos-ate-2031",
+      "premium": true,
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-20-30-17-2464691.jpg",
       "image_source": "Record article"
     },
     {
@@ -317,6 +327,7 @@
       "published": "2026-09-26",
       "description": "João Simões, Altimira, Blopa ou Luís Guilherme foram alguns dos atletas dos leões que receberam caixas especiais",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/jogadores-do-sporting-na-academia-reagem-as-notas-no-fc27-dava-para-aumentar-um-pouquinho",
+      "premium": true,
       "image": "https://cdn.record.pt/images/2026-07/img_1200x721uu2026-07-08-19-02-19-2449875.jpg",
       "image_source": "Record article"
     },
