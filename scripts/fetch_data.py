@@ -2871,8 +2871,13 @@ def _context_team_form(team_payload, limit=5):
     return rows[-limit:]
 
 
-def _standings_context():
-    data = safe_existing("standings.json") or {}
+def _standings_context(competition_name=""):
+    all_data = safe_existing("standings-competitions.json") or {}
+    wanted = zz_norm(competition_name)
+    key_alias = "primeira-liga" if "liga portugal" in wanted or "primeira liga" in wanted else ("champions" if "champions" in wanted or "liga dos campeoes" in wanted else "")
+    data = all_data.get(key_alias) if key_alias else None
+    if not isinstance(data, dict):
+        data = safe_existing("standings.json") or {}
     rows = data.get("table") or []
     out = {}
     for row in rows:
@@ -2939,7 +2944,7 @@ def fetch_match_contexts():
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     upcoming = [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")]
     upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)[:12]
-    standings = _standings_context()
+    standings_cache = {}
 
     # Reuse Sporting's team payload and only fetch unique opponents.
     team_payloads = {str(SPORTING_FOTMOB_ID): fotmob_get("/api/data/teams", {"id": SPORTING_FOTMOB_ID, "ccode3": "PRT"})}
@@ -2960,6 +2965,7 @@ def fetch_match_contexts():
     for f in upcoming:
         fid = str(f["id"])
         sides = {}
+        standings = standings_cache.setdefault(clean((f.get("competition") or {}).get("name")), _standings_context(clean((f.get("competition") or {}).get("name"))))
         for side in ("home", "away"):
             team = f.get(side) or {}
             tid = str(team.get("id") or "")
