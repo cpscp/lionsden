@@ -2906,7 +2906,7 @@ def fetch_news():
                             try:
                                 cards=gs.select("a.iusc")
                                 cdn_hits=re.findall(r'https?://[^"\\s<>]*cdn-img[^"\\s<>]*',gr.text,re.I)
-                                print("ZZ_GOOGLE_DEBUG", item.get("url"), "STATUS", gr.status_code, "LEN", len(gr.text), "IUSC", len(cards), "CDN", len(cdn_hits))
+                                print("ZZ_GOOGLE_DEBUG", item.get("url"), "STATUS", gr.status_code, "LEN", len(gr.text), "IUSC", len(cards), "CDN", len(cdn_hits), "TBM", gr.text.lower().count("encrypted-tbn"), "STATICZZ", gr.text.lower().count("staticzz"), "ZEROZERO", gr.text.lower().count("zerozero.pt"))
                                 for dbg in cards[:8]:
                                     raw_dbg=dbg.get("m") or ""
                                     try:
