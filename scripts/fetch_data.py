@@ -3395,133 +3395,105 @@ def fetch_betano_odds():
 
 ODDSPAPI_BASE = "https://api.oddspapi.io/v4"
 
+def _public_odds_from_sportytrader(upcoming):
+    """Public 1X2 fallback when no OddsPapi key is configured."""
+    texts=[]
+    for url in ("https://www.sportytrader.pt/quotas/futebol/","https://www.sportytrader.pt/quotas/"):
+        try:
+            rr=session.get(url,timeout=35,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            texts.append(BeautifulSoup(rr.text,"html.parser").get_text(" ",strip=True))
+        except Exception as e:
+            print("SportyTrader odds warning:",url,e)
+    if not texts: return {}
+
+    def norm(v): return re.sub(r"[^a-z0-9]+","",zz_norm(v))
+    aliases={
+        "sportingcp":"sporting","sporting":"sporting","braga":"braga","fcporto":"fcporto","porto":"fcporto",
+        "manunited":"manchesterunited","manchesterunited":"manchesterunited","gilvicente":"gilvicente",
+        "asroma":"roma","roma":"roma","shakhtardonetsk":"shakhtardonetsk","lask":"lasklinz"
+    }
+    def nk(v): return aliases.get(norm(v),norm(v))
+    pattern=re.compile(
+        r"(\d{1,2}\s+[a-zçãéêíóú]+\.?(?:\s*[-/]\s*\d{1,2})?\s*-\s*\d{2}:\d{2})\s+"
+        r"(.+?)\s+-\s+(.+?)\s+1\s+([0-9]+(?:[.,][0-9]+)?)\s+X\s+([0-9]+(?:[.,][0-9]+)?)\s+2\s+([0-9]+(?:[.,][0-9]+)?)",
+        re.I
+    )
+    matches=[]
+    for text in texts: matches.extend(pattern.findall(text))
+    result={}
+    for f in upcoming:
+        hn,an=nk((f.get("home") or {}).get("name")),nk((f.get("away") or {}).get("name"))
+        for _,home,away,oh,od,oa in matches:
+            if nk(home)==hn and nk(away)==an:
+                result[str(f["id"])]={
+                    "updated_at":now_iso(),
+                    "source":"SportyTrader public odds comparator",
+                    "bookmaker_name":"Mercado",
+                    "bookmakers":{"Mercado":[{"name":"ML","odds":[{"home":oh.replace(",","."),"draw":od.replace(",","."),"away":oa.replace(",",".")}]}]}
+                }
+                break
+    return result
+
 def fetch_oddspapi_betano_odds():
-    """Fetch Betano 1X2 odds in bulk through OddsPapi."""
-    api_key = os.environ.get("ODDSPAPI_API_KEY")
+    """Use Betano via OddsPapi when configured; otherwise never leave odds empty."""
+    api_key=os.environ.get("ODDSPAPI_API_KEY")
+    fixtures=(safe_existing("fixtures.json") or {}).get("fixtures",[])
+    upcoming=sorted([f for f in fixtures if f.get("status",{}).get("short")=="scheduled" and f.get("id")],key=lambda x:x.get("date") or 0)[:30]
     if not api_key:
-        write_json("betano-odds.json", {
-            "fixtures": {},
-            "source": "Betano via OddsPapi",
-            "status": "not_configured"
-        })
+        result=_public_odds_from_sportytrader(upcoming)
+        write_json("betano-odds.json",{"fixtures":result,"source":"SportyTrader public odds comparator","status":"public_fallback","coverage":len(result)})
         return
 
-    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
-    upcoming = sorted(
-        [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")],
-        key=lambda x: x.get("date") or 0
-    )[:30]
-
     try:
-        tr = session.get(
-            f"{ODDSPAPI_BASE}/tournaments",
-            params={"sportId": 10, "apiKey": api_key},
-            timeout=30
-        )
+        tr=session.get(f"{ODDSPAPI_BASE}/tournaments",params={"sportId":10,"apiKey":api_key},timeout=30)
         tr.raise_for_status()
-        tournaments = tr.json()
-        if not isinstance(tournaments, list):
-            tournaments = tournaments.get("data", []) if isinstance(tournaments, dict) else []
-        wanted_ids = []
+        tournaments=tr.json()
+        if not isinstance(tournaments,list): tournaments=tournaments.get("data",[]) if isinstance(tournaments,dict) else []
+        wanted_ids=[]
         for t in tournaments:
-            name = zz_norm(t.get("tournamentName") or t.get("name") or "")
-            slug = zz_norm(t.get("tournamentSlug") or t.get("slug") or "")
-            if any(k in (name + slug) for k in (
-                "liga portugal", "primeira liga", "liga portuguesa",
-                "uefa champions league", "champions league", "allianz cup", "taca da liga"
-            )):
-                if t.get("tournamentId") is not None:
-                    wanted_ids.append(str(t["tournamentId"]))
-        wanted_ids = list(dict.fromkeys(wanted_ids))
-        if not wanted_ids:
-            raise RuntimeError("OddsPapi returned no relevant football tournaments.")
-
-        rr = session.get(
-            f"{ODDSPAPI_BASE}/odds-by-tournaments",
-            params={
-                "bookmaker": "betano",
-                "tournamentIds": ",".join(wanted_ids),
-                "apiKey": api_key,
-                "oddsFormat": "decimal",
-            },
-            timeout=40
-        )
+            n=zz_norm(t.get("tournamentName") or t.get("name") or "")
+            s=zz_norm(t.get("tournamentSlug") or t.get("slug") or "")
+            if any(k in n+s for k in ("liga portugal","primeira liga","uefa champions league","champions league","allianz cup","taca da liga")) and t.get("tournamentId") is not None:
+                wanted_ids.append(str(t["tournamentId"]))
+        rr=session.get(f"{ODDSPAPI_BASE}/odds-by-tournaments",params={"bookmaker":"betano","tournamentIds":",".join(dict.fromkeys(wanted_ids)),"apiKey":api_key,"oddsFormat":"decimal"},timeout=40)
         rr.raise_for_status()
-        payload = rr.json()
-        rows = payload.get("data", []) if isinstance(payload, dict) else payload
-        if not isinstance(rows, list):
-            rows = []
-
-        def norm(v):
-            return re.sub(r"[^a-z0-9]+", "", zz_norm(v))
-
-        result = {}
+        payload=rr.json()
+        rows=payload.get("data",[]) if isinstance(payload,dict) else payload
+        if not isinstance(rows,list): rows=[]
+        def norm(v): return re.sub(r"[^a-z0-9]+","",zz_norm(v))
+        result={}
         for f in upcoming:
-            hn = norm((f.get("home") or {}).get("name"))
-            an = norm((f.get("away") or {}).get("name"))
-            target = int(f.get("date") or 0)
-            best = None
-            best_delta = None
+            hn,an=norm((f.get("home") or {}).get("name")),norm((f.get("away") or {}).get("name"))
+            target=int(f.get("date") or 0); best=None; best_delta=None
             for row in rows:
-                if not row.get("hasOdds"):
-                    continue
-                # OddsPapi uses participant names on fixture endpoints; if absent,
-                # compare through the external kickoff time and then validate in
-                # the bookmaker fixture payload.
-                p1 = norm(row.get("participant1Name") or "")
-                p2 = norm(row.get("participant2Name") or "")
-                if p1 and p2 and not (
-                    (p1 == hn and p2 == an) or (p1 == an and p2 == hn)
-                ):
-                    continue
-                try:
-                    rd = datetime.fromisoformat(str(row.get("startTime")).replace("Z","+00:00")).timestamp()
-                except Exception:
-                    rd = 0
-                delta = abs(rd - target)
-                if best is None or delta < best_delta:
-                    best, best_delta = row, delta
-            if not best:
-                continue
-
-            book = (best.get("bookmakerOdds") or {}).get("betano") or {}
-            markets = book.get("markets") or {}
-            market = markets.get("101") or {}
-            outcomes = market.get("outcomes") or {}
-            vals = {}
-            for oid, key in (("101","home"),("102","draw"),("103","away")):
-                choice = outcomes.get(oid) or {}
-                players = choice.get("players") or {}
-                player = players.get("0") or next(iter(players.values()), {})
-                price = player.get("price")
-                if price not in (None, ""):
-                    vals[key] = price
-            if all(k in vals for k in ("home","draw","away")):
-                result[str(f["id"])] = {
-                    "updated_at": clean(best.get("updatedAt")) or now_iso(),
-                    "source": "Betano via OddsPapi",
-                    "bookmakers": {
-                        "Betano PT": [{
-                            "name": "ML",
-                            "odds": [vals]
-                        }]
-                    }
+                if not row.get("hasOdds"): continue
+                p1,p2=norm(row.get("participant1Name") or ""),norm(row.get("participant2Name") or "")
+                if p1 and p2 and not ((p1==hn and p2==an) or (p1==an and p2==hn)): continue
+                try: rd=datetime.fromisoformat(str(row.get("startTime")).replace("Z","+00:00")).timestamp()
+                except Exception: rd=0
+                delta=abs(rd-target)
+                if best is None or delta<best_delta: best,best_delta=row,delta
+            if not best: continue
+            book=(best.get("bookmakerOdds") or {}).get("betano") or {}
+            outcomes=((book.get("markets") or {}).get("101") or {}).get("outcomes") or {}
+            vals={}
+            for oid,key in (("101","home"),("102","draw"),("103","away")):
+                players=(outcomes.get(oid) or {}).get("players") or {}
+                p=players.get("0") or next(iter(players.values()),{})
+                if p.get("price") not in (None,""): vals[key]=p.get("price")
+            if len(vals)==3:
+                result[str(f["id"])]={
+                    "updated_at":clean(best.get("updatedAt")) or now_iso(),
+                    "source":"Betano via OddsPapi","bookmaker_name":"Betano",
+                    "bookmakers":{"Betano PT":[{"name":"ML","odds":[vals]}]}
                 }
-
-        write_json("betano-odds.json", {
-            "fixtures": result,
-            "source": "Betano via OddsPapi",
-            "status": "ok",
-            "coverage": len(result)
-        })
+        write_json("betano-odds.json",{"fixtures":result,"source":"Betano via OddsPapi","status":"ok","coverage":len(result)})
     except Exception as e:
-        print("OddsPapi Betano warning:", e)
-        write_json("betano-odds.json", {
-            "fixtures": {},
-            "source": "Betano via OddsPapi",
-            "status": "error",
-            "error": str(e)
-        })
+        print("OddsPapi Betano warning:",e)
+        result=_public_odds_from_sportytrader(upcoming)
+        write_json("betano-odds.json",{"fixtures":result,"source":"SportyTrader public odds comparator","status":"public_fallback","coverage":len(result),"error":str(e)})
+
 
 
 # Historical team stats and competitive-only team metrics are generated for the PWA.
