@@ -2890,6 +2890,52 @@ def fetch_news():
             except Exception as ex:
                 print("News discovery warning:", ex)
 
+    # RSS transport fallback for the two press sources. The final stored
+    # URL/source remains Record or A Bola; Google News is only transport.
+    try:
+        import feedparser
+        from urllib.parse import quote
+        rss_sources = [
+            ("site:record.pt/futebol/futebol-nacional/liga-betclic/sporting Sporting", "Record"),
+            ("site:abola.pt/noticias/ Sporting", "A Bola"),
+        ]
+        for query, source in rss_sources:
+            rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
+            raw = session.get(rss_url, timeout=18, headers={"User-Agent": USER_AGENT})
+            raw.raise_for_status()
+            xml = BeautifulSoup(raw.text, "xml")
+            for node in xml.find_all("item")[:40]:
+                title = clean(node.find("title").get_text(" ", strip=True) if node.find("title") else "")
+                link = (node.find("link").get_text(" ", strip=True) if node.find("link") else "").strip()
+                if not link or source_for(link) != source or len(title) < 18:
+                    continue
+                desc_node = node.find("description")
+                raw_desc = desc_node.decode_contents() if desc_node else ""
+                ds = BeautifulSoup(raw_desc, "html.parser")
+                desc = clean(ds.get_text(" ", strip=True))[:300]
+                image = None
+                for tag_name in ("media:content","media:thumbnail","enclosure"):
+                    mn = node.find(tag_name)
+                    if mn and (mn.get("url") or mn.get("href")):
+                        image = mn.get("url") or mn.get("href")
+                        break
+                if not image:
+                    im = ds.find("img")
+                    if im:
+                        image = im.get("src") or im.get("data-src")
+                pub = node.find("pubDate")
+                published = pub.get_text(" ", strip=True) if pub else None
+                add({
+                    "title": title,
+                    "url": link,
+                    "source": source,
+                    "published": published,
+                    "description": desc,
+                    **({"image": image, "image_source": source + " Google News RSS"} if image else {}),
+                })
+    except Exception as ex:
+        print("News RSS transport warning:", ex)
+
     # Enrich the discovered articles concurrently. This is intentionally
     # source-neutral: every source gets the same metadata treatment.
     with ThreadPoolExecutor(max_workers=12) as pool:
