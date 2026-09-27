@@ -2804,6 +2804,7 @@ def fetch_news():
         ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
         ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
         ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
+        ("https://www.ojogo.pt/futebol/1a-liga/sporting/", "O Jogo"),
         (SPORTING_NEWS, "Sporting.pt"),
     ]
     with ThreadPoolExecutor(max_workers=4) as pool:
@@ -2812,39 +2813,8 @@ def fetch_news():
             for item in future.result():
                 add(item)
 
-    # Targeted Google News RSS for each publisher. This catches O Jogo and
-    # provides a second, fresher route for the other three newspapers.
-    targeted_queries = [
-        ('site:record.pt "Sporting CP"', 'Record'),
-        ('site:abola.pt "Sporting CP"', 'A Bola'),
-        ('site:ojogo.pt "Sporting CP"', 'O Jogo'),
-        ('site:zerozero.pt "Sporting CP"', 'Zerozero'),
-        ('"Sporting Clube de Portugal" Portugal', 'Google News'),
-        ('"Sporting CP" modalidades Portugal', 'Google News'),
-    ]
-    try:
-        import feedparser
-        for query, expected_source in targeted_queries:
-            rss = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt-150"
-            try:
-                feed=feedparser.parse(rss)
-                for entry in feed.entries[:20]:
-                    url=entry.get("link")
-                    title=entry.get("title")
-                    if not url or not title:
-                        continue
-                    add({
-                        "title":title,
-                        "url":url,
-                        "source":expected_source,
-                        "published":entry.get("published"),
-                    })
-            except Exception as e:
-                print("Google News source warning:",expected_source,e)
-    except Exception as e:
-        print("Google News import warning:",e)
-
-    decode_google_urls(items)
+    # Google News intentionally excluded: only identified publisher sources
+    # are allowed in the Sporting CP news feed.
 
     # Re-score after URL decoding because Google News initially labels every
     # item as the expected feed source, while the final URL reveals the actual
