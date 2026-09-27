@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T13:07:51.259747+00:00",
+  "_updated_at": "2026-09-27T13:08:30.404Z",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -48,44 +48,6 @@
       "history_found": true,
       "updated_at": "2026-09-27T13:07:51.259492+00:00"
     },
-    "6106281": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2020-10-01T19:00:00.000Z",
-          "home": "Sporting CP",
-          "away": "LASK",
-          "home_score": 1,
-          "away_score": 4,
-          "competition": "Europa League Qualification"
-        },
-        {
-          "id": null,
-          "date": "2019-12-12T17:55:00.000Z",
-          "home": "LASK",
-          "away": "Sporting CP",
-          "home_score": 3,
-          "away_score": 0,
-          "competition": "Europa League Grp. D"
-        },
-        {
-          "id": null,
-          "date": "2019-10-03T19:00:00.000Z",
-          "home": "Sporting CP",
-          "away": "LASK",
-          "home_score": 2,
-          "away_score": 1,
-          "competition": "Europa League Grp. D"
-        }
-      ],
-      "home_wins": 1,
-      "draws": 0,
-      "away_wins": 2,
-      "total": 3,
-      "source": "FotMob",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:07:51.259523+00:00"
-    },
     "5887661": {
       "matches": [],
       "home_wins": 0,
@@ -95,53 +57,6 @@
       "source": "FotMob",
       "history_found": true,
       "updated_at": "2026-09-27T12:49:28.533530+00:00"
-    },
-    "5985964": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2023-05-13T19:30:00.000Z",
-          "home": "Sporting CP",
-          "away": "Marítimo",
-          "home_score": 2,
-          "away_score": 1,
-          "competition": "Liga Portugal"
-        },
-        {
-          "id": null,
-          "date": "2023-01-08T18:00:00.000Z",
-          "home": "Marítimo",
-          "away": "Sporting CP",
-          "home_score": 1,
-          "away_score": 0,
-          "competition": "Liga Portugal"
-        },
-        {
-          "id": null,
-          "date": "2022-12-13T20:45:00.000Z",
-          "home": "Sporting CP",
-          "away": "Marítimo",
-          "home_score": 5,
-          "away_score": 0,
-          "competition": "League Cup"
-        },
-        {
-          "id": null,
-          "date": "2022-02-26T18:00:00.000Z",
-          "home": "Marítimo",
-          "away": "Sporting CP",
-          "home_score": 1,
-          "away_score": 1,
-          "competition": "Liga Portugal"
-        }
-      ],
-      "home_wins": 20,
-      "draws": 7,
-      "away_wins": 6,
-      "total": 33,
-      "source": "FotMob",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:07:51.259542+00:00"
     },
     "5887666": {
       "matches": [
@@ -237,6 +152,53 @@
       "history_found": true,
       "updated_at": "2026-09-27T13:07:51.259560+00:00"
     },
+    "5887687": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-22",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 0,
+          "competition": "Taça de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-02-09",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Liga Portugal Betclic"
+        },
+        {
+          "id": null,
+          "date": "2025-01-07",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Taça da Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-08-31",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal Betclic"
+        }
+      ],
+      "home_wins": 0,
+      "draws": 2,
+      "away_wins": 2,
+      "total": 4,
+      "source": "ZeroZero historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:07:51.259590+00:00"
+    },
     "5887698": {
       "matches": [
         {
@@ -284,63 +246,115 @@
       "history_found": true,
       "updated_at": "2026-09-27T13:07:51.259595+00:00"
     },
-    "6106275": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2022-07-19T19:00:00.000Z",
-          "home": "Sporting CP",
-          "away": "Roma",
-          "home_score": 3,
-          "away_score": 2,
-          "competition": "Club Friendlies"
-        },
-        {
-          "id": null,
-          "date": "2015-08-01T18:50:00.000Z",
-          "home": "Sporting CP",
-          "away": "Roma",
-          "home_score": 2,
-          "away_score": 0,
-          "competition": "Club Friendlies"
-        }
-      ],
+    "5887702": {
+      "matches": [],
       "home_wins": 0,
       "draws": 0,
-      "away_wins": 2,
-      "total": 2,
-      "source": "FotMob",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304349+00:00"
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304355+00:00"
     },
-    "6106278": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2017-12-05T19:45:00.000Z",
-          "home": "Barcelona",
-          "away": "Sporting CP",
-          "home_score": 2,
-          "away_score": 0,
-          "competition": "Champions League"
-        },
-        {
-          "id": null,
-          "date": "2017-09-27T18:45:00.000Z",
-          "home": "Sporting CP",
-          "away": "Barcelona",
-          "home_score": 0,
-          "away_score": 1,
-          "competition": "Champions League"
-        }
-      ],
+    "5887716": {
+      "matches": [],
       "home_wins": 0,
       "draws": 0,
-      "away_wins": 2,
-      "total": 2,
-      "source": "FotMob",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304379+00:00"
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304360+00:00"
+    },
+    "5887724": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304365+00:00"
+    },
+    "5887734": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304369+00:00"
+    },
+    "5887735": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304375+00:00"
+    },
+    "5887752": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304384+00:00"
+    },
+    "5887760": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304394+00:00"
+    },
+    "5887769": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304398+00:00"
+    },
+    "5887778": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304402+00:00"
+    },
+    "5887784": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304410+00:00"
+    },
+    "5887796": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304415+00:00"
     },
     "5887800": {
       "matches": [
@@ -493,287 +507,6 @@
       "history_found": true,
       "updated_at": "2026-09-27T13:07:51.259647+00:00"
     },
-    "5887851": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2023-05-13T19:30:00.000Z",
-          "home": "Sporting CP",
-          "away": "Marítimo",
-          "home_score": 2,
-          "away_score": 1,
-          "competition": "Liga Portugal"
-        },
-        {
-          "id": null,
-          "date": "2023-01-08T18:00:00.000Z",
-          "home": "Marítimo",
-          "away": "Sporting CP",
-          "home_score": 1,
-          "away_score": 0,
-          "competition": "Liga Portugal"
-        },
-        {
-          "id": null,
-          "date": "2022-12-13T20:45:00.000Z",
-          "home": "Sporting CP",
-          "away": "Marítimo",
-          "home_score": 5,
-          "away_score": 0,
-          "competition": "League Cup"
-        },
-        {
-          "id": null,
-          "date": "2022-02-26T18:00:00.000Z",
-          "home": "Marítimo",
-          "away": "Sporting CP",
-          "home_score": 1,
-          "away_score": 1,
-          "competition": "Liga Portugal"
-        }
-      ],
-      "home_wins": 20,
-      "draws": 7,
-      "away_wins": 6,
-      "total": 33,
-      "source": "FotMob",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:07:51.259660+00:00"
-    },
-    "6106414": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304272+00:00"
-    },
-    "6106335": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304309+00:00"
-    },
-    "6106279": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2007-11-27",
-          "home": "Manchester United",
-          "away": "Sporting CP",
-          "home_score": 2,
-          "away_score": 1,
-          "competition": "UEFA Champions League"
-        },
-        {
-          "id": null,
-          "date": "2007-09-19",
-          "home": "Sporting CP",
-          "away": "Manchester United",
-          "home_score": 0,
-          "away_score": 1,
-          "competition": "UEFA Champions League"
-        },
-        {
-          "id": null,
-          "date": "1964-03-18",
-          "home": "Sporting CP",
-          "away": "Manchester United",
-          "home_score": 5,
-          "away_score": 0,
-          "competition": "European Cup Winners' Cup"
-        },
-        {
-          "id": null,
-          "date": "1964-02-26",
-          "home": "Manchester United",
-          "away": "Sporting CP",
-          "home_score": 4,
-          "away_score": 1,
-          "competition": "European Cup Winners' Cup"
-        }
-      ],
-      "home_wins": 2,
-      "draws": 0,
-      "away_wins": 2,
-      "total": 4,
-      "source": "UEFA historical H2H fallback",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:07:51.259576+00:00"
-    },
-    "5887687": {
-      "matches": [
-        {
-          "id": null,
-          "date": "2026-04-22",
-          "home": "FC Porto",
-          "away": "Sporting CP",
-          "home_score": 0,
-          "away_score": 0,
-          "competition": "Taça de Portugal"
-        },
-        {
-          "id": null,
-          "date": "2026-02-09",
-          "home": "FC Porto",
-          "away": "Sporting CP",
-          "home_score": 1,
-          "away_score": 1,
-          "competition": "Liga Portugal Betclic"
-        },
-        {
-          "id": null,
-          "date": "2025-01-07",
-          "home": "Sporting CP",
-          "away": "FC Porto",
-          "home_score": 1,
-          "away_score": 0,
-          "competition": "Taça da Liga"
-        },
-        {
-          "id": null,
-          "date": "2024-08-31",
-          "home": "Sporting CP",
-          "away": "FC Porto",
-          "home_score": 2,
-          "away_score": 0,
-          "competition": "Liga Portugal Betclic"
-        }
-      ],
-      "home_wins": 0,
-      "draws": 2,
-      "away_wins": 2,
-      "total": 4,
-      "source": "ZeroZero historical H2H fallback",
-      "history_found": true,
-      "updated_at": "2026-09-27T13:07:51.259590+00:00"
-    },
-    "5887702": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304355+00:00"
-    },
-    "5887716": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304360+00:00"
-    },
-    "5887724": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304365+00:00"
-    },
-    "5887734": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304369+00:00"
-    },
-    "5887735": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304375+00:00"
-    },
-    "5887752": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304384+00:00"
-    },
-    "6106255": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304389+00:00"
-    },
-    "5887760": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304394+00:00"
-    },
-    "5887769": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304398+00:00"
-    },
-    "5887778": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304402+00:00"
-    },
-    "5887784": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304410+00:00"
-    },
-    "5887796": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304415+00:00"
-    },
     "5887840": {
       "matches": [
         {
@@ -821,6 +554,53 @@
       "history_found": true,
       "updated_at": "2026-09-27T13:07:51.259656+00:00"
     },
+    "5887851": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2023-05-13T19:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Marítimo",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2023-01-08T18:00:00.000Z",
+          "home": "Marítimo",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2022-12-13T20:45:00.000Z",
+          "home": "Sporting CP",
+          "away": "Marítimo",
+          "home_score": 5,
+          "away_score": 0,
+          "competition": "League Cup"
+        },
+        {
+          "id": null,
+          "date": "2022-02-26T18:00:00.000Z",
+          "home": "Marítimo",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        }
+      ],
+      "home_wins": 20,
+      "draws": 7,
+      "away_wins": 6,
+      "total": 33,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:07:51.259660+00:00"
+    },
     "5887855": {
       "matches": [],
       "home_wins": 0,
@@ -860,6 +640,226 @@
       "source": "unavailable",
       "history_found": false,
       "updated_at": "2026-09-27T13:03:26.304465+00:00"
+    },
+    "5985964": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2023-05-13T19:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Marítimo",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2023-01-08T18:00:00.000Z",
+          "home": "Marítimo",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2022-12-13T20:45:00.000Z",
+          "home": "Sporting CP",
+          "away": "Marítimo",
+          "home_score": 5,
+          "away_score": 0,
+          "competition": "League Cup"
+        },
+        {
+          "id": null,
+          "date": "2022-02-26T18:00:00.000Z",
+          "home": "Marítimo",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        }
+      ],
+      "home_wins": 20,
+      "draws": 7,
+      "away_wins": 6,
+      "total": 33,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:07:51.259542+00:00"
+    },
+    "6106255": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304389+00:00"
+    },
+    "6106275": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2022-07-19T19:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Roma",
+          "home_score": 3,
+          "away_score": 2,
+          "competition": "Club Friendlies"
+        },
+        {
+          "id": null,
+          "date": "2015-08-01T18:50:00.000Z",
+          "home": "Sporting CP",
+          "away": "Roma",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Club Friendlies"
+        }
+      ],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 2,
+      "total": 2,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:03:26.304349+00:00"
+    },
+    "6106278": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2017-12-05T19:45:00.000Z",
+          "home": "Barcelona",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Champions League"
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T18:45:00.000Z",
+          "home": "Sporting CP",
+          "away": "Barcelona",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "Champions League"
+        }
+      ],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 2,
+      "total": 2,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:03:26.304379+00:00"
+    },
+    "6106279": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2007-11-27",
+          "home": "Manchester United",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "UEFA Champions League"
+        },
+        {
+          "id": null,
+          "date": "2007-09-19",
+          "home": "Sporting CP",
+          "away": "Manchester United",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "UEFA Champions League"
+        },
+        {
+          "id": null,
+          "date": "1964-03-18",
+          "home": "Sporting CP",
+          "away": "Manchester United",
+          "home_score": 5,
+          "away_score": 0,
+          "competition": "European Cup Winners' Cup"
+        },
+        {
+          "id": null,
+          "date": "1964-02-26",
+          "home": "Manchester United",
+          "away": "Sporting CP",
+          "home_score": 4,
+          "away_score": 1,
+          "competition": "European Cup Winners' Cup"
+        }
+      ],
+      "home_wins": 1,
+      "draws": 0,
+      "away_wins": 3,
+      "total": 4,
+      "source": "UEFA historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:08:30.401Z"
+    },
+    "6106281": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2020-10-01T19:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "LASK",
+          "home_score": 1,
+          "away_score": 4,
+          "competition": "Europa League Qualification"
+        },
+        {
+          "id": null,
+          "date": "2019-12-12T17:55:00.000Z",
+          "home": "LASK",
+          "away": "Sporting CP",
+          "home_score": 3,
+          "away_score": 0,
+          "competition": "Europa League Grp. D"
+        },
+        {
+          "id": null,
+          "date": "2019-10-03T19:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "LASK",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "Europa League Grp. D"
+        }
+      ],
+      "home_wins": 1,
+      "draws": 0,
+      "away_wins": 2,
+      "total": 3,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:07:51.259523+00:00"
+    },
+    "6106335": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304309+00:00"
+    },
+    "6106414": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304272+00:00"
     }
   },
   "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
