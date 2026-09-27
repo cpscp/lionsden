@@ -186,45 +186,63 @@
 <section id="tv" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">TV</h2><div class="text-[10px] muted mt-1">Vídeos oficiais do Sporting CP</div></div><div id="tvList" class="space-y-3"></div></section>
 <section id="stadium" class="screen space-y-5">
 <div><h2 class="text-[21px] font-bold">Estádio</h2><p class="text-[11px] muted mt-1">José Alvalade · Alvalade XXI</p></div>
+
 <div class="stadium-hero">
-  <div class="stadium-viewer">
-    <div class="stadium-fallback" aria-label="Representação 3D estilizada do Estádio José Alvalade"></div>
-    <div class="stadium-3d-note">MODELO 3D · visualizador preparado para modelo GLB/Gltf</div>
+  <div class="stadium-earth">
+    <iframe title="Vista aérea do Estádio José Alvalade no Google Maps" src="https://www.google.com/maps?q=Estádio+José+Alvalade,+Lisboa&z=18&t=k&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="stadium-earth-overlay"></div>
+    <div class="stadium-earth-content">
+      <div><div class="eyebrow">Vista aérea</div><div class="font-bold text-[17px] mt-1">Estádio José Alvalade</div><div class="text-[10px] text-white/65 mt-1">Alvalade XXI · Lisboa</div></div>
+      <a class="pill text-[9px] px-3 py-2 pointer-events-auto" target="_blank" rel="noopener noreferrer" href="https://earth.google.com/web/@38.7600,-9.1583,120a,900d,35y,0h,0t,0r">Explorar em 3D ↗</a>
+    </div>
   </div>
-  <div class="p-4 border-t border-white/5 flex items-center justify-between"><div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 50.095 lugares</div></div><span class="pill text-[9px]">ALVALADE XXI</span></div>
+  <div class="p-4 border-t border-white/5 flex items-center justify-between gap-3">
+    <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 50.095 lugares</div></div>
+    <span class="pill text-[9px]">ALVALADE XXI</span>
+  </div>
 </div>
+
 <div class="space-y-3">
-  <div><h3 class="font-bold">Mapa do estádio</h3><p class="text-[10px] muted mt-1">Setores e principais portas de acesso</p></div>
-  <div class="stadium-map">
-    <div class="stand north">SUPERIOR NORTE<br><span class="opacity-60">A13–A21 · B15–B23</span></div>
-    <div class="stand south">SUPERIOR SUL<br><span class="opacity-60">A8–A20 · B10–B22</span></div>
-    <div class="stand west">POENTE<br><span class="opacity-60">A1–A7<br>B1–B8</span></div>
-    <div class="stand east">NASCENTE<br><span class="opacity-60">A22–A32<br>B24–B32</span></div>
-    <div class="pitch"><span class="sr-only">Relvado</span></div>
-    <div class="stadium-door n1">P2</div><div class="stadium-door n2">P2</div><div class="stadium-door n3">P3</div>
-    <div class="stadium-door s5">P5</div><div class="stadium-door s6">P6</div><div class="stadium-door w7">P7</div><div class="stadium-door w1">P1</div><div class="stadium-door e4">P4</div>
-  </div>
-  <div class="grid grid-cols-2 gap-2">
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 1</div><div class="text-xs mt-1">A1 · A3 · A5 · A7<br>B1 · B3 · B5</div></div>
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 2</div><div class="text-xs mt-1">Superior Norte</div></div>
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 3</div><div class="text-xs mt-1">Nascente · A23–A28</div></div>
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 4</div><div class="text-xs mt-1">A22 · A24 · B24–B28</div></div>
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 5</div><div class="text-xs mt-1">Superior Sul A</div></div>
-    <div class="access-card"><div class="text-[9px] uppercase tracking-widest muted">Porta 6</div><div class="text-xs mt-1">Superior Sul B</div></div>
-    <div class="access-card col-span-2"><div class="text-[9px] uppercase tracking-widest muted">Porta 7</div><div class="text-xs mt-1">A2 · A4 · A6 · B2 · B4 · B6 · B8</div></div>
+  <div><h3 class="font-bold">Mapa do estádio</h3><p class="text-[10px] muted mt-1">Planta oficial · setores e acessos</p></div>
+  <div class="stadium-map-card">
+    <img src="https://scpconteudos.pt/sites/default/files/mapa_eja_site_scp.jpg" alt="Planta oficial do Estádio José Alvalade com setores e portas" loading="lazy">
+    <div class="stadium-map-note">Planta oficial do Estádio José Alvalade. Toque para ampliar.</div>
   </div>
 </div>
+
 <div class="space-y-3">
   <div><h3 class="font-bold">Acessos</h3><p class="text-[10px] muted mt-1">Como chegar ao Estádio José Alvalade</p></div>
-  <div class="access-card"><b>🚇 Metro</b><div class="text-[11px] muted mt-1">Linhas Verde e Amarela · Estação Campo Grande</div></div>
-  <div class="access-card"><b>🚌 Autocarro</b><div class="text-[11px] muted mt-1">Terminal Rodoviário do Campo Grande, com ligações urbanas, suburbanas e interurbanas.</div></div>
-  <div class="access-card"><b>🚗 Automóvel</b><div class="text-[11px] muted mt-1">2.ª Circular, Eixo Norte-Sul, IC19 e CRIL. Acesso por Campo Grande ou Telheiras.</div></div>
+
+  <div class="access-card stadium-route-card">
+    <span class="stadium-access-icon">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="2"/><path d="M7 6h6M7 10h6M8 14h.01M12 14h.01"/></svg>
+    </span>
+    <div><b>Metro</b><div class="text-[11px] muted mt-1">Linha Amarela ou Verde · Estação Campo Grande</div></div>
+  </div>
+
+  <div class="access-card stadium-route-card">
+    <span class="stadium-access-icon">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="5" width="15" height="9" rx="2"/><path d="M5 14v2M15 14v2M5 8h10M7 11h.01M10 11h.01M13 11h.01"/></svg>
+    </span>
+    <div><b>Autocarro</b><div class="text-[11px] muted mt-1">Terminal Rodoviário do Campo Grande · ligações urbanas, suburbanas e interurbanas</div></div>
+  </div>
+
+  <div class="access-card stadium-route-card">
+    <span class="stadium-access-icon">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 13.5 5.2 7h9.6l1.2 6.5"/><path d="M3 13.5h14v2H3zM6 16v1M14 16v1M7 10h6"/></svg>
+    </span>
+    <div><b>Automóvel</b><div class="text-[11px] muted mt-1">2.ª Circular, Eixo Norte-Sul, IC19 e CRIL. Acessos por Campo Grande ou Telheiras.</div></div>
+  </div>
+
   <div class="access-card">
-    <b>📍 Mapa</b>
-    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20">
-      <iframe title="Mapa do Estádio José Alvalade" src="https://www.openstreetmap.org/export/embed.html?bbox=-9.1645%2C38.7580%2C-9.1500%2C38.7648&layer=mapnik&marker=38.7600%2C-9.1583" style="width:100%;height:240px;border:0" loading="lazy"></iframe>
+    <div class="flex items-center gap-3">
+      <span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s5-5.1 5-9a5 5 0 1 0-10 0c0 3.9 5 9 5 9Z"/><circle cx="10" cy="9" r="1.7"/></svg></span>
+      <div><b>Localização</b><div class="text-[10px] muted mt-1">Estádio José Alvalade · Lisboa</div></div>
     </div>
-    <a class="pill inline-flex mt-3 px-3 py-2 text-[10px]" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat=38.7600&mlon=-9.1583#map=17/38.7600/-9.1583">Abrir mapa completo ↗</a>
+    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20">
+      <iframe title="Mapa do Estádio José Alvalade" src="https://www.google.com/maps?q=Estádio+José+Alvalade,+Lisboa&z=16&output=embed" style="width:100%;height:240px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <a class="pill inline-flex mt-3 px-3 py-2 text-[10px]" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Est%C3%A1dio%20Jos%C3%A9%20Alvalade%2C%20Lisboa">Abrir no Google Maps ↗</a>
   </div>
 </div>
 </section>
@@ -247,7 +265,7 @@
 <button class="drawer-link navbtn" data-go="stats"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 17V9M10 17V5M16 17v-6"/></svg></span><span>Estatísticas</span></button>
 <button class="drawer-link navbtn" data-go="classification"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12M12 4v12"/></svg></span><span>Classificação</span></button>
 <div class="drawer-section">Estádio</div>
-<button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16V7l7-4 7 4v9"/><path d="M6 16v-4h8v4M5 8h10"/></svg></span><span>Estádio</span></button>
+<button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5c.7 4.8 3.2 7.5 7 7.5s6.3-2.7 7-7.5"/><path d="M4 8c1.8-2 3.8-3 6-3s4.2 1 6 3"/><path d="M5.2 8.5v3.3M8 7.1v4.8M12 7.1v4.8M14.8 8.5v3.3"/><path d="M5.2 4.2V2.5l1.4.7M14.8 4.2V2.5l-1.4.7"/></svg></span><span>Estádio</span></button>
 <div class="drawer-section">Conteúdo</div>
 <button class="drawer-link navbtn" data-go="news"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h6M7 14h4"/></svg></span><span>Notícias</span></button>
 <button class="drawer-link navbtn" data-go="tv"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="9" rx="1.5"/><path d="m8 2 2 3 2-3M7 17h6"/></svg></span><span>TV</span></button>
