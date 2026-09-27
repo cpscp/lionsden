@@ -1086,7 +1086,7 @@ function h2hSection(ctx){
 function oddsSection(id,base){
   const o=betanoFor(id);
   const isBetano=!!(o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano);
-  const markets=o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano||o?.bookmakers?.SofaScore||[];
+  const markets=o?.bookmakers?.['Betano PT']||o?.bookmakers?.Betano||o?.bookmakers?.Mercado||o?.bookmakers?.SofaScore||[];
   if(!markets.length)return '';
   const ml=markets.find(x=>String(x.name).toLowerCase()==='ml');
   const total=markets.find(x=>String(x.name).toLowerCase()==='totals');
@@ -1095,7 +1095,7 @@ function oddsSection(id,base){
   let body='';
   if(mlv) body+='<div class="grid grid-cols-3 gap-2">'+[['1',base.home?.name,mlv.home],['X','Empate',mlv.draw],['2',base.away?.name,mlv.away]].map(x=>'<div class="card-inset p-3 text-center"><div class="text-[9px] muted">'+esc(x[0])+'</div><div class="text-[9px] mt-1 truncate">'+esc(x[1])+'</div><b class="text-lg">'+esc(x[2]??'—')+'</b></div>').join('')+'</div>';
   if(tv?.over||tv?.under) body+='<div class="grid grid-cols-2 gap-2 mt-2">'+[['Mais '+tv.hdp,tv.over],['Menos '+tv.hdp,tv.under]].map(x=>'<div class="card-inset p-3 flex items-center justify-between"><span class="text-[9px]">'+esc(x[0])+'</span><b>'+esc(x[1]??'—')+'</b></div>').join('')+'</div>';
-  return body?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">Odds '+(isBetano?'Betano':'Mercado')+'</div><span class="text-[9px] muted">atualizadas '+esc(o.updated_at?fmtDate(o.updated_at):'—')+'</span></div>'+body+'</div>':'';
+  return body?'<div class="card p-4 mt-3"><div class="flex items-center justify-between mb-3"><div class="font-semibold">Odds '+esc(o?.bookmaker_name||(isBetano?'Betano':'Mercado'))+'</div><span class="text-[9px] muted">atualizadas '+esc(o.updated_at?fmtDate(o.updated_at):'—')+'</span></div>'+body+'</div>':'';
 }
 function icsEscape(v){return String(v??'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
 function downloadMatchCalendar(id){
