@@ -3076,18 +3076,16 @@ def zerozero_get(url):
     football_url = url.replace("https://www.zerozero.pt", "https://zerozero.football").replace("https://zerozero.pt", "https://zerozero.football")
     mirror_encoded = quote_plus(mirror_url)
     football_encoded = quote_plus(football_url)
+    # Prefer Jina first: it has been the most reliable low-request path
+    # from GitHub Actions. Keep direct ZeroZero as a fallback and avoid
+    # multiplying 403/429-triggering proxy calls.
     candidates = [
-        football_url,
-        mirror_url,
         "https://r.jina.ai/" + football_url,
         "https://r.jina.ai/" + mirror_url,
-        f"https://api.allorigins.win/raw?url={football_encoded}",
-        f"https://api.allorigins.win/raw?url={mirror_encoded}",
-        f"https://api.codetabs.com/v1/proxy?quest={football_encoded}",
-        f"https://api.codetabs.com/v1/proxy?quest={mirror_encoded}",
+        football_url,
+        mirror_url,
         url,
     ]
-
     is_stats = "/estatisticas/" in url
     last = None
 
@@ -3374,7 +3372,7 @@ def fetch_zerozero_h2h(upcoming):
 
     # Six concurrent pairs keeps the collector fast without hammering a source.
     collected = {}
-    with ThreadPoolExecutor(max_workers=12) as pool:
+    with ThreadPoolExecutor(max_workers=4) as pool:
         futures = [pool.submit(collect, item) for item in representatives.items()]
         for future in as_completed(futures):
             key, rows, summary, source = future.result()
