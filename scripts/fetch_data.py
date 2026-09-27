@@ -2840,6 +2840,252 @@ def geocode_missing_venues():
         write_json("venues.json", {"venues": venues, "source": "OpenStreetMap Nominatim"})
 
 
+
+
+def _context_team_form(team_payload, limit=5):
+    """Normalize FotMob's recent team form to compact, app-friendly rows."""
+    overview = _first_dict(team_payload, "overview")
+    raw = overview.get("teamForm") or []
+    rows = []
+    for x in raw:
+        if not isinstance(x, dict):
+            continue
+        result = clean(x.get("resultString") or "")
+        if result not in {"W", "D", "L"}:
+            continue
+        comp = clean(x.get("tournamentName") or x.get("competitionName") or x.get("leagueName") or "")
+        if comp and not is_official_sporting_competition(comp):
+            continue
+        home = x.get("home") or {}
+        away = x.get("away") or {}
+        opponent = away if home.get("isOurTeam") else home
+        dt = ((x.get("date") or {}).get("utcTime") if isinstance(x.get("date"), dict) else x.get("utcTime"))
+        rows.append({
+            "result": result,
+            "score": clean(x.get("score") or ""),
+            "date": clean(dt),
+            "competition": comp,
+            "opponent": clean(opponent.get("name") or ""),
+            "match_id": x.get("id") or x.get("matchId"),
+        })
+    return rows[-limit:]
+
+
+def _standings_context():
+    data = safe_existing("standings.json") or {}
+    rows = data.get("table") or []
+    out = {}
+    for row in rows:
+        team = row.get("team") if isinstance(row.get("team"), dict) else {}
+        name = clean(team.get("name") or row.get("teamName") or row.get("name"))
+        tid = team.get("id") or row.get("teamId")
+        entry = {
+            "position": row.get("position") or row.get("rank"),
+            "played": row.get("playedGames") or row.get("played"),
+            "points": row.get("points"),
+            "name": name,
+        }
+        if tid is not None:
+            out["id:"+str(tid)] = entry
+        if name:
+            out["name:"+zz_norm(name)] = entry
+    return out
+
+
+def _h2h_rows(value, home_id, away_id, home_name, away_name):
+    """Recursively collect finished H2H-looking match rows from FotMob h2h data."""
+    found = []
+    def walk(obj):
+        if isinstance(obj, dict):
+            h = obj.get("home") or obj.get("homeTeam")
+            a = obj.get("away") or obj.get("awayTeam")
+            if isinstance(h, dict) and isinstance(a, dict):
+                hid, aid = h.get("id"), a.get("id")
+                hn, an = zz_norm(h.get("name")), zz_norm(a.get("name"))
+                same = ((hid is not None and aid is not None and
+                         {str(hid), str(aid)} == {str(home_id), str(away_id)})
+                        or ({hn, an} == {zz_norm(home_name), zz_norm(away_name)}))
+                score = obj.get("score") if isinstance(obj.get("score"), dict) else {}
+                hs = h.get("score", score.get("home"))
+                aas = a.get("score", score.get("away"))
+                status = obj.get("status") or {}
+                finished = status.get("finished") or obj.get("finished")
+                if same and hs is not None and aas is not None and (finished is not False):
+                    found.append({
+                        "id": obj.get("id") or obj.get("matchId"),
+                        "date": clean(((obj.get("date") or {}).get("utcTime") if isinstance(obj.get("date"), dict) else obj.get("utcTime") or obj.get("matchDate"))),
+                        "home": clean(h.get("name") or home_name),
+                        "away": clean(a.get("name") or away_name),
+                        "home_score": hs,
+                        "away_score": aas,
+                        "competition": clean(obj.get("tournamentName") or obj.get("competitionName") or obj.get("leagueName") or ""),
+                    })
+            for v in obj.values():
+                if isinstance(v, (dict, list)):
+                    walk(v)
+        elif isinstance(obj, list):
+            for v in obj:
+                walk(v)
+    walk(value)
+    dedup = {}
+    for row in found:
+        key = str(row.get("id") or (row.get("date"), row.get("home"), row.get("away"), row.get("home_score"), row.get("away_score")))
+        dedup[key] = row
+    return list(dedup.values())
+
+
+def fetch_match_contexts():
+    """Build form, standings, H2H and optional Betano odds for upcoming matches."""
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    upcoming = [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")]
+    upcoming = sorted(upcoming, key=lambda x: x.get("date") or 0)[:12]
+    standings = _standings_context()
+
+    # Reuse Sporting's team payload and only fetch unique opponents.
+    team_payloads = {str(SPORTING_FOTMOB_ID): fotmob_get("/api/data/teams", {"id": SPORTING_FOTMOB_ID, "ccode3": "PRT"})}
+    opponent_ids = set()
+    for f in upcoming:
+        for side in ("home", "away"):
+            team = f.get(side) or {}
+            tid = team.get("id")
+            if tid and str(tid) != str(SPORTING_FOTMOB_ID):
+                opponent_ids.add(str(tid))
+    for tid in sorted(opponent_ids):
+        try:
+            team_payloads[tid] = fotmob_get("/api/data/teams", {"id": tid, "ccode3": "PRT"})
+        except Exception as e:
+            print("Team context warning:", tid, e)
+
+    contexts = {}
+    for f in upcoming:
+        fid = str(f["id"])
+        sides = {}
+        for side in ("home", "away"):
+            team = f.get(side) or {}
+            tid = str(team.get("id") or "")
+            name = clean(team.get("name") or "")
+            payload = team_payloads.get(tid)
+            form = _context_team_form(payload, 5) if payload else []
+            table = standings.get("id:"+tid) or standings.get("name:"+zz_norm(name))
+            sides[side] = {"id": team.get("id"), "name": name, "form": form, "table": table}
+
+        h2h = []
+        try:
+            raw = fotmob_get("/api/data/matchDetails", {"matchId": f["id"]})
+            content = _first_dict(raw, "content")
+            h2h = _h2h_rows(content.get("h2h"), (f.get("home") or {}).get("id"), (f.get("away") or {}).get("id"),
+                             (f.get("home") or {}).get("name"), (f.get("away") or {}).get("name"))
+        except Exception as e:
+            print("H2H detail warning:", fid, e)
+
+        h2h = sorted(h2h, key=lambda x: x.get("date") or "", reverse=True)[:5]
+        hw = dw = aw = 0
+        home_name = clean((f.get("home") or {}).get("name"))
+        for x in h2h:
+            hs, aas = fnum(x.get("home_score")), fnum(x.get("away_score"))
+            if hs is None or aas is None:
+                continue
+            if hs > aas: hw += 1
+            elif hs < aas: aw += 1
+            else: dw += 1
+
+        contexts[fid] = {
+            "home": sides["home"],
+            "away": sides["away"],
+            "h2h": {"matches": h2h, "home_wins": hw, "draws": dw, "away_wins": aw},
+            "updated_at": now_iso(),
+        }
+
+    write_json("match-context.json", {
+        "fixtures": contexts,
+        "source": "FotMob · current standings · team form · match H2H",
+        "scope": "Upcoming Sporting CP fixtures; form is last 5 official first-team matches."
+    })
+
+
+def fetch_betano_odds():
+    """Optional Betano feed via Odds-API.io. Requires BETANO_ODDS_API_KEY."""
+    api_key = os.environ.get("BETANO_ODDS_API_KEY")
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
+    upcoming = sorted(
+        [f for f in fixtures if f.get("status", {}).get("short") == "scheduled" and f.get("id")],
+        key=lambda x: x.get("date") or 0
+    )[:12]
+    result = {}
+    if not api_key:
+        write_json("betano-odds.json", {
+            "fixtures": result,
+            "source": "Betano via Odds-API.io",
+            "status": "not_configured"
+        })
+        return
+
+    try:
+        r = session.get(
+            "https://api.odds-api.io/v3/events",
+            params={"apiKey": api_key, "sport": "football", "bookmaker": "Betano"},
+            timeout=30
+        )
+        r.raise_for_status()
+        events = r.json()
+        if not isinstance(events, list):
+            events = events.get("events", []) if isinstance(events, dict) else []
+    except Exception as e:
+        print("Betano events warning:", e)
+        write_json("betano-odds.json", {
+            "fixtures": result,
+            "source": "Betano via Odds-API.io",
+            "status": "error"
+        })
+        return
+
+    def norm(v):
+        return zz_norm(v).replace("futebol clube", "").replace("sc ", "").strip()
+
+    matched = []
+    for f in upcoming:
+        hn, an = norm((f.get("home") or {}).get("name")), norm((f.get("away") or {}).get("name"))
+        best = None
+        best_delta = None
+        target = float(f.get("date") or 0)
+        for e in events:
+            eh, ea = norm(e.get("home")), norm(e.get("away"))
+            if not eh or not ea or eh != hn or ea != an:
+                continue
+            try:
+                ed = datetime.fromisoformat(str(e.get("date")).replace("Z","+00:00")).timestamp()
+            except Exception:
+                ed = 0
+            delta = abs(ed-target)
+            if best is None or delta < best_delta:
+                best, best_delta = e, delta
+        if best:
+            matched.append((f, best))
+
+    for f, e in matched:
+        try:
+            rr = session.get(
+                "https://api.odds-api.io/v3/odds",
+                params={"apiKey": api_key, "eventId": e.get("id"), "bookmakers": "Betano"},
+                timeout=25
+            )
+            rr.raise_for_status()
+            payload = rr.json()
+            result[str(f["id"])] = {
+                "event_id": e.get("id"),
+                "updated_at": now_iso(),
+                "bookmakers": payload.get("bookmakers") if isinstance(payload, dict) else None
+            }
+        except Exception as ex:
+            print("Betano odds warning:", f.get("id"), ex)
+
+    write_json("betano-odds.json", {
+        "fixtures": result,
+        "source": "Betano via Odds-API.io",
+        "status": "ok"
+    })
+
+
 # Historical team stats and competitive-only team metrics are generated for the PWA.
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
@@ -2875,6 +3121,14 @@ def main():
             fetch_sofascore_standings()
         except Exception as e:
             print(f"SofaScore standings skipped: {e}")
+        try:
+            fetch_match_contexts()
+        except Exception as e:
+            print(f"Match context enrichment skipped: {e}")
+        try:
+            fetch_betano_odds()
+        except Exception as e:
+            print(f"Betano odds skipped: {e}")
         try:
             fetch_fotmob_competition_standings()
         except Exception as e:
