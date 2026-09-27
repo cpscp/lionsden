@@ -880,7 +880,7 @@ function newsArticleContent(text){
     .trim();
   const paragraphs=normalized
     .split(new RegExp(NL+'\\s*'+NL))
-    .map(x=>x.trim().replace(new RegExp('\\\\s*'+NL+'\\\\s*','g'),' '))
+    .map(x=>x.trim().replace(new RegExp('\\s*'+NL+'\\s*','g'),' '))
     .filter(Boolean);
   if(!paragraphs.length)return '';
   return '<div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
