@@ -2746,6 +2746,27 @@ def fetch_news():
         url=item.get("url")
         if not url:
             return item
+        # Zerozero often exposes the article but blocks image metadata.
+        # Use Jina Reader proactively for Zerozero items without an image/preview.
+        if item.get("source")=="Zerozero" and (not item.get("image") or not item.get("description")):
+            try:
+                jr=session.get("https://r.jina.ai/"+url,timeout=15,headers={"User-Agent":USER_AGENT})
+                if jr.ok:
+                    js=BeautifulSoup(jr.text,"html.parser")
+                    if not item.get("description"):
+                        blob=clean(js.get_text(" ",strip=True))
+                        if blob:
+                            item["description"]=blob[:280]
+                    if not item.get("image"):
+                        for im in js.select("img"):
+                            src=im.get("src")
+                            if src and not src.startswith("data:"):
+                                item["image"]=src
+                                item["image_source"]="Jina Reader"
+                                break
+            except Exception as ex:
+                print("Zerozero Jina metadata warning:",item.get("url"),ex)
+
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
                             headers={"User-Agent":USER_AGENT})
