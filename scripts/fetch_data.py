@@ -3498,17 +3498,19 @@ def fetch_news():
     # reliable from Actions than scraping the site.
     try:
         import feedparser
-        feed=feedparser.parse("https://www.zerozero.pt/rss_list.php?equipa=9")
-        for entry in feed.entries[:80]:
-            title=clean(entry.get("title") or "")
-            link=entry.get("link")
-            summary_raw=entry.get("summary") or ""
-            summary_soup=BeautifulSoup(summary_raw,"html.parser")
-            summary=clean(summary_soup.get_text(" ",strip=True))
-            blob=(title+" "+summary).lower()
-            if not link or "sporting" not in blob:
-                continue
-            image=None
+        feed_urls=("https://www.zerozero.pt/rss.php?equipa=9","https://www.zerozero.pt/rss_list.php?equipa=9")
+        for feed_url in feed_urls:
+            feed=feedparser.parse(feed_url)
+            for entry in feed.entries[:80]:
+                title=clean(entry.get("title") or "")
+                link=entry.get("link")
+                summary_raw=entry.get("summary") or ""
+                summary_soup=BeautifulSoup(summary_raw,"html.parser")
+                summary=clean(summary_soup.get_text(" ",strip=True))
+                blob=(title+" "+summary).lower()
+                if not link or "sporting" not in blob:
+                    continue
+                image=None
             # Zerozero/Google News may embed the editorial thumbnail directly
             # in the RSS description even when media_content is absent.
             for im in summary_soup.find_all("img"):
