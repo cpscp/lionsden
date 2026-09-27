@@ -291,7 +291,6 @@ async function loadAlvaladeModel(){
 }
 const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
-  loadAlvaladeModel();
   const loadOne=async f=>{
     const ctl=new AbortController();
     const timer=setTimeout(()=>ctl.abort(),5000);
