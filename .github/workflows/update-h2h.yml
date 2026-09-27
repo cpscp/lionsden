@@ -32,6 +32,12 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt
 
+      - name: Sincronizar com main
+        run: |
+          set -e
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Atualizar H2H
         run: python scripts/update_h2h.py
 
@@ -46,6 +52,18 @@ jobs:
             exit 0
           fi
           git commit -m 'dados: atualizar confrontos diretos'
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+
+          # If main advanced while the collector was running, restart from
+          # the newest main and regenerate instead of attempting a conflict rebase.
+          if ! git push origin HEAD:main; then
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/update_h2h.py
+            git add data/match-context.json
+            if git diff --cached --quiet; then
+              echo 'Sem alterações H2H após sincronização.'
+              exit 0
+            fi
+            git commit -m 'dados: atualizar confrontos diretos (retry)'
+            git push origin HEAD:main
+          fi
