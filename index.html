@@ -870,16 +870,22 @@ function newsCard(n){
   </button>`;
 }
 function openNews(n){
-  const title=n.title||'Notícia', img=n.image||n.image_url||n.thumbnail||'', desc=n.description||n.summary||'', url=n.url||'#';
+  const title=n.title||'Notícia';
+  const img=n.image||n.image_url||n.thumbnail||'';
+  const desc=n.description||n.summary||'';
+  const url=n.url||'#';
   document.getElementById('modalTitle').textContent=title;
   const reader=`<div class="news-source-badge">${esc(n.source||'Notícia')}</div>
     <div class="text-[9px] muted mt-2">${esc(newsDate(n.published))}</div>
     <h2 class="text-xl font-bold mt-3 leading-snug">${esc(title)}</h2>
     ${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}
     <div class="news-reader-fallback mt-4 p-4">
-      ${desc?`<div class="text-sm leading-6">${esc(desc)}</div>`:'<div class="text-sm muted">Pré-visualização indisponível.</div>'}
+      ${desc?`<div class="text-sm leading-6">${esc(desc)}</div>`:'<div class="text-sm muted">A carregar a notícia…</div>'}
     </div>
-    <iframe class="news-reader-frame mt-4" src="${esc(url)}" title="${esc(title)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="news-reader-frame-wrap mt-4">
+      <div class="text-[10px] muted mb-2">Leitura dentro da aplicação</div>
+      <iframe class="news-reader-frame" src="${esc(url)}" title="${esc(title)}" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
     <div class="flex gap-2 mt-4">
       <a class="pill inline-flex items-center justify-center px-4 py-2 text-xs font-semibold" target="_blank" rel="noopener noreferrer" href="${esc(url)}">Leia o artigo completo ↗</a>
     </div>`;
@@ -887,8 +893,7 @@ function openNews(n){
   openModal();
 }
 function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
-function openNews(n){document.getElementById('modalTitle').textContent=n.title||'Notícia';const img=n.image||n.image_url||n.thumbnail||'';const desc=n.description||n.summary||'';document.getElementById('modalBody').innerHTML=`<div class="source">${esc(n.source||'Notícia')}</div><h2 class="text-xl font-bold mt-2">${esc(n.title||'')}</h2>${img?`<img src="${esc(img)}" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">`:''}${desc?`<div class="text-sm leading-6 mt-4">${esc(desc)}</div>`:''}<a class="pill inline-block px-3 py-2 text-xs mt-4" target="_blank" rel="noopener" href="${esc(n.url||'#')}">Ler artigo completo ↗</a>`;openModal()}
-function renderNews(){document.getElementById('newsList').innerHTML=(D['news.json']?.items||[]).map(newsCard).join('')||'<div class="card p-6 text-center muted">Sem notícias.</div>'}
+
 const nationalityPT={"Portugal":"Portugal","Brazil":"Brasil","Spain":"Espanha","France":"França","Germany":"Alemanha","England":"Inglaterra","Italy":"Itália","Netherlands":"Países Baixos","Belgium":"Bélgica","Denmark":"Dinamarca","Sweden":"Suécia","Norway":"Noruega","Poland":"Polónia","Croatia":"Croácia","Serbia":"Sérvia","Switzerland":"Suíça","Austria":"Áustria","Greece":"Grécia","Turkey":"Turquia","Ukraine":"Ucrânia","Czech Republic":"Chéquia","Czechia":"Chéquia","Slovakia":"Eslováquia","Hungary":"Hungria","Romania":"Roménia","Bulgaria":"Bulgária","Georgia":"Geórgia","Senegal":"Senegal","Morocco":"Marrocos","Mozambique":"Moçambique","Angola":"Angola","Guinea-Bissau":"Guiné-Bissau","Cape Verde":"Cabo Verde","Ivory Coast":"Costa do Marfim","Côte d'Ivoire":"Costa do Marfim","Colombia":"Colômbia","Uruguay":"Uruguai","Argentina":"Argentina","Chile":"Chile","Mexico":"México","United States":"Estados Unidos","Canada":"Canadá","Australia":"Austrália","Japan":"Japão","South Korea":"Coreia do Sul","Nigeria":"Nigéria","Ghana":"Gana","Cameroon":"Camarões","Mali":"Mali","Guinea":"Guiné","DR Congo":"RD Congo","Democratic Republic of the Congo":"RD Congo","Equatorial Guinea":"Guiné Equatorial","Algeria":"Argélia","Tunisia":"Tunísia","South Africa":"África do Sul"};
 function nationalityLabel(v){const s=String(v||'').trim();return s?(nationalityPT[s]||s):'—';}
 function positionLabel(v){const s=String(v||'').trim();if(!s)return'—';const x=s.toLowerCase();if(x==='gk'||x.includes('goalkeeper')||x.includes('goal keeper')||x.includes('guarda-redes')||x.includes('guarda redes'))return'Guarda-redes';if(x==='df'||x.includes('defender')||x==='defesa')return'Defesa';if(x==='mf'||x.includes('midfielder')||x.includes('midfield')||x.includes('médio'))return'Médio';if(x==='fw'||x.includes('forward')||x.includes('attacker')||x.includes('striker')||x.includes('winger')||x.includes('avançado')||x.includes('extremo'))return'Avançado';return s;}
