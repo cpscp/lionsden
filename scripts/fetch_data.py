@@ -2971,6 +2971,9 @@ def fetch_news():
             except Exception as e:
                 print("Publisher RSS discovery warning:", expected_source, e)
 
+    except Exception as e:
+        print("Publisher RSS import warning:", e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
