@@ -2876,7 +2876,7 @@ def fetch_news():
                                 if not src or str(src).startswith("data:"):
                                     continue
                                 low=str(src).lower()
-                                if not re.search(r"cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/", low):
+                                if not re.search(r"cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/", low):
                                     continue
                                 if any(x in low for x in ("favicon","logo","googleusercontent")):
                                     continue
