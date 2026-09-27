@@ -2661,7 +2661,7 @@ def fetch_news():
     import asyncio
     import re
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    from urllib.parse import quote
+    from urllib.parse import quote, urljoin
 
     items = []
     seen = set()
