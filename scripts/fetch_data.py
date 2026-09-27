@@ -2904,10 +2904,11 @@ def fetch_news():
             raw = session.get(rss_url, timeout=18, headers={"User-Agent": USER_AGENT})
             raw.raise_for_status()
             xml = BeautifulSoup(raw.text, "xml")
+            pending = []
             for node in xml.find_all("item")[:40]:
                 title = clean(node.find("title").get_text(" ", strip=True) if node.find("title") else "")
                 link = (node.find("link").get_text(" ", strip=True) if node.find("link") else "").strip()
-                if not link or source_for(link) != source or len(title) < 18:
+                if not link or len(title) < 18:
                     continue
                 desc_node = node.find("description")
                 raw_desc = desc_node.decode_contents() if desc_node else ""
@@ -2925,14 +2926,33 @@ def fetch_news():
                         image = im.get("src") or im.get("data-src")
                 pub = node.find("pubDate")
                 published = pub.get_text(" ", strip=True) if pub else None
-                add({
+                pending.append({
                     "title": title,
-                    "url": link,
+                    "_google_url": link,
                     "source": source,
                     "published": published,
                     "description": desc,
                     **({"image": image, "image_source": source + " Google News RSS"} if image else {}),
                 })
+            if pending:
+                try:
+                    import asyncio
+                    from googlenewsdecoder import gnews_decoder_async
+                    decoded = asyncio.run(gnews_decoder_async(
+                        [x["_google_url"] for x in pending],
+                        interval=0.12, timeout=10.0, concurrency=8
+                    ))
+                    if isinstance(decoded, dict):
+                        decoded = [decoded]
+                    for row, result in zip(pending, decoded):
+                        if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
+                            final_url = result["decoded_url"]
+                            if source_for(final_url) == source:
+                                row["url"] = final_url
+                                row.pop("_google_url", None)
+                                add(row)
+                except Exception as ex:
+                    print("News RSS decode warning:", source, ex)
     except Exception as ex:
         print("News RSS transport warning:", ex)
 
