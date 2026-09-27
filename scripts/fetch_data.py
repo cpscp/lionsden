@@ -3055,33 +3055,32 @@ ZEROZERO_TEAM_ALIASES = {
 _zerozero_team_cache = {}
 
 def zerozero_get(url):
-    """Fetch ZeroZero with a proxy fallback because GitHub runners are intermittently 403-blocked."""
+    """Fetch ZeroZero with a single direct attempt and a Jina fallback."""
     candidates = [url, "https://r.jina.ai/" + url]
     last = None
     for candidate in candidates:
-        for attempt in range(2):
-            try:
-                rr = session.get(
-                    candidate,
-                    timeout=45,
-                    headers={
-                        "User-Agent": USER_AGENT,
-                        "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
-                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                    },
-                )
-                rr.raise_for_status()
-                body = rr.text
-                if body and len(body) > 500:
-                    return body
-            except Exception as e:
-                last = e
-                if attempt == 0:
-                    time.sleep(1.0)
+        try:
+            rr = session.get(
+                candidate,
+                timeout=20,
+                headers={
+                    "User-Agent": USER_AGENT,
+                    "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                },
+            )
+            rr.raise_for_status()
+            body = rr.text
+            if body and len(body) > 500:
+                return body
+        except Exception as e:
+            last = e
     raise RuntimeError(f"ZeroZero request failed through direct/proxy: {url}: {last}")
+
 
 def _zz_name_key(value):
     return zz_norm(value)
+
 
 def _zz_parse_games(html):
     """Parse ZeroZero H2H rows from table markup; supports all competitions."""
@@ -3092,89 +3091,68 @@ def _zz_parse_games(html):
         cells = [clean(x) for x in cells if clean(x)]
         if len(cells) < 4:
             return
-        date_value = next((x for x in cells if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x)), None)
+        date_value = next((x for x in cells if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", x)), None)
         if not date_value:
             return
         score_idx = None
         score_home = score_away = None
         for idx, cell in enumerate(cells):
-            m = re.fullmatch(r"(\d{1,2})\s*-\s*(\d{1,2})(?:a\.p\.|\s*)?", cell, re.I)
+            m = re.fullmatch(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})(?:a\\.p\\.|\\s*)?", cell, re.I)
             if m:
                 score_idx = idx
                 score_home, score_away = int(m.group(1)), int(m.group(2))
                 break
-        if score_idx is None:
+        if score_idx is None or score_idx < 1 or score_idx + 1 >= len(cells):
             return
-
-        # In ZeroZero's H2H tables the score sits between the two team names.
-        if score_idx < 1 or score_idx + 1 >= len(cells):
-            return
-        home_name = cells[score_idx - 1]
-        away_name = cells[score_idx + 1]
-        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", home_name):
+        home_name, away_name = cells[score_idx - 1], cells[score_idx + 1]
+        if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", home_name):
             return
 
         competition = ""
         season = ""
         round_name = ""
         for cell in cells:
-            if re.search(r"\b\d{2}/\d{2}\b", cell):
-                season = re.search(r"\b\d{2}/\d{2}\b", cell).group(0)
-                competition = clean(re.sub(r"\s*\d{2}/\d{2}\s*", " ", cell))
-            elif re.fullmatch(r"(?:J\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\d+)", cell, re.I):
+            sm = re.search(r"\\b(\\d{2}/\\d{2})\\b", cell)
+            if sm:
+                season = sm.group(1)
+                competition = clean(re.sub(r"\\s*\\d{2}/\\d{2}\\s*", " ", cell))
+            elif re.fullmatch(r"(?:J\\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\\d+)", cell, re.I):
                 round_name = cell
         if not competition:
-            # Some rows put competition and season in separate cells.
-            for idx, cell in enumerate(cells):
-                if season and season in cell:
-                    continue
+            for cell in cells:
                 if any(k in zz_norm(cell) for k in (
-                    "liga portugal", "liga dos campeoes", "uefa champions league",
-                    "taca de portugal", "taca da liga", "supercopa", "supertaça",
-                    "premier league", "fa cup", "league cup", "champions"
+                    "liga portugal","liga dos campeoes","uefa champions league",
+                    "taca de portugal","taca da liga","supercopa","supertaca",
+                    "premier league","fa cup","league cup","champions"
                 )):
                     competition = cell
                     break
-
         found.append({
-            "id": None,
-            "date": date_value,
-            "home": home_name,
-            "away": away_name,
-            "home_score": score_home,
-            "away_score": score_away,
-            "competition": competition,
-            "season": season,
-            "round": round_name,
+            "id": None, "date": date_value, "home": home_name, "away": away_name,
+            "home_score": score_home, "away_score": score_away,
+            "competition": competition, "season": season, "round": round_name,
         })
 
     for tr in soup.find_all("tr"):
-        cells = [x.get_text(" ", strip=True) for x in tr.find_all(["th", "td"])]
-        add_cells(cells)
+        add_cells([x.get_text(" ", strip=True) for x in tr.find_all(["th","td"])])
 
-    # Fallback for layouts that are not rendered as tables.
     if not found:
-        text = soup.get_text("\n", strip=True)
-        lines = [clean(x) for x in text.splitlines() if clean(x)]
+        lines = [clean(x) for x in soup.get_text("\n", strip=True).splitlines() if clean(x)]
         for idx, line in enumerate(lines):
-            if not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", line):
+            if not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", line):
                 continue
             window = lines[idx:idx+12]
-            joined = " | ".join(window)
-            sm = re.search(r"(\d{1,2})\s*-\s*(\d{1,2})", joined)
-            if not sm:
-                continue
-            score_pos = next((j for j,x in enumerate(window) if re.fullmatch(r"\d{1,2}\s*-\s*\d{1,2}(?:a\.p\.)?", x, re.I)), None)
-            if score_pos is None or score_pos < 1 or score_pos + 1 >= len(window):
-                continue
-            add_cells([line, window[score_pos-1], window[score_pos], window[score_pos+1], *window[score_pos+2:]])
+            score_pos = next((j for j,x in enumerate(window)
+                              if re.fullmatch(r"\\d{1,2}\\s*-\\s*\\d{1,2}(?:a\\.p\\.)?", x, re.I)), None)
+            if score_pos is not None and score_pos >= 1 and score_pos + 1 < len(window):
+                add_cells([line, window[score_pos-1], window[score_pos], window[score_pos+1], *window[score_pos+2:]])
 
-    # Deduplicate and keep newest first.
     dedup = {}
     for row in found:
         key = (row["date"], zz_norm(row["home"]), zz_norm(row["away"]), row["home_score"], row["away_score"])
         dedup[key] = row
     return sorted(dedup.values(), key=lambda x: x.get("date") or "", reverse=True)
+
 
 def zerozero_team_ref(name):
     key = zz_norm(name)
@@ -3182,16 +3160,21 @@ def zerozero_team_ref(name):
         return _zerozero_team_cache[key]
     slug = ZEROZERO_TEAM_ALIASES.get(key) or re.sub(r"[^a-z0-9]+", "-", key).strip("-")
     try:
-        page_url = f"https://www.zerozero.pt/equipa/{slug}"
-        page = zerozero_get(page_url)
-        m = re.search(r'href=["\'](/equipa/[^"\']+/\d+)["\']', page)
-        if not m:
-            m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https://www\.zerozero\.pt/equipa/[^"\']+/\d+)', page, re.I)
-        if m:
-            href = m.group(1)
+        page = zerozero_get(f"https://www.zerozero.pt/equipa/{slug}")
+        patterns = [
+            r'href=["\\'](/equipa/[^"\\']+/\\d+)["\\']',
+            r'<link[^>]+rel=["\\']canonical["\\'][^>]+href=["\\'](https://www\\.zerozero\\.pt/equipa/[^"\\']+/\\d+)',
+        ]
+        href = None
+        for pat in patterns:
+            m = re.search(pat, page, re.I)
+            if m:
+                href = m.group(1)
+                break
+        if href:
             if href.startswith("/"):
                 href = "https://www.zerozero.pt" + href
-            mm = re.search(r"/equipa/([^/]+)/(\d+)", href)
+            mm = re.search(r"/equipa/([^/]+)/([0-9]+)", href)
             if mm:
                 ref = {"slug": mm.group(1), "id": int(mm.group(2)), "url": href}
                 _zerozero_team_cache[key] = ref
@@ -3199,6 +3182,7 @@ def zerozero_team_ref(name):
     except Exception as e:
         print("ZeroZero team ref warning:", name, e)
     return None
+
 
 def _zz_xray_for_fixture(f):
     home = clean((f.get("home") or {}).get("name"))
@@ -3213,36 +3197,56 @@ def _zz_xray_for_fixture(f):
     wanted = {_zz_name_key(home), _zz_name_key(away)}
     rows = [g for g in games if {_zz_name_key(g.get("home")), _zz_name_key(g.get("away"))} == wanted]
     rows.sort(key=lambda x: x.get("date") or "", reverse=True)
+
     text_content = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))
     summary = None
-    pat = re.search(r"Em todas as competições .*?(\d+) jogos.*?(\d+) vitórias do (.*?), (\d+) empates e (\d+) (?:triunfos|vitórias) do (.*?)(?:\.|\s+Em casa)", text_content, re.I)
+    pat = re.search(
+        r"Em todas as competições .*?(\\d+) jogos.*?(\\d+) vitórias do (.*?), "
+        r"(\\d+) empates e (\\d+) (?:triunfos|vitórias) do (.*?)(?:\\.|\\s+Em casa)",
+        text_content, re.I
+    )
     if pat:
         first_team, second_team = clean(pat.group(3)), clean(pat.group(6))
         vals = [int(pat.group(2)), int(pat.group(4)), int(pat.group(5)), int(pat.group(1))]
         summary = vals if _zz_name_key(first_team) == _zz_name_key(home) else [vals[2], vals[1], vals[0], vals[3]]
-    if not summary and rows:
-        hw=dw=aw=0
+
+    if summary is None:
+        hw = dw = aw = 0
         for x in rows:
-            hs,ascore=fnum(x.get("home_score")),fnum(x.get("away_score"))
-            if hs is None or ascore is None: continue
-            if hs==ascore: dw+=1
-            elif _zz_name_key(x.get("home"))==_zz_name_key(home): hw+=1
-            else: aw+=1
-        summary=[hw,dw,aw,len(rows)]
+            hs, ascore = fnum(x.get("home_score")), fnum(x.get("away_score"))
+            if hs is None or ascore is None:
+                continue
+            if hs == ascore:
+                dw += 1
+            elif _zz_name_key(x.get("home")) == _zz_name_key(home):
+                hw += 1
+            else:
+                aw += 1
+        if rows:
+            summary = [hw, dw, aw, len(rows)]
     return rows[:4], summary
 
+
 def fetch_zerozero_h2h(upcoming):
+    """Fetch ZeroZero team-vs-team history once per unique opponent."""
     result = {}
+    cache = {}
     for f in upcoming:
         fid = str(f["id"])
-        try:
-            rows, summary = _zz_xray_for_fixture(f)
-            if rows or summary:
-                result[fid] = {"matches": rows[:4], "summary": summary}
-                print("ZeroZero H2H OK:", fid, (f.get("home") or {}).get("name"), "vs", (f.get("away") or {}).get("name"))
-        except Exception as e:
-            print("ZeroZero H2H warning:", fid, e)
-        time.sleep(0.15)
+        home = clean((f.get("home") or {}).get("name"))
+        away = clean((f.get("away") or {}).get("name"))
+        key = tuple(sorted((zz_norm(home), zz_norm(away))))
+        if key not in cache:
+            try:
+                cache[key] = _zz_xray_for_fixture(f)
+                print("ZeroZero H2H:", home, "vs", away, "=>", len(cache[key][0]), "recent matches")
+            except Exception as e:
+                print("ZeroZero H2H warning:", home, "vs", away, e)
+                cache[key] = ([], None)
+            time.sleep(0.15)
+        rows, summary = cache[key]
+        if rows or summary is not None:
+            result[fid] = {"matches": rows[:4], "summary": summary}
     return result
 
 
