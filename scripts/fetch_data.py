@@ -3232,10 +3232,18 @@ def fetch_news():
                 title=clean(entry.get("title") or "")
                 link=entry.get("link")
                 summary_raw=entry.get("summary") or ""
-                summary=clean(BeautifulSoup(summary_raw,"html.parser").get_text(" ",strip=True))
+                summary_soup=BeautifulSoup(summary_raw,"html.parser")
+                summary=clean(summary_soup.get_text(" ",strip=True))
                 if link and title and "sporting" in (title+" "+summary).lower():
                     media=entry.get("media_content") or entry.get("media_thumbnail") or []
                     image=None
+                    # Google News sometimes embeds the publisher's editorial
+                    # thumbnail directly in the item description.
+                    for im in summary_soup.find_all("img"):
+                        u=im.get("src") or im.get("data-src")
+                        if u and not re.search(r"(favicon|logo)",u,re.I):
+                            image=u
+                            break
                     if media and isinstance(media,list):
                         for m in media:
                             u=m.get("url")
