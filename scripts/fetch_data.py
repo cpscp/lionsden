@@ -2926,6 +2926,51 @@ def fetch_news():
             for item in future.result():
                 add(item)
 
+    # Publisher discovery fallback via Bing News RSS. Bing is only used as
+    # a transport/discovery layer; the stored source is always the publisher
+    # URL (A Bola, O Jogo or Zerozero), never Bing.
+    try:
+        import feedparser
+        from urllib.parse import quote
+        publisher_queries = [
+            ("abola.pt", "A Bola"),
+            ("ojogo.pt", "O Jogo"),
+            ("zerozero.pt", "Zerozero"),
+        ]
+        for domain, expected_source in publisher_queries:
+            rss_url = (
+                "https://www.bing.com/news/search?q=" +
+                quote("site:" + domain + " Sporting") +
+                "&format=rss&setlang=pt-PT"
+            )
+            try:
+                feed=feedparser.parse(rss_url)
+                for entry in feed.entries[:40]:
+                    title=clean(entry.get("title") or "")
+                    link=entry.get("link")
+                    summary=clean(entry.get("summary") or "")
+                    if not link or len(title)<18:
+                        continue
+                    if "sporting" not in (title+" "+summary).lower():
+                        continue
+                    source=source_from_url(link, expected_source)
+                    if source not in ("A Bola","O Jogo","Zerozero"):
+                        continue
+                    image=None
+                    media=entry.get("media_content") or entry.get("media_thumbnail") or []
+                    if media and isinstance(media,list):
+                        image=media[0].get("url")
+                    add({
+                        "title":title,
+                        "url":link,
+                        "source":source,
+                        "published":entry.get("published") or entry.get("pubDate"),
+                        "description":summary[:280] if summary else None,
+                        **({"image":image,"image_source":"Bing News RSS"} if image else {}),
+                    })
+            except Exception as e:
+                print("Publisher RSS discovery warning:", expected_source, e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
