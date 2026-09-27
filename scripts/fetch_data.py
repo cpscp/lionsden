@@ -3168,7 +3168,7 @@ def fetch_news():
         item.pop("_google_url", None)
         item.pop("media_thumbnail", None)
         item.pop("media_content", None)
-        item.pop("article_text", None)
+        # Keep the extracted article body so the PWA can render it natively in the news popup.
 
     write_json("news.json", {"items": final})
     print("News feed:", len(final), "items;",
