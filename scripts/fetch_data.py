@@ -2649,1267 +2649,281 @@ def fetch_match_summary_videos():
     print(f"YouTube match summaries: {len(videos)} videos written.")
 
 def fetch_news():
-    """Build a fast, football-first Sporting news feed.
-
-    Priority:
-      1) Sporting football news from Record, A Bola, O Jogo and Zerozero
-      2) Sporting.pt football
-      3) other Sporting news from Google News
-    Source-specific Google RSS queries are intentional: a generic Sporting
-    query is too broad and under-represents the Portuguese football press.
+    """Fetch the three requested Sporting news sources and build one
+    chronological feed. No source is prioritised; publication time is the
+    only ordering criterion.
     """
-    import asyncio
     import re
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    from urllib.parse import quote, urljoin
+    from urllib.parse import urljoin
 
+    SOURCES = [
+        ("Record", "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting"),
+        ("A Bola", "https://www.abola.pt/futebol/sporting-448?page=2"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
+    ]
+
+    ARTICLE_LIMIT_PER_SOURCE = 24
     items = []
     seen = set()
 
-    source_priority = {
-        "Record": 100,
-        "A Bola": 98,
-        "Zerozero": 94,
-        "Sporting.pt": 92,
-    }
-    football_terms = (
-        "futebol", "sporting", "rui borges", "jogador", "jogadores",
-        "treino", "alvalade", "liga", "champions", "champions league",
-        "taça", "uefa", "mercado", "transferência", "contratação",
-        "convocados", "lesão", "onze", "jogo", "golo", "defesa",
-        "avançado", "médio", "guarda-redes", "futebolista"
-    )
-    non_football_penalty = (
-        "futsal", "andebol", "hóquei", "voleibol", "basquetebol",
-        "atletismo", "natação", "modalidades"
-    )
-
-    def source_from_url(url, fallback="Google News"):
+    def source_for(url):
         u = str(url or "").lower()
-        if "record.pt" in u: return "Record"
-        if "abola.pt" in u: return "A Bola"
-        if "ojogo.pt" in u: return "O Jogo"
-        if "zerozero.pt" in u: return "Zerozero"
-        if "sporting.pt" in u: return "Sporting.pt"
-        return fallback
+        if "record.pt" in u:
+            return "Record"
+        if "abola.pt" in u:
+            return "A Bola"
+        if "sporting.pt" in u:
+            return "Sporting.pt"
+        return ""
+
+    def is_article(source, href, title):
+        h = str(href or "").lower()
+        t = str(title or "").lower()
+        if source == "Record":
+            return "/futebol/futebol-nacional/liga-betclic/sporting/detalhe/" in h
+        if source == "A Bola":
+            return "/noticias/" in h and ("sporting" in h or "sporting" in t or
+                   any(x in t for x in ("leão", "leoes", "leões", "rui borges", "alvalade")))
+        if source == "Sporting.pt":
+            return "/noticias/" in h and h.rstrip("/") != "https://www.sporting.pt/pt/noticias"
+        return False
 
     def add(item):
-        url = item.get("url")
+        url = str(item.get("url") or "").strip()
         title = clean(item.get("title") or "")
-        if not url or not title or len(title) < 18:
+        source = source_for(url) or item.get("source") or ""
+        if not url or not title or len(title) < 18 or source not in {"Record","A Bola","Sporting.pt"}:
             return
-        # Prefer decoded/canonical article URLs when available.
-        key = re.sub(r"[?#].*$", "", str(url).rstrip("/")).lower()
+        key = re.sub(r"[?#].*$", "", url.rstrip("/")).lower()
         if key in seen:
-            for existing in items:
-                ekey=re.sub(r"[?#].*$", "", str(existing.get("url") or "").rstrip("/")).lower()
-                if ekey == key:
-                    # Merge richer discovery metadata instead of discarding it.
-                    for field in ("image","image_source","description","published","_google_url"):
-                        if item.get(field) and not existing.get(field):
-                            existing[field]=item[field]
-                    if item.get("title") and len(item.get("title","")) > len(existing.get("title","")):
-                        existing["title"]=item["title"][:180]
+            for old in items:
+                oldkey = re.sub(r"[?#].*$", "", str(old.get("url") or "").rstrip("/")).lower()
+                if oldkey == key:
+                    for field in ("image","image_source","description","published"):
+                        if item.get(field) and not old.get(field):
+                            old[field] = item[field]
                     break
             return
-        if item.get("description") and "<" in str(item.get("description")):
-            try:
-                item["description"] = clean(BeautifulSoup(str(item["description"]),"html.parser").get_text(" ",strip=True))[:280]
-            except Exception:
-                item["description"] = re.sub(r"<[^>]+>"," ",str(item["description"]))
-        item["title"] = title[:180]
-        item["source"] = source_from_url(url, item.get("source") or "Google News")
-        item["_priority"] = source_priority.get(item["source"], 50)
-        blob = title.lower()
-        football = any(t in blob for t in football_terms)
-        modalities = any(t in blob for t in non_football_penalty)
-        item["_football"] = football and not (modalities and "futebol" not in blob)
-        excluded_sporting = (
-            "sporting kansas city", "sporting kc", "sporting seis de diciembre",
-            "sporting de gijón", "sporting gijon"
-        )
-        item["_sporting"] = any(t in blob for t in (
-            "sporting", "alvalade", "rui borges", "leões", "leoes", "leoas", "leonino",
-            "verde e branco", "verde-e-branco"
-        )) and not any(t in blob for t in excluded_sporting)
-        item["_priority"] += 25 if item["_football"] else 0
-        item["_priority"] += 40 if item["_sporting"] else 0
         seen.add(key)
+        item["url"] = url
+        item["title"] = title[:180]
+        item["source"] = source
+        if item.get("description"):
+            item["description"] = clean(BeautifulSoup(str(item["description"]), "html.parser").get_text(" ", strip=True))[:300]
         items.append(item)
 
-    def decode_google_urls(rows):
-        google_rows=[x for x in rows if "news.google.com/" in str(x.get("url") or "")]
-        if not google_rows:
-            return
-        try:
-            from googlenewsdecoder import gnews_decoder_async
-            urls=[x["url"] for x in google_rows]
-            results=asyncio.run(gnews_decoder_async(
-                urls, interval=0.15, timeout=10.0, concurrency=8
-            ))
-            if isinstance(results,dict):
-                results=[results]
-            for item,result in zip(google_rows,results):
-                if not isinstance(result,dict) or not result.get("success") or not result.get("decoded_url"):
-                    # Never expose an undecoded Google News URL as a publisher.
-                    item["_decode_failed"]=True
-                    continue
-                decoded=result["decoded_url"]
-                if str(item.get("url") or "").startswith("https://news.google.com/"):
-                    item["_google_url"] = item.get("url")
-                src=source_from_url(decoded,"")
-                if src not in ("Record","A Bola","O Jogo","Zerozero","Sporting.pt"):
-                    item["_decode_failed"]=True
-                    continue
-                item["url"]=decoded
-                item["source"]=src
-        except Exception as e:
-            print("Google News decoder warning:",e)
-            for item in google_rows:
-                item["_decode_failed"]=True
+    def extract_card_image(a, base_url):
+        parent = a
+        for _ in range(7):
+            if parent is None:
+                break
+            img = parent.find("img")
+            if img:
+                src = (img.get("data-src") or img.get("data-lazy-src") or
+                       img.get("data-original") or img.get("src"))
+                if src and not str(src).startswith("data:"):
+                    return urljoin(base_url, str(src))
+            parent = parent.parent
+        return None
 
-    def article_metadata(item):
-        url=item.get("url")
-        if not url:
-            return item
-        # Zerozero often blocks article HTML from GitHub Actions. Never use
-        # Jina/Cloudflare placeholder images. If no editorial image is available
-        # from the article metadata, recover the image through Google Images using
-        # the exact article title; the article/source shown to users remains Zerozero.
-        if item.get("source")=="Zerozero":
-            # Zerozero can block GitHub Actions, but its RSS/listing feeds often
-            # already contain the correct editorial photo. NEVER delete that
-            # image just because we are enriching the article.
-            # Only try external recovery when no usable image was discovered.
-            if not item.get("image"):
-                # 1) Direct Zerozero fetch with a real-browser TLS fingerprint.
-                # requests receives 403 from the current Zerozero edge, while
-                # curl_cffi can reproduce Chrome/Safari HTTP2/TLS handshakes.
-                try:
-                    from curl_cffi import requests as curl_requests
-                    for browser in ("chrome","safari"):
-                        if item.get("image"):
-                            break
-                        try:
-                            cr=curl_requests.get(url,impersonate=browser,timeout=20,headers={"Accept":"text/html,application/xhtml+xml"})
-                            if not cr.ok:
-                                continue
-                            cs=BeautifulSoup(cr.text,"html.parser")
-                            for attrs in (
-                                {"property":"og:image"},{"property":"og:image:url"},
-                                {"name":"twitter:image"},{"name":"twitter:image:src"},
-                                {"itemprop":"image"}
-                            ):
-                                n=cs.find("meta",attrs=attrs)
-                                if n and n.get("content"):
-                                    src=n.get("content").strip()
-                                    if src and not re.search(r"(logo|favicon|cloudflare|captcha)",src,re.I):
-                                        item["image"]=urljoin(url,src)
-                                        item["image_source"]="Zerozero direct browser TLS"
-                                        break
-                            if not item.get("image"):
-                                for script in cs.find_all("script",attrs={"type":"application/ld+json"}):
-                                    try:
-                                        data=json.loads(script.string or script.get_text())
-                                        vals=data if isinstance(data,list) else [data]
-                                        for obj in vals:
-                                            if not isinstance(obj,dict):
-                                                continue
-                                            val=obj.get("image")
-                                            if isinstance(val,str):
-                                                src=val
-                                            elif isinstance(val,dict):
-                                                src=val.get("url")
-                                            elif isinstance(val,list) and val:
-                                                src=val[0]
-                                            else:
-                                                src=None
-                                            if src:
-                                                item["image"]=urljoin(url,str(src))
-                                                item["image_source"]="Zerozero direct JSON-LD"
-                                                break
-                                        if item.get("image"):
-                                            break
-                                    except Exception:
-                                        pass
-                        except Exception as ex:
-                            print("Zerozero browser TLS attempt warning:",browser,item.get("url"),ex)
-                except Exception as ex:
-                    print("Zerozero curl_cffi unavailable:",ex)
+    def extract_card_preview(a):
+        for attr in ("data-description","data-summary","data-excerpt","aria-label","title"):
+            value = clean(a.get(attr) or "")
+            if len(value) > 30:
+                return value[:300]
+        parent = a
+        for _ in range(5):
+            if parent is None:
+                break
+            text = clean(parent.get_text(" ", strip=True))
+            if len(text) > 60:
+                # Remove the title from the card text where possible.
+                return text[:300]
+            parent = parent.parent
+        return ""
 
-            if not item.get("image") and item.get("_google_url"):
-                # 2) Google News wrapper: this is the strongest recovery path
-                # when Zerozero blocks GitHub Actions. The wrapper is tied to the
-                # exact publisher article and can expose its editorial thumbnail
-                # even when the publisher HTML itself returns 403.
-                try:
-                    gu=item.get("_google_url")
-                    grn=session.get(gu,timeout=20,headers={"User-Agent":USER_AGENT},allow_redirects=False)
-                    candidates=[]
-                    if grn.ok:
-                        gns=BeautifulSoup(grn.text,"html.parser")
-                        for attrs in (
-                            {"property":"og:image"},{"property":"og:image:url"},
-                            {"name":"twitter:image"},{"name":"twitter:image:src"},
-                            {"itemprop":"image"}
-                        ):
-                            n=gns.find("meta",attrs=attrs)
-                            if n and n.get("content"):
-                                candidates.append(n.get("content").strip())
-                        for im in gns.find_all("img"):
-                            u=im.get("data-src") or im.get("data-iurl") or im.get("src")
-                            if u and not str(u).startswith("data:"):
-                                candidates.append(u.strip())
-                    for src in candidates:
-                        if src and not re.search(r"(favicon|logo|avatar|sprite)",src,re.I):
-                            item["image"]=urljoin(gu,src)
-                            item["image_source"]="Google News article thumbnail"
-                            break
-                except Exception as ex:
-                    print("Zerozero Google News wrapper warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 2) Google Translate proxy: fetch the original article and read
-                # its own OpenGraph/Twitter image metadata.
-                try:
-                    from urllib.parse import quote as _quote
-                    proxy="https://translate.google.com/translate?sl=pt&tl=en&u="+_quote(url,safe="")
-                    zr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
-                    if zr.ok:
-                        zs=BeautifulSoup(zr.text,"html.parser")
-                        for tag, attrs in [
-                            ("meta",{"property":"og:image"}),
-                            ("meta",{"property":"og:image:url"}),
-                            ("meta",{"name":"twitter:image"}),
-                            ("meta",{"itemprop":"image"}),
-                        ]:
-                            node=zs.find(tag,attrs=attrs)
-                            if node and node.get("content"):
-                                src=node.get("content").strip()
-                                if src and not re.search(r"(logo|favicon|cloudflare|translate|google)",src,re.I):
-                                    item["image"]=urljoin(url,src)
-                                    item["image_source"]="Zerozero article og:image"
-                                    break
-                        if not item.get("description"):
-                            d=zs.find("meta",attrs={"property":"og:description"}) or zs.find("meta",attrs={"name":"description"})
-                            if d and d.get("content"):
-                                item["description"]=clean(d.get("content"))[:280]
-                except Exception as ex:
-                    print("Zerozero Translate image warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 3) Zerozero publishes the same article on regional mirrors.
-                # The .pt host blocks GitHub Actions, while these mirrors expose
-                # the same editorial metadata (including og:image).
-                try:
-                    for mirror in ("https://zerozero.gr/","https://zerozero.dk/","https://zerozero.football/"):
-                        if item.get("image"):
-                            break
-                        alt=mirror.rstrip("/") + url.split("zerozero.pt",1)[1]
-                        ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
-                        if not ar.ok:
-                            continue
-                        ass=BeautifulSoup(ar.text,"html.parser")
-                        for attrs in (
-                            {"property":"og:image"},{"property":"og:image:url"},
-                            {"name":"twitter:image"},{"itemprop":"image"}
-                        ):
-                            node=ass.find("meta",attrs=attrs)
-                            if node and node.get("content"):
-                                u=node.get("content").strip()
-                                if u and not re.search(r"(logo|favicon|cloudflare|google)",u,re.I):
-                                    item["image"]=urljoin(alt,u)
-                                    item["image_source"]="Zerozero mirror og:image"
-                                    break
-                        if not item.get("description"):
-                            d=ass.find("meta",attrs={"property":"og:description"}) or ass.find("meta",attrs={"name":"description"})
-                            if d and d.get("content"):
-                                item["description"]=clean(d.get("content"))[:280]
-                except Exception as ex:
-                    print("Zerozero mirror warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 4) Microlink metadata fallback.
-                try:
-                    from urllib.parse import quote as _q
-                    mr=session.get("https://api.microlink.io/?url="+_q(url,safe="")+"&meta=true",
-                                   timeout=20,headers={"User-Agent":USER_AGENT})
-                    if mr.ok:
-                        md=mr.json().get("data",{})
-                        image=((md.get("image") or {}).get("url")
-                               if isinstance(md.get("image"),dict) else md.get("image"))
-                        desc=md.get("description")
-                        if image and not re.search(r"(google|gstatic|cloudflare|captcha|favicon|logo)",str(image),re.I):
-                            item["image"]=image
-                            item["image_source"]="Zerozero article metadata"
-                        if not item.get("description") and desc and not re.search(r"(just a moment|captcha|cloudflare)",str(desc),re.I):
-                            item["description"]=clean(desc)[:280]
-                except Exception as ex:
-                    print("Zerozero metadata service warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 5) Google Images fallback, tied to the exact Zerozero article.
-                # The previous implementation accidentally referenced 'im' after
-                # removing the loop, so this path could never work reliably.
-                try:
-                    from urllib.parse import quote
-                    q=quote((item.get("title") or "")+" site:zerozero.pt")
-                    gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
-                                   timeout=15,headers={"User-Agent":USER_AGENT})
-                    if gr.ok:
-                        gs=BeautifulSoup(gr.text,"html.parser")
-                        # Zerozero's current editorial photos are hosted on
-                        # cdn-img.staticzz.com (and, on some results, cdn-img.zerozero.pt).
-                        # Google may serialize the original CDN URL in the raw HTML
-                        # without creating an a.iusc card. This was the working
-                        # extraction path in the earlier Lions Den implementation.
-                        for m in re.finditer(
-                            r"https?:\\?/\\?/cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/[^\s<>\\]+",
-                            gr.text,
-                            re.I,
-                        ):
-                            src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
-                            src=src.rstrip(".,;)'\"")
-                            if re.search(r"\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
-                                item["image"]=src
-                                item["image_source"]="Zerozero article CDN"
-                                break
-
-                        if not item.get("image"):
-                        # Google Images exposes the original result page (purl)
-                            # and the source image (murl) in serialized result cards.
-                            # Prefer an image whose source page is the exact Zerozero
-                            # article; this is more reliable than guessing the CDN host.
-                            for node in gs.select("a.iusc"):
-                                raw=node.get("m")
-                                if not raw:
-                                    continue
-                                try:
-                                    meta=json.loads(raw)
-                                except Exception:
-                                    continue
-                                src=meta.get("murl")
-                                origin=meta.get("purl") or ""
-                                if not src or "zerozero.pt/noticias/" not in origin:
-                                    continue
-                                low=str(src).lower()
-                                if any(x in low for x in ("favicon","logo","google-search","google.com/search")):
-                                    continue
-                                item["image"]=src
-                                item["image_source"]="Zerozero article image search"
-                                break
-
-                        if not item.get("image"):
-                            # Fallback to the original thumbnail only when it is
-                            # clearly a real image and not Google UI/chrome.
-                            for im in gs.find_all("img"):
-                                src=(im.get("data-iurl") or im.get("data-original") or
-                                     im.get("data-src") or im.get("src"))
-                                if not src or str(src).startswith("data:"):
-                                    continue
-                                low=str(src).lower()
-                                if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
-                                    continue
-                                try:
-                                    if im.get("width") and int(im.get("width")) < 200:
-                                        continue
-                                except Exception:
-                                    pass
-                                item["image"]=src
-                                item["image_source"]="Zerozero article image search"
-                                break
-                except Exception as ex:
-                    print("Zerozero Google image search warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 6) Modern Google Images fallback using Google's current
-                # udm=2 endpoint. Match the thumbnail to this exact article.
-                try:
-                    from urllib.parse import quote
-                    q=quote('"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/')
-                    gu="https://www.google.com/search?udm=2&q="+q+"&hl=pt-PT"
-                    gr2=session.get(gu,timeout=20,headers={"User-Agent":USER_AGENT})
-                    if gr2.ok:
-                        gs2=BeautifulSoup(gr2.text,"html.parser")
-                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
-                        words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
-                        for im in gs2.find_all("img"):
-                            src=im.get("data-src") or im.get("data-iurl") or im.get("src")
-                            if not src or str(src).startswith("data:"):
-                                continue
-                            low=str(src).lower()
-                            if any(x in low for x in ("favicon","logo","google.com/images","google.com/search")):
-                                continue
-                            parent=im
-                            hrefs=[]
-                            texts=[]
-                            for _ in range(6):
-                                parent=parent.parent
-                                if parent is None:
-                                    break
-                                if parent.get("href"):
-                                    hrefs.append(str(parent.get("href")))
-                                t=parent.get_text(" ",strip=True) if hasattr(parent,"get_text") else ""
-                                if t:
-                                    texts.append(t)
-                            exact=any(target and target in h.split("?",1)[0].rstrip("/").lower() for h in hrefs)
-                            text_match=any(sum(1 for w in words if w in t.lower()) >= max(4,min(8,len(words))) for t in texts)
-                            if exact or text_match:
-                                item["image"]=src
-                                item["image_source"]="Google Images modern thumbnail"
-                                break
-                except Exception as ex:
-                    print("Zerozero modern Google Images warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 7) Google Images through Jina. This keeps Google as the
-                # discovery engine while avoiding Google's constantly changing
-                # browser HTML. Jina returns the result page as Markdown and
-                # preserves image URLs.
-                try:
-                    from urllib.parse import quote
-                    jq=quote('"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/')
-                    ju="https://r.jina.ai/http://www.google.com/search?udm=2&q="+jq+"&hl=pt-PT"
-                    jr=session.get(ju,timeout=30,headers={"User-Agent":USER_AGENT,"Accept":"text/markdown"})
-                    if jr.ok:
-                        body=jr.text
-                        words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
-                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
-                        candidates=[]
-                        for m in re.finditer(r"!\[([^\]]*)\]\((https?://[^)\s]+)",body):
-                            candidates.append((m.group(1),m.group(2)))
-                        for alt,src in candidates:
-                            low=src.lower()
-                            if any(x in low for x in ("favicon","logo","sprite","google.com/search")):
-                                continue
-                            context=(alt+" "+body[max(0,m.start()-300):m.end()+300] if False else alt).lower()
-                            score=sum(1 for w in words if w in context)
-                            if score >= max(3,min(6,len(words))):
-                                item["image"]=src
-                                item["image_source"]="Google Images via Jina"
-                                break
-                        if not item.get("image"):
-                            for m in re.finditer(r"\((https?://[^)\s]+\.(?:jpg|jpeg|png|webp)(?:\?[^)]*)?)\)",body,re.I):
-                                src=m.group(1)
-                                if any(x in src.lower() for x in ("favicon","logo","sprite")):
-                                    continue
-                                item["image"]=src
-                                item["image_source"]="Google Images via Jina"
-                                break
-                except Exception as ex:
-                    print("Zerozero Jina Google Images warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 8) DuckDuckGo Images fallback. Try exact publisher query first,
-                # then exact headline, then a compact headline variant.
-                try:
-                    from urllib.parse import quote
-                    queries=[
-                        '"' + (item.get("title") or "").replace('"',"") + '" site:zerozero.pt/noticias/',
-                        '"' + (item.get("title") or "").replace('"',"") + '"',
-                        (item.get("title") or "").replace(" - zerozero.pt","").strip(),
-                    ]
-                    words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
-                    chosen=None
-                    for dq in queries:
-                        if chosen:
-                            break
-                        home="https://duckduckgo.com/?q="+quote(dq)+"&iar=images&iax=images&ia=images"
-                        dh=session.get(home,timeout=15,headers={"User-Agent":USER_AGENT})
-                        if not dh.ok:
-                            continue
-                        vqd=None
-                        for pat in (r'vqd=([0-9-]+)',r'vqd\?"\?:\?"([0-9-]+)'):
-                            m=re.search(pat,dh.text,re.I)
-                            if m:
-                                vqd=m.group(1)
-                                break
-                        if not vqd:
-                            continue
-                        api="https://duckduckgo.com/i.js?q="+quote(dq)+"&o=json&l=pt-pt&vqd="+quote(vqd)+"&f=,,,,,&p=1"
-                        ih=session.get(api,timeout=20,headers={
-                            "User-Agent":USER_AGENT,
-                            "Referer":home,
-                            "Accept":"application/json, text/javascript, */*; q=0.01",
-                        })
-                        if not ih.ok:
-                            continue
-                        results=ih.json().get("results") or []
-                        fallback=None
-                        for res in results[:50]:
-                            src=res.get("image") or res.get("thumbnail")
-                            origin=res.get("url") or ""
-                            rtitle=clean(res.get("title") or "")
-                            if not src:
-                                continue
-                            low=str(src).lower()
-                            if any(x in low for x in ("favicon","logo","sprite","avatar")):
-                                continue
-                            exact="zerozero.pt/noticias/" in origin.lower()
-                            title_match=sum(1 for w in words if w in rtitle.lower()) >= max(3,min(6,len(words)))
-                            if exact:
-                                chosen=src
-                                break
-                            if title_match and fallback is None:
-                                fallback=src
-                        if not chosen and fallback:
-                            chosen=fallback
-                        if not chosen and results:
-                            for res in results[:20]:
-                                src=res.get("image") or res.get("thumbnail")
-                                if src and not re.search(r"(favicon|logo|sprite|avatar)",str(src),re.I):
-                                    chosen=src
-                                    break
-                    if chosen:
-                        item["image"]=chosen
-                        item["image_source"]="DuckDuckGo Images"
-                except Exception as ex:
-                    print("Zerozero DuckDuckGo Images warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 9) Bing Images fallback. Prefer an original image whose
-                # source page or result title clearly belongs to this exact
-                # Zerozero article.
-                try:
-                    from urllib.parse import quote
-                    query_title=(item.get("title") or "").replace(" - zerozero.pt","").strip()
-                    bq=quote(query_title+" site:zerozero.pt")
-                    br=session.get("https://www.bing.com/images/search?q="+bq,
-                                   timeout=15,headers={"User-Agent":USER_AGENT})
-                    if br.ok:
-                        bs=BeautifulSoup(br.text,"html.parser")
-                        title_words=[w.lower() for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",query_title.lower())]
-                        for node in bs.select("a.iusc"):
-                            raw=node.get("m")
-                            if not raw:
-                                continue
-                            try:
-                                meta=json.loads(raw)
-                            except Exception:
-                                continue
-                            src=meta.get("murl") or meta.get("turl")
-                            origin=meta.get("purl") or ""
-                            result_title=clean(meta.get("t") or "")
-                            if not src:
-                                continue
-                            low=str(src).lower()
-                            if any(x in low for x in ("bing.com","microsoft.com","favicon","logo","ytimg.com","youtube.com","pngimg.com")):
-                                continue
-                            origin_zerozero="zerozero.pt" in origin.lower() or "zerozero." in origin.lower()
-                            title_match=sum(1 for w in title_words if w in result_title.lower()) >= min(5,len(title_words))
-                            if not (origin_zerozero or title_match):
-                                continue
-                            item["image"]=src
-                            item["image_source"]="Zerozero article image search"
-                            break
-                except Exception as ex:
-                    print("Zerozero Bing image search warning:",item.get("url"),ex)
-            if not item.get("image"):
-                # 7) Google normal search fallback. Its result cards can expose
-                # the Zerozero article thumbnail even when Google Images is
-                # unavailable to the Actions runner.
-                try:
-                    from urllib.parse import quote
-                    q=quote('"'+(item.get("title") or "").replace('"',"")+'" site:zerozero.pt/noticias/')
-                    sr=session.get("https://www.google.com/search?q="+q+"&num=10&hl=pt-PT",
-                                   timeout=15,headers={"User-Agent":USER_AGENT})
-                    if sr.ok:
-                        ss=BeautifulSoup(sr.text,"html.parser")
-                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
-                        for im in ss.find_all("img"):
-                            src=(im.get("data-iurl") or im.get("data-original") or
-                                 im.get("data-src") or im.get("src"))
-                            if not src or str(src).startswith("data:"):
-                                continue
-                            low=str(src).lower()
-                            parent=im
-                            found_origin=""
-                            for _ in range(6):
-                                parent=parent.parent
-                                if parent is None:
-                                    break
-                                if parent.name=="a" and parent.get("href"):
-                                    found_origin=parent.get("href")
-                                    break
-                            if target and found_origin:
-                                if found_origin.startswith("/url?q="):
-                                    found_origin=found_origin.split("/url?q=",1)[1].split("&",1)[0]
-                                if target not in found_origin.split("?",1)[0].rstrip("/").lower():
-                                    continue
-                            elif target:
-                                continue
-                            item["image"]=src
-                            item["image_source"]="Zerozero article Google thumbnail"
-                            break
-                except Exception as ex:
-                    print("Zerozero Google search thumbnail warning:",item.get("url"),ex)
-
-            if not item.get("image"):
-                # 8) Jina / AllOrigins are last-resort exact-article fetches.
-                for proxy_url, label in [
-                    ("https://r.jina.ai/"+url, "Zerozero article via Jina"),
-                    ("https://api.allorigins.win/get?url="+quote(url), "Zerozero article via AllOrigins"),
-                ]:
-                    if item.get("image"):
-                        break
-                    try:
-                        pr=session.get(proxy_url,timeout=25,headers={"User-Agent":USER_AGENT})
-                        if not pr.ok:
-                            continue
-                        if "allorigins" in proxy_url:
-                            html=(pr.json().get("contents") or "")
-                        else:
-                            html=pr.text
-                        if not html:
-                            continue
-                        ps=BeautifulSoup(html,"html.parser")
-                        for tag,attrs in [
-                            ("meta",{"property":"og:image"}),
-                            ("meta",{"property":"og:image:url"}),
-                            ("meta",{"name":"twitter:image"}),
-                            ("meta",{"itemprop":"image"}),
-                        ]:
-                            node=ps.find(tag,attrs=attrs)
-                            if node and node.get("content"):
-                                u=node.get("content").strip()
-                                if u and not re.search(r"(logo|favicon|cloudflare|translate|google)",u,re.I):
-                                    item["image"]=urljoin(url,u)
-                                    item["image_source"]=label
-                                    break
-                        if not item.get("description"):
-                            d=ps.find("meta",attrs={"property":"og:description"}) or ps.find("meta",attrs={"name":"description"})
-                            if d and d.get("content"):
-                                item["description"]=clean(d.get("content"))[:280]
-                        if not item.get("image") and "r.jina.ai/" in proxy_url:
-                            for m in re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)",pr.text):
-                                src=m.group(1)
-                                if not re.search(r"(logo|favicon|google|cloudflare)",src,re.I):
-                                    item["image"]=src
-                                    item["image_source"]=label
-                                    break
-                    except Exception as ex:
-                        print("Zerozero proxy warning:",item.get("url"),ex)
-
-        try:
-            rr=session.get(url,timeout=12,allow_redirects=True,
-                            headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            final_url=rr.url
-            ss=BeautifulSoup(rr.text,"html.parser")
-            item["source"]=source_from_url(final_url,item.get("source"))
-            # Try the common image metadata used by O Jogo/Zerozero.
-            image = None
-            for tag, attrs in [
-                ("meta", {"property":"og:image"}),
-                ("meta", {"property":"og:image:url"}),
-                ("meta", {"name":"og:image"}),
-                ("meta", {"name":"twitter:image"}),
-                ("meta", {"name":"twitter:image:src"}),
-                ("meta", {"itemprop":"image"}),
-            ]:
-                node=ss.find(tag,attrs=attrs)
-                if node and node.get("content"):
-                    image=node.get("content").strip()
-                    break
-            if not image:
-                # Some pages expose the hero image through JSON-LD.
-                import json as _json
-                for script in ss.find_all("script",attrs={"type":"application/ld+json"}):
-                    try:
-                        data=_json.loads(script.string or script.get_text())
-                        candidates=data if isinstance(data,list) else [data]
-                        for obj in candidates:
-                            if not isinstance(obj,dict):
-                                continue
-                            val=obj.get("image")
-                            if isinstance(val,str): image=val
-                            elif isinstance(val,dict): image=val.get("url")
-                            elif isinstance(val,list) and val: image=val[0]
-                            if image: break
-                        if image: break
-                    except Exception:
-                        pass
-            if not image:
-                for img in ss.select("article img, main img, img"):
-                    image=img.get("data-src") or img.get("data-lazy-src") or img.get("src")
-                    if image and not str(image).startswith("data:"):
-                        break
-            if image and (item.get("source") != "Zerozero" or "zerozero.pt" in str(image).lower()):
-                image=str(image).strip()
-                if image.startswith("//"): image="https:"+image
-                elif image.startswith("/"):
-                    from urllib.parse import urljoin
-                    image=urljoin(final_url,image)
-                item["image"]=image
-                item["image_source"]=final_url
-            # Never allow blocked/placeholder Zerozero metadata to replace
-            # an image already recovered from the editorial image search.
-            if item.get("source")=="Zerozero" and item.get("image_source")=="Jina Reader":
-                item.pop("image",None)
-                item.pop("image_source",None)
-            # Always recover the publication timestamp from the article,
-            # because listing feeds from some sources omit it.
-            published = None
-            for tag, attrs in [
-                ("meta", {"property":"article:published_time"}),
-                ("meta", {"name":"article:published_time"}),
-                ("meta", {"property":"og:published_time"}),
-            ]:
-                node=ss.find(tag,attrs=attrs)
-                if node and node.get("content"):
-                    published=node.get("content").strip()
-                    break
-            if not published:
-                time_node=ss.find("time")
-                if time_node:
-                    published=time_node.get("datetime") or time_node.get_text(" ",strip=True)
-            if not published:
-                import json as _json
-                for script in ss.find_all("script",attrs={"type":"application/ld+json"}):
-                    try:
-                        data=_json.loads(script.string or script.get_text())
-                        candidates=data if isinstance(data,list) else [data]
-                        for obj in candidates:
-                            if isinstance(obj,dict) and obj.get("datePublished"):
-                                published=obj["datePublished"]
-                                break
-                        if published: break
-                    except Exception:
-                        pass
-            if published:
-                item["published"]=published
-            desc = (ss.find("meta",attrs={"property":"og:description"}) or ss.find("meta",attrs={"name":"description"}) or ss.find("meta",attrs={"name":"twitter:description"}))
-            if desc and desc.get("content"):
-                item["description"]=clean(desc.get("content"))[:280]
-            if final_url and "news.google.com" not in final_url:
-                item["url"]=final_url
-        except Exception as e:
-            try:
-                jina="https://r.jina.ai/"+url
-                jr=session.get(jina,timeout=15,headers={"User-Agent":USER_AGENT})
-                jr.raise_for_status()
-                js=BeautifulSoup(jr.text,"html.parser")
-                if not item.get("description"):
-                    text_blob=js.get_text(" ",strip=True)
-                    if text_blob:
-                        item["description"]=clean(text_blob)[:280]
-                for img in js.select("img"):
-                    src=img.get("src")
-                    if src and not src.startswith("data:"):
-                        item["image"]=src
-                        item["image_source"]=jina
-                        break
-            except Exception as e2:
-                print("News metadata warning:",item.get("url"),e2)
-        return item
-
-    def scrape_page(url, source):
-        """Scrape a publisher listing with direct + Jina fallback."""
+    def scrape_listing(source, url):
+        results = []
         candidates = [url, "https://r.jina.ai/" + url]
         for candidate in candidates:
             try:
-                r=session.get(candidate,timeout=15,headers={"User-Agent":USER_AGENT})
-                r.raise_for_status()
-                soup=BeautifulSoup(r.text,"html.parser")
-                local=[]
+                rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
+                rr.raise_for_status()
+                soup = BeautifulSoup(rr.text, "html.parser")
+                local_seen = set()
                 for a in soup.select("a[href]"):
-                    href=a.get("href","")
-                    title=" ".join(a.stripped_strings)
-                    if href.startswith("/"):
-                        from urllib.parse import urljoin
-                        href=urljoin(url,href)
-                    # Jina may expose canonical absolute links.
-                    if source_from_url(href) != source or len(title)<18:
+                    href = urljoin(url, a.get("href") or "")
+                    title = clean(a.get_text(" ", strip=True))
+                    if href in local_seen or not is_article(source, href, title):
                         continue
-                    # O Jogo's "Últimas" page is broad; keep only articles
-                    # explicitly tied to Sporting CP so other clubs never leak.
-                    if source == "O Jogo" and "sporting" not in title.lower():
-                        continue
-                    # sporting.pt contains corporate, academy, membership,
-                    # foundation and other institutional content. Keep it only
-                    # when the item is clearly an editorial Sporting CP story.
-                    if source == "Sporting.pt":
-                        low_title = title.lower()
-                        low_href = href.lower()
-                        blocked_terms = (
-                            "corporate", "sporting corporate", "fundação",
-                            "fundacao", "foundation", "business", "parceiros",
-                            "parceiro", "membership", "bilhetes", "ticketing",
-                            "academia", "formação", "formacao", "e-learning",
-                            "sustentabilidade", "responsabilidade social",
-                            "sporting solidário", "sporting solidario"
-                        )
-                        editorial_paths = ("/noticias/",)
-                        if any(term in low_title for term in blocked_terms):
-                            continue
-                        if not any(path in low_href for path in editorial_paths):
-                            continue
-                    if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
-                        continue
-                    image = None
-                    parent = a
-                    for _ in range(6):
-                        if parent is None: break
-                        img = parent.find("img")
-                        if img:
-                            image = (img.get("data-src") or img.get("data-lazy-src") or
-                                     img.get("data-original") or img.get("src"))
-                            if image and not str(image).startswith("data:"):
-                                break
-                            image = None
-                        parent = parent.parent
-                    if image:
-                        from urllib.parse import urljoin
-                        image=urljoin(url,str(image))
-                    preview = None
-                    for attr in ("data-description","data-summary","data-excerpt","aria-label"):
-                        val=a.get(attr)
-                        if val and len(str(val)) > 20:
-                            preview=clean(val)
-                            break
-                    local.append({"title":title,"url":href,"source":source,
-                                  **({"image":image,"image_source":url} if image else {}),
-                                  **({"description":preview} if preview else {})})
-                    if len(local)>=18:
-                        break
-                if not local and candidate.startswith("https://r.jina.ai/"):
-                    # Jina Reader may return Markdown rather than HTML. Keep the
-                    # editorial image when it is embedded as ![alt](image) next
-                    # to the article link. This is the important Zerozero fallback
-                    # when the publisher blocks the Actions runner with 403.
-                    md=r.text
-                    link_matches=list(re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)", md))
-                    for m in link_matches:
-                        title=clean(m.group(1))
-                        href=m.group(2)
-                        if source_from_url(href) != source or len(title)<18:
-                            continue
-                        if source == "O Jogo" and "sporting" not in title.lower():
-                            continue
-                        image=None
-                        # Search the local Markdown window around the article
-                        # link, preferring an image immediately before the title.
-                        window=md[max(0,m.start()-1400):m.end()+700]
-                        imgs=list(re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)",window))
-                        if imgs:
-                            # Prefer the closest image before the article link.
-                            before=[x for x in imgs if x.end() <= (m.start()-max(0,m.start()-1400))]
-                            chosen=before[-1] if before else imgs[0]
-                            image=chosen.group(1)
-                            if image.startswith("//"):
-                                image="https:"+image
-                        local.append({"title":title,"url":href,"source":source,
-                                      **({"image":image,"image_source":"Jina Zerozero listing"} if image else {})})
-                        if len(local)>=18:
-                            break
-                if local:
-                    return local
-            except Exception as e:
-                print(f"{source} news warning ({candidate}):",e)
-        return []
-
-
-    # Direct source pages. These are deliberately football-specific where the
-    # publisher exposes a Sporting football section.
-    direct_sources = [
-        ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
-        ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
-        ("https://www.zerozero.pt/equipa/sporting/noticias", "Zerozero"),
-        (SPORTING_NEWS, "Sporting.pt"),
-    ]
-    # Zerozero publishes an official RSS feed. It is much lighter and more
-    # reliable from Actions than scraping the site.
-    try:
-        import feedparser
-        feed_urls=("https://www.zerozero.pt/rss.php?equipa=9","https://www.zerozero.pt/rss_list.php?equipa=9")
-        for feed_url in feed_urls:
-            feed=feedparser.parse(feed_url)
-            for entry in feed.entries[:80]:
-                title=clean(entry.get("title") or "")
-                link=entry.get("link")
-                summary_raw=entry.get("summary") or ""
-                summary_soup=BeautifulSoup(summary_raw,"html.parser")
-                summary=clean(summary_soup.get_text(" ",strip=True))
-                blob=(title+" "+summary).lower()
-                if not link or "sporting" not in blob:
-                    continue
-                image=None
-                # Zerozero may expose the editorial thumbnail directly in RSS.
-                for im in summary_soup.find_all("img"):
-                    u=im.get("src") or im.get("data-src") or im.get("data-original")
-                    if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                        image=u
-                        break
-                media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                if media and isinstance(media,list):
-                    for m in media:
-                        u=m.get("url")
-                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                            image=u
-                            break
-                if not image:
-                    image=(entry.get("image") or {}).get("href") if isinstance(entry.get("image"),dict) else None
-                add({
-                    "title":title,
-                    "url":link,
-                    "source":"Zerozero",
-                    "published":entry.get("published"),
-                    **({"image":image,"image_source":feed_url} if image else {}),
-                })
-    except Exception as e:
-        print("Zerozero RSS warning:",e)
-
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        futures=[pool.submit(scrape_page,u,s) for u,s in direct_sources]
-        for future in as_completed(futures):
-            for item in future.result():
-                add(item)
-
-    # Publisher discovery fallback via Bing News RSS. Bing is only used as
-    # a transport/discovery layer; the stored source is always the publisher
-    # URL (A Bola, O Jogo or Zerozero), never Bing.
-    try:
-        import feedparser
-        from urllib.parse import quote
-        publisher_queries = [
-            ("abola.pt", "A Bola"),
-            ("zerozero.pt", "Zerozero"),
-        ]
-        for domain, expected_source in publisher_queries:
-            rss_url = (
-                "https://www.bing.com/news/search?q=" +
-                quote("site:" + domain + " Sporting") +
-                "&format=rss&setlang=pt-PT"
-            )
-            try:
-                feed=feedparser.parse(rss_url)
-                for entry in feed.entries[:40]:
-                    title=clean(entry.get("title") or "")
-                    link=entry.get("link")
-                    summary_raw=entry.get("summary") or ""
-                    summary_soup=BeautifulSoup(summary_raw,"html.parser")
-                    summary=clean(summary_soup.get_text(" ",strip=True))
-                    if not link or len(title)<18:
-                        continue
-                    if "sporting" not in (title+" "+summary).lower():
-                        continue
-                    source=source_from_url(link, expected_source)
-                    if source not in ("A Bola","O Jogo","Zerozero"):
-                        continue
-                    image=None
-                    # Bing News RSS can carry the publisher thumbnail inside
-                    # the HTML description. Extract it before stripping HTML.
-                    for im in summary_soup.find_all("img"):
-                        u=im.get("src") or im.get("data-src") or im.get("data-original")
-                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                            image=u
-                            break
-                    media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                    if not image and media and isinstance(media,list):
-                        for m in media:
-                            u=m.get("url")
-                            if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                                image=u
-                                break
+                    local_seen.add(href)
+                    image = extract_card_image(a, url)
+                    preview = extract_card_preview(a)
                     add({
-                        "title":title,
-                        "url":link,
-                        "source":source,
-                        "published":entry.get("published") or entry.get("pubDate"),
-                        "description":summary[:280] if summary else None,
-                        **({"image":image,"image_source":"Bing News RSS"} if image else {}),
+                        "title": title,
+                        "url": href,
+                        "source": source,
+                        **({"image": image, "image_source": source + " listing"} if image else {}),
+                        **({"description": preview} if preview else {}),
                     })
-            except Exception as e:
-                print("Publisher RSS discovery warning:", expected_source, e)
-
-    except Exception as e:
-        print("Publisher RSS import warning:", e)
-
-    # Fallback discovery for publishers that block their listing pages.
-    try:
-        from urllib.parse import quote
-        for domain, expected_source in (("zerozero.pt","Zerozero"),):
-            qurl="https://html.duckduckgo.com/html/?q="+quote("site:"+domain+" Sporting")
-            rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            soup=BeautifulSoup(rr.text,"html.parser")
-            for a in soup.select("a.result__a")[:30]:
-                href=a.get("href","")
-                title=clean(a.get_text(" ",strip=True))
-                if href and title and domain in href.lower() and "sporting" in title.lower():
-                    add({"title":title,"url":href,"source":expected_source})
-    except Exception as e:
-        print("Web discovery warning:",e)
-
-    # Search discovery fallback for publishers that block GitHub Actions.
-    # Search is only transport; the stored URL/source is the original publisher.
-    try:
-        from urllib.parse import quote
-        for domain, expected_source in (("zerozero.pt","Zerozero"),):
-            qurl="https://www.google.com/search?q="+quote("site:"+domain+" Sporting")+"&num=20&hl=pt-PT"
-            rr=session.get(qurl,timeout=20,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            soup=BeautifulSoup(rr.text,"html.parser")
-            for a in soup.select("a[href]"):
-                href=a.get("href","")
-                title=clean(a.get_text(" ",strip=True))
-                if href.startswith("/url?q="):
-                    href=href.split("/url?q=",1)[1].split("&",1)[0]
-                if href.startswith("http") and domain in href.lower() and "sporting" in title.lower():
-                    add({"title":title,"url":href,"source":expected_source})
-    except Exception as e:
-        print("Search discovery warning:",e)
-
-    # Jina-backed search discovery for publishers blocking GitHub Actions.
-    try:
-        from urllib.parse import quote
-        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
-            q="site:"+domain+" Sporting"
-            jurl="https://r.jina.ai/http://www.google.com/search?q="+quote(q)
-            rr=session.get(jurl,timeout=25,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            text_body=rr.text
-            for m in re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)",text_body):
-                title=clean(m.group(1))
-                href=m.group(2)
-                if domain in href.lower() and "sporting" in title.lower():
-                    add({"title":title,"url":href,"source":expected_source})
-    except Exception as e:
-        print("Jina search discovery warning:",e)
-
-    # Independent Google News RSS fallbacks per publisher. These are only
-    # discovery transports; the final source/url always remains the publisher.
-    # Parse the RAW XML item-by-item instead of relying on feedparser's
-    # media fields. Google News can put the publisher thumbnail in
-    # <media:content>, <media:thumbnail>, <enclosure>, or an <img> inside
-    # <description>. Keeping the extraction tied to the same <item> prevents
-    # images from one article being lost/misassigned.
-    try:
-        import feedparser
-        from urllib.parse import quote
-        rss_sources = [
-            ("site:record.pt/futebol/futebol-nacional/liga-betclic/sporting Sporting", "Record"),
-            ("site:abola.pt/noticias/ Sporting", "A Bola"),
-            ("site:zerozero.pt/noticias/ Sporting", "Zerozero"),
-        ]
-        for query, expected_source in rss_sources:
-            rss_url="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
-            raw=session.get(rss_url,timeout=20,headers={"User-Agent":USER_AGENT})
-            raw.raise_for_status()
-            xml=BeautifulSoup(raw.text,"xml")
-            for node in xml.find_all("item")[:50]:
-                title=clean(node.find("title").get_text(" ",strip=True) if node.find("title") else "")
-                link=(node.find("link").get_text(" ",strip=True) if node.find("link") else "").strip()
-                desc_node=node.find("description")
-                summary_raw=desc_node.decode_contents() if desc_node else ""
-                summary_soup=BeautifulSoup(summary_raw,"html.parser")
-                summary=clean(summary_soup.get_text(" ",strip=True))
-                if not link or len(title)<18:
-                    continue
-                blob=(title+" "+summary).lower()
-                if "sporting" not in blob and not any(k in blob for k in (
-                    "alvalade","rui borges","leões","leoes","leoas","leonino")):
-                    continue
-                image=None
-                # 1) media:content / media:thumbnail on THIS RSS item.
-                for tag_name in ("media:content","media:thumbnail","enclosure"):
-                    for media_node in node.find_all(tag_name):
-                        u=media_node.get("url") or media_node.get("href")
-                        if u and not re.search(r"(favicon|logo)",u,re.I):
-                            image=u.strip()
-                            break
-                    if image:
+                    if len(results) < ARTICLE_LIMIT_PER_SOURCE:
+                        results.append(href)
+                    if len(results) >= ARTICLE_LIMIT_PER_SOURCE:
                         break
-                # 2) Editorial image embedded in THIS item's description.
-                if not image:
-                    for im in summary_soup.find_all("img"):
-                        u=im.get("src") or im.get("data-src") or im.get("data-original")
-                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                            image=u.strip()
-                            break
-                pub=node.find("pubDate")
-                published=pub.get_text(" ",strip=True) if pub else None
-                add({
-                    "title":title,
-                    "url":link,
-                    "source":expected_source,
-                    "published":published,
-                    "description":summary[:280] if summary else None,
-                    **({"image":image,"image_source":"Google News raw RSS"} if image else {}),
-                })
-    except Exception as e:
-        print("Publisher Google RSS fallback warning:",e)
+                if results:
+                    return results
+            except Exception as ex:
+                print("News listing warning:", source, candidate, ex)
+        return results
 
-    # Publisher-specific Sporting sections: these are much more complete
-    # than generic "latest" pages and should be the primary discovery route.
-    publisher_sections = [
-        ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
-        ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
-        ("https://www.zerozero.pt/noticias?keyword=117&order=recent-desc&redird=1", "Zerozero"),
-    ]
-    for section_url, source in publisher_sections:
-        try:
-            rr=session.get(section_url,timeout=20,headers={"User-Agent":USER_AGENT})
-            rr.raise_for_status()
-            ss=BeautifulSoup(rr.text,"html.parser")
-            for a in ss.select("a[href]"):
-                href=urljoin(section_url,a.get("href",""))
-                title=clean(a.get_text(" ",strip=True))
-                if not href or len(title)<18 or source_from_url(href)!=source:
-                    continue
-                if source=="Zerozero" and "/noticias/" not in href:
-                    continue
-                if source=="Record" and "/sporting/" not in href:
-                    continue
-                if source=="A Bola" and "/noticias/" not in href:
-                    continue
-                add({"title":title,"url":href,"source":source})
-        except Exception as e:
-            print("Publisher section warning:",source,e)
-
-    # Zerozero fallback: Google News RSS is used only to discover current
-    # Zerozero URLs when the publisher blocks GitHub Actions. URLs are decoded
-    # before they enter the feed, so Google is never exposed as the source.
-    try:
-        import feedparser
-        from urllib.parse import quote
-        queries=("site:zerozero.pt/noticias/ Sporting","site:zerozero.pt/noticias/ Sporting CP","site:zerozero.pt/noticias/ Sporting modalidades")
-        feeds=[]
-        for query in queries:
-            rss="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
-            raw=session.get(rss,timeout=20,headers={"User-Agent":USER_AGENT})
-            raw.raise_for_status()
-            parsed=feedparser.parse(raw.text)
-            feeds.append(parsed)
-        for feed in feeds:
-            for entry in feed.entries[:40]:
-                title=clean(entry.get("title") or "")
-                link=entry.get("link")
-                summary_raw=entry.get("summary") or ""
-                summary_soup=BeautifulSoup(summary_raw,"html.parser")
-                summary=clean(summary_soup.get_text(" ",strip=True))
-                if link and title and "sporting" in (title+" "+summary).lower():
-                    media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                    image=None
-                    # Google News sometimes embeds the publisher's editorial
-                    # thumbnail directly in the item description.
-                    for im in summary_soup.find_all("img"):
-                        u=im.get("src") or im.get("data-src")
-                        if u and not re.search(r"(favicon|logo)",u,re.I):
-                            image=u
-                            break
-                    if media and isinstance(media,list):
-                        for m in media:
-                            u=m.get("url")
-                            if u and not re.search(r"(favicon|logo)",u,re.I):
-                                image=u
-                                break
-                    # Google News may expose an image URL in the raw RSS even when
-                    # feedparser does not populate media_content.
-                    if not image:
-                        m=re.search(r'<media:content[^>]+url="([^"]+)"',raw.text,re.I)
-                        if m and not re.search(r"(favicon|logo)",m.group(1),re.I):
-                            image=m.group(1)
-                    add({"title":title,"url":link,"source":"Zerozero",
-                         "published":entry.get("published"),
-                         "description":summary[:280] if summary else None,
-                         **({"image":image,"image_source":"Zerozero RSS"} if image else {})})
-    except Exception as e:
-        print("Zerozero Google RSS warning:",e)
-
-    # Google News is only a discovery/transport layer for Zerozero. Decode
-    # those links now so the final feed contains only the original publisher URL.
-    decode_google_urls(items)
-
-    # Re-score after URL decoding. Any Google News item that could not be
-    # resolved to a real publisher URL is discarded rather than mislabelled.
-    items=[x for x in items if not x.get("_decode_failed") and "news.google.com/" not in str(x.get("url") or "")]
-    dedup={}
-    for item in items:
-        url=item.get("url")
+    def article_metadata(item):
+        url = item.get("url")
         if not url:
-            continue
-        key=re.sub(r"[?#].*$","",str(url).rstrip("/")).lower()
-        item["source"]=source_from_url(url,item.get("source") or "Google News")
-        p=source_priority.get(item["source"],50)
-        title=item.get("title","").lower()
-        item["_football"]=any(t in title for t in football_terms) and not (
-            any(t in title for t in non_football_penalty) and "futebol" not in title
-        )
-        item["_sporting"]=any(t in title for t in (
-            "sporting", "alvalade", "rui borges", "leões", "leoes", "leoas", "leonino",
-            "verde e branco", "verde-e-branco"
-        )) and not any(t in title for t in (
-            "sporting kansas city", "sporting kc", "sporting seis de diciembre",
-            "sporting de gijón", "sporting gijon"
-        ))
-        item["_priority"]=p + (25 if item["_football"] else 0) + (40 if item["_sporting"] else 0)
-        old=dedup.get(key)
-        if old is None:
-            dedup[key]=item
-        else:
-            # Multiple discovery paths can find the same article (Zerozero RSS,
-            # Google News RSS, section scraping, etc.). Never discard richer
-            # metadata just because another copy has the same canonical URL.
-            for field in ("image","image_source","description","published","_google_url"):
-                if item.get(field) and not old.get(field):
-                    old[field]=item[field]
-            if item.get("title") and len(item.get("title","")) > len(old.get("title","")):
-                old["title"]=item["title"][:180]
-            if item["_priority"] > old["_priority"]:
-                for field in ("image","image_source","description","published"):
-                    if old.get(field) and not item.get(field):
-                        item[field]=old[field]
-                if old.get("title") and len(old.get("title","")) > len(item.get("title","")):
-                    item["title"]=old["title"][:180]
-                dedup[key]=item
-    items=list(dedup.values())
+            return item
+        candidates = [url, "https://r.jina.ai/" + url]
+        for candidate in candidates:
+            try:
+                rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
+                rr.raise_for_status()
+                soup = BeautifulSoup(rr.text, "html.parser")
 
-    # Newest first within the football/source priority. This prevents a large
-    # volume of old generic Google results from pushing current football news
-    # out of the app.
+                def meta(*pairs):
+                    for attrs in pairs:
+                        n = soup.find("meta", attrs=attrs)
+                        if n and n.get("content"):
+                            return clean(n.get("content"))
+                    return ""
+
+                image = meta(
+                    {"property":"og:image"},
+                    {"property":"og:image:url"},
+                    {"name":"twitter:image"},
+                    {"name":"twitter:image:src"},
+                )
+                if image and not re.search(r"(favicon|logo|sprite|avatar)", image, re.I):
+                    item["image"] = urljoin(url, image)
+                    item["image_source"] = item.get("image_source") or (item["source"] + " article")
+
+                desc = meta({"property":"og:description"}, {"name":"description"})
+                if desc and len(desc) > 20:
+                    item["description"] = desc[:300]
+
+                published = meta(
+                    {"property":"article:published_time"},
+                    {"property":"og:published_time"},
+                    {"name":"publishdate"},
+                    {"name":"date"},
+                )
+                if not published:
+                    time_node = soup.find("time", attrs={"datetime": True})
+                    if time_node:
+                        published = time_node.get("datetime")
+                if published:
+                    item["published"] = published
+
+                # JSON-LD is more reliable on both Record and A Bola.
+                for script in soup.find_all("script", attrs={"type":"application/ld+json"}):
+                    try:
+                        raw = json.loads(script.string or script.get_text())
+                        objs = raw if isinstance(raw, list) else [raw]
+                        for obj in objs:
+                            if not isinstance(obj, dict):
+                                continue
+                            if not item.get("published"):
+                                item["published"] = obj.get("datePublished") or obj.get("dateCreated") or item.get("published")
+                            if not item.get("image"):
+                                val = obj.get("image")
+                                if isinstance(val, str):
+                                    item["image"] = urljoin(url, val)
+                                    item["image_source"] = item["source"] + " JSON-LD"
+                                elif isinstance(val, dict) and val.get("url"):
+                                    item["image"] = urljoin(url, val["url"])
+                                    item["image_source"] = item["source"] + " JSON-LD"
+                                elif isinstance(val, list) and val:
+                                    item["image"] = urljoin(url, str(val[0]))
+                                    item["image_source"] = item["source"] + " JSON-LD"
+                    except Exception:
+                        pass
+
+                if candidate.startswith("https://r.jina.ai/"):
+                    # Jina Markdown can expose the lead image even when the
+                    # publisher blocks the Actions runner.
+                    for m in re.finditer(r"!\[[^\]]*\]\((https?://[^)\s]+)", rr.text):
+                        src = m.group(1)
+                        if not re.search(r"(logo|favicon|sprite|avatar)", src, re.I):
+                            item["image"] = src
+                            item["image_source"] = item["source"] + " Jina"
+                            break
+                    if not item.get("description"):
+                        lines = [clean(x) for x in rr.text.splitlines() if clean(x)]
+                        for line in lines:
+                            if len(line) > 50 and line.lower() != item.get("title","").lower():
+                                item["description"] = line[:300]
+                                break
+
+                if item.get("published") or item.get("image") or item.get("description"):
+                    return item
+            except Exception as ex:
+                print("News article warning:", item.get("source"), url, candidate, ex)
+        return item
+
+    # Discover from all three sources concurrently.
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = [pool.submit(scrape_listing, source, url) for source, url in SOURCES]
+        for future in as_completed(futures):
+            try:
+                future.result()
+            except Exception as ex:
+                print("News discovery warning:", ex)
+
+    # Enrich the discovered articles concurrently. This is intentionally
+    # source-neutral: every source gets the same metadata treatment.
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        futures = [pool.submit(article_metadata, item) for item in items]
+        enriched = []
+        for future in as_completed(futures):
+            try:
+                enriched.append(future.result())
+            except Exception as ex:
+                print("News enrichment warning:", ex)
+
     from email.utils import parsedate_to_datetime
+
     def pub_ts(item):
-        value=item.get("published")
+        value = item.get("published")
         if not value:
             return 0
         try:
-            return parsedate_to_datetime(value).timestamp()
+            return parsedate_to_datetime(str(value)).timestamp()
         except Exception:
             try:
                 return datetime.fromisoformat(str(value).replace("Z","+00:00")).timestamp()
             except Exception:
-                return 0
-    # Only Sporting Clube de Portugal news is allowed into the app.
-    # Football and all Sporting CP modalities are intentionally treated equally.
-    items = [x for x in items if x.get("_sporting")]
+                # Some publishers use ISO strings without timezone.
+                try:
+                    return datetime.fromisoformat(str(value)).replace(tzinfo=timezone.utc).timestamp()
+                except Exception:
+                    return 0
 
-    # Strict chronological order: newest publication first.
-    items.sort(key=pub_ts, reverse=True)
-
-    # Metadata enrichment is the expensive part. Only enrich the visible top
-    # 24 and do it concurrently so a slow publisher cannot stall the whole feed.
-    top=items[:24]
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        futures=[pool.submit(article_metadata,item) for item in top]
-        enriched=[]
-        for future in as_completed(futures):
-            enriched.append(future.result())
-    # Restore ranking after concurrent enrichment.
+    # No source priority: the feed is a single chronological stream.
     enriched.sort(key=pub_ts, reverse=True)
 
-    for item in enriched:
-        item.pop("_priority",None)
-        item.pop("_football",None)
-        item.pop("_sporting",None)
-        item.pop("_google_url",None)
-        item.pop("media_thumbnail",None)
-        item.pop("media_content",None)
-        if not item.get("image"):
-            item.pop("image",None)
-    write_json("news.json",{"items":enriched[:30]})
-    print("News feed:", len(enriched[:30]), "items;",
-          "football:", sum(1 for x in enriched[:30] if source_from_url(x.get("url")) in source_priority))
+    # Keep a healthy rolling window. New articles naturally displace old ones.
+    final = enriched[:36]
+    for item in final:
+        item["published_ts"] = pub_ts(item)
+        item.pop("published_ts", None)
+        item.pop("_priority", None)
+        item.pop("_football", None)
+        item.pop("_sporting", None)
+        item.pop("_google_url", None)
+        item.pop("media_thumbnail", None)
+        item.pop("media_content", None)
+
+    write_json("news.json", {"items": final})
+    print("News feed:", len(final), "items;",
+          {source: sum(1 for x in final if x.get("source") == source) for source, _ in SOURCES})
 
 def build_fixtures_from_fbref():
     """Build the main fixtures.json from the current FBref schedule."""
