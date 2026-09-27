@@ -2874,7 +2874,7 @@ def fetch_news():
                             gr.text,
                             re.I,
                         ):
-                           src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
+                            src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
                             src=src.rstrip('.,;)"\\'')
                             if re.search(r"\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
                                 item["image"]=src
