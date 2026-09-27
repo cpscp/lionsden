@@ -2755,6 +2755,8 @@ def fetch_news():
                     item["_decode_failed"]=True
                     continue
                 decoded=result["decoded_url"]
+                if str(item.get("url") or "").startswith("https://news.google.com/"):
+                    item["_google_url"] = item.get("url")
                 src=source_from_url(decoded,"")
                 if src not in ("Record","A Bola","O Jogo","Zerozero","Sporting.pt"):
                     item["_decode_failed"]=True
