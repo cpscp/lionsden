@@ -3096,9 +3096,12 @@ def fetch_news():
         for entry in feed.entries[:40]:
             title=clean(entry.get("title") or "")
             link=entry.get("link")
-            if link and title and "sporting" in title.lower():
+            if link and title and "sporting" in title.lower() and "/noticias/" in link:
+                media=entry.get("media_content") or entry.get("media_thumbnail") or []
+                image=(media[0].get("url") if media and isinstance(media,list) else None)
                 add({"title":title,"url":link,"source":"Zerozero",
-                     "published":entry.get("published")})
+                     "published":entry.get("published"),
+                     **({"image":image,"image_source":"Zerozero RSS"} if image else {})})
     except Exception as e:
         print("Zerozero Google RSS warning:",e)
 
