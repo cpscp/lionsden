@@ -609,7 +609,7 @@ def fetch_fbref_stats():
 
 def sofa_get(path, params=None):
     url = "https://api.sofascore.com/api/v1" + path
-    r = session.get(url, params=params or {}, timeout=25,
+    r = session.get(url, params=params or {}, timeout=10,
                     headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
     r.raise_for_status()
     return r.json()
@@ -3095,7 +3095,7 @@ def zerozero_get(url):
         try:
             rr = session.get(
                 candidate,
-                timeout=18,
+                timeout=8,
                 headers={
                     "User-Agent": USER_AGENT,
                     "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
@@ -3374,7 +3374,7 @@ def fetch_zerozero_h2h(upcoming):
 
     # Six concurrent pairs keeps the collector fast without hammering a source.
     collected = {}
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=12) as pool:
         futures = [pool.submit(collect, item) for item in representatives.items()]
         for future in as_completed(futures):
             key, rows, summary, source = future.result()
