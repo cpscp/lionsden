@@ -3260,11 +3260,20 @@ def fetch_news():
         for entry in feed.entries[:80]:
             title=clean(entry.get("title") or "")
             link=entry.get("link")
-            summary=clean(entry.get("summary") or "")
+            summary_raw=entry.get("summary") or ""
+            summary_soup=BeautifulSoup(summary_raw,"html.parser")
+            summary=clean(summary_soup.get_text(" ",strip=True))
             blob=(title+" "+summary).lower()
             if not link or "sporting" not in blob:
                 continue
             image=None
+            # Zerozero/Google News may embed the editorial thumbnail directly
+            # in the RSS description even when media_content is absent.
+            for im in summary_soup.find_all("img"):
+                u=im.get("src") or im.get("data-src") or im.get("data-original")
+                if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                    image=u
+                    break
             media=entry.get("media_content") or entry.get("media_thumbnail") or []
             if media and isinstance(media,list):
                 image=media[0].get("url")
@@ -3307,7 +3316,9 @@ def fetch_news():
                 for entry in feed.entries[:40]:
                     title=clean(entry.get("title") or "")
                     link=entry.get("link")
-                    summary=clean(entry.get("summary") or "")
+                    summary_raw=entry.get("summary") or ""
+                    summary_soup=BeautifulSoup(summary_raw,"html.parser")
+                    summary=clean(summary_soup.get_text(" ",strip=True))
                     if not link or len(title)<18:
                         continue
                     if "sporting" not in (title+" "+summary).lower():
@@ -3316,9 +3327,20 @@ def fetch_news():
                     if source not in ("A Bola","O Jogo","Zerozero"):
                         continue
                     image=None
+                    # Bing News RSS can carry the publisher thumbnail inside
+                    # the HTML description. Extract it before stripping HTML.
+                    for im in summary_soup.find_all("img"):
+                        u=im.get("src") or im.get("data-src") or im.get("data-original")
+                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                            image=u
+                            break
                     media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                    if media and isinstance(media,list):
-                        image=media[0].get("url")
+                    if not image and media and isinstance(media,list):
+                        for m in media:
+                            u=m.get("url")
+                            if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                                image=u
+                                break
                     add({
                         "title":title,
                         "url":link,
