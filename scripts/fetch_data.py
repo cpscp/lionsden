@@ -2760,7 +2760,8 @@ def fetch_news():
                 if gr.ok:
                     gs=BeautifulSoup(gr.text,"html.parser")
                     for im in gs.find_all("img"):
-                        src=im.get("data-src") or im.get("src")
+                        src=(im.get("data-iurl") or im.get("data-original") or
+                             im.get("data-src") or im.get("src"))
                         if not src or str(src).startswith("data:"):
                             continue
                         low=str(src).lower()
@@ -3163,7 +3164,8 @@ def fetch_news():
             for entry in feed.entries[:40]:
                 title=clean(entry.get("title") or "")
                 link=entry.get("link")
-                summary=clean(entry.get("summary") or "")
+                summary_raw=entry.get("summary") or ""
+                summary=clean(BeautifulSoup(summary_raw,"html.parser").get_text(" ",strip=True))
                 if link and title and "sporting" in (title+" "+summary).lower():
                     media=entry.get("media_content") or entry.get("media_thumbnail") or []
                     image=None
