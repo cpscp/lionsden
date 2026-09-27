@@ -2744,10 +2744,10 @@ def fetch_news():
 
     def article_metadata(item):
         url=item.get("url")
-        if not url or "news.google.com/" in url:
+        if not url:
             return item
         try:
-            rr=session.get(url,timeout=8,allow_redirects=True,
+            rr=session.get(url,timeout=12,allow_redirects=True,
                             headers={"User-Agent":USER_AGENT})
             rr.raise_for_status()
             final_url=rr.url
