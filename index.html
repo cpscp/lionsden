@@ -150,7 +150,7 @@
 .stadium-access-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:none}
 .stadium-access-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
 .stadium-route-card{display:flex;align-items:flex-start;gap:12px}
-.model-poster{height:100%;display:grid;place-content:center;text-align:center;color:#f3f7f4;background:radial-gradient(circle at 50% 45%,rgba(14,119,73,.18),transparent 58%),linear-gradient(145deg,#06100c,#030605)}.model-poster-title{font-weight:700;font-size:18px}.model-poster-sub{font-size:10px;color:var(--muted);margin-top:6px}.stadium-model{padding:0;background:radial-gradient(circle at 50% 48%,rgba(14,119,73,.16),transparent 58%),linear-gradient(145deg,#06100c,#030605);border-bottom:1px solid rgba(255,255,255,.06)}
+.model-poster{height:100%;display:grid;place-content:center;text-align:center;color:#f3f7f4;background:radial-gradient(circle at 50% 45%,rgba(14,119,73,.18),transparent 58%),linear-gradient(145deg,#06100c,#030605)}.model-poster-title{font-weight:700;font-size:18px}.model-poster-sub{font-size:10px;color:var(--muted);margin-top:6px}.stadium-model{padding:0;background:radial-gradient(circle at 50% 50%,rgba(11,91,56,.18),transparent 62%);}
 .stadium-model model-viewer{display:block;width:100%;height:390px}
 .stadium-diagram-wrap{padding:10px;background:#050907;border:1px solid rgba(255,255,255,.07);border-radius:22px;overflow:auto}
 .stadium-diagram{display:block;width:100%;min-width:620px;height:auto}
@@ -197,9 +197,7 @@
 
 <div class="stadium-hero">
   <div class="stadium-model" aria-label="Modelo 3D do Estádio José Alvalade">
-    <model-viewer id="alvaladeModel" src="" camera-controls auto-rotate rotation-per-second="8deg" interaction-prompt="none" shadow-intensity="0.65" exposure="0.85" environment-image="neutral" camera-orbit="35deg 58deg 2.6m" min-camera-orbit="auto auto 1.8m" max-camera-orbit="auto auto 5m" poster="https://www.fenwickiribarren.com/wp-content/uploads/2025/07/01_project_image_2560x1065px-640x266.jpg" style="width:100%;height:390px;background:transparent">
-      <div slot="poster" class="model-poster"><div class="model-poster-title">Estádio José Alvalade</div><div class="model-poster-sub">A carregar modelo 3D…</div></div>
-    </model-viewer>
+    <model-viewer id="alvaladeModel" src="./assets/alvalade.glb" camera-controls auto-rotate rotation-per-second="7deg" interaction-prompt="none" shadow-intensity="0.7" exposure="0.9" environment-image="neutral" camera-orbit="35deg 62deg 3m" min-camera-orbit="auto auto 1.6m" max-camera-orbit="auto auto 6m" style="width:100%;height:390px;background:transparent"></model-viewer>
   </div>
   <div class="p-4 flex items-center justify-between gap-3">
     <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 50.095 lugares</div></div>
@@ -277,18 +275,6 @@
 <div id="modalBody" class="p-4"></div></div></div>
 
 <script>
-async function loadAlvaladeModel(){
-  try{
-    const parts=["./assets/alvalade-model-01.b64","./assets/alvalade-model-02.b64","./assets/alvalade-model-03.b64","./assets/alvalade-model-04.b64","./assets/alvalade-model-05.b64","./assets/alvalade-model-06.b64","./assets/alvalade-model-07.b64","./assets/alvalade-model-08.b64","./assets/alvalade-model-09.b64","./assets/alvalade-model-10.b64","./assets/alvalade-model-11.b64","./assets/alvalade-model-12.b64","./assets/alvalade-model-13.b64","./assets/alvalade-model-14.b64","./assets/alvalade-model-15.b64","./assets/alvalade-model-16.b64","./assets/alvalade-model-17.b64","./assets/alvalade-model-18.b64"];
-    const b64=(await Promise.all(parts.map(p=>fetch(p+'?t='+Date.now()).then(r=>{if(!r.ok)throw new Error('model part '+p);return r.text();})))).join('');
-    const bin=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
-    const ds=new DecompressionStream('gzip');
-    const stream=new Blob([bin]).stream().pipeThrough(ds);
-    const glb=await new Response(stream).arrayBuffer();
-    const url=URL.createObjectURL(new Blob([glb],{type:'model/gltf-binary'}));
-    document.getElementById('alvaladeModel').src=url;
-  }catch(e){console.warn("Lion's Den 3D:",e);const p=document.querySelector('.model-poster-sub');if(p)p.textContent='Modelo 3D indisponível';}
-}
 const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
   const loadOne=async f=>{
