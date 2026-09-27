@@ -3098,7 +3098,7 @@ def _zz_parse_games(html):
         score_idx = None
         score_home = score_away = None
         for idx, cell in enumerate(cells):
-            m = re.fullmatch(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})(?:a\\.p\\.|\\s*)?", cell, re.I)
+            m = re.fullmatch(r"(\d{1,2})\s*-\s*(\d{1,2})(?:a\.p\.|\s*)?", cell, re.I)
             if m:
                 score_idx = idx
                 score_home, score_away = int(m.group(1)), int(m.group(2))
@@ -3111,17 +3111,17 @@ def _zz_parse_games(html):
             return
         home_name = cells[score_idx - 1]
         away_name = cells[score_idx + 1]
-        if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", home_name):
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", home_name):
             return
 
         competition = ""
         season = ""
         round_name = ""
         for cell in cells:
-            if re.search(r"\\b\\d{2}/\\d{2}\\b", cell):
-                season = re.search(r"\\b\\d{2}/\\d{2}\\b", cell).group(0)
-                competition = clean(re.sub(r"\\s*\\d{2}/\\d{2}\\s*", " ", cell))
-            elif re.fullmatch(r"(?:J\\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\\d+)", cell, re.I):
+            if re.search(r"\b\d{2}/\d{2}\b", cell):
+                season = re.search(r"\b\d{2}/\d{2}\b", cell).group(0)
+                competition = clean(re.sub(r"\s*\d{2}/\d{2}\s*", " ", cell))
+            elif re.fullmatch(r"(?:J\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\d+)", cell, re.I):
                 round_name = cell
         if not competition:
             # Some rows put competition and season in separate cells.
@@ -3154,17 +3154,17 @@ def _zz_parse_games(html):
 
     # Fallback for layouts that are not rendered as tables.
     if not found:
-        text = soup.get_text("\\n", strip=True)
+        text = soup.get_text("\n", strip=True)
         lines = [clean(x) for x in text.splitlines() if clean(x)]
         for idx, line in enumerate(lines):
-            if not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", line):
+            if not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", line):
                 continue
             window = lines[idx:idx+12]
             joined = " | ".join(window)
-            sm = re.search(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})", joined)
+            sm = re.search(r"(\d{1,2})\s*-\s*(\d{1,2})", joined)
             if not sm:
                 continue
-            score_pos = next((j for j,x in enumerate(window) if re.fullmatch(r"\\d{1,2}\\s*-\\s*\\d{1,2}(?:a\\.p\\.)?", x, re.I)), None)
+            score_pos = next((j for j,x in enumerate(window) if re.fullmatch(r"\d{1,2}\s*-\s*\d{1,2}(?:a\.p\.)?", x, re.I)), None)
             if score_pos is None or score_pos < 1 or score_pos + 1 >= len(window):
                 continue
             add_cells([line, window[score_pos-1], window[score_pos], window[score_pos+1], *window[score_pos+2:]])
@@ -3191,7 +3191,7 @@ def zerozero_team_ref(name):
             href = m.group(1)
             if href.startswith("/"):
                 href = "https://www.zerozero.pt" + href
-            mm = re.search(r"/equipa/([^/]+)/(d+)", href)
+            mm = re.search(r"/equipa/([^/]+)/(\d+)", href)
             if mm:
                 ref = {"slug": mm.group(1), "id": int(mm.group(2)), "url": href}
                 _zerozero_team_cache[key] = ref
