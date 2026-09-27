@@ -3284,33 +3284,79 @@ def _zz_xray_for_fixture(f):
 
 
 def fetch_zerozero_h2h(upcoming):
-    """Fetch ZeroZero team-vs-team history once per unique opponent."""
+    """Fetch H2H once per unique opponent with resilient source fallbacks.
+
+    Priority:
+      1) ZeroZero all-competitions team-v-team archive.
+      2) SofaScore H2H endpoint.
+      3) FotMob matchDetails H2H.
+
+    A source failure is never written as a fake 0-0-0 record.
+    """
     result = {}
     cache = {}
+
     for f in upcoming:
         fid = str(f["id"])
         home = clean((f.get("home") or {}).get("name"))
         away = clean((f.get("away") or {}).get("name"))
         key = tuple(sorted((zz_norm(home), zz_norm(away))))
+
         if key not in cache:
+            rows, summary, source = [], None, "unavailable"
+
+            # 1. ZeroZero: all competitions.
             try:
-                _rows, _summary = _zz_xray_for_fixture(f)
-                cache[key] = (_rows, _summary, True)
-                print("ZeroZero H2H:", home, "vs", away, "=>", len(cache[key][0]), "recent matches")
+                rows, summary = _zz_xray_for_fixture(f)
+                source = "ZeroZero"
+                print("H2H ZeroZero:", home, "vs", away, "=>", len(rows), "recent matches")
             except Exception as e:
-                print("ZeroZero H2H warning:", home, "vs", away, e)
-                cache[key] = ([], None, False)
+                print("H2H ZeroZero failed:", home, "vs", away, e)
+
+            # 2. SofaScore if ZeroZero did not produce a valid history.
+            if not rows and summary is None:
+                try:
+                    rows, summary = _sofa_h2h_for_fixture(f)
+                    if rows or summary is not None:
+                        source = "SofaScore"
+                        print("H2H SofaScore fallback:", home, "vs", away, "=>", len(rows))
+                except Exception as e:
+                    print("H2H SofaScore failed:", home, "vs", away, e)
+
+            # 3. FotMob as final fallback.
+            if not rows and summary is None:
+                try:
+                    raw = fotmob_get("/api/data/matchDetails", {"matchId": f["id"]})
+                    content = _first_dict(raw, "content")
+                    payload = content.get("h2h") or {}
+                    rows = _h2h_rows(
+                        payload,
+                        (f.get("home") or {}).get("id"),
+                        (f.get("away") or {}).get("id"),
+                        home,
+                        away,
+                    )
+                    summary = payload.get("summary") if isinstance(payload, dict) else None
+                    if not (isinstance(summary, list) and len(summary) >= 3):
+                        summary = None
+                    if rows or summary is not None:
+                        source = "FotMob"
+                        print("H2H FotMob fallback:", home, "vs", away, "=>", len(rows))
+                except Exception as e:
+                    print("H2H FotMob failed:", home, "vs", away, e)
+
+            cache[key] = (rows[:4], summary[:3] if isinstance(summary, list) else summary, source)
             time.sleep(0.15)
-        rows, summary, source_ok = cache[key]
-        # A valid ZeroZero response can legitimately have no meetings.
-        # Always return a record for the fixture so the UI can distinguish
-        # "no history" from "data collection failed".
+
+        rows, summary, source = cache[key]
         result[fid] = {
             "matches": rows[:4],
             "summary": summary,
-            "source_ok": source_ok,
+            "source": source,
+            "source_ok": source != "unavailable",
             "history_found": bool(rows or summary),
         }
+
     return result
 
 
