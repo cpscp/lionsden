@@ -2746,31 +2746,33 @@ def fetch_news():
         url=item.get("url")
         if not url:
             return item
-        # Zerozero often exposes the article but blocks image metadata.
-        # Use Jina Reader proactively for Zerozero items without an image/preview.
-        if item.get("source")=="Zerozero" and (not item.get("image") or not item.get("description")):
+        # Zerozero often blocks article HTML from GitHub Actions. Never use
+        # Jina/Cloudflare placeholder images. If no editorial image is available
+        # from the article metadata, recover the image through Google Images using
+        # the exact article title; the article/source shown to users remains Zerozero.
+        if item.get("source")=="Zerozero":
+            item.pop("image",None)
+            item.pop("image_source",None)
             try:
-                jr=session.get("https://r.jina.ai/"+url,timeout=15,headers={"User-Agent":USER_AGENT})
-                if jr.ok:
-                    js=BeautifulSoup(jr.text,"html.parser")
-                    if not item.get("description"):
-                        blob=clean(js.get_text(" ",strip=True))
-                        if blob:
-                            item["description"]=blob[:280]
-                    if not item.get("image"):
-                        for im in js.select("img"):
-                            src=im.get("src")
-                            if src and not src.startswith("data:"):
-                                item["image"]=src
-                                item["image_source"]="Jina Reader"
-                                break
-                    if not item.get("image"):
-                        for m in re.finditer(r"!\[[^\]]*\]\((https?://[^)]+)\)", jr.text):
-                            item["image"]=m.group(1)
-                            item["image_source"]="Jina Reader"
-                            break
+                q=quote((item.get("title") or "")+" site:zerozero.pt")
+                gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
+                               timeout=15,headers={"User-Agent":USER_AGENT})
+                if gr.ok:
+                    gs=BeautifulSoup(gr.text,"html.parser")
+                    for im in gs.find_all("img"):
+                        src=im.get("data-src") or im.get("src")
+                        if not src or str(src).startswith("data:"):
+                            continue
+                        low=str(src).lower()
+                        if any(x in low for x in ("google","gstatic","favicon","logo")):
+                            continue
+                        if im.get("width") and int(im.get("width")) < 200:
+                            continue
+                        item["image"]=src
+                        item["image_source"]="Zerozero article image search"
+                        break
             except Exception as ex:
-                print("Zerozero Jina metadata warning:",item.get("url"),ex)
+                print("Zerozero image search warning:",item.get("url"),ex)
 
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
