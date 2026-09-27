@@ -2841,6 +2841,25 @@ def fetch_news():
                                 out.append(txt)
                         return "\\n\\n".join(out)
 
+                    # Some modern publisher pages keep the article body in
+                    # serialized application state instead of visible HTML.
+                    for script in soup_obj.find_all("script"):
+                        raw_text = script.string or script.get_text() or ""
+                        if len(raw_text) < 300:
+                            continue
+                        for key in ('"articleBody":"','"articleBody": "'):
+                            pos = raw_text.find(key)
+                            if pos >= 0:
+                                tail = raw_text[pos + len(key):]
+                                end = tail.find('"')
+                                if end > 180:
+                                    try:
+                                        candidate = json.loads('"'+tail[:end].replace('\\','\\\\').replace('"','\\\"')+'"')
+                                        if len(candidate.strip()) >= 300:
+                                            return clean(candidate).replace("\\r","")
+                                    except Exception:
+                                        pass
+
                     # JSON-LD articleBody is the cleanest source when publishers expose it.
                     for script in soup_obj.find_all("script", attrs={"type":"application/ld+json"}):
                         try:
@@ -2861,17 +2880,34 @@ def fetch_news():
                             pass
 
                     selectors = [
+                        # Record
+                        '[data-testid*="article"]','[class*="articleBody"]','[class*="article-body"]',
+                        '[class*="article-content"]','[class*="article__body"]',
+                        '[class*="story-body"]','[class*="story-content"]',
+                        # A Bola
+                        '[class*="articleDetail"]','[class*="article-detail"]',
+                        '[class*="news-body"]','[class*="news-content"]',
+                        '[class*="content-body"]','[class*="articleText"]',
+                        # Common CMS conventions
                         '[itemprop="articleBody"]',
                         'article .article-body','article .article-content','article .article__body',
                         '.article-body','.article-content','.article__body',
                         '.article-detail-body','.news-detail-body',
                         '.field--name-body',
-                        'article'
+                        'main article','article'
                     ]
                     for selector in selectors:
                         node = soup_obj.select_one(selector)
                         text_body = normalize_nodes(node)
                         if len(text_body) >= 300:
+                            return text_body
+
+                    # Last structured fallback: collect paragraphs from main while
+                    # rejecting navigation/UI fragments and very short snippets.
+                    main = soup_obj.find("main")
+                    if main:
+                        text_body = normalize_nodes(main)
+                        if len(text_body) >= 500:
                             return text_body
                     return ""
 
