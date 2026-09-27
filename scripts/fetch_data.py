@@ -2805,7 +2805,7 @@ def fetch_news():
                         if not src or str(src).startswith("data:"):
                             continue
                         low=str(src).lower()
-                        if any(x in low for x in ("google","gstatic","favicon","logo")):
+                        if any(x in low for x in ("favicon","logo","googleusercontent")):
                             continue
                         if im.get("width") and int(im.get("width")) < 200:
                             continue
