@@ -2892,6 +2892,18 @@ def fetch_news():
                                   **({"description":preview} if preview else {})})
                     if len(local)>=18:
                         break
+                if not local and candidate.startswith("https://r.jina.ai/"):
+                    # Jina Reader may return Markdown rather than HTML.
+                    for m in re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)", r.text):
+                        title=clean(m.group(1))
+                        href=m.group(2)
+                        if source_from_url(href) != source or len(title)<18:
+                            continue
+                        if source == "O Jogo" and "sporting" not in title.lower():
+                            continue
+                        local.append({"title":title,"url":href,"source":source})
+                        if len(local)>=18:
+                            break
                 if local:
                     return local
             except Exception as e:
@@ -2912,7 +2924,7 @@ def fetch_news():
     # reliable from Actions than scraping the site.
     try:
         import feedparser
-        feed=feedparser.parse("https://www.zerozero.pt/rss_list.php")
+        feed=feedparser.parse("https://www.zerozero.pt/rss_list.php?equipa=9")
         for entry in feed.entries[:80]:
             title=clean(entry.get("title") or "")
             link=entry.get("link")
