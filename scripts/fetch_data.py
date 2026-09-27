@@ -2855,31 +2855,45 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
-                        # Current Zerozero editorial photos are hosted on
-                        # cdn-img.staticzz.com. Google may serialize that URL
-                        # in result data instead of exposing it on an <img>.
-                        for m in re.finditer(
-                            r"https://cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/[^\s<>\\]+",
-                            gr.text,
-                            re.I,
-                        ):
-                            src=m.group(0).replace("\\u003d","=").replace("\\u0026","&").replace("\\/","/")
-                            src=src.rstrip(".,;)")
-                            if re.search(r"\.(?:jpg|jpeg|png|webp)(?:[?#]|$)",src,re.I):
-                                item["image"]=src
-                                item["image_source"]="Zerozero article image search"
-                                break
+                        # Google Images exposes the original result page (purl)
+                        # and the source image (murl) in serialized result cards.
+                        # Prefer an image whose source page is the exact Zerozero
+                        # article; this is more reliable than guessing the CDN host.
+                        for node in gs.select("a.iusc"):
+                            raw=node.get("m")
+                            if not raw:
+                                continue
+                            try:
+                                meta=json.loads(raw)
+                            except Exception:
+                                continue
+                            src=meta.get("murl")
+                            origin=meta.get("purl") or ""
+                            if not src or "zerozero.pt/noticias/" not in origin:
+                                continue
+                            low=str(src).lower()
+                            if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
+                                continue
+                            item["image"]=src
+                            item["image_source"]="Zerozero article image search"
+                            break
+
                         if not item.get("image"):
+                            # Fallback to the original thumbnail only when it is
+                            # clearly a real image and not Google UI/chrome.
                             for im in gs.find_all("img"):
                                 src=(im.get("data-iurl") or im.get("data-original") or
                                      im.get("data-src") or im.get("src"))
                                 if not src or str(src).startswith("data:"):
                                     continue
                                 low=str(src).lower()
-                                if not re.search(r"cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/", low):
+                                if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
                                     continue
-                                if any(x in low for x in ("favicon","logo","googleusercontent")):
-                                    continue
+                                try:
+                                    if im.get("width") and int(im.get("width")) < 200:
+                                        continue
+                                except Exception:
+                                    pass
                                 item["image"]=src
                                 item["image_source"]="Zerozero article image search"
                                 break
