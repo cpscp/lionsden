@@ -1,8 +1,8 @@
 {
-  "_updated_at": "2026-09-27T23:46:00.413368+00:00",
+  "_updated_at": "2026-09-27T23:48:02.571189+00:00",
   "fixtures": {
     "5887647": {
-      "updated_at": "2026-09-27T23:46:00.351560+00:00",
+      "updated_at": "2026-09-27T23:48:02.469644+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -21,7 +21,7 @@
       }
     },
     "6106414": {
-      "updated_at": "2026-09-27T23:46:00.352862+00:00",
+      "updated_at": "2026-09-27T23:48:02.471721+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
