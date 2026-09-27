@@ -2863,18 +2863,27 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
-                # The word "Premium" also exists in hidden/global Record markup.
-                # Only a visible article-level subscription heading counts.
-                premium_heading = None
+
+                # Record's generic "Funcionalidade exclusiva..." heading is
+                # present in templates even when an article is not Premium.
+                # The reliable article-level marker is the Premium logo/label
+                # ("Logo Record premium" / "Este conteúdo é exclusivo...").
+                premium_marker = None
                 if item.get("source") == "Record":
-                    premium_heading = soup.find(
-                        ["h3", "h4", "h5"],
-                        string=re.compile(
-                            r"Funcionalidade exclusiva para assinantes Record Premium|Este conteúdo é exclusivo para assinantes Record Premium",
-                            re.I,
-                        ),
+                    premium_marker = (
+                        soup.find(
+                            "img",
+                            alt=re.compile(r"Logo Record premium|Este conteúdo é exclusivo para assinantes Record Premium", re.I),
+                        )
+                        or soup.find(
+                            string=re.compile(
+                                r"Logo Record premium\\s+Este conteúdo é exclusivo para assinantes Record Premium",
+                                re.I,
+                            ),
+                        )
                     )
-                candidate_premium = bool(premium_heading) and item.get("source") == "Record"
+
+                candidate_premium = bool(premium_marker) and item.get("source") == "Record"
                 record_premium = record_premium or candidate_premium
                 if record_premium:
                     item["premium"] = True
