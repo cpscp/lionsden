@@ -2842,6 +2842,26 @@ def fetch_news():
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
 
+        if item.get("source")=="Zerozero" and not item.get("image"):
+            try:
+                alt=url.replace("https://www.zerozero.pt/","https://zerozero.football/")
+                ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
+                if ar.ok:
+                    ass=BeautifulSoup(ar.text,"html.parser")
+                    for attrs in (
+                        {"property":"og:image"},{"property":"og:image:url"},
+                        {"name":"twitter:image"},{"itemprop":"image"}
+                    ):
+                        node=ass.find("meta",attrs=attrs)
+                        if node and node.get("content"):
+                            u=node.get("content").strip()
+                            if u and not re.search(r"(logo|favicon|cloudflare)",u,re.I):
+                                item["image"]=urljoin(alt,u)
+                                item["image_source"]="Zerozero article og:image"
+                                break
+            except Exception as ex:
+                print("Zerozero alternate-domain warning:",item.get("url"),ex)
+
         # Zerozero blocks GitHub Actions directly. First try the Google
         # Translate web proxy, which fetches the ORIGINAL article and lets us
         # recover its own og:image instead of guessing via image search.
