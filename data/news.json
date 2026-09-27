@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T15:08:40.320130+00:00",
+  "_updated_at": "2026-09-27T15:08:55.729892+00:00",
   "items": [
     {
       "title": "SC Braga 0x0 Sporting - Resumo, Destaques e Crónica do Jogo - zerozero.pt",
@@ -57,7 +57,7 @@
       "url": "https://www.zerozero.pt/noticias/sporting-anuncia-contratacao-de-internacional-argentina/1213794",
       "source": "Zerozero",
       "published": "Wed, 23 Sep 2026 17:39:05 GMT",
-      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/sporting-anuncia-contratacao-de-internacional-argentina/1213794 Warning: Target URL returned error 403: Forbidden Warning: This page maybe not yet fully loaded, consider explicitly specify a timeout. Markdown Co"
+      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/sporting-anuncia-contratacao-de-internacional-argentina/1213794 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon for www.zero"
     },
     {
       "title": "Brondby IF 4x1 Sporting - Resumo, Destaques e Crónica do Jogo - zerozero.pt",
@@ -137,6 +137,13 @@
       "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/rio-ave-x-sporting-antevisao-ausencias-e-onzes-provaveis/1184609 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon for www.zer"
     },
     {
+      "title": "Depois do empate na Reboleira, Sporting bate CD Mafra em jogo-treino - zerozero.pt",
+      "url": "https://www.zerozero.pt/noticias/depois-do-empate-na-reboleira-sporting-bate-cd-mafra-em-jogo-treino/1171165",
+      "source": "Zerozero",
+      "published": "Sun, 09 Aug 2026 07:00:00 GMT",
+      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/depois-do-empate-na-reboleira-sporting-bate-cd-mafra-em-jogo-treino/1171165 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon "
+    },
+    {
       "title": "Sporting contrata internacional espanhol de 22 anos - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/sporting-contrata-internacional-espanhol-de-22-anos/1159234",
       "source": "Zerozero",
@@ -147,27 +154,19 @@
       "title": "Francisco Trincão troca Sporting por Al-Ahli: os detalhes - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/francisco-trincao-deixa-sporting-e-e-confirmado-no-al-ahli-os-detalhes/1158791",
       "source": "Zerozero",
-      "published": "Sat, 18 Jul 2026 07:00:00 GMT",
-      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/francisco-trincao-deixa-sporting-e-e-confirmado-no-al-ahli-os-detalhes/1158791 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Ic"
+      "published": "Sat, 18 Jul 2026 07:00:00 GMT"
     },
     {
       "title": "Issa Doumbia é reforço do Sporting - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/issa-doumbia-e-reforco-do-sporting/1135929",
       "source": "Zerozero",
-      "published": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/issa-doumbia-e-reforco-do-sporting/1135929 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon for www.zerozero.pt](https://www."
+      "published": "Mon, 01 Jun 2026 07:00:00 GMT"
     },
     {
       "title": "Sporting oficializa contratação de Pedro Lima - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/sporting-pesca-novamente-em-portugal-pedro-lima-oficializado/1135938",
       "source": "Zerozero",
       "published": "Thu, 28 May 2026 07:00:00 GMT"
-    },
-    {
-      "title": "Sporting 1x2 Torreense - Resumo, Destaques e Crónica do Jogo - zerozero.pt",
-      "url": "https://www.zerozero.pt/noticias/2026-05-24-sporting-torreense-cronica/1134376",
-      "source": "Zerozero",
-      "published": "Sun, 24 May 2026 07:00:00 GMT"
     }
   ]
 }
