@@ -3073,13 +3073,18 @@ def zerozero_get(url):
     """
     encoded = quote_plus(url)
     mirror_url = url.replace("https://www.zerozero.pt", "https://zerozero.dk").replace("https://zerozero.pt", "https://zerozero.dk")
+    football_url = url.replace("https://www.zerozero.pt", "https://zerozero.football").replace("https://zerozero.pt", "https://zerozero.football")
     mirror_encoded = quote_plus(mirror_url)
+    football_encoded = quote_plus(football_url)
     candidates = [
+        football_url,
         mirror_url,
+        "https://r.jina.ai/" + football_url,
         "https://r.jina.ai/" + mirror_url,
+        f"https://api.allorigins.win/raw?url={football_encoded}",
         f"https://api.allorigins.win/raw?url={mirror_encoded}",
+        f"https://api.codetabs.com/v1/proxy?quest={football_encoded}",
         f"https://api.codetabs.com/v1/proxy?quest={mirror_encoded}",
-        f"https://corsproxy.io/?url={mirror_encoded}",
         url,
     ]
 
@@ -3214,7 +3219,7 @@ def zerozero_team_ref(name):
         page = zerozero_get(f"https://www.zerozero.pt/equipa/{slug}")
         patterns = [
             r'href=["\'](/equipa/[^"\']+/\d+)["\']',
-            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https?://(?:www\.)?zerozero\.(?:pt|dk)/equipa/[^"\']+/\d+)',
+            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https?://(?:www\.)?zerozero\.(?:pt|dk|football)/equipa/[^"\']+/\d+)',
         ]
         href = None
         for pat in patterns:
@@ -3227,7 +3232,7 @@ def zerozero_team_ref(name):
         # In that case there are no HTML href attributes; recover the team
         # reference from Markdown/plain URLs instead.
         if not href:
-            m = re.search(r"https?://(?:www\.)?zerozero\.(?:pt|dk)/equipa/([^/\s)]+)/([0-9]+)", page)
+            m = re.search(r"https?://(?:www\.)?zerozero\.(?:pt|dk|football)/equipa/([^/\s)]+)/([0-9]+)", page)
             if m:
                 href = m.group(0)
             else:
@@ -3493,7 +3498,6 @@ def fetch_match_contexts():
         except Exception as e:
             print("Team context warning:", tid, e)
 
-    zerozero_h2h_cache = fetch_zerozero_h2h(upcoming)
     contexts = {}
     for f in upcoming:
         fid = str(f["id"])
@@ -3531,17 +3535,6 @@ def fetch_match_contexts():
             )
         except Exception as e:
             print("H2H detail warning:", fid, e)
-
-        # ZeroZero is the authoritative H2H source for all competitions.
-        # Use the fixture's team-vs-team history rather than relying on the
-        # current competition or a source that only returns a partial H2H set.
-        zz_h2h = zerozero_h2h_cache.get(fid)
-        if zz_h2h is not None:
-            if zz_h2h.get("matches"):
-                h2h = zz_h2h["matches"]
-            if zz_h2h.get("summary") is not None:
-                h2h_summary = zz_h2h["summary"][:3]
-
 
         h2h = sorted({str(x.get("id") or (x.get("date"),x.get("home"),x.get("away"),x.get("home_score"),x.get("away_score"))): x for x in h2h}.values(),
                      key=lambda x: x.get("date") or "", reverse=True)
