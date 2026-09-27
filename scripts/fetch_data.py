@@ -2753,13 +2753,45 @@ def fetch_news():
             final_url=rr.url
             ss=BeautifulSoup(rr.text,"html.parser")
             item["source"]=source_from_url(final_url,item.get("source"))
-            og=ss.find("meta",attrs={"property":"og:image"}) or ss.find(
-                "meta",attrs={"property":"og:image:url"}) or ss.find(
-                "meta",attrs={"name":"twitter:image"})
-            desc=ss.find("meta",attrs={"property":"og:description"}) or ss.find(
-                "meta",attrs={"name":"description"})
-            if og and og.get("content"):
-                image=og.get("content").strip()
+            # Try the common image metadata used by O Jogo/Zerozero.
+            image = None
+            for tag, attrs in [
+                ("meta", {"property":"og:image"}),
+                ("meta", {"property":"og:image:url"}),
+                ("meta", {"name":"og:image"}),
+                ("meta", {"name":"twitter:image"}),
+                ("meta", {"name":"twitter:image:src"}),
+                ("meta", {"itemprop":"image"}),
+            ]:
+                node=ss.find(tag,attrs=attrs)
+                if node and node.get("content"):
+                    image=node.get("content").strip()
+                    break
+            if not image:
+                # Some pages expose the hero image through JSON-LD.
+                import json as _json
+                for script in ss.find_all("script",attrs={"type":"application/ld+json"}):
+                    try:
+                        data=_json.loads(script.string or script.get_text())
+                        candidates=data if isinstance(data,list) else [data]
+                        for obj in candidates:
+                            if not isinstance(obj,dict):
+                                continue
+                            val=obj.get("image")
+                            if isinstance(val,str): image=val
+                            elif isinstance(val,dict): image=val.get("url")
+                            elif isinstance(val,list) and val: image=val[0]
+                            if image: break
+                        if image: break
+                    except Exception:
+                        pass
+            if not image:
+                for img in ss.select("article img, main img, img"):
+                    image=img.get("data-src") or img.get("data-lazy-src") or img.get("src")
+                    if image and not str(image).startswith("data:"):
+                        break
+            if image:
+                image=str(image).strip()
                 if image.startswith("//"): image="https:"+image
                 elif image.startswith("/"):
                     from urllib.parse import urljoin
