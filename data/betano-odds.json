@@ -1,6 +1,7 @@
 {
-  "_updated_at": "2026-09-27T02:37:33.814631+00:00",
+  "_updated_at": "2026-09-27T02:43:59.569419+00:00",
   "fixtures": {},
   "source": "Betano via OddsPapi",
-  "status": "not_configured"
+  "status": "error",
+  "error": "400 Client Error: Bad Request for url: https://api.oddspapi.io/v4/odds-by-tournaments?bookmaker=betano&tournamentIds=7%2C238%2C239%2C463%2C668%2C696%2C1054%2C1222%2C2468%2C32303%2C32361%2C34900%2C41488%2C42985%2C49214%2C53328%2C53330%2C53340%2C53386%2C53388%2C53390&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932&oddsFormat=decimal"
 }
