@@ -2918,15 +2918,18 @@ def fetch_news():
                     print("Zerozero Google image search warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 5) Bing Images fallback. Keep the article-origin check so an
-                # unrelated image can never be attached to a Zerozero article.
+                # 5) Bing Images fallback. Prefer an original image whose
+                # source page or result title clearly belongs to this exact
+                # Zerozero article.
                 try:
                     from urllib.parse import quote
-                    bq=quote((item.get("title") or "").replace(" - zerozero.pt","")+" zerozero")
+                    query_title=(item.get("title") or "").replace(" - zerozero.pt","").strip()
+                    bq=quote(query_title+" site:zerozero.pt")
                     br=session.get("https://www.bing.com/images/search?q="+bq,
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if br.ok:
                         bs=BeautifulSoup(br.text,"html.parser")
+                        title_words=[w.lower() for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",query_title.lower())]
                         for node in bs.select("a.iusc"):
                             raw=node.get("m")
                             if not raw:
@@ -2935,19 +2938,23 @@ def fetch_news():
                                 meta=json.loads(raw)
                             except Exception:
                                 continue
-                            src=meta.get("murl")
+                            src=meta.get("murl") or meta.get("turl")
                             origin=meta.get("purl") or ""
-                            if not src or "zerozero.pt/noticias/" not in origin:
+                            result_title=clean(meta.get("t") or "")
+                            if not src:
                                 continue
                             low=str(src).lower()
                             if any(x in low for x in ("bing.com","microsoft.com","favicon","logo","ytimg.com","youtube.com","pngimg.com")):
+                                continue
+                            origin_zerozero="zerozero.pt" in origin.lower() or "zerozero." in origin.lower()
+                            title_match=sum(1 for w in title_words if w in result_title.lower()) >= min(5,len(title_words))
+                            if not (origin_zerozero or title_match):
                                 continue
                             item["image"]=src
                             item["image_source"]="Zerozero article image search"
                             break
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
-
             if not item.get("image"):
                 # 6) Jina / AllOrigins are last-resort exact-article fetches.
                 for proxy_url, label in [
