@@ -1,20 +1,6 @@
 {
-  "_updated_at": "2026-09-27T13:54:51.044590+00:00",
+  "_updated_at": "2026-09-27T13:56:21.939811+00:00",
   "items": [
-    {
-      "title": "Sporting Training Academy",
-      "url": "https://www.sporting.pt/pt/clube/universo-scp/sporting-training-academy",
-      "source": "Sporting.pt",
-      "image": "https://scpconteudos.pt/sites/all/themes/jump/images/emblema.png",
-      "image_source": "https://www.sporting.pt/pt/clube/universo-scp/sporting-training-academy"
-    },
-    {
-      "title": "Futebol Formação Sporting Challenge Play juntou futebol e outras modalidades num dia \"à Sporting\" 6 dias atrás",
-      "url": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras",
-      "source": "Sporting.pt",
-      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/isaa7647.jpg",
-      "image_source": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras"
-    },
     {
       "title": "Goalball Sporting CP vence Supertaça de goalball Ontem",
       "url": "https://www.sporting.pt/pt/noticias/modalidades/goalball/2026-09-26/sporting-cp-vence-supertaca-de-goalball",
@@ -30,11 +16,18 @@
       "image_source": "https://www.sporting.pt/pt/clube/universo-scp/sporting-corporate-0"
     },
     {
-      "title": "Basquetebol Projecto GUTS chega ao Sporting CP hoje",
-      "url": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-27/projecto-guts-chega-ao-sporting-cp",
+      "title": "Sporting Training Academy",
+      "url": "https://www.sporting.pt/pt/clube/universo-scp/sporting-training-academy",
       "source": "Sporting.pt",
-      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/sm2_4402.jpg",
-      "image_source": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-27/projecto-guts-chega-ao-sporting-cp"
+      "image": "https://scpconteudos.pt/sites/all/themes/jump/images/emblema.png",
+      "image_source": "https://www.sporting.pt/pt/clube/universo-scp/sporting-training-academy"
+    },
+    {
+      "title": "Futebol Formação Sporting Challenge Play juntou futebol e outras modalidades num dia \"à Sporting\" 6 dias atrás",
+      "url": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras",
+      "source": "Sporting.pt",
+      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/isaa7647.jpg",
+      "image_source": "https://www.sporting.pt/pt/noticias/futebol/futebol-formacao/2026-09-20/sporting-challenge-play-juntou-futebol-e-outras"
     },
     {
       "title": "Sporting Lion Bootcamps",
@@ -42,6 +35,13 @@
       "source": "Sporting.pt",
       "image": "https://scpconteudos.pt/sites/all/themes/jump/images/emblema.png",
       "image_source": "https://www.sporting.pt/pt/clube/universo-scp/sporting-lion-bootcamps"
+    },
+    {
+      "title": "Basquetebol Projecto GUTS chega ao Sporting CP hoje",
+      "url": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-27/projecto-guts-chega-ao-sporting-cp",
+      "source": "Sporting.pt",
+      "image": "https://scpconteudos.pt/sites/default/files/noticias/202609/sm2_4402.jpg",
+      "image_source": "https://www.sporting.pt/pt/noticias/modalidades/basquetebol/2026-09-27/projecto-guts-chega-ao-sporting-cp"
     },
     {
       "title": "Estádio José Alvalade",
@@ -58,13 +58,6 @@
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/projeto-altimira-em-marcha-sporting-quer-tornar-espanhol-numa-referencia?ref=Sporting_DestaquesPrincipais"
     },
     {
-      "title": "Escolas Academia Sporting",
-      "url": "https://escolasacademia.sporting.pt/",
-      "source": "Sporting.pt",
-      "image": "https://escolasacademia.sporting.pt/sites/all/themes/eas/img/icons/universo-sporting/scp-icon-academia.svg",
-      "image_source": "https://escolasacademia.sporting.pt/"
-    },
-    {
       "title": "Obras continuam a todo o gás em Alvalade: Sporting revela os avanços no 'Lion's Corner'",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/obras-continuam-a-todo-o-gas-em-alvalade-sporting-revela-os-avancos-no-lion-s-corner?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
@@ -72,18 +65,25 @@
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/obras-continuam-a-todo-o-gas-em-alvalade-sporting-revela-os-avancos-no-lion-s-corner?ref=Sporting_DestaquesPrincipais"
     },
     {
+      "title": "Sporting dá novidades sobre as obras em Alvalade: do elevador panorâmico à nova entrada dos jogadores",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-da-novidades-sobre-as-obras-em-alvalade-do-elevador-panoramico-a-nova-entrada-dos-jogadores?ref=Sporting_DestaquesPrincipais",
+      "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-07/img_1200x721uu2026-07-21-19-38-45-2452617.jpg",
+      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-da-novidades-sobre-as-obras-em-alvalade-do-elevador-panoramico-a-nova-entrada-dos-jogadores?ref=Sporting_DestaquesPrincipais"
+    },
+    {
+      "title": "Escolas Academia Sporting",
+      "url": "https://escolasacademia.sporting.pt/",
+      "source": "Sporting.pt",
+      "image": "https://escolasacademia.sporting.pt/sites/all/themes/eas/img/icons/universo-sporting/scp-icon-academia.svg",
+      "image_source": "https://escolasacademia.sporting.pt/"
+    },
+    {
       "title": "Sporting divulga vídeo das obras em Alvalade: «A nossa história não está concluída»",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-divulga-video-das-obras-em-alvalade-a-nossa-historia-nao-esta-concluida?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
       "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-22-13-57-45-2446106-im-639178350084299328.jpg",
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-divulga-video-das-obras-em-alvalade-a-nossa-historia-nao-esta-concluida?ref=Sporting_DestaquesPrincipais"
-    },
-    {
-      "title": "As novidades nas obras em Alvalade: dos progressos no 'Lion's corner' e na nascente aos testes para os novos ecrãs",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/as-novidades-nas-obras-em-alvalade-dos-progressos-no-lion-s-corner-e-na-nascente-aos-testes-para-os-novos-ecras?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-22-13-18-51-2446093.jpg",
-      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/as-novidades-nas-obras-em-alvalade-dos-progressos-no-lion-s-corner-e-na-nascente-aos-testes-para-os-novos-ecras?ref=Sporting_DestaquesPrincipais"
     },
     {
       "title": "De faltar aos treinos no ténis de mesa a uma lenda do futsal no Sporting e Seleção: João Matos conta tudo em livro",
@@ -114,13 +114,6 @@
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/hall-vip-balnearios-interiores-e-ate-loja-verde-os-proximos-passos-da-mega-obra-do-sporting-em-alvalade?ref=Sporting_DestaquesPrincipais"
     },
     {
-      "title": "Sporting dá novidades sobre as obras em Alvalade: do elevador panorâmico à nova entrada dos jogadores",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-da-novidades-sobre-as-obras-em-alvalade-do-elevador-panoramico-a-nova-entrada-dos-jogadores?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-07/img_1200x721uu2026-07-21-19-38-45-2452617.jpg",
-      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-da-novidades-sobre-as-obras-em-alvalade-do-elevador-panoramico-a-nova-entrada-dos-jogadores?ref=Sporting_DestaquesPrincipais"
-    },
-    {
       "title": "Sporting com uma cara nova no treino: eis o reforço chamado antes da tripla folga concedida por Rui Borges",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-com-uma-cara-nova-no-treino-eis-o-reforco-chamado-antes-da-tripla-folga-concedida-por-rui-borges",
       "source": "Record",
@@ -133,6 +126,13 @@
       "source": "Record",
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-18-17-07-17-2463281.jpg",
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes?ref=Sporting_DestaquesPrincipais"
+    },
+    {
+      "title": "As novidades nas obras em Alvalade: dos progressos no 'Lion's corner' e na nascente aos testes para os novos ecrãs",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/as-novidades-nas-obras-em-alvalade-dos-progressos-no-lion-s-corner-e-na-nascente-aos-testes-para-os-novos-ecras?ref=Sporting_DestaquesPrincipais",
+      "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-22-13-18-51-2446093.jpg",
+      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/as-novidades-nas-obras-em-alvalade-dos-progressos-no-lion-s-corner-e-na-nascente-aos-testes-para-os-novos-ecras?ref=Sporting_DestaquesPrincipais"
     }
   ]
 }
