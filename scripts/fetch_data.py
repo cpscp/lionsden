@@ -3154,8 +3154,6 @@ def fetch_news():
                         break
             except Exception as e2:
                 print("News metadata warning:",item.get("url"),e2)
-        if item.get("source")=="Zerozero":
-            print("ZZ_IMAGE_TRACE", item.get("url"), "IMAGE=", item.get("image"), "SOURCE=", item.get("image_source"))
         return item
 
     def scrape_page(url, source):
@@ -3429,6 +3427,11 @@ def fetch_news():
 
     # Independent Google News RSS fallbacks per publisher. These are only
     # discovery transports; the final source/url always remains the publisher.
+    # Parse the RAW XML item-by-item instead of relying on feedparser's
+    # media fields. Google News can put the publisher thumbnail in
+    # <media:content>, <media:thumbnail>, <enclosure>, or an <img> inside
+    # <description>. Keeping the extraction tied to the same <item> prevents
+    # images from one article being lost/misassigned.
     try:
         import feedparser
         from urllib.parse import quote
@@ -3441,11 +3444,12 @@ def fetch_news():
             rss_url="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
             raw=session.get(rss_url,timeout=20,headers={"User-Agent":USER_AGENT})
             raw.raise_for_status()
-            feed=feedparser.parse(raw.text)
-            for entry in feed.entries[:50]:
-                title=clean(entry.get("title") or "")
-                link=entry.get("link")
-                summary_raw=entry.get("summary") or ""
+            xml=BeautifulSoup(raw.text,"xml")
+            for node in xml.find_all("item")[:50]:
+                title=clean(node.find("title").get_text(" ",strip=True) if node.find("title") else "")
+                link=(node.find("link").get_text(" ",strip=True) if node.find("link") else "").strip()
+                desc_node=node.find("description")
+                summary_raw=desc_node.decode_contents() if desc_node else ""
                 summary_soup=BeautifulSoup(summary_raw,"html.parser")
                 summary=clean(summary_soup.get_text(" ",strip=True))
                 if not link or len(title)<18:
@@ -3455,26 +3459,31 @@ def fetch_news():
                     "alvalade","rui borges","leões","leoes","leoas","leonino")):
                     continue
                 image=None
-                media=entry.get("media_content") or entry.get("media_thumbnail") or []
-                if isinstance(media,list):
-                    for m in media:
-                        u=m.get("url")
+                # 1) media:content / media:thumbnail on THIS RSS item.
+                for tag_name in ("media:content","media:thumbnail","enclosure"):
+                    for media_node in node.find_all(tag_name):
+                        u=media_node.get("url") or media_node.get("href")
                         if u and not re.search(r"(favicon|logo)",u,re.I):
-                            image=u
+                            image=u.strip()
                             break
+                    if image:
+                        break
+                # 2) Editorial image embedded in THIS item's description.
                 if not image:
-                    for lk in entry.get("links",[]) or []:
-                        u=lk.get("href")
-                        if u and str(lk.get("type","")).startswith("image/"):
-                            image=u
+                    for im in summary_soup.find_all("img"):
+                        u=im.get("src") or im.get("data-src") or im.get("data-original")
+                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                            image=u.strip()
                             break
+                pub=node.find("pubDate")
+                published=pub.get_text(" ",strip=True) if pub else None
                 add({
                     "title":title,
                     "url":link,
                     "source":expected_source,
-                    "published":entry.get("published") or entry.get("pubDate"),
+                    "published":published,
                     "description":summary[:280] if summary else None,
-                    **({"image":image,"image_source":"Google News publisher thumbnail"} if image else {}),
+                    **({"image":image,"image_source":"Google News raw RSS"} if image else {}),
                 })
     except Exception as e:
         print("Publisher Google RSS fallback warning:",e)
