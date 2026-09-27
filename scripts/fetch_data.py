@@ -3324,12 +3324,27 @@ def fetch_news():
                 if "sporting" not in blob and not any(k in blob for k in (
                     "alvalade","rui borges","leões","leoes","leoas","leonino")):
                     continue
+                image=None
+                media=entry.get("media_content") or entry.get("media_thumbnail") or []
+                if isinstance(media,list):
+                    for m in media:
+                        u=m.get("url")
+                        if u and not re.search(r"(favicon|logo)",u,re.I):
+                            image=u
+                            break
+                if not image:
+                    for lk in entry.get("links",[]) or []:
+                        u=lk.get("href")
+                        if u and str(lk.get("type","")).startswith("image/"):
+                            image=u
+                            break
                 add({
                     "title":title,
                     "url":link,
                     "source":expected_source,
                     "published":entry.get("published") or entry.get("pubDate"),
                     "description":summary[:280] if summary else None,
+                    **({"image":image,"image_source":"Google News publisher thumbnail"} if image else {}),
                 })
     except Exception as e:
         print("Publisher Google RSS fallback warning:",e)
