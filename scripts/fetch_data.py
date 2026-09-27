@@ -3321,44 +3321,41 @@ def fetch_zerozero_h2h(upcoming):
         away = clean((f.get("away") or {}).get("name"))
         rows, summary, source = [], None, "unavailable"
 
+        # Use the proven low-request ZeroZero path first. Only if it fails do
+        # we spend calls on SofaScore/FotMob fallbacks.
         try:
-            event_id = _sofa_scheduled_event_for_fixture(f)
-            rows, summary = _sofa_h2h_from_event(event_id, f)
-            if rows or summary is not None:
-                source = "SofaScore"
-                print("H2H SofaScore scheduled-event:", home, "vs", away, "=>", len(rows))
+            rows, summary = _zz_xray_for_fixture(f)
+            source = "ZeroZero"
+            print("H2H ZeroZero primary:", home, "vs", away, "=>", len(rows))
         except Exception as e:
-            print("H2H SofaScore scheduled-event failed:", home, "vs", away, e)
+            print("H2H ZeroZero primary failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
-                rows, summary = _zz_xray_for_fixture(f)
-                source = "ZeroZero"
-                print("H2H ZeroZero fallback:", home, "vs", away, "=>", len(rows))
+                event_id = _sofa_scheduled_event_for_fixture(f)
+                rows, summary = _sofa_h2h_from_event(event_id, f)
+                if rows or summary is not None:
+                    source = "SofaScore"
+                    print("H2H SofaScore fallback:", home, "vs", away, "=>", len(rows))
             except Exception as e:
-                print("H2H ZeroZero failed:", home, "vs", away, e)
+                print("H2H SofaScore fallback failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
                 rows, summary = _sofa_h2h_for_fixture(f)
                 if rows or summary is not None:
                     source = "SofaScore"
-                    print("H2H SofaScore fallback:", home, "vs", away, "=>", len(rows))
+                    print("H2H SofaScore secondary fallback:", home, "vs", away, "=>", len(rows))
             except Exception as e:
-                print("H2H SofaScore failed:", home, "vs", away, e)
+                print("H2H SofaScore secondary fallback failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
                 raw = fotmob_get("/api/data/matchDetails", {"matchId": f["id"]})
                 content = _first_dict(raw, "content")
                 payload = content.get("h2h") or {}
-                rows = _h2h_rows(
-                    payload,
-                    (f.get("home") or {}).get("id"),
-                    (f.get("away") or {}).get("id"),
-                    home,
-                    away,
-                )
+                rows = _h2h_rows(payload, (f.get("home") or {}).get("id"),
+                                  (f.get("away") or {}).get("id"), home, away)
                 summary = payload.get("summary") if isinstance(payload, dict) else None
                 if not (isinstance(summary, list) and len(summary) >= 3):
                     summary = None
