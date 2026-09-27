@@ -2864,21 +2864,13 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
-                        if item.get("source")=="Zerozero" and not item.get("image"):
-                            try:
-                                cards=[]
-                                for dbg in gs.select("a.iusc")[:5]:
-                                    raw_dbg=dbg.get("m") or ""
-                                    cards.append(raw_dbg[:1200])
-                            except Exception:
-                                pass
                         # Zerozero's current editorial photos are hosted on
                         # cdn-img.staticzz.com (and, on some results, cdn-img.zerozero.pt).
                         # Google may serialize the original CDN URL in the raw HTML
                         # without creating an a.iusc card. This was the working
                         # extraction path in the earlier Lions Den implementation.
                         for m in re.finditer(
-                            r"https://cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/[^\\s<>\\\\]+",
+                            r"https://cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/[^\s<>\\]+,
                             gr.text,
                             re.I,
                         ):
