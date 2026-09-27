@@ -2956,7 +2956,49 @@ def fetch_news():
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
             if not item.get("image"):
-                # 6) Jina / AllOrigins are last-resort exact-article fetches.
+                # 6) Google normal search fallback. Its result cards can expose
+                # the Zerozero article thumbnail even when Google Images is
+                # unavailable to the Actions runner.
+                try:
+                    from urllib.parse import quote
+                    q=quote('"'+(item.get("title") or "").replace('"',"")+'" site:zerozero.pt/noticias/')
+                    sr=session.get("https://www.google.com/search?q="+q+"&num=10&hl=pt-PT",
+                                   timeout=15,headers={"User-Agent":USER_AGENT})
+                    if sr.ok:
+                        ss=BeautifulSoup(sr.text,"html.parser")
+                        target=item.get("url","").split("?",1)[0].rstrip("/").lower()
+                        for im in ss.find_all("img"):
+                            src=(im.get("data-iurl") or im.get("data-original") or
+                                 im.get("data-src") or im.get("src"))
+                            if not src or str(src).startswith("data:"):
+                                continue
+                            low=str(src).lower()
+                            if any(x in low for x in ("google","gstatic","favicon","logo")):
+                                continue
+                            parent=im
+                            found_origin=""
+                            for _ in range(6):
+                                parent=parent.parent
+                                if parent is None:
+                                    break
+                                if parent.name=="a" and parent.get("href"):
+                                    found_origin=parent.get("href")
+                                    break
+                            if target and found_origin:
+                                if found_origin.startswith("/url?q="):
+                                    found_origin=found_origin.split("/url?q=",1)[1].split("&",1)[0]
+                                if target not in found_origin.split("?",1)[0].rstrip("/").lower():
+                                    continue
+                            elif target:
+                                continue
+                            item["image"]=src
+                            item["image_source"]="Zerozero article Google thumbnail"
+                            break
+                except Exception as ex:
+                    print("Zerozero Google search thumbnail warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 7) Jina / AllOrigins are last-resort exact-article fetches.
                 for proxy_url, label in [
                     ("https://r.jina.ai/"+url, "Zerozero article via Jina"),
                     ("https://api.allorigins.win/get?url="+quote(url), "Zerozero article via AllOrigins"),
