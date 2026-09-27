@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T13:35:23.328Z",
+  "_updated_at": "2026-09-27T13:50:31.260326+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482054+00:00"
+      "updated_at": "2026-09-27T13:50:31.260038+00:00"
     },
     "5887661": {
       "matches": [],
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482102+00:00"
+      "updated_at": "2026-09-27T13:50:31.260086+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,7 +150,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482107+00:00"
+      "updated_at": "2026-09-27T13:50:31.260102+00:00"
     },
     "5887687": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482126+00:00"
+      "updated_at": "2026-09-27T13:50:31.260122+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,11 +244,12 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482129+00:00"
+      "updated_at": "2026-09-27T13:50:31.260125+00:00"
     },
     "5887702": {
       "matches": [
         {
+          "id": null,
           "date": "2026-05-16",
           "home": "Sporting CP",
           "away": "Gil Vicente",
@@ -257,6 +258,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2026-01-02",
           "home": "Gil Vicente",
           "away": "Sporting CP",
@@ -265,6 +267,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2025-05-04",
           "home": "Sporting CP",
           "away": "Gil Vicente",
@@ -273,6 +276,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2024-12-22",
           "home": "Gil Vicente",
           "away": "Sporting CP",
@@ -285,9 +289,9 @@
       "draws": 2,
       "away_wins": 2,
       "total": 4,
-      "source": "Verified historical H2H fallback",
+      "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:35:23.324Z"
+      "updated_at": "2026-09-27T13:50:31.260136+00:00"
     },
     "5887716": {
       "matches": [
@@ -335,6 +339,7 @@
     "5887724": {
       "matches": [
         {
+          "id": null,
           "date": "2026-04-19",
           "home": "Sporting CP",
           "away": "Benfica",
@@ -343,6 +348,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2025-12-05",
           "home": "Benfica",
           "away": "Sporting CP",
@@ -351,6 +357,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2025-05-10",
           "home": "Benfica",
           "away": "Sporting CP",
@@ -359,6 +366,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2024-12-29",
           "home": "Sporting CP",
           "away": "Benfica",
@@ -371,13 +379,14 @@
       "draws": 2,
       "away_wins": 1,
       "total": 4,
-      "source": "Verified historical H2H fallback",
+      "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:35:23.328Z"
+      "updated_at": "2026-09-27T13:50:31.260147+00:00"
     },
     "5887734": {
       "matches": [
         {
+          "id": null,
           "date": "2026-04-03",
           "home": "Sporting CP",
           "away": "Santa Clara",
@@ -386,6 +395,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2025-11-08",
           "home": "Santa Clara",
           "away": "Sporting CP",
@@ -394,6 +404,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2025-04-12",
           "home": "Santa Clara",
           "away": "Sporting CP",
@@ -402,6 +413,7 @@
           "competition": "Primeira Liga"
         },
         {
+          "id": null,
           "date": "2024-11-30",
           "home": "Sporting CP",
           "away": "Santa Clara",
@@ -414,9 +426,9 @@
       "draws": 0,
       "away_wins": 1,
       "total": 4,
-      "source": "Verified historical H2H fallback",
+      "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:35:23.328Z"
+      "updated_at": "2026-09-27T13:50:31.260155+00:00"
     },
     "5887735": {
       "matches": [
@@ -463,7 +475,7 @@
       "total": 6,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482140+00:00"
+      "updated_at": "2026-09-27T13:50:31.260158+00:00"
     },
     "5887752": {
       "matches": [
@@ -510,7 +522,7 @@
       "total": 35,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482145+00:00"
+      "updated_at": "2026-09-27T13:50:31.260164+00:00"
     },
     "5887760": {
       "matches": [
@@ -557,7 +569,7 @@
       "total": 4,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482150+00:00"
+      "updated_at": "2026-09-27T13:50:31.260170+00:00"
     },
     "5887769": {
       "matches": [
@@ -604,7 +616,7 @@
       "total": 37,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482152+00:00"
+      "updated_at": "2026-09-27T13:50:31.260173+00:00"
     },
     "5887778": {
       "matches": [
@@ -651,7 +663,7 @@
       "total": 27,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482155+00:00"
+      "updated_at": "2026-09-27T13:50:31.260176+00:00"
     },
     "5887784": {
       "matches": [
@@ -698,7 +710,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482158+00:00"
+      "updated_at": "2026-09-27T13:50:31.260179+00:00"
     },
     "5887796": {
       "matches": [
@@ -745,7 +757,7 @@
       "total": 21,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482160+00:00"
+      "updated_at": "2026-09-27T13:50:31.260182+00:00"
     },
     "5887800": {
       "matches": [
@@ -792,7 +804,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482162+00:00"
+      "updated_at": "2026-09-27T13:50:31.260185+00:00"
     },
     "5887814": {
       "matches": [],
@@ -849,7 +861,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482169+00:00"
+      "updated_at": "2026-09-27T13:50:31.260194+00:00"
     },
     "5887832": {
       "matches": [
@@ -896,7 +908,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482172+00:00"
+      "updated_at": "2026-09-27T13:50:31.260225+00:00"
     },
     "5887840": {
       "matches": [
@@ -943,7 +955,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482177+00:00"
+      "updated_at": "2026-09-27T13:50:31.260236+00:00"
     },
     "5887851": {
       "matches": [
@@ -990,17 +1002,54 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482179+00:00"
+      "updated_at": "2026-09-27T13:50:31.260241+00:00"
     },
     "5887855": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-05-16",
+          "home": "Sporting CP",
+          "away": "Gil Vicente",
+          "home_score": 3,
+          "away_score": 0,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2026-01-02",
+          "home": "Gil Vicente",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2025-05-04",
+          "home": "Sporting CP",
+          "away": "Gil Vicente",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-12-22",
+          "home": "Gil Vicente",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 0,
+          "competition": "Primeira Liga"
+        }
+      ],
+      "home_wins": 2,
+      "draws": 2,
       "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304452+00:00"
+      "total": 4,
+      "source": "FBref historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:50:31.260250+00:00"
     },
     "5887869": {
       "matches": [],
@@ -1013,24 +1062,98 @@
       "updated_at": "2026-09-27T13:03:26.304457+00:00"
     },
     "5887877": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304461+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-19",
+          "home": "Sporting CP",
+          "away": "Benfica",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2025-12-05",
+          "home": "Benfica",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2025-05-10",
+          "home": "Benfica",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-12-29",
+          "home": "Sporting CP",
+          "away": "Benfica",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Primeira Liga"
+        }
+      ],
+      "home_wins": 1,
+      "draws": 2,
+      "away_wins": 1,
+      "total": 4,
+      "source": "FBref historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:50:31.260259+00:00"
     },
     "5887887": {
-      "matches": [],
-      "home_wins": 0,
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-03",
+          "home": "Sporting CP",
+          "away": "Santa Clara",
+          "home_score": 4,
+          "away_score": 2,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2025-11-08",
+          "home": "Santa Clara",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2025-04-12",
+          "home": "Santa Clara",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-11-30",
+          "home": "Sporting CP",
+          "away": "Santa Clara",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "Primeira Liga"
+        }
+      ],
+      "home_wins": 1,
       "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304465+00:00"
+      "away_wins": 3,
+      "total": 4,
+      "source": "FBref historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:50:31.260266+00:00"
     },
     "5985964": {
       "matches": [
@@ -1077,7 +1200,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482099+00:00"
+      "updated_at": "2026-09-27T13:50:31.260082+00:00"
     },
     "6106255": {
       "matches": [
@@ -1124,7 +1247,7 @@
       "total": 6,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336814+00:00"
+      "updated_at": "2026-09-27T13:50:31.260167+00:00"
     },
     "6106275": {
       "matches": [
@@ -1153,7 +1276,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482131+00:00"
+      "updated_at": "2026-09-27T13:50:31.260128+00:00"
     },
     "6106278": {
       "matches": [
@@ -1182,7 +1305,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482142+00:00"
+      "updated_at": "2026-09-27T13:50:31.260161+00:00"
     },
     "6106279": {
       "matches": [
@@ -1229,7 +1352,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482118+00:00"
+      "updated_at": "2026-09-27T13:50:31.260114+00:00"
     },
     "6106281": {
       "matches": [
@@ -1267,11 +1390,12 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:30:40.482088+00:00"
+      "updated_at": "2026-09-27T13:50:31.260068+00:00"
     },
     "6106335": {
       "matches": [
         {
+          "id": null,
           "date": "2008-11-04",
           "home": "Sporting CP",
           "away": "Shakhtar Donetsk",
@@ -1280,6 +1404,7 @@
           "competition": "Champions League"
         },
         {
+          "id": null,
           "date": "2008-10-22",
           "home": "Shakhtar Donetsk",
           "away": "Sporting CP",
@@ -1292,9 +1417,9 @@
       "draws": 0,
       "away_wins": 2,
       "total": 2,
-      "source": "Verified historical H2H fallback",
+      "source": "WorldFootball historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:35:23.328Z"
+      "updated_at": "2026-09-27T13:50:31.260098+00:00"
     },
     "6106414": {
       "matches": [],
@@ -1310,5 +1435,5 @@
   "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
   "scope": "All upcoming Sporting CP fixtures; latest 4 meetings across all competitions.",
   "checked_fixtures": 35,
-  "enriched_fixtures": 30
+  "enriched_fixtures": 33
 }
