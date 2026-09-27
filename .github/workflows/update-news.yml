@@ -12,7 +12,7 @@ on:
       - 'scripts/requirements.txt'
       - '.github/workflows/update-news.yml'
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
