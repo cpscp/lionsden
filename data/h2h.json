@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T13:03:26.304539+00:00",
+  "_updated_at": "2026-09-27T13:07:51.259747+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304248+00:00"
+      "updated_at": "2026-09-27T13:07:51.259492+00:00"
     },
     "6106281": {
       "matches": [
@@ -84,7 +84,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304281+00:00"
+      "updated_at": "2026-09-27T13:07:51.259523+00:00"
     },
     "5887661": {
       "matches": [],
@@ -141,7 +141,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304297+00:00"
+      "updated_at": "2026-09-27T13:07:51.259542+00:00"
     },
     "5887666": {
       "matches": [
@@ -188,7 +188,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304302+00:00"
+      "updated_at": "2026-09-27T13:07:51.259547+00:00"
     },
     "5887679": {
       "matches": [
@@ -235,7 +235,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304313+00:00"
+      "updated_at": "2026-09-27T13:07:51.259560+00:00"
     },
     "5887698": {
       "matches": [
@@ -282,7 +282,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304345+00:00"
+      "updated_at": "2026-09-27T13:07:51.259595+00:00"
     },
     "6106275": {
       "matches": [
@@ -387,7 +387,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304419+00:00"
+      "updated_at": "2026-09-27T13:07:51.259631+00:00"
     },
     "5887814": {
       "matches": [],
@@ -444,7 +444,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304430+00:00"
+      "updated_at": "2026-09-27T13:07:51.259643+00:00"
     },
     "5887832": {
       "matches": [
@@ -491,7 +491,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304434+00:00"
+      "updated_at": "2026-09-27T13:07:51.259647+00:00"
     },
     "5887851": {
       "matches": [
@@ -538,7 +538,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304447+00:00"
+      "updated_at": "2026-09-27T13:07:51.259660+00:00"
     },
     "6106414": {
       "matches": [],
@@ -579,15 +579,33 @@
           "home_score": 0,
           "away_score": 1,
           "competition": "UEFA Champions League"
+        },
+        {
+          "id": null,
+          "date": "1964-03-18",
+          "home": "Sporting CP",
+          "away": "Manchester United",
+          "home_score": 5,
+          "away_score": 0,
+          "competition": "European Cup Winners' Cup"
+        },
+        {
+          "id": null,
+          "date": "1964-02-26",
+          "home": "Manchester United",
+          "away": "Sporting CP",
+          "home_score": 4,
+          "away_score": 1,
+          "competition": "European Cup Winners' Cup"
         }
       ],
-      "home_wins": 1,
+      "home_wins": 2,
       "draws": 0,
-      "away_wins": 1,
-      "total": 2,
+      "away_wins": 2,
+      "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304327+00:00"
+      "updated_at": "2026-09-27T13:07:51.259576+00:00"
     },
     "5887687": {
       "matches": [
@@ -634,7 +652,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304340+00:00"
+      "updated_at": "2026-09-27T13:07:51.259590+00:00"
     },
     "5887702": {
       "matches": [],
@@ -801,7 +819,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:03:26.304443+00:00"
+      "updated_at": "2026-09-27T13:07:51.259656+00:00"
     },
     "5887855": {
       "matches": [],
