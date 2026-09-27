@@ -2773,7 +2773,33 @@ def fetch_news():
                         item["image_source"]="Zerozero article image search"
                         break
             except Exception as ex:
-                print("Zerozero image search warning:",item.get("url"),ex)
+                print("Zerozero Google image search warning:",item.get("url"),ex)
+            if not item.get("image"):
+                try:
+                    bq=quote((item.get("title") or "").replace(" - zerozero.pt","")+" zerozero")
+                    br=session.get("https://www.bing.com/images/search?q="+bq,
+                                   timeout=15,headers={"User-Agent":USER_AGENT})
+                    if br.ok:
+                        bs=BeautifulSoup(br.text,"html.parser")
+                        for node in bs.select("a.iusc"):
+                            raw=node.get("m")
+                            if not raw:
+                                continue
+                            try:
+                                meta=json.loads(raw)
+                            except Exception:
+                                continue
+                            src=meta.get("murl")
+                            if not src:
+                                continue
+                            low=str(src).lower()
+                            if any(x in low for x in ("bing.com","microsoft.com","favicon","logo")):
+                                continue
+                            item["image"]=src
+                            item["image_source"]="Zerozero article image search"
+                            break
+                except Exception as ex:
+                    print("Zerozero Bing image search warning:",item.get("url"),ex)
 
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
