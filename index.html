@@ -137,21 +137,18 @@
 @media(max-width:620px){.knockout-grid,.knockout-grid.final-grid{grid-template-columns:1fr;max-width:none}.knockout-match{padding:11px}.knockout-team{font-size:10px}.knockout-team-logo,.knockout-team .knockout-badge{width:36px;height:36px}.knockout-team-logo img{width:28px;height:28px}}
 
 /* Stadium */
-.stadium-hero{background:radial-gradient(circle at 50% 30%,rgba(0,132,79,.18),transparent 55%),linear-gradient(145deg,#07100d,#050807);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;min-height:280px}
-.stadium-viewer{position:relative;height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.stadium-viewer .stadium-fallback{width:82%;max-width:520px;aspect-ratio:1.7;transform:perspective(700px) rotateX(48deg) rotateZ(-4deg);border:12px solid #29332f;border-radius:45% 45% 40% 40%;box-shadow:0 24px 50px rgba(0,0,0,.55),inset 0 0 0 5px #111816;background:repeating-linear-gradient(90deg,#16784e 0 12px,#0e603f 12px 24px);position:relative}
-.stadium-viewer .stadium-fallback:before{content:"";position:absolute;inset:18%;border:7px solid #d7ddd8;border-radius:48%;background:repeating-linear-gradient(0deg,#15834f 0 7px,#126c43 7px 14px);box-shadow:0 0 0 7px rgba(255,255,255,.12)}
-.stadium-viewer .stadium-fallback:after{content:"ALVALADE";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotateZ(4deg);font-size:10px;font-weight:800;letter-spacing:.18em;color:#fff;opacity:.65}
-.stadium-3d-note{position:absolute;bottom:12px;left:14px;right:14px;text-align:center;font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.08em}
-.stadium-map{position:relative;width:100%;aspect-ratio:1.45;background:#07100d;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;padding:20px}
-.stadium-map .pitch{position:absolute;left:24%;right:24%;top:29%;bottom:29%;border:2px solid rgba(255,255,255,.75);border-radius:8px;background:linear-gradient(90deg,rgba(20,130,78,.8),rgba(12,94,58,.8))}
-.stadium-map .pitch:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid rgba(255,255,255,.55)}
-.stadium-map .pitch:after{content:"";position:absolute;width:22%;aspect-ratio:1;border:1px solid rgba(255,255,255,.55);border-radius:50%;left:39%;top:38%}
-.stadium-map .stand{position:absolute;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,rgba(21,121,76,.8),rgba(9,47,31,.9));border-radius:12px;color:#dce8e2;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;text-align:center}
-.stadium-map .north{left:16%;right:16%;top:5%;height:21%}.stadium-map .south{left:16%;right:16%;bottom:5%;height:21%}.stadium-map .west{left:5%;top:25%;bottom:25%;width:17%}.stadium-map .east{right:5%;top:25%;bottom:25%;width:17%}
-.stadium-door{position:absolute;z-index:4;width:34px;height:22px;border-radius:7px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.18);font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center}
-.stadium-door.n1{top:1%;left:48%}.stadium-door.n2{top:17%;left:24%}.stadium-door.n3{top:17%;right:24%}.stadium-door.s5{bottom:1%;left:31%}.stadium-door.s6{bottom:1%;right:31%}.stadium-door.w7{left:1%;top:56%}.stadium-door.w1{left:1%;top:35%}.stadium-door.e4{right:1%;top:46%}
-.access-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:16px;padding:14px}
+.stadium-hero{background:linear-gradient(145deg,#07120e,#050807);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
+.stadium-earth{position:relative;height:300px;background:#07100d;overflow:hidden}
+.stadium-earth iframe{width:100%;height:100%;border:0;display:block}
+.stadium-earth-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.08),transparent 48%,rgba(0,0,0,.68))}
+.stadium-earth-content{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:end;justify-content:space-between;gap:12px}
+.stadium-earth-content .eyebrow{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.stadium-map-card{background:#07100d;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
+.stadium-map-card img{display:block;width:100%;height:auto;background:#fff}
+.stadium-map-note{padding:12px 14px;border-top:1px solid rgba(255,255,255,.06);font-size:10px;color:rgba(255,255,255,.52)}
+.stadium-access-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.stadium-access-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.stadium-route-card{display:flex;align-items:flex-start;gap:12px}
 </style>
 </head>
 <body>
