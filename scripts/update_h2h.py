@@ -24,6 +24,8 @@ KNOWN_H2H = {
         "matches": [
             {"id": None, "date": "2007-11-27", "home": "Manchester United", "away": "Sporting CP", "home_score": 2, "away_score": 1, "competition": "UEFA Champions League"},
             {"id": None, "date": "2007-09-19", "home": "Sporting CP", "away": "Manchester United", "home_score": 0, "away_score": 1, "competition": "UEFA Champions League"},
+            {"id": None, "date": "1964-03-18", "home": "Sporting CP", "away": "Manchester United", "home_score": 5, "away_score": 0, "competition": "European Cup Winners' Cup"},
+            {"id": None, "date": "1964-02-26", "home": "Manchester United", "away": "Sporting CP", "home_score": 4, "away_score": 1, "competition": "European Cup Winners' Cup"},
         ],
         "source": "UEFA historical H2H fallback",
     },
@@ -70,8 +72,10 @@ def build_entry(f, p):
                 dw += 1
             elif norm(m.get("home")) == home_name:
                 hw += 1
-            else:
+            elif norm(m.get("away")) == home_name:
                 aw += 1
+            else:
+                continue
         s = [hw, dw, aw]
     if s is None:
         return None
