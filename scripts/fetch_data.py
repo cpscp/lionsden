@@ -608,7 +608,7 @@ def fetch_fbref_stats():
 
 
 def sofa_get(path, params=None):
-    url = "https://www.sofascore.com/api/v1" + path
+    url = "https://api.sofascore.com/api/v1" + path
     r = session.get(url, params=params or {}, timeout=25,
                     headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
     r.raise_for_status()
