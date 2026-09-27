@@ -2777,6 +2777,22 @@ def fetch_news():
                             item["description"]=clean(d.get("content"))[:280]
             except Exception as ex:
                 print("Zerozero Translate image warning:",item.get("url"),ex)
+            if not item.get("image"):
+                try:
+                    from urllib.parse import quote as _q
+                    mr=session.get("https://api.microlink.io/?url="+_q(url,safe="")+"&meta=true",
+                                   timeout=20,headers={"User-Agent":USER_AGENT})
+                    if mr.ok:
+                        md=mr.json().get("data",{})
+                        image=((md.get("image") or {}).get("url") if isinstance(md.get("image"),dict) else md.get("image"))
+                        desc=md.get("description")
+                        if image and "zerozero" in str(image).lower():
+                            item["image"]=image
+                            item["image_source"]="Zerozero article metadata"
+                        if desc and not re.search(r"(just a moment|captcha|cloudflare)",str(desc),re.I):
+                            item["description"]=clean(desc)[:280]
+                except Exception as ex:
+                    print("Zerozero metadata service warning:",item.get("url"),ex)
             try:
                 q=quote((item.get("title") or "")+" site:zerozero.pt")
                 gr=session.get("https://www.google.com/search?tbm=isch&q="+q,
