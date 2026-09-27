@@ -2833,6 +2833,21 @@ def fetch_news():
                 rr.raise_for_status()
                 soup = BeautifulSoup(rr.text, "html.parser")
 
+                # Record Premium: the public page exposes the lead but not the
+                # subscriber-only body. Keep this flag so the PWA never presents
+                # a lead as if it were the full article.
+                page_text = clean(soup.get_text(" ", strip=True))
+                record_premium = (
+                    item.get("source") == "Record"
+                    and bool(re.search(
+                        r"Record\\s+Premium|Funcionalidade exclusiva para assinantes|conteúdo é exclusivo para assinantes",
+                        page_text,
+                        re.I,
+                    ))
+                )
+                if record_premium:
+                    item["premium"] = True
+
                 def meta(*pairs):
                     for attrs in pairs:
                         n = soup.find("meta", attrs=attrs)
@@ -2937,7 +2952,7 @@ def fetch_news():
                     return ""
 
                 article_text = extract_article_text(soup)
-                if len(article_text) >= 300:
+                if len(article_text) >= 300 and not record_premium:
                     item["article_text"] = article_text[:30000]
 
                 image = meta(
@@ -2990,7 +3005,7 @@ def fetch_news():
                     except Exception:
                         pass
 
-                if candidate.startswith("https://r.jina.ai/") and not item.get("article_text"):
+                if candidate.startswith("https://r.jina.ai/") and not item.get("article_text") and not record_premium:
                     # Jina Markdown fallback: retain readable paragraphs while
                     # removing navigation and image-only lines.
                     md_lines=[]
