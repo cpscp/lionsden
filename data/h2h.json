@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T13:12:11.943184+00:00",
+  "_updated_at": "2026-09-27T13:20:39.336939+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943016+00:00"
+      "updated_at": "2026-09-27T13:20:39.336697+00:00"
     },
     "5887661": {
       "matches": [],
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943065+00:00"
+      "updated_at": "2026-09-27T13:20:39.336746+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,7 +150,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943069+00:00"
+      "updated_at": "2026-09-27T13:20:39.336754+00:00"
     },
     "5887687": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943088+00:00"
+      "updated_at": "2026-09-27T13:20:39.336782+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,7 +244,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943091+00:00"
+      "updated_at": "2026-09-27T13:20:39.336786+00:00"
     },
     "5887702": {
       "matches": [],
@@ -401,7 +401,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943117+00:00"
+      "updated_at": "2026-09-27T13:20:39.336828+00:00"
     },
     "5887814": {
       "matches": [],
@@ -458,7 +458,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943124+00:00"
+      "updated_at": "2026-09-27T13:20:39.336839+00:00"
     },
     "5887832": {
       "matches": [
@@ -505,7 +505,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943126+00:00"
+      "updated_at": "2026-09-27T13:20:39.336843+00:00"
     },
     "5887840": {
       "matches": [
@@ -552,7 +552,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943131+00:00"
+      "updated_at": "2026-09-27T13:20:39.336851+00:00"
     },
     "5887851": {
       "matches": [
@@ -599,7 +599,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943133+00:00"
+      "updated_at": "2026-09-27T13:20:39.336856+00:00"
     },
     "5887855": {
       "matches": [],
@@ -686,17 +686,54 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943062+00:00"
+      "updated_at": "2026-09-27T13:20:39.336741+00:00"
     },
     "6106255": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304389+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2024-11-05T20:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Manchester City",
+          "home_score": 4,
+          "away_score": 1,
+          "competition": "Champions League"
+        },
+        {
+          "id": null,
+          "date": "2022-03-09T20:00:00.000Z",
+          "home": "Manchester City",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 0,
+          "competition": "Champions League"
+        },
+        {
+          "id": null,
+          "date": "2022-02-15T20:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Manchester City",
+          "home_score": 0,
+          "away_score": 5,
+          "competition": "Champions League"
+        },
+        {
+          "id": null,
+          "date": "2012-03-15T20:05:00.000Z",
+          "home": "Manchester City",
+          "away": "Sporting CP",
+          "home_score": 3,
+          "away_score": 2,
+          "competition": "Europa League"
+        }
+      ],
+      "home_wins": 2,
+      "draws": 1,
+      "away_wins": 3,
+      "total": 6,
+      "source": "FotMob",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:20:39.336814+00:00"
     },
     "6106275": {
       "matches": [
@@ -725,7 +762,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943093+00:00"
+      "updated_at": "2026-09-27T13:20:39.336791+00:00"
     },
     "6106278": {
       "matches": [
@@ -754,7 +791,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943106+00:00"
+      "updated_at": "2026-09-27T13:20:39.336807+00:00"
     },
     "6106279": {
       "matches": [
@@ -801,7 +838,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943080+00:00"
+      "updated_at": "2026-09-27T13:20:39.336769+00:00"
     },
     "6106281": {
       "matches": [
@@ -839,7 +876,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:12:11.943050+00:00"
+      "updated_at": "2026-09-27T13:20:39.336725+00:00"
     },
     "6106335": {
       "matches": [],
@@ -865,5 +902,5 @@
   "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
   "scope": "All upcoming Sporting CP fixtures; latest 4 meetings across all competitions.",
   "checked_fixtures": 35,
-  "enriched_fixtures": 17
+  "enriched_fixtures": 18
 }
