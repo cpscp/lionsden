@@ -2807,49 +2807,50 @@ def fetch_news():
         return item
 
     def scrape_page(url, source):
-        try:
-            r=session.get(url,timeout=15,headers={"User-Agent":USER_AGENT})
-            r.raise_for_status()
-            soup=BeautifulSoup(r.text,"html.parser")
-            local=[]
-            for a in soup.select("a[href]"):
-                href=a.get("href","")
-                title=" ".join(a.stripped_strings)
-                if href.startswith("/"):
-                    from urllib.parse import urljoin
-                    href=urljoin(url,href)
-                if source_from_url(href) != source or len(title)<18:
-                    continue
-                if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
-                    continue
-                # Capture the image from the source listing/card. This is
-                # particularly important for O Jogo and Zerozero, whose article
-                # pages may reject automated metadata requests.
-                image = None
-                parent = a
-                for _ in range(5):
-                    if parent is None: break
-                    img = parent.find("img")
-                    if img:
-                        image = (
-                            img.get("data-src") or img.get("data-lazy-src") or
-                            img.get("data-original") or img.get("src")
-                        )
-                        if image and str(image).startswith("data:"):
+        """Scrape a publisher listing with direct + Jina fallback."""
+        candidates = [url, "https://r.jina.ai/" + url]
+        for candidate in candidates:
+            try:
+                r=session.get(candidate,timeout=15,headers={"User-Agent":USER_AGENT})
+                r.raise_for_status()
+                soup=BeautifulSoup(r.text,"html.parser")
+                local=[]
+                for a in soup.select("a[href]"):
+                    href=a.get("href","")
+                    title=" ".join(a.stripped_strings)
+                    if href.startswith("/"):
+                        from urllib.parse import urljoin
+                        href=urljoin(url,href)
+                    # Jina may expose canonical absolute links.
+                    if source_from_url(href) != source or len(title)<18:
+                        continue
+                    if any(x in href.lower() for x in ("/video", "/videos", "/fotogaleria", "/multimedia")):
+                        continue
+                    image = None
+                    parent = a
+                    for _ in range(6):
+                        if parent is None: break
+                        img = parent.find("img")
+                        if img:
+                            image = (img.get("data-src") or img.get("data-lazy-src") or
+                                     img.get("data-original") or img.get("src"))
+                            if image and not str(image).startswith("data:"):
+                                break
                             image = None
-                        if image: break
-                    parent = parent.parent
-                if image:
-                    from urllib.parse import urljoin
-                    image = urljoin(url, str(image))
-                local.append({"title":title,"url":href,"source":source,
-                              **({"image":image,"image_source":url} if image else {})})
-                if len(local)>=18:
-                    break
-            return local
-        except Exception as e:
-            print(f"{source} news warning:",e)
-            return []
+                        parent = parent.parent
+                    if image:
+                        from urllib.parse import urljoin
+                        image=urljoin(url,str(image))
+                    local.append({"title":title,"url":href,"source":source,
+                                  **({"image":image,"image_source":url} if image else {})})
+                    if len(local)>=18:
+                        break
+                if local:
+                    return local
+            except Exception as e:
+                print(f"{source} news warning ({candidate}):",e)
+        return []
+
 
     # Direct source pages. These are deliberately football-specific where the
     # publisher exposes a Sporting football section.
