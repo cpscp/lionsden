@@ -2842,6 +2842,49 @@ def fetch_news():
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
 
+        # Zerozero blocks GitHub Actions directly. First try the Google
+        # Translate web proxy, which fetches the ORIGINAL article and lets us
+        # recover its own og:image instead of guessing via image search.
+        if item.get("source")=="Zerozero" and not item.get("image"):
+            try:
+                from urllib.parse import urlsplit
+                p=urlsplit(url)
+                proxy="https://"+p.netloc.replace(".","-")+".translate.goog"+p.path
+                if p.query:
+                    proxy+="?"+p.query+"&_x_tr_sl=pt&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wapp"
+                else:
+                    proxy+="?_x_tr_sl=pt&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wapp"
+                pr=session.get(proxy,timeout=20,headers={"User-Agent":USER_AGENT})
+                if pr.ok:
+                    ps=BeautifulSoup(pr.text,"html.parser")
+                    for tag,attrs in [
+                        ("meta",{"property":"og:image"}),
+                        ("meta",{"property":"og:image:url"}),
+                        ("meta",{"name":"twitter:image"}),
+                        ("meta",{"itemprop":"image"}),
+                    ]:
+                        node=ps.find(tag,attrs=attrs)
+                        if node and node.get("content"):
+                            u=node.get("content").strip()
+                            if u and not re.search(r"(logo|favicon|cloudflare|translate)",u,re.I):
+                                item["image"]=urljoin(url,u)
+                                item["image_source"]="Zerozero article og:image"
+                                break
+                    if not item.get("description"):
+                        for tag,attrs in [
+                            ("meta",{"property":"og:description"}),
+                            ("meta",{"name":"description"}),
+                            ("meta",{"name":"twitter:description"}),
+                        ]:
+                            node=ps.find(tag,attrs=attrs)
+                            if node and node.get("content"):
+                                d=clean(node.get("content"))
+                                if d and not re.search(r"(just a moment|captcha|cloudflare)",d,re.I):
+                                    item["description"]=d[:280]
+                                    break
+            except Exception as ex:
+                print("Zerozero Translate proxy warning:",item.get("url"),ex)
+
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
                             headers={"User-Agent":USER_AGENT})
