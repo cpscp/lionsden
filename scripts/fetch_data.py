@@ -2864,7 +2864,14 @@ def fetch_news():
             return parsedate_to_datetime(item.get("published")).timestamp()
         except Exception:
             return 0
-    items.sort(key=lambda x:(x.get("_priority",0),pub_ts(x)), reverse=True)
+    # Football relevance comes first; freshness is the main ordering signal.
+    # Source priority is only a tie-breaker, otherwise one publisher can crowd
+    # the whole feed with older articles.
+    items.sort(key=lambda x:(
+        1 if x.get("_football") else 0,
+        pub_ts(x),
+        source_priority.get(x.get("source"),50)
+    ), reverse=True)
 
     # Metadata enrichment is the expensive part. Only enrich the visible top
     # 24 and do it concurrently so a slow publisher cannot stall the whole feed.
@@ -2875,7 +2882,11 @@ def fetch_news():
         for future in as_completed(futures):
             enriched.append(future.result())
     # Restore ranking after concurrent enrichment.
-    enriched.sort(key=lambda x:(x.get("_priority",0),pub_ts(x)), reverse=True)
+    enriched.sort(key=lambda x:(
+        1 if x.get("_football") else 0,
+        pub_ts(x),
+        source_priority.get(x.get("source"),50)
+    ), reverse=True)
 
     for item in enriched:
         item.pop("_priority",None)
