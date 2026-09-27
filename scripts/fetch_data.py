@@ -2869,22 +2869,20 @@ def fetch_news():
                                 item["image"]=src
                                 item["image_source"]="Zerozero article image search"
                                 break
-                        if item.get("image"):
-                            pass
-                        else:
+                        if not item.get("image"):
                             for im in gs.find_all("img"):
-                            src=(im.get("data-iurl") or im.get("data-original") or
-                                 im.get("data-src") or im.get("src"))
-                            if not src or str(src).startswith("data:"):
-                                continue
-                            low=str(src).lower()
-                            if not re.search(r"cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/", low):
-                                continue
-                            if any(x in low for x in ("favicon","logo","googleusercontent")):
-                                continue
-                            item["image"]=src
-                            item["image_source"]="Zerozero article image search"
-                            break
+                                src=(im.get("data-iurl") or im.get("data-original") or
+                                     im.get("data-src") or im.get("src"))
+                                if not src or str(src).startswith("data:"):
+                                    continue
+                                low=str(src).lower()
+                                if not re.search(r"cdn-img\\.(?:staticzz\\.com|zerozero(?:\\.pt)?)/", low):
+                                    continue
+                                if any(x in low for x in ("favicon","logo","googleusercontent")):
+                                    continue
+                                item["image"]=src
+                                item["image_source"]="Zerozero article image search"
+                                break
                 except Exception as ex:
                     print("Zerozero Google image search warning:",item.get("url"),ex)
 
