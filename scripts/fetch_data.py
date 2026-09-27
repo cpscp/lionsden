@@ -2905,7 +2905,7 @@ def fetch_news():
                         if item.get("source")=="Zerozero":
                             try:
                                 cards=gs.select("a.iusc")
-                                cdn_hits=re.findall(r"https?:\\?/\\?/[^"\\s<>]*cdn-img[^"\\s<>]*",gr.text,re.I)
+                                cdn_hits=re.findall(r'https?://[^"\\s<>]*cdn-img[^"\\s<>]*',gr.text,re.I)
                                 print("ZZ_GOOGLE_DEBUG", item.get("url"), "STATUS", gr.status_code, "LEN", len(gr.text), "IUSC", len(cards), "CDN", len(cdn_hits))
                                 for dbg in cards[:8]:
                                     raw_dbg=dbg.get("m") or ""
