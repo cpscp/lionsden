@@ -2817,6 +2817,43 @@ def build_fixtures_from_fbref():
     print(f"FBref: {len(out)} fixtures written to fixtures.json.")
     return out
 
+VENUE_FALLBACKS = {
+    "sporting cp": ("Estádio José Alvalade", "Lisboa", 38.761207, -9.160876),
+    "braga": ("Estádio Municipal de Braga", "Braga", 41.562554, -8.429904),
+    "lens": ("Stade Bollaert-Delelis", "Lens", 50.432867, 2.814941),
+    "lask": ("Raiffeisen Arena", "Linz", 48.290900, 14.275900),
+    "academico viseu": ("Estádio do Fontelo", "Viseu", 40.657200, -7.906500),
+    "maritimo": ("Estádio do Marítimo", "Funchal", 32.649500, -16.921900),
+    "casa pia ac": ("Estádio Municipal de Rio Maior", "Rio Maior", 39.344541, -8.935162),
+    "shakhtar donetsk": ("Stamford Bridge", "London", 51.481711, -0.190975),
+    "fc porto": ("Estádio do Dragão", "Porto", 41.161778, -8.584028),
+    "porto": ("Estádio do Dragão", "Porto", 41.161778, -8.584028),
+    "roma": ("Stadio Olimpico", "Roma", 41.933886, 12.454786),
+    "as roma": ("Stadio Olimpico", "Roma", 41.933886, 12.454786),
+    "gil vicente": ("Estádio Cidade de Barcelos", "Barcelos", 41.551230, -8.623110),
+    "benfica": ("Estádio da Luz", "Lisboa", 38.752778, -9.184722),
+    "estoril": ("Estádio António Coimbra da Mota", "Estoril", 38.705278, -9.393889),
+    "moreirense": ("Parque Desportivo Comendador Joaquim de Almeida Freitas", "Moreira de Cónegos", 41.388889, -8.343611),
+    "man united": ("Old Trafford", "Manchester", 53.463056, -2.291389),
+    "manchester united": ("Old Trafford", "Manchester", 53.463056, -2.291389),
+    "barcelona": ("Spotify Camp Nou", "Barcelona", 41.380900, 2.122800),
+    "manchester city": ("Etihad Stadium", "Manchester", 53.483056, -2.200278)
+}
+
+def parse_python_venue(value):
+    text = clean(value)
+    if not text.startswith("{"):
+        return None
+    def pick(key):
+        m = re.search(r"['\"]"+re.escape(key)+r"['\"]\s*:\s*['\"]([^'\"]*)['\"]", text)
+        return m.group(1) if m else ""
+    def num(key):
+        m = re.search(r"['\"]"+re.escape(key)+r"['\"]\s*:\s*(-?\d+(?:\.\d+)?)", text)
+        return float(m.group(1)) if m else None
+    lon = num("lon")
+    return {"name":pick("name"),"city":pick("city"),"country":pick("country"),
+            "lat":num("lat"),"lon":lon if lon is not None else num("long"),"capacity":num("capacity")}
+
 def geocode_missing_venues():
     fixtures = (safe_existing("fixtures.json") or {}).get("fixtures", [])
     cache = safe_existing("venues.json") or {"venues": {}}
@@ -2824,28 +2861,48 @@ def geocode_missing_venues():
     changed = False
     for f in fixtures:
         v = f.get("venue") or {}
+        if isinstance(v.get("name"), str) and v.get("name").lstrip().startswith("{"):
+            parsed = parse_python_venue(v["name"])
+            if parsed:
+                v = {**v, **parsed}
+        home_key = zz_norm((f.get("home") or {}).get("name"))
+        fallback = VENUE_FALLBACKS.get(home_key)
+        if fallback:
+            fb_name, fb_city, fb_lat, fb_lon = fallback
+            if not v.get("name"): v["name"] = fb_name
+            if not v.get("city"): v["city"] = fb_city
+            if v.get("lat") is None: v["lat"] = fb_lat
+            if v.get("lon") is None: v["lon"] = fb_lon
+        f["venue"] = v
         name, city = v.get("name"), v.get("city")
         if not name or v.get("lat") is not None:
             continue
         key = f"{name}|{city or ''}"
         if key in venues:
+            v["lat"], v["lon"] = venues[key].get("lat"), venues[key].get("lon")
             continue
         try:
             time.sleep(1.1)
-            q = quote_plus(f"{name}, {city or ''}, Portugal")
-            r = session.get("https://nominatim.openstreetmap.org/search",
-                            params={"q": q, "format": "jsonv2", "limit": 1},
-                            timeout=20)
-            r.raise_for_status()
-            rows = r.json()
+            rr = session.get("https://nominatim.openstreetmap.org/search",
+                             params={"q":quote_plus(f"{name}, {city or ''}"),"format":"jsonv2","limit":1},
+                             timeout=20)
+            rr.raise_for_status()
+            rows = rr.json()
             if rows:
-                venues[key] = {"lat": float(rows[0]["lat"]), "lon": float(rows[0]["lon"]),
-                               "display": rows[0].get("display_name")}
-                changed = True
+                venues[key]={"lat":float(rows[0]["lat"]),"lon":float(rows[0]["lon"]),"display":rows[0].get("display_name")}
+                v["lat"],v["lon"]=venues[key]["lat"],venues[key]["lon"]
+                changed=True
         except Exception as e:
             print("Nominatim warning:", e)
-    if changed or not (DATA / "venues.json").exists():
-        write_json("venues.json", {"venues": venues, "source": "OpenStreetMap Nominatim"})
+    try:
+        existing=safe_existing("fixtures.json") or {}
+        existing["fixtures"]=fixtures
+        existing["_updated_at"]=now_iso()
+        (DATA/"fixtures.json").write_text(json.dumps(existing,ensure_ascii=False,indent=2),encoding="utf-8")
+    except Exception as e:
+        print("Fixture venue persist warning:",e)
+    if changed or not (DATA/"venues.json").exists():
+        write_json("venues.json",{"venues":venues,"source":"OpenStreetMap Nominatim"})
 
 
 
