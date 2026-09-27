@@ -2710,10 +2710,14 @@ def fetch_news():
         football = any(t in blob for t in football_terms)
         modalities = any(t in blob for t in non_football_penalty)
         item["_football"] = football and not (modalities and "futebol" not in blob)
+        excluded_sporting = (
+            "sporting kansas city", "sporting kc", "sporting seis de diciembre",
+            "sporting de gijón", "sporting gijon"
+        )
         item["_sporting"] = any(t in blob for t in (
             "sporting", "alvalade", "rui borges", "leões", "leoes",
             "verde e branco", "verde-e-branco"
-        ))
+        )) and not any(t in blob for t in excluded_sporting)
         item["_priority"] += 25 if item["_football"] else 0
         item["_priority"] += 40 if item["_sporting"] else 0
         seen.add(key)
@@ -2859,6 +2863,9 @@ def fetch_news():
         item["_sporting"]=any(t in title for t in (
             "sporting", "alvalade", "rui borges", "leões", "leoes",
             "verde e branco", "verde-e-branco"
+        )) and not any(t in title for t in (
+            "sporting kansas city", "sporting kc", "sporting seis de diciembre",
+            "sporting de gijón", "sporting gijon"
         ))
         item["_priority"]=p + (25 if item["_football"] else 0) + (40 if item["_sporting"] else 0)
         old=dedup.get(key)
