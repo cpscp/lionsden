@@ -16,7 +16,7 @@
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}.next-match-hero{position:relative}.next-match-hero::before{content:"";position:absolute;inset:0;background:url('./assets/estadio2.png') center/cover no-repeat;opacity:.15;pointer-events:none;z-index:0}.next-match-hero>*{position:relative;z-index:1}
 .muted{color:var(--muted)}.screen{display:none}.screen.active{display:block}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(18,29,22,.97);border-top:1px solid var(--line);backdrop-filter:blur(14px)}
 .navbtn{color:var(--muted)}.navbtn.active{color:#fff}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#03130c;font-weight:800}
 .row{border-top:1px solid var(--line)}.statbox{background:#09110c;border:1px solid var(--line);border-radius:16px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:80;display:none}.modal.open{display:flex}
@@ -171,7 +171,7 @@
 
 <main class="px-4 pt-4 space-y-5">
 <section id="home" class="screen active space-y-5">
-<div class="hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
+<div class="hero next-match-hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
 <div id="lastGame" class="home-last-card p-4"></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Primeira Liga</span></div><div class="card p-3 home-standings"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div></div></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('stats')">Ver stats →</button></div><div class="form-order"><span>← Mais antigo</span><span>Mais recente →</span></div><div class="grid grid-cols-6 gap-2" id="form"></div></div>
