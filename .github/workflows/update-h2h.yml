@@ -1,6 +1,12 @@
 name: Atualizar H2H
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update_h2h.py'
+      - 'scripts/fetch_data.py'
+      - '.github/workflows/update-h2h.yml'
   schedule:
     - cron: '47 */6 * * *'
   workflow_dispatch:
