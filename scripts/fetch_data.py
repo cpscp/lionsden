@@ -2855,6 +2855,15 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
+                        if item.get("source")=="Zerozero" and not item.get("image"):
+                            try:
+                                cards=[]
+                                for dbg in gs.select("a.iusc")[:5]:
+                                    raw_dbg=dbg.get("m") or ""
+                                    cards.append(raw_dbg[:1200])
+                                print("ZEROZERO_IMAGE_DEBUG", item.get("title"), cards)
+                            except Exception:
+                                pass
                         # Google Images exposes the original result page (purl)
                         # and the source image (murl) in serialized result cards.
                         # Prefer an image whose source page is the exact Zerozero
