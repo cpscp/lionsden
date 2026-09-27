@@ -46,7 +46,7 @@ jobs:
           set -e
           git config user.name 'lions-den-h2h'
           git config user.email 'actions@github.com'
-          git add data/match-context.json
+          git add data/h2h.json
           if git diff --cached --quiet; then
             echo 'Sem alterações H2H.'
             exit 0
@@ -59,7 +59,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/update_h2h.py
-            git add data/match-context.json
+            git add data/h2h.json
             if git diff --cached --quiet; then
               echo 'Sem alterações H2H após sincronização.'
               exit 0
