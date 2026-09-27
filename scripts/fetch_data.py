@@ -2558,6 +2558,8 @@ def fetch_match_summary_videos():
         # VSPORTS player is therefore authoritative when already configured.
         previous_match = previous_by_match.get(str(f.get("id")))
         if previous_match and previous_match.get("provider") == "vsports" and previous_match.get("embed"):
+            previous_match = dict(previous_match)
+            previous_match["embed_allowed"] = False
             videos.append(previous_match)
             continue
 
