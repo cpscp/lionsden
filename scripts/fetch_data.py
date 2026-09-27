@@ -2804,12 +2804,17 @@ def fetch_news():
                     print("Zerozero Translate image warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 2) The alternate Zerozero domain has historically exposed the
-                # same article metadata without the main site's protection.
+                # 2) Zerozero publishes the same article on regional mirrors.
+                # The .pt host blocks GitHub Actions, while these mirrors expose
+                # the same editorial metadata (including og:image).
                 try:
-                    alt=url.replace("https://www.zerozero.pt/","https://zerozero.football/")
-                    ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
-                    if ar.ok:
+                    for mirror in ("https://zerozero.gr/","https://zerozero.dk/","https://zerozero.football/"):
+                        if item.get("image"):
+                            break
+                        alt=mirror.rstrip("/") + url.split("zerozero.pt",1)[1]
+                        ar=session.get(alt,timeout=15,headers={"User-Agent":USER_AGENT})
+                        if not ar.ok:
+                            continue
                         ass=BeautifulSoup(ar.text,"html.parser")
                         for attrs in (
                             {"property":"og:image"},{"property":"og:image:url"},
@@ -2820,10 +2825,14 @@ def fetch_news():
                                 u=node.get("content").strip()
                                 if u and not re.search(r"(logo|favicon|cloudflare|google)",u,re.I):
                                     item["image"]=urljoin(alt,u)
-                                    item["image_source"]="Zerozero article og:image"
+                                    item["image_source"]="Zerozero mirror og:image"
                                     break
+                        if not item.get("description"):
+                            d=ass.find("meta",attrs={"property":"og:description"}) or ass.find("meta",attrs={"name":"description"})
+                            if d and d.get("content"):
+                                item["description"]=clean(d.get("content"))[:280]
                 except Exception as ex:
-                    print("Zerozero alternate-domain warning:",item.get("url"),ex)
+                    print("Zerozero mirror warning:",item.get("url"),ex)
 
             if not item.get("image"):
                 # 3) Microlink metadata fallback.
@@ -2861,7 +2870,6 @@ def fetch_news():
                                 for dbg in gs.select("a.iusc")[:5]:
                                     raw_dbg=dbg.get("m") or ""
                                     cards.append(raw_dbg[:1200])
-                                print("ZEROZERO_IMAGE_DEBUG", item.get("title"), cards)
                             except Exception:
                                 pass
                         # Google Images exposes the original result page (purl)
@@ -3348,7 +3356,6 @@ def fetch_news():
                 link=entry.get("link")
                 summary_raw=entry.get("summary") or ""
                 if expected_source=="Zerozero" and "sporting x benfica" in title.lower():
-                    print("ZEROZERO_RSS_DEBUG", entry.get("title"), summary_raw[:3000], entry.get("media_content"), entry.get("media_thumbnail"), entry.get("links"))
                 summary_soup=BeautifulSoup(summary_raw,"html.parser")
                 summary=clean(summary_soup.get_text(" ",strip=True))
                 if not link or len(title)<18:
