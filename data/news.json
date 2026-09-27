@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T17:59:48.070659+00:00",
+  "_updated_at": "2026-09-27T18:00:23.108102+00:00",
   "items": [
     {
       "title": "Internacionais do Sporting marcam golos como nunca - A Bola",
@@ -9,15 +9,6 @@
       "description": "Nesta janela de seleções, cinco leões já faturaram. Luis Suárez jogou na última madrugada e apontou pela Colômbia frente ao México. Maxi Araújo, Geny Catamo, Irankunda e Jesse Derry já tinham feito o gosto ao pé. A ganhar moral para o regresso a Alcochete",
       "image": "https://sportal365images.com/process/smp-images-production/abola.pt/27092026/6db154d7-d970-4a8a-b797-86412db07644.jpg?operations=crop(0:296:1022:871),autocrop(1200:630)",
       "image_source": "https://www.abola.pt/noticias/internacionais-do-sporting-marcam-golos-como-nunca-2026092716524956951"
-    },
-    {
-      "title": "Kalscheur perante a oposição de dois jogadores do FC Porto na Supertaça de basquetebol - Foto: Sporting",
-      "url": "https://www.abola.pt/noticias/sporting-chris-grombahi-e-para-blindar-2026092717131234788",
-      "source": "A Bola",
-      "published": "2026-09-27T17:13:11Z",
-      "description": "Extremo luso-marfinense, de 18 anos, vai prorrogar contrato com os leões até 2031",
-      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/27092026/236ca6eb-9880-4a77-8b9b-dbcdb10f1928.jpg?operations=crop(0:0:4251:2391),autocrop(1200:630)",
-      "image_source": "https://www.abola.pt/noticias/sporting-chris-grombahi-e-para-blindar-2026092717131234788"
     },
     {
       "title": "Filha de peso pesado do Sporting casa-se com promessa 'made in Alcochete' (fotos) - A Bola",
@@ -43,6 +34,15 @@
       "source": "Zerozero",
       "published": "Sun, 27 Sep 2026 14:33:01 GMT",
       "description": "SC Braga 0x0 Sporting - Resumo, Destaques e Crónica do Jogo zerozero.pt"
+    },
+    {
+      "title": "Kalscheur perante a oposição de dois jogadores do FC Porto na Supertaça de basquetebol - Foto: Sporting",
+      "url": "https://www.abola.pt/liveblog/que-hino-ao-futsal-tanta-qualidade-e-desperdicio-de-sporting-e-benfica-so-podia-dar-empate",
+      "source": "A Bola",
+      "published": "2026-09-27T14:30:00Z",
+      "description": "Em direto - Que hino ao futsal! Tanta qualidade e (desperdício) de Sporting e Benfica só podia dar empate",
+      "image": "https://sportal365images.com/process/smp-images-production/abola.pt/27092026/055fb5d9-d081-48c1-822d-7fc87e67ed2e.jpg?operations=autocrop(1200:630)",
+      "image_source": "https://www.abola.pt/liveblog/que-hino-ao-futsal-tanta-qualidade-e-desperdicio-de-sporting-e-benfica-so-podia-dar-empate"
     },
     {
       "title": "À lei da bala: Sporting define hierarquia para os batedores de livres - A Bola",
@@ -122,15 +122,6 @@
       "image_source": "https://www.abola.pt/noticias/sporting-acelera-e-segura-geny-catamo-e-fresneda-2026092522490602256"
     },
     {
-      "title": "Hall VIP, balneários, interiores e até Loja Verde: os próximos passos da mega obra do Sporting em Alvalade - Record",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/hall-vip-balnearios-interiores-e-ate-loja-verde-os-proximos-passos-da-mega-obra-do-sporting-em-alvalade",
-      "source": "Record",
-      "published": "2026-09-26",
-      "description": "Além da intervenção no tapete verde do recinto leonino, prossegue a renovação das zonas interiores",
-      "image": "https://cdn.record.pt/images/2026-08/img_1200x721uu2026-08-22-19-49-02-2458279.jpg",
-      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/hall-vip-balnearios-interiores-e-ate-loja-verde-os-proximos-passos-da-mega-obra-do-sporting-em-alvalade"
-    },
-    {
       "title": "Leões de Portugal recebem galardão de cristal - Record",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
       "source": "Record",
@@ -138,6 +129,24 @@
       "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
       "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal"
+    },
+    {
+      "title": "Sporting adia pagamento ao Valladolid: Fresneda fora de jogo por Espanha 'ajuda' cofres dos leões - Record",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "SAD dos verdes e brancos terá de desembolsar 250 mil euros caso o lateral seja utilizado na La Roja",
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-18-17-07-17-2463281.jpg",
+      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes"
+    },
+    {
+      "title": "Hall VIP, balneários, interiores e até Loja Verde: os próximos passos da mega obra do Sporting em Alvalade - Record",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/hall-vip-balnearios-interiores-e-ate-loja-verde-os-proximos-passos-da-mega-obra-do-sporting-em-alvalade",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "Além da intervenção no tapete verde do recinto leonino, prossegue a renovação das zonas interiores",
+      "image": "https://cdn.record.pt/images/2026-08/img_1200x721uu2026-08-22-19-49-02-2458279.jpg",
+      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/hall-vip-balnearios-interiores-e-ate-loja-verde-os-proximos-passos-da-mega-obra-do-sporting-em-alvalade"
     },
     {
       "title": "Jogadores do Sporting na Academia reagem às notas no FC27: «Dava para aumentar um pouquinho» - Record",
@@ -158,15 +167,6 @@
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/vitamina-f-sporting-ja-tem-acordos-com-flavio-goncalves-e-fresneda-para-renovar-os-seus-contratos-ate-2031"
     },
     {
-      "title": "Sporting adia pagamento ao Valladolid: Fresneda fora de jogo por Espanha 'ajuda' cofres dos leões - Record",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes",
-      "source": "Record",
-      "published": "2026-09-26",
-      "description": "SAD dos verdes e brancos terá de desembolsar 250 mil euros caso o lateral seja utilizado na La Roja",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-18-17-07-17-2463281.jpg",
-      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/sporting-adia-pagamento-ao-valladolid-fresneda-fora-de-jogo-por-espanha-ajuda-cofres-dos-leoes"
-    },
-    {
       "title": "Sporting: sub-23 sedentos de conhecimento - A Bola",
       "url": "https://www.abola.pt/noticias/sporting-sub-23-sedentos-de-conhecimento-2026092515590321763",
       "source": "A Bola",
@@ -185,15 +185,6 @@
       "image_source": "https://www.abola.pt/noticias/vice-presidente-do-sporting-a-maioria-dos-clubes-nao-tem-lucros-consistentes-2026092515135149650"
     },
     {
-      "title": "Ancelotti ficou impressionado com reforço do Sporting: «Irankunda tem talento» - Record",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/amp/ancelotti-ficou-impressionado-com-reforco-do-sporting-irankunda-tem-talento",
-      "source": "Record",
-      "published": "2026-09-25",
-      "description": "Selecionador do Brasil deixou elogios ao extremo de 20 anos no empate (1-1) da Austrália contra a canarinha",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-16-45-02-2464638.jpg",
-      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/amp/ancelotti-ficou-impressionado-com-reforco-do-sporting-irankunda-tem-talento"
-    },
-    {
       "title": "Nani reforça laços de família: o sobrinho que trocou o Benfica pelo Sporting e o filho 'made in' academia - Record",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/nani-reforca-lacos-de-familia-o-sobrinho-que-trocou-o-benfica-pelo-sporting-e-o-filho-made-in-academia",
       "source": "Record",
@@ -201,6 +192,15 @@
       "description": "Protocolo assinado com o Sporting, de cooperação na formação, é não mais do que a oficialização de uma ideia já apalavrada. Internacional não esquece as raízes",
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-24-21-54-23-2464529.jpg",
       "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/nani-reforca-lacos-de-familia-o-sobrinho-que-trocou-o-benfica-pelo-sporting-e-o-filho-made-in-academia"
+    },
+    {
+      "title": "Ancelotti ficou impressionado com reforço do Sporting: «Irankunda tem talento» - Record",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/amp/ancelotti-ficou-impressionado-com-reforco-do-sporting-irankunda-tem-talento",
+      "source": "Record",
+      "published": "2026-09-25",
+      "description": "Selecionador do Brasil deixou elogios ao extremo de 20 anos no empate (1-1) da Austrália contra a canarinha",
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-16-45-02-2464638.jpg",
+      "image_source": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/amp/ancelotti-ficou-impressionado-com-reforco-do-sporting-irankunda-tem-talento"
     },
     {
       "title": "Irankunda destaca golo ao Brasil e revela função favorita no Sporting e seleção: «É a minha posição natural» - Record",
