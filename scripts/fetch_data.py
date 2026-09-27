@@ -3054,6 +3054,23 @@ def fetch_news():
     except Exception as e:
         print("Jina search discovery warning:",e)
 
+    # Zerozero fallback: Google News RSS is used only to discover current
+    # Zerozero URLs when the publisher blocks GitHub Actions. URLs are decoded
+    # before they enter the feed, so Google is never exposed as the source.
+    try:
+        import feedparser
+        from urllib.parse import quote
+        rss="https://news.google.com/rss/search?q="+quote("site:zerozero.pt Sporting")+"&hl=pt-PT&gl=PT&ceid=PT:pt"
+        feed=feedparser.parse(rss)
+        for entry in feed.entries[:40]:
+            title=clean(entry.get("title") or "")
+            link=entry.get("link")
+            if link and title and "sporting" in title.lower():
+                add({"title":title,"url":link,"source":"Zerozero",
+                     "published":entry.get("published")})
+    except Exception as e:
+        print("Zerozero Google RSS warning:",e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
