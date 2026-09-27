@@ -3302,6 +3302,82 @@ def _zz_xray_for_fixture(f):
     return rows[:4], summary
 
 
+_fotmob_team_matches_cache = None
+
+def _fotmob_find_recent_h2h_event(f):
+    """Find a recent completed Sporting-opponent event from the team feed.
+
+    Upcoming matchDetails often has no H2H payload. A completed meeting from
+    the same team feed does, so reuse that event instead of querying the
+    future fixture. The team feed is fetched once per H2H run.
+    """
+    global _fotmob_team_matches_cache
+    if _fotmob_team_matches_cache is None:
+        raw = fotmob_get("/api/data/teams", {"id": SPORTING_FOTMOB_ID, "ccode3": "PRT"})
+        found = []
+        def walk(v):
+            if isinstance(v, dict):
+                home = v.get("home") or {}
+                away = v.get("away") or {}
+                if isinstance(home, dict) and isinstance(away, dict) and v.get("id"):
+                    if home.get("id") and away.get("id"):
+                        found.append(v)
+                for child in v.values():
+                    if isinstance(child, (dict, list)):
+                        walk(child)
+            elif isinstance(v, list):
+                for child in v:
+                    walk(child)
+        walk(raw)
+        # Newest first; duplicate event IDs are collapsed.
+        dedup = {}
+        for x in found:
+            dedup[str(x.get("id"))] = x
+        _fotmob_team_matches_cache = list(dedup.values())
+
+    opponent_id = ((f.get("away") or {}).get("id")
+                   if int(((f.get("home") or {}).get("id") or 0)) == SPORTING_FOTMOB_ID
+                   else (f.get("home") or {}).get("id"))
+    opponent_name = zz_norm(
+        ((f.get("away") or {}).get("name")
+         if int(((f.get("home") or {}).get("id") or 0)) == SPORTING_FOTMOB_ID
+         else (f.get("home") or {}).get("name"))
+    )
+    candidates = []
+    for x in _fotmob_team_matches_cache:
+        home, away = x.get("home") or {}, x.get("away") or {}
+        if int(home.get("id") or 0) != SPORTING_FOTMOB_ID and int(away.get("id") or 0) != SPORTING_FOTMOB_ID:
+            continue
+        other = away if int(home.get("id") or 0) == SPORTING_FOTMOB_ID else home
+        same_id = opponent_id is not None and int(other.get("id") or 0) == int(opponent_id)
+        same_name = opponent_name and zz_norm(other.get("name")) == opponent_name
+        if same_id or same_name:
+            status = x.get("status") or {}
+            finished = status.get("finished") is True or status.get("short") in {"FT", "finished"}
+            if finished or (x.get("homeScore") is not None and x.get("awayScore") is not None):
+                candidates.append(x)
+    if not candidates:
+        return None
+    candidates.sort(key=lambda x: int(x.get("utcTime") or x.get("startTime") or x.get("id") or 0), reverse=True)
+    return candidates[0].get("id")
+
+def _fotmob_h2h_from_recent_event(f):
+    event_id = _fotmob_find_recent_h2h_event(f)
+    if not event_id:
+        return [], None
+    raw = fotmob_get("/api/data/matchDetails", {"matchId": event_id})
+    content = _first_dict(raw, "content")
+    payload = content.get("h2h") or {}
+    rows = _h2h_rows(payload,
+                      (f.get("home") or {}).get("id"),
+                      (f.get("away") or {}).get("id"),
+                      (f.get("home") or {}).get("name"),
+                      (f.get("away") or {}).get("name"))
+    summary = payload.get("summary") if isinstance(payload, dict) else None
+    if not (isinstance(summary, list) and len(summary) >= 3):
+        summary = None
+    return rows, summary
+
 def fetch_zerozero_h2h(upcoming):
     """Fetch H2H once per unique opponent, concurrently and with fallbacks."""
     result = {}
@@ -3376,6 +3452,15 @@ def fetch_zerozero_h2h(upcoming):
             print("H2H ZeroZero primary:", home, "vs", away, "=>", len(rows))
         except Exception as e:
             print("H2H ZeroZero primary failed:", home, "vs", away, e)
+
+        if not rows and summary is None:
+            try:
+                rows, summary = _fotmob_h2h_from_recent_event(f)
+                if rows or summary is not None:
+                    source = "FotMob historical event"
+                    print("H2H FotMob historical-event fallback:", home, "vs", away, "=>", len(rows))
+            except Exception as e:
+                print("H2H FotMob historical-event failed:", home, "vs", away, e)
 
         if not rows and summary is None:
             try:
