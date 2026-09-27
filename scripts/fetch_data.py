@@ -3025,6 +3025,23 @@ def fetch_news():
     except Exception as e:
         print("Search discovery warning:",e)
 
+    # Jina-backed search discovery for publishers blocking GitHub Actions.
+    try:
+        from urllib.parse import quote
+        for domain, expected_source in (("ojogo.pt","O Jogo"),("zerozero.pt","Zerozero")):
+            q="site:"+domain+" Sporting"
+            jurl="https://r.jina.ai/http://www.google.com/search?q="+quote(q)
+            rr=session.get(jurl,timeout=25,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            text_body=rr.text
+            for m in re.finditer(r"\[([^\]]{18,180})\]\((https?://[^)]+)\)",text_body):
+                title=clean(m.group(1))
+                href=m.group(2)
+                if domain in href.lower() and "sporting" in title.lower():
+                    add({"title":title,"url":href,"source":expected_source})
+    except Exception as e:
+        print("Jina search discovery warning:",e)
+
     # Google News intentionally excluded: only identified publisher sources
     # are allowed in the Sporting CP news feed.
 
