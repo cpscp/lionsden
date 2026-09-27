@@ -2902,6 +2902,22 @@ def fetch_news():
                                    timeout=15,headers={"User-Agent":USER_AGENT})
                     if gr.ok:
                         gs=BeautifulSoup(gr.text,"html.parser")
+                        if item.get("source")=="Zerozero":
+                            try:
+                                cards=gs.select("a.iusc")
+                                cdn_hits=re.findall(r"https?:\\?/\\?/[^"\\s<>]*cdn-img[^"\\s<>]*",gr.text,re.I)
+                                print("ZZ_GOOGLE_DEBUG", item.get("url"), "STATUS", gr.status_code, "LEN", len(gr.text), "IUSC", len(cards), "CDN", len(cdn_hits))
+                                for dbg in cards[:8]:
+                                    raw_dbg=dbg.get("m") or ""
+                                    try:
+                                        md=json.loads(raw_dbg)
+                                        print("ZZ_CARD", (md.get("purl") or "")[:180], (md.get("murl") or "")[:220])
+                                    except Exception:
+                                        pass
+                                if cdn_hits:
+                                    print("ZZ_CDN_SAMPLE", cdn_hits[:5])
+                            except Exception as dbg_ex:
+                                print("ZZ_GOOGLE_DEBUG_ERROR",dbg_ex)
                         # Zerozero's current editorial photos are hosted on
                         # cdn-img.staticzz.com (and, on some results, cdn-img.zerozero.pt).
                         # Google may serialize the original CDN URL in the raw HTML
