@@ -3085,6 +3085,33 @@ def fetch_news():
     except Exception as e:
         print("Jina search discovery warning:",e)
 
+    # Publisher-specific Sporting sections: these are much more complete
+    # than generic "latest" pages and should be the primary discovery route.
+    publisher_sections = [
+        ("https://www.abola.pt/futebol/sporting-448", "A Bola"),
+        ("https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting", "Record"),
+        ("https://www.zerozero.pt/noticias?keyword=117&order=recent-desc&redird=1", "Zerozero"),
+    ]
+    for section_url, source in publisher_sections:
+        try:
+            rr=session.get(section_url,timeout=20,headers={"User-Agent":USER_AGENT})
+            rr.raise_for_status()
+            ss=BeautifulSoup(rr.text,"html.parser")
+            for a in ss.select("a[href]"):
+                href=urljoin(section_url,a.get("href",""))
+                title=clean(a.get_text(" ",strip=True))
+                if not href or len(title)<18 or source_from_url(href)!=source:
+                    continue
+                if source=="Zerozero" and "/noticias/" not in href:
+                    continue
+                if source=="Record" and "/sporting/" not in href:
+                    continue
+                if source=="A Bola" and "/noticias/" not in href:
+                    continue
+                add({"title":title,"url":href,"source":source})
+        except Exception as e:
+            print("Publisher section warning:",source,e)
+
     # Zerozero fallback: Google News RSS is used only to discover current
     # Zerozero URLs when the publisher blocks GitHub Actions. URLs are decoded
     # before they enter the feed, so Google is never exposed as the source.
