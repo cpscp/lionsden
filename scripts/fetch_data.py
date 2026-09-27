@@ -2623,6 +2623,11 @@ def fetch_match_summary_videos():
                 "url": f"https://www.youtube.com/watch?v={best['id']}",
                 "embed": f"https://www.youtube.com/embed/{best['id']}",
                 "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg",
+                "embed_allowed": not (
+                    "sporting clube de portugal" in norm(best.get("owner"))
+                    or norm(best.get("owner")) == "sporting cp"
+                    or ("vsports" in norm(best.get("owner")) and "liga portugal" in norm(best.get("owner")))
+                ),
                 "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner"))),
                 "published_text": best.get("published_text","")
             })
