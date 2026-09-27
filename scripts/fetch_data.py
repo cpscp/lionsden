@@ -3050,12 +3050,26 @@ ZEROZERO_TEAM_ALIASES = {
     "lens": "lens", "lask": "lask", "shakhtar donetsk": "shakhtar-donetsk",
     "as roma": "roma", "roma": "roma", "benfica": "benfica",
     "maritimo": "maritimo", "marítimo": "maritimo", "moreirense": "moreirense",
-    "estoril": "estoril"
+    "estoril": "estoril",
+    "academico viseu": "academico-viseu", "académico viseu": "academico-viseu",
+    "casa pia ac": "casa-pia", "casa pia": "casa-pia",
+    "estrela da amadora": "estrela-amadora", "vitoria de guimaraes": "vitoria-guimaraes",
+    "vitória de guimarães": "vitoria-guimaraes", "alverca": "alverca",
+    "rio ave": "rio-ave", "nacional": "nacional",
+    "famalicao": "famalicao", "famalicão": "famalicao",
+    "arouca": "arouca", "santa clara": "santa-clara",
+    "man city": "manchester-city", "manchester city": "manchester-city",
+    "barcelona": "barcelona", "shakhtar": "shakhtar-donetsk"
 }
 _zerozero_team_cache = {}
 
 def zerozero_get(url):
-    """Fetch ZeroZero with multiple network fallbacks for GitHub Actions."""
+    """Fetch ZeroZero with content validation and multiple fallbacks.
+
+    GitHub/proxy endpoints can return HTTP 200 challenge pages. We must not
+    treat those as successful ZeroZero responses because doing so silently
+    produces empty H2H data.
+    """
     encoded = quote_plus(url)
     candidates = [
         url,
@@ -3064,7 +3078,10 @@ def zerozero_get(url):
         "https://r.jina.ai/" + url,
         f"https://corsproxy.io/?url={encoded}",
     ]
+
+    is_stats = "/estatisticas/" in url
     last = None
+
     for candidate in candidates:
         try:
             rr = session.get(
@@ -3077,14 +3094,31 @@ def zerozero_get(url):
                 },
             )
             rr.raise_for_status()
-            body = rr.text
-            if body and len(body) > 500:
-                print("ZeroZero fetch OK:", candidate.split("/")[2])
-                return body
-        except Exception as e:
-            last = e
-    raise RuntimeError(f"ZeroZero request failed through all fallbacks: {url}: {last}")
+            body = rr.text or ""
+            if len(body) < 500:
+                continue
 
+            # Do not accept a generic 200 challenge/error page.
+            if is_stats:
+                markers = (
+                    "Histórico de Confrontos",
+                    "Todos os Jogos",
+                    "Em todas as competições",
+                )
+                if not any(marker in body for marker in markers):
+                    print("ZeroZero invalid stats response:", candidate.split("/")[2])
+                    continue
+            else:
+                if "zerozero" not in body.lower() and "Página Inicial" not in body:
+                    continue
+
+            print("ZeroZero fetch OK:", candidate.split("/")[2])
+            return body
+        except Exception as ex:
+            last = ex
+            print("ZeroZero fetch failed:", candidate.split("/")[2], ex)
+
+    raise RuntimeError(f"ZeroZero request failed or returned invalid content: {url}: {last}")
 
 
 def _zz_name_key(value):
@@ -3260,15 +3294,23 @@ def fetch_zerozero_h2h(upcoming):
         key = tuple(sorted((zz_norm(home), zz_norm(away))))
         if key not in cache:
             try:
-                cache[key] = _zz_xray_for_fixture(f)
+                _rows, _summary = _zz_xray_for_fixture(f)
+                cache[key] = (_rows, _summary, True)
                 print("ZeroZero H2H:", home, "vs", away, "=>", len(cache[key][0]), "recent matches")
             except Exception as e:
                 print("ZeroZero H2H warning:", home, "vs", away, e)
-                cache[key] = ([], None)
+                cache[key] = ([], None, False)
             time.sleep(0.15)
-        rows, summary = cache[key]
-        if rows or summary is not None:
-            result[fid] = {"matches": rows[:4], "summary": summary}
+        rows, summary, source_ok = cache[key]
+        # A valid ZeroZero response can legitimately have no meetings.
+        # Always return a record for the fixture so the UI can distinguish
+        # "no history" from "data collection failed".
+        result[fid] = {
+            "matches": rows[:4],
+            "summary": summary,
+            "source_ok": source_ok,
+            "history_found": bool(rows or summary),
+        }
     return result
 
 
