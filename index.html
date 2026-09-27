@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}.jersey-number,.shirt-number{font-family:'CustomDigits'!important;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
@@ -144,13 +143,13 @@
 .stadium-earth-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.08),transparent 48%,rgba(0,0,0,.68))}
 .stadium-earth-content{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:end;justify-content:space-between;gap:12px}
 .stadium-earth-content .eyebrow{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
-.stadium-map-card{background:#07100d;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
-.stadium-map-card img{display:block;width:100%;height:auto;background:var(--surface);mix-blend-mode:multiply;filter:contrast(1.08) saturate(1.08) brightness(1.08)}
+.stadium-map-card{background:#fff;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
+.stadium-map-card img{display:block;width:100%;height:auto;background:#fff}
 .stadium-map-note{padding:12px 14px;border-top:1px solid rgba(255,255,255,.06);font-size:10px;color:rgba(255,255,255,.52)}
 .stadium-access-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:none}
 .stadium-access-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
 .stadium-route-card{display:flex;align-items:flex-start;gap:12px}
-.model-poster{height:100%;display:grid;place-content:center;text-align:center;color:#f3f7f4;background:radial-gradient(circle at 50% 45%,rgba(14,119,73,.18),transparent 58%),linear-gradient(145deg,#06100c,#030605)}.model-poster-title{font-weight:700;font-size:18px}.model-poster-sub{font-size:10px;color:var(--muted);margin-top:6px}.stadium-model{padding:0;background:radial-gradient(circle at 50% 50%,rgba(11,91,56,.18),transparent 62%);}
+.model-poster{height:100%;display:grid;place-content:center;text-align:center;color:#f3f7f4;background:radial-gradient(circle at 50% 45%,rgba(14,119,73,.18),transparent 58%),linear-gradient(145deg,#06100c,#030605)}.model-poster-title{font-weight:700;font-size:18px}.model-poster-sub{font-size:10px;color:var(--muted);margin-top:6px}.stadium-model{padding:0;background:#050907}.stadium-hero-photo{display:block;width:100%;height:390px;object-fit:cover;object-position:center center}@media(max-width:600px){.stadium-hero-photo{height:300px}}
 .stadium-model model-viewer{display:block;width:100%;height:390px}
 .stadium-diagram-wrap{padding:10px;background:#050907;border:1px solid rgba(255,255,255,.07);border-radius:22px;overflow:auto}
 .stadium-diagram{display:block;width:100%;min-width:620px;height:auto}
@@ -196,8 +195,8 @@
 <div><h2 class="text-[21px] font-bold">Estádio</h2><p class="text-[11px] muted mt-1">José Alvalade · Alvalade XXI</p></div>
 
 <div class="stadium-hero">
-  <div class="stadium-model" aria-label="Modelo 3D do Estádio José Alvalade">
-    <model-viewer id="alvaladeModel" src="./assets/alvalade.glb" camera-controls interaction-prompt="none" shadow-intensity="0.7" exposure="0.9" environment-image="neutral" camera-orbit="35deg 68deg 240m" camera-target="0m 0m 13m" field-of-view="30deg" min-camera-orbit="auto auto 70m" max-camera-orbit="auto auto 500m" style="width:100%;height:390px;background:transparent"></model-viewer>
+  <div class="stadium-model" aria-label="Fotografia exterior do Estádio José Alvalade">
+    <img class="stadium-hero-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20Jos%C3%A9%20Alvalade.jpg" alt="Estádio José Alvalade" loading="eager">
   </div>
   <div class="p-4 flex items-center justify-between gap-3">
     <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 52.095 lugares</div></div>
