@@ -2804,7 +2804,23 @@ def fetch_news():
             if final_url and "news.google.com" not in final_url:
                 item["url"]=final_url
         except Exception as e:
-            print("News metadata warning:",item.get("url"),e)
+            try:
+                jina="https://r.jina.ai/"+url
+                jr=session.get(jina,timeout=15,headers={"User-Agent":USER_AGENT})
+                jr.raise_for_status()
+                js=BeautifulSoup(jr.text,"html.parser")
+                if not item.get("description"):
+                    text_blob=js.get_text(" ",strip=True)
+                    if text_blob:
+                        item["description"]=clean(text_blob)[:280]
+                for img in js.select("img"):
+                    src=img.get("src")
+                    if src and not src.startswith("data:"):
+                        item["image"]=src
+                        item["image_source"]=jina
+                        break
+            except Exception as e2:
+                print("News metadata warning:",item.get("url"),e2)
         return item
 
     def scrape_page(url, source):
