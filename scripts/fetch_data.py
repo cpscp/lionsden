@@ -3287,6 +3287,43 @@ def fetch_news():
     except Exception as e:
         print("Jina search discovery warning:",e)
 
+    # Independent Google News RSS fallbacks per publisher. These are only
+    # discovery transports; the final source/url always remains the publisher.
+    try:
+        import feedparser
+        from urllib.parse import quote
+        rss_sources = [
+            ("site:record.pt/futebol/futebol-nacional/liga-betclic/sporting Sporting", "Record"),
+            ("site:abola.pt/noticias/ Sporting", "A Bola"),
+            ("site:zerozero.pt/noticias/ Sporting", "Zerozero"),
+        ]
+        for query, expected_source in rss_sources:
+            rss_url="https://news.google.com/rss/search?q="+quote(query)+"&hl=pt-PT&gl=PT&ceid=PT:pt"
+            raw=session.get(rss_url,timeout=20,headers={"User-Agent":USER_AGENT})
+            raw.raise_for_status()
+            feed=feedparser.parse(raw.text)
+            for entry in feed.entries[:50]:
+                title=clean(entry.get("title") or "")
+                link=entry.get("link")
+                summary_raw=entry.get("summary") or ""
+                summary_soup=BeautifulSoup(summary_raw,"html.parser")
+                summary=clean(summary_soup.get_text(" ",strip=True))
+                if not link or len(title)<18:
+                    continue
+                blob=(title+" "+summary).lower()
+                if "sporting" not in blob and not any(k in blob for k in (
+                    "alvalade","rui borges","leões","leoes","leoas","leonino")):
+                    continue
+                add({
+                    "title":title,
+                    "url":link,
+                    "source":expected_source,
+                    "published":entry.get("published") or entry.get("pubDate"),
+                    "description":summary[:280] if summary else None,
+                })
+    except Exception as e:
+        print("Publisher Google RSS fallback warning:",e)
+
     # Publisher-specific Sporting sections: these are much more complete
     # than generic "latest" pages and should be the primary discovery route.
     publisher_sections = [
