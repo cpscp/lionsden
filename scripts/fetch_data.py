@@ -3073,11 +3073,11 @@ def zerozero_get(url):
     """
     encoded = quote_plus(url)
     candidates = [
-        url,
+        "https://r.jina.ai/" + url,
         f"https://api.allorigins.win/raw?url={encoded}",
         f"https://api.codetabs.com/v1/proxy?quest={encoded}",
-        "https://r.jina.ai/" + url,
         f"https://corsproxy.io/?url={encoded}",
+        url,
     ]
 
     is_stats = "/estatisticas/" in url
@@ -3101,13 +3101,17 @@ def zerozero_get(url):
 
             # Do not accept a generic 200 challenge/error page.
             if is_stats:
-                markers = (
-                    "Histórico de Confrontos",
-                    "Todos os Jogos",
-                    "Em todas as competições",
-                )
-                if not any(marker in body for marker in markers):
-                    print("ZeroZero invalid stats response:", candidate.split("/")[2])
+                # A stats page is only useful if it contains actual H2H data.
+                # A generic challenge shell can still contain the page title,
+                # so the title alone is NOT a valid response.
+                has_summary = bool(re.search(
+                    r"Em todas as competições.*?(?:\\d+ jogos|nunca se defrontaram)",
+                    body, re.I | re.S
+                ))
+                has_no_history = "nunca se defrontaram" in zz_norm(body)
+                has_games = bool(re.search(r"20\\d{2}-\\d{2}-\\d{2}", body))
+                if not (has_summary or has_no_history or has_games):
+                    print("ZeroZero incomplete stats response:", candidate.split("/")[2])
                     continue
             else:
                 if "zerozero" not in body.lower() and "Página Inicial" not in body:
