@@ -871,9 +871,18 @@ function newsCard(n){
 }
 function newsArticleContent(text){
   if(!text)return '';
-  const paragraphs=String(text).split(/\r?\n\s*\r?\n/).map(x=>x.trim()).filter(Boolean);
+  const normalized=String(text)
+    .replace(/\\r\\n/g,'\\n')
+    .replace(/\\n/g,'\\n')
+    .replace(/\\r/g,'\\n')
+    .replace(/\\n{3,}/g,'\\n\\n')
+    .trim();
+  const paragraphs=normalized
+    .split(/\\n\\s*\\n/)
+    .map(x=>x.trim().replace(/\\s*\\n\\s*/g,' '))
+    .filter(Boolean);
   if(!paragraphs.length)return '';
-  return '<div class="news-reader-label">Leitura dentro da aplicação</div><div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
+  return '<div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
 }
 function openNews(n){
   const title=n.title||'Notícia';
@@ -885,7 +894,6 @@ function openNews(n){
   const content=newsArticleContent(articleText);
   const reader='<div class="news-source-badge">'+esc(n.source||'Notícia')+'</div>'+
     '<div class="text-[9px] muted mt-2">'+esc(newsDate(n.published))+'</div>'+
-    '<h2 class="text-xl font-bold mt-3 leading-snug">'+esc(title)+'</h2>'+
     (img?'<img src="'+esc(img)+'" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">':'')+
     '<div class="news-reader-fallback mt-4 p-4">'+
       (desc?'<div class="text-sm leading-6">'+esc(desc)+'</div>':'<div class="text-sm muted">Sem resumo disponível.</div>')+
