@@ -3332,6 +3332,16 @@ def fetch_zerozero_h2h(upcoming):
 
         if not rows and summary is None:
             try:
+                event_id = _sofa_scheduled_event_for_fixture(f)
+                rows, summary = _sofa_h2h_from_event(event_id, f)
+                if rows or summary is not None:
+                    source = "SofaScore"
+                    print("H2H SofaScore scheduled-event fallback:", home, "vs", away, "=>", len(rows))
+            except Exception as e:
+                print("H2H SofaScore scheduled-event failed:", home, "vs", away, e)
+
+        if not rows and summary is None:
+            try:
                 rows, summary = _sofa_h2h_for_fixture(f)
                 if rows or summary is not None:
                     source = "SofaScore"
@@ -3386,6 +3396,78 @@ def fetch_zerozero_h2h(upcoming):
 
     return result
 
+
+def _sofa_scheduled_event_for_fixture(f):
+    kickoff = clean(f.get("kickoff_date"))
+    if not kickoff and f.get("date"):
+        try:
+            kickoff = datetime.fromtimestamp(int(f["date"]), timezone.utc).date().isoformat()
+        except Exception:
+            kickoff = ""
+    if not kickoff:
+        return None
+    raw = sofa_get(f"/sport/football/scheduled-events/{kickoff}")
+    events = raw.get("events") if isinstance(raw, dict) else []
+    home = zz_norm((f.get("home") or {}).get("name"))
+    away = zz_norm((f.get("away") or {}).get("name"))
+    aliases = {
+        "man united": {"manchester united", "manchester united fc", "man united"},
+        "fc porto": {"porto", "fc porto", "fc do porto"},
+        "sporting cp": {"sporting", "sporting cp", "sporting clube de portugal"},
+    }
+    def same(a,b):
+        a,b=zz_norm(a),zz_norm(b)
+        return a==b or b in aliases.get(a,{a}) or a in aliases.get(b,{b})
+    for e in events or []:
+        ht=(e.get("homeTeam") or {}).get("name")
+        at=(e.get("awayTeam") or {}).get("name")
+        if (same(ht,home) and same(at,away)) or (same(ht,away) and same(at,home)):
+            return e.get("id")
+    return None
+
+def _sofa_h2h_from_event(event_id, f):
+    if not event_id:
+        return [], None
+    summary_raw=None
+    rows=[]
+    try:
+        summary_raw=sofa_get(f"/event/{quote_plus(str(event_id))}/h2h")
+    except Exception:
+        pass
+    try:
+        raw=sofa_get(f"/event/{quote_plus(str(event_id))}/h2h/events")
+        matches=raw.get("events") if isinstance(raw,dict) else []
+        if not matches and isinstance(raw,dict):
+            matches=raw.get("matches") or []
+        for m in matches or []:
+            ht=m.get("homeTeam") or {}; at=m.get("awayTeam") or {}
+            hs=(m.get("homeScore") or {}).get("current")
+            aas=(m.get("awayScore") or {}).get("current")
+            if hs is None or aas is None: continue
+            ts=m.get("startTimestamp")
+            dt=datetime.fromtimestamp(int(ts),timezone.utc).isoformat().replace("+00:00","Z") if ts else ""
+            tr=m.get("tournament") or {}
+            rows.append({"id":m.get("id"),"date":dt,"home":clean(ht.get("name")),"away":clean(at.get("name")),
+                         "home_score":hs,"away_score":aas,
+                         "competition":clean(tr.get("name") if isinstance(tr,dict) else "")})
+    except Exception as ex:
+        print("Sofa scheduled-event H2H warning:", event_id, ex)
+    duel=(summary_raw or {}).get("teamDuel") if isinstance(summary_raw,dict) else {}
+    summary=None
+    if isinstance(duel,dict) and duel:
+        summary=[int(duel.get("homeWins") or 0),int(duel.get("draws") or 0),int(duel.get("awayWins") or 0)]
+        if sum(summary)==0 and not rows: summary=None
+    if not summary and rows:
+        home_name=zz_norm((f.get("home") or {}).get("name")); hw=dw=aw=0
+        for x in rows:
+            hs,aas=fnum(x.get("home_score")),fnum(x.get("away_score"))
+            if hs is None or aas is None: continue
+            if hs==aas: dw+=1
+            elif zz_norm(x.get("home"))==home_name: hw+=1
+            else: aw+=1
+        summary=[hw,dw,aw]
+    rows.sort(key=lambda x:x.get("date") or "",reverse=True)
+    return rows[:4],summary
 
 def _sofa_h2h_for_fixture(f):
     """SofaScore H2H using the event customId when available, with numeric-id fallback."""
