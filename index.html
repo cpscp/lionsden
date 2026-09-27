@@ -871,15 +871,16 @@ function newsCard(n){
 }
 function newsArticleContent(text){
   if(!text)return '';
+  const NL=String.fromCharCode(10);
   const normalized=String(text)
-    .replace(/\\r\\n/g,'\\n')
-    .replace(/\\n/g,'\\n')
-    .replace(/\\r/g,'\\n')
-    .replace(/\\n{3,}/g,'\\n\\n')
+    .replace(/\\r\\n/g,NL)
+    .replace(/\\n/g,NL)
+    .replace(/\\r/g,NL)
+    .replace(new RegExp(NL+'{3,}','g'),NL+NL)
     .trim();
   const paragraphs=normalized
-    .split(/\\n\\s*\\n/)
-    .map(x=>x.trim().replace(/\\s*\\n\\s*/g,' '))
+    .split(new RegExp(NL+'\\s*'+NL))
+    .map(x=>x.trim().replace(new RegExp('\\\\s*'+NL+'\\\\s*','g'),' '))
     .filter(Boolean);
   if(!paragraphs.length)return '';
   return '<div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
