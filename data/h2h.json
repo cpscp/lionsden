@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T13:20:39.336939+00:00",
+  "_updated_at": "2026-09-27T13:30:40.482231+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336697+00:00"
+      "updated_at": "2026-09-27T13:30:40.482054+00:00"
     },
     "5887661": {
       "matches": [],
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336746+00:00"
+      "updated_at": "2026-09-27T13:30:40.482102+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,7 +150,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336754+00:00"
+      "updated_at": "2026-09-27T13:30:40.482107+00:00"
     },
     "5887687": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336782+00:00"
+      "updated_at": "2026-09-27T13:30:40.482126+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,7 +244,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336786+00:00"
+      "updated_at": "2026-09-27T13:30:40.482129+00:00"
     },
     "5887702": {
       "matches": [],
@@ -287,74 +287,333 @@
       "updated_at": "2026-09-27T13:03:26.304369+00:00"
     },
     "5887735": {
-      "matches": [],
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-11T19:30:00.000Z",
+          "home": "Estrela da Amadora",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-11-30T18:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Estrela da Amadora",
+          "home_score": 4,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-03-29T18:00:00.000Z",
+          "home": "Estrela da Amadora",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 3,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2024-11-01T20:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Estrela da Amadora",
+          "home_score": 5,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        }
+      ],
       "home_wins": 0,
       "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304375+00:00"
+      "away_wins": 6,
+      "total": 6,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482140+00:00"
     },
     "5887752": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304384+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-05-04T19:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Vitoria de Guimaraes",
+          "home_score": 5,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-01-06T20:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Vitoria de Guimaraes",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "League Cup"
+        },
+        {
+          "id": null,
+          "date": "2025-12-23T20:45:00.000Z",
+          "home": "Vitoria de Guimaraes",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 4,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-05-17T17:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Vitoria de Guimaraes",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        }
+      ],
+      "home_wins": 21,
+      "draws": 8,
+      "away_wins": 6,
+      "total": 35,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482145+00:00"
     },
     "5887760": {
-      "matches": [],
-      "home_wins": 0,
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-03-22T18:00:00.000Z",
+          "home": "Alverca",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 4,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-10-31T20:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Alverca",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-10-28T20:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Alverca",
+          "home_score": 5,
+          "away_score": 1,
+          "competition": "League Cup"
+        },
+        {
+          "id": null,
+          "date": "2019-10-17T19:50:00.000Z",
+          "home": "Alverca",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Cup"
+        }
+      ],
+      "home_wins": 3,
       "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304394+00:00"
+      "away_wins": 1,
+      "total": 4,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482150+00:00"
     },
     "5887769": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304398+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-05-11T19:15:00.000Z",
+          "home": "Rio Ave",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 4,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-12-28T20:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Rio Ave",
+          "home_score": 4,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-04-22T19:45:00.000Z",
+          "home": "Rio Ave",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "Taca de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-04-03T19:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Rio Ave",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Taca de Portugal"
+        }
+      ],
+      "home_wins": 6,
+      "draws": 7,
+      "away_wins": 24,
+      "total": 37,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482152+00:00"
     },
     "5887778": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304402+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-02-01T18:00:00.000Z",
+          "home": "Sporting CP",
+          "away": "Nacional",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-08-23T17:00:00.000Z",
+          "home": "Nacional",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 4,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-01-25T20:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Nacional",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2024-10-29T20:15:00.000Z",
+          "home": "Sporting CP",
+          "away": "Nacional",
+          "home_score": 3,
+          "away_score": 1,
+          "competition": "League Cup"
+        }
+      ],
+      "home_wins": 19,
+      "draws": 7,
+      "away_wins": 1,
+      "total": 27,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482155+00:00"
     },
     "5887784": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304410+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-02-15T20:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Famalicão",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-09-13T19:30:00.000Z",
+          "home": "Famalicão",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-03-15T20:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Famalicão",
+          "home_score": 3,
+          "away_score": 1,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2024-10-26T19:30:00.000Z",
+          "home": "Famalicão",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 3,
+          "competition": "Liga Portugal"
+        }
+      ],
+      "home_wins": 2,
+      "draws": 3,
+      "away_wins": 12,
+      "total": 17,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482158+00:00"
     },
     "5887796": {
-      "matches": [],
-      "home_wins": 0,
-      "draws": 0,
-      "away_wins": 0,
-      "total": 0,
-      "source": "unavailable",
-      "history_found": false,
-      "updated_at": "2026-09-27T13:03:26.304415+00:00"
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-01-24T18:00:00.000Z",
+          "home": "Arouca",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 2,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-08-17T19:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Arouca",
+          "home_score": 6,
+          "away_score": 0,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-02-15T20:30:00.000Z",
+          "home": "Sporting CP",
+          "away": "Arouca",
+          "home_score": 2,
+          "away_score": 2,
+          "competition": "Liga Portugal"
+        },
+        {
+          "id": null,
+          "date": "2024-09-13T19:15:00.000Z",
+          "home": "Arouca",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 3,
+          "competition": "Liga Portugal"
+        }
+      ],
+      "home_wins": 18,
+      "draws": 2,
+      "away_wins": 1,
+      "total": 21,
+      "source": "FotMob historical event",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:30:40.482160+00:00"
     },
     "5887800": {
       "matches": [
@@ -401,7 +660,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336828+00:00"
+      "updated_at": "2026-09-27T13:30:40.482162+00:00"
     },
     "5887814": {
       "matches": [],
@@ -458,7 +717,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336839+00:00"
+      "updated_at": "2026-09-27T13:30:40.482169+00:00"
     },
     "5887832": {
       "matches": [
@@ -505,7 +764,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336843+00:00"
+      "updated_at": "2026-09-27T13:30:40.482172+00:00"
     },
     "5887840": {
       "matches": [
@@ -552,7 +811,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336851+00:00"
+      "updated_at": "2026-09-27T13:30:40.482177+00:00"
     },
     "5887851": {
       "matches": [
@@ -599,7 +858,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336856+00:00"
+      "updated_at": "2026-09-27T13:30:40.482179+00:00"
     },
     "5887855": {
       "matches": [],
@@ -686,7 +945,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336741+00:00"
+      "updated_at": "2026-09-27T13:30:40.482099+00:00"
     },
     "6106255": {
       "matches": [
@@ -762,7 +1021,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336791+00:00"
+      "updated_at": "2026-09-27T13:30:40.482131+00:00"
     },
     "6106278": {
       "matches": [
@@ -791,7 +1050,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336807+00:00"
+      "updated_at": "2026-09-27T13:30:40.482142+00:00"
     },
     "6106279": {
       "matches": [
@@ -838,7 +1097,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336769+00:00"
+      "updated_at": "2026-09-27T13:30:40.482118+00:00"
     },
     "6106281": {
       "matches": [
@@ -876,7 +1135,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T13:20:39.336725+00:00"
+      "updated_at": "2026-09-27T13:30:40.482088+00:00"
     },
     "6106335": {
       "matches": [],
@@ -902,5 +1161,5 @@
   "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
   "scope": "All upcoming Sporting CP fixtures; latest 4 meetings across all competitions.",
   "checked_fixtures": 35,
-  "enriched_fixtures": 18
+  "enriched_fixtures": 25
 }
