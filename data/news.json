@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T10:46:24.452432+00:00",
+  "_updated_at": "2026-09-27T10:52:59.081853+00:00",
   "items": [
     {
       "title": "Basquetebol Projecto GUTS chega ao Sporting CP hoje",
@@ -125,15 +125,6 @@
       "description": "Bidu, de 19 anos, integrou os treinos do conjunto principal nesta sexta-feira"
     },
     {
-      "title": "FC Porto conquista XLI Supertaça Mário Saldanha em Albufeira - Federação Portuguesa de Basquetebol",
-      "url": "https://www.fpb.pt/noticia/fc-porto-conquista-xli-supertaca-mario-saldanha-em-albufeira/",
-      "source": "Federação Portuguesa de Basquetebol",
-      "published": "Sat, 26 Sep 2026 17:41:05 GMT",
-      "image": "https://www.fpb.pt/wp-content/uploads/2026/09/CRR39296-1-e1790455409537.jpg",
-      "image_source": "https://www.fpb.pt/noticia/fc-porto-conquista-xli-supertaca-mario-saldanha-em-albufeira/",
-      "description": "Dragões venceram o Sporting CP por 80-76 e somam a sua nona Supertaça ao palmarés"
-    },
-    {
       "title": "Sporting despacha lanterna-vermelha com 44 - SAPO",
       "url": "https://sapo.pt/artigo/sporting-despacha-lanterna-vermelha-com-44-6ab81d891c8a161561e130d2",
       "source": "SAPO",
@@ -152,13 +143,22 @@
       "description": "Este sábado trouxe consigo mais um conjunto de jogos relativos à sexta jornada do campeonato nacional de andebol, com Sporting e Benfica a entrarem em campo. Ao..."
     },
     {
-      "title": "Andebol: Sporting segue invicto e líder, Benfica vence em Braga - CNN Portugal",
+      "title": "Andebol: Sporting segue invicto e líder, Benfica vence em Braga - cnnportugal.iol.pt",
       "url": "https://cnnportugal.iol.pt/andebol/modalidades/andebol-sporting-segue-invicto-e-lider-benfica-vence-em-braga",
-      "source": "CNN Portugal",
+      "source": "cnnportugal.iol.pt",
       "published": "Sat, 26 Sep 2026 18:48:00 GMT",
       "image": "https://img.iol.pt/preset/6aa322cad34e9a786e757897/og/cnn",
       "image_source": "https://cnnportugal.iol.pt/andebol/modalidades/andebol-sporting-segue-invicto-e-lider-benfica-vence-em-braga",
       "description": "Tricampeões dominaram na receção aos Carvalhos"
+    },
+    {
+      "title": "FC Porto conquista XLI Supertaça Mário Saldanha em Albufeira - Federação Portuguesa de Basquetebol",
+      "url": "https://www.fpb.pt/noticia/fc-porto-conquista-xli-supertaca-mario-saldanha-em-albufeira/",
+      "source": "Federação Portuguesa de Basquetebol",
+      "published": "Sat, 26 Sep 2026 17:41:05 GMT",
+      "image": "https://www.fpb.pt/wp-content/uploads/2026/09/CRR39296-1-e1790455409537.jpg",
+      "image_source": "https://www.fpb.pt/noticia/fc-porto-conquista-xli-supertaca-mario-saldanha-em-albufeira/",
+      "description": "Dragões venceram o Sporting CP por 80-76 e somam a sua nona Supertaça ao palmarés"
     },
     {
       "title": "Basquetebol grátis na DAZN! Vê o FC Porto, Sporting, Benfica e GDESSA na Supertaça. Datas e horas - DAZN",
@@ -167,9 +167,9 @@
       "published": "Fri, 25 Sep 2026 15:43:10 GMT"
     },
     {
-      "title": "Onde ver o jogo entre Sporting CP vs Benfica em direto em Portugal? - Magazine.HD",
+      "title": "Onde ver o jogo entre Sporting CP vs Benfica em direto em Portugal? - magazine-hd.com",
       "url": "https://www.magazine-hd.com/apps/wp/onde-ver-jogo-entre-sporting-benfica-direto-portugal/",
-      "source": "Magazine.HD",
+      "source": "magazine-hd.com",
       "published": "Sun, 27 Sep 2026 06:45:51 GMT",
       "image": "https://www.magazine-hd.com/apps/wp/wp-content/uploads/2026/09/futsal-1.webp",
       "image_source": "https://www.magazine-hd.com/apps/wp/onde-ver-jogo-entre-sporting-benfica-direto-portugal/",
@@ -189,7 +189,7 @@
       "url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57998",
       "source": "FPF",
       "published": "Sat, 26 Sep 2026 20:28:26 GMT",
-      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=210191&v=639261063767363864",
+      "image": "https://www.fpf.pt/ImageToBytesHandler.ashx?id=210191&v=639261067709559699",
       "image_source": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/57998",
       "description": "Jogo da 2.ª jornada do Campeonato Sub-19 da II Divisão"
     },
@@ -207,12 +207,6 @@
       "image": "https://www.ligaportugal.pt/favicon.png",
       "image_source": "https://www.ligaportugal.pt/match/20262027/ligaportugalmeusuper/12/9",
       "description": "Liga Portugal"
-    },
-    {
-      "title": "- FC Porto vs Sporting CP - FC Porto",
-      "url": "https://www.fcporto.pt/en/sports/basketball/game-sheet/420260926470-fc-porto-vs-sporting-cp",
-      "source": "FC Porto",
-      "published": "Sun, 27 Sep 2026 02:44:11 GMT"
     },
     {
       "title": "Bilhetes | SC Braga vs Sporting CP - SC Braga",
@@ -245,6 +239,15 @@
       "image": "https://www.sporttv.pt/redacao/images/jesse%20derry_Inglaterra.webp?v=1790356189",
       "image_source": "https://www.sporttv.pt/noticias/802735/jesse-derry-marca-e-assiste-na-vitoria-da-inglaterra",
       "description": "Extremos dos 'leões' está ao serviço dos sub-20 britânicos"
+    },
+    {
+      "title": "Sporting CP 2021-2022 - Liga Portugal",
+      "url": "https://www.ligaportugal.pt/team/303/sporting-cp/ligaportugalbwin/20212022",
+      "source": "Liga Portugal",
+      "published": "Fri, 25 Sep 2026 20:22:32 GMT",
+      "image": "https://www.ligaportugal.pt/backoffice/assets/Sporting_Site_Letras_1330565ca0.png",
+      "image_source": "https://www.ligaportugal.pt/team/303/sporting-cp/ligaportugalbwin/20212022",
+      "description": "Sporting Clube de Portugal - Futebol, SAD - 2021-2022"
     }
   ]
 }
