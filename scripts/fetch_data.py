@@ -3054,6 +3054,124 @@ ZEROZERO_TEAM_ALIASES = {
 }
 _zerozero_team_cache = {}
 
+def zerozero_get(url):
+    """Fetch a ZeroZero page with browser-like headers and small retry/backoff."""
+    last = None
+    for attempt in range(3):
+        try:
+            rr = session.get(
+                url,
+                timeout=35,
+                headers={
+                    "User-Agent": USER_AGENT,
+                    "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                },
+            )
+            rr.raise_for_status()
+            return rr.text
+        except Exception as e:
+            last = e
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(f"ZeroZero request failed: {url}: {last}")
+
+def _zz_name_key(value):
+    return zz_norm(value)
+
+def _zz_parse_games(html):
+    """Parse ZeroZero H2H rows from table markup; supports all competitions."""
+    soup = BeautifulSoup(html, "html.parser")
+    found = []
+
+    def add_cells(cells):
+        cells = [clean(x) for x in cells if clean(x)]
+        if len(cells) < 4:
+            return
+        date_value = next((x for x in cells if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x)), None)
+        if not date_value:
+            return
+        score_idx = None
+        score_home = score_away = None
+        for idx, cell in enumerate(cells):
+            m = re.fullmatch(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})(?:a\\.p\\.|\\s*)?", cell, re.I)
+            if m:
+                score_idx = idx
+                score_home, score_away = int(m.group(1)), int(m.group(2))
+                break
+        if score_idx is None:
+            return
+
+        # In ZeroZero's H2H tables the score sits between the two team names.
+        if score_idx < 1 or score_idx + 1 >= len(cells):
+            return
+        home_name = cells[score_idx - 1]
+        away_name = cells[score_idx + 1]
+        if re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", home_name):
+            return
+
+        competition = ""
+        season = ""
+        round_name = ""
+        for cell in cells:
+            if re.search(r"\\b\\d{2}/\\d{2}\\b", cell):
+                season = re.search(r"\\b\\d{2}/\\d{2}\\b", cell).group(0)
+                competition = clean(re.sub(r"\\s*\\d{2}/\\d{2}\\s*", " ", cell))
+            elif re.fullmatch(r"(?:J\\d+|QF|SF|MF|1/8|1/4|1/2|F|FL|FG|PO|R\\d+)", cell, re.I):
+                round_name = cell
+        if not competition:
+            # Some rows put competition and season in separate cells.
+            for idx, cell in enumerate(cells):
+                if season and season in cell:
+                    continue
+                if any(k in zz_norm(cell) for k in (
+                    "liga portugal", "liga dos campeoes", "uefa champions league",
+                    "taca de portugal", "taca da liga", "supercopa", "supertaça",
+                    "premier league", "fa cup", "league cup", "champions"
+                )):
+                    competition = cell
+                    break
+
+        found.append({
+            "id": None,
+            "date": date_value,
+            "home": home_name,
+            "away": away_name,
+            "home_score": score_home,
+            "away_score": score_away,
+            "competition": competition,
+            "season": season,
+            "round": round_name,
+        })
+
+    for tr in soup.find_all("tr"):
+        cells = [x.get_text(" ", strip=True) for x in tr.find_all(["th", "td"])]
+        add_cells(cells)
+
+    # Fallback for layouts that are not rendered as tables.
+    if not found:
+        text = soup.get_text("\\n", strip=True)
+        lines = [clean(x) for x in text.splitlines() if clean(x)]
+        for idx, line in enumerate(lines):
+            if not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", line):
+                continue
+            window = lines[idx:idx+12]
+            joined = " | ".join(window)
+            sm = re.search(r"(\\d{1,2})\\s*-\\s*(\\d{1,2})", joined)
+            if not sm:
+                continue
+            score_pos = next((j for j,x in enumerate(window) if re.fullmatch(r"\\d{1,2}\\s*-\\s*\\d{1,2}(?:a\\.p\\.)?", x, re.I)), None)
+            if score_pos is None or score_pos < 1 or score_pos + 1 >= len(window):
+                continue
+            add_cells([line, window[score_pos-1], window[score_pos], window[score_pos+1], *window[score_pos+2:]])
+
+    # Deduplicate and keep newest first.
+    dedup = {}
+    for row in found:
+        key = (row["date"], zz_norm(row["home"]), zz_norm(row["away"]), row["home_score"], row["away_score"])
+        dedup[key] = row
+    return sorted(dedup.values(), key=lambda x: x.get("date") or "", reverse=True)
+
 def zerozero_team_ref(name):
     key = zz_norm(name)
     if key in _zerozero_team_cache:
