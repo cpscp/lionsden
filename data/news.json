@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T21:47:24.693556+00:00",
+  "_updated_at": "2026-09-27T21:47:06.812722+00:00",
   "items": [
     {
       "title": "Futsal Nuno Dias: \"O Sporting CP perde dois pontos\"",
@@ -102,22 +102,22 @@
       "premium": true
     },
     {
-      "title": "Projeto Altimira em marcha: Sporting quer tornar espanhol numa referência",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/projeto-altimira-em-marcha-sporting-quer-tornar-espanhol-numa-referencia?ref=Sporting_DestaquesPrincipais",
-      "source": "Record",
-      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-05-11-33-27-2460704.jpg",
-      "image_source": "Record listing",
-      "description": "Com poucos meses de trabalho, estrutura entende que reforço é líder dentro e fora do relvado, pelo que perspetiva ainda maior protagonismo",
-      "published": "2026-09-27",
-      "premium": true
-    },
-    {
       "title": "Luis Suárez deixou dedicatória especial no regresso aos golos pela seleção da Colômbia",
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/luis-suarez-deixou-dedicatoria-especial-no-regresso-aos-golos-pela-selecao-da-colombia?ref=Sporting_DestaquesPrincipais",
       "source": "Record",
       "image": "https://cdn.record.pt/images/2026-06/img_1200x721uu2026-06-24-11-58-44-2446601-im-639178995144585184.jpg",
       "image_source": "Record listing",
       "description": "Avançado do Sporting faturou no empate (1-1) diante do México",
+      "published": "2026-09-27",
+      "premium": true
+    },
+    {
+      "title": "Projeto Altimira em marcha: Sporting quer tornar espanhol numa referência",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/projeto-altimira-em-marcha-sporting-quer-tornar-espanhol-numa-referencia?ref=Sporting_DestaquesPrincipais",
+      "source": "Record",
+      "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-05-11-33-27-2460704.jpg",
+      "image_source": "Record listing",
+      "description": "Com poucos meses de trabalho, estrutura entende que reforço é líder dentro e fora do relvado, pelo que perspetiva ainda maior protagonismo",
       "published": "2026-09-27",
       "premium": true
     },
@@ -302,6 +302,16 @@
       "premium": true
     },
     {
+      "title": "Leões de Portugal recebem galardão de cristal",
+      "source": "Record",
+      "published": "2026-09-26",
+      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
+      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
+      "premium": true,
+      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
+      "image_source": "Record article"
+    },
+    {
       "title": "Jogadores do Sporting na Academia reagem às notas no FC27: «Dava para aumentar um pouquinho»",
       "source": "Record",
       "published": "2026-09-26",
@@ -319,16 +329,6 @@
       "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/vitamina-f-sporting-ja-tem-acordos-com-flavio-goncalves-e-fresneda-para-renovar-os-seus-contratos-ate-2031",
       "premium": true,
       "image": "https://cdn.record.pt/images/2026-09/img_1200x721uu2026-09-25-20-30-17-2464691.jpg",
-      "image_source": "Record article"
-    },
-    {
-      "title": "Leões de Portugal recebem galardão de cristal",
-      "source": "Record",
-      "published": "2026-09-26",
-      "description": "Organismo presidido por Zeferino Boal foi alvo de distinção no 10.º aniversário do Núcleo do Sporting da Marinha Grande",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/leoes-de-portugal-recebem-galardao-de-cristal",
-      "premium": true,
-      "image": "https://cdn.record.pt/images/2011-03/img_1200x721uu2011-03-02-15-27-00-591620.jpg",
       "image_source": "Record article"
     },
     {
