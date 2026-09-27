@@ -2818,7 +2818,7 @@ def fetch_news():
                     image=img.get("data-src") or img.get("data-lazy-src") or img.get("src")
                     if image and not str(image).startswith("data:"):
                         break
-            if image:
+            if image and (item.get("source") != "Zerozero" or "zerozero.pt" in str(image).lower()):
                 image=str(image).strip()
                 if image.startswith("//"): image="https:"+image
                 elif image.startswith("/"):
@@ -2826,6 +2826,11 @@ def fetch_news():
                     image=urljoin(final_url,image)
                 item["image"]=image
                 item["image_source"]=final_url
+            # Never allow blocked/placeholder Zerozero metadata to replace
+            # an image already recovered from the editorial image search.
+            if item.get("source")=="Zerozero" and item.get("image_source")=="Jina Reader":
+                item.pop("image",None)
+                item.pop("image_source",None)
             # Always recover the publication timestamp from the article,
             # because listing feeds from some sources omit it.
             published = None
