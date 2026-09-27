@@ -2863,15 +2863,30 @@ def fetch_news():
                 # page, so scanning the whole document creates false positives.
                 article_scope = soup.find("article") or soup.find("main") or soup
                 article_text_for_flags = clean(article_scope.get_text(" ", strip=True))
-                # Do not look for the generic word "Premium": it is part of the
-                # Record global navigation. Only these explicit article-level
-                # subscription messages count as Premium.
-                record_page_text = clean(soup.get_text(" ", strip=True))
+                # Record's global page contains Premium navigation everywhere.
+                # Determine Premium only from the text window belonging to this
+                # article: from its H1 until the Related/author section.
+                record_article_window = article_text_for_flags
+                if item.get("source") == "Record":
+                    h1 = soup.find("h1")
+                    if h1:
+                        window_parts = []
+                        for node in h1.find_all_next(["h1","h2","h3","h4","p"]):
+                            txt = clean(node.get_text(" ", strip=True))
+                            low = txt.lower()
+                            if low == "relacionadas" or low.startswith("últimas notícias"):
+                                break
+                            if txt:
+                                window_parts.append(txt)
+                            if len(window_parts) >= 40:
+                                break
+                        if window_parts:
+                            record_article_window = " ".join(window_parts)
                 candidate_premium = (
                     item.get("source") == "Record"
                     and bool(re.search(
                         r"Funcionalidade exclusiva para assinantes Record Premium|Este conteúdo é exclusivo para assinantes Record Premium",
-                        record_page_text,
+                        record_article_window,
                         re.I,
                     ))
                 )
