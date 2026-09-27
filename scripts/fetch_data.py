@@ -3511,25 +3511,28 @@ def fetch_news():
                 if not link or "sporting" not in blob:
                     continue
                 image=None
-            # Zerozero/Google News may embed the editorial thumbnail directly
-            # in the RSS description even when media_content is absent.
-            for im in summary_soup.find_all("img"):
-                u=im.get("src") or im.get("data-src") or im.get("data-original")
-                if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
-                    image=u
-                    break
-            media=entry.get("media_content") or entry.get("media_thumbnail") or []
-            if media and isinstance(media,list):
-                image=media[0].get("url")
-            if not image:
-                image=(entry.get("image") or {}).get("href") if isinstance(entry.get("image"),dict) else None
-            add({
-                "title":title,
-                "url":link,
-                "source":"Zerozero",
-                "published":entry.get("published"),
-                **({"image":image,"image_source":"https://www.zerozero.pt/rss.php"} if image else {}),
-            })
+                # Zerozero may expose the editorial thumbnail directly in RSS.
+                for im in summary_soup.find_all("img"):
+                    u=im.get("src") or im.get("data-src") or im.get("data-original")
+                    if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                        image=u
+                        break
+                media=entry.get("media_content") or entry.get("media_thumbnail") or []
+                if media and isinstance(media,list):
+                    for m in media:
+                        u=m.get("url")
+                        if u and not re.search(r"(favicon|logo|google|gstatic)",u,re.I):
+                            image=u
+                            break
+                if not image:
+                    image=(entry.get("image") or {}).get("href") if isinstance(entry.get("image"),dict) else None
+                add({
+                    "title":title,
+                    "url":link,
+                    "source":"Zerozero",
+                    "published":entry.get("published"),
+                    **({"image":image,"image_source":feed_url} if image else {}),
+                })
     except Exception as e:
         print("Zerozero RSS warning:",e)
 
