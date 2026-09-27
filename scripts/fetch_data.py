@@ -3100,7 +3100,51 @@ def fetch_news():
                     print("Zerozero Jina Google Images warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 8) Bing Images fallback. Prefer an original image whose
+                # 8) DuckDuckGo Images fallback. DDG exposes a lightweight
+                # JSON image endpoint after a vqd token is obtained from the
+                # image search page. Prefer the exact Zerozero source URL.
+                try:
+                    from urllib.parse import quote
+                    dq='"'+(item.get("title") or "").replace('"',"")+'" site:zerozero.pt/noticias/'
+                    home="https://duckduckgo.com/?q="+quote(dq)+"&iar=images&iax=images&ia=images"
+                    dh=session.get(home,timeout=15,headers={"User-Agent":USER_AGENT})
+                    if dh.ok:
+                        vqd=None
+                        for pat in (r'vqd=([0-9-]+)',r'vqd\\?"\\?:\\?"([0-9-]+)',r'vqd=\\?\'([^\\?\']+)'):
+                            m=re.search(pat,dh.text,re.I)
+                            if m:
+                                vqd=m.group(1)
+                                break
+                        if vqd:
+                            api="https://duckduckgo.com/i.js?q="+quote(dq)+"&o=json&l=pt-pt&vqd="+quote(vqd)+"&f=,,,,,&p=1"
+                            ih=session.get(api,timeout=20,headers={
+                                "User-Agent":USER_AGENT,
+                                "Referer":home,
+                                "Accept":"application/json, text/javascript, */*; q=0.01",
+                            })
+                            if ih.ok:
+                                results=ih.json().get("results") or []
+                                words=[w for w in re.findall(r"[a-z0-9áàâãéêíóôõúç]{4,}",(item.get("title") or "").lower())]
+                                for res in results[:30]:
+                                    src=res.get("image") or res.get("thumbnail")
+                                    origin=res.get("url") or ""
+                                    rtitle=clean(res.get("title") or "")
+                                    if not src:
+                                        continue
+                                    low=str(src).lower()
+                                    if any(x in low for x in ("favicon","logo","sprite")):
+                                        continue
+                                    exact="zerozero.pt/noticias/" in origin.lower()
+                                    title_match=sum(1 for w in words if w in rtitle.lower()) >= max(4,min(7,len(words)))
+                                    if exact or title_match:
+                                        item["image"]=src
+                                        item["image_source"]="DuckDuckGo Images"
+                                        break
+                except Exception as ex:
+                    print("Zerozero DuckDuckGo Images warning:",item.get("url"),ex)
+
+            if not item.get("image"):
+                # 9) Bing Images fallback. Prefer an original image whose
                 # source page or result title clearly belongs to this exact
                 # Zerozero article.
                 try:
