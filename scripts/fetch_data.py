@@ -3168,8 +3168,7 @@ def fetch_news():
         item.pop("_google_url", None)
         item.pop("media_thumbnail", None)
         item.pop("media_content", None)
-        if item.get("article_text"):
-            item["article_text"] = str(item["article_text"])[:30000]
+        item.pop("article_text", None)
 
     write_json("news.json", {"items": final})
     print("News feed:", len(final), "items;",
