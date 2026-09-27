@@ -2712,6 +2712,11 @@ def fetch_news():
                         existing["title"]=item["title"][:180]
                     break
             return
+        if item.get("description") and "<" in str(item.get("description")):
+            try:
+                item["description"] = clean(BeautifulSoup(str(item["description"]),"html.parser").get_text(" ",strip=True))[:280]
+            except Exception:
+                item["description"] = re.sub(r"<[^>]+>"," ",str(item["description"]))
         item["title"] = title[:180]
         item["source"] = source_from_url(url, item.get("source") or "Google News")
         item["_priority"] = source_priority.get(item["source"], 50)
@@ -2774,8 +2779,39 @@ def fetch_news():
             # already contain the correct editorial photo. NEVER delete that
             # image just because we are enriching the article.
             # Only try external recovery when no usable image was discovered.
+            if not item.get("image") and item.get("_google_url"):
+                # 1) Google News wrapper: this is the strongest recovery path
+                # when Zerozero blocks GitHub Actions. The wrapper is tied to the
+                # exact publisher article and can expose its editorial thumbnail
+                # even when the publisher HTML itself returns 403.
+                try:
+                    gu=item.get("_google_url")
+                    grn=session.get(gu,timeout=20,headers={"User-Agent":USER_AGENT},allow_redirects=False)
+                    candidates=[]
+                    if grn.ok:
+                        gns=BeautifulSoup(grn.text,"html.parser")
+                        for attrs in (
+                            {"property":"og:image"},{"property":"og:image:url"},
+                            {"name":"twitter:image"},{"name":"twitter:image:src"},
+                            {"itemprop":"image"}
+                        ):
+                            n=gns.find("meta",attrs=attrs)
+                            if n and n.get("content"):
+                                candidates.append(n.get("content").strip())
+                        for im in gns.find_all("img"):
+                            u=im.get("data-src") or im.get("data-iurl") or im.get("src")
+                            if u and not str(u).startswith("data:"):
+                                candidates.append(u.strip())
+                    for src in candidates:
+                        if src and not re.search(r"(favicon|logo|avatar|sprite)",src,re.I):
+                            item["image"]=urljoin(gu,src)
+                            item["image_source"]="Google News article thumbnail"
+                            break
+                except Exception as ex:
+                    print("Zerozero Google News wrapper warning:",item.get("url"),ex)
+
             if not item.get("image"):
-                # 1) Google Translate proxy: fetch the original article and read
+                # 2) Google Translate proxy: fetch the original article and read
                 # its own OpenGraph/Twitter image metadata.
                 try:
                     from urllib.parse import quote as _quote
@@ -2804,7 +2840,7 @@ def fetch_news():
                     print("Zerozero Translate image warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 2) Zerozero publishes the same article on regional mirrors.
+                # 3) Zerozero publishes the same article on regional mirrors.
                 # The .pt host blocks GitHub Actions, while these mirrors expose
                 # the same editorial metadata (including og:image).
                 try:
@@ -2835,7 +2871,7 @@ def fetch_news():
                     print("Zerozero mirror warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 3) Microlink metadata fallback.
+                # 4) Microlink metadata fallback.
                 try:
                     from urllib.parse import quote as _q
                     mr=session.get("https://api.microlink.io/?url="+_q(url,safe="")+"&meta=true",
@@ -2854,7 +2890,7 @@ def fetch_news():
                     print("Zerozero metadata service warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 4) Google Images fallback, but ONLY accept a Zerozero CDN image.
+                # 5) Google Images fallback, tied to the exact Zerozero article.
                 # The previous implementation accidentally referenced 'im' after
                 # removing the loop, so this path could never work reliably.
                 try:
@@ -2870,7 +2906,7 @@ def fetch_news():
                         # without creating an a.iusc card. This was the working
                         # extraction path in the earlier Lions Den implementation.
                         for m in re.finditer(
-                            r"https://cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/[^\s<>\\]+",
+                            r"https?:\\?/\\?/cdn-img\.(?:staticzz\.com|zerozero(?:\.pt)?)/[^\s<>\\]+",
                             gr.text,
                             re.I,
                         ):
@@ -2899,7 +2935,7 @@ def fetch_news():
                                 if not src or "zerozero.pt/noticias/" not in origin:
                                     continue
                                 low=str(src).lower()
-                                if any(x in low for x in ("google","gstatic","favicon","logo","googleusercontent")):
+                                if any(x in low for x in ("favicon","logo","google-search","google.com/search")):
                                     continue
                                 item["image"]=src
                                 item["image_source"]="Zerozero article image search"
@@ -2928,7 +2964,7 @@ def fetch_news():
                     print("Zerozero Google image search warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 5) Bing Images fallback. Prefer an original image whose
+                # 6) Bing Images fallback. Prefer an original image whose
                 # source page or result title clearly belongs to this exact
                 # Zerozero article.
                 try:
@@ -2966,7 +3002,7 @@ def fetch_news():
                 except Exception as ex:
                     print("Zerozero Bing image search warning:",item.get("url"),ex)
             if not item.get("image"):
-                # 6) Google normal search fallback. Its result cards can expose
+                # 7) Google normal search fallback. Its result cards can expose
                 # the Zerozero article thumbnail even when Google Images is
                 # unavailable to the Actions runner.
                 try:
@@ -3006,7 +3042,7 @@ def fetch_news():
                     print("Zerozero Google search thumbnail warning:",item.get("url"),ex)
 
             if not item.get("image"):
-                # 7) Jina / AllOrigins are last-resort exact-article fetches.
+                # 8) Jina / AllOrigins are last-resort exact-article fetches.
                 for proxy_url, label in [
                     ("https://r.jina.ai/"+url, "Zerozero article via Jina"),
                     ("https://api.allorigins.win/get?url="+quote(url), "Zerozero article via AllOrigins"),
@@ -3658,6 +3694,7 @@ def fetch_news():
         item.pop("_priority",None)
         item.pop("_football",None)
         item.pop("_sporting",None)
+        item.pop("_google_url",None)
         item.pop("media_thumbnail",None)
         item.pop("media_content",None)
         if not item.get("image"):
