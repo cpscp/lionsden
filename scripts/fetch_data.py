@@ -3102,8 +3102,9 @@ def fetch_news():
     except Exception as e:
         print("Zerozero Google RSS warning:",e)
 
-    # Google News intentionally excluded: only identified publisher sources
-    # are allowed in the Sporting CP news feed.
+    # Google News is only a discovery/transport layer for Zerozero. Decode
+    # those links now so the final feed contains only the original publisher URL.
+    decode_google_urls(items)
 
     # Re-score after URL decoding because Google News initially labels every
     # item as the expected feed source, while the final URL reveals the actual
