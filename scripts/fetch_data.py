@@ -2884,6 +2884,44 @@ def fetch_news():
                                     break
             except Exception as ex:
                 print("Zerozero Translate proxy warning:",item.get("url"),ex)
+            # Last-resort public HTML proxy: fetch the exact Zerozero article
+            # and read its own og:image. No image-search guessing.
+            if not item.get("image"):
+                try:
+                    ao="https://api.allorigins.win/get?url="+quote(url)
+                    ar=session.get(ao,timeout=25,headers={"User-Agent":USER_AGENT})
+                    if ar.ok:
+                        payload=ar.json()
+                        html=payload.get("contents") or ""
+                        if html:
+                            aos=BeautifulSoup(html,"html.parser")
+                            for tag,attrs in [
+                                ("meta",{"property":"og:image"}),
+                                ("meta",{"property":"og:image:url"}),
+                                ("meta",{"name":"twitter:image"}),
+                                ("meta",{"itemprop":"image"}),
+                            ]:
+                                node=aos.find(tag,attrs=attrs)
+                                if node and node.get("content"):
+                                    u=node.get("content").strip()
+                                    if u and not re.search(r"(logo|favicon|cloudflare|allorigins)",u,re.I):
+                                        item["image"]=urljoin(url,u)
+                                        item["image_source"]="Zerozero article og:image"
+                                        break
+                            if not item.get("description"):
+                                for tag,attrs in [
+                                    ("meta",{"property":"og:description"}),
+                                    ("meta",{"name":"description"}),
+                                    ("meta",{"name":"twitter:description"}),
+                                ]:
+                                    node=aos.find(tag,attrs=attrs)
+                                    if node and node.get("content"):
+                                        d=clean(node.get("content"))
+                                        if d and not re.search(r"(just a moment|captcha|cloudflare)",d,re.I):
+                                            item["description"]=d[:280]
+                                            break
+                except Exception as ex:
+                    print("Zerozero AllOrigins warning:",item.get("url"),ex)
 
         try:
             rr=session.get(url,timeout=12,allow_redirects=True,
