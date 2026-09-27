@@ -149,6 +149,16 @@
 .stadium-access-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex:none}
 .stadium-access-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
 .stadium-route-card{display:flex;align-items:flex-start;gap:12px}
+.stadium-model{padding:14px 10px 6px;background:radial-gradient(circle at 50% 48%,rgba(14,119,73,.16),transparent 58%),linear-gradient(145deg,#06100c,#030605);border-bottom:1px solid rgba(255,255,255,.06)}
+.stadium-model svg{display:block;width:100%;height:auto;max-height:380px}
+.stadium-diagram-wrap{padding:10px;background:#050907;border:1px solid rgba(255,255,255,.07);border-radius:22px;overflow:auto}
+.stadium-diagram{display:block;width:100%;min-width:620px;height:auto}
+.stadium-gate-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.stadium-gate-row{border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);border-radius:14px;padding:12px 13px}
+.stadium-gate-row .gate{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#62b89a}
+.stadium-gate-row .sectors{font-size:11px;line-height:1.5;margin-top:5px;color:#f3f6f4}
+.stadium-gate-row.special{border-color:rgba(0,167,118,.2);background:rgba(0,120,78,.05)}
+@media(max-width:600px){.stadium-gate-table{grid-template-columns:1fr}.stadium-model svg{max-height:300px}}
 </style>
 </head>
 <body>
@@ -185,60 +195,139 @@
 <div><h2 class="text-[21px] font-bold">Estádio</h2><p class="text-[11px] muted mt-1">José Alvalade · Alvalade XXI</p></div>
 
 <div class="stadium-hero">
-  <div class="stadium-earth">
-    <iframe title="Vista aérea do Estádio José Alvalade no Google Maps" src="https://www.google.com/maps?q=Estádio+José+Alvalade,+Lisboa&z=18&t=k&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <div class="stadium-earth-overlay"></div>
-    <div class="stadium-earth-content">
-      <div><div class="eyebrow">Vista aérea</div><div class="font-bold text-[17px] mt-1">Estádio José Alvalade</div><div class="text-[10px] text-white/65 mt-1">Alvalade XXI · Lisboa</div></div>
-      <a class="pill text-[9px] px-3 py-2 pointer-events-auto" target="_blank" rel="noopener noreferrer" href="https://earth.google.com/web/@38.7600,-9.1583,120a,900d,35y,0h,0t,0r">Explorar em 3D ↗</a>
-    </div>
+  <div class="stadium-model" aria-label="Modelo 3D estilizado do Estádio José Alvalade">
+    <svg viewBox="0 0 900 500" role="img">
+      <defs>
+        <linearGradient id="roof" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#65706c"/><stop offset="1" stop-color="#293532"/></linearGradient>
+        <linearGradient id="glass" x1="0" x2="1"><stop stop-color="#102f29"/><stop offset=".5" stop-color="#174c3d"/><stop offset="1" stop-color="#0b2520"/></linearGradient>
+        <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#d6ae45"/><stop offset=".5" stop-color="#f0ce68"/><stop offset="1" stop-color="#a97b20"/></linearGradient>
+        <linearGradient id="pitch" x1="0" x2="1"><stop stop-color="#11885a"/><stop offset="1" stop-color="#07583d"/></linearGradient>
+        <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+      </defs>
+      <ellipse cx="450" cy="432" rx="370" ry="34" fill="#000" opacity=".55" filter="url(#shadow)"/>
+      <!-- lower bowl / exterior -->
+      <path d="M92 270 Q105 165 450 132 Q795 165 808 270 L760 392 Q450 456 140 392Z" fill="url(#glass)" stroke="#193d33" stroke-width="5"/>
+      <path d="M111 285 Q450 355 789 285 L765 342 Q450 410 135 342Z" fill="url(#gold)" opacity=".96"/>
+      <path d="M128 344 Q450 414 772 344 L752 393 Q450 452 148 393Z" fill="#0a1c18" stroke="#287454" stroke-width="5"/>
+      <!-- facade vertical structure -->
+      <g stroke="#087149" stroke-width="8" opacity=".9">
+        <path d="M175 296v91M220 305v94M275 315v91M625 315v91M680 305v94M725 296v91"/>
+      </g>
+      <!-- open upper bowl -->
+      <path d="M155 238 Q178 135 450 116 Q722 135 745 238 Q690 305 450 322 Q210 305 155 238Z" fill="#102f25" stroke="#263e37" stroke-width="7"/>
+      <path d="M185 231 Q208 158 450 143 Q692 158 715 231 Q660 277 450 292 Q240 277 185 231Z" fill="#0d5c40"/>
+      <!-- seating -->
+      <path d="M207 225 Q235 173 450 158 Q665 173 693 225 Q640 260 450 274 Q260 260 207 225Z" fill="#0b6e4a"/>
+      <path d="M238 218 Q270 188 450 176 Q630 188 662 218 Q610 240 450 250 Q290 240 238 218Z" fill="#0b8253"/>
+      <!-- pitch -->
+      <path d="M317 204 Q450 184 583 204 L559 259 Q450 273 341 259Z" fill="url(#pitch)" stroke="#d7e1dc" stroke-width="3"/>
+      <path d="M450 193v74M370 223h160M401 209h98v29h-98zM401 244h98v-29h-98z" fill="none" stroke="#e8f0ec" stroke-width="2" opacity=".9"/>
+      <!-- roof -->
+      <path d="M90 220 Q110 88 450 57 Q790 88 810 220 Q755 112 450 93 Q145 112 90 220Z" fill="url(#roof)" stroke="#1d2926" stroke-width="7"/>
+      <path d="M112 202 Q145 108 450 78 Q755 108 788 202 Q700 128 450 113 Q200 128 112 202Z" fill="#6f7974" opacity=".82"/>
+      <path d="M142 189 Q450 92 758 189" fill="none" stroke="#1c332d" stroke-width="10"/>
+      <!-- pylons -->
+      <g fill="#0a6b46" stroke="#0b3829" stroke-width="4">
+        <path d="M105 72l28-7 40 282-26 4Z"/><path d="M255 42l27-4 18 290-25 2Z"/>
+        <path d="M618 38l27 4-18 290-25-2Z"/><path d="M767 65l28 7-42 279-26-4Z"/>
+      </g>
+      <!-- cables -->
+      <g fill="none" stroke="#59746a" stroke-width="2" opacity=".85">
+        <path d="M118 70L300 184M118 70L450 113M268 40L450 113M632 40L450 113M782 70L600 184M782 70L450 113"/>
+      </g>
+      <g fill="#f0d166" opacity=".8"><circle cx="450" cy="58" r="4"/><circle cx="450" cy="113" r="3"/></g>
+    </svg>
   </div>
-  <div class="p-4 border-t border-white/5 flex items-center justify-between gap-3">
-    <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 50.095 lugares</div></div>
-    <span class="pill text-[9px]">ALVALADE XXI</span>
+  <div class="p-4 flex items-center justify-between gap-3">
+    <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · Alvalade XXI</div></div>
+    <span class="pill text-[9px]">MODELO 3D</span>
   </div>
 </div>
 
 <div class="space-y-3">
-  <div><h3 class="font-bold">Mapa do estádio</h3><p class="text-[10px] muted mt-1">Planta oficial · setores e acessos</p></div>
-  <div class="stadium-map-card">
-    <img src="https://scpconteudos.pt/sites/default/files/mapa_eja_site_scp.jpg" alt="Planta oficial do Estádio José Alvalade com setores e portas" loading="lazy">
-    <div class="stadium-map-note">Planta oficial do Estádio José Alvalade. Toque para ampliar.</div>
+  <div><h3 class="font-bold">Mapa do estádio</h3><p class="text-[10px] muted mt-1">Diagrama Lions Den · setores e portas</p></div>
+  <div class="stadium-diagram-wrap">
+    <svg class="stadium-diagram" viewBox="0 0 900 720" role="img" aria-label="Diagrama dos setores do Estádio José Alvalade">
+      <defs>
+        <linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d6b47"/><stop offset="1" stop-color="#073a2b"/></linearGradient>
+        <linearGradient id="dt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b9b7c"/><stop offset="1" stop-color="#086452"/></linearGradient>
+      </defs>
+      <ellipse cx="450" cy="360" rx="410" ry="330" fill="#06100c" stroke="#173a2d" stroke-width="2"/>
+      <ellipse cx="450" cy="360" rx="340" ry="275" fill="#0a1712" stroke="#25463a" stroke-width="2"/>
+      <rect x="300" y="235" width="300" height="250" rx="18" fill="url(#dg)" stroke="#dce8e2" stroke-width="3"/>
+      <path d="M450 235v250M300 360h300" stroke="#dce8e2" stroke-width="2" opacity=".75"/>
+      <circle cx="450" cy="360" r="43" fill="none" stroke="#dce8e2" stroke-width="2"/>
+      <!-- North B -->
+      <g font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#eef5f1">
+        <g fill="#17362d" stroke="#355b4d"><rect x="302" y="92" width="55" height="62" rx="7"/><rect x="365" y="82" width="55" height="72" rx="7"/><rect x="428" y="78" width="55" height="76" rx="7"/><rect x="491" y="82" width="55" height="72" rx="7"/><rect x="554" y="92" width="55" height="62" rx="7"/></g>
+        <text x="329" y="127">B15</text><text x="392" y="121">B17</text><text x="455" y="118">B19</text><text x="518" y="121">B21</text><text x="581" y="127">B23</text>
+        <g fill="#0c8b6d"><rect x="314" y="164" width="55" height="55" rx="7"/><rect x="377" y="158" width="55" height="61" rx="7"/><rect x="440" y="155" width="55" height="64" rx="7"/><rect x="503" y="158" width="55" height="61" rx="7"/><rect x="566" y="164" width="55" height="55" rx="7"/></g>
+        <text x="341" y="197">A13</text><text x="404" y="194">A15</text><text x="467" y="193">A17</text><text x="530" y="194">A19</text><text x="593" y="197">A21</text>
+        <!-- south -->
+        <g fill="#0c8b6d"><rect x="314" y="501" width="55" height="55" rx="7"/><rect x="377" y="501" width="55" height="61" rx="7"/><rect x="440" y="501" width="55" height="64" rx="7"/><rect x="503" y="501" width="55" height="61" rx="7"/><rect x="566" y="501" width="55" height="55" rx="7"/></g>
+        <text x="341" y="534">A12</text><text x="404" y="536">A14</text><text x="467" y="536">A16</text><text x="530" y="536">A18</text><text x="593" y="534">A20</text>
+        <g fill="#17362d"><rect x="302" y="563" width="55" height="62" rx="7"/><rect x="365" y="572" width="55" height="58" rx="7"/><rect x="428" y="578" width="55" height="55" rx="7"/><rect x="491" y="572" width="55" height="58" rx="7"/><rect x="554" y="563" width="55" height="62" rx="7"/></g>
+        <text x="329" y="600">B14</text><text x="392" y="608">B16</text><text x="455" y="610">B18</text><text x="518" y="608">B20</text><text x="581" y="600">B22</text>
+        <!-- west -->
+        <g fill="#0c8b6d"><rect x="155" y="225" width="65" height="55" rx="7"/><rect x="140" y="287" width="80" height="55" rx="7"/><rect x="140" y="349" width="80" height="55" rx="7"/><rect x="155" y="411" width="65" height="55" rx="7"/></g>
+        <text x="188" y="258">A1</text><text x="180" y="320">A3</text><text x="180" y="382">A5</text><text x="188" y="444">A7</text>
+        <g fill="#17362d"><rect x="88" y="225" width="58" height="55" rx="7"/><rect x="73" y="287" width="63" height="55" rx="7"/><rect x="73" y="349" width="63" height="55" rx="7"/><rect x="88" y="411" width="58" height="55" rx="7"/></g>
+        <text x="117" y="258">B1</text><text x="105" y="320">B3</text><text x="105" y="382">B5</text><text x="117" y="444">B7</text>
+        <!-- east -->
+        <g fill="#0c8b6d"><rect x="680" y="225" width="65" height="55" rx="7"/><rect x="680" y="287" width="80" height="55" rx="7"/><rect x="680" y="349" width="80" height="55" rx="7"/><rect x="680" y="411" width="65" height="55" rx="7"/></g>
+        <text x="712" y="258">A23</text><text x="720" y="320">A25</text><text x="720" y="382">A27</text><text x="712" y="444">A28</text>
+        <g fill="#17362d"><rect x="754" y="225" width="58" height="55" rx="7"/><rect x="769" y="287" width="63" height="55" rx="7"/><rect x="769" y="349" width="63" height="55" rx="7"/><rect x="754" y="411" width="58" height="55" rx="7"/></g>
+        <text x="783" y="258">B25</text><text x="801" y="320">B27</text><text x="801" y="382">B31</text><text x="783" y="444">B32</text>
+      </g>
+      <!-- A2/A4/A6 and B2/B4 highlighted as current gate group examples -->
+      <g font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+        <rect x="155" y="474" width="65" height="40" rx="7" fill="#0c8b6d"/><text x="188" y="499" fill="#fff">A2/A4/A6</text>
+        <rect x="88" y="474" width="58" height="40" rx="7" fill="#17362d"/><text x="117" y="499" fill="#fff">B2/B4</text>
+      </g>
+      <!-- gates -->
+      <g font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800" text-anchor="middle">
+        <g fill="#08100d" stroke="#4d6b60"><rect x="48" y="175" width="40" height="28" rx="8"/><text x="68" y="194" fill="#fff">1</text><rect x="100" y="91" width="40" height="28" rx="8"/><text x="120" y="110" fill="#fff">12</text><rect x="168" y="45" width="40" height="28" rx="8"/><text x="188" y="64" fill="#fff">11</text><rect x="250" y="20" width="40" height="28" rx="8"/><text x="270" y="39" fill="#fff">10</text><rect x="332" y="16" width="40" height="28" rx="8"/><text x="352" y="35" fill="#fff">9</text><rect x="410" y="15" width="40" height="28" rx="8"/><text x="430" y="34" fill="#fff">8</text><rect x="488" y="16" width="40" height="28" rx="8"/><text x="508" y="35" fill="#fff">7</text><rect x="570" y="20" width="40" height="28" rx="8"/><text x="590" y="39" fill="#fff">6</text><rect x="652" y="45" width="40" height="28" rx="8"/><text x="672" y="64" fill="#fff">5</text><rect x="720" y="91" width="40" height="28" rx="8"/><text x="740" y="110" fill="#fff">4</text><rect x="772" y="175" width="40" height="28" rx="8"/><text x="792" y="194" fill="#fff">3</text><rect x="450" y="76" width="40" height="28" rx="8" fill="#111"/><text x="470" y="95" fill="#fff">V</text></g>
+        <g fill="#101614" stroke="#49655a"><rect x="70" y="518" width="44" height="28" rx="8"/><text x="92" y="537" fill="#fff">Z</text></g>
+      </g>
+    </svg>
   </div>
+</div>
+
+<div class="space-y-3">
+  <div><h3 class="font-bold">Portas e setores</h3><p class="text-[10px] muted mt-1">Correspondências usadas no mapa de acessos do Lions Den</p></div>
+  <div class="stadium-gate-table">
+    <div class="stadium-gate-row"><div class="gate">Porta 1</div><div class="sectors">A1 · A3 · A5 · A7<br>B1 · B3 · B5</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 2</div><div class="sectors">A13 · A15 · A17 · A19 · A21<br>B15 · B17 · B19 · B21 · B23</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 3</div><div class="sectors">A23 · A25 · A26 · A27 · A28<br>B25 · B27 · B29 · B30 · B31 · B32</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 4</div><div class="sectors">A22 · A24<br>B24 · B26 · B28</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 5</div><div class="sectors">A8 · A10 · A12 · A14 · A16 · A18 · A20</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 6</div><div class="sectors">B10 · B12 · B14 · B16 · B18 · B20 · B22</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 7</div><div class="sectors">A2 · A4 · A6<br>B6 · B8</div></div>
+    <div class="stadium-gate-row special"><div class="gate">Porta 8</div><div class="sectors">B10 · ZCEAP</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 9</div><div class="sectors">A8 · A10 · A12 · A14</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 10</div><div class="sectors">A2 · A4 · A6</div></div>
+    <div class="stadium-gate-row"><div class="gate">Porta 11</div><div class="sectors">B2 · B4</div></div>
+  </div>
+  <div class="text-[9px] muted">Nota: algumas portas foram redistribuídas ao longo das remodelações de Alvalade; a Porta Z é um acesso especial e não está incluída na numeração acima.</div>
 </div>
 
 <div class="space-y-3">
   <div><h3 class="font-bold">Acessos</h3><p class="text-[10px] muted mt-1">Como chegar ao Estádio José Alvalade</p></div>
-
   <div class="access-card stadium-route-card">
-    <span class="stadium-access-icon">
-      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="2"/><path d="M7 6h6M7 10h6M8 14h.01M12 14h.01"/></svg>
-    </span>
+    <span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="2"/><path d="M7 6h6M7 10h6M8 14h.01M12 14h.01"/></svg></span>
     <div><b>Metro</b><div class="text-[11px] muted mt-1">Linha Amarela ou Verde · Estação Campo Grande</div></div>
   </div>
-
   <div class="access-card stadium-route-card">
-    <span class="stadium-access-icon">
-      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="5" width="15" height="9" rx="2"/><path d="M5 14v2M15 14v2M5 8h10M7 11h.01M10 11h.01M13 11h.01"/></svg>
-    </span>
+    <span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="5" width="15" height="9" rx="2"/><path d="M5 14v2M15 14v2M5 8h10M7 11h.01M10 11h.01M13 11h.01"/></svg></span>
     <div><b>Autocarro</b><div class="text-[11px] muted mt-1">Terminal Rodoviário do Campo Grande · ligações urbanas, suburbanas e interurbanas</div></div>
   </div>
-
   <div class="access-card stadium-route-card">
-    <span class="stadium-access-icon">
-      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 13.5 5.2 7h9.6l1.2 6.5"/><path d="M3 13.5h14v2H3zM6 16v1M14 16v1M7 10h6"/></svg>
-    </span>
+    <span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 13.5 5.2 7h9.6l1.2 6.5"/><path d="M3 13.5h14v2H3zM6 16v1M14 16v1M7 10h6"/></svg></span>
     <div><b>Automóvel</b><div class="text-[11px] muted mt-1">2.ª Circular, Eixo Norte-Sul, IC19 e CRIL. Acessos por Campo Grande ou Telheiras.</div></div>
   </div>
-
   <div class="access-card">
-    <div class="flex items-center gap-3">
-      <span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s5-5.1 5-9a5 5 0 1 0-10 0c0 3.9 5 9 5 9Z"/><circle cx="10" cy="9" r="1.7"/></svg></span>
-      <div><b>Localização</b><div class="text-[10px] muted mt-1">Estádio José Alvalade · Lisboa</div></div>
-    </div>
-    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20">
-      <iframe title="Mapa do Estádio José Alvalade" src="https://www.google.com/maps?q=Estádio+José+Alvalade,+Lisboa&z=16&output=embed" style="width:100%;height:240px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="flex items-center gap-3"><span class="stadium-access-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s5-5.1 5-9a5 5 0 1 0-10 0c0 3.9 5 9 5 9Z"/><circle cx="10" cy="9" r="1.7"/></svg></span><div><b>Localização</b><div class="text-[10px] muted mt-1">Estádio José Alvalade · Lisboa</div></div></div>
+    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20"><iframe title="Mapa do Estádio José Alvalade" src="https://www.google.com/maps?q=Estádio+José+Alvalade,+Lisboa&z=16&output=embed" style="width:100%;height:240px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     <a class="pill inline-flex mt-3 px-3 py-2 text-[10px]" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Est%C3%A1dio%20Jos%C3%A9%20Alvalade%2C%20Lisboa">Abrir no Google Maps ↗</a>
   </div>
 </div>
