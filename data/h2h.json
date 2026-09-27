@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T12:49:28.533592+00:00",
+  "_updated_at": "2026-09-27T13:03:26.304539+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533499+00:00"
+      "updated_at": "2026-09-27T13:03:26.304248+00:00"
     },
     "6106281": {
       "matches": [
@@ -84,7 +84,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533525+00:00"
+      "updated_at": "2026-09-27T13:03:26.304281+00:00"
     },
     "5887661": {
       "matches": [],
@@ -141,7 +141,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533535+00:00"
+      "updated_at": "2026-09-27T13:03:26.304297+00:00"
     },
     "5887666": {
       "matches": [
@@ -188,7 +188,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533540+00:00"
+      "updated_at": "2026-09-27T13:03:26.304302+00:00"
     },
     "5887679": {
       "matches": [
@@ -235,7 +235,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533545+00:00"
+      "updated_at": "2026-09-27T13:03:26.304313+00:00"
     },
     "5887698": {
       "matches": [
@@ -282,7 +282,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533550+00:00"
+      "updated_at": "2026-09-27T13:03:26.304345+00:00"
     },
     "6106275": {
       "matches": [
@@ -311,7 +311,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533555+00:00"
+      "updated_at": "2026-09-27T13:03:26.304349+00:00"
     },
     "6106278": {
       "matches": [
@@ -340,7 +340,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533561+00:00"
+      "updated_at": "2026-09-27T13:03:26.304379+00:00"
     },
     "5887800": {
       "matches": [
@@ -387,7 +387,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533568+00:00"
+      "updated_at": "2026-09-27T13:03:26.304419+00:00"
     },
     "5887814": {
       "matches": [],
@@ -444,7 +444,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533576+00:00"
+      "updated_at": "2026-09-27T13:03:26.304430+00:00"
     },
     "5887832": {
       "matches": [
@@ -491,7 +491,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533580+00:00"
+      "updated_at": "2026-09-27T13:03:26.304434+00:00"
     },
     "5887851": {
       "matches": [
@@ -538,11 +538,314 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-27T12:49:28.533588+00:00"
+      "updated_at": "2026-09-27T13:03:26.304447+00:00"
+    },
+    "6106414": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304272+00:00"
+    },
+    "6106335": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304309+00:00"
+    },
+    "6106279": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2007-11-27",
+          "home": "Manchester United",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 1,
+          "competition": "UEFA Champions League"
+        },
+        {
+          "id": null,
+          "date": "2007-09-19",
+          "home": "Sporting CP",
+          "away": "Manchester United",
+          "home_score": 0,
+          "away_score": 1,
+          "competition": "UEFA Champions League"
+        }
+      ],
+      "home_wins": 1,
+      "draws": 0,
+      "away_wins": 1,
+      "total": 2,
+      "source": "UEFA historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:03:26.304327+00:00"
+    },
+    "5887687": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-22",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 0,
+          "competition": "Taça de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-02-09",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Liga Portugal Betclic"
+        },
+        {
+          "id": null,
+          "date": "2025-01-07",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Taça da Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-08-31",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal Betclic"
+        }
+      ],
+      "home_wins": 0,
+      "draws": 2,
+      "away_wins": 2,
+      "total": 4,
+      "source": "ZeroZero historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:03:26.304340+00:00"
+    },
+    "5887702": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304355+00:00"
+    },
+    "5887716": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304360+00:00"
+    },
+    "5887724": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304365+00:00"
+    },
+    "5887734": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304369+00:00"
+    },
+    "5887735": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304375+00:00"
+    },
+    "5887752": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304384+00:00"
+    },
+    "6106255": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304389+00:00"
+    },
+    "5887760": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304394+00:00"
+    },
+    "5887769": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304398+00:00"
+    },
+    "5887778": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304402+00:00"
+    },
+    "5887784": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304410+00:00"
+    },
+    "5887796": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304415+00:00"
+    },
+    "5887840": {
+      "matches": [
+        {
+          "id": null,
+          "date": "2026-04-22",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 0,
+          "away_score": 0,
+          "competition": "Taça de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-02-09",
+          "home": "FC Porto",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 1,
+          "competition": "Liga Portugal Betclic"
+        },
+        {
+          "id": null,
+          "date": "2025-01-07",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Taça da Liga"
+        },
+        {
+          "id": null,
+          "date": "2024-08-31",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 2,
+          "away_score": 0,
+          "competition": "Liga Portugal Betclic"
+        }
+      ],
+      "home_wins": 2,
+      "draws": 2,
+      "away_wins": 0,
+      "total": 4,
+      "source": "ZeroZero historical H2H fallback",
+      "history_found": true,
+      "updated_at": "2026-09-27T13:03:26.304443+00:00"
+    },
+    "5887855": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304452+00:00"
+    },
+    "5887869": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304457+00:00"
+    },
+    "5887877": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304461+00:00"
+    },
+    "5887887": {
+      "matches": [],
+      "home_wins": 0,
+      "draws": 0,
+      "away_wins": 0,
+      "total": 0,
+      "source": "unavailable",
+      "history_found": false,
+      "updated_at": "2026-09-27T13:03:26.304465+00:00"
     }
   },
-  "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback",
+  "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
   "scope": "All upcoming Sporting CP fixtures; latest 4 meetings across all competitions.",
   "checked_fixtures": 35,
-  "enriched_fixtures": 14
+  "enriched_fixtures": 17
 }
