@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-27T14:59:23.732039+00:00",
+  "_updated_at": "2026-09-27T14:59:28.392147+00:00",
   "items": [
     {
       "title": "SC Braga 0x0 Sporting - Resumo, Destaques e Crónica do Jogo - zerozero.pt",
@@ -50,7 +50,7 @@
       "url": "https://www.zerozero.pt/noticias/sporting-caiu-na-dinamarca-mas-sequeira-avisa-nao-esta-nada-fechado-/1214010",
       "source": "Zerozero",
       "published": "Wed, 23 Sep 2026 20:35:25 GMT",
-      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/sporting-caiu-na-dinamarca-mas-sequeira-avisa-nao-esta-nada-fechado-/1214010 Warning: Target URL returned error 403: Forbidden Warning: This page maybe not yet fully loaded, consider explicitly specify a timeout"
+      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/sporting-caiu-na-dinamarca-mas-sequeira-avisa-nao-esta-nada-fechado-/1214010 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon"
     },
     {
       "title": "Sporting anuncia contratação de internacional argentina - zerozero.pt",
@@ -98,8 +98,7 @@
       "title": "Passou pelo Sporting de forma fugaz e vai terminar a carreira em dezembro - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/passou-pelo-sporting-de-forma-fugaz-e-vai-terminar-a-carreira-em-dezembro/1212416",
       "source": "Zerozero",
-      "published": "Tue, 22 Sep 2026 14:45:44 GMT",
-      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/passou-pelo-sporting-de-forma-fugaz-e-vai-terminar-a-carreira-em-dezembro/1212416 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1:"
+      "published": "Tue, 22 Sep 2026 14:45:44 GMT"
     },
     {
       "title": "Sporting segura Rui Borges, bem ou mal? - zerozero.pt",
@@ -126,6 +125,19 @@
       "published": "Sun, 20 Sep 2026 16:46:02 GMT"
     },
     {
+      "title": "Rio Ave x Sporting: antevisão, ausências e onzes prováveis - zerozero.pt",
+      "url": "https://www.zerozero.pt/noticias/rio-ave-x-sporting-antevisao-ausencias-e-onzes-provaveis/1184609",
+      "source": "Zerozero",
+      "published": "Thu, 27 Aug 2026 07:00:00 GMT"
+    },
+    {
+      "title": "Depois do empate na Reboleira, Sporting bate CD Mafra em jogo-treino - zerozero.pt",
+      "url": "https://www.zerozero.pt/noticias/depois-do-empate-na-reboleira-sporting-bate-cd-mafra-em-jogo-treino/1171165",
+      "source": "Zerozero",
+      "published": "Sun, 09 Aug 2026 07:00:00 GMT",
+      "description": "Title: Just a moment... URL Source: https://www.zerozero.pt/noticias/depois-do-empate-na-reboleira-sporting-bate-cd-mafra-em-jogo-treino/1171165 Warning: This page maybe requiring CAPTCHA, please make sure you are authorized to access this page. Markdown Content: ![Image 1: Icon "
+    },
+    {
       "title": "Sporting contrata internacional espanhol de 22 anos - zerozero.pt",
       "url": "https://www.zerozero.pt/noticias/sporting-contrata-internacional-espanhol-de-22-anos/1159234",
       "source": "Zerozero",
@@ -148,18 +160,6 @@
       "url": "https://www.zerozero.pt/noticias/sporting-pesca-novamente-em-portugal-pedro-lima-oficializado/1135938",
       "source": "Zerozero",
       "published": "Thu, 28 May 2026 07:00:00 GMT"
-    },
-    {
-      "title": "Sporting 1x2 Torreense - Resumo, Destaques e Crónica do Jogo - zerozero.pt",
-      "url": "https://www.zerozero.pt/noticias/2026-05-24-sporting-torreense-cronica/1134376",
-      "source": "Zerozero",
-      "published": "Sun, 24 May 2026 07:00:00 GMT"
-    },
-    {
-      "title": "Sporting x Torreense: antevisão, ausências e onzes prováveis - zerozero.pt",
-      "url": "https://www.zerozero.pt/noticias/sporting-x-torreense-antevisao-ausencias-e-onzes-provaveis/1133500",
-      "source": "Zerozero",
-      "published": "Sat, 23 May 2026 07:00:00 GMT"
     }
   ]
 }
