@@ -889,8 +889,9 @@ function openNews(n){
   const title=n.title||'Notícia';
   const img=n.image||n.image_url||n.thumbnail||'';
   const desc=n.description||n.summary||'';
-  const articleText=n.article_text||n.articleText||'';
+  const articleText=n.premium ? '' : (n.article_text||n.articleText||'');
   const url=n.url||'#';
+  const premiumNote=n.premium ? '<div class="news-reader-fallback mt-4 p-4"><div class="text-sm leading-6"><strong>Record Premium</strong><br>O texto integral deste artigo é exclusivo para assinantes. O conteúdo acima corresponde apenas ao excerto disponibilizado publicamente pelo Record.</div></div>' : '';
   document.getElementById('modalTitle').textContent=title;
   const content=newsArticleContent(articleText);
   const reader='<div class="news-source-badge">'+esc(n.source||'Notícia')+'</div>'+
@@ -899,7 +900,7 @@ function openNews(n){
     '<div class="news-reader-fallback mt-4 p-4">'+
       (desc?'<div class="text-sm leading-6">'+esc(desc)+'</div>':'<div class="text-sm muted">Sem resumo disponível.</div>')+
     '</div>'+
-    (content?'<div class="mt-4">'+content+'</div>':'<div class="news-reader-fallback mt-4 p-4"><div class="text-sm muted">O texto integral desta notícia não está disponível para leitura dentro da aplicação.</div></div>')+
+    (content?'<div class="mt-4">'+content+'</div>':premiumNote||'<div class="news-reader-fallback mt-4 p-4"><div class="text-sm muted">O texto integral desta notícia não está disponível para leitura dentro da aplicação.</div></div>')+
     '<div class="flex gap-2 mt-4">'+
       '<a class="pill inline-flex items-center justify-center px-4 py-2 text-xs font-semibold" target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">Abrir fonte ↗</a>'+
     '</div>';
