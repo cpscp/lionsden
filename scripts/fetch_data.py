@@ -4538,10 +4538,6 @@ def main():
         except Exception as e:
             print(f"SofaScore fixtures skipped: {e}")
         try:
-            fetch_sofascore_player_stats()
-        except Exception as e:
-            print(f"SofaScore player enrichment skipped: {e}")
-        try:
             fetch_sofascore_standings()
         except Exception as e:
             print(f"SofaScore standings skipped: {e}")
@@ -4593,6 +4589,13 @@ def main():
             fetch_fbref_stats()
         except Exception as e:
             print(f"FBref enrichment skipped: {e}")
+        # Refresh SofaScore player competition stats after FBref writes squad.json.
+        # FBref is useful for general player/profile data, but the competition-level
+        # stats required by the Stats page live in the SofaScore payload.
+        try:
+            fetch_sofascore_player_stats()
+        except Exception as e:
+            print(f"SofaScore player enrichment skipped: {e}")
 
         try:
             fetch_fsa_fixtures()
