@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-28T01:40:45.028723+00:00",
+  "_updated_at": "2026-09-28T01:56:48.819393+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -14,11 +14,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 766,
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 630,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 46,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 766,
@@ -724,11 +742,21 @@
       "stats": {
         "matches": 6,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 6,
-            "minutes": 405,
+          "Liga Portugal": {
+            "matches": 5,
+            "minutes": 399,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 1
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 6,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 405,
@@ -916,11 +944,29 @@
       "stats": {
         "matches": 5,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 5,
-            "minutes": 303,
+          "Champions League": {
+            "matches": 1,
+            "minutes": 84,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Liga Portugal": {
+            "matches": 3,
+            "minutes": 173,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 46,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 303,
@@ -1117,11 +1163,29 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 697,
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 528,
             "goals": 1,
-            "assists": 2
+            "assists": 2,
+            "yellow": 2,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 79,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 697,
@@ -1350,11 +1414,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 519,
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 469,
             "goals": 0,
-            "assists": 1
+            "assists": 1,
+            "yellow": 1,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 6,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 44,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 519,
@@ -1503,11 +1585,29 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 676,
-            "goals": 2,
-            "assists": 0
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 540,
+            "goals": 1,
+            "assists": 0,
+            "yellow": 2,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 46,
+            "goals": 1,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 676,
@@ -1740,11 +1840,21 @@
       "stats": {
         "matches": 2,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 2,
-            "minutes": 101,
+          "Liga Portugal": {
+            "matches": 1,
+            "minutes": 90,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 11,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 101,
@@ -1867,11 +1977,13 @@
       "stats": {
         "matches": 1,
         "byCompetition": {
-          "Outra competição": {
+          "Liga Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 90,
@@ -1988,11 +2100,29 @@
       "stats": {
         "matches": 6,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 6,
-            "minutes": 402,
+          "Liga Portugal": {
+            "matches": 4,
+            "minutes": 228,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 2,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 84,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 402,
@@ -2451,11 +2581,29 @@
       "stats": {
         "matches": 7,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 7,
-            "minutes": 175,
+          "Liga Portugal": {
+            "matches": 5,
+            "minutes": 96,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 16,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 63,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 175,
@@ -2658,11 +2806,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 807,
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 627,
             "goals": 1,
-            "assists": 0
+            "assists": 0,
+            "yellow": 2,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 807,
@@ -3025,11 +3191,13 @@
       "stats": {
         "matches": 5,
         "byCompetition": {
-          "Outra competição": {
+          "Liga Portugal": {
             "matches": 5,
             "minutes": 126,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
           }
         },
         "minutes": 126,
@@ -3228,11 +3396,21 @@
       "stats": {
         "matches": 3,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 3,
-            "minutes": 17,
+          "Liga Portugal": {
+            "matches": 2,
+            "minutes": 6,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 11,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 17,
@@ -3554,11 +3732,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 731,
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 578,
+            "goals": 0,
+            "assists": 1,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 74,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 79,
             "goals": 1,
-            "assists": 1
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 731,
@@ -3900,11 +4096,29 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 293,
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 214,
             "goals": 2,
-            "assists": 2
+            "assists": 2,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 16,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 63,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 293,
@@ -4118,11 +4332,21 @@
       "stats": {
         "matches": 2,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 2,
-            "minutes": 42,
+          "Liga Portugal": {
+            "matches": 1,
+            "minutes": 15,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 27,
             "goals": 2,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 42,
@@ -4311,11 +4535,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 662,
-            "goals": 2,
-            "assists": 3
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 509,
+            "goals": 1,
+            "assists": 3,
+            "yellow": 3,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 1,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 63,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 662,
@@ -4727,11 +4969,29 @@
       "stats": {
         "matches": 9,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 9,
-            "minutes": 647,
-            "goals": 2,
-            "assists": 1
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 508,
+            "goals": 1,
+            "assists": 1,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 66,
+            "goals": 1,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 73,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 647,
@@ -4915,11 +5175,21 @@
       "stats": {
         "matches": 4,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 4,
-            "minutes": 54,
+          "Liga Portugal": {
+            "matches": 3,
+            "minutes": 27,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 27,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 54,
@@ -5099,11 +5369,29 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 287,
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 170,
             "goals": 0,
-            "assists": 0
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 27,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 287,
@@ -5216,11 +5504,29 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 455,
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 414,
             "goals": 3,
-            "assists": 1
+            "assists": 1,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 24,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 17,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
         "minutes": 455,
@@ -5357,11 +5663,21 @@
       "stats": {
         "matches": 8,
         "byCompetition": {
-          "Outra competição": {
-            "matches": 8,
-            "minutes": 531,
-            "goals": 7,
-            "assists": 1
+          "Liga Portugal": {
+            "matches": 7,
+            "minutes": 457,
+            "goals": 6,
+            "assists": 1,
+            "yellow": 4,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 74,
+            "goals": 1,
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
           }
         },
         "minutes": 531,
