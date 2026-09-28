@@ -957,16 +957,33 @@ def fetch_fotmob_core():
             # app can show player leaders consistently with the team competition
             # filter. This uses the same official/first-team match set as the
             # global player stats above.
+            # recentMatches frequently omits the competition name. Use the
+            # already-normalised Sporting fixture feed as the authoritative
+            # match-id -> competition mapping so player leaders use exactly
+            # the same competition scope as team statistics.
+            fixture_by_id = {
+                str(f.get("id")): f
+                for f in fixtures
+                if f.get("id")
+            }
             by_comp = {}
             for rm in played:
+                match_id = rm.get("matchId") or rm.get("id") or rm.get("eventId")
                 comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
                 comp_name = comp.get("name") if isinstance(comp, dict) else comp
+                fixture = fixture_by_id.get(str(match_id)) if match_id is not None else None
+                if fixture:
+                    fixture_comp = (fixture.get("competition") or {}).get("name")
+                    if fixture_comp:
+                        comp_name = fixture_comp
                 comp_name = clean(comp_name) or "Outra competição"
-                bucket = by_comp.setdefault(comp_name, {"matches":0,"minutes":0,"goals":0,"assists":0})
+                bucket = by_comp.setdefault(comp_name, {"matches":0,"minutes":0,"goals":0,"assists":0,"yellow":0,"red":0})
                 bucket["matches"] += 1
                 bucket["minutes"] += int(fnum(rm.get("minutesPlayed")) or 0)
                 bucket["goals"] += int(fnum(rm.get("goals")) or 0)
                 bucket["assists"] += int(fnum(rm.get("assists")) or 0)
+                bucket["yellow"] += int(fnum(rm.get("yellowCards")) or 0)
+                bucket["red"] += int(fnum(rm.get("redCards")) or 0)
             stats["byCompetition"] = by_comp
             # "Titular" is deliberately not exposed: provider bench/start flags
             # are not considered reliable enough for the app's core statistics.
