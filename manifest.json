@@ -1,6 +1,7 @@
 {
   "name": "Lion's Den · Sporting CP",
   "short_name": "Lion's Den",
+  "id": "/lionsden/",
   "description": "A companion app para acompanhar o Sporting CP.",
   "lang": "pt-PT",
   "start_url": "./",
