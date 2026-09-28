@@ -942,10 +942,10 @@ function playerLeaderStatsForCompetition(compKey){
     'taca-liga':['League Cup','Taça da Liga']
   };
   if(compKey==='geral') return players.map(p=>({player:p,stats:p.stats||{}}));
-  const names=(map[compKey]||[]).map(x=>String(x).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,''));
+  const names=(map[compKey]||[]).map(x=>String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
   return players.map(p=>{
     const by=p.stats?.byCompetition||{};
-    const entry=Object.entries(by).find(([name])=>names.includes(String(name).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'')));
+    const entry=Object.entries(by).find(([name])=>names.includes(String(name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')));
     return {player:p,stats:entry?.[1]||null};
   }).filter(x=>x.stats);
 }
