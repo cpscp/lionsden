@@ -1,10 +1,10 @@
 {
   "name": "Lion's Den · Sporting CP",
   "short_name": "Lion's Den",
-  "id": "/lionsden-app/",
+  "id": "https://cpscp.github.io/lionsden/?pwa=lions-den",
   "description": "A companion app para acompanhar o Sporting CP.",
   "lang": "pt-PT",
-  "start_url": "./",
+  "start_url": "./?pwa=lions-den",
   "scope": "./",
   "display": "standalone",
   "background_color": "#060b08",
