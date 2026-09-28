@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-28T07:56:57.433253+00:00",
+  "_updated_at": "2026-09-28T11:50:39.909679+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -1890,7 +1890,7 @@
           "club": "Sporting CP B"
         },
         {
-          "period": "2025-07-01T00:00:00 → 2025-07-01T00:00:00",
+          "period": "2025-07-01T00:00:00",
           "club": "Sporting Clube de Portugal Under 21"
         }
       ],
@@ -3605,12 +3605,12 @@
           "club": "Sporting CP"
         },
         {
-          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
-          "club": "Sporting CP U19"
+          "period": "2025-07-01T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
         },
         {
-          "period": "2025-07-01T00:00:00 → 2025-07-01T00:00:00",
-          "club": "Sporting Clube de Portugal Under 21"
+          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
         },
         {
           "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
@@ -3991,6 +3991,10 @@
         {
           "period": "2024/2025",
           "club": "Gil Vicente"
+        },
+        {
+          "period": "2026-07-07T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
         },
         {
           "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
