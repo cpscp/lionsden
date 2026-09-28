@@ -2,12 +2,12 @@ name: Atualizar jogos em direto
 
 concurrency:
   group: lions-den-live
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 on:
-  # Offset 5 minutes from the hour to reduce GitHub scheduler contention.
+  # 10 em 10 minutos, deslocado do início da hora para reduzir atrasos do scheduler.
   schedule:
-    - cron: '7,17,27,37,47,57 * * * *'
+    - cron: '8,18,28,38,48,58 * * * *'
   workflow_dispatch:
 
 permissions:
