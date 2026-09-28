@@ -465,7 +465,7 @@ function refereeInfo(v){
 function metric(k,v){return `<div class="statbox p-4"><div class="text-[10px] uppercase tracking-widest muted">${k}</div><div class="text-[23px] font-bold mt-1">${v??'—'}</div></div>`}
 function render(){
 const u=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=u?`dados ${timeAgo(u)}`:'sem dados';
-renderHome();renderGames();renderSquad();renderPlayerLeaders();
+renderHome();renderGames();renderSquad();
 renderStats();renderNews();renderClassification();renderTV();
 }
 function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-center"><div class="text-[9px] uppercase tracking-[.2em] muted">Contagem decrescente</div><div class="text-xl font-bold mt-1">a calcular…</div></div>';}
