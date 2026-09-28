@@ -18,7 +18,7 @@
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}.next-match-hero{position:relative}.next-match-hero::before{content:"";position:absolute;inset:0;background:url('./assets/estadio2.png') center/cover no-repeat;opacity:.10;pointer-events:none;z-index:0}.next-match-hero>*{position:relative;z-index:1}
 .muted{color:var(--muted)}.screen{display:none}.screen.active{display:block}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(18,29,22,.97);border-top:1px solid var(--line);backdrop-filter:blur(14px)}
-.navbtn{color:var(--muted)}.navbtn.active{color:#fff}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#03130c;font-weight:800}
+.navbtn{color:var(--muted)}.navbtn.active{color:#fff}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;overflow:hidden;flex:0 0 40px}.logo img{width:40px;height:40px;display:block;object-fit:contain;border-radius:50%}
 .row{border-top:1px solid var(--line)}.statbox{background:#09110c;border:1px solid var(--line);border-radius:16px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:80;display:none}.modal.open{display:flex}
 .modalpanel{max-width:540px;width:100%;margin:auto;max-height:94vh;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:24px 24px 0 0}.source{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#698477}
 .team-logo{width:44px;height:44px;object-fit:contain;display:block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
@@ -164,10 +164,9 @@
 </head>
 <body>
 <div class="wrap">
-<header class="header"><div class="px-4 py-3 flex items-center justify-between">
+<header class="header"><div class="px-4 py-3 flex items-center justify-between relative min-h-[72px]">
 <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleDrawer(true)">☰</button>
-<div class="flex items-center gap-3 ml-2"><div class="logo">S</div><div><div class="text-[20px] font-bold">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted">Sporting CP</div></div></div>
-<span id="updated" class="pill px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span>
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-3"><div class="logo"><img src="./icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><div class="text-[20px] font-bold leading-none">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted mt-1">Sporting CP</div></div></div>
 </div></header>
 
 <main class="px-4 pt-4 space-y-5">
@@ -284,7 +283,7 @@
 
 <div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
 <aside id="drawer" class="drawer" aria-label="Menu principal">
-<div class="p-4 border-b border-white/5 flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo">S</div><div><b>Lion's Den</b><div class="text-[9px] uppercase tracking-[.18em] muted">Sporting CP</div></div></div><button class="pill w-9 h-9" onclick="toggleDrawer(false)">×</button></div>
+<div class="p-4 border-b border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo"><img src="./icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><b>Lion's Den</b><div class="text-[9px] uppercase tracking-[.18em] muted">Sporting CP</div></div></div><button class="pill w-9 h-9" onclick="toggleDrawer(false)">×</button></div><div class="mt-3"><span id="updated" class="pill inline-flex px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span></div></div>
 <div class="p-3">
 <button class="drawer-link navbtn active" data-go="home"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 9.5 10 3l7 6.5"/><path d="M5 8.5V17h10V8.5"/><path d="M8 17v-5h4v5"/></svg></span><span>Início</span></button>
 <div class="drawer-section">Futebol</div>
