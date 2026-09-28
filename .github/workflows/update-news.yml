@@ -12,8 +12,8 @@ on:
       - 'scripts/requirements.txt'
       - '.github/workflows/update-news.yml'
   schedule:
-    # Every 10 minutes, offset from the hour to reduce GitHub scheduler contention.
-    - cron: '2,12,22,32,42,52 * * * *'
+    # 10 em 10 minutos, fora do início da hora para reduzir atrasos do scheduler.
+    - cron: '3,13,23,33,43,53 * * * *'
   workflow_dispatch:
 
 permissions:
