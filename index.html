@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>.stadium-menu-icon svg{width:20px;height:20px;display:block}\n
-@font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}.jersey-number,.shirt-number{font-family:'CustomDigits'!important;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400}
+@font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.ttf?v=3') format('truetype');font-style:normal;font-weight:400;font-display:swap}.jersey-number,.shirt-number{font-family:'CustomDigits',sans-serif!important;font-variant-numeric:normal;font-feature-settings:'liga' 0,'kern' 0;font-weight:400!important;font-style:normal!important}
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -665,7 +665,7 @@ function smallShirtBadge(number){
       <path d="M21 10l-12 8 6 12 6-3v25h22V27l6 3 6-12-12-8c-2 5-5 8-11 8s-9-3-11-8Z"/>
       <path d="M26 10c1 4 3 6 6 6s5-2 6-6"/>
     </svg>
-    <span class="jersey-number relative z-10 text-[10px] leading-none font-normal translate-y-[3px]">${esc(number)}</span>
+    <span class="jersey-number relative z-10 text-[10px] leading-none font-normal translate-y-[3px]" style="font-family:CustomDigits,sans-serif!important;font-weight:400!important">${esc(number)}</span>
   </div>`:'<div class="w-11 h-11 shrink-0"></div>';
 }
 function squadGroup(title, players, indexMap){
