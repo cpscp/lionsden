@@ -12,7 +12,7 @@
     {
       "src": "./icons/lions-den-final.svg",
       "sizes": "512x512",
-      "type": "image/webp",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
