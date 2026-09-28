@@ -953,6 +953,21 @@ def fetch_fotmob_core():
                 if is_first_team and not is_reserve and is_official and (fnum(rm.get("minutesPlayed")) or 0) > 0:
                     played.append(rm)
             stats["matches"] = len(played)
+            # Keep a competition-level breakdown for the current season so the
+            # app can show player leaders consistently with the team competition
+            # filter. This uses the same official/first-team match set as the
+            # global player stats above.
+            by_comp = {}
+            for rm in played:
+                comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
+                comp_name = comp.get("name") if isinstance(comp, dict) else comp
+                comp_name = clean(comp_name) or "Outra competição"
+                bucket = by_comp.setdefault(comp_name, {"matches":0,"minutes":0,"goals":0,"assists":0})
+                bucket["matches"] += 1
+                bucket["minutes"] += int(fnum(rm.get("minutesPlayed")) or 0)
+                bucket["goals"] += int(fnum(rm.get("goals")) or 0)
+                bucket["assists"] += int(fnum(rm.get("assists")) or 0)
+            stats["byCompetition"] = by_comp
             # "Titular" is deliberately not exposed: provider bench/start flags
             # are not considered reliable enough for the app's core statistics.
             stats["minutes"] = int(sum(fnum(rm.get("minutesPlayed")) or 0 for rm in played))
