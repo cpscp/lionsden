@@ -328,7 +328,8 @@ async function ensureCustomDigitsFont(){
 }
 const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json'];const D={};
 async function load(){
-  await ensureCustomDigitsFont();
+  // A fonte é apenas visual: nunca pode bloquear o carregamento da app.
+  await Promise.race([ensureCustomDigitsFont(), new Promise(resolve=>setTimeout(resolve,2500))]);
   const loadOne=async f=>{
     const ctl=new AbortController();
     const timer=setTimeout(()=>ctl.abort(),5000);
