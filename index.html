@@ -934,68 +934,49 @@ function currentStatsCard(st,label){
   </div>`;
 }
 function playerLeaderStatsForCompetition(compKey){
-  const players=(D['squad.json']?.squad||[]).filter(p=>p);
-  const official=['Liga Portugal','UEFA Champions League','Taça da Liga','Taça de Portugal'];
-
-  const normalise=name=>String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  const findCompetition=(p,name)=>{
-    const comps=p.competitions||p.stats?.competitions||{};
-    const target=normalise(name);
-    const key=Object.keys(comps).find(k=>normalise(k)===target);
-    return key?comps[key]:null;
-  };
-
-  if(compKey==='geral'){
-    return players.map(player=>{
-      const entries=official.map(name=>findCompetition(player,name)).filter(Boolean);
-      const sum=key=>entries.reduce((total,stats)=>total+(Number(stats?.[key])||0),0);
-      return {
-        player,
-        stats:{
-          goals:sum('goals'),
-          assists:sum('assists'),
-          yellow:sum('yellow'),
-          red:sum('red')
-        }
-      };
-    });
-  }
-
+  const players=(D['squad.json']?.squad||[]).filter(Boolean);
   const map={
-    'primeira-liga':'Liga Portugal',
-    'champions':'UEFA Champions League',
-    'taca-portugal':'Taça de Portugal',
-    'taca-liga':'Taça da Liga'
+    'primeira-liga':['Liga Portugal','Primeira Liga'],
+    'champions':['UEFA Champions League','Champions League'],
+    'taca-portugal':['Taça de Portugal'],
+    'taca-liga':['Taça da Liga','League Cup']
   };
-  const competition=map[compKey];
+  const normalise=name=>String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+  const competitionEntries=player=>{
+    const by=player?.stats?.byCompetition||player?.byCompetition||player?.competitions||{};
+    return by&&typeof by==='object'&&!Array.isArray(by)?by:{};
+  };
+  const matchingEntries=(player,names)=>{
+    const targets=(names||[]).map(normalise);
+    return Object.entries(competitionEntries(player))
+      .filter(([name])=>targets.includes(normalise(name)))
+      .map(([,stats])=>stats||{});
+  };
+  const sumStats=entries=>{
+    const sum=key=>entries.reduce((total,stats)=>total+(Number(stats?.[key])||0),0);
+    return {goals:sum('goals'),assists:sum('assists'),yellow:sum('yellow'),red:sum('red'),matches:sum('matches'),minutes:sum('minutes')};
+  };
+  if(compKey==='geral'){
+    return players.map(player=>({player,stats:sumStats(Object.values(competitionEntries(player)))}));
+  }
+  const names=map[compKey]||[];
   return players.map(player=>{
-    const stats=findCompetition(player,competition);
-    return {player,stats:stats||null};
+    const entries=matchingEntries(player,names);
+    return {player,stats:entries.length?sumStats(entries):null};
   }).filter(x=>x.stats);
 }
 function playerLeaderCards(compKey){
   const rows=playerLeaderStatsForCompetition(compKey);
-  const topBy=key=>rows
-    .filter(x=>Number(x.stats?.[key]||0)>0)
-    .sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
-
+  const topBy=key=>rows.filter(x=>Number(x.stats?.[key]||0)>0).sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
   const card=(row,label,key,unit,extra)=>{
     if(!row)return '';
     return '<div class="player-leader-card '+(extra||'')+'"><div class="player-leader-shade"></div><img class="player-leader-photo" src="'+esc(row.player.photo||'')+'" alt="'+esc(row.player.name||'')+'" loading="lazy"><div class="player-leader-copy"><div class="player-leader-label">'+label+'</div><div><div class="player-leader-name">'+esc(row.player.name||'')+'</div><div class="player-leader-value"><strong>'+esc(row.stats?.[key]??0)+'</strong>'+unit+'</div></div></div></div>';
   };
-
-  const scorer=topBy('goals');
-  const assister=topBy('assists');
-  const yellow=topBy('yellow');
-  const red=topBy('red');
-
-  if(!scorer&&!assister&&!yellow&&!red){
-    return '<div class="text-[10px] muted py-2">Dados individuais por competição ainda não disponíveis.</div>';
-  }
-
+  const scorer=topBy('goals'),assister=topBy('assists'),yellow=topBy('yellow'),red=topBy('red');
+  if(!scorer&&!assister&&!yellow&&!red)return '<div class="text-[10px] muted py-2">Dados individuais por competição ainda não disponíveis.</div>';
   return '<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Individuais</div><div class="player-leaders">'+
     card(scorer,'Melhor marcador','goals','golos')+
-    card(assister,'Líder de assistências','assists','assistências','assists')+
+    card(assister,'Mais assistências','assists','assistências','assists')+
     card(yellow,'Mais amarelos','yellow','amarelos')+
     card(red,'Mais vermelhos','red','vermelhos')+
     '</div></div>';
@@ -1045,6 +1026,7 @@ function renderStats(){
         </div>
       </div>
       <div id="currentStatsContent" class="mt-5">${currentStatsCard(getStats(),compLabel())}</div>
+      ${playerLeaderCards(compKey)}
     </div>
     <details id="seasonCompare" class="card overflow-hidden mt-5">
       <summary class="list-none cursor-pointer p-5 sm:p-6 flex items-center justify-between gap-4">
