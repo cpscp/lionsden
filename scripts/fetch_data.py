@@ -4528,6 +4528,182 @@ def fetch_oddspapi_betano_odds():
 
 
 # Historical team stats and competitive-only team metrics are generated for the PWA.
+
+def fetch_live_updates():
+    """Lightweight 10-minute refresh for live/recent/upcoming Sporting matches.
+
+    This deliberately avoids the expensive full football pipeline. It uses
+    SofaScore's team/event feed to keep the fixture card and match details
+    current, while the full pipeline remains responsible for player/season
+    statistics and historical enrichment.
+    """
+    team_id = 3001
+    now_ts = int(time.time())
+    existing = safe_existing("fixtures.json") or {}
+    existing_fixtures = list(existing.get("fixtures") or [])
+
+    events = []
+    for direction in ("last", "next"):
+        try:
+            payload = sofa_get(f"/team/{team_id}/events/{direction}/0")
+            events.extend(payload.get("events", []) or [])
+        except Exception as e:
+            print("Live SofaScore feed warning:", direction, e)
+
+    unique = {str(e.get("id")): e for e in events if e.get("id")}
+    if not unique:
+        print("Live SofaScore feed returned no events; keeping existing fixtures.")
+        return
+
+    def normalise_event(e):
+        home = e.get("homeTeam") or {}
+        away = e.get("awayTeam") or {}
+        status = e.get("status") or {}
+        stype = clean(status.get("type")).lower()
+        finished = stype in {"finished", "afterpenalties", "afterextra"}
+        in_progress = stype in {"inprogress", "in_progress", "live"}
+        hs = e.get("homeScore") or {}
+        aws = e.get("awayScore") or {}
+        ts = int(e.get("startTimestamp") or 0)
+        return {
+            "id": e.get("id"),
+            "custom_id": clean(e.get("customId")),
+            "date": ts,
+            "kickoff_date": datetime.fromtimestamp(ts, timezone.utc).date().isoformat() if ts else "",
+            "kickoff_local_time": datetime.fromtimestamp(ts, timezone.utc).strftime("%H:%M") if ts else "",
+            "status": {
+                "short": "finished" if finished else ("live" if in_progress else "scheduled"),
+                "long": clean(status.get("description")) or (
+                    "Terminado" if finished else ("Em direto" if in_progress else "Agendado")
+                ),
+            },
+            "competition": {
+                "name": clean((e.get("tournament") or {}).get("name")),
+                "round": clean((e.get("roundInfo") or {}).get("name")),
+                "season": "2026/27",
+            },
+            "home": {"id": home.get("id"), "name": clean(home.get("name"))},
+            "away": {"id": away.get("id"), "name": clean(away.get("name"))},
+            "goals": {
+                "home": hs.get("current") if finished or in_progress else None,
+                "away": aws.get("current") if finished or in_progress else None,
+            },
+            "half_time": {
+                "home": hs.get("period1") if finished else None,
+                "away": aws.get("period1") if finished else None,
+            },
+            "venue": {},
+            "referee": None,
+            "source": "Sofascore live refresh",
+        }
+
+    # Only mutate matches that matter right now:
+    # live, finished in the last 4h, or starting within the next 12h.
+    relevant = []
+    for e in unique.values():
+        f = normalise_event(e)
+        if not f["date"]:
+            continue
+        status = f["status"]["short"]
+        if status == "live" or (status == "finished" and now_ts - f["date"] <= 4 * 3600) or (
+            status == "scheduled" and 0 <= f["date"] - now_ts <= 12 * 3600
+        ):
+            relevant.append((e, f))
+
+    if not relevant:
+        print("Live refresh: no relevant match window.")
+        return
+
+    # Merge by SofaScore event id, preserving the full season feed from the
+    # last full football run.
+    by_id = {str(f.get("id")): dict(f) for f in existing_fixtures if f.get("id")}
+    changed = False
+    details_by_id = {
+        str(d.get("match_id")): d
+        for d in (safe_existing("match-details.json") or {}).get("fixtures", [])
+        if d.get("match_id") is not None
+    }
+
+    for raw, f in relevant:
+        sid = str(f["id"])
+        old = by_id.get(sid, {})
+        merged = dict(old)
+        merged.update(f)
+        merged["venue"] = dict(old.get("venue") or {})
+        merged["venue"].update(f.get("venue") or {})
+        by_id[sid] = merged
+
+        # One event call gives authoritative status, referee and venue.
+        try:
+            detail = sofa_get(f"/event/{sid}").get("event") or raw
+            ref = detail.get("referee") or {}
+            venue = detail.get("venue") or {}
+            if isinstance(ref, dict):
+                merged["referee"] = clean(ref.get("name")) or merged.get("referee")
+            elif ref:
+                merged["referee"] = clean(ref)
+            if isinstance(venue, dict):
+                for key in ("name", "city", "latitude", "longitude", "capacity"):
+                    value = venue.get(key)
+                    if value not in (None, ""):
+                        merged.setdefault("venue", {})[
+                            {"latitude": "lat", "longitude": "lon"}.get(key, key)
+                        ] = value
+
+            status = merged["status"]["short"]
+            # Only fetch the expensive event sub-resources while a match is
+            # live or immediately after it finishes.
+            if status == "live" or (status == "finished" and now_ts - merged["date"] <= 4 * 3600):
+                incidents = sofa_get(f"/event/{sid}/incidents")
+                statistics = sofa_get(f"/event/{sid}/statistics")
+                lineups = sofa_get(f"/event/{sid}/lineups")
+                details_by_id[sid] = {
+                    "match_id": merged.get("id"),
+                    "sofascore_id": sid,
+                    "event": detail,
+                    "lineups": lineups,
+                    "incidents": incidents,
+                    "statistics": statistics,
+                    "average_positions": {},
+                    "managers": {},
+                }
+        except Exception as e:
+            print("Live event detail warning:", sid, e)
+
+        if old != merged:
+            changed = True
+
+    if changed:
+        merged_fixtures = sorted(by_id.values(), key=lambda x: x.get("date") or 0)
+        write_json("fixtures.json", {
+            "team_id": team_id,
+            "fixtures": merged_fixtures,
+            "source": "Sofascore + 10-minute live refresh",
+            "season": "2026/27",
+        })
+        print(f"Live refresh: {len(relevant)} relevant fixture(s) updated.")
+    else:
+        print("Live refresh: no fixture changes.")
+
+    # Match details are only written when we actually obtained live/recent
+    # details, avoiding needless commits every 10 minutes.
+    if details_by_id:
+        current_details = (safe_existing("match-details.json") or {}).get("fixtures", [])
+        current_by_id = {
+            str(d.get("match_id")): d for d in current_details if d.get("match_id") is not None
+        }
+        detail_changed = False
+        for sid, detail in details_by_id.items():
+            if current_by_id.get(sid) != detail:
+                current_by_id[sid] = detail
+                detail_changed = True
+        if detail_changed:
+            write_json("match-details.json", {
+                "fixtures": list(current_by_id.values()),
+                "source": "Sofascore live refresh",
+                "scope": "Sporting CP first team, live/recent matches",
+            })
+
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
     errors = []
