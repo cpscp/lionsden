@@ -10,10 +10,16 @@
   "theme_color": "#07100b",
   "icons": [
     {
-      "src": "./icons/lions-den-final.svg",
+      "src": "./icons/lions-den-pwa-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/lions-den-final.svg",
+      "sizes": "307x307",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }
