@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-28T01:04:24.920097+00:00",
+  "_updated_at": "2026-09-28T01:10:30.552027+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -13,6 +13,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 766,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 766,
         "goals": 0,
         "assists": 0,
@@ -293,6 +301,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1320169.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -493,6 +502,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1282449.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -634,6 +644,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1755850.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -712,6 +723,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1232172.png",
       "stats": {
         "matches": 6,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 6,
+            "minutes": 405,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 405,
         "goals": 0,
         "assists": 0,
@@ -896,6 +915,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
       "stats": {
         "matches": 5,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 5,
+            "minutes": 303,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 303,
         "goals": 0,
         "assists": 0,
@@ -1089,6 +1116,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1031656.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 697,
+            "goals": 1,
+            "assists": 2
+          }
+        },
         "minutes": 697,
         "goals": 1,
         "assists": 2,
@@ -1314,6 +1349,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1325998.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 519,
+            "goals": 0,
+            "assists": 1
+          }
+        },
         "minutes": 519,
         "goals": 0,
         "assists": 1,
@@ -1459,6 +1502,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 676,
+            "goals": 2,
+            "assists": 0
+          }
+        },
         "minutes": 676,
         "goals": 2,
         "assists": 0,
@@ -1688,6 +1739,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1703622.png",
       "stats": {
         "matches": 2,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 2,
+            "minutes": 101,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 101,
         "goals": 0,
         "assists": 0,
@@ -1807,6 +1866,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1609327.png",
       "stats": {
         "matches": 1,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 90,
         "goals": 0,
         "assists": 0,
@@ -1920,6 +1987,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1156380.png",
       "stats": {
         "matches": 6,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 6,
+            "minutes": 402,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 402,
         "goals": 0,
         "assists": 0,
@@ -2155,6 +2230,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1093025.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2374,6 +2450,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
       "stats": {
         "matches": 7,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 7,
+            "minutes": 175,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 175,
         "goals": 0,
         "assists": 0,
@@ -2573,6 +2657,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1310480.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 807,
+            "goals": 1,
+            "assists": 0
+          }
+        },
         "minutes": 807,
         "goals": 1,
         "assists": 0,
@@ -2719,6 +2811,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1663855.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -2931,6 +3024,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
       "stats": {
         "matches": 5,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 5,
+            "minutes": 126,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 126,
         "goals": 0,
         "assists": 0,
@@ -3126,6 +3227,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
       "stats": {
         "matches": 3,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 3,
+            "minutes": 17,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 17,
         "goals": 0,
         "assists": 0,
@@ -3288,6 +3397,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -3443,6 +3553,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1339345.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 731,
+            "goals": 1,
+            "assists": 1
+          }
+        },
         "minutes": 731,
         "goals": 1,
         "assists": 1,
@@ -3579,6 +3697,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1918387.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -3645,6 +3764,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1759322.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -3779,6 +3899,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 293,
+            "goals": 2,
+            "assists": 2
+          }
+        },
         "minutes": 293,
         "goals": 2,
         "assists": 2,
@@ -3989,6 +4117,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
       "stats": {
         "matches": 2,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 2,
+            "minutes": 42,
+            "goals": 2,
+            "assists": 0
+          }
+        },
         "minutes": 42,
         "goals": 2,
         "assists": 0,
@@ -4174,6 +4310,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 662,
+            "goals": 2,
+            "assists": 3
+          }
+        },
         "minutes": 662,
         "goals": 2,
         "assists": 3,
@@ -4353,6 +4497,7 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/554283.png",
       "stats": {
         "matches": 0,
+        "byCompetition": {},
         "minutes": 0,
         "goals": 0,
         "assists": 0,
@@ -4581,6 +4726,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
       "stats": {
         "matches": 9,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 9,
+            "minutes": 647,
+            "goals": 2,
+            "assists": 1
+          }
+        },
         "minutes": 647,
         "goals": 2,
         "assists": 1,
@@ -4761,6 +4914,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
       "stats": {
         "matches": 4,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 4,
+            "minutes": 54,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 54,
         "goals": 0,
         "assists": 0,
@@ -4937,6 +5098,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1458757.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 287,
+            "goals": 0,
+            "assists": 0
+          }
+        },
         "minutes": 287,
         "goals": 0,
         "assists": 0,
@@ -5046,6 +5215,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 455,
+            "goals": 3,
+            "assists": 1
+          }
+        },
         "minutes": 455,
         "goals": 3,
         "assists": 1,
@@ -5179,6 +5356,14 @@
       "photo": "https://images.fotmob.com/image_resources/playerimages/792303.png",
       "stats": {
         "matches": 8,
+        "byCompetition": {
+          "Outra competição": {
+            "matches": 8,
+            "minutes": 531,
+            "goals": 7,
+            "assists": 1
+          }
+        },
         "minutes": 531,
         "goals": 7,
         "assists": 1,
