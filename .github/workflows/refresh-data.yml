@@ -11,9 +11,9 @@ on:
       - '.github/workflows/refresh-data.yml'
   schedule:
     # Notícias + jogos/live: de 10 em 10 minutos.
-    - cron: '4,14,24,34,44,54 * * * *'
+    - cron: '5,15,25,35,45,55 * * * *'
     # Futebol + estatísticas completas: de 6 em 6 horas.
-    - cron: '19 */6 * * *'
+    - cron: '20 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -44,7 +44,7 @@ jobs:
         run: python scripts/fetch_data.py
 
       - name: Atualizar futebol e estatísticas
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.schedule == '19 */6 * * *'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.schedule == '20 */6 * * *'
         env:
           FSAPI_KEY: ${{ secrets.FSAPI_KEY }}
           ODDSPAPI_API_KEY: ${{ secrets.ODDSPAPI_API_KEY }}
