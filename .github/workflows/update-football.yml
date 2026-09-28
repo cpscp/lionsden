@@ -2,7 +2,6 @@ name: Atualizar futebol e estatísticas
 
 concurrency:
   group: lions-den-football
-  queue: single
   cancel-in-progress: true
 
 on:
@@ -12,8 +11,6 @@ on:
       - 'scripts/fetch_data.py'
       - 'scripts/requirements.txt'
       - '.github/workflows/update-football.yml'
-  schedule:
-    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:
