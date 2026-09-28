@@ -187,7 +187,6 @@
 <section id="squad" class="screen space-y-5"><div><h2 class="text-[21px] font-bold">Plantel</h2><p class="text-[11px] muted">Época 2026/27 · todas as competições</p></div><div class="card overflow-hidden h-44 sm:h-52 relative border-white/10"><img src="https://www.wikisporting.com/images/b/b0/Sporting_7.26.jpg" alt="Sporting CP" class="absolute inset-0 w-full h-full object-cover object-[center_24%]"><div class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/65 to-transparent"></div><div class="absolute bottom-0 right-0 w-28 h-10 bg-black/25"></div><div class="absolute bottom-0 left-0 p-4"><div class="text-[10px] uppercase tracking-[.18em] text-white/70">Sporting Clube de Portugal</div></div></div><div id="squadList" class="space-y-6"></div></section>
 <section id="stats" class="screen space-y-4">
 <div><h2 class="text-[21px] font-bold">Estatísticas</h2><p class="text-[11px] muted">Sporting CP · todas as competições</p></div>
-<div id="playerLeaders" class="player-leaders"></div>
 <div id="teamStats"></div>
 </section>
 <section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2></div><div id="newsList" class="space-y-3"></div></section>
@@ -929,18 +928,34 @@ function currentStatsCard(st,label){
         ${metric('Casa · V/E/D',st.home.wins+'/'+st.home.draws+'/'+st.home.losses)}${metric('Fora · V/E/D',st.away.wins+'/'+st.away.draws+'/'+st.away.losses)}
       </div>
     </div>
+    ${playerLeaderCards(window._statsCompetitionKey||'geral')}
     ${total?'<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Melhores / piores resultados</div><div class="grid grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
     ${showPoints?'<div class="mt-5 text-[8px] muted">Pontos calculados em 3/1/0 como indicador estatístico da competição.</div>':''}
   </div>`;
 }
-function renderPlayerLeaders(){
-  const el=document.getElementById('playerLeaders');if(!el)return;
-  const players=(D['squad.json']?.squad||[]).filter(p=>p&&p.stats);
-  if(!players.length){el.innerHTML='';return;}
-  const topBy=key=>players.filter(p=>Number(p.stats?.[key]||0)>0).sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
-  const scorer=topBy('goals'), assister=topBy('assists');
-  const card=(p,label,key,unit,extra)=>p?'<div class="player-leader-card '+(extra||'')+'"><div class="player-leader-shade"></div><img class="player-leader-photo" src="'+esc(p.photo||'')+'" alt="'+esc(p.name)+'" loading="lazy"><div class="player-leader-copy"><div class="player-leader-label">'+label+'</div><div><div class="player-leader-name">'+esc(p.name)+'</div><div class="player-leader-value"><strong>'+esc(p.stats?.[key]??0)+'</strong>'+unit+'</div></div></div></div>':'';
-  el.innerHTML=card(scorer,'Melhor marcador','goals','golos')+card(assister,'Mais assistências','assists','assistências','assists');
+function playerLeaderStatsForCompetition(compKey){
+  const players=(D['squad.json']?.squad||[]).filter(p=>p);
+  const map={
+    'primeira-liga':['Liga Portugal','Primeira Liga'],
+    'champions':['Champions League','Liga dos Campeões'],
+    'taca-portugal':['Taça de Portugal'],
+    'taca-liga':['League Cup','Taça da Liga']
+  };
+  if(compKey==='geral') return players.map(p=>({player:p,stats:p.stats||{}}));
+  const names=(map[compKey]||[]).map(x=>String(x).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,''));
+  return players.map(p=>{
+    const by=p.stats?.byCompetition||{};
+    const entry=Object.entries(by).find(([name])=>names.includes(String(name).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'')));
+    return {player:p,stats:entry?.[1]||null};
+  }).filter(x=>x.stats);
+}
+function playerLeaderCards(compKey){
+  const rows=playerLeaderStatsForCompetition(compKey);
+  const topBy=key=>rows.filter(x=>Number(x.stats?.[key]||0)>0).sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
+  const card=(row,label,key,unit,extra)=>row?'<div class="player-leader-card '+(extra||'')+'"><div class="player-leader-shade"></div><img class="player-leader-photo" src="'+esc(row.player.photo||'')+'" alt="'+esc(row.player.name||'')+'" loading="lazy"><div class="player-leader-copy"><div class="player-leader-label">'+label+'</div><div><div class="player-leader-name">'+esc(row.player.name||'')+'</div><div class="player-leader-value"><strong>'+esc(row.stats?.[key]??0)+'</strong>'+unit+'</div></div></div></div>':'';
+  const scorer=topBy('goals'),assister=topBy('assists');
+  if(!scorer&&!assister)return '<div class="text-[10px] muted py-2">Dados individuais por competição ainda não disponíveis.</div>';
+  return '<div class="player-leaders mt-6 pt-5 border-t border-white/5">'+card(scorer,'Melhor marcador','goals','golos')+card(assister,'Mais assistências','assists','assistências','assists')+'</div>';
 }
 function renderStats(){
   const current=D['team-stats.json']?.team||{};
