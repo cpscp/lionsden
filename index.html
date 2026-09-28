@@ -276,15 +276,14 @@
 <script>
 async function ensureCustomDigitsFont(){
   try{
-    if(document.fonts.check("16px CustomDigits")) return true;
-    const r=await fetch('./assets/CustomDigits.ttf',{cache:'no-store'});
+    const r=await fetch('./assets/CustomDigits.ttf?font='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error('CustomDigits HTTP '+r.status);
     const buffer=await r.arrayBuffer();
-    const font=new FontFace('CustomDigits',buffer,{style:'normal',weight:'400'});
+    const font=new FontFace('CustomDigits',buffer,{style:'normal',weight:'400',display:'block'});
     await font.load();
     document.fonts.add(font);
-    await document.fonts.ready;
-    return document.fonts.check("16px CustomDigits");
+    await document.fonts.load("16px 'CustomDigits'","0123456789");
+    return document.fonts.check("16px 'CustomDigits'","0123456789");
   }catch(e){
     console.warn("Lion's Den CustomDigits:",e);
     return false;
