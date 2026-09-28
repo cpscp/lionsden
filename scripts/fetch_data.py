@@ -4522,8 +4522,27 @@ def fetch_oddspapi_betano_odds():
         write_json("betano-odds.json",{"fixtures":result,"source":"Betano via OddsPapi","status":"ok","coverage":len(result)})
     except Exception as e:
         print("OddsPapi Betano warning:",e)
-        result=_public_odds_from_sportytrader(upcoming)
-        write_json("betano-odds.json",{"fixtures":result,"source":"SportyTrader public odds comparator","status":"public_fallback","coverage":len(result),"error":str(e)})
+        # A temporary OddsPapi error must not erase the last valid Betano feed.
+        cached=safe_existing("betano-odds.json") or {}
+        cached_fixtures=cached.get("fixtures") if isinstance(cached,dict) else {}
+        cached_is_betano=any(
+            isinstance(v,dict) and any(
+                str(k).strip().lower().replace(" ","") in {"betano","betanopt"}
+                for k in (v.get("bookmakers") or {}).keys()
+            )
+            for v in (cached_fixtures or {}).values()
+        ) if isinstance(cached_fixtures,dict) else False
+        if cached_is_betano:
+            write_json("betano-odds.json",{
+                "fixtures":cached_fixtures,
+                "source":"Betano via OddsPapi",
+                "status":"stale",
+                "coverage":len(cached_fixtures),
+                "error":str(e)
+            })
+        else:
+            result=_public_odds_from_sportytrader(upcoming)
+            write_json("betano-odds.json",{"fixtures":result,"source":"SportyTrader public odds comparator","status":"public_fallback","coverage":len(result),"error":str(e)})
 
 
 
