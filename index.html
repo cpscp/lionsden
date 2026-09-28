@@ -967,19 +967,31 @@ function playerLeaderStatsForCompetition(compKey){
 }
 function playerLeaderCards(compKey){
   const rows=playerLeaderStatsForCompetition(compKey);
-  const topBy=key=>rows.filter(x=>Number(x.stats?.[key]||0)>0).sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
+
+  // A metric is displayed only when at least one player has a real value.
+  // This prevents competitions with no assists/cards/etc. from showing
+  // misleading zero-value cards.
+  const topBy=key=>rows
+    .filter(x=>Number(x.stats?.[key]||0)>0)
+    .sort((a,b)=>Number(b.stats?.[key]||0)-Number(a.stats?.[key]||0))[0];
+
   const card=(row,label,key,unit,extra)=>{
     if(!row)return '';
     return '<div class="player-leader-card '+(extra||'')+'"><div class="player-leader-shade"></div><img class="player-leader-photo" src="'+esc(row.player.photo||'')+'" alt="'+esc(row.player.name||'')+'" loading="lazy"><div class="player-leader-copy"><div class="player-leader-label">'+label+'</div><div><div class="player-leader-name">'+esc(row.player.name||'')+'</div><div class="player-leader-value"><strong>'+esc(row.stats?.[key]??0)+'</strong>'+unit+'</div></div></div></div>';
   };
-  const scorer=topBy('goals'),assister=topBy('assists'),yellow=topBy('yellow'),red=topBy('red');
-  if(!scorer&&!assister&&!yellow&&!red)return '<div class="text-[10px] muted py-2">Dados individuais por competição ainda não disponíveis.</div>';
-  return '<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Individuais</div><div class="player-leaders">'+
-    card(scorer,'Melhor marcador','goals','golos')+
-    card(assister,'Mais assistências','assists','assistências','assists')+
-    card(yellow,'Mais amarelos','yellow','amarelos')+
-    card(red,'Mais vermelhos','red','vermelhos')+
-    '</div></div>';
+
+  const cards=[
+    card(topBy('goals'),'Melhor marcador','goals','golos'),
+    card(topBy('assists'),'Mais assistências','assists','assistências','assists'),
+    card(topBy('yellow'),'Mais amarelos','yellow','amarelos'),
+    card(topBy('red'),'Mais vermelhos','red','vermelhos')
+  ].filter(Boolean);
+
+  if(!cards.length){
+    return '<div class="text-[10px] muted py-2">Dados individuais por competição ainda não disponíveis.</div>';
+  }
+
+  return '<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Individuais</div><div class="player-leaders">'+cards.join('')+'</div></div>';
 }
 function renderStats(){
   const current=D['team-stats.json']?.team||{};
