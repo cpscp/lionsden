@@ -1429,7 +1429,7 @@ function openGame(id){try{
  openModal();
 }catch(err){console.error("Lion's Den openGame:",err);const mt=document.getElementById('modalTitle'),mb=document.getElementById('modalBody');if(mt)mt.textContent='Detalhes do jogo';if(mb)mb.innerHTML='<div class="card p-5"><div class="font-semibold">Detalhes indisponíveis</div><div class="text-xs muted mt-2">Os dados deste jogo ainda não estão totalmente disponíveis. Tenta novamente em instantes.</div></div>';openModal();}}
 
-function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
+function openModal(){document.getElementById('modal').classList.add('open')}function closeModal(){const modal=document.getElementById('modal'),body=document.getElementById('modalBody');if(body)body.innerHTML='';modal.classList.remove('open')}
 function toggleDrawer(open){const d=document.getElementById('drawer'),b=document.getElementById('drawerBackdrop');if(!d||!b)return;d.classList.toggle('open',open);b.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
 function go(id){const screen=document.getElementById(id);if(!screen)return;document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));screen.classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.go===id));toggleDrawer(false);window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>go(b.dataset.go));
