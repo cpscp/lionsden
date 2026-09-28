@@ -1,0 +1,26 @@
+{
+  "name": "Lion's Den · Sporting CP",
+  "short_name": "Lion's Den",
+  "id": "https://cpscp.github.io/lionsden/lions-den-pwa",
+  "description": "A companion app para acompanhar o Sporting CP.",
+  "lang": "pt-PT",
+  "start_url": "./?app=lions-den",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060b08",
+  "theme_color": "#07100b",
+  "icons": [
+    {
+      "src": "./icons/lions-den-pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/lions-den-final.svg",
+      "sizes": "307x307",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
