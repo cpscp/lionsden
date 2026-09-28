@@ -1,0 +1,52 @@
+name: Atualizar jogos em direto
+
+concurrency:
+  group: lions-den-live
+  cancel-in-progress: true
+
+on:
+  # Offset 5 minutes from the hour to reduce GitHub scheduler contention.
+  schedule:
+    - cron: '7,17,27,37,47,57 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Atualizar jogos em direto
+        env:
+          LIONS_DEN_MODE: live
+        run: python scripts/fetch_data.py
+
+      - name: Guardar atualização
+        run: |
+          set -e
+          git config user.name 'lions-den-live'
+          git config user.email 'actions@github.com'
+          git add data/fixtures.json data/match-details.json
+          if git diff --cached --quiet; then
+            echo "Sem alterações de jogos em direto."
+            exit 0
+          fi
+          git commit -m 'dados: refresh de jogos em direto'
+          git fetch origin main
+          if ! git rebase origin/main; then
+            git checkout --theirs -- data/fixtures.json data/match-details.json || true
+            git add data/fixtures.json data/match-details.json
+            GIT_EDITOR=true git rebase --continue
+          fi
+          git push origin HEAD:main
