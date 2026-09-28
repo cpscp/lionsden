@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100b">
-<link rel="manifest" href="./manifest-lionsden.json?v=1">
-<link rel="icon" href="./icons/lions-den-final.svg" type="image/webp">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/lions-den-final.svg" type="image/svg+xml">
 <title>Lion's Den · Sporting CP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1440,5 +1440,8 @@ window.addEventListener('error',e=>{console.error("Lion's Den:",e.error||e.messa
 window.addEventListener('unhandledrejection',e=>console.error("Lion's Den promise:",e.reason));
 setTimeout(()=>load(),0);
 setInterval(load,300000);
+</script>
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js", {scope:"./"}).catch(()=>{})); }
 </script>
 </body></html>
