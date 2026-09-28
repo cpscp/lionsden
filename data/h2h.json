@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-28T05:58:14.860598+00:00",
+  "_updated_at": "2026-09-28T14:35:22.154235+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860258+00:00"
+      "updated_at": "2026-09-28T14:35:22.153992+00:00"
     },
     "5887661": {
       "matches": [],
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860308+00:00"
+      "updated_at": "2026-09-28T14:35:22.154037+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,7 +150,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860329+00:00"
+      "updated_at": "2026-09-28T14:35:22.154052+00:00"
     },
     "5887687": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860356+00:00"
+      "updated_at": "2026-09-28T14:35:22.154071+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,7 +244,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860361+00:00"
+      "updated_at": "2026-09-28T14:35:22.154075+00:00"
     },
     "5887702": {
       "matches": [
@@ -291,7 +291,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860374+00:00"
+      "updated_at": "2026-09-28T14:35:22.154086+00:00"
     },
     "5887716": {
       "matches": [
@@ -381,7 +381,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860389+00:00"
+      "updated_at": "2026-09-28T14:35:22.154096+00:00"
     },
     "5887734": {
       "matches": [
@@ -428,7 +428,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860401+00:00"
+      "updated_at": "2026-09-28T14:35:22.154105+00:00"
     },
     "5887735": {
       "matches": [
@@ -475,7 +475,7 @@
       "total": 6,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860406+00:00"
+      "updated_at": "2026-09-28T14:35:22.154108+00:00"
     },
     "5887752": {
       "matches": [
@@ -522,7 +522,7 @@
       "total": 35,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860415+00:00"
+      "updated_at": "2026-09-28T14:35:22.154114+00:00"
     },
     "5887760": {
       "matches": [
@@ -569,7 +569,7 @@
       "total": 4,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860423+00:00"
+      "updated_at": "2026-09-28T14:35:22.154120+00:00"
     },
     "5887769": {
       "matches": [
@@ -616,7 +616,7 @@
       "total": 37,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860427+00:00"
+      "updated_at": "2026-09-28T14:35:22.154123+00:00"
     },
     "5887778": {
       "matches": [
@@ -663,7 +663,7 @@
       "total": 27,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860432+00:00"
+      "updated_at": "2026-09-28T14:35:22.154126+00:00"
     },
     "5887784": {
       "matches": [
@@ -710,7 +710,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860436+00:00"
+      "updated_at": "2026-09-28T14:35:22.154129+00:00"
     },
     "5887796": {
       "matches": [
@@ -757,7 +757,7 @@
       "total": 21,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860441+00:00"
+      "updated_at": "2026-09-28T14:35:22.154132+00:00"
     },
     "5887800": {
       "matches": [
@@ -804,7 +804,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860445+00:00"
+      "updated_at": "2026-09-28T14:35:22.154135+00:00"
     },
     "5887814": {
       "matches": [],
@@ -861,7 +861,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860457+00:00"
+      "updated_at": "2026-09-28T14:35:22.154143+00:00"
     },
     "5887832": {
       "matches": [
@@ -908,7 +908,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860462+00:00"
+      "updated_at": "2026-09-28T14:35:22.154147+00:00"
     },
     "5887840": {
       "matches": [
@@ -955,7 +955,7 @@
       "total": 4,
       "source": "ZeroZero historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860471+00:00"
+      "updated_at": "2026-09-28T14:35:22.154153+00:00"
     },
     "5887851": {
       "matches": [
@@ -1002,7 +1002,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860476+00:00"
+      "updated_at": "2026-09-28T14:35:22.154157+00:00"
     },
     "5887855": {
       "matches": [
@@ -1049,7 +1049,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860485+00:00"
+      "updated_at": "2026-09-28T14:35:22.154163+00:00"
     },
     "5887869": {
       "matches": [],
@@ -1106,7 +1106,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860497+00:00"
+      "updated_at": "2026-09-28T14:35:22.154171+00:00"
     },
     "5887887": {
       "matches": [
@@ -1153,7 +1153,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860509+00:00"
+      "updated_at": "2026-09-28T14:35:22.154178+00:00"
     },
     "5985964": {
       "matches": [
@@ -1200,7 +1200,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860303+00:00"
+      "updated_at": "2026-09-28T14:35:22.154033+00:00"
     },
     "6106255": {
       "matches": [
@@ -1247,7 +1247,7 @@
       "total": 6,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T02:00:00.943664+00:00"
+      "updated_at": "2026-09-28T14:35:22.154117+00:00"
     },
     "6106275": {
       "matches": [
@@ -1276,7 +1276,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T02:00:00.943612+00:00"
+      "updated_at": "2026-09-28T14:35:22.154078+00:00"
     },
     "6106278": {
       "matches": [
@@ -1305,7 +1305,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860411+00:00"
+      "updated_at": "2026-09-28T14:35:22.154111+00:00"
     },
     "6106279": {
       "matches": [
@@ -1352,7 +1352,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860344+00:00"
+      "updated_at": "2026-09-28T14:35:22.154063+00:00"
     },
     "6106281": {
       "matches": [
@@ -1390,7 +1390,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860285+00:00"
+      "updated_at": "2026-09-28T14:35:22.154019+00:00"
     },
     "6106335": {
       "matches": [
@@ -1419,7 +1419,7 @@
       "total": 2,
       "source": "WorldFootball historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-28T05:58:14.860323+00:00"
+      "updated_at": "2026-09-28T14:35:22.154048+00:00"
     },
     "6106414": {
       "matches": [],
