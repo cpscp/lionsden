@@ -10,7 +10,7 @@
   "theme_color": "#07100b",
   "icons": [
     {
-      "src": "./icons/icon-v3.webp",
+      "src": "./icons/lions-den-final.webp",
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "any maskable"
