@@ -939,7 +939,7 @@ function playerLeaderStatsForCompetition(compKey){
 
   const normalise=name=>String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const findCompetition=(p,name)=>{
-    const comps=p.stats?.competitions||{};
+    const comps=p.competitions||p.stats?.competitions||{};
     const target=normalise(name);
     const key=Object.keys(comps).find(k=>normalise(k)===target);
     return key?comps[key]:null;
