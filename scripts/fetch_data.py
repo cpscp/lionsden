@@ -4708,6 +4708,24 @@ def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
     errors = []
 
+    # The live mode is intentionally isolated from the heavy full pipeline.
+    # It does not touch news, FBref, ZeroZero or per-player season endpoints.
+    if mode == "live":
+        try:
+            fetch_live_updates()
+        except Exception as e:
+            errors.append(f"live: {e}")
+        write_json("status.json", {
+            "mode": mode,
+            "errors": errors,
+            "sources": {"live": True, "news": False, "football_api": False, "fbref": False, "maps": False}
+        })
+        if errors:
+            print("Live refresh completed with warnings:", *errors, sep="\n- ")
+        else:
+            print("Lion's Den live refresh completed successfully.")
+        return
+
     # News is independent and should not stop football data.
     try:
         fetch_news()
