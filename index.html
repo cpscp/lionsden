@@ -738,23 +738,24 @@ function resolveTransmission(f){
   const direct=String(f?.transmission||f?.broadcast||f?.tv||f?.tvChannel||'').trim();
   if(direct)return direct;
   const date=String(f?.kickoff_date||'').slice(0,10);
-  const home=String(f?.home?.name||'').toLowerCase();
-  const away=String(f?.away?.name||'').toLowerCase();
+  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,'').replace(/^sc$/,'sporting');
+  const home=norm(f?.home?.name);
+  const away=norm(f?.away?.name);
   const key=date+'|'+home+'|'+away;
   const fallback={
-    '2026-10-09|braga|sporting cp':'SportTV 1',
-    '2026-10-13|lens|sporting cp':'SportTV 5',
-    '2026-10-21|sporting cp|lask':'SportTV 5',
-    '2026-10-25|sporting cp|académico viseu':'SportTV 1',
-    '2026-10-27|sporting cp|marítimo':'SportTV',
-    '2026-10-30|casa pia ac|sporting cp':'SportTV 1',
-    '2026-11-03|shakhtar donetsk|sporting cp':'SportTV 5',
-    '2026-11-07|sporting cp|moreirense':'SportTV 1',
-    '2026-11-25|sporting cp|man. united fc':'SportTV 5',
-    '2026-11-29|fc porto|sporting cp':'SportTV 1',
-    '2026-12-08|roma|sporting cp':'SportTV 5',
-    '2027-01-20|sporting cp|barcelona':'SportTV 5',
-    '2027-01-27|man city|sporting cp':'SportTV 5'
+    '2026-10-09|braga|sportingcp':'SportTV 1',
+    '2026-10-13|lens|sportingcp':'SportTV 5',
+    '2026-10-21|sportingcp|lask':'SportTV 5',
+    '2026-10-25|sportingcp|academicoviseu':'SportTV 1',
+    '2026-10-27|sportingcp|maritimo':'SportTV',
+    '2026-10-30|casapiaac|sportingcp':'SportTV 1',
+    '2026-11-03|shakhtardonetsk|sportingcp':'SportTV 5',
+    '2026-11-07|sportingcp|moreirense':'SportTV 1',
+    '2026-11-25|sportingcp|manutdfc':'SportTV 5',
+    '2026-11-29|fcporto|sportingcp':'SportTV 1',
+    '2026-12-08|roma|sportingcp':'SportTV 5',
+    '2027-01-20|sportingcp|barcelona':'SportTV 5',
+    '2027-01-27|mancity|sportingcp':'SportTV 5'
   };
   return fallback[key]||'';
 }
