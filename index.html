@@ -784,9 +784,11 @@ const RUI_BORGES_HISTORY=[
 function isOfficialCoachFixture(x){
   const c=String(x.competition?.name||x.competition||'').toLowerCase()
     .normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
-  if(!c)return true;
-  if(/friendl|amigavel|friendly|pre.?season|pre.?epoca|pre.?epoca/.test(c))return false;
-  return /liga portugal|primeira liga|champions|uefa|taca de portugal|taca da liga|portuguese cup|portuguese league/.test(c);
+  // The fixture feed contains both official and pre-season matches.
+  // Official coach stats should exclude only friendlies/pre-season; every
+  // other completed competition fixture is considered official.
+  if(/friendl|amigavel|friendly|pre.?season|pre.?epoca/.test(c))return false;
+  return true;
 }
 function coachCurrentStats(){
   const f=allFixtures(),now=Math.floor(Date.now()/1000);
