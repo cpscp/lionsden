@@ -4805,6 +4805,57 @@ def fetch_live_updates():
                 "scope": "Sporting CP first team, live/recent matches",
             })
 
+
+def enforce_manual_squad():
+    """Final authoritative plantel normalization after every upstream writer."""
+    squad = safe_existing("squad.json") or {}
+    players = squad.get("squad") or squad.get("players") or []
+
+    manual = {
+        "Eduardo Felicíssimo": {
+            "sofascore_id": 1586645,
+            "name": "Eduardo Felicíssimo",
+            "position": "DF",
+            "nationality": "Portugal",
+            "dateOfBirth": "2007-01-08T00:00:00.000Z",
+            "shirtNumber": 73,
+            "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
+            "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
+        },
+        "Francisco Silva": {
+            "sofascore_id": 1184327,
+            "name": "Francisco Silva",
+            "position": "GK",
+            "nationality": "Portugal",
+            "dateOfBirth": "2005-11-20T00:00:00.000Z",
+            "shirtNumber": 99,
+            "photo": "https://images.fotmob.com/image_resources/playerimages/1463490.png",
+            "zerozero_url": "https://www.zerozero.pt/jogador/francisco-silva/664598?epoca_id=156",
+        },
+    }
+
+    # Remove explicit exclusions first.
+    players = [p for p in players if clean(p.get("name")) != "Sotiris Alexandropoulos"]
+
+    by_name = {zz_norm(p.get("name")): p for p in players if p.get("name")}
+    for name, data in manual.items():
+        key = zz_norm(name)
+        if key in by_name:
+            by_name[key].update(data)
+        else:
+            p = dict(data)
+            p["stats"] = {"matches": 0, "minutes": 0, "goals": 0, "assists": 0, "yellow": 0, "red": 0}
+            p["competitions"] = {}
+            p["careerStats"] = []
+            p["career"] = []
+            players.append(p)
+
+    squad["squad"] = players
+    squad.pop("players", None)
+    write_json("squad.json", squad)
+    print("Final plantel normalization: Eduardo #73 DF, Francisco #99 GK, Sotiris removed.")
+
+
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
     errors = []
@@ -4914,6 +4965,11 @@ def main():
             enrich_match_details()
         except Exception as e:
             print(f"Football API enrichment skipped: {e}")
+
+        try:
+            enforce_manual_squad()
+        except Exception as e:
+            print(f"Final squad normalization skipped: {e}")
 
     # Always leave a status file so the app can explain which source failed.
     write_json("status.json", {
