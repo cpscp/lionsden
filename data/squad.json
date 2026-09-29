@@ -647,6 +647,29 @@
       "dateOfBirth": "2004-07-18T00:00:00.000Z"
     },
     {
+      "sofascore_id": 1184327,
+      "name": "Francisco Silva",
+      "position": "GK",
+      "nationality": "Portugal",
+      "dateOfBirth": "2005-11-20T00:00:00.000Z",
+      "shirtNumber": 99,
+      "internationalCaps": 26,
+      "photo": "https://img.sofascore.com/api/v1/player/1184327/image",
+      "zerozero_url": "https://www.zerozero.pt/jogador/francisco-silva/664598?epoca_id=156",
+      "stats": {
+        "matches": 0,
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0,
+        "cleanSheets": 0
+      },
+      "competitions": {},
+      "career": [],
+      "careerStats": []
+    },
+    {
       "fotmob_id": 1755850,
       "name": "Moncef Zekri",
       "position": "DF",
@@ -2044,162 +2067,6 @@
       "dateOfBirth": "2005-05-26T00:00:00.000Z"
     },
     {
-      "fotmob_id": 1712326,
-      "name": "Salvador Blopa",
-      "position": "FW",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
-      "stats": {
-        "matches": 0,
-        "byCompetition": {},
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 70,
-      "career": [
-        {
-          "period": "2025-04-11T00:00:00",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2025-10-27T00:00:00 → 2026-06-30T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025-07-01T00:00:00",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
-          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
-          "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024",
-          "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2025-09-01T00:00:00 → 2025-11-30T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024-09-02T00:00:00 → 2025-10-31T00:00:00",
-          "club": "Portugal Under 18"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal Under 18"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting [B]",
-          "matches": 0,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting",
-          "matches": 8,
-          "goals": 2,
-          "assists": 2
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting [B]",
-          "matches": 16,
-          "goals": 2,
-          "assists": 1
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting [Jun.A S19]",
-          "matches": 4,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [B]",
-          "matches": 6,
-          "goals": 0,
-          "assists": 1
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [S23]",
-          "matches": 21,
-          "goals": 2,
-          "assists": 0
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [Jun.A S19]",
-          "matches": 15,
-          "goals": 1,
-          "assists": 0
-        },
-        {
-          "season": "2023/24",
-          "club": "Sporting [Jun.B S17]",
-          "matches": 29,
-          "goals": 7,
-          "assists": 3
-        },
-        {
-          "season": "2022/23",
-          "club": "Sporting [Jun.B S17]",
-          "matches": 2,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2022/23",
-          "club": "Sporting [Jun.B S17 B]",
-          "matches": 21,
-          "goals": 3,
-          "assists": 0
-        }
-      ],
-      "dateOfBirth": "2007-06-13T00:00:00.000Z"
-    },
-    {
       "fotmob_id": 1156380,
       "name": "Eduardo Quaresma",
       "position": "DF",
@@ -2451,6 +2318,28 @@
         }
       ],
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
+    },
+    {
+      "sofascore_id": 1586645,
+      "name": "Eduardo Felicíssimo",
+      "position": "DF",
+      "nationality": "Portugal",
+      "dateOfBirth": "2007-01-08T00:00:00.000Z",
+      "shirtNumber": 73,
+      "internationalCaps": 52,
+      "photo": "https://img.sofascore.com/api/v1/player/1586645/image",
+      "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
+      "stats": {
+        "matches": 0,
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "competitions": {},
+      "career": [],
+      "careerStats": []
     },
     {
       "fotmob_id": 1093025,
@@ -3267,211 +3156,6 @@
       "dateOfBirth": "2007-01-06T00:00:00.000Z"
     },
     {
-      "fotmob_id": 1327214,
-      "name": "Nestory Irankunda",
-      "position": "FW",
-      "nationality": "Australia",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
-      "stats": {
-        "matches": 5,
-        "byCompetition": {
-          "Liga Portugal": {
-            "matches": 5,
-            "minutes": 126,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 1,
-            "red": 0
-          }
-        },
-        "minutes": 126,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 1,
-        "red": 0
-      },
-      "shirtNumber": 19,
-      "career": [
-        {
-          "period": "2026-08-15T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025-07-18T00:00:00 → 2026-08-15T00:00:00",
-          "club": "Watford"
-        },
-        {
-          "period": "2025-07-01T00:00:00 → 2025-07-18T00:00:00",
-          "club": "Bayern München II"
-        },
-        {
-          "period": "2025-01-15T00:00:00 → 2025-06-30T00:00:00",
-          "club": "Grasshopper"
-        },
-        {
-          "period": "2024-07-01T00:00:00 → 2025-01-15T00:00:00",
-          "club": "Bayern München II"
-        },
-        {
-          "period": "2024-07-01T00:00:00 → 2024-12-31T00:00:00",
-          "club": "Bayern München"
-        },
-        {
-          "period": "2021-09-23T00:00:00 → 2024-06-30T00:00:00",
-          "club": "Adelaide United"
-        },
-        {
-          "period": "2024-05-15T00:00:00 → 2024-05-25T00:00:00",
-          "club": "A-League All Stars"
-        },
-        {
-          "period": "2022-05-20T00:00:00 → 2022-05-26T00:00:00",
-          "club": "A-League All Stars"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Watford"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Grasshopper"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Bayern München II"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Adelaide United"
-        },
-        {
-          "period": "2023",
-          "club": "Adelaide United"
-        },
-        {
-          "period": "2022/2023",
-          "club": "Adelaide United"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Adelaide United"
-        },
-        {
-          "period": "2023/2024",
-          "club": "A-League All Stars"
-        },
-        {
-          "period": "2024-09-16T00:00:00 → 2024-12-31T00:00:00",
-          "club": "Bayern München U19"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Bayern München U19"
-        },
-        {
-          "period": "2023-03-23T00:00:00",
-          "club": "Australia"
-        },
-        {
-          "period": "2022-10-01T00:00:00 → 2025-03-29T00:00:00",
-          "club": "Australia U17"
-        },
-        {
-          "period": "2026",
-          "club": "Australia"
-        },
-        {
-          "period": "2025",
-          "club": "Australia"
-        },
-        {
-          "period": "2023/2025",
-          "club": "Australia"
-        },
-        {
-          "period": "2023",
-          "club": "Australia U17"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting",
-          "matches": 5,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2025/26",
-          "club": "Watford",
-          "matches": 42,
-          "goals": 4,
-          "assists": 4
-        },
-        {
-          "season": "2024/25",
-          "club": "Grasshoppers (E) [Bayern München]",
-          "matches": 21,
-          "goals": 1,
-          "assists": 3
-        },
-        {
-          "season": "2024/25",
-          "club": "Bayern München",
-          "matches": null,
-          "goals": null,
-          "assists": null
-        },
-        {
-          "season": "2024/25",
-          "club": "Bayern München [B]",
-          "matches": 15,
-          "goals": 4,
-          "assists": 1
-        },
-        {
-          "season": "2024/25",
-          "club": "Bayern München [Jun.A S19]",
-          "matches": 3,
-          "goals": 1,
-          "assists": 0
-        },
-        {
-          "season": "2023/24",
-          "club": "Adelaide United",
-          "matches": 25,
-          "goals": 8,
-          "assists": 6
-        },
-        {
-          "season": "2022/23",
-          "club": "Adelaide United",
-          "matches": 22,
-          "goals": 5,
-          "assists": 2
-        },
-        {
-          "season": "2021/22",
-          "club": "Adelaide United",
-          "matches": 13,
-          "goals": 3,
-          "assists": 0
-        },
-        {
-          "season": "2020/21",
-          "club": "Adelaide United [S21]",
-          "matches": null,
-          "goals": null,
-          "assists": null
-        }
-      ],
-      "dateOfBirth": "2006-02-09T00:00:00.000Z"
-    },
-    {
       "fotmob_id": 1459257,
       "name": "Pedro Lima",
       "position": "MF",
@@ -3798,73 +3482,6 @@
       "dateOfBirth": "2003-10-16T00:00:00.000Z"
     },
     {
-      "fotmob_id": 1918387,
-      "name": "Delcio Aurelio",
-      "position": "",
-      "nationality": "Angola",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1918387.png",
-      "stats": {
-        "matches": 0,
-        "byCompetition": {},
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "career": [
-        {
-          "period": "1769990400000",
-          "club": "Sporting CP"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting [S23]",
-          "matches": 0,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting [S23]",
-          "matches": 11,
-          "goals": 1,
-          "assists": 0
-        },
-        {
-          "season": "2024/25",
-          "club": "Interclube",
-          "matches": 5,
-          "goals": 1,
-          "assists": 0
-        },
-        {
-          "season": "2023/24",
-          "club": "Petro de Luanda [Jun.B S17]",
-          "matches": null,
-          "goals": null,
-          "assists": null
-        },
-        {
-          "season": "2022/23",
-          "club": "Petro de Luanda [Jun.B S17]",
-          "matches": null,
-          "goals": null,
-          "assists": null
-        },
-        {
-          "season": "2021/22",
-          "club": "Petro de Luanda [Jun.C S15]",
-          "matches": null,
-          "goals": null,
-          "assists": null
-        }
-      ],
-      "dateOfBirth": "2007-06-20T00:00:00.000Z"
-    },
-    {
       "fotmob_id": 1759322,
       "name": "Rodrigo Rodrigues",
       "position": "MF",
@@ -4002,429 +3619,6 @@
       ],
       "dateOfBirth": "2007-12-06T00:00:00.000Z",
       "shirtNumber": 76
-    },
-    {
-      "fotmob_id": 899701,
-      "name": "Fotis Ioannidis",
-      "position": "FW",
-      "nationality": "Greece",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
-      "stats": {
-        "matches": 7,
-        "byCompetition": {
-          "Liga Portugal": {
-            "matches": 6,
-            "minutes": 214,
-            "goals": 2,
-            "assists": 2,
-            "yellow": 0,
-            "red": 0
-          },
-          "Champions League": {
-            "matches": 1,
-            "minutes": 16,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
-          }
-        },
-        "minutes": 230,
-        "goals": 2,
-        "assists": 2,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 7,
-      "career": [
-        {
-          "period": "2025-09-01T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2020-08-11T00:00:00 → 2025-09-01T00:00:00",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2017-08-30T00:00:00 → 2020-08-10T00:00:00",
-          "club": "Levadiakos"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2022/2023",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2020/2021",
-          "club": "Panathinaikos"
-        },
-        {
-          "period": "2019/2020",
-          "club": "Levadiakos"
-        },
-        {
-          "period": "2018/2019",
-          "club": "Levadiakos"
-        },
-        {
-          "period": "2017/2018",
-          "club": "Levadiakos"
-        },
-        {
-          "period": "2022-09-13T00:00:00",
-          "club": "Greece"
-        },
-        {
-          "period": "2019-11-06T00:00:00 → 2022-03-31T00:00:00",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2018-11-07T00:00:00 → 2019-10-31T00:00:00",
-          "club": "Greece U19"
-        },
-        {
-          "period": "2026/2028",
-          "club": "Greece"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Greece"
-        },
-        {
-          "period": "2025",
-          "club": "Greece"
-        },
-        {
-          "period": "2024/2026",
-          "club": "Greece"
-        },
-        {
-          "period": "2024",
-          "club": "Greece"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Greece"
-        },
-        {
-          "period": "2022/2024",
-          "club": "Greece"
-        },
-        {
-          "period": "2022",
-          "club": "Greece"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2019/2021",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2019",
-          "club": "Greece U19"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting",
-          "matches": 8,
-          "goals": 2,
-          "assists": 2
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting",
-          "matches": 22,
-          "goals": 6,
-          "assists": 3
-        },
-        {
-          "season": "2025/26",
-          "club": "Panathinaikos",
-          "matches": 5,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2024/25",
-          "club": "Panathinaikos",
-          "matches": 42,
-          "goals": 11,
-          "assists": 2
-        },
-        {
-          "season": "2023/24",
-          "club": "Panathinaikos",
-          "matches": 44,
-          "goals": 23,
-          "assists": 10
-        },
-        {
-          "season": "2022/23",
-          "club": "Panathinaikos",
-          "matches": 42,
-          "goals": 7,
-          "assists": 2
-        },
-        {
-          "season": "2021/22",
-          "club": "Panathinaikos",
-          "matches": 33,
-          "goals": 6,
-          "assists": 1
-        },
-        {
-          "season": "2020/21",
-          "club": "Panathinaikos",
-          "matches": 24,
-          "goals": 4,
-          "assists": 0
-        },
-        {
-          "season": "2019/20",
-          "club": "Levadiakos FC",
-          "matches": 20,
-          "goals": 5,
-          "assists": 0
-        },
-        {
-          "season": "2018/19",
-          "club": "Levadiakos FC",
-          "matches": 20,
-          "goals": 3,
-          "assists": 0
-        },
-        {
-          "season": "2017/18",
-          "club": "Levadiakos FC",
-          "matches": 9,
-          "goals": 0,
-          "assists": 0
-        }
-      ],
-      "dateOfBirth": "2000-01-10T00:00:00.000Z"
-    },
-    {
-      "fotmob_id": 1525416,
-      "name": "Rafael Nel",
-      "position": "FW",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
-      "stats": {
-        "matches": 1,
-        "byCompetition": {
-          "Liga Portugal": {
-            "matches": 1,
-            "minutes": 15,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
-          }
-        },
-        "minutes": 15,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 9,
-      "career": [
-        {
-          "period": "2024-02-13T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2023-07-01T00:00:00",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2024-12-21T00:00:00 → 2025-06-30T00:00:00",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
-          "period": "2022-09-01T00:00:00 → 2025-06-30T00:00:00",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2022/2023",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2026-09-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026-05-26T00:00:00",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2023-11-01T00:00:00 → 2024-03-14T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2023",
-          "club": "Portugal U19"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting",
-          "matches": 2,
-          "goals": 2,
-          "assists": 0
-        },
-        {
-          "season": "2026/27",
-          "club": "Sporting [B]",
-          "matches": 2,
-          "goals": 2,
-          "assists": 0
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting",
-          "matches": 11,
-          "goals": 3,
-          "assists": 1
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting [B]",
-          "matches": 23,
-          "goals": 7,
-          "assists": 4
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting",
-          "matches": 0,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [B]",
-          "matches": 15,
-          "goals": 6,
-          "assists": 1
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [Jun.A S19]",
-          "matches": 1,
-          "goals": 1,
-          "assists": 0
-        },
-        {
-          "season": "2023/24",
-          "club": "Sporting",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0
-        },
-        {
-          "season": "2023/24",
-          "club": "Sporting [B]",
-          "matches": 27,
-          "goals": 8,
-          "assists": 0
-        },
-        {
-          "season": "2022/23",
-          "club": "Sporting [S23]",
-          "matches": 8,
-          "goals": 4,
-          "assists": 0
-        },
-        {
-          "season": "2022/23",
-          "club": "Sporting [Jun.A S19]",
-          "matches": 32,
-          "goals": 9,
-          "assists": 0
-        },
-        {
-          "season": "2021/22",
-          "club": "Sporting [Jun.A S19]",
-          "matches": 2,
-          "goals": 0,
-          "assists": 0
-        }
-      ],
-      "dateOfBirth": "2005-04-03T00:00:00.000Z"
     },
     {
       "fotmob_id": 1088753,
@@ -5051,6 +4245,941 @@
       "dateOfBirth": "1999-08-12T00:00:00.000Z"
     },
     {
+      "fotmob_id": 1691190,
+      "name": "Flávio Gonçalves",
+      "position": "MF",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
+      "stats": {
+        "matches": 7,
+        "byCompetition": {
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 414,
+            "goals": 3,
+            "assists": 1,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 24,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          }
+        },
+        "minutes": 438,
+        "goals": 3,
+        "assists": 1,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 58,
+      "career": [
+        {
+          "period": "2025-10-27T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-10-17T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024-10-17T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024-01-03T00:00:00 → 2024-05-25T00:00:00",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2026-09-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026-05-26T00:00:00",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025-03-21T00:00:00 → 2025-10-31T00:00:00",
+          "club": "Portugal Under 18"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal Under 18"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 7,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 24,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 21,
+          "goals": 5,
+          "assists": 1
+        }
+      ],
+      "dateOfBirth": "2007-05-30T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1712326,
+      "name": "Salvador Blopa",
+      "position": "FW",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
+      "stats": {
+        "matches": 0,
+        "byCompetition": {},
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 70,
+      "career": [
+        {
+          "period": "2025-04-11T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025-10-27T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-07-01T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024",
+          "club": "Sporting CP Under 17"
+        },
+        {
+          "period": "2025-09-01T00:00:00 → 2025-11-30T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024-09-02T00:00:00 → 2025-10-31T00:00:00",
+          "club": "Portugal Under 18"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal Under 18"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting [B]",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 2,
+          "assists": 2
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 16,
+          "goals": 2,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 4,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 6,
+          "goals": 0,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [S23]",
+          "matches": 21,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 15,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 29,
+          "goals": 7,
+          "assists": 3
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.B S17]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.B S17 B]",
+          "matches": 21,
+          "goals": 3,
+          "assists": 0
+        }
+      ],
+      "dateOfBirth": "2007-06-13T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1327214,
+      "name": "Nestory Irankunda",
+      "position": "FW",
+      "nationality": "Australia",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
+      "stats": {
+        "matches": 5,
+        "byCompetition": {
+          "Liga Portugal": {
+            "matches": 5,
+            "minutes": 126,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
+          }
+        },
+        "minutes": 126,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 1,
+        "red": 0
+      },
+      "shirtNumber": 19,
+      "career": [
+        {
+          "period": "2026-08-15T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025-07-18T00:00:00 → 2026-08-15T00:00:00",
+          "club": "Watford"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-18T00:00:00",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2025-01-15T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Grasshopper"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2025-01-15T00:00:00",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2024-12-31T00:00:00",
+          "club": "Bayern München"
+        },
+        {
+          "period": "2021-09-23T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2024-05-15T00:00:00 → 2024-05-25T00:00:00",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2022-05-20T00:00:00 → 2022-05-26T00:00:00",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Watford"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Grasshopper"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Bayern München II"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2023",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Adelaide United"
+        },
+        {
+          "period": "2023/2024",
+          "club": "A-League All Stars"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2024-12-31T00:00:00",
+          "club": "Bayern München U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Bayern München U19"
+        },
+        {
+          "period": "2023-03-23T00:00:00",
+          "club": "Australia"
+        },
+        {
+          "period": "2022-10-01T00:00:00 → 2025-03-29T00:00:00",
+          "club": "Australia U17"
+        },
+        {
+          "period": "2026",
+          "club": "Australia"
+        },
+        {
+          "period": "2025",
+          "club": "Australia"
+        },
+        {
+          "period": "2023/2025",
+          "club": "Australia"
+        },
+        {
+          "period": "2023",
+          "club": "Australia U17"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Watford",
+          "matches": 42,
+          "goals": 4,
+          "assists": 4
+        },
+        {
+          "season": "2024/25",
+          "club": "Grasshoppers (E) [Bayern München]",
+          "matches": 21,
+          "goals": 1,
+          "assists": 3
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München [B]",
+          "matches": 15,
+          "goals": 4,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Bayern München [Jun.A S19]",
+          "matches": 3,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Adelaide United",
+          "matches": 25,
+          "goals": 8,
+          "assists": 6
+        },
+        {
+          "season": "2022/23",
+          "club": "Adelaide United",
+          "matches": 22,
+          "goals": 5,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Adelaide United",
+          "matches": 13,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2020/21",
+          "club": "Adelaide United [S21]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        }
+      ],
+      "dateOfBirth": "2006-02-09T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 899701,
+      "name": "Fotis Ioannidis",
+      "position": "FW",
+      "nationality": "Greece",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
+      "stats": {
+        "matches": 7,
+        "byCompetition": {
+          "Liga Portugal": {
+            "matches": 6,
+            "minutes": 214,
+            "goals": 2,
+            "assists": 2,
+            "yellow": 0,
+            "red": 0
+          },
+          "Champions League": {
+            "matches": 1,
+            "minutes": 16,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          }
+        },
+        "minutes": 230,
+        "goals": 2,
+        "assists": 2,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 7,
+      "career": [
+        {
+          "period": "2025-09-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2020-08-11T00:00:00 → 2025-09-01T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2017-08-30T00:00:00 → 2020-08-10T00:00:00",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2018/2019",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2017/2018",
+          "club": "Levadiakos"
+        },
+        {
+          "period": "2022-09-13T00:00:00",
+          "club": "Greece"
+        },
+        {
+          "period": "2019-11-06T00:00:00 → 2022-03-31T00:00:00",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2018-11-07T00:00:00 → 2019-10-31T00:00:00",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2026/2028",
+          "club": "Greece"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2025",
+          "club": "Greece"
+        },
+        {
+          "period": "2024/2026",
+          "club": "Greece"
+        },
+        {
+          "period": "2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022",
+          "club": "Greece"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019/2021",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019",
+          "club": "Greece U19"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 8,
+          "goals": 2,
+          "assists": 2
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 22,
+          "goals": 6,
+          "assists": 3
+        },
+        {
+          "season": "2025/26",
+          "club": "Panathinaikos",
+          "matches": 5,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Panathinaikos",
+          "matches": 42,
+          "goals": 11,
+          "assists": 2
+        },
+        {
+          "season": "2023/24",
+          "club": "Panathinaikos",
+          "matches": 44,
+          "goals": 23,
+          "assists": 10
+        },
+        {
+          "season": "2022/23",
+          "club": "Panathinaikos",
+          "matches": 42,
+          "goals": 7,
+          "assists": 2
+        },
+        {
+          "season": "2021/22",
+          "club": "Panathinaikos",
+          "matches": 33,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2020/21",
+          "club": "Panathinaikos",
+          "matches": 24,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2019/20",
+          "club": "Levadiakos FC",
+          "matches": 20,
+          "goals": 5,
+          "assists": 0
+        },
+        {
+          "season": "2018/19",
+          "club": "Levadiakos FC",
+          "matches": 20,
+          "goals": 3,
+          "assists": 0
+        },
+        {
+          "season": "2017/18",
+          "club": "Levadiakos FC",
+          "matches": 9,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
+      "dateOfBirth": "2000-01-10T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1525416,
+      "name": "Rafael Nel",
+      "position": "FW",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
+      "stats": {
+        "matches": 1,
+        "byCompetition": {
+          "Liga Portugal": {
+            "matches": 1,
+            "minutes": 15,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          }
+        },
+        "minutes": 15,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 9,
+      "career": [
+        {
+          "period": "2024-02-13T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-07-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-12-21T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2022-09-01T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2026-09-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026-05-26T00:00:00",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2023-11-01T00:00:00 → 2024-03-14T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U20"
+        },
+        {
+          "period": "2023",
+          "club": "Portugal U19"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting",
+          "matches": 2,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting [B]",
+          "matches": 2,
+          "goals": 2,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting",
+          "matches": 11,
+          "goals": 3,
+          "assists": 1
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [B]",
+          "matches": 23,
+          "goals": 7,
+          "assists": 4
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [B]",
+          "matches": 15,
+          "goals": 6,
+          "assists": 1
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting [B]",
+          "matches": 27,
+          "goals": 8,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [S23]",
+          "matches": 8,
+          "goals": 4,
+          "assists": 0
+        },
+        {
+          "season": "2022/23",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 32,
+          "goals": 9,
+          "assists": 0
+        },
+        {
+          "season": "2021/22",
+          "club": "Sporting [Jun.A S19]",
+          "matches": 2,
+          "goals": 0,
+          "assists": 0
+        }
+      ],
+      "dateOfBirth": "2005-04-03T00:00:00.000Z"
+    },
+    {
       "fotmob_id": 1526704,
       "name": "Jesse Derry",
       "position": "FW",
@@ -5364,157 +5493,6 @@
       "dateOfBirth": "2006-02-09T00:00:00.000Z"
     },
     {
-      "fotmob_id": 1691190,
-      "name": "Flávio Gonçalves",
-      "position": "MF",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
-      "stats": {
-        "matches": 7,
-        "byCompetition": {
-          "Liga Portugal": {
-            "matches": 6,
-            "minutes": 414,
-            "goals": 3,
-            "assists": 1,
-            "yellow": 0,
-            "red": 0
-          },
-          "Champions League": {
-            "matches": 1,
-            "minutes": 24,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
-          }
-        },
-        "minutes": 438,
-        "goals": 3,
-        "assists": 1,
-        "yellow": 0,
-        "red": 0
-      },
-      "shirtNumber": 58,
-      "career": [
-        {
-          "period": "2025-10-27T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2024-10-17T00:00:00 → 2026-06-30T00:00:00",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2024-07-01T00:00:00 → 2026-09-07T00:00:00",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024-10-17T00:00:00 → 2025-06-30T00:00:00",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
-          "period": "2024-01-03T00:00:00 → 2024-05-25T00:00:00",
-          "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting CP U19"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
-          "period": "2024",
-          "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2026-09-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026-05-26T00:00:00",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025-03-21T00:00:00 → 2025-10-31T00:00:00",
-          "club": "Portugal Under 18"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal Under 18"
-        }
-      ],
-      "careerStats": [
-        {
-          "season": "2026/27",
-          "club": "Sporting",
-          "matches": 8,
-          "goals": 3,
-          "assists": 1
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting",
-          "matches": 7,
-          "goals": 0,
-          "assists": 1
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting [B]",
-          "matches": 24,
-          "goals": 6,
-          "assists": 1
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting [B]",
-          "matches": 21,
-          "goals": 5,
-          "assists": 1
-        }
-      ],
-      "dateOfBirth": "2007-05-30T00:00:00.000Z"
-    },
-    {
       "fotmob_id": 792303,
       "name": "Luis Suárez",
       "position": "FW",
@@ -5786,6 +5764,73 @@
         }
       ],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1918387,
+      "name": "Delcio Aurelio",
+      "position": "",
+      "nationality": "Angola",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1918387.png",
+      "stats": {
+        "matches": 0,
+        "byCompetition": {},
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "career": [
+        {
+          "period": "1769990400000",
+          "club": "Sporting CP"
+        }
+      ],
+      "careerStats": [
+        {
+          "season": "2026/27",
+          "club": "Sporting [S23]",
+          "matches": 0,
+          "goals": 0,
+          "assists": 0
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting [S23]",
+          "matches": 11,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2024/25",
+          "club": "Interclube",
+          "matches": 5,
+          "goals": 1,
+          "assists": 0
+        },
+        {
+          "season": "2023/24",
+          "club": "Petro de Luanda [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2022/23",
+          "club": "Petro de Luanda [Jun.B S17]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        },
+        {
+          "season": "2021/22",
+          "club": "Petro de Luanda [Jun.C S15]",
+          "matches": null,
+          "goals": null,
+          "assists": null
+        }
+      ],
+      "dateOfBirth": "2007-06-20T00:00:00.000Z"
     }
   ],
   "source": "FotMob"
