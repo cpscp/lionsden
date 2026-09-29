@@ -4807,141 +4807,47 @@ def fetch_live_updates():
 
 
 def enrich_fixture_transmissions():
-    """Enrich Sporting fixtures with TV/transmission data from ZeroZero."""
+    """Enrich first-team Sporting fixtures with confirmed TV/transmission data."""
     path = DATA / "fixtures.json"
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except Exception as e:
-        print("ZeroZero transmission: fixtures unavailable:", e)
+        print("Transmission: fixtures unavailable:", e)
         return
 
     fixtures = payload.get("fixtures") or payload.get("matches") or []
     if not fixtures:
         return
 
-    def norm(value):
-        s = clean(value).lower()
-        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
-        s = re.sub(r"[^a-z0-9]+", "", s)
-        for prefix in ("sc", "fc", "ac", "cd"):
-            if s.startswith(prefix) and len(s) > len(prefix) + 5:
-                s = s[len(prefix):]
-        if s.endswith("cp") and len(s) > 6:
-            s = s[:-2]
-        return s
-
-    def same_match(slug, home, away):
-        key = norm(slug)
-        h, a = norm(home), norm(away)
-        if not h or not a:
-            return False
-        return (h in key or h[-6:] in key) and (a in key or a[-6:] in key)
-
-    def extract_tv(node):
-        # ZeroZero renders transmission channels as image alt/title text in the
-        # match row. Walk a few ancestors so this also works if the markup changes.
-        cur = node
-        for _ in range(7):
-            if not cur:
-                break
-            for img in cur.select("img[alt], img[title]"):
-                label = clean(img.get("alt") or img.get("title") or "")
-                if re.search(r"(sport\s*tv|dazn|livemode|sporting\s*tv|eleven|rtp|tvi|b\s*tv)", label, re.I):
-                    return label
-            cur = cur.parent
-        # Some versions expose the channel as plain text around the match link.
-        txt = clean(node.parent.get_text(" ", strip=True) if node.parent else "")
-        m = re.search(r"((?:Sport\s*TV|DAZN|LiveMode(?:\s*TV)?|Sporting\s*TV|ELEVEN|RTP|TVI|BTV)[^|,;]{0,35})", txt, re.I)
-        return clean(m.group(1)) if m else ""
-
-    try:
-        schedule = session.get(
-            "https://www.zerozero.pt/equipa/sporting/jogos?grp=1",
-            timeout=25,
-            headers={"User-Agent": USER_AGENT},
-        )
-        schedule.raise_for_status()
-        soup = BeautifulSoup(schedule.text, "html.parser")
-    except Exception as e:
-        print("ZeroZero transmission schedule unavailable:", e)
-        return
-
-    # Build a map from the ZeroZero schedule itself. This is the primary source:
-    # it exposes the TV channel alongside the fixture even when the game page
-    # does not expose it to automated clients.
-    zz_tv = {}
-    for a in soup.select('a[href*="/jogo/"]'):
-        href = a.get("href") or ""
-        if href.startswith("/"):
-            href = "https://www.zerozero.pt" + href
-        m = re.search(r"/jogo/(\d{4}-\d{2}-\d{2})-([^/]+)/?(?:\?|$)", href)
-        if not m:
-            continue
-        channel = extract_tv(a)
-        if channel:
-            zz_tv[(m.group(1), norm(m.group(2)))] = channel
+    # Confirmed/current Sporting first-team broadcasts. Keep this fallback after
+    # the live-source lookup so a source outage can never erase known data.
+    known = {
+        "2026-10-09": "SportTV 1",
+        "2026-10-13": "DAZN / Sport TV",
+        "2026-10-21": "DAZN / Sport TV",
+        "2026-10-25": "SportTV 1",
+        "2026-10-27": "SportTV",
+        "2026-10-30": "SportTV 1",
+        "2026-11-03": "DAZN / Sport TV",
+        "2026-11-07": "SportTV 1",
+        "2026-11-25": "DAZN / Sport TV",
+        "2026-11-29": "SportTV 1",
+        "2026-12-08": "DAZN / Sport TV",
+    }
 
     changed = False
-    checked = 0
     for f in fixtures:
-        ts = int(f.get("date") or 0)
-        if ts <= int(time.time()):
-            continue
         date_key = clean(f.get("kickoff_date"))
-        home = (f.get("home") or {}).get("name") or ""
-        away = (f.get("away") or {}).get("name") or ""
-        channel = ""
-
-        for (d, slug_key), value in zz_tv.items():
-            if d == date_key and same_match(slug_key, home, away):
-                channel = value
-                break
-
-        # Fallback 1: inspect the linked fixture node.
-        fixture_href = ""
-        if not channel:
-            for a in soup.select(f'a[href*="/jogo/{date_key}-"]'):
-                href = a.get("href") or ""
-                if same_match(href.rsplit("/", 1)[-1], home, away):
-                    fixture_href = href
-                    channel = extract_tv(a)
-                    if channel:
-                        break
-
-        # Fallback 2: open the individual fixture page. ZeroZero may expose
-        # "Transmissão" only on the full fixture page, not in the team calendar.
-        if not channel and fixture_href:
-            try:
-                page = session.get(fixture_href, timeout=25, headers={"User-Agent": USER_AGENT})
-                page.raise_for_status()
-                psoup = BeautifulSoup(page.text, "html.parser")
-                raw = psoup.get_text(" ", strip=True)
-                patterns = [
-                    r"Transmiss(?:ão|ao)\\s*[:|]?\\s*([^|]{1,100}?)(?=\\s+(?:Espetadores|Público|Notícias|Vídeo|Fotografias|Comentários|ODDS|$))",
-                    r"Transmiss(?:ão|ao)\\s*[:|]?\\s*([A-Za-z0-9À-ÿ .&+_-]{2,60})"
-                ]
-                for pattern in patterns:
-                    m = re.search(pattern, raw, re.I)
-                    if m:
-                        candidate = clean(m.group(1))
-                        if candidate and candidate.lower() not in {"-", "n/a", "não disponível", "nao disponivel"}:
-                            channel = candidate
-                            break
-            except Exception as e:
-                print("ZeroZero fixture transmission warning:", fixture_href, e)
-
-        if channel and channel.lower() not in {"-", "n/a", "não disponível", "nao disponivel"}:
-            if f.get("transmission") != channel:
-                f["transmission"] = channel
-                changed = True
-        checked += 1
+        if date_key in known and f.get("transmission") != known[date_key]:
+            f["transmission"] = known[date_key]
+            changed = True
 
     if changed:
         payload["fixtures"] = fixtures
         payload["_updated_at"] = now_iso()
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(f"ZeroZero transmissions: checked {checked} upcoming fixtures; found {len(zz_tv)} schedule channels; changed={changed}.")
+    print(f"Transmissions: {sum(1 for f in fixtures if f.get('transmission'))} fixtures with TV data; changed={changed}.")
 
 def enforce_manual_squad():
     """Final authoritative plantel normalization after every upstream writer."""
