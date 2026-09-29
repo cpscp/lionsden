@@ -943,12 +943,18 @@ def fetch_fotmob_core():
                 is_first_team = team_id == SPORTING_FOTMOB_ID or team_name in {"sporting cp", "sporting"}
                 # Explicitly reject B/U23/U19/other Sporting sides.
                 is_reserve = any(x in team_name for x in ("sporting cp b", "sporting b", "sporting u23", "sporting u19", "sporting sub23"))
+                # Reject friendlies/exhibition matches explicitly before relying
+                # on match IDs. FotMob recentMatches can expose a friendly with
+                # a matchId that is present in the broader feed, so the ID alone
+                # must never override the competition filter.
+                comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
+                comp_name = comp.get("name") if isinstance(comp, dict) else comp
+                if comp_name and not is_official_sporting_competition(comp_name):
+                    continue
                 is_official = True
                 if match_id is not None and official_fixture_ids:
                     is_official = str(match_id) in official_fixture_ids
                 else:
-                    comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
-                    comp_name = comp.get("name") if isinstance(comp, dict) else comp
                     is_official = is_official_sporting_competition(comp_name)
                 if is_first_team and not is_reserve and is_official and (fnum(rm.get("minutesPlayed")) or 0) > 0:
                     played.append(rm)
