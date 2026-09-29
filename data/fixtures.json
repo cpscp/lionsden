@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-29T12:13:42.672153+00:00",
+  "_updated_at": "2026-09-29T12:20:07.329Z",
   "team_id": 9768,
   "fixtures": [
     {
@@ -497,7 +497,7 @@
         "city": "Braga",
         "lat": 41.562553702,
         "lon": -8.429903984,
-        "capacity": 30286.0,
+        "capacity": 30286,
         "country": "Portugal"
       },
       "competition": {
@@ -521,7 +521,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV 1"
     },
     {
       "id": 6106414,
@@ -538,7 +539,7 @@
         "city": "Lens",
         "lat": 50.432866762,
         "lon": 2.81494081,
-        "capacity": 41233.0,
+        "capacity": 41233,
         "country": "France"
       },
       "competition": {
@@ -562,7 +563,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "DAZN / Sport TV"
     },
     {
       "id": 6106281,
@@ -579,7 +581,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095.0,
+        "capacity": 52095,
         "country": "Portugal"
       },
       "competition": {
@@ -603,7 +605,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "DAZN / Sport TV"
     },
     {
       "id": 5887661,
@@ -620,7 +623,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095.0,
+        "capacity": 52095,
         "country": "Portugal"
       },
       "competition": {
@@ -644,7 +647,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV 1"
     },
     {
       "id": 5985964,
@@ -661,7 +665,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095.0,
+        "capacity": 52095,
         "country": "Portugal"
       },
       "competition": {
@@ -685,7 +689,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV"
     },
     {
       "id": 5887666,
@@ -702,7 +707,7 @@
         "city": "Rio Maior",
         "lat": 39.344540974,
         "lon": -8.935162425,
-        "capacity": 8500.0,
+        "capacity": 8500,
         "country": "Portugal"
       },
       "competition": {
@@ -726,7 +731,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV 1"
     },
     {
       "id": 6106335,
@@ -743,7 +749,7 @@
         "city": "London",
         "lat": 51.481711963,
         "lon": -0.190974623,
-        "capacity": 40044.0,
+        "capacity": 40044,
         "country": "England"
       },
       "competition": {
@@ -767,7 +773,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "DAZN / Sport TV"
     },
     {
       "id": 5887679,
@@ -784,7 +791,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095.0,
+        "capacity": 52095,
         "country": "Portugal"
       },
       "competition": {
@@ -808,7 +815,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV 1"
     },
     {
       "id": 6106279,
@@ -848,7 +856,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "DAZN / Sport TV"
     },
     {
       "id": 5887687,
@@ -888,7 +897,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "SportTV 1"
     },
     {
       "id": 5887698,
@@ -968,7 +978,8 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob"
+      "source": "FotMob",
+      "transmission": "DAZN / Sport TV"
     },
     {
       "id": 5887702,
