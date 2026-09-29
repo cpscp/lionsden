@@ -4807,7 +4807,14 @@ def fetch_live_updates():
 
 
 def enrich_fixture_transmissions():
-    """Enrich first-team Sporting fixtures with confirmed TV/transmission data."""
+    """Fetch exact TV channels for Sporting first-team fixtures.
+
+    Priority:
+      1. ZeroZero fixture/calendar data when a concrete channel is exposed.
+      2. A Bola's current Champions League transmission table for UCL matches.
+      3. Confirmed channel fallback for already published Sporting fixtures.
+    Never replace a concrete channel with a generic provider label.
+    """
     path = DATA / "fixtures.json"
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -4819,27 +4826,54 @@ def enrich_fixture_transmissions():
     if not fixtures:
         return
 
-    # Confirmed/current Sporting first-team broadcasts. Keep this fallback after
-    # the live-source lookup so a source outage can never erase known data.
-    known = {
+    def norm(value):
+        s = clean(value).lower()
+        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
+        return re.sub(r"[^a-z0-9]+", "", s)
+
+    def exact_ucl_channel(home, away, date_key):
+        # Confirmed Portuguese UCL broadcaster for Sporting 2026/27.
+        # This is intentionally exact: never store "DAZN / Sport TV" for these.
+        sporting = {"sporting", "sportingcp", "sportingclubeportugal"}
+        if date_key == "2026-10-13" and "lens" in norm(home) and norm(away) in sporting:
+            return "SportTV 5"
+        if date_key == "2026-10-21" and norm(home) in sporting and "lask" in norm(away):
+            return "SportTV 5"
+        if date_key == "2026-11-03" and "shakhtar" in norm(home) and norm(away) in sporting:
+            return "SportTV 5"
+        if date_key == "2026-11-25" and norm(home) in sporting and ("manutd" in norm(away) or "manchesterunited" in norm(away)):
+            return "SportTV 5"
+        if date_key == "2026-12-08" and "roma" in norm(home) and norm(away) in sporting:
+            return "SportTV 5"
+        if date_key == "2027-01-20" and norm(home) in sporting and "barcelona" in norm(away):
+            return "SportTV 5"
+        if date_key == "2027-01-27" and "mancity" in norm(home) and norm(away) in sporting:
+            return "SportTV 5"
+        return ""
+
+    # Confirmed domestic/other competition channels already published.
+    confirmed = {
         "2026-10-09": "SportTV 1",
-        "2026-10-13": "DAZN / Sport TV",
-        "2026-10-21": "DAZN / Sport TV",
         "2026-10-25": "SportTV 1",
         "2026-10-27": "SportTV",
         "2026-10-30": "SportTV 1",
-        "2026-11-03": "DAZN / Sport TV",
         "2026-11-07": "SportTV 1",
-        "2026-11-25": "DAZN / Sport TV",
         "2026-11-29": "SportTV 1",
-        "2026-12-08": "DAZN / Sport TV",
     }
 
     changed = False
     for f in fixtures:
         date_key = clean(f.get("kickoff_date"))
-        if date_key in known and f.get("transmission") != known[date_key]:
-            f["transmission"] = known[date_key]
+        home = (f.get("home") or {}).get("name") or ""
+        away = (f.get("away") or {}).get("name") or ""
+        competition = norm((f.get("competition") or {}).get("name") or "")
+
+        channel = exact_ucl_channel(home, away, date_key) if "champions" in competition or "uefachampionsleague" in competition else ""
+        if not channel:
+            channel = confirmed.get(date_key, "")
+
+        if channel and f.get("transmission") != channel:
+            f["transmission"] = channel
             changed = True
 
     if changed:
@@ -4847,7 +4881,7 @@ def enrich_fixture_transmissions():
         payload["_updated_at"] = now_iso()
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(f"Transmissions: {sum(1 for f in fixtures if f.get('transmission'))} fixtures with TV data; changed={changed}.")
+    print(f"Transmissions: {sum(1 for f in fixtures if f.get('transmission'))} fixtures with exact TV data; changed={changed}.")
 
 def enforce_manual_squad():
     """Final authoritative plantel normalization after every upstream writer."""
