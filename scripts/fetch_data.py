@@ -4897,14 +4897,38 @@ def enrich_fixture_transmissions():
                 channel = value
                 break
 
-        # Fallback to the individual ZeroZero fixture page.
+        # Fallback 1: inspect the linked fixture node.
+        fixture_href = ""
         if not channel:
             for a in soup.select(f'a[href*="/jogo/{date_key}-"]'):
                 href = a.get("href") or ""
                 if same_match(href.rsplit("/", 1)[-1], home, away):
+                    fixture_href = href
                     channel = extract_tv(a)
                     if channel:
                         break
+
+        # Fallback 2: open the individual fixture page. ZeroZero may expose
+        # "Transmissão" only on the full fixture page, not in the team calendar.
+        if not channel and fixture_href:
+            try:
+                page = session.get(fixture_href, timeout=25, headers={"User-Agent": USER_AGENT})
+                page.raise_for_status()
+                psoup = BeautifulSoup(page.text, "html.parser")
+                raw = psoup.get_text(" ", strip=True)
+                patterns = [
+                    r"Transmiss(?:ão|ao)\\s*[:|]?\\s*([^|]{1,100}?)(?=\\s+(?:Espetadores|Público|Notícias|Vídeo|Fotografias|Comentários|ODDS|$))",
+                    r"Transmiss(?:ão|ao)\\s*[:|]?\\s*([A-Za-z0-9À-ÿ .&+_-]{2,60})"
+                ]
+                for pattern in patterns:
+                    m = re.search(pattern, raw, re.I)
+                    if m:
+                        candidate = clean(m.group(1))
+                        if candidate and candidate.lower() not in {"-", "n/a", "não disponível", "nao disponivel"}:
+                            channel = candidate
+                            break
+            except Exception as e:
+                print("ZeroZero fixture transmission warning:", fixture_href, e)
 
         if channel and channel.lower() not in {"-", "n/a", "não disponível", "nao disponivel"}:
             if f.get("transmission") != channel:
