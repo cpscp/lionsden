@@ -12,10 +12,19 @@
   "icons": [
     {
       "src": "./icons/lions-den-final.svg",
-      "sizes": "307x307",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/lions-den-final.svg",
+      "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "display_override": [
+    "standalone"
+  ]
 }
