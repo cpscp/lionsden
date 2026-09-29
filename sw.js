@@ -1,9 +1,10 @@
-const CACHE_NAME = "lions-den-pwa-v2";
+const CACHE_NAME = "lions-den-pwa-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./icons/lions-den-final.svg"
+  "./icons/lions-den-final.svg",
+  "./data/fixtures.json"
 ];
 
 self.addEventListener("install", event => {
