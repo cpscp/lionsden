@@ -114,7 +114,7 @@ MANUAL_SQUAD_ADDITIONS = {
         "nationality": "Portugal",
         "dateOfBirth": "2007-01-08T00:00:00.000Z",
         "shirtNumber": 73,
-        "photo": "https://img.sofascore.com/api/v1/player/1586645/image",
+        "photo": "https://api.sofascore.com/api/v1/player/1586645/image",
         "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
     },
     "Francisco Silva": {
@@ -124,7 +124,7 @@ MANUAL_SQUAD_ADDITIONS = {
         "nationality": "Portugal",
         "dateOfBirth": "2005-11-20T00:00:00.000Z",
         "shirtNumber": 99,
-        "photo": "https://img.sofascore.com/api/v1/player/1184327/image",
+        "photo": "https://api.sofascore.com/api/v1/player/1184327/image",
         "zerozero_url": "https://www.zerozero.pt/jogador/francisco-silva/664598?epoca_id=156",
     },
 }
