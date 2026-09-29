@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-29T12:03:48.162Z",
+  "_updated_at": "2026-09-29T12:13:42.672153+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -497,7 +497,7 @@
         "city": "Braga",
         "lat": 41.562553702,
         "lon": -8.429903984,
-        "capacity": 30286,
+        "capacity": 30286.0,
         "country": "Portugal"
       },
       "competition": {
@@ -521,8 +521,7 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob",
-      "transmission": "SportTV 1"
+      "source": "FotMob"
     },
     {
       "id": 6106414,
@@ -539,7 +538,7 @@
         "city": "Lens",
         "lat": 50.432866762,
         "lon": 2.81494081,
-        "capacity": 41233,
+        "capacity": 41233.0,
         "country": "France"
       },
       "competition": {
@@ -580,7 +579,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095,
+        "capacity": 52095.0,
         "country": "Portugal"
       },
       "competition": {
@@ -621,7 +620,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095,
+        "capacity": 52095.0,
         "country": "Portugal"
       },
       "competition": {
@@ -645,8 +644,7 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob",
-      "transmission": "SportTV 1"
+      "source": "FotMob"
     },
     {
       "id": 5985964,
@@ -663,7 +661,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095,
+        "capacity": 52095.0,
         "country": "Portugal"
       },
       "competition": {
@@ -687,8 +685,7 @@
         "home": null,
         "away": null
       },
-      "source": "FotMob",
-      "transmission": "SportTV"
+      "source": "FotMob"
     },
     {
       "id": 5887666,
@@ -705,7 +702,7 @@
         "city": "Rio Maior",
         "lat": 39.344540974,
         "lon": -8.935162425,
-        "capacity": 8500,
+        "capacity": 8500.0,
         "country": "Portugal"
       },
       "competition": {
@@ -746,7 +743,7 @@
         "city": "London",
         "lat": 51.481711963,
         "lon": -0.190974623,
-        "capacity": 40044,
+        "capacity": 40044.0,
         "country": "England"
       },
       "competition": {
@@ -787,7 +784,7 @@
         "city": "Lisboa",
         "lat": 38.761207228,
         "lon": -9.160875678,
-        "capacity": 52095,
+        "capacity": 52095.0,
         "country": "Portugal"
       },
       "competition": {
