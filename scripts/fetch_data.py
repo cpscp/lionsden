@@ -4963,6 +4963,7 @@ def main():
         try:
             fetch_fsa_fixtures()
             enrich_match_details()
+            enrich_fixture_transmissions()
         except Exception as e:
             print(f"Football API enrichment skipped: {e}")
 
