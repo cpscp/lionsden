@@ -781,11 +781,19 @@ const RUI_BORGES_HISTORY=[
   {season:'2018/19',club:'Mirandela',matches:23,wins:12,draws:5,losses:6},
   {season:'2017/18',club:'Mirandela',matches:32,wins:17,draws:7,losses:8}
 ];
+function isOfficialCoachFixture(x){
+  const c=String(x.competition?.name||x.competition||'').toLowerCase()
+    .normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
+  if(!c)return true;
+  if(/friendl|amigavel|friendly|pre.?season|pre.?epoca|pre.?epoca/.test(c))return false;
+  return /liga portugal|primeira liga|champions|uefa|taca de portugal|taca da liga|portuguese cup|portuguese league/.test(c);
+}
 function coachCurrentStats(){
   const f=allFixtures(),now=Math.floor(Date.now()/1000);
   let matches=0,wins=0,draws=0,losses=0;
   for(const x of f){
     if(!x.date||Number(x.date)>now||String(x.status?.short||'').toLowerCase()==='postponed')continue;
+    if(!isOfficialCoachFixture(x))continue;
     const gh=Number(x.goals?.home??x.score?.home), ga=Number(x.goals?.away??x.score?.away);
     if(!Number.isFinite(gh)||!Number.isFinite(ga))continue;
     const home=String(x.home?.name||'').toLowerCase().includes('sporting');
