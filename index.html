@@ -620,13 +620,14 @@ function renderClassification(){
          const zone=key==='champions'?(pos<=8?'ucl-qualified':pos<=24?'ucl-playoff':''):key==='primeira-liga'?(pos===1?'liga-champions':pos===2?'liga-champions-qual':pos===3?'liga-europa':pos>=4&&pos<=5?'liga-conference':pos===16?'liga-playoff':pos>=17?'liga-relegation':''):'';
          return '<tr class="'+(sc?'sc-row ':'')+zone+'"><td>'+esc(r.position??'—')+'</td><td class="club">'+esc(t.shortName||t.name||'—')+'</td><td>'+esc(r.playedGames??'—')+'</td><td>'+esc(r.won??'—')+'</td><td>'+esc(r.draw??'—')+'</td><td>'+esc(r.lost??'—')+'</td><td>'+esc(r.goalsFor??'—')+'</td><td>'+esc(r.goalsAgainst??'—')+'</td><td>'+esc(r.goalDifference??'—')+'</td><td><b>'+esc(r.points??'—')+'</b></td></tr>';
        }).join('')+'</tbody></table>'
-     ).join('')+
-     (key==='champions'?'<div class="ucl-legend mt-3"><span><i class="q"></i>Apuramento direto · 1.º–8.º</span><span><i class="p"></i>Play-off Qualificação · 9.º–24.º</span></div>':key==='primeira-liga'?'<div class="class-legend mt-3"><span><i class="champions"></i>Liga dos Campeões · 1.º</span><span><i class="champions-qual"></i>Liga dos Campeões · 3.ª Pré-Eliminatória · 2.º</span><span><i class="europa"></i>Liga Europa · 2.ª Pré-Eliminatória · 3.º</span><span><i class="conference"></i>Conference League · 2.ª Pré-Eliminatória · 4.º–5.º</span><span><i class="playoff"></i>Play-off Despromoção · 16.º</span><span><i class="relegation"></i>Despromoção · 17.º–18.º</span></div>':'');
+     ).join('');
+ }
  if(rounds.length){
    if(rows.length) htmlOut+='<div class="font-semibold text-[13px] mt-2 mb-2">Eliminatórias</div>';
    htmlOut+=knockoutHtml();
  }
- el.innerHTML=htmlOut;
+ const legendHtml=key==='champions'?'<div class="ucl-legend mt-3"><span><i class="q"></i>Apuramento direto · 1.º–8.º</span><span><i class="p"></i>Play-off Qualificação · 9.º–24.º</span></div>':key==='primeira-liga'?'<div class="class-legend mt-3"><span><i class="champions"></i>Liga dos Campeões · 1.º</span><span><i class="champions-qual"></i>Liga dos Campeões · 3.ª Pré-Eliminatória · 2.º</span><span><i class="europa"></i>Liga Europa · 2.ª Pré-Eliminatória · 3.º</span><span><i class="conference"></i>Conference League · 2.ª Pré-Eliminatória · 4.º–5.º</span><span><i class="playoff"></i>Play-off Despromoção · 16.º</span><span><i class="relegation"></i>Despromoção · 17.º–18.º</span></div>':'';
+ el.innerHTML=htmlOut+legendHtml;
 }
 function openVideo(id,title){
  if(!id)return;
