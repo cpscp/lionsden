@@ -2191,6 +2191,25 @@ def fetch_sofascore_player_stats():
         "source": "Sofascore public data",
     })
 
+    # Final plantel guard: enforce manual inclusions/exclusions immediately
+    # before publishing squad.json, so no upstream refresh can overwrite them.
+    final_by_name = {zz_norm(p.get("name")): p for p in players if p.get("name")}
+    for manual_name, manual in MANUAL_SQUAD_ADDITIONS.items():
+        key = zz_norm(manual_name)
+        if key in final_by_name:
+            p = final_by_name[key]
+            p.update({k: v for k, v in manual.items() if v not in (None, "", [])})
+            p["position"] = manual["position"]
+        else:
+            p = dict(manual)
+            p["stats"] = {"matches": 0, "minutes": 0, "goals": 0, "assists": 0, "yellow": 0, "red": 0}
+            p["competitions"] = {}
+            p["careerStats"] = []
+            p["career"] = []
+            players.append(p)
+            final_by_name[key] = p
+    players[:] = [p for p in players if clean(p.get("name")) not in EXCLUDED_SQUAD_PLAYERS]
+
     write_json("squad.json", {
         "team": "Sporting Clube de Portugal",
         "crest": "https://img.sofascore.com/api/v1/team/3001/image",
