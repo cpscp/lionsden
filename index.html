@@ -955,7 +955,7 @@ function currentStatsCard(st,label){
       ${metric('Saldo médio / jogo',(st.avg_goal_difference>=0?'+':'')+st.avg_goal_difference.toFixed(2))}${metric('Invicto',st.unbeaten?'Sim':'Não')}${showPoints?metric('Rácio de pontos',record):''}
     </div>
     <div class="mt-6 pt-5 border-t border-white/5">
-      <div class="text-[9px] uppercase tracking-widest muted mb-3">Casa · Fora</div>
+      <div class="text-[9px] uppercase tracking-widest muted mb-3">Jogos</div>
       <div class="grid grid-cols-2 gap-3">
         ${metric('Casa · jogos',st.home.matches)}${metric('Fora · jogos',st.away.matches)}
         ${metric('Casa · V/E/D',st.home.wins+'/'+st.home.draws+'/'+st.home.losses)}${metric('Fora · V/E/D',st.away.wins+'/'+st.away.draws+'/'+st.away.losses)}
