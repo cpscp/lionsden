@@ -2130,6 +2130,32 @@ def fetch_sofascore_player_stats():
         row["stats"]["rating"] = round(sum(r * max(m, 1) for r, m in ratings) / sum(max(m, 1) for _, m in ratings), 2) if ratings else None
         players.append(row)
 
+    # Keep the two Sporting squad members below even when Sofascore's
+    # first-team roster endpoint omits them. Their card metadata is fixed
+    # explicitly; Eduardo is shown as a defender in Lion's Den by design.
+    existing_names = {zz_norm(p.get("name")) for p in players if p.get("name")}
+    for name, manual in MANUAL_SQUAD_ADDITIONS.items():
+        if zz_norm(name) in existing_names:
+            for p in players:
+                if zz_norm(p.get("name")) == zz_norm(name):
+                    p.update({k: v for k, v in manual.items() if v not in (None, "", [])})
+                    p["position"] = manual["position"]
+                    break
+        else:
+            p = dict(manual)
+            p["stats"] = {
+                "matches": 0,
+                "minutes": 0,
+                "goals": 0,
+                "assists": 0,
+                "yellow": 0,
+                "red": 0,
+            }
+            p["competitions"] = {}
+            p["careerStats"] = []
+            p["career"] = []
+            players.append(p)
+
     if not players:
         raise RuntimeError("Sofascore returned no usable Sporting players.")
 
