@@ -4825,6 +4825,8 @@ def enrich_fixture_transmissions():
         for prefix in ("sc", "fc", "ac", "cd"):
             if s.startswith(prefix) and len(s) > len(prefix) + 5:
                 s = s[len(prefix):]
+        if s.endswith("cp") and len(s) > 6:
+            s = s[:-2]
         return s
 
     def match_slug(slug, home, away):
