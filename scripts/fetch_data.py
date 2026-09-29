@@ -4806,6 +4806,97 @@ def fetch_live_updates():
             })
 
 
+def enrich_fixture_transmissions():
+    """Add TV/transmission data to upcoming Sporting fixtures from ZeroZero."""
+    path = DATA / "fixtures.json"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print("ZeroZero transmission: fixtures unavailable:", e)
+        return
+
+    fixtures = payload.get("fixtures") or payload.get("matches") or []
+    if not fixtures:
+        return
+
+    def norm_name(value):
+        s = clean(value).lower()
+        s = re.sub(r"[^a-z0-9]+", "", unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode())
+        for prefix in ("sc", "fc", "ac", "cd"):
+            if s.startswith(prefix) and len(s) > len(prefix) + 5:
+                s = s[len(prefix):]
+        return s
+
+    def match_slug(slug, home, away):
+        key = norm_name(slug)
+        h = norm_name(home)
+        a = norm_name(away)
+        if not h or not a:
+            return False
+        # ZeroZero slugs normally contain both team names; allow short variants.
+        h_ok = h in key or h[-6:] in key
+        a_ok = a in key or a[-6:] in key
+        return h_ok and a_ok
+
+    try:
+        schedule = session.get(
+            "https://www.zerozero.pt/equipa/sporting/jogos?epoca_id=156",
+            timeout=25,
+            headers={"User-Agent": USER_AGENT},
+        )
+        schedule.raise_for_status()
+        soup = BeautifulSoup(schedule.text, "html.parser")
+    except Exception as e:
+        print("ZeroZero transmission schedule unavailable:", e)
+        return
+
+    links = []
+    seen = set()
+    for a in soup.select('a[href*="/jogo/"]'):
+        href = a.get("href") or ""
+        if href.startswith("/"):
+            href = "https://www.zerozero.pt" + href
+        m = re.search(r"/jogo/(\d{4}-\d{2}-\d{2})-([^/]+)/?(?:\?|$)", href)
+        if not m or href in seen:
+            continue
+        seen.add(href)
+        links.append((m.group(1), m.group(2), href))
+
+    changed = False
+    checked = 0
+    for f in fixtures:
+        ts = int(f.get("date") or 0)
+        if ts <= int(time.time()):
+            continue
+        date_key = clean(f.get("kickoff_date"))
+        home = (f.get("home") or {}).get("name") or ""
+        away = (f.get("away") or {}).get("name") or ""
+        href = next((u for d, slug, u in links if d == date_key and match_slug(slug, home, away)), None)
+        if not href:
+            continue
+        try:
+            page = session.get(href, timeout=25, headers={"User-Agent": USER_AGENT})
+            page.raise_for_status()
+            text_content = BeautifulSoup(page.text, "html.parser").get_text(" ", strip=True)
+            m = re.search(r"Transmiss(?:ão|ao)\s+(.+?)(?=\s+(?:Espetadores|Últimos Titulares|Impedimentos|Antevisão do Jogo|Ficha de Jogo|Coment|$))", text_content, re.I)
+            transmission = clean(m.group(1)) if m else ""
+            if transmission and transmission.lower() not in {"-", "n/a", "não disponível", "nao disponivel"}:
+                if f.get("transmission") != transmission:
+                    f["transmission"] = transmission
+                    changed = True
+            elif f.get("transmission"):
+                del f["transmission"]
+                changed = True
+            checked += 1
+        except Exception as e:
+            print("ZeroZero transmission warning:", href, e)
+
+    if changed:
+        payload["fixtures"] = fixtures
+        payload["_updated_at"] = now_iso()
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"ZeroZero transmissions: checked {checked} upcoming fixtures; changed={changed}.")
+
 def enforce_manual_squad():
     """Final authoritative plantel normalization after every upstream writer."""
     squad = safe_existing("squad.json") or {}
