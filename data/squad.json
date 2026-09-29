@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-29T09:18:50.982271+00:00",
+  "_updated_at": "2026-09-29T09:26:07.509491+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -2507,6 +2507,154 @@
         }
       ],
       "dateOfBirth": "2002-03-02T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1093025,
+      "name": "Sotiris Alexandropoulos",
+      "position": "MF",
+      "nationality": "Greece",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1093025.png",
+      "stats": {
+        "matches": 0,
+        "byCompetition": {},
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "career": [
+        {
+          "period": "2025-07-02T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Fortuna Düsseldorf"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2025-07-02T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-07-30T00:00:00 → 2025-06-30T00:00:00",
+          "club": "Standard Liège"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2024-07-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2023-08-03T00:00:00 → 2024-06-30T00:00:00",
+          "club": "Olympiacos"
+        },
+        {
+          "period": "2023-02-10T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022-08-30T00:00:00 → 2023-06-30T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2019-07-01T00:00:00 → 2022-08-29T00:00:00",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Fortuna Düsseldorf"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Standard Liège"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Olympiacos"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2022/2023",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2020/2021",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2019/2020",
+          "club": "Panathinaikos"
+        },
+        {
+          "period": "2021-03-26T00:00:00 → 2025-08-25T00:00:00",
+          "club": "Greece"
+        },
+        {
+          "period": "2020-07-01T00:00:00 → 2021-08-25T00:00:00",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019-09-04T00:00:00 → 2021-08-25T00:00:00",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2017-03-10T00:00:00 → 2018-10-23T00:00:00",
+          "club": "Greece U17"
+        },
+        {
+          "period": "2025",
+          "club": "Greece"
+        },
+        {
+          "period": "2023/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022/2024",
+          "club": "Greece"
+        },
+        {
+          "period": "2022",
+          "club": "Greece"
+        },
+        {
+          "period": "2021",
+          "club": "Greece"
+        },
+        {
+          "period": "2021/2022",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2019/2021",
+          "club": "Greece U21"
+        },
+        {
+          "period": "2020",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2019",
+          "club": "Greece U19"
+        },
+        {
+          "period": "2018",
+          "club": "Greece U17"
+        },
+        {
+          "period": "2017",
+          "club": "Greece U17"
+        }
+      ],
+      "careerStats": [],
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 1425101,
@@ -5710,49 +5858,6 @@
         }
       ],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
-    },
-    {
-      "name": "Eduardo Felicíssimo",
-      "sofascore_id": 1586645,
-      "position": "DF",
-      "nationality": "Portugal",
-      "dateOfBirth": "2007-01-08T00:00:00.000Z",
-      "shirtNumber": 73,
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
-      "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
-      "stats": {
-        "matches": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "competitions": {},
-      "careerStats": [],
-      "career": []
-    },
-    {
-      "name": "Francisco Silva",
-      "sofascore_id": 1184327,
-      "position": "GK",
-      "nationality": "Portugal",
-      "dateOfBirth": "2005-11-20T00:00:00.000Z",
-      "shirtNumber": 99,
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1463490.png",
-      "zerozero_url": "https://www.zerozero.pt/jogador/francisco-silva/664598?epoca_id=156",
-      "stats": {
-        "matches": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0,
-        "clean_sheets": 0
-      },
-      "competitions": {},
-      "careerStats": [],
-      "career": []
     }
   ],
   "source": "FotMob"
