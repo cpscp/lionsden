@@ -784,11 +784,14 @@ const RUI_BORGES_HISTORY=[
 function isOfficialCoachFixture(x){
   const c=String(x.competition?.name||x.competition||'').toLowerCase()
     .normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
-  // The fixture feed contains both official and pre-season matches.
-  // Official coach stats should exclude only friendlies/pre-season; every
-  // other completed competition fixture is considered official.
-  if(/friendl|amigavel|friendly|pre.?season|pre.?epoca/.test(c))return false;
-  return true;
+  // Keep exactly the same competition rule used by the data pipeline/player
+  // stats: official first-team competitions only.
+  const excluded=[
+    'friendly','amig','pre epoca','pre-epoca',
+    'trofeu cinco violinos','trofeio cinco violinos',
+    'trophy cinco violinos','cinco violinos'
+  ];
+  return !excluded.some(term=>c.includes(term));
 }
 function coachCurrentStats(){
   const f=allFixtures(),now=Math.floor(Date.now()/1000);
