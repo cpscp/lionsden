@@ -5040,7 +5040,6 @@ def main():
         try:
             fetch_fsa_fixtures()
             enrich_match_details()
-            enrich_fixture_transmissions()
         except Exception as e:
             print(f"Football API enrichment skipped: {e}")
 
@@ -5048,6 +5047,14 @@ def main():
             enforce_manual_squad()
         except Exception as e:
             print(f"Final squad normalization skipped: {e}")
+
+        # TV/transmission is deliberately the LAST fixture enrichment step.
+        # Several upstream sources rewrite fixtures.json during the pipeline;
+        # applying this here prevents any later source from erasing TV data.
+        try:
+            enrich_fixture_transmissions()
+        except Exception as e:
+            print(f"Transmission enrichment skipped: {e}")
 
     # Always leave a status file so the app can explain which source failed.
     write_json("status.json", {
