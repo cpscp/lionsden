@@ -498,8 +498,8 @@ const formItems=recentForm.map(x=>{
   const result=gf>ga?'W':gf===ga?'D':'L';
   const label=result==='W'?'V':result==='L'?'D':'E';
   const cls=result==='W'?'text-emerald-400':result==='L'?'text-red-400':'text-amber-300';
-  const home=String(x.home?.name||'Sporting CP'),away=String(x.away?.name||'');
-  const tooltip=home+' '+gf+' × '+ga+' '+away;
+  const opponent=String(sportingHome?x.away?.name:x.home?.name||'');
+  const tooltip='Sporting CP '+gf+' × '+ga+' '+opponent;
   return '<div class="form-chip"><button type="button" class="statbox text-center py-3 font-bold '+cls+'" aria-label="'+esc(tooltip)+'" title="'+esc(tooltip)+'">'+label+'</button><span class="form-tooltip" role="tooltip">'+esc(tooltip)+'</span></div>';
 });
 formEl.innerHTML=formItems.join('')||'<div class="col-span-5 text-center muted">—</div>';
