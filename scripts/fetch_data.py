@@ -129,6 +129,8 @@ MANUAL_SQUAD_ADDITIONS = {
     },
 }
 
+EXCLUDED_SQUAD_PLAYERS = {"Sotiris Alexandropoulos"}
+
 POSITION_FALLBACKS = {
     "Rui Silva": "GK", "Kaique Pereira": "GK", "Diego Callai": "GK",
     "Moncef Zekri": "DF", "Zeno Debast": "DF", "Georgios Vagiannidis": "DF",
@@ -2155,6 +2157,9 @@ def fetch_sofascore_player_stats():
             p["careerStats"] = []
             p["career"] = []
             players.append(p)
+
+    # Remove players explicitly excluded from the Lion's Den first-team plantel.
+    players = [p for p in players if clean(p.get("name")) not in EXCLUDED_SQUAD_PLAYERS]
 
     if not players:
         raise RuntimeError("Sofascore returned no usable Sporting players.")
