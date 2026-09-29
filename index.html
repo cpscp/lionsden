@@ -181,7 +181,7 @@
 <section id="home" class="screen active space-y-5">
 <div class="hero next-match-hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
 <div id="lastGame" class="home-last-card p-4"></div>
-<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Primeira Liga</span></div><div class="card p-3 home-standings"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div><button class="w-full mt-3 pt-3 border-t border-white/5 text-[10px] uppercase tracking-widest muted text-center" onclick="go('classification')">Ver classificação detalhada →</button></div></div>
+<div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Liga Portugal</span></div><div class="card p-3 home-standings"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div><button class="w-full mt-3 pt-3 border-t border-white/5 text-[10px] uppercase tracking-widest muted text-center" onclick="go('classification')">Ver classificação detalhada →</button></div></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2></div><div class="form-order"><span>← Mais antigo</span><span>Mais recente →</span></div><div class="form-grid" id="form"></div></div>
 <div class="card p-4"><div class="flex items-center justify-between mb-3"><h2 class="font-bold">Últimas notícias</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('news')">Ver todas →</button></div><div id="homeNews" class="space-y-3"></div></div>
 </section>
@@ -255,7 +255,7 @@
 <div class="source-category">
 <div class="source-category-title">Dados de futebol</div>
 <div class="source-item"><div class="source-item-main"><div class="source-item-name">Football Soccer API (FSAPI)</div><div class="source-item-desc">Jogos, detalhes de partidas, árbitros, estádios e dados base dos jogos.</div></div><a href="https://www.football-soccer.com/" target="_blank" rel="noopener">football-soccer.com ↗</a></div>
-<div class="source-item"><div class="source-item-main"><div class="source-item-name">FBref</div><div class="source-item-desc">Estatísticas do Sporting, plantel, resultados, calendário e tabela da Primeira Liga.</div></div><a href="https://fbref.com/" target="_blank" rel="noopener">fbref.com ↗</a></div>
+<div class="source-item"><div class="source-item-main"><div class="source-item-name">FBref</div><div class="source-item-desc">Estatísticas do Sporting, plantel, resultados, calendário e tabela da Liga Portugal.</div></div><a href="https://fbref.com/" target="_blank" rel="noopener">fbref.com ↗</a></div>
 <div class="source-item"><div class="source-item-main"><div class="source-item-name">SofaScore</div><div class="source-item-desc">Dados complementares de jogos, jogadores, equipas, eventos e atualizações live.</div></div><a href="https://www.sofascore.com/" target="_blank" rel="noopener">sofascore.com ↗</a></div>
 <div class="source-item"><div class="source-item-main"><div class="source-item-name">FotMob</div><div class="source-item-desc">Forma, classificações, informação de equipas e apoio a dados de jogadores e partidas.</div></div><a href="https://www.fotmob.com/" target="_blank" rel="noopener">fotmob.com ↗</a></div>
 <div class="source-item"><div class="source-item-main"><div class="source-item-name">ZeroZero</div><div class="source-item-desc">Dados complementares de jogadores, carreiras, equipas e contexto futebolístico.</div></div><a href="https://www.zerozero.pt/" target="_blank" rel="noopener">zerozero.pt ↗</a></div>
@@ -529,7 +529,7 @@ const ns=(D['news.json']?.items||[]).slice(0,4);document.getElementById('homeNew
 }
 function renderClassification(){
  const data=D['standings-competitions.json']||{};
- const configs=[['primeira-liga','Primeira Liga'],['champions','Champions League'],['taca-portugal','Taça de Portugal'],['taca-liga','Taça da Liga']];
+ const configs=[['primeira-liga','Liga Portugal'],['champions','Champions League'],['taca-portugal','Taça de Portugal'],['taca-liga','Taça da Liga']];
  const tabs=document.getElementById('classificationTabs'),el=document.getElementById('classificationList');
  if(!tabs||!el)return;
  let key=window._classificationKey||'primeira-liga';
@@ -1018,7 +1018,7 @@ function currentStatsCard(st,label){
 function playerLeaderStatsForCompetition(compKey){
   const players=(D['squad.json']?.squad||[]).filter(Boolean);
   const map={
-    'primeira-liga':['Liga Portugal','Primeira Liga'],
+    'primeira-liga':['Liga Portugal','Liga Portugal'],
     'champions':['UEFA Champions League','Champions League'],
     'taca-portugal':['Taça de Portugal'],
     'taca-liga':['Taça da Liga','League Cup']
