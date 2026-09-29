@@ -103,6 +103,32 @@ def clean(v):
 
 ZEROZERO_TEAM = "https://www.zerozero.pt/equipa/sporting"
 SPORTING_FOTMOB_ID = 9768
+# Manual first-team/extended-squad inclusions that the automatic Sporting roster
+# feed can omit. These are intentionally kept here so scheduled refreshes do not
+# remove them again.
+MANUAL_SQUAD_ADDITIONS = {
+    "Eduardo Felicíssimo": {
+        "sofascore_id": 1586645,
+        "name": "Eduardo Felicíssimo",
+        "position": "DF",
+        "nationality": "Portugal",
+        "dateOfBirth": "2007-01-08T00:00:00.000Z",
+        "shirtNumber": 73,
+        "photo": "https://img.sofascore.com/api/v1/player/1586645/image",
+        "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
+    },
+    "Francisco Silva": {
+        "sofascore_id": 1184327,
+        "name": "Francisco Silva",
+        "position": "GK",
+        "nationality": "Portugal",
+        "dateOfBirth": "2005-11-20T00:00:00.000Z",
+        "shirtNumber": 99,
+        "photo": "https://img.sofascore.com/api/v1/player/1184327/image",
+        "zerozero_url": "https://www.zerozero.pt/jogador/francisco-silva/664598?epoca_id=156",
+    },
+}
+
 POSITION_FALLBACKS = {
     "Rui Silva": "GK", "Kaique Pereira": "GK", "Diego Callai": "GK",
     "Moncef Zekri": "DF", "Zeno Debast": "DF", "Georgios Vagiannidis": "DF",
