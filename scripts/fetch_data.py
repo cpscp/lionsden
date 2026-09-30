@@ -2882,15 +2882,38 @@ def fetch_news():
 
     def extract_card_image(a, base_url):
         parent = a
-        for _ in range(7):
+        for _ in range(8):
             if parent is None:
                 break
-            img = parent.find("img")
-            if img:
-                src = (img.get("data-src") or img.get("data-lazy-src") or
-                       img.get("data-original") or img.get("src"))
-                if src and not str(src).startswith("data:"):
-                    return urljoin(base_url, str(src))
+            # Prefer lazy-loaded/full-size attributes, then srcset.
+            for img in parent.find_all("img"):
+                candidates = [
+                    img.get("data-src"),
+                    img.get("data-lazy-src"),
+                    img.get("data-original"),
+                    img.get("data-image"),
+                    img.get("data-fallback-src"),
+                    img.get("src"),
+                ]
+                srcset = img.get("data-srcset") or img.get("srcset")
+                if srcset:
+                    # Use the last candidate, normally the largest rendition.
+                    parts = [p.strip().split(" ")[0] for p in str(srcset).split(",") if p.strip()]
+                    candidates = parts[::-1] + candidates
+                for src in candidates:
+                    if src and not str(src).startswith("data:"):
+                        s = str(src).strip()
+                        if not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", s, re.I):
+                            return urljoin(base_url, s)
+            # Some modern cards put the image on <source>.
+            for source_node in parent.find_all("source"):
+                srcset = source_node.get("data-srcset") or source_node.get("srcset")
+                if srcset:
+                    parts = [p.strip().split(" ")[0] for p in str(srcset).split(",") if p.strip()]
+                    if parts:
+                        s = parts[-1]
+                        if not re.search(r"(logo|sprite|avatar|placeholder|1x1)", s, re.I):
+                            return urljoin(base_url, s)
             parent = parent.parent
         return None
 
@@ -3183,7 +3206,17 @@ def fetch_news():
                     {"name":"twitter:image"},
                     {"name":"twitter:image:src"},
                 )
-                if image and not re.search(r"(favicon|logo|sprite|avatar)", image, re.I):
+                if not image:
+                    # Publishers such as O Jogo/Zerozero may expose the lead
+                    # image through image_src or preload instead of og:image.
+                    link_image = soup.find("link", attrs={"rel": re.compile(r"image_src", re.I)})
+                    if link_image and link_image.get("href"):
+                        image = link_image.get("href")
+                if not image:
+                    preload = soup.find("link", attrs={"rel": "preload", "as": "image"})
+                    if preload and preload.get("href"):
+                        image = preload.get("href")
+                if image and not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", image, re.I):
                     item["image"] = urljoin(url, image)
                     item["image_source"] = item.get("image_source") or (item["source"] + " article")
 
@@ -3255,8 +3288,26 @@ def fetch_news():
                                 item["description"] = line[:300]
                                 break
 
-                if item.get("published") or item.get("image") or item.get("description"):
+                # If we already have an image, this candidate is sufficient.
+                # If we only found date/description, keep trying the remaining
+                # candidates because O Jogo/Zerozero often expose the lead image
+                # only through Jina/structured markup.
+                if item.get("image"):
                     return item
+                if candidate.startswith("https://r.jina.ai/"):
+                    # Last-resort image extraction from Jina markdown.
+                    for m in re.finditer(r"!?\[[^\]]*\]\((https?://[^)\s]+)", rr.text):
+                        src = m.group(1)
+                        if not re.search(r"(logo|favicon|sprite|avatar|placeholder|1x1)", src, re.I):
+                            item["image"] = src
+                            item["image_source"] = item["source"] + " Jina"
+                            break
+                    if item.get("image"):
+                        return item
+                # Keep useful metadata even if the publisher has blocked every
+                # image endpoint; the listing/RSS image may still be available.
+                if item.get("published") or item.get("description"):
+                    continue
             except Exception as ex:
                 print("News article warning:", item.get("source"), url, candidate, ex)
         return item
