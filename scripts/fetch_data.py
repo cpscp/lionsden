@@ -2783,23 +2783,31 @@ def fetch_news():
     from urllib.parse import urljoin
 
     SOURCES = [
-        # Futebol masculino
+        # Record — futebol masculino, feminino e modalidades
         ("Record", "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting"),
-        ("A Bola", "https://www.abola.pt/futebol/sporting-448?page=2"),
-        # Futebol feminino
         ("Record", "https://www.record.pt/futebol/futebol-feminino"),
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol/futebol-feminino"),
-        # Modalidades
         ("Record", "https://www.record.pt/modalidades"),
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/modalidades"),
-        # Universo geral do Clube (sem depender apenas de uma secção)
+        ("Record", "https://www.record.pt/"),
+        # A Bola — Sporting masculino, feminino e futebol feminino geral
+        ("A Bola", "https://www.abola.pt/futebol/sporting-448"),
+        ("A Bola", "https://www.abola.pt/futebol/sporting-fem-26460"),
+        ("A Bola", "https://www.abola.pt/futebol-feminino"),
+        # O Jogo — futebol e modalidades
+        ("O Jogo", "https://www.ojogo.pt/futebol"),
+        ("O Jogo", "https://www.ojogo.pt/modalidades"),
+        # Zerozero — tag Sporting, incluindo futebol feminino e formação
+        ("Zerozero", "https://www.zerozero.pt/noticias?agrupamento=91"),
+        # Sporting.pt — fonte oficial, universo completo
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol/futebol-feminino"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/modalidades"),
     ]
 
     # Each listing gets its own allowance; the final feed is a single
     # chronological stream, so a busy football section cannot starve
     # women's football or the other sports.
-    ARTICLE_LIMIT_PER_SOURCE = 20
+    ARTICLE_LIMIT_PER_SOURCE = 40
     items = []
     seen = set()
 
@@ -2821,7 +2829,17 @@ def fetch_news():
         h = str(href or "").lower()
         t = str(title or "").lower()
         if source == "Record":
-            return "/futebol/futebol-nacional/liga-betclic/sporting/detalhe/" in h
+            # Record uses different sections for men's football, women's football
+            # and modalities. Accept article URLs from all of them; relevance is
+            # constrained by the Sporting-specific listings and RSS queries below.
+            return (
+                "/detalhe/" in h
+                and (
+                    "/futebol/" in h
+                    or "/modalidades/" in h
+                    or "/sporting/" in h
+                )
+            )
         if source == "A Bola":
             return "/noticias/" in h
         if source == "Sporting.pt":
@@ -3259,13 +3277,34 @@ def fetch_news():
         rss_sources = [
             # Press: multiple Sporting contexts so female football and sports
             # are not lost behind the men's football feed.
+            # Record — separate queries prevent men's football from starving the
+            # women's game and the other Sporting modalities.
             ("site:record.pt/futebol/futebol-nacional/liga-betclic/sporting Sporting", "Record"),
             ("site:record.pt/futebol/futebol-feminino Sporting", "Record"),
             ("site:record.pt/modalidades Sporting", "Record"),
+            ("site:record.pt/modalidades Sporting futsal", "Record"),
+            ("site:record.pt/modalidades Sporting andebol", "Record"),
+            ("site:record.pt/modalidades Sporting basquetebol", "Record"),
+            ("site:record.pt/modalidades Sporting voleibol", "Record"),
+            ("site:record.pt/modalidades Sporting atletismo", "Record"),
+            # A Bola — dedicated Sporting pages plus the general news section.
             ("site:abola.pt/noticias/ Sporting", "A Bola"),
-            ("site:ojogo.pt Sporting", "O Jogo"),
+            ("site:abola.pt/futebol/sporting-fem-26460 Sporting", "A Bola"),
+            ("site:abola.pt/futebol-feminino Sporting", "A Bola"),
+            ("site:abola.pt/modalidades Sporting", "A Bola"),
+            # O Jogo and Zerozero.
+            ("site:ojogo.pt/futebol Sporting", "O Jogo"),
+            ("site:ojogo.pt/modalidades Sporting", "O Jogo"),
+            ("site:ojogo.pt/futebol/futebol-feminino Sporting", "O Jogo"),
             ("site:zerozero.pt/noticias/ Sporting", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting feminino", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting futsal", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting andebol", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting basquetebol", "Zerozero"),
+            # Official club.
             ("site:sporting.pt/pt/noticias Sporting", "Sporting.pt"),
+            ("site:sporting.pt/pt/noticias/futebol/futebol-feminino Sporting", "Sporting.pt"),
+            ("site:sporting.pt/pt/noticias/modalidades Sporting", "Sporting.pt"),
         ]
         for query, source in rss_sources:
             rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
@@ -3386,8 +3425,23 @@ def fetch_news():
     # No source priority: the feed is a single chronological stream.
     enriched.sort(key=pub_ts, reverse=True)
 
-    # Keep a healthy rolling window. New articles naturally displace old ones.
-    final = enriched[:60]
+    # Keep a healthy rolling window, but merge the previous feed as a safety
+    # net. A temporary block/rate-limit on one publisher must never make recent
+    # Sporting stories disappear from the app.
+    previous = safe_existing("news.json") or {}
+    previous_items = previous.get("items", []) if isinstance(previous, dict) else []
+    merged = []
+    merged_seen = set()
+    for item in enriched + previous_items:
+        url_key = re.sub(r"[?#].*$", "", str(item.get("url") or "").rstrip("/")).lower()
+        title_key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(item.get("title") or "").lower()).strip()
+        key = url_key or (str(item.get("source") or "") + "|" + title_key)
+        if not key or key in merged_seen:
+            continue
+        merged_seen.add(key)
+        merged.append(item)
+    merged.sort(key=pub_ts, reverse=True)
+    final = merged[:120]
     for item in final:
         item["published_ts"] = pub_ts(item)
         item.pop("published_ts", None)
