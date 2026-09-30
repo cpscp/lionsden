@@ -3472,10 +3472,11 @@ def fetch_news():
             backfill.append(dict(previous_item))
             discovered_keys.add(key)
 
-    # Cap the safety-net work so a large historical feed can never make the
-    # 30-minute news job unbounded. The newest missing images are the useful ones.
+    # The public feed itself is capped at 120 items, so the backfill can safely
+    # process every missing image in the retained window. This prevents older
+    # O Jogo/Zerozero stories from remaining permanently without a thumbnail.
     backfill.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
-    backfill = backfill[:80]
+    backfill = backfill[:120]
     enrichment_items = items + backfill
     print(f"News image backfill candidates: {len(backfill)}")
 
