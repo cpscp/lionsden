@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-30T12:48:35.355211+00:00",
+  "_updated_at": "2026-09-30T22:10:00.376083+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -2129,12 +2129,12 @@
           "club": "Sporting CP"
         },
         {
-          "period": "2025-07-01T00:00:00",
-          "club": "Sporting Clube de Portugal Under 21"
-        },
-        {
           "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
           "club": "Sporting CP U19"
+        },
+        {
+          "period": "2025-07-01T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
         },
         {
           "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
