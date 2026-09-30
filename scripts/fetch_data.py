@@ -977,9 +977,18 @@ def fetch_fotmob_core():
                 # must never override the competition filter.
                 comp = rm.get("competition") or rm.get("league") or rm.get("tournament") or {}
                 comp_name = comp.get("name") if isinstance(comp, dict) else comp
-                if comp_name and not is_official_sporting_competition(comp_name):
+                # The normalised Sporting fixture feed is authoritative whenever
+                # we have a match ID. FotMob recentMatches can omit the
+                # competition or label a friendly differently; never allow that
+                # to make a non-official match enter the official player stats.
+                fixture = fixture_by_id.get(str(match_id)) if match_id is not None else None
+                fixture_comp_name = ""
+                if fixture:
+                    fixture_comp_name = clean((fixture.get("competition") or {}).get("name"))
+                    if fixture_comp_name:
+                        comp_name = fixture_comp_name
+                if not is_official_sporting_competition(comp_name):
                     continue
-                is_official = True
                 if match_id is not None and official_fixture_ids:
                     is_official = str(match_id) in official_fixture_ids
                 else:
