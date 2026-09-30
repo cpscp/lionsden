@@ -1011,7 +1011,7 @@ function currentStatsCard(st,label){
       </div>
     </div>
     ${playerLeaderCards(window._statsCompetitionKey||'geral')}
-    ${total?'<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Melhores / piores resultados</div><div class="grid grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
+    ${total?'<div class="mt-6 p-4 rounded-2xl border border-white/10 bg-black/10 overflow-hidden"><div class="text-[9px] uppercase tracking-widest muted mb-4">Melhores / piores resultados</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
     ${showPoints?'<div class="mt-5 text-[8px] muted">Pontos calculados em 3/1/0 como indicador estatístico da competição.</div>':''}
   </div>`;
 }
