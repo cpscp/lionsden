@@ -3446,8 +3446,41 @@ def fetch_news():
 
     # Enrich the discovered articles concurrently. This is intentionally
     # source-neutral: every source gets the same metadata treatment.
+    #
+    # IMPORTANT: also re-enrich older entries from the previous feed that do not
+    # have an image. Previously we only enriched newly discovered items, so an
+    # article that entered news.json without an image could remain broken forever.
+    previous = safe_existing("news.json") or {}
+    previous_items = previous.get("items", []) if isinstance(previous, dict) else []
+    discovered_keys = set()
+    for item in items:
+        u = re.sub(r"[?#].*$", "", str(item.get("url") or "").rstrip("/")).lower()
+        t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(item.get("title") or "").lower()).strip()
+        if u:
+            discovered_keys.add("url|" + u)
+        elif t:
+            discovered_keys.add("title|" + str(item.get("source") or "") + "|" + t)
+
+    backfill = []
+    for previous_item in previous_items:
+        if previous_item.get("image"):
+            continue
+        u = re.sub(r"[?#].*$", "", str(previous_item.get("url") or "").rstrip("/")).lower()
+        t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(previous_item.get("title") or "").lower()).strip()
+        key = ("url|" + u) if u else ("title|" + str(previous_item.get("source") or "") + "|" + t)
+        if key and key not in discovered_keys:
+            backfill.append(dict(previous_item))
+            discovered_keys.add(key)
+
+    # Cap the safety-net work so a large historical feed can never make the
+    # 30-minute news job unbounded. The newest missing images are the useful ones.
+    backfill.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
+    backfill = backfill[:80]
+    enrichment_items = items + backfill
+    print(f"News image backfill candidates: {len(backfill)}")
+
     with ThreadPoolExecutor(max_workers=12) as pool:
-        futures = [pool.submit(article_metadata, item) for item in items]
+        futures = [pool.submit(article_metadata, item) for item in enrichment_items]
         enriched = []
         for future in as_completed(futures):
             try:
@@ -3479,8 +3512,6 @@ def fetch_news():
     # Keep a healthy rolling window, but merge the previous feed as a safety
     # net. A temporary block/rate-limit on one publisher must never make recent
     # Sporting stories disappear from the app.
-    previous = safe_existing("news.json") or {}
-    previous_items = previous.get("items", []) if isinstance(previous, dict) else []
     merged = []
     merged_seen = set()
     for item in enriched + previous_items:
