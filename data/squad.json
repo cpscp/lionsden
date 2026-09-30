@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-30T00:04:57.823680+00:00",
+  "_updated_at": "2026-09-30T05:44:42.831446+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -12,7 +12,7 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
-        "matches": 8,
+        "matches": 9,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 7,
@@ -29,9 +29,17 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
+          },
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 46,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
           }
         },
-        "minutes": 720,
+        "minutes": 766,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -149,7 +157,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 8,
+          "matches": 9,
           "goals": 0,
           "assists": 0
         },
