@@ -3488,6 +3488,90 @@ def fetch_news():
             except Exception as ex:
                 print("News enrichment warning:", ex)
 
+    # Final image/error cleanup. Some publishers (notably O Jogo and Zerozero)
+    # return a CloudFront/403 page to GitHub Actions even when Google News has
+    # already indexed the article and its lead image. Use Google News as an image
+    # transport fallback for missing retroactive images, and never store proxy
+    # error pages as article content.
+    def _bad_proxy_text(value):
+        s = clean(value or "")
+        if not s:
+            return False
+        low = s.lower()
+        return any(token in low for token in (
+            "the request could not be satisfied",
+            "request blocked",
+            "warning: target url returned error 403",
+            "cloudfront",
+            "there might be too much traffic or a configuration error",
+            "title: the request could not be satisfied",
+            "url source:",
+        ))
+
+    def _google_news_image_fallback(item):
+        if item.get("image"):
+            return
+        source = str(item.get("source") or "")
+        domain = {
+            "O Jogo": "ojogo.pt",
+            "Zerozero": "zerozero.pt",
+            "Record": "record.pt",
+            "A Bola": "abola.pt",
+            "Sporting.pt": "sporting.pt",
+        }.get(source)
+        title = clean(item.get("title") or "")
+        if not domain or not title:
+            return
+        try:
+            from urllib.parse import quote
+            query = f'site:{domain} "{title[:180]}"'
+            rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
+            rr = session.get(rss_url, timeout=15, headers={"User-Agent": USER_AGENT})
+            rr.raise_for_status()
+            xml = BeautifulSoup(rr.text, "xml")
+            candidates = xml.find_all("item")[:10]
+            title_norm = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", title.lower()).strip()
+            best = None
+            best_score = 0
+            for node in candidates:
+                nt = clean(node.find("title").get_text(" ", strip=True) if node.find("title") else "")
+                nt_norm = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", nt.lower()).strip()
+                if not nt_norm:
+                    continue
+                score = SequenceMatcher(None, title_norm, nt_norm).ratio()
+                if title_norm and (title_norm in nt_norm or nt_norm in title_norm):
+                    score += 0.25
+                if score > best_score:
+                    best, best_score = node, score
+            if best is None or best_score < 0.45:
+                return
+            desc_node = best.find("description")
+            raw_desc = desc_node.decode_contents() if desc_node else ""
+            ds = BeautifulSoup(raw_desc, "html.parser")
+            image = None
+            for tag_name in ("media:content", "media:thumbnail", "enclosure"):
+                mn = best.find(tag_name)
+                if mn and (mn.get("url") or mn.get("href")):
+                    image = mn.get("url") or mn.get("href")
+                    break
+            if not image:
+                im = ds.find("img")
+                if im:
+                    image = im.get("src") or im.get("data-src")
+            if image and not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", image, re.I):
+                item["image"] = image
+                item["image_source"] = source + " Google News image fallback"
+        except Exception as ex:
+            print("News Google image fallback warning:", source, title[:80], ex)
+
+    for item in enriched:
+        if _bad_proxy_text(item.get("article_text")):
+            item.pop("article_text", None)
+        if _bad_proxy_text(item.get("description")):
+            item.pop("description", None)
+        if not item.get("image"):
+            _google_news_image_fallback(item)
+
     from email.utils import parsedate_to_datetime
 
     def pub_ts(item):
