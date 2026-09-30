@@ -2783,12 +2783,23 @@ def fetch_news():
     from urllib.parse import urljoin
 
     SOURCES = [
+        # Futebol masculino
         ("Record", "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting"),
         ("A Bola", "https://www.abola.pt/futebol/sporting-448?page=2"),
+        # Futebol feminino
+        ("Record", "https://www.record.pt/futebol/futebol-feminino"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol/futebol-feminino"),
+        # Modalidades
+        ("Record", "https://www.record.pt/modalidades"),
+        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/modalidades"),
+        # Universo geral do Clube (sem depender apenas de uma secção)
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
     ]
 
-    ARTICLE_LIMIT_PER_SOURCE = 24
+    # Each listing gets its own allowance; the final feed is a single
+    # chronological stream, so a busy football section cannot starve
+    # women's football or the other sports.
+    ARTICLE_LIMIT_PER_SOURCE = 20
     items = []
     seen = set()
 
@@ -2800,6 +2811,10 @@ def fetch_news():
             return "A Bola"
         if "sporting.pt" in u:
             return "Sporting.pt"
+        if "ojogo.pt" in u:
+            return "O Jogo"
+        if "zerozero.pt" in u:
+            return "Zerozero"
         return ""
 
     def is_article(source, href, title):
@@ -2811,13 +2826,17 @@ def fetch_news():
             return "/noticias/" in h
         if source == "Sporting.pt":
             return "/noticias/" in h and h.rstrip("/") != "https://www.sporting.pt/pt/noticias"
+        if source == "O Jogo":
+            return "/artigo/" in h or "/noticias/" in h
+        if source == "Zerozero":
+            return "/noticias/" in h
         return False
 
     def add(item):
         url = str(item.get("url") or "").strip()
         title = clean(item.get("title") or "")
         source = source_for(url) or item.get("source") or ""
-        if not url or not title or len(title) < 18 or source not in {"Record","A Bola","Sporting.pt"}:
+        if not url or not title or len(title) < 18 or source not in {"Record","A Bola","O Jogo","Zerozero","Sporting.pt"}:
             return
         key = re.sub(r"[?#].*$", "", url.rstrip("/")).lower()
         if key in seen:
@@ -3238,8 +3257,15 @@ def fetch_news():
     try:
         from urllib.parse import quote
         rss_sources = [
+            # Press: multiple Sporting contexts so female football and sports
+            # are not lost behind the men's football feed.
             ("site:record.pt/futebol/futebol-nacional/liga-betclic/sporting Sporting", "Record"),
+            ("site:record.pt/futebol/futebol-feminino Sporting", "Record"),
+            ("site:record.pt/modalidades Sporting", "Record"),
             ("site:abola.pt/noticias/ Sporting", "A Bola"),
+            ("site:ojogo.pt Sporting", "O Jogo"),
+            ("site:zerozero.pt/noticias/ Sporting", "Zerozero"),
+            ("site:sporting.pt/pt/noticias Sporting", "Sporting.pt"),
         ]
         for query, source in rss_sources:
             rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
@@ -3257,9 +3283,12 @@ def fetch_news():
                 ds = BeautifulSoup(raw_desc, "html.parser")
                 desc = clean(ds.get_text(" ", strip=True))[:300]
                 blob = (title + " " + desc).lower()
-                if source == "A Bola" and not any(term in blob for term in (
+                # Google News is only transport. Keep articles that
+                # are genuinely about Sporting CP / its teams / athletes.
+                if not any(term in blob for term in (
                     "sporting", "alvalade", "rui borges", "leão", "leoes", "leões",
-                    "leoas", "leonino", "verde e branco", "verde-e-branco"
+                    "leoas", "leonino", "verde e branco", "verde-e-branco",
+                    "sporting cp"
                 )):
                     continue
                 image = None
@@ -3358,7 +3387,7 @@ def fetch_news():
     enriched.sort(key=pub_ts, reverse=True)
 
     # Keep a healthy rolling window. New articles naturally displace old ones.
-    final = enriched[:36]
+    final = enriched[:60]
     for item in final:
         item["published_ts"] = pub_ts(item)
         item.pop("published_ts", None)
