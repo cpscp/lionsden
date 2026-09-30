@@ -12,7 +12,7 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
-        "matches": 9,
+        "matches": 8,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 7,
@@ -29,17 +29,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 46,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 766,
+        "minutes": 720,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -157,7 +149,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 9,
+          "matches": 8,
           "goals": 0,
           "assists": 0
         },
