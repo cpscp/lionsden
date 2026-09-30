@@ -963,6 +963,13 @@ def fetch_fotmob_core():
                     current_matches.append(rm)
             # IMPORTANT: recentMatches also contains national-team matches.
             # The app's player stats are strictly Sporting CP stats.
+            # Use the normalised fixture feed as the authoritative match-id map
+            # before filtering, so friendlies can never leak into official stats.
+            fixture_by_id = {
+                str(f.get("id")): f
+                for f in fixtures
+                if f.get("id")
+            }
             played = []
             for rm in current_matches:
                 match_id = rm.get("matchId") or rm.get("id") or rm.get("eventId")
@@ -1004,11 +1011,6 @@ def fetch_fotmob_core():
             # already-normalised Sporting fixture feed as the authoritative
             # match-id -> competition mapping so player leaders use exactly
             # the same competition scope as team statistics.
-            fixture_by_id = {
-                str(f.get("id")): f
-                for f in fixtures
-                if f.get("id")
-            }
             by_comp = {}
             for rm in played:
                 match_id = rm.get("matchId") or rm.get("id") or rm.get("eventId")
