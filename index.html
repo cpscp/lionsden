@@ -167,7 +167,7 @@
 .stadium-gate-row .sectors{font-size:11px;line-height:1.5;margin-top:5px;color:#f3f6f4}
 .stadium-gate-row.special{border-color:rgba(0,167,118,.2);background:rgba(0,120,78,.05)}
 @media(max-width:600px){.stadium-gate-table{grid-template-columns:1fr}.stadium-hero-photo{aspect-ratio:16/9;object-fit:cover}.stadium-model model-viewer{height:300px}}
-.player-leaders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px}.player-leader-card{position:relative;overflow:hidden;min-height:142px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(135deg,rgba(0,70,43,.22),rgba(8,17,13,.72))}.player-leader-card.assists{background:linear-gradient(135deg,rgba(0,62,54,.22),rgba(8,17,13,.72))}.player-leader-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;height:100%;min-height:110px}.player-leader-label{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}.player-leader-name{font-size:16px;font-weight:700;line-height:1.15;max-width:72%;margin-top:auto}.player-leader-value{font-size:11px;color:#80b49e;margin-top:5px}.player-leader-value strong{font-size:24px;color:#f1f7f4;margin-right:4px}.player-leader-photo{position:absolute;right:-4px;bottom:-2px;width:128px;height:128px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));opacity:.96}.player-leader-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,17,13,.98) 0%,rgba(8,17,13,.72) 48%,rgba(8,17,13,.08) 100%)}@media(max-width:640px){.player-leaders{grid-template-columns:1fr}.player-leader-card{min-height:132px}.player-leader-photo{width:118px;height:118px}}
+.player-leaders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px}.player-leader-card{position:relative;overflow:hidden;min-height:142px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(135deg,rgba(0,70,43,.22),rgba(8,17,13,.72))}.player-leader-card.assists{background:linear-gradient(135deg,rgba(0,62,54,.22),rgba(8,17,13,.72))}.player-leader-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;height:100%;min-height:110px}.player-leader-label{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}.player-leader-name{font-size:16px;font-weight:700;line-height:1.15;max-width:72%;margin-top:auto}.player-leader-value{font-size:11px;color:#80b49e;margin-top:5px}.player-leader-value strong{font-size:24px;color:#f1f7f4;margin-right:4px}.player-leader-photo{position:absolute;right:-4px;bottom:-2px;width:128px;height:128px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));opacity:.96}.player-leader-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,17,13,.98) 0%,rgba(8,17,13,.72) 48%,rgba(8,17,13,.08) 100%)}@media(max-width:640px){.player-leaders{grid-template-columns:1fr}.player-leader-card{min-height:132px}.player-leader-photo{width:118px;height:118px}}.result-leaders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.result-leader-item{min-width:0}.result-leader-label{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 7px 3px}.result-leader-card{min-height:88px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(135deg,rgba(0,70,43,.22),rgba(8,17,13,.72));display:flex;align-items:center}.result-leader-game{font-size:16px;font-weight:700;line-height:1.2;color:#f1f7f4;overflow-wrap:anywhere}.result-leader-empty{color:var(--muted);font-weight:600}@media(max-width:640px){.result-leaders{grid-template-columns:1fr}.result-leader-card{min-height:76px}}
 </style>
 </head>
 <body>
@@ -987,6 +987,14 @@ function scorelineFor(f){
   const dateLabel=date?new Date(fixtureTimestamp(date)*1000).toLocaleDateString('pt-PT',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
   return `<span class="block leading-tight">${esc(sporting)} ${sf}–${sa} ${esc(opponent)}</span><span class="block text-[9px] font-normal muted mt-1">${esc(comp)}${dateLabel?' · '+dateLabel:''}</span>`;
 }
+function resultGameOnly(f){
+  if(!f)return '—';
+  const home=String(f.home?.name||'').toLowerCase().includes('sporting');
+  const sporting=home?(f.home?.name||'Sporting CP'):(f.away?.name||'Sporting CP');
+  const opponent=home?(f.away?.name||'Adversário'):(f.home?.name||'Adversário');
+  const sf=home?f.goals.home:f.goals.away, sa=home?f.goals.away:f.goals.home;
+  return `${esc(sporting)} ${sf}–${sa} ${esc(opponent)}`;
+}
 function currentStatsCard(st,label){
   const total=st.matches||0, gd=st.goal_difference||0;
   const record=st.matches?((st.wins*3+st.draws)/st.matches).toFixed(2):'0.00';
@@ -1011,7 +1019,7 @@ function currentStatsCard(st,label){
       </div>
     </div>
     ${playerLeaderCards(window._statsCompetitionKey||'geral')}
-    ${total?'<div class="mt-6 p-4 rounded-2xl border border-white/10 bg-black/10 overflow-hidden"><div class="text-[9px] uppercase tracking-widest muted mb-4">Melhores / piores resultados</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">'+metric('Maior vitória',scorelineFor(st.biggest_win))+metric('Maior derrota',scorelineFor(st.biggest_loss))+'</div></div>':''}
+    ${total?'<div class="mt-6 pt-5 border-t border-white/5"><div class="text-[9px] uppercase tracking-widest muted mb-3">Melhores / piores resultados</div><div class="result-leaders"><div class="result-leader-item"><div class="result-leader-label">Maior vitória</div><div class="result-leader-card"><div class="result-leader-game">'+resultGameOnly(st.biggest_win)+'</div></div></div><div class="result-leader-item"><div class="result-leader-label">Maior derrota</div><div class="result-leader-card"><div class="result-leader-game '+(!st.biggest_loss?'result-leader-empty':'')+'">'+resultGameOnly(st.biggest_loss)+'</div></div></div></div></div>':''}
     ${showPoints?'<div class="mt-5 text-[8px] muted">Pontos calculados em 3/1/0 como indicador estatístico da competição.</div>':''}
   </div>`;
 }
