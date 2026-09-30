@@ -5,6 +5,8 @@ concurrency:
   cancel-in-progress: false
 
 on:
+  schedule:
+    - cron: '*/30 * * * *'
   push:
     branches: [main]
     paths:
