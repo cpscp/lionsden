@@ -1172,8 +1172,11 @@ function newsCard(n){
 }
 function newsArticleContent(text){
   if(!text)return '';
+  const raw=String(text);
+  const bad=/the request could not be satisfied|request blocked|warning:\s*target url returned error 403|cloudfront|there might be too much traffic or a configuration error|title:\s*the request could not be satisfied|url source:/i.test(raw);
+  if(bad)return '';
   const NL=String.fromCharCode(10);
-  const normalized=String(text)
+  const normalized=raw
     .replace(/\\r\\n/g,NL)
     .replace(/\\n/g,NL)
     .replace(/\\r/g,NL)
@@ -1189,7 +1192,8 @@ function newsArticleContent(text){
 function openNews(n){
   const title=n.title||'Notícia';
   const img=n.image||n.image_url||n.thumbnail||'';
-  const desc=n.description||n.summary||'';
+  const rawDesc=n.description||n.summary||'';
+  const desc=/the request could not be satisfied|request blocked|warning:\s*target url returned error 403|cloudfront|there might be too much traffic or a configuration error|title:\s*the request could not be satisfied|url source:/i.test(String(rawDesc)) ? '' : rawDesc;
   const articleText=n.premium ? '' : (n.article_text||n.articleText||'');
   const url=n.url||'#';
   const premiumNote=n.premium ? '<div class="news-reader-fallback mt-4 p-4"><div class="text-sm leading-6"><strong>Record Premium</strong><br>O texto integral deste artigo é exclusivo para assinantes. O conteúdo acima corresponde apenas ao excerto disponibilizado publicamente pelo Record.</div></div>' : '';
