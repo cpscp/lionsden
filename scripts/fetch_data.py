@@ -4354,26 +4354,30 @@ def fetch_news():
 
     # Final safety pass: never persist Google News transport HTML or proxy links
     # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
+    record_headlines = {
+        re.sub(r"\\s+", " ", clean(x.get("title") or "")).strip().casefold()
+        for x in final
+        if x.get("source") == "Record" and x.get("title")
+    }
+
     for item in final:
-        # Final Record sanitation: older cached article bodies may already contain
-        # the publisher's related-story module, so this must run after enrichment
-        # and deduplication as well as during fresh extraction.
+        # Final Record sanitation: the publisher can append a related-story
+        # module as ordinary text. Match whole paragraphs against the Record
+        # headlines in the same feed, so this works even when the HTML markup
+        # or the current article title changes.
         if item.get("source") == "Record" and item.get("article_text"):
-            record_title = clean(item.get("title") or "")
             body = str(item.get("article_text") or "")
-            if record_title:
-                marker = "\n" + record_title + "\n"
-                marker_pos = body.lower().find(marker.lower(), 180)
-                if marker_pos >= 0:
-                    item["article_text"] = body[:marker_pos].strip()
-                else:
-                    match = re.search(
-                        rf"\n[ \\t]*{re.escape(record_title)}[ \\t]*(?=\n|$)",
-                        body[180:],
-                        flags=re.I,
-                    )
-                    if match:
-                        item["article_text"] = body[:180 + match.start()].strip()
+            parts = re.split(r"\\n\\s*\\n", body)
+            cut_at = None
+            for part_index, part in enumerate(parts):
+                if part_index < 2:
+                    continue
+                normalized_part = re.sub(r"\\s+", " ", clean(part)).strip().casefold()
+                if normalized_part in record_headlines:
+                    cut_at = part_index
+                    break
+            if cut_at is not None:
+                item["article_text"] = "\n\n".join(parts[:cut_at]).strip()
 
         if _bad_news_payload_text(item.get("description")):
             item.pop("description", None)
