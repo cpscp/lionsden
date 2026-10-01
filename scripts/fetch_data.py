@@ -2795,7 +2795,10 @@ def fetch_news():
         # O Jogo — futebol e modalidades
         ("O Jogo", "https://www.ojogo.pt/futebol"),
         ("O Jogo", "https://www.ojogo.pt/modalidades"),
-        # Zerozero — tag Sporting, incluindo futebol feminino e formação
+        # Zerozero — página específica de notícias do Sporting é a
+        # fonte primária. A tag global fica como fallback para modalidades,
+        # formação e notícias que possam não estar indexadas na página da equipa.
+        ("Zerozero", "https://www.zerozero.pt/equipa/sporting/noticias"),
         ("Zerozero", "https://www.zerozero.pt/noticias?agrupamento=91"),
         # Sporting.pt — fonte oficial, universo completo
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
@@ -3035,7 +3038,7 @@ def fetch_news():
         sporting_listing = (
             (source == "A Bola" and "/futebol/sporting-" in url)
             or (source == "Record" and "/sporting" in url)
-            or (source == "Zerozero" and "agrupamento=91" in url)
+            or (source == "Zerozero" and ("/equipa/sporting/noticias" in url or "agrupamento=91" in url))
             or (source == "Sporting.pt" and "/pt/noticias" in url)
         )
         # Try the publisher directly, Jina, then Google Translate's cached/proxied HTML.
@@ -3479,7 +3482,11 @@ def fetch_news():
                             item["image"] = src
                             item["image_source"] = item["source"] + " Jina"
                             break
-                    if item.get("image"):
+                    # An image recovered from Jina is only metadata.
+                    # Never stop a Zerozero scrape here: the next candidate may
+                    # expose the article body through Translate or the official
+                    # Sporting.pt fallback.
+                    if item.get("image") and item.get("source") != "Zerozero":
                         return item
                 # Keep useful metadata even if the publisher has blocked every
                 # image endpoint; the listing/RSS image may still be available.
