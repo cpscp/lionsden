@@ -3499,14 +3499,27 @@ def fetch_news():
                 if item.get("source") == "Record" and article_text:
                     record_title = clean(item.get("title") or "")
                     if record_title:
-                        title_re = re.escape(record_title)
-                        match = re.search(
-                            rf"(?:^|\n\s*){title_re}\s*(?=\n|$)",
-                            article_text,
-                            flags=re.I,
-                        )
-                        if match and match.start() >= 180:
-                            article_text = article_text[:match.start()].strip()
+                        # The Record related-story block repeats the current
+                        # headline verbatim. Prefer a literal boundary over a
+                        # structural selector because Record changes its markup
+                        # between article templates.
+                        marker = "\n" + record_title + "\n"
+                        lower_text = article_text.lower()
+                        lower_marker = marker.lower()
+                        marker_pos = lower_text.find(lower_marker, 180)
+                        if marker_pos >= 0:
+                            article_text = article_text[:marker_pos].strip()
+                        else:
+                            # Also handle CRLF/extra whitespace around the repeated
+                            # headline without touching legitimate earlier text.
+                            match = re.search(
+                                rf"\n[ \\t]*{re.escape(record_title)}[ \\t]*(?=\n|$)",
+                                article_text[180:],
+                                flags=re.I,
+                            )
+                            if match:
+                                cut_at = 180 + match.start()
+                                article_text = article_text[:cut_at].strip()
 
                 # A BOLA: the generic article container also includes the
                 # publisher's app-promo block and a trailing "related stories"
