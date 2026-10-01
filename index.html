@@ -53,6 +53,13 @@
 .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:90;display:none}.drawer-backdrop.open{display:block}
 .drawer{position:fixed;top:0;bottom:0;left:0;width:min(310px,86vw);z-index:100;background:#09110c;border-right:1px solid var(--line);transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(0,0,0,.35);overflow:auto}.drawer.open{transform:translateX(0)}
 .drawer-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;color:#8da097;text-align:left;font-size:13px}.drawer-link.active{background:#10231a;color:#fff}.drawer-section{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#587066;padding:18px 14px 7px}
+.squad-player-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.squad-player-grid > button{min-width:0}
+.squad-player-grid > button .flex-1{min-width:0}
+@media(max-width:560px){
+.squad-player-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.squad-player-grid > button{padding:10px}
+}
 .news-header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .news-refresh-pill{border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);border-radius:999px;padding:7px 10px;font-size:9px;font-weight:600}
 .news-refresh-pill:active{transform:scale(.97)}
@@ -893,7 +900,7 @@ function squadGroup(title, players, indexMap){
       <h3 class="text-[13px] font-bold uppercase tracking-[.16em]">${esc(title)}</h3>
       <span class="text-[9px] muted">${players.length} ${players.length===1?'jogador':'jogadores'}</span>
     </div>
-    <div class="space-y-2">
+    <div class="squad-player-grid">
       ${players.map(p=>{
         const i=indexMap.get(p);
         const pos=positionLabel(p.position||p.officialPosition);
