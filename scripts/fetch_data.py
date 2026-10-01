@@ -3395,7 +3395,7 @@ def fetch_news():
                             if key not in seen_chunks:
                                 seen_chunks.add(key)
                                 out.append(txt)
-                        return "\\n\\n".join(out)
+                        return "\n\n".join(out)
 
                     # Record AMP has a very clean, linear article structure.
                     # Use the paragraphs following the H1 before falling back to
@@ -3428,7 +3428,7 @@ def fetch_news():
                                 candidate = json.loads('"'+match.group(1)+'"')
                             except Exception:
                                 continue
-                            candidate = clean(candidate).replace("\\r","").strip()
+                            candidate = clean(candidate).replace("\r","").strip()
                             if len(candidate) >= 300:
                                 return candidate
 
@@ -3444,7 +3444,7 @@ def fetch_news():
                                     stack.extend(obj)
                                 elif isinstance(obj, dict):
                                     if isinstance(obj.get("articleBody"), str) and len(obj["articleBody"].strip()) >= 180:
-                                        return clean(obj["articleBody"]).replace("\\r","")
+                                        return clean(obj["articleBody"]).replace("\r","")
                                     for value in obj.values():
                                         if isinstance(value,(dict,list)):
                                             stack.append(value)
@@ -3501,7 +3501,7 @@ def fetch_news():
                     if record_title:
                         title_re = re.escape(record_title)
                         match = re.search(
-                            rf"(?:^|\\n\\s*\\n)\\s*{title_re}\\s*(?=\\n|$)",
+                            rf"(?:^|\n\\s*\n)\\s*{title_re}\\s*(?=\n|$)",
                             article_text,
                             flags=re.I,
                         )
@@ -3512,7 +3512,9 @@ def fetch_news():
                 # publisher's app-promo block and a trailing "related stories"
                 # list. Keep only the editorial body.
                 if source == "A Bola" and article_text:
-                    # A BOLA may arrive with literal escaped newlines. Normalize them before filtering.\n                    article_text = article_text.replace("\\n", "\n").replace("\\r", "\r")\n                    article_text = re.sub(
+                    # A BOLA may arrive with literal escaped newlines. Normalize them before filtering.
+                    article_text = article_text.replace("\n", "\n").replace("\r", "\r")
+                    article_text = re.sub(
                         r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
                         r"(?:Notícias,\s*golos\s+e\s+análises\s*-\s*apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.\s*)?",
                         "",
@@ -3601,7 +3603,7 @@ def fetch_news():
                         if len(line)>=40 and not re.match(r"^(menu|pesquisar|publicidade|partilhar|comentários?)$",line,re.I):
                             md_lines.append(line)
                     if len(md_lines)>=4:
-                        item["article_text"]="\\n\\n".join(md_lines)[:30000]
+                        item["article_text"]="\n\n".join(md_lines)[:30000]
 
                 if candidate.startswith("https://r.jina.ai/"):
                     # Jina Markdown can expose the lead image even when the
@@ -6057,7 +6059,7 @@ def main():
     })
 
     if errors:
-        print("Completed with warnings:", *errors, sep="\\n- ")
+        print("Completed with warnings:", *errors, sep="\n- ")
     else:
         print("Lion's Den data update completed successfully.")
 
