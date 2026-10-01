@@ -3,7 +3,7 @@ name: Refresh central de dados
 
 concurrency:
   group: lions-den-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 on:
   push:
