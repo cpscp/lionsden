@@ -2,6 +2,11 @@ name: Deploy Zerozero proxy
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "infra/zerozero-proxy/**"
+      - ".github/workflows/deploy-zerozero-proxy.yml"
 
 jobs:
   deploy:
