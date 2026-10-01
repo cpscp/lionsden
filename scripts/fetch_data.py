@@ -3289,7 +3289,7 @@ def fetch_news():
                     proxy_html = payload.get("html") or ""
                     if not proxy_html and not item.get("article_text"):
                         raise RuntimeError("Zerozero proxy returned no article body")
-                    candidate_html = proxy_html or text_to_html(proxy_text)
+                    candidate_html = proxy_html
                 soup = BeautifulSoup(candidate_html, "html.parser")
 
                 # Record Premium: the public page exposes the lead but not the
