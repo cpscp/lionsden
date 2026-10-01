@@ -3676,6 +3676,81 @@ def fetch_news():
         except Exception as ex:
             print("News Google image fallback warning:", source, title[:80], ex)
 
+        # Zerozero direct-page metadata fallback. The RSS item can contain
+        # the article URL but no image/description. Try the article itself first,
+        # keeping only OG/Twitter preview metadata and a short description.
+        if source == "Zerozero" and (not item.get("image") or not item.get("description")):
+            try:
+                page_url = str(item.get("url") or "").strip()
+                if page_url:
+                    page_candidates = [
+                        page_url,
+                        page_url.replace("https://www.zerozero.pt", "https://zerozero.dk"),
+                        page_url.replace("https://www.zerozero.pt", "https://zerozero.football"),
+                        "https://r.jina.ai/" + page_url,
+                    ]
+                    for page_url_try in page_candidates:
+                        try:
+                            ar = session.get(
+                                page_url_try, timeout=12,
+                                headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"}
+                            )
+                            if ar.status_code >= 400:
+                                continue
+                            body = ar.text or ""
+                            if len(body) < 500:
+                                continue
+                            ss = BeautifulSoup(body, "html.parser")
+
+                            def zz_meta(*attrs):
+                                for at in attrs:
+                                    m = ss.find("meta", attrs=at)
+                                    if m and m.get("content"):
+                                        return clean(m.get("content"))
+                                return ""
+
+                            if not item.get("image"):
+                                ii = zz_meta(
+                                    {"property":"og:image"},
+                                    {"property":"og:image:url"},
+                                    {"name":"twitter:image"}
+                                )
+                                if ii and not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", ii, re.I):
+                                    item["image"] = ii
+                                    item["image_source"] = "Zerozero article metadata"
+
+                            if not item.get("description"):
+                                dd = zz_meta({"property":"og:description"},{"name":"description"})
+                                if dd and len(dd) > 20:
+                                    item["description"] = dd[:300]
+
+                            # Jina may return the article as Markdown instead of HTML.
+                            # Recover the lead image and first paragraph without storing
+                            # the full copyrighted article.
+                            if not item.get("image"):
+                                for im in ss.find_all("img"):
+                                    ii = im.get("src") or im.get("data-src") or im.get("data-image")
+                                    if ii and not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", ii, re.I):
+                                        item["image"] = ii
+                                        item["image_source"] = "Zerozero article image fallback"
+                                        break
+
+                            if not item.get("description"):
+                                paras = []
+                                for p in ss.find_all(["p"]):
+                                    txt = clean(p.get_text(" ", strip=True))
+                                    if len(txt) >= 60 and not re.search(r"^(publicado em|image:|autor|tags?)", txt, re.I):
+                                        paras.append(txt)
+                                if paras:
+                                    item["description"] = paras[0][:300]
+
+                            if item.get("image") and item.get("description"):
+                                break
+                        except Exception as ex:
+                            print("Zerozero article metadata attempt warning:", page_url_try, ex)
+            except Exception as ex:
+                print("Zerozero direct metadata fallback warning:", title[:80], ex)
+
         # Zerozero frequently blocks automated requests. If its own Google
         # result has no metadata, look for the same headline on a first-party
         # Sporting/press source and borrow only the preview metadata/image.
