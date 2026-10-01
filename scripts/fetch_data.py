@@ -2795,17 +2795,6 @@ def fetch_news():
         # O Jogo — futebol e modalidades
         ("O Jogo", "https://www.ojogo.pt/futebol"),
         ("O Jogo", "https://www.ojogo.pt/modalidades"),
-        # Zerozero — página específica de notícias do Sporting é a
-        # fonte primária. A tag global fica como fallback para modalidades,
-        # formação e notícias que possam não estar indexadas na página da equipa.
-        ("Zerozero", "https://www.zerozero.pt/equipa/sporting/noticias"),
-        # Regional Zerozero mirrors: the .pt host can be blocked from CI while
-        # these public mirrors remain accessible and expose the same live feed.
-        ("Zerozero", "https://www.zerozero.africa/equipa/sporting/noticias"),
-        ("Zerozero", "https://www.zerozero.dk/equipa/sporting/noticias"),
-        ("Zerozero", "https://www.zerozero.football/equipa/sporting/noticias"),
-        ("Zerozero", "https://www.zerozero.gr/equipa/sporting/noticias"),
-        ("Zerozero", "https://www.zerozero.pt/noticias?agrupamento=91"),
         # Sporting.pt — fonte oficial, universo completo
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol"),
@@ -2830,8 +2819,6 @@ def fetch_news():
             return "Sporting.pt"
         if "ojogo.pt" in u:
             return "O Jogo"
-        if "zerozero.pt" in u:
-            return "Zerozero"
         return ""
 
     # Strict Sporting-universe gate. Publisher sections are intentionally broad
@@ -3830,7 +3817,7 @@ def fetch_news():
     # article that entered news.json without an image could remain broken forever.
     previous = safe_existing("news.json") or {}
     previous_items = previous.get("items", []) if isinstance(previous, dict) else []
-    discovered_keys = set()
+    # Zerozero has been retired as a news source. Remove its historical items from the feed.\n    previous_items = [x for x in previous_items if str(x.get("source") or "") != "Zerozero"]\n    discovered_keys = set()
     for item in items:
         u = re.sub(r"[?#].*$", "", str(item.get("url") or "").rstrip("/")).lower()
         t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(item.get("title") or "").lower()).strip()
