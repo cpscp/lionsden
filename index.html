@@ -1551,7 +1551,7 @@ setInterval(load,300000);
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const registration = await navigator.serviceWorker.register("./sw-v6.js", {
+      const registration = await navigator.serviceWorker.register("./sw-v7.js", {
         scope: "./",
         updateViaCache: "none"
       });
