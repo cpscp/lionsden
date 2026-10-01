@@ -3883,7 +3883,7 @@ def fetch_news():
                             r"[^a-z0-9áàâãéêíóôõúç]+",
                             " ",
                             re.sub(
-                                r"\s*[-–—]\s*(?:record|a bola|abola\.pt|o jogo|sporting\.pt)\s*$",
+                                r"\s*(?:[-–—|]\s*)(?:jornal\s+record|record|a\s+bola|abola\.pt|o\s+jogo|sporting\.pt)\s*$",
                                 "",
                                 str(row.get("title") or ""),
                                 flags=re.I,
@@ -3895,7 +3895,7 @@ def fetch_news():
                                     r"[^a-z0-9áàâãéêíóôõúç]+",
                                     " ",
                                     re.sub(
-                                        r"\s*[-–—]\s*(?:record|a bola|abola\.pt|o jogo|sporting\.pt)\s*$",
+                                        r"\s*(?:[-–—|]\s*)(?:jornal\s+record|record|a\s+bola|abola\.pt|o\s+jogo|sporting\.pt)\s*$",
                                         "",
                                         str(existing.get("title") or ""),
                                         flags=re.I,
