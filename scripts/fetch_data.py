@@ -3149,8 +3149,48 @@ def fetch_news():
         # Premium classification or article body into a fresh scrape: Record has
         # both Premium and free articles under the same listing/feed.
         item.pop("premium", None)
-        item.pop("article_text", None)
         candidates = [url]
+
+        # Zerozero's regional mirrors expose the same publisher content but can
+        # use a different canonical article path than zerozero.pt. Resolve the
+        # real mirror URL by matching the article title instead of guessing the
+        # path. This is the primary Zerozero extraction route.
+        if item.get("source") == "Zerozero":
+            try:
+                from urllib.parse import urlparse
+                title_key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", clean(item.get("title") or "").lower()).strip()
+                mirror_pages = [
+                    "https://zerozero.dk/",
+                    "https://zerozero.africa/",
+                    "https://zerozero.football/",
+                    "https://zerozero.gr/",
+                    "https://zerozero.dk/noticias",
+                    "https://zerozero.africa/noticias",
+                ]
+                for mirror_page in mirror_pages:
+                    try:
+                        mr = session.get(mirror_page, timeout=15, headers={"User-Agent": USER_AGENT})
+                        if not mr.ok:
+                            continue
+                        ms = BeautifulSoup(mr.text, "html.parser")
+                        for a in ms.find_all("a", href=True):
+                            txt = clean(a.get_text(" ", strip=True))
+                            if not txt:
+                                continue
+                            txt_key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", txt.lower()).strip()
+                            if txt_key != title_key:
+                                continue
+                            href = urljoin(mirror_page, a.get("href"))
+                            if "/noticias/" in href.lower() and href not in candidates:
+                                candidates.insert(0, href)
+                                print("Zerozero mirror article resolved:", href)
+                                raise StopIteration
+                    except StopIteration:
+                        break
+                    except Exception:
+                        continue
+            except Exception as ex:
+                print("Zerozero mirror resolution warning:", url, ex)
         # Dedicated server-side Zerozero proxy. The public site blocks GitHub
         # Actions directly; the proxy fetches the same HTML from a separate
         # egress and returns it to this existing parser.
