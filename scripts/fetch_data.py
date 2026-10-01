@@ -3144,6 +3144,26 @@ def fetch_news():
         item.pop("premium", None)
         item.pop("article_text", None)
         candidates = [url]
+        # Zerozero blocks GitHub Actions on the primary .pt host. The same
+        # publisher content is served through regional Zerozero domains; try
+        # those canonical mirrors directly before any proxy. This avoids
+        # dependence on rate-limited third-party proxies.
+        if item.get("source") == "Zerozero":
+            try:
+                from urllib.parse import urlparse
+                parsed_zz = urlparse(url)
+                for mirror_host in (
+                    "www.zerozero.dk",
+                    "www.zerozero.football",
+                    "www.zerozero.africa",
+                    "www.zerozero.gr",
+                ):
+                    mirror = parsed_zz._replace(netloc=mirror_host).geturl()
+                    if mirror not in candidates:
+                        candidates.append(mirror)
+            except Exception:
+                pass
+
         # Record exposes an AMP version with the article body rendered directly
         # in the HTML. Prefer it for extraction, while keeping the canonical URL
         # as the source shown to users.
@@ -4055,7 +4075,9 @@ def fetch_news():
     for item in enriched:
         if item.get("source") != "Zerozero":
             continue
-        if item.get("image") and item.get("description"):
+        # A Zerozero item can already have image + preview from RSS while still
+        # lacking the article body. Never skip the content fallback in that case.
+        if item.get("article_text") and len(clean(item.get("article_text"))) >= 300:
             continue
         best = None
         best_score = 0.0
