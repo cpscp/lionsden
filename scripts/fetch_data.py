@@ -3154,7 +3154,7 @@ def fetch_news():
         # Dedicated server-side Zerozero proxy. The public site blocks GitHub
         # Actions directly; the proxy fetches the same HTML from a separate
         # egress and returns it to this existing parser.
-        zerozero_proxy = os.getenv("ZEROZERO_PROXY_URL", "").strip().rstrip("/")
+        zerozero_proxy = os.getenv("ZEROZERO_PROXY_URL", "").strip().rstrip("/") or "https://lions-den-zerozero-proxy.lionsdenscp.workers.dev"
         if item.get("source") == "Zerozero" and zerozero_proxy:
             try:
                 from urllib.parse import quote
@@ -3273,14 +3273,23 @@ def fetch_news():
                 rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
                 rr.raise_for_status()
                 candidate_html = rr.text
-                if item.get("source") == "Zerozero" and zerozero_proxy and candidate.startswith(zerozero_proxy + "/?"):
+                if item.get("source") == "Zerozero" and candidate.startswith(zerozero_proxy + "/?"):
                     try:
                         payload = rr.json()
                     except Exception as ex:
                         raise RuntimeError("Zerozero proxy returned non-JSON response") from ex
-                    if not payload.get("ok") or not payload.get("html"):
-                        raise RuntimeError("Zerozero proxy returned no usable HTML")
-                    candidate_html = payload["html"]
+                    if not payload.get("ok"):
+                        raise RuntimeError("Zerozero proxy returned no usable article")
+                    # The proxy now extracts the readable body itself. Prefer that
+                    # directly instead of trying to parse the proxy's JSON wrapper
+                    # as if it were the original Zerozero page.
+                    proxy_text = clean(payload.get("article_text") or "")
+                    if len(proxy_text) >= 300:
+                        item["article_text"] = proxy_text[:30000]
+                    proxy_html = payload.get("html") or ""
+                    if not proxy_html and not item.get("article_text"):
+                        raise RuntimeError("Zerozero proxy returned no article body")
+                    candidate_html = proxy_html or text_to_html(proxy_text)
                 soup = BeautifulSoup(candidate_html, "html.parser")
 
                 # Record Premium: the public page exposes the lead but not the
