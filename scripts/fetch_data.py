@@ -3872,7 +3872,9 @@ def fetch_news():
     # article that entered news.json without an image could remain broken forever.
     previous = safe_existing("news.json") or {}
     previous_items = previous.get("items", []) if isinstance(previous, dict) else []
-    # Zerozero has been retired as a news source. Remove its historical items from the feed.\n    previous_items = [x for x in previous_items if str(x.get("source") or "") != "Zerozero"]\n    discovered_keys = set()
+    # Zerozero has been retired as a news source. Remove its historical items from the feed.
+    previous_items = [x for x in previous_items if str(x.get("source") or "") != "Zerozero"]
+    discovered_keys = set()
     for item in items:
         u = re.sub(r"[?#].*$", "", str(item.get("url") or "").rstrip("/")).lower()
         t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(item.get("title") or "").lower()).strip()
@@ -4355,7 +4357,7 @@ def fetch_news():
     # Final safety pass: never persist Google News transport HTML or proxy links
     # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
     record_headlines = {
-        re.sub(r"\\s+", " ", clean(x.get("title") or "")).strip().casefold()
+        re.sub(r"\s+", " ", clean(x.get("title") or "")).strip().casefold()
         for x in final
         if x.get("source") == "Record" and x.get("title")
     }
@@ -4367,12 +4369,12 @@ def fetch_news():
         # or the current article title changes.
         if item.get("source") == "Record" and item.get("article_text"):
             body = str(item.get("article_text") or "")
-            parts = re.split(r"\\n\\s*\\n", body)
+            parts = re.split(r"\n\s*\n", body)
             cut_at = None
             for part_index, part in enumerate(parts):
                 if part_index < 2:
                     continue
-                normalized_part = re.sub(r"\\s+", " ", clean(part)).strip().casefold()
+                normalized_part = re.sub(r"\s+", " ", clean(part)).strip().casefold()
                 if normalized_part in record_headlines:
                     cut_at = part_index
                     break
