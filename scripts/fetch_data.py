@@ -2825,6 +2825,78 @@ def fetch_news():
             return "Zerozero"
         return ""
 
+    # Strict Sporting-universe gate. Publisher sections are intentionally broad
+    # (especially Record/O Jogo modalities), so source alone is never enough.
+    sporting_names = set()
+    try:
+        squad_payload = safe_existing("squad.json") or {}
+        for p in (squad_payload.get("squad") or squad_payload.get("players") or []):
+            n = clean(p.get("name"))
+            if n:
+                sporting_names.add(zz_norm(n))
+    except Exception:
+        pass
+
+    # Current 2026/27 women's first-team names, kept here because squad.json
+    # is the men's-data feed.
+    sporting_names.update(zz_norm(x) for x in [
+        "Carol Alves","Julia Wozniak","Cassie Coster","Érica Cancelinha",
+        "Georgia Eaton-Collins","Ágata Filipa","Ágata Pimenta","Emma Ramírez",
+        "Mackenzie Cherry","Madalena Marau","Madalena Ferreira","Ashley Barron",
+        "Tânia Rodrigues","Jeneva Gray","Jeneva Hernández-Gray","Joana Martins",
+        "Ruby Grant","Neuza Besugo","Brenda Pérez","Beatriz Cameirão",
+        "Cláudia Neto","Carla Armengol","Andreia Bravo","Miri O'Donnell",
+        "Telma Encarnação","Carolina Santiago","Flor Bonsegundo",
+        "Florencia Bonsegundo","Maísa Correia","Ana Dias","Micael Sequeira",
+        "Hugo Xavier","Tiago Mateus","Miguel Aleixo","João Reis","Sérgio Silvestre"
+    ])
+
+    sporting_direct_terms = (
+        "sporting", "sporting cp", "sporting clube de portugal",
+        "sporting clube portugal", "alvalade", "academia cristiano ronaldo",
+        "academia de alcochete", "alcochete", "leão", "leoes", "leões",
+        "leoas", "leonino", "verde e branco", "verde-e-branco",
+        "verde branco", "leões de alvalade"
+    )
+
+    def sporting_relevance(item):
+        source = str(item.get("source") or "")
+        title = clean(item.get("title") or "")
+        description = clean(item.get("description") or "")
+        article_text = clean(item.get("article_text") or "")
+        url = str(item.get("url") or "").lower()
+        blob = zz_norm(" ".join((title, description, article_text, url)))
+
+        if source == "Sporting.pt":
+            corporate = (
+                "institucional", "governacao", "governança", "assembleia geral",
+                "relatorio e contas", "sporting clube de portugal - sad",
+                "sporting sad", "comunicado empresarial"
+            )
+            return not any(x in blob for x in corporate)
+
+        if any(zz_norm(term) in blob for term in sporting_direct_terms):
+            return True
+
+        title_blob = zz_norm(title)
+        if any(name and name in title_blob for name in sporting_names if len(name) >= 6):
+            return True
+
+        sporting_section = bool(item.get("_sporting_context"))
+        if sporting_section:
+            rival_only = (
+                "fc porto", "benfica", "braga", "boavista", "vitoria",
+                "vitória", "gil vicente", "moreirense", "famalicao",
+                "famalicão", "rio ave", "manchester united", "barcelona"
+            )
+            if any(zz_norm(x) in title_blob for x in rival_only) and not any(
+                zz_norm(x) in blob for x in ("sporting", "alvalade", "leonino", "leoas", "leão", "leoes", "leões")
+            ):
+                return False
+            return True
+
+        return False
+
     def is_article(source, href, title):
         h = str(href or "").lower()
         t = str(title or "").lower()
@@ -2876,6 +2948,7 @@ def fetch_news():
         item["url"] = url
         item["title"] = re.sub(r"\s*[-–—]\s*(?:record|a bola|abola\.pt|sporting\.pt)\s*$", "", title, flags=re.I).strip()[:180]
         item["source"] = source
+        item["_sporting_context"] = bool(item.get("_sporting_context"))
         if item.get("description"):
             item["description"] = clean(BeautifulSoup(str(item["description"]), "html.parser").get_text(" ", strip=True))[:300]
         items.append(item)
@@ -2935,6 +3008,12 @@ def fetch_news():
 
     def scrape_listing(source, url):
         results = []
+        sporting_listing = (
+            (source == "A Bola" and "/futebol/sporting-" in url)
+            or (source == "Record" and ("/sporting" in url or "/futebol-feminino" in url))
+            or (source == "Zerozero" and "agrupamento=91" in url)
+            or (source == "Sporting.pt" and "/pt/noticias" in url)
+        )
         # Try the publisher directly, Jina, then Google Translate's cached/proxied HTML.
         candidates = [url, "https://r.jina.ai/" + url]
         try:
@@ -2982,6 +3061,7 @@ def fetch_news():
                         "title": title,
                         "url": href,
                         "source": source,
+                        "_sporting_context": sporting_listing,
                         **({"image": image, "image_source": source + " listing"} if image else {}),
                         **({"description": preview} if preview else {}),
                     })
@@ -3397,6 +3477,7 @@ def fetch_news():
                     "title": title,
                     "_google_url": link,
                     "source": source,
+                    "_sporting_context": source == "Sporting.pt",
                     "published": published,
                     "description": desc,
                     **({"image": image, "image_source": source + " Google News RSS"} if image else {}),
@@ -3591,6 +3672,17 @@ def fetch_news():
                 except Exception:
                     return 0
 
+    # Hard relevance gate AFTER article enrichment. This removes unrelated
+    # football/modalities stories and also cleans the historical rolling window.
+    before_filter = len(enriched)
+    enriched = [item for item in enriched if sporting_relevance(item)]
+    previous_before = len(previous_items)
+    previous_items = [item for item in previous_items if sporting_relevance(item)]
+    print(
+        f"News Sporting filter: {before_filter} -> {len(enriched)} new; "
+        f"{previous_before} -> {len(previous_items)} retained historical."
+    )
+
     # No source priority: the feed is a single chronological stream.
     enriched.sort(key=pub_ts, reverse=True)
 
@@ -3615,6 +3707,7 @@ def fetch_news():
         item.pop("_priority", None)
         item.pop("_football", None)
         item.pop("_sporting", None)
+        item.pop("_sporting_context", None)
         item.pop("_google_url", None)
         item.pop("media_thumbnail", None)
         item.pop("media_content", None)
