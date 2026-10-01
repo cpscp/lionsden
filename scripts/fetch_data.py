@@ -2880,15 +2880,11 @@ def fetch_news():
             )
             return not any(x in blob for x in corporate)
 
-        if any(zz_norm(term) in blob for term in sporting_direct_terms):
-            return True
-
         title_blob = zz_norm(title)
 
         # A rival-led headline that merely compares itself with Sporting is not
-        # a Sporting story. This specifically blocks headlines such as
-        # "FC Porto vence ABC e iguala Sporting" while keeping direct Sporting
-        # stories such as "Sporting e Benfica..." or "Sporting vence...".
+        # a Sporting story. This check MUST happen before the generic Sporting
+        # keyword check, otherwise "FC Porto ... iguala Sporting" is admitted.
         rival_terms = (
             "fc porto", "porto", "benfica", "sc braga", "braga", "boavista",
             "vitoria", "vitoria guimaraes", "gil vicente", "moreirense",
@@ -2897,6 +2893,9 @@ def fetch_news():
         rival_led = any(title_blob.startswith(x + " ") or title_blob.startswith(x + ":") for x in rival_terms)
         if rival_led and "sporting" in title_blob:
             return False
+
+        if any(zz_norm(term) in blob for term in sporting_direct_terms):
+            return True
 
         # Player/staff names in the headline are strong Sporting evidence.
         if any(name and name in title_blob for name in sporting_names if len(name) >= 6):
@@ -3722,6 +3721,37 @@ def fetch_news():
                                     item["image"] = src
                                     item["image_source"] = "Cross-source Google News fallback"
                                     break
+                    # If RSS only returned a Google News link, decode it and
+                    # fetch the publisher page so og:image/description can be copied.
+                    if (not item.get("image") or not item.get("description")) and best:
+                        try:
+                            glink = best.find("link").get_text(" ", strip=True) if best.find("link") else ""
+                            if glink:
+                                import asyncio
+                                from googlenewsdecoder import gnews_decoder_async
+                                decoded = asyncio.run(gnews_decoder_async([glink], interval=0.1, timeout=10, concurrency=1))
+                                final_url = decoded[0].get("decoded_url") if isinstance(decoded, list) and decoded and isinstance(decoded[0], dict) else None
+                                if final_url and source_for(final_url) in {"Sporting.pt","O Jogo","Record","A Bola"}:
+                                    ar = session.get(final_url, timeout=18, headers={"User-Agent": USER_AGENT})
+                                    ar.raise_for_status()
+                                    ss = BeautifulSoup(ar.text, "html.parser")
+                                    def mcontent(*attrs):
+                                        for at in attrs:
+                                            m = ss.find("meta", attrs=at)
+                                            if m and m.get("content"):
+                                                return clean(m.get("content"))
+                                        return ""
+                                    if not item.get("description"):
+                                        dd = mcontent({"property":"og:description"},{"name":"description"})
+                                        if dd:
+                                            item["description"] = dd[:300]
+                                    if not item.get("image"):
+                                        ii = mcontent({"property":"og:image"},{"property":"og:image:url"},{"name":"twitter:image"})
+                                        if ii and not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", ii, re.I):
+                                            item["image"] = ii
+                                            item["image_source"] = "Cross-source article fallback"
+                        except Exception as ex:
+                            print("News cross-source article fetch warning:", title[:80], ex)
                     if item.get("image") and item.get("description"):
                         break
             except Exception as ex:
