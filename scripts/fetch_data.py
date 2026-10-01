@@ -3501,7 +3501,7 @@ def fetch_news():
                     if record_title:
                         title_re = re.escape(record_title)
                         match = re.search(
-                            rf"(?:^|\n\\s*\n)\\s*{title_re}\\s*(?=\n|$)",
+                            rf"(?:^|\n\s*){title_re}\s*(?=\n|$)",
                             article_text,
                             flags=re.I,
                         )
