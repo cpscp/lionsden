@@ -3774,6 +3774,12 @@ def fetch_news():
             "request blocked",
             "cloudfront",
             "warning: target url returned error 403",
+            "requiring captcha",
+            "captcha",
+            "verify you are not a bot",
+            "security service to protect against malicious bots",
+            "this website uses a security service",
+            "page is displayed while the website verifies",
         ))
 
     # Sanitize the retained feed before using it as a safety net. Previously a
