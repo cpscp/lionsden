@@ -36,6 +36,7 @@ jobs:
       - name: Atualizar notícias
         env:
           LIONS_DEN_MODE: news
+          ZEROZERO_PROXY_URL: https://lions-den-zerozero-proxy.lionsdenscp.workers.dev
         run: python scripts/fetch_data.py
 
       - name: Atualizar jogos em direto
