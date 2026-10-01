@@ -1,9 +1,11 @@
 {
-  "_updated_at": "2026-10-01T16:08:16.780048+00:00",
-  "mode": "football",
-  "errors": [],
+  "_updated_at": "2026-10-01T16:18:15.439005+00:00",
+  "mode": "news",
+  "errors": [
+    "news: name 'discovered_keys' is not defined"
+  ],
   "sources": {
-    "football_api": true,
+    "football_api": false,
     "fbref": true,
     "news": true,
     "maps": true
