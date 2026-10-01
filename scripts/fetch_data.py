@@ -3616,11 +3616,21 @@ def fetch_news():
                         h1_for_time = soup.find("h1")
                         publication_time = ""
                         if h1_for_time:
-                            previous_time = h1_for_time.find_previous(
-                                string=re.compile(r"^\\s*\\d{1,2}:\\d{2}\\s*$")
-                            )
-                            if previous_time:
-                                publication_time = clean(str(previous_time))
+                            # The time can be wrapped in a div/span rather than
+                            # being a standalone text node. Inspect nearby elements
+                            # first, then fall back to text-node matching.
+                            time_pattern = re.compile(r"^\\s*\\d{1,2}:\\d{2}\\s*$")
+                            for previous_node in h1_for_time.find_all_previous(limit=80):
+                                node_text = clean(previous_node.get_text(" ", strip=True))
+                                if time_pattern.fullmatch(node_text):
+                                    publication_time = node_text
+                                    break
+                            if not publication_time:
+                                previous_time = h1_for_time.find_previous(
+                                    string=time_pattern
+                                )
+                                if previous_time:
+                                    publication_time = clean(str(previous_time))
                         if publication_time:
                             item["published"] = f"{current_published}T{publication_time}:00+01:00"
 
