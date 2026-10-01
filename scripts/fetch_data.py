@@ -3818,6 +3818,8 @@ def fetch_news():
             ("site:sporting.pt/pt/noticias/futebol/futebol-feminino Sporting", "Sporting.pt"),
             ("site:sporting.pt/pt/noticias/modalidades Sporting", "Sporting.pt"),
         ]
+        rss_published_by_title = {}
+
         for query, source in rss_sources:
             rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
             raw = session.get(rss_url, timeout=18, headers={"User-Agent": USER_AGENT})
@@ -3854,6 +3856,20 @@ def fetch_news():
                         image = im.get("src") or im.get("data-src")
                 pub = node.find("pubDate")
                 published = pub.get_text(" ", strip=True) if pub else None
+                if source == "Record" and published:
+                    rss_title_key = re.sub(
+                        r"[^a-z0-9áàâãéêíóôõúç]+",
+                        " ",
+                        re.sub(
+                            r"\s*(?:[-–—|]\s*)(?:jornal\s+record|record|a\s+bola|abola\.pt|o\s+jogo|sporting\.pt)\s*$",
+                            "",
+                            title,
+                            flags=re.I,
+                        ).lower(),
+                    ).strip()
+                    if rss_title_key:
+                        rss_published_by_title["Record|" + rss_title_key] = published
+
                 pending.append({
                     "title": title,
                     "_google_url": link,
@@ -4025,11 +4041,25 @@ def fetch_news():
                 print("News enrichment warning:", ex)
 
     # Preserve authoritative Google News RSS publication timestamps.
-    # Publisher article pages can expose only YYYY-MM-DD and otherwise overwrite
-    # the precise RSS pubDate during enrichment.
+    # Record article pages often expose only the calendar date. Google News RSS
+    # has the precise publication timestamp, so apply it by normalized headline
+    # after ALL article enrichment has completed.
     for item in enriched:
-        if item.get("source") == "Record" and item.get("_rss_published"):
-            item["published"] = item["_rss_published"]
+        if item.get("source") != "Record":
+            continue
+        item_title_key = re.sub(
+            r"[^a-z0-9áàâãéêíóôõúç]+",
+            " ",
+            re.sub(
+                r"\s*(?:[-–—|]\s*)(?:jornal\s+record|record|a\s+bola|abola\.pt|o\s+jogo|sporting\.pt)\s*$",
+                "",
+                str(item.get("title") or ""),
+                flags=re.I,
+            ).lower(),
+        ).strip()
+        rss_value = rss_published_by_title.get("Record|" + item_title_key)
+        if rss_value:
+            item["published"] = rss_value
 
     # Final image/metadata cleanup. Some publishers (notably O Jogo and
     # Zerozero) return a CloudFront/403 page to GitHub Actions even when Google
