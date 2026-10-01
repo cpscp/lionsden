@@ -2,7 +2,23 @@
 name: Deploy to Firebase Hosting on main
 
 on:
+  # Deploy normal source/frontend changes pushed by a human or regular Git client.
+  # Data-only commits created by GitHub Actions use GITHUB_TOKEN and do not emit
+  # a new push-triggered workflow, so those are handled by workflow_run below.
   push:
+    branches:
+      - main
+    paths-ignore:
+      - 'data/**'
+
+  # Deploy after the automated data pipelines finish successfully.
+  workflow_run:
+    workflows:
+      - Atualizar notícias
+      - Atualizar futebol e estatísticas
+      - Atualizar H2H
+    types:
+      - completed
     branches:
       - main
 
@@ -11,6 +27,7 @@ permissions:
 
 jobs:
   deploy:
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
