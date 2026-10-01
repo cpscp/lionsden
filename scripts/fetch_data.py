@@ -3864,6 +3864,18 @@ def fetch_news():
                     **({"image": image, "image_source": source + " Google News RSS"} if image else {}),
                 })
             if pending:
+                if source == "Record":
+                    print(
+                        "News RSS Record:",
+                        len(pending),
+                        [
+                            {
+                                "title": x.get("title"),
+                                "published": x.get("published"),
+                            }
+                            for x in pending[:10]
+                        ],
+                    )
                 try:
                     import asyncio
                     from googlenewsdecoder import gnews_decoder_async
