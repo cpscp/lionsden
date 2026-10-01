@@ -3624,7 +3624,13 @@ def fetch_news():
 
     backfill = []
     for previous_item in previous_items:
-        if previous_item.get("image") and previous_item.get("description"):
+        # Re-enrich historical stories whenever the in-app article body is
+        # missing, even if image + description are already present. This is
+        # especially important for Zerozero: its image/preview may be recovered
+        # cross-source while the full article body still needs a fresh scrape.
+        previous_body = clean(previous_item.get("article_text") or "")
+        has_article_body = len(previous_body) >= 300 and not _bad_news_payload_text(previous_body)
+        if previous_item.get("image") and previous_item.get("description") and has_article_body:
             continue
         u = re.sub(r"[?#].*$", "", str(previous_item.get("url") or "").rstrip("/")).lower()
         t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(previous_item.get("title") or "").lower()).strip()
