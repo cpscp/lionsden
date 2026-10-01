@@ -1,5 +1,5 @@
 name: Refresh central de dados
-# Zerozero mirror extraction refresh
+# News source cleanup: Zerozero retired
 
 concurrency:
   group: lions-den-refresh
