@@ -1364,26 +1364,68 @@ function newsArticleContent(text,source,lead,relatedTitles=[]){
     .map(x=>x.trim().replace(new RegExp('\\s*'+NL+'\\s*','g'),' '))
     .filter(Boolean);
   if(!paragraphs.length)return '';
+
   const norm=s=>String(s).replace(/\\s+/g,' ').trim();
+  const clean=s=>norm(s).toLowerCase().replace(/[«»”“"’']/g,'').replace(/[^\\p{L}\\p{N}\\s:!?-]/gu,'');
+  const isRecord=String(source||'').trim().toLowerCase()==='record';
 
   // O Record inclui por vezes o subtítulo/lead como primeiro parágrafo do corpo.
-  if(String(source||'').trim().toLowerCase()==='record' && lead){
+  if(isRecord && lead){
     const first=norm(paragraphs[0]), leadNorm=norm(lead);
     if(first===leadNorm || first.startsWith(leadNorm+' ')){
       paragraphs.shift();
     }
   }
 
-  // O Record também pode anexar no article_text títulos de outras notícias.
-  // Quando um parágrafo coincide com um título do feed, tudo a partir daí
-  // pertence ao bloco de recomendações e não ao corpo desta notícia.
-  if(String(source||'').trim().toLowerCase()==='record' && relatedTitles.length){
-    const titles=relatedTitles.map(norm).filter(Boolean);
-    const cutAt=paragraphs.findIndex(p=>{
-      const current=norm(p);
-      return titles.some(t=>current===t || current.startsWith(t+' '));
-    });
-    if(cutAt>=0) paragraphs.splice(cutAt);
+  if(isRecord){
+    const titles=relatedTitles.map(norm).filter(Boolean).map(clean);
+
+    // 1) Se o scraper repetir um parágrafo inteiro, a ocorrência seguinte
+    // costuma ser imediatamente seguida pelo bloco de recomendações.
+    let repeatedAt=-1;
+    for(let i=1;i<paragraphs.length;i++){
+      const prev=clean(paragraphs[i-1]), cur=clean(paragraphs[i]);
+      if(prev.length>=80 && prev===cur){ repeatedAt=i; break; }
+    }
+    if(repeatedAt>=0) paragraphs.splice(repeatedAt);
+
+    // 2) Títulos de outras notícias podem não existir no feed atual ou variar
+    // ligeiramente. Se encontrarmos uma sequência de headlines curtas,
+    // interrompemos o corpo antes dessa sequência.
+    if(paragraphs.length>=3){
+      const headlineLike=p=>{
+        const s=norm(p);
+        if(s.length<45 || s.length>150) return false;
+        const words=s.split(/\\s+/).length;
+        if(words<7 || words>28) return false;
+        // Headlines tendem a não terminar como uma frase editorial normal.
+        const hasSentenceEnding=/[.!?…]$/.test(s);
+        const hasQuote=/[«»”“"']/ .test(s);
+        return !hasSentenceEnding || hasQuote;
+      };
+      let cut=-1;
+      for(let i=1;i<paragraphs.length-1;i++){
+        if(!headlineLike(paragraphs[i])) continue;
+        let run=1;
+        for(let j=i+1;j<paragraphs.length && j<i+4;j++){
+          if(headlineLike(paragraphs[j])) run++; else break;
+        }
+        if(run>=2){
+          cut=i;
+          break;
+        }
+      }
+      if(cut>=0) paragraphs.splice(cut);
+    }
+
+    // 3) Último fallback: comparação com títulos conhecidos do feed.
+    if(titles.length){
+      const cutAt=paragraphs.findIndex(p=>{
+        const current=clean(p);
+        return titles.some(t=>current===t || current.startsWith(t+' '));
+      });
+      if(cutAt>=0) paragraphs.splice(cutAt);
+    }
   }
 
   if(!paragraphs.length)return '';
