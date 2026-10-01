@@ -3489,6 +3489,25 @@ def fetch_news():
 
                 article_text = extract_article_text(soup)
 
+                # Record appends a "related stories" module directly after the
+                # editorial body on some article templates. Because those links
+                # are rendered as normal headings/paragraphs, the generic
+                # extractor above can mistake them for article content.
+                # The related block starts with the current article title itself,
+                # which gives us a stable article-specific boundary. Cut there
+                # rather than maintaining a brittle list of related headlines.
+                if item.get("source") == "Record" and article_text:
+                    record_title = clean(item.get("title") or "")
+                    if record_title:
+                        title_re = re.escape(record_title)
+                        match = re.search(
+                            rf"(?:^|\\n\\s*\\n)\\s*{title_re}\\s*(?=\\n|$)",
+                            article_text,
+                            flags=re.I,
+                        )
+                        if match and match.start() >= 180:
+                            article_text = article_text[:match.start()].strip()
+
                 # A BOLA: the generic article container also includes the
                 # publisher's app-promo block and a trailing "related stories"
                 # list. Keep only the editorial body.
