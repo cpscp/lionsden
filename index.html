@@ -1352,82 +1352,44 @@ function newsArticleContent(text,source,lead,relatedTitles=[]){
   const raw=String(text);
   const bad=/the request could not be satisfied|request blocked|warning:\s*target url returned error 403|cloudfront|there might be too much traffic or a configuration error|title:\s*the request could not be satisfied|url source:/i.test(raw);
   if(bad)return '';
-  const NL=String.fromCharCode(10);
-  const normalized=raw
-    .replace(/\\r\\n/g,NL)
-    .replace(/\\n/g,NL)
-    .replace(/\\r/g,NL)
-    .replace(new RegExp(NL+'{3,}','g'),NL+NL)
-    .trim();
-  const paragraphs=normalized
-    .split(new RegExp(NL+'\\s*'+NL))
-    .map(x=>x.trim().replace(new RegExp('\\s*'+NL+'\\s*','g'),' '))
-    .filter(Boolean);
+  const normalized=raw.replace(/\r\n/g,'\n').replace(/\r/g,'\n').replace(/\\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  const paragraphs=normalized.split(/\n\s*\n/).map(x=>x.trim().replace(/\s*\n\s*/g,' ')).filter(Boolean);
   if(!paragraphs.length)return '';
-
-  const norm=s=>String(s).replace(/\\s+/g,' ').trim();
-  const clean=s=>norm(s).toLowerCase().replace(/[«»”“"’']/g,'').replace(/[^\\p{L}\\p{N}\\s:!?-]/gu,'');
+  const norm=s=>String(s).replace(/\s+/g,' ').trim();
+  const clean=s=>norm(s).toLowerCase().replace(/[«»”“"’']/g,'').replace(/[^\p{L}\p{N}\s:!?-]/gu,'');
   const isRecord=String(source||'').trim().toLowerCase()==='record';
-
-  // O Record inclui por vezes o subtítulo/lead como primeiro parágrafo do corpo.
   if(isRecord && lead){
     const first=norm(paragraphs[0]), leadNorm=norm(lead);
-    if(first===leadNorm || first.startsWith(leadNorm+' ')){
-      paragraphs.shift();
-    }
+    if(first===leadNorm || first.startsWith(leadNorm+' ')) paragraphs.shift();
   }
-
   if(isRecord){
-    const titles=relatedTitles.map(norm).filter(Boolean).map(clean);
-
-    // 1) Se o scraper repetir um parágrafo inteiro, a ocorrência seguinte
-    // costuma ser imediatamente seguida pelo bloco de recomendações.
-    let repeatedAt=-1;
     for(let i=1;i<paragraphs.length;i++){
-      const prev=clean(paragraphs[i-1]), cur=clean(paragraphs[i]);
-      if(prev.length>=80 && prev===cur){ repeatedAt=i; break; }
-    }
-    if(repeatedAt>=0) paragraphs.splice(repeatedAt);
-
-    // 2) Títulos de outras notícias podem não existir no feed atual ou variar
-    // ligeiramente. Se encontrarmos uma sequência de headlines curtas,
-    // interrompemos o corpo antes dessa sequência.
-    if(paragraphs.length>=3){
-      const headlineLike=p=>{
-        const s=norm(p);
-        if(s.length<45 || s.length>150) return false;
-        const words=s.split(/\\s+/).length;
-        if(words<7 || words>28) return false;
-        // Headlines tendem a não terminar como uma frase editorial normal.
-        const hasSentenceEnding=/[.!?…]$/.test(s);
-        const hasQuote=/[«»”“"']/ .test(s);
-        return !hasSentenceEnding || hasQuote;
-      };
-      let cut=-1;
-      for(let i=1;i<paragraphs.length-1;i++){
-        if(!headlineLike(paragraphs[i])) continue;
-        let run=1;
-        for(let j=i+1;j<paragraphs.length && j<i+4;j++){
-          if(headlineLike(paragraphs[j])) run++; else break;
-        }
-        if(run>=2){
-          cut=i;
-          break;
-        }
+      if(clean(paragraphs[i-1]).length>=80 && clean(paragraphs[i-1])===clean(paragraphs[i])){
+        paragraphs.splice(i); break;
       }
-      if(cut>=0) paragraphs.splice(cut);
     }
-
-    // 3) Último fallback: comparação com títulos conhecidos do feed.
+    const headlineLike=p=>{
+      const s=norm(p);
+      if(s.length<45 || s.length>180)return false;
+      const words=s.split(/\s+/).length;
+      if(words<7 || words>30)return false;
+      return !/[.!?…]$/.test(s) || /[«»”“"']/.test(s);
+    };
+    for(let i=1;i<paragraphs.length-1;i++){
+      if(!headlineLike(paragraphs[i]))continue;
+      let run=1;
+      for(let j=i+1;j<paragraphs.length && j<i+5;j++) if(headlineLike(paragraphs[j])) run++; else break;
+      if(run>=2){paragraphs.splice(i);break;}
+    }
+    const titles=relatedTitles.map(norm).filter(Boolean).map(clean);
     if(titles.length){
-      const cutAt=paragraphs.findIndex(p=>{
+      const cut=paragraphs.findIndex(p=>{
         const current=clean(p);
         return titles.some(t=>current===t || current.startsWith(t+' '));
       });
-      if(cutAt>=0) paragraphs.splice(cutAt);
+      if(cut>=0)paragraphs.splice(cut);
     }
   }
-
   if(!paragraphs.length)return '';
   return '<div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
 }
