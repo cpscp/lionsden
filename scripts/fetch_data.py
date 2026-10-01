@@ -4275,6 +4275,36 @@ def fetch_news():
         merged_seen.add(key)
         merged.append(item)
     merged.sort(key=pub_ts, reverse=True)
+
+    # Final same-source deduplication. Some publishers expose the same story
+    # once through a translated/enriched URL and once through the canonical URL
+    # (e.g. O Jogo). Prefer the copy with real article content/image and discard
+    # the empty "URL Source" placeholder.
+    def news_title_key(item):
+        title = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(item.get("title") or "").lower()).strip()
+        title = re.sub(r"\s+(?:[-–—]\s*)?(?:o jogo|record|a bola|abola|sporting pt|sporting\.pt)$", "", title).strip()
+        title = re.sub(r"\s+", " ", title)
+        return str(item.get("source") or "") + "|" + title
+
+    def news_quality(item):
+        body = clean(item.get("article_text") or "")
+        return (
+            (1 if len(body) >= 300 else 0),
+            (1 if item.get("image") else 0),
+            (1 if item.get("description") else 0),
+            len(body),
+            pub_ts(item),
+        )
+
+    deduped = {}
+    for item in merged:
+        key = news_title_key(item)
+        old = deduped.get(key)
+        if old is None or news_quality(item) > news_quality(old):
+            deduped[key] = item
+    merged = list(deduped.values())
+    merged.sort(key=pub_ts, reverse=True)
+
     final = merged[:120]
     for item in final:
         item["published_ts"] = pub_ts(item)
