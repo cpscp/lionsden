@@ -3864,18 +3864,6 @@ def fetch_news():
                     **({"image": image, "image_source": source + " Google News RSS"} if image else {}),
                 })
             if pending:
-                if source == "Record":
-                    print(
-                        "News RSS Record:",
-                        len(pending),
-                        [
-                            {
-                                "title": x.get("title"),
-                                "published": x.get("published"),
-                            }
-                            for x in pending[:10]
-                        ],
-                    )
                 try:
                     import asyncio
                     from googlenewsdecoder import gnews_decoder_async
@@ -3915,6 +3903,7 @@ def fetch_news():
                                 ).strip()
                                 if existing.get("source") == source and existing_title_key == row_title_key:
                                     existing["published"] = row["published"]
+                                    existing["_rss_published"] = row["published"]
                                     break
 
                         if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
@@ -3922,6 +3911,8 @@ def fetch_news():
                             if source_for(final_url) == source:
                                 row["url"] = final_url
                                 row.pop("_google_url", None)
+                                if row.get("published"):
+                                    row["_rss_published"] = row["published"]
                                 add(row)
                 except Exception as ex:
                     print("News RSS decode warning:", source, ex)
@@ -4032,6 +4023,13 @@ def fetch_news():
                 enriched.append(future.result())
             except Exception as ex:
                 print("News enrichment warning:", ex)
+
+    # Preserve authoritative Google News RSS publication timestamps.
+    # Publisher article pages can expose only YYYY-MM-DD and otherwise overwrite
+    # the precise RSS pubDate during enrichment.
+    for item in enriched:
+        if item.get("source") == "Record" and item.get("_rss_published"):
+            item["published"] = item["_rss_published"]
 
     # Final image/metadata cleanup. Some publishers (notably O Jogo and
     # Zerozero) return a CloudFront/403 page to GitHub Actions even when Google
@@ -4435,6 +4433,7 @@ def fetch_news():
         item.pop("_sporting", None)
         item.pop("_sporting_context", None)
         item.pop("_google_url", None)
+        item.pop("_rss_published", None)
         item.pop("media_thumbnail", None)
         item.pop("media_content", None)
         # Keep the extracted article body so the PWA can render it natively in the news popup.
