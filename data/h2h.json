@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-09-30T22:58:48.952913+00:00",
+  "_updated_at": "2026-10-01T06:37:56.819970+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -46,7 +46,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952599+00:00"
+      "updated_at": "2026-10-01T06:37:56.819759+00:00"
     },
     "5887661": {
       "matches": [],
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952650+00:00"
+      "updated_at": "2026-10-01T06:37:56.819812+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,54 +150,54 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952670+00:00"
+      "updated_at": "2026-10-01T06:37:56.819827+00:00"
     },
     "5887687": {
       "matches": [
         {
           "id": null,
-          "date": "2026-04-22",
+          "date": "2026-04-22T19:45:00.000Z",
           "home": "FC Porto",
           "away": "Sporting CP",
           "home_score": 0,
           "away_score": 0,
-          "competition": "Taça de Portugal"
+          "competition": "Taca de Portugal"
         },
         {
           "id": null,
-          "date": "2026-02-09",
+          "date": "2026-03-03T20:45:00.000Z",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Taca de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-02-09T20:45:00.000Z",
           "home": "FC Porto",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 1,
-          "competition": "Liga Portugal Betclic"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-01-07",
+          "date": "2025-08-30T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "FC Porto",
           "home_score": 1,
-          "away_score": 0,
-          "competition": "Taça da Liga"
-        },
-        {
-          "id": null,
-          "date": "2024-08-31",
-          "home": "Sporting CP",
-          "away": "FC Porto",
-          "home_score": 2,
-          "away_score": 0,
-          "competition": "Liga Portugal Betclic"
+          "away_score": 2,
+          "competition": "Liga Portugal"
         }
       ],
-      "home_wins": 0,
-      "draws": 2,
-      "away_wins": 2,
-      "total": 4,
-      "source": "ZeroZero historical H2H fallback",
+      "home_wins": 19,
+      "draws": 18,
+      "away_wins": 10,
+      "total": 47,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952696+00:00"
+      "updated_at": "2026-10-01T06:37:56.819839+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,7 +244,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952700+00:00"
+      "updated_at": "2026-10-01T06:37:56.819842+00:00"
     },
     "5887702": {
       "matches": [
@@ -291,7 +291,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952714+00:00"
+      "updated_at": "2026-10-01T06:37:56.819850+00:00"
     },
     "5887716": {
       "matches": [
@@ -381,7 +381,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952727+00:00"
+      "updated_at": "2026-10-01T06:37:56.819859+00:00"
     },
     "5887734": {
       "matches": [
@@ -428,7 +428,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952737+00:00"
+      "updated_at": "2026-10-01T06:37:56.819866+00:00"
     },
     "5887735": {
       "matches": [
@@ -475,7 +475,7 @@
       "total": 6,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952742+00:00"
+      "updated_at": "2026-10-01T06:37:56.819868+00:00"
     },
     "5887752": {
       "matches": [
@@ -522,7 +522,7 @@
       "total": 35,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952750+00:00"
+      "updated_at": "2026-10-01T06:37:56.819874+00:00"
     },
     "5887760": {
       "matches": [
@@ -569,7 +569,7 @@
       "total": 4,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952757+00:00"
+      "updated_at": "2026-10-01T06:37:56.819878+00:00"
     },
     "5887769": {
       "matches": [
@@ -616,7 +616,7 @@
       "total": 37,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952761+00:00"
+      "updated_at": "2026-10-01T06:37:56.819881+00:00"
     },
     "5887778": {
       "matches": [
@@ -663,7 +663,7 @@
       "total": 27,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952765+00:00"
+      "updated_at": "2026-10-01T06:37:56.819883+00:00"
     },
     "5887784": {
       "matches": [
@@ -710,7 +710,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952769+00:00"
+      "updated_at": "2026-10-01T06:37:56.819886+00:00"
     },
     "5887796": {
       "matches": [
@@ -757,7 +757,7 @@
       "total": 21,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952772+00:00"
+      "updated_at": "2026-10-01T06:37:56.819889+00:00"
     },
     "5887800": {
       "matches": [
@@ -804,7 +804,7 @@
       "total": 42,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952776+00:00"
+      "updated_at": "2026-10-01T06:37:56.819891+00:00"
     },
     "5887814": {
       "matches": [],
@@ -861,7 +861,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952788+00:00"
+      "updated_at": "2026-10-01T06:37:56.819898+00:00"
     },
     "5887832": {
       "matches": [
@@ -908,54 +908,54 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952792+00:00"
+      "updated_at": "2026-10-01T06:37:56.819900+00:00"
     },
     "5887840": {
       "matches": [
         {
           "id": null,
-          "date": "2026-04-22",
+          "date": "2026-04-22T19:45:00.000Z",
           "home": "FC Porto",
           "away": "Sporting CP",
           "home_score": 0,
           "away_score": 0,
-          "competition": "Taça de Portugal"
+          "competition": "Taca de Portugal"
         },
         {
           "id": null,
-          "date": "2026-02-09",
+          "date": "2026-03-03T20:45:00.000Z",
+          "home": "Sporting CP",
+          "away": "FC Porto",
+          "home_score": 1,
+          "away_score": 0,
+          "competition": "Taca de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2026-02-09T20:45:00.000Z",
           "home": "FC Porto",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 1,
-          "competition": "Liga Portugal Betclic"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-01-07",
+          "date": "2025-08-30T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "FC Porto",
           "home_score": 1,
-          "away_score": 0,
-          "competition": "Taça da Liga"
-        },
-        {
-          "id": null,
-          "date": "2024-08-31",
-          "home": "Sporting CP",
-          "away": "FC Porto",
-          "home_score": 2,
-          "away_score": 0,
-          "competition": "Liga Portugal Betclic"
+          "away_score": 2,
+          "competition": "Liga Portugal"
         }
       ],
-      "home_wins": 2,
-      "draws": 2,
-      "away_wins": 0,
-      "total": 4,
-      "source": "ZeroZero historical H2H fallback",
+      "home_wins": 19,
+      "draws": 18,
+      "away_wins": 10,
+      "total": 47,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952801+00:00"
+      "updated_at": "2026-10-01T06:37:56.819903+00:00"
     },
     "5887851": {
       "matches": [
@@ -1002,7 +1002,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952805+00:00"
+      "updated_at": "2026-10-01T06:37:56.819905+00:00"
     },
     "5887855": {
       "matches": [
@@ -1049,7 +1049,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952814+00:00"
+      "updated_at": "2026-10-01T06:37:56.819910+00:00"
     },
     "5887869": {
       "matches": [],
@@ -1106,7 +1106,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952824+00:00"
+      "updated_at": "2026-10-01T06:37:56.819917+00:00"
     },
     "5887887": {
       "matches": [
@@ -1153,7 +1153,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952835+00:00"
+      "updated_at": "2026-10-01T06:37:56.819922+00:00"
     },
     "5985964": {
       "matches": [
@@ -1200,7 +1200,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952645+00:00"
+      "updated_at": "2026-10-01T06:37:56.819809+00:00"
     },
     "6106255": {
       "matches": [
@@ -1247,7 +1247,7 @@
       "total": 6,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T06:02:02.075511+00:00"
+      "updated_at": "2026-10-01T06:37:56.819876+00:00"
     },
     "6106275": {
       "matches": [
@@ -1305,7 +1305,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952746+00:00"
+      "updated_at": "2026-10-01T06:37:56.819871+00:00"
     },
     "6106279": {
       "matches": [
@@ -1352,7 +1352,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952685+00:00"
+      "updated_at": "2026-10-01T06:37:56.819836+00:00"
     },
     "6106281": {
       "matches": [
@@ -1390,7 +1390,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952628+00:00"
+      "updated_at": "2026-10-01T06:37:56.819796+00:00"
     },
     "6106335": {
       "matches": [
@@ -1419,7 +1419,7 @@
       "total": 2,
       "source": "WorldFootball historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-09-30T22:58:48.952663+00:00"
+      "updated_at": "2026-10-01T06:37:56.819823+00:00"
     },
     "6106414": {
       "matches": [],
