@@ -1,4 +1,5 @@
 name: Atualizar notícias
+# O deploy automático é encadeado pelo workflow de Firebase após esta execução.
 
 concurrency:
   group: lions-den-news
