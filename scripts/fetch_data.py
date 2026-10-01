@@ -3582,6 +3582,24 @@ def fetch_news():
                 if published:
                     item["published"] = published
 
+                # Record often exposes the publication date in JSON-LD but
+                # keeps the exact clock time as a standalone element immediately
+                # before the article H1. Recover that time so the global news feed
+                # can order Record articles chronologically with the other sources.
+                if item.get("source") == "Record" and item.get("published"):
+                    current_published = str(item.get("published") or "").strip()
+                    if re.match(r"^\\d{4}-\\d{2}-\\d{2}$", current_published):
+                        h1_for_time = soup.find("h1")
+                        publication_time = ""
+                        if h1_for_time:
+                            previous_time = h1_for_time.find_previous(
+                                string=re.compile(r"^\\s*\\d{1,2}:\\d{2}\\s*$")
+                            )
+                            if previous_time:
+                                publication_time = clean(str(previous_time))
+                        if publication_time:
+                            item["published"] = f"{current_published}T{publication_time}:00+01:00"
+
                 # JSON-LD is more reliable on both Record and A Bola.
                 for script in soup.find_all("script", attrs={"type":"application/ld+json"}):
                     try:
