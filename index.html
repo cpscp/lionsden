@@ -101,6 +101,15 @@
 .news-section-label{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:3px 0}
 .news-section-label:after{content:"";height:1px;background:var(--line);flex:1}
 .news-live-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+.news-older-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.news-card.news-grid{display:flex;flex-direction:column;min-height:230px}
+.news-grid .news-thumb{width:100%;height:112px;flex:0 0 112px}
+.news-grid .news-card-body{padding:11px}
+.news-grid .news-title{font-size:11.5px;line-height:1.32}
+.news-grid .news-summary{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:5px;font-size:9px}
+.news-grid .news-share{width:27px;height:27px}
+.news-grid .news-open{font-size:8px}
+.news-older-grid{grid-template-columns:1fr}
 @media(max-width:560px){
 .news-feature{min-height:340px}.news-feature .news-title{font-size:19px}
 .news-medium{grid-template-columns:116px minmax(0,1fr);min-height:130px}.news-medium .news-thumb{width:116px;height:130px}
@@ -1224,13 +1233,13 @@ function newsShareIcon(){
 function newsSourceClass(source){
   return String(source||'').toLowerCase().replace(/[^a-z0-9]+/g,'-')||'other';
 }
-function newsCard(n,index){
+function newsCard(n,index,forcedType){
   const img=n.image||n.image_url||n.thumbnail||'';
   const desc=n.description||n.summary||'';
   const payload=JSON.stringify(n).replace(/'/g,'&#39;');
   const date=newsRelativeDate(n.published);
   const cycle=(index-1)%4;
-  const type=index===0?'feature':cycle<2?'medium':cycle===2?'small':'tiny';
+  const type=forcedType||(index===0?'feature':cycle<2?'medium':cycle===2?'small':'tiny');
   const cls='news-card card news-'+type;
   const imageHtml=img?'<img src="'+esc(img)+'" class="news-thumb" alt="" loading="'+(index===0?'eager':'lazy')+'" onerror="this.style.display=\'none\'">':'<div class="news-thumb"></div>';
   const summary=desc&&type!=='tiny'?'<div class="news-summary">'+esc(desc)+'</div>':'';
@@ -1335,14 +1344,30 @@ function renderNews(){
   if(count)count.textContent=filtered.length+` notícia${filtered.length===1?'':'s'} · ${newsSourceFilter==='Todas'?'todas as fontes':newsSourceFilter}`;
   const el=document.getElementById('newsList');
   if(!filtered.length){el.innerHTML='<div class="news-empty card p-6 text-center muted">Sem notícias desta fonte.</div>';return}
-  let first=true,lastGroup='';
-  el.innerHTML=filtered.map(n=>{
+
+  let lastGroup='', first=true, normalIndex=0;
+  const groups=[];
+  filtered.forEach(n=>{
     const age=Date.now()-(Date.parse(n.published||'')||0);
     const group=age<2*3600000?'Agora':age<86400000?'Hoje':'Anteriores';
-    const label=group!==lastGroup?`<div class="news-section-label">${group==='Agora'?'<span class="news-live-dot"></span>':''}${group}</div>`:'';
-    lastGroup=group;
-    const html=newsCard(n,first?0:1); first=false;
-    return label+html;
+    if(group!==lastGroup){groups.push({label:group,items:[]});lastGroup=group}
+    groups[groups.length-1].items.push(n);
+  });
+
+  el.innerHTML=groups.map(group=>{
+    const label=`<div class="news-section-label">${group.label==='Agora'?'<span class="news-live-dot"></span>':''}${group.label}</div>`;
+    if(group.label==='Anteriores'){
+      const cards=group.items.map(n=>{
+        const html=newsCard(n,normalIndex===0?0:1,'grid');
+        normalIndex++; first=false; return html;
+      }).join('');
+      return label+`<div class="news-older-grid">${cards}</div>`;
+    }
+    const cards=group.items.map(n=>{
+      const html=newsCard(n,first?0:1);
+      first=false; normalIndex++; return html;
+    }).join('');
+    return label+cards;
   }).join('');
 }
 
