@@ -2866,10 +2866,11 @@ def fetch_news():
         description = clean(item.get("description") or "")
         article_text = clean(item.get("article_text") or "")
         url = str(item.get("url") or "").lower()
-        # Relevance is decided primarily from headline, preview and canonical
-        # URL. Article body text can mention Sporting incidentally in related
-        # links/sidebars and must not be enough to admit an unrelated story.
-        blob = zz_norm(" ".join((title, description, url)))
+        # Relevance is decided from the article's own editorial metadata.
+        # NEVER use the canonical URL as positive evidence: publishers often
+        # place a Sporting section path in every URL, which would admit
+        # unrelated Porto/Benfica/Seleção stories.
+        blob = zz_norm(" ".join((title, description)))
 
         if source == "Sporting.pt":
             corporate = (
@@ -3629,17 +3630,23 @@ def fetch_news():
                 return
             desc_node = best.find("description")
             raw_desc = desc_node.decode_contents() if desc_node else ""
+            content_node = best.find("content:encoded")
+            raw_content = content_node.decode_contents() if content_node else ""
             ds = BeautifulSoup(raw_desc, "html.parser")
+            cs = BeautifulSoup(raw_content, "html.parser") if raw_content else None
 
             # Google News often carries the publisher excerpt even when
             # Zerozero blocks the article page from GitHub Actions. Keep it as
             # the in-app preview/summary instead of leaving the card empty.
             if not item.get("description"):
                 google_desc = clean(ds.get_text(" ", strip=True))
-                if google_desc:
-                    google_desc = re.sub(r"\s+", " ", google_desc).strip()
-                    if len(google_desc) > 20:
-                        item["description"] = google_desc[:300]
+                if len(google_desc) < 25 and cs:
+                    google_desc = clean(cs.get_text(" ", strip=True))
+                # Strip the common Google News source suffix.
+                google_desc = re.sub(r"\s+", " ", google_desc).strip()
+                google_desc = re.sub(r"\s*[-–—]\s*(zerozero\.pt|o jogo|record|a bola)\s*$", "", google_desc, flags=re.I)
+                if len(google_desc) > 20:
+                    item["description"] = google_desc[:300]
 
             image = None
             for tag_name in ("media:content", "media:thumbnail", "enclosure"):
