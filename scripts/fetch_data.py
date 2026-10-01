@@ -3063,9 +3063,21 @@ def fetch_news():
             pass
         for candidate in candidates:
             try:
-                rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
+                is_zerozero_proxy = (
+                    item.get("source") == "Zerozero"
+                    and zerozero_proxy
+                    and candidate.startswith(zerozero_proxy + "/?")
+                )
+                rr = session.get(candidate, timeout=25, headers={"User-Agent": USER_AGENT})
                 rr.raise_for_status()
-                soup = BeautifulSoup(rr.text, "html.parser")
+                if is_zerozero_proxy:
+                    payload = rr.json()
+                    if not payload.get("ok") or not payload.get("html"):
+                        raise RuntimeError("Zerozero proxy returned no HTML")
+                    candidate_html = payload["html"]
+                else:
+                    candidate_html = rr.text
+                soup = BeautifulSoup(candidate_html, "html.parser")
                 local_seen = set()
                 for a in soup.select("a[href]"):
                     href = urljoin(url, a.get("href") or "")
@@ -3150,6 +3162,16 @@ def fetch_news():
         item.pop("premium", None)
         item.pop("article_text", None)
         candidates = [url]
+        # Dedicated server-side Zerozero proxy. The public site blocks GitHub
+        # Actions directly; the proxy fetches the same HTML from a separate
+        # egress and returns it to this existing parser.
+        zerozero_proxy = os.getenv("ZEROZERO_PROXY_URL", "").strip().rstrip("/")
+        if item.get("source") == "Zerozero" and zerozero_proxy:
+            try:
+                from urllib.parse import quote
+                candidates.insert(0, zerozero_proxy + "/?url=" + quote(url, safe=""))
+            except Exception:
+                pass
         # Zerozero blocks GitHub Actions on the primary .pt host. The same
         # publisher content is served through regional Zerozero domains; try
         # those canonical mirrors directly before any proxy. This avoids
