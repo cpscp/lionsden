@@ -3195,6 +3195,24 @@ def fetch_news():
                     candidates.append(parsed_record._replace(path=amp_path, query="", fragment="").geturl())
             except Exception:
                 pass
+        # Jina fallback against Zerozero regional mirrors as well. The main
+        # .pt host is frequently challenged from CI, while the mirrors can
+        # expose the same article to Jina.
+        if item.get("source") == "Zerozero":
+            try:
+                from urllib.parse import urlparse
+                parsed_jina = urlparse(url)
+                for mirror_host in (
+                    "www.zerozero.dk",
+                    "www.zerozero.football",
+                    "www.zerozero.africa",
+                    "www.zerozero.gr",
+                ):
+                    mirror = parsed_jina._replace(netloc=mirror_host).geturl()
+                    candidates.append("https://r.jina.ai/" + mirror)
+                    candidates.append("https://r.jina.ai/" + mirror.replace("https://", "http://", 1))
+            except Exception:
+                pass
         candidates.append("https://r.jina.ai/" + url)
         try:
             from urllib.parse import urlparse
@@ -3558,7 +3576,7 @@ def fetch_news():
     # Zerozero articles. Use it as the primary Zerozero transport and keep the
     # Google News queries below only as a secondary fallback.
     try:
-        zz_rss_url = "https://www.zerozero.pt/rss/noticias.php"
+        zz_rss_url = "https://www.zerozero.pt/rss.php"
         zz_raw = session.get(
             zz_rss_url,
             timeout=20,
