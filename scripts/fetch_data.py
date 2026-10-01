@@ -3597,9 +3597,34 @@ def fetch_news():
         elif t:
             discovered_keys.add("title|" + str(item.get("source") or "") + "|" + t)
 
+    def _bad_news_payload_text(value):
+        s = clean(value or "")
+        if not s:
+            return False
+        low = s.lower()
+        return any(token in low for token in (
+            "news.google.com/rss/articles/",
+            "<a href=",
+            "href=\"https://news.google.com/",
+            "oc=5",
+            "the request could not be satisfied",
+            "request blocked",
+            "cloudfront",
+            "warning: target url returned error 403",
+        ))
+
+    # Sanitize the retained feed before using it as a safety net. Previously a
+    # malformed Google News anchor could survive forever because historical
+    # entries were only backfilled when their image was missing.
+    for previous_item in previous_items:
+        if _bad_news_payload_text(previous_item.get("description")):
+            previous_item.pop("description", None)
+        if _bad_news_payload_text(previous_item.get("article_text")):
+            previous_item.pop("article_text", None)
+
     backfill = []
     for previous_item in previous_items:
-        if previous_item.get("image"):
+        if previous_item.get("image") and previous_item.get("description"):
             continue
         u = re.sub(r"[?#].*$", "", str(previous_item.get("url") or "").rstrip("/")).lower()
         t = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", str(previous_item.get("title") or "").lower()).strip()
@@ -3631,23 +3656,7 @@ def fetch_news():
     # News as a fallback for missing images/descriptions and never store proxy
     # error pages as article content.
     def _bad_proxy_text(value):
-        s = clean(value or "")
-        if not s:
-            return False
-        low = s.lower()
-        return any(token in low for token in (
-            "the request could not be satisfied",
-            "request blocked",
-            "warning: target url returned error 403",
-            "cloudfront",
-            "there might be too much traffic or a configuration error",
-            "title: the request could not be satisfied",
-            "url source:",
-            "news.google.com/rss/articles/",
-            "<a href=",
-            "href=\"https://news.google.com/",
-            "oc=5",
-        ))
+        return _bad_news_payload_text(value)
 
     def _google_news_image_fallback(item):
         # Continue when either image OR description is missing. A malformed
@@ -3899,6 +3908,51 @@ def fetch_news():
             item.pop("description", None)
         if not item.get("image") or not item.get("description"):
             _google_news_image_fallback(item)
+
+    # Zerozero can be blocked from GitHub Actions while the same story is
+    # publicly available on Sporting.pt/another press source. When the headline
+    # is clearly the same, borrow only the preview metadata/image; keep the
+    # original Zerozero URL and source label. This avoids depending on a direct
+    # Zerozero scrape for every article.
+    def _title_similarity(a, b):
+        aa = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", zz_norm(a or "")).strip()
+        bb = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", zz_norm(b or "")).strip()
+        if not aa or not bb:
+            return 0.0
+        score = SequenceMatcher(None, aa, bb).ratio()
+        if aa in bb or bb in aa:
+            score += 0.25
+        return score
+
+    metadata_pool = [
+        x for x in enriched + previous_items
+        if x.get("source") != "Zerozero"
+        and (x.get("image") or x.get("description"))
+    ]
+    for item in enriched:
+        if item.get("source") != "Zerozero":
+            continue
+        if item.get("image") and item.get("description"):
+            continue
+        best = None
+        best_score = 0.0
+        for candidate in metadata_pool:
+            score = _title_similarity(item.get("title"), candidate.get("title"))
+            if score > best_score:
+                best, best_score = candidate, score
+        if best is not None and best_score >= 0.78:
+            if not item.get("description") and best.get("description"):
+                item["description"] = clean(best["description"])[:300]
+                item["description_source"] = "cross-source same story"
+            if not item.get("image") and best.get("image"):
+                item["image"] = best["image"]
+                item["image_source"] = "cross-source same story"
+            print(
+                "Zerozero cross-source metadata:",
+                item.get("title","")[:90],
+                "score=", round(best_score, 3),
+                "from=", best.get("source")
+            )
 
     from email.utils import parsedate_to_datetime
 
