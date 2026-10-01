@@ -3616,15 +3616,29 @@ def fetch_news():
                         h1_for_time = soup.find("h1")
                         publication_time = ""
                         if h1_for_time:
-                            # The time can be wrapped in a div/span rather than
-                            # being a standalone text node. Inspect nearby elements
-                            # first, then fall back to text-node matching.
+                            # The time may be wrapped in arbitrary markup. First
+                            # inspect nearby elements, then use the rendered text
+                            # immediately before the H1. The LAST HH:MM before the
+                            # title is the article publication time (e.g. 18:20),
+                            # while match times such as 20:15 occur further away.
                             time_pattern = re.compile(r"^\\s*\\d{1,2}:\\d{2}\\s*$")
                             for previous_node in h1_for_time.find_all_previous(limit=80):
                                 node_text = clean(previous_node.get_text(" ", strip=True))
                                 if time_pattern.fullmatch(node_text):
                                     publication_time = node_text
                                     break
+                            if not publication_time:
+                                try:
+                                    visible_text = soup.get_text("\\n", strip=True)
+                                    article_title = clean(item.get("title") or "")
+                                    title_pos = visible_text.lower().find(article_title.lower())
+                                    if title_pos > 0:
+                                        prefix = visible_text[max(0, title_pos - 600):title_pos]
+                                        clock_times = re.findall(r"(?<!\\d)(\\d{1,2}:\\d{2})(?!\\d)", prefix)
+                                        if clock_times:
+                                            publication_time = clock_times[-1]
+                                except Exception:
+                                    pass
                             if not publication_time:
                                 previous_time = h1_for_time.find_previous(
                                     string=time_pattern
