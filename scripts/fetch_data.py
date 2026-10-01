@@ -4013,6 +4013,16 @@ def fetch_news():
         item.pop("media_content", None)
         # Keep the extracted article body so the PWA can render it natively in the news popup.
 
+    # Final safety pass: never persist Google News transport HTML or proxy links
+    # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
+    for item in final:
+        if _bad_news_payload_text(item.get("description")):
+            item.pop("description", None)
+        if _bad_news_payload_text(item.get("article_text")):
+            item.pop("article_text", None)
+        if item.get("source") == "Zerozero" and not item.get("description"):
+            item["description"] = "Consulte a notícia completa no Zerozero através da fonte original."
+
     write_json("news.json", {"items": final})
     print("News feed:", len(final), "items;",
           {source: sum(1 for x in final if x.get("source") == source) for source, _ in SOURCES})
