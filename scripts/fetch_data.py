@@ -2979,8 +2979,16 @@ def fetch_news():
                     img.get("data-original"),
                     img.get("data-image"),
                     img.get("data-fallback-src"),
+                    img.get("data-bg"),
+                    img.get("data-background-image"),
                     img.get("src"),
                 ]
+                # Zerozero may keep the lead photo in CSS/background attributes
+                # instead of a normal <img>, especially on the news listing.
+                style = str(img.get("style") or "")
+                m_bg = re.search(r"background-image\s*:\s*url\(['\"]?([^'\")]+)", style, re.I)
+                if m_bg:
+                    candidates.insert(0, m_bg.group(1))
                 srcset = img.get("data-srcset") or img.get("srcset")
                 if srcset:
                     # Use the last candidate, normally the largest rendition.
@@ -2991,7 +2999,7 @@ def fetch_news():
                         s = str(src).strip()
                         if not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", s, re.I):
                             return urljoin(base_url, s)
-            # Some modern cards put the image on <source>.
+            # Some cards put the image on <source>.
             for source_node in parent.find_all("source"):
                 srcset = source_node.get("data-srcset") or source_node.get("srcset")
                 if srcset:
@@ -3070,6 +3078,37 @@ def fetch_news():
                     local_seen.add(href)
                     image = extract_card_image(a, url)
                     preview = extract_card_preview(a)
+
+                    # Zerozero cards can render the lead photo on a wrapper
+                    # rather than inside the <a>. Inspect the closest article/card
+                    # container as a second pass.
+                    if source == "Zerozero" and not image:
+                        card = a
+                        for _ in range(5):
+                            if card is None:
+                                break
+                            image = extract_card_image(card, url)
+                            if image:
+                                break
+                            card = card.parent
+
+                    # Zerozero's listing snippet is the most reliable description
+                    # when the article endpoint itself returns 403.
+                    if source == "Zerozero" and len(preview) < 40:
+                        card = a
+                        for _ in range(5):
+                            if card is None:
+                                break
+                            for selector in ("p","div[class*='description']","div[class*='summary']","div[class*='excerpt']"):
+                                node = card.select_one(selector) if hasattr(card, "select_one") else None
+                                txt = clean(node.get_text(" ", strip=True)) if node else ""
+                                if len(txt) >= 40 and txt.lower() != title.lower():
+                                    preview = txt[:300]
+                                    break
+                            if len(preview) >= 40:
+                                break
+                            card = card.parent
+
                     add({
                         "title": title,
                         "url": href,
