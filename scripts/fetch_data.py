@@ -3524,7 +3524,7 @@ def fetch_news():
     title_dedup = {}
     for item in items:
         norm_title = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", item.get("title","").lower()).strip()
-        norm_title = re.sub(r"\b(?:record|a bola|abola pt|sporting pt)\b", "", norm_title).strip()
+        norm_title = re.sub(r"\b(?:record|a bola|abola pt|sporting pt|o jogo|zerozero\.pt)\b", "", norm_title).strip()
         key = (item.get("source",""), norm_title)
         old = title_dedup.get(key)
         if old is None:
@@ -3676,6 +3676,56 @@ def fetch_news():
                 item["image_source"] = source + " Google News image fallback"
         except Exception as ex:
             print("News Google image fallback warning:", source, title[:80], ex)
+
+        # Zerozero frequently blocks automated requests. If its own Google
+        # result has no metadata, look for the same headline on a first-party
+        # Sporting/press source and borrow only the preview metadata/image.
+        # The stored article URL/source remain Zerozero.
+        if source == "Zerozero" and (not item.get("image") or not item.get("description")):
+            try:
+                from urllib.parse import quote
+                title_norm = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", title.lower()).strip()
+                for alt_domain in ("sporting.pt", "ojogo.pt", "record.pt", "abola.pt"):
+                    q = f'site:{alt_domain} "{title[:180]}"'
+                    ru = "https://news.google.com/rss/search?q=" + quote(q) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
+                    rr = session.get(ru, timeout=15, headers={"User-Agent": USER_AGENT})
+                    rr.raise_for_status()
+                    xx = BeautifulSoup(rr.text, "xml")
+                    best = None
+                    best_score = 0
+                    for node in xx.find_all("item")[:10]:
+                        nt = clean(node.find("title").get_text(" ", strip=True) if node.find("title") else "")
+                        nn = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", nt.lower()).strip()
+                        if not nn:
+                            continue
+                        score = SequenceMatcher(None, title_norm, nn).ratio()
+                        if title_norm and (title_norm in nn or nn in title_norm):
+                            score += 0.25
+                        if score > best_score:
+                            best, best_score = node, score
+                    if best is None or best_score < 0.55:
+                        continue
+                    desc_node = best.find("description")
+                    ds = BeautifulSoup(desc_node.decode_contents() if desc_node else "", "html.parser")
+                    if not item.get("description"):
+                        txt = clean(ds.get_text(" ", strip=True))
+                        txt = re.sub(r"\s+", " ", txt).strip()
+                        txt = re.sub(r"\s*[-–—]\s*(zerozero\.pt|o jogo|record|a bola)\s*$", "", txt, flags=re.I)
+                        if len(txt) > 20:
+                            item["description"] = txt[:300]
+                    if not item.get("image"):
+                        for tag_name in ("media:content", "media:thumbnail", "enclosure"):
+                            mn = best.find(tag_name)
+                            if mn and (mn.get("url") or mn.get("href")):
+                                src = mn.get("url") or mn.get("href")
+                                if not re.search(r"(favicon|logo|sprite|avatar|placeholder|1x1)", src, re.I):
+                                    item["image"] = src
+                                    item["image_source"] = "Cross-source Google News fallback"
+                                    break
+                    if item.get("image") and item.get("description"):
+                        break
+            except Exception as ex:
+                print("News cross-source fallback warning:", title[:80], ex)
 
     for item in enriched:
         if _bad_proxy_text(item.get("article_text")):
