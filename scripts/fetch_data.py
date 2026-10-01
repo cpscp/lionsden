@@ -3492,7 +3492,7 @@ def fetch_news():
                 # A BOLA: the generic article container also includes the
                 # publisher's app-promo block and a trailing "related stories"
                 # list. Keep only the editorial body.
-                if item.get("source") == "A Bola" and article_text:
+                if source == "A Bola" and article_text:
                     article_text = re.sub(
                         r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
                         r"(?:Notícias,\s*golos\s+e\s+análises\s*-\s*apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.\s*)?",
