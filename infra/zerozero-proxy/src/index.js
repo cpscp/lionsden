@@ -15,17 +15,17 @@ function decodeEntities(s){
 
 function cleanText(html){
   return decodeEntities(String(html||"")
-    .replace(/<script[\\s\\S]*?<\\/script>/gi," ")
-    .replace(/<style[\\s\\S]*?<\\/style>/gi," ")
-    .replace(/<noscript[\\s\\S]*?<\\/noscript>/gi," ")
-    .replace(/<br\\s*\\/?>(?=\\s*)/gi,"\\n")
-    .replace(/<\\/p\\s*>/gi,"\\n")
-    .replace(/<\\/h[1-6]\\s*>/gi,"\\n")
+    .replace(/<script[\s\S]*?<\/script>/gi," ")
+    .replace(/<style[\s\S]*?<\/style>/gi," ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi," ")
+    .replace(/<br\s*\/?>(?=\s*)/gi,"\n")
+    .replace(/<\/p\s*>/gi,"\n")
+    .replace(/<\/h[1-6]\s*>/gi,"\n")
     .replace(/<[^>]+>/g," "))
-    .replace(/\\r/g,"")
-    .split("\\n").map(x=>x.replace(/\\s+/g," ").trim())
+    .replace(/\r/g,"")
+    .split(/\n/).map(x=>x.replace(/\s+/g," ").trim())
     .filter(x=>x.length>=20)
-    .join("\\n\\n").trim();
+    .join("\n\n").trim();
 }
 
 function escapeHtml(s){
@@ -33,31 +33,32 @@ function escapeHtml(s){
 }
 
 function textToHtml(text){
-  return String(text||"").split(/\\n{2,}/).map(p=>p.trim()).filter(Boolean).map(p=>"<p>"+escapeHtml(p)+"</p>").join("\\n");
+  return String(text||"").split(/\n{2,}/).map(p=>p.trim()).filter(Boolean).map(p=>"<p>"+escapeHtml(p)+"</p>").join("\n");
 }
 
 function markdownToHtml(md){
   const esc=s=>escapeHtml(s);
   const out=[];
-  for(const raw of String(md||"").split(/\\r?\\n/)){
+  for(const raw of String(md||"").split(/\r?\n/)){
     const line=raw.trim();
     if(!line)continue;
-    if(/^!\\[[^\\]]*\\]\\([^)]*\\)$/.test(line))continue;
-    if(/^#{1,6}\\s+/.test(line)){
-      const m=line.match(/^(#{1,6})\\s+(.*)$/);
-      out.push("<h"+Math.min(m[1].length,3)+">"+esc(m[2])+"</h"+Math.min(m[1].length,3)+">");
+    if(/^!\[[^\]]*\]\([^)]*\)$/.test(line))continue;
+    if(/^#{1,6}\s+/.test(line)){
+      const m=line.match(/^(#{1,6})\s+(.*)$/);
+      const level=Math.min(m[1].length,3);
+      out.push("<h"+level+">"+esc(m[2])+"</h"+level+">");
       continue;
     }
-    if(/^[-*]\\s+/.test(line)){out.push("<p>"+esc(line.replace(/^[-*]\\s+/,""))+"</p>");continue;}
+    if(/^[-*]\s+/.test(line)){out.push("<p>"+esc(line.replace(/^[-*]\s+/,""))+"</p>");continue;}
     if(/^(menu|pesquisar|publicidade|partilhar|comentários?|comments?|notícias?|futebol|última hora)$/i.test(line))continue;
-    const clean=line.replace(/\\[([^\\]]+)\\]\\(https?:\\/\\/[^)]+\\)/g,"$1");
+    const clean=line.replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g,"$1");
     if(clean.length>=25)out.push("<p>"+esc(clean)+"</p>");
   }
-  return out.join("\\n");
+  return out.join("\n");
 }
 
 function extractJsonLd(html){
-  const scripts=[...String(html||"").matchAll(/<script[^>]+type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)];
+  const scripts=[...String(html||"").matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   for(const m of scripts){
     try{
       const root=JSON.parse(m[1].trim());
@@ -76,25 +77,25 @@ function extractArticle(html){
   const jsonBody=extractJsonLd(raw);
   if(jsonBody.length>=250)return {text:jsonBody,html:textToHtml(jsonBody),method:"jsonld"};
 
-  const articleMatches=[...raw.matchAll(/<article\\b[^>]*>([\\s\\S]*?)<\\/article>/gi)];
+  const articleMatches=[...raw.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/gi)];
   for(const m of articleMatches){
     const text=cleanText(m[1]);
     if(text.length>=250)return {text,html:m[1],method:"article"};
   }
 
-  const mainMatches=[...raw.matchAll(/<main\\b[^>]*>([\\s\\S]*?)<\\/main>/gi)];
+  const mainMatches=[...raw.matchAll(/<main\b[^>]*>([\s\S]*?)<\/main>/gi)];
   for(const m of mainMatches){
     const text=cleanText(m[1]);
     if(text.length>=300)return {text,html:m[1],method:"main"};
   }
 
-  const paragraphs=[...raw.matchAll(/<p\\b[^>]*>([\\s\\S]*?)<\\/p>/gi)]
+  const paragraphs=[...raw.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
     .map(m=>cleanText(m[1]))
     .filter(p=>p.length>=25)
-    .filter(p=>!/(^|\\s)(menu|pesquisar|publicidade|partilhar|comentários|comments)(\\s|$)/i.test(p));
+    .filter(p=>!/(^|\s)(menu|pesquisar|publicidade|partilhar|comentários|comments)(\s|$)/i.test(p));
   const unique=[];
   for(const p of paragraphs)if(!unique.includes(p))unique.push(p);
-  const text=unique.join("\\n\\n");
+  const text=unique.join("\n\n");
   if(text.length>=250)return {text,html:textToHtml(text),method:"paragraphs"};
   return null;
 }
@@ -103,7 +104,7 @@ function responseLooksUseful(body){
   if(!body||body.length<250)return false;
   const low=body.slice(0,5000).toLowerCase();
   if(/cf-chl-|just a moment|attention required|captcha|access denied/i.test(low))return false;
-  return /<p\\b|<article\\b|<main\\b|application\\/ld\\+json|og:description/i.test(low);
+  return /<p\b|<article\b|<main\b|application\/ld\+json|og:description/i.test(low);
 }
 
 export default{async fetch(request){
