@@ -4355,6 +4355,26 @@ def fetch_news():
     # Final safety pass: never persist Google News transport HTML or proxy links
     # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
     for item in final:
+        # Final Record sanitation: older cached article bodies may already contain
+        # the publisher's related-story module, so this must run after enrichment
+        # and deduplication as well as during fresh extraction.
+        if item.get("source") == "Record" and item.get("article_text"):
+            record_title = clean(item.get("title") or "")
+            body = str(item.get("article_text") or "")
+            if record_title:
+                marker = "\n" + record_title + "\n"
+                marker_pos = body.lower().find(marker.lower(), 180)
+                if marker_pos >= 0:
+                    item["article_text"] = body[:marker_pos].strip()
+                else:
+                    match = re.search(
+                        rf"\n[ \\t]*{re.escape(record_title)}[ \\t]*(?=\n|$)",
+                        body[180:],
+                        flags=re.I,
+                    )
+                    if match:
+                        item["article_text"] = body[:180 + match.start()].strip()
+
         if _bad_news_payload_text(item.get("description")):
             item.pop("description", None)
         if _bad_news_payload_text(item.get("article_text")):
