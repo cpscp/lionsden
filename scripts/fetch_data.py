@@ -3140,6 +3140,44 @@ def fetch_news():
                 print("News listing warning:", source, candidate, ex)
         return results
 
+    # One mirror index per refresh run. Do NOT hit the same Zerozero mirror
+    # homepage once per article: that would turn 40 articles into hundreds of
+    # requests and make the scheduled job unnecessarily slow.
+    zerozero_mirror_index = None
+
+    def build_zerozero_mirror_index():
+        nonlocal zerozero_mirror_index
+        if zerozero_mirror_index is not None:
+            return zerozero_mirror_index
+        index = {}
+        pages = [
+            "https://zerozero.dk/",
+            "https://zerozero.africa/",
+            "https://zerozero.football/",
+            "https://zerozero.gr/",
+            "https://zerozero.dk/noticias",
+            "https://zerozero.africa/noticias",
+        ]
+        for page in pages:
+            try:
+                mr = session.get(page, timeout=15, headers={"User-Agent": USER_AGENT})
+                if not mr.ok:
+                    continue
+                ms = BeautifulSoup(mr.text, "html.parser")
+                for a in ms.find_all("a", href=True):
+                    txt = clean(a.get_text(" ", strip=True))
+                    href = urljoin(page, a.get("href"))
+                    if not txt or "/noticias/" not in href.lower():
+                        continue
+                    key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", txt.lower()).strip()
+                    if len(key) >= 20:
+                        index.setdefault(key, href)
+            except Exception as ex:
+                print("Zerozero mirror index warning:", page, ex)
+        zerozero_mirror_index = index
+        print(f"Zerozero mirror index: {len(index)} article links.")
+        return index
+
     def article_metadata(item):
         url = item.get("url")
         if not url:
@@ -3157,38 +3195,12 @@ def fetch_news():
         # path. This is the primary Zerozero extraction route.
         if item.get("source") == "Zerozero":
             try:
-                from urllib.parse import urlparse
                 title_key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", clean(item.get("title") or "").lower()).strip()
-                mirror_pages = [
-                    "https://zerozero.dk/",
-                    "https://zerozero.africa/",
-                    "https://zerozero.football/",
-                    "https://zerozero.gr/",
-                    "https://zerozero.dk/noticias",
-                    "https://zerozero.africa/noticias",
-                ]
-                for mirror_page in mirror_pages:
-                    try:
-                        mr = session.get(mirror_page, timeout=15, headers={"User-Agent": USER_AGENT})
-                        if not mr.ok:
-                            continue
-                        ms = BeautifulSoup(mr.text, "html.parser")
-                        for a in ms.find_all("a", href=True):
-                            txt = clean(a.get_text(" ", strip=True))
-                            if not txt:
-                                continue
-                            txt_key = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", txt.lower()).strip()
-                            if txt_key != title_key:
-                                continue
-                            href = urljoin(mirror_page, a.get("href"))
-                            if "/noticias/" in href.lower() and href not in candidates:
-                                candidates.insert(0, href)
-                                print("Zerozero mirror article resolved:", href)
-                                raise StopIteration
-                    except StopIteration:
-                        break
-                    except Exception:
-                        continue
+                mirror_index = build_zerozero_mirror_index()
+                mirror_href = mirror_index.get(title_key)
+                if mirror_href and mirror_href not in candidates:
+                    candidates.insert(0, mirror_href)
+                    print("Zerozero mirror article resolved:", mirror_href)
             except Exception as ex:
                 print("Zerozero mirror resolution warning:", url, ex)
         # Dedicated server-side Zerozero proxy. The public site blocks GitHub
