@@ -3168,6 +3168,47 @@ def fetch_news():
             candidates.append(translate_url)
         except Exception:
             pass
+
+        # Zerozero frequently exposes the article to search engines but blocks
+        # GitHub Actions with 403. For Sporting stories, the official club site
+        # often publishes the same press-conference/interview text. Discover that
+        # canonical page through Google News and use it only as a text fallback;
+        # the item's displayed source and URL remain Zerozero.
+        if item.get("source") == "Zerozero" and not item.get("article_text"):
+            try:
+                from urllib.parse import quote
+                import asyncio
+                from googlenewsdecoder import gnews_decoder_async
+                zz_title = clean(re.sub(r"\s*[-–—]\s*zerozero\.pt\s*$", "", str(item.get("title") or ""), flags=re.I))
+                if zz_title:
+                    rss_url = (
+                        "https://news.google.com/rss/search?q="
+                        + quote(f'site:sporting.pt/pt/noticias "{zz_title[:180]}"')
+                        + "&hl=pt-PT&gl=PT&ceid=PT:pt"
+                    )
+                    rr_sporting = session.get(rss_url, timeout=15, headers={"User-Agent": USER_AGENT})
+                    rr_sporting.raise_for_status()
+                    xml_sporting = BeautifulSoup(rr_sporting.text, "xml")
+                    google_links = [
+                        n.find("link").get_text(" ", strip=True)
+                        for n in xml_sporting.find_all("item")[:10]
+                        if n.find("link")
+                    ]
+                    if google_links:
+                        decoded = asyncio.run(gnews_decoder_async(
+                            google_links, interval=0.12, timeout=10.0, concurrency=5
+                        ))
+                        if isinstance(decoded, dict):
+                            decoded = [decoded]
+                        for result in decoded:
+                            if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
+                                official_url = result["decoded_url"]
+                                if "sporting.pt" in official_url.lower() and "/noticias/" in official_url:
+                                    candidates.append(official_url)
+                                    break
+            except Exception as ex:
+                print("Zerozero official text fallback warning:", url, ex)
+
         record_premium = False
         for candidate in candidates:
             try:
@@ -3483,11 +3524,16 @@ def fetch_news():
             ("site:ojogo.pt/futebol Sporting", "O Jogo"),
             ("site:ojogo.pt/modalidades Sporting", "O Jogo"),
             ("site:ojogo.pt/futebol/futebol-feminino Sporting", "O Jogo"),
-            ("site:zerozero.pt/noticias/ Sporting", "Zerozero"),
-            ("site:zerozero.pt/noticias/ Sporting feminino", "Zerozero"),
-            ("site:zerozero.pt/noticias/ Sporting futsal", "Zerozero"),
-            ("site:zerozero.pt/noticias/ Sporting andebol", "Zerozero"),
-            ("site:zerozero.pt/noticias/ Sporting basquetebol", "Zerozero"),
+            # Zerozero: use several short/fresh queries because the
+            # broad Google News result can otherwise be dominated by Portugal
+            # national-team stories and omit new Sporting items.
+            ("site:zerozero.pt/noticias/ Sporting when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ \"Sporting\" when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ \"Sporting CP\" when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting feminino when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting futsal when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting andebol when:2d", "Zerozero"),
+            ("site:zerozero.pt/noticias/ Sporting basquetebol when:2d", "Zerozero"),
             # Official club.
             ("site:sporting.pt/pt/noticias Sporting", "Sporting.pt"),
             ("site:sporting.pt/pt/noticias/futebol/futebol-feminino Sporting", "Sporting.pt"),
