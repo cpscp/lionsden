@@ -3493,7 +3493,7 @@ def fetch_news():
                 # publisher's app-promo block and a trailing "related stories"
                 # list. Keep only the editorial body.
                 if source == "A Bola" and article_text:
-                    article_text = re.sub(
+                    # A BOLA may arrive with literal escaped newlines. Normalize them before filtering.\n                    article_text = article_text.replace("\\n", "\n").replace("\\r", "\r")\n                    article_text = re.sub(
                         r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
                         r"(?:Notícias,\s*golos\s+e\s+análises\s*-\s*apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.\s*)?",
                         "",
