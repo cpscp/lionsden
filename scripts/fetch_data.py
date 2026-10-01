@@ -3423,11 +3423,12 @@ def fetch_news():
                                 item["description"] = line[:300]
                                 break
 
-                # If we already have an image, this candidate is sufficient.
-                # If we only found date/description, keep trying the remaining
-                # candidates because O Jogo/Zerozero often expose the lead image
-                # only through Jina/structured markup.
-                if item.get("image"):
+                # An image alone is NOT enough: keep trying the remaining
+                # candidates until we also obtain the readable article body.
+                # This matters especially for Zerozero, where the lead image can
+                # be recovered cross-source even when the publisher HTML does
+                # not expose the article text.
+                if item.get("article_text") or (record_premium and item.get("source") == "Record"):
                     return item
                 if candidate.startswith("https://r.jina.ai/"):
                     # Last-resort image extraction from Jina markdown.
