@@ -1347,7 +1347,7 @@ function shareNews(n,button){
   }
 }
 
-function newsArticleContent(text){
+function newsArticleContent(text,source,lead){
   if(!text)return '';
   const raw=String(text);
   const bad=/the request could not be satisfied|request blocked|warning:\s*target url returned error 403|cloudfront|there might be too much traffic or a configuration error|title:\s*the request could not be satisfied|url source:/i.test(raw);
@@ -1364,6 +1364,17 @@ function newsArticleContent(text){
     .map(x=>x.trim().replace(new RegExp('\\s*'+NL+'\\s*','g'),' '))
     .filter(Boolean);
   if(!paragraphs.length)return '';
+  // O Record inclui por vezes o subtítulo/lead como primeiro parágrafo do corpo.
+  // O subtítulo continua a ser mostrado no cartão/resumo; aqui removemos apenas
+  // a cópia inicial quando coincide com o lead, evitando duplicação no leitor.
+  if(String(source||'').trim().toLowerCase()==='record' && lead){
+    const norm=s=>String(s).replace(/\\s+/g,' ').trim();
+    const first=norm(paragraphs[0]), leadNorm=norm(lead);
+    if(first===leadNorm || first.startsWith(leadNorm+' ')){
+      paragraphs.shift();
+    }
+  }
+  if(!paragraphs.length)return '';
   return '<div class="news-reader-content">'+paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div>';
 }
 function openNews(n){
@@ -1376,7 +1387,7 @@ function openNews(n){
   const url=n.url||'#';
   const premiumNote=n.premium ? '<div class="news-reader-fallback mt-4 p-4"><div class="text-sm leading-6"><strong>Record Premium</strong><br>O texto integral deste artigo é exclusivo para assinantes. O conteúdo acima corresponde apenas ao excerto disponibilizado publicamente pelo Record.</div></div>' : '';
   document.getElementById('modalTitle').textContent=title;
-  const content=newsArticleContent(articleText);
+  const content=newsArticleContent(articleText,n.source,desc);
   const reader='<div class="news-source-badge">'+esc(n.source||'Notícia')+'</div>'+
     '<div class="text-[9px] muted mt-2">'+esc(newsDate(n.published))+'</div>'+
     (img?'<img src="'+esc(img)+'" class="w-full rounded-2xl mt-4 max-h-72 object-cover" alt="">':'')+
