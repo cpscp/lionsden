@@ -2856,7 +2856,8 @@ def fetch_news():
         "sporting clube portugal", "alvalade", "academia cristiano ronaldo",
         "academia de alcochete", "alcochete", "leão", "leoes", "leões",
         "leoas", "leonino", "verde e branco", "verde-e-branco",
-        "verde branco", "leões de alvalade"
+        "verde branco", "leões de alvalade",
+        "rui borges", "frederico varandas", "hugo viana"
     )
 
     def sporting_relevance(item):
@@ -2887,16 +2888,12 @@ def fetch_news():
 
         sporting_section = bool(item.get("_sporting_context"))
         if sporting_section:
-            rival_only = (
-                "fc porto", "benfica", "braga", "boavista", "vitoria",
-                "vitória", "gil vicente", "moreirense", "famalicao",
-                "famalicão", "rio ave", "manchester united", "barcelona"
-            )
-            if any(zz_norm(x) in title_blob for x in rival_only) and not any(
-                zz_norm(x) in headline_url_blob for x in ("sporting", "alvalade", "leonino", "leoas", "leão", "leoes", "leões")
-            ):
-                return False
-            return True
+            # A publisher's Sporting section is useful discovery context, but it
+            # is not proof that every card belongs to Sporting. Some publishers
+            # inject rival/selection/general-sport articles into those listings.
+            # At this point all positive Sporting evidence has already been
+            # checked above (club terms, staff/players, and article URL/preview).
+            return False
 
         return False
 
@@ -3573,10 +3570,10 @@ def fetch_news():
             except Exception as ex:
                 print("News enrichment warning:", ex)
 
-    # Final image/error cleanup. Some publishers (notably O Jogo and Zerozero)
-    # return a CloudFront/403 page to GitHub Actions even when Google News has
-    # already indexed the article and its lead image. Use Google News as an image
-    # transport fallback for missing retroactive images, and never store proxy
+    # Final image/metadata cleanup. Some publishers (notably O Jogo and
+    # Zerozero) return a CloudFront/403 page to GitHub Actions even when Google
+    # News has already indexed the article and its lead metadata. Use Google
+    # News as a fallback for missing images/descriptions and never store proxy
     # error pages as article content.
     def _bad_proxy_text(value):
         s = clean(value or "")
@@ -3633,6 +3630,17 @@ def fetch_news():
             desc_node = best.find("description")
             raw_desc = desc_node.decode_contents() if desc_node else ""
             ds = BeautifulSoup(raw_desc, "html.parser")
+
+            # Google News often carries the publisher excerpt even when
+            # Zerozero blocks the article page from GitHub Actions. Keep it as
+            # the in-app preview/summary instead of leaving the card empty.
+            if not item.get("description"):
+                google_desc = clean(ds.get_text(" ", strip=True))
+                if google_desc:
+                    google_desc = re.sub(r"\s+", " ", google_desc).strip()
+                    if len(google_desc) > 20:
+                        item["description"] = google_desc[:300]
+
             image = None
             for tag_name in ("media:content", "media:thumbnail", "enclosure"):
                 mn = best.find(tag_name)
@@ -3654,7 +3662,7 @@ def fetch_news():
             item.pop("article_text", None)
         if _bad_proxy_text(item.get("description")):
             item.pop("description", None)
-        if not item.get("image"):
+        if not item.get("image") or not item.get("description"):
             _google_news_image_fallback(item)
 
     from email.utils import parsedate_to_datetime
