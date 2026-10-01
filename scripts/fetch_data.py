@@ -3658,12 +3658,22 @@ def fetch_news():
             return
         try:
             from urllib.parse import quote
-            query = f'site:{domain} "{title[:180]}"'
-            rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
-            rr = session.get(rss_url, timeout=15, headers={"User-Agent": USER_AGENT})
-            rr.raise_for_status()
-            xml = BeautifulSoup(rr.text, "xml")
-            candidates = xml.find_all("item")[:10]
+            clean_title = re.sub(r"\s*[-–—]\s*(?:zerozero\.pt|o jogo|record|a bola|abola\.pt)\s*$", "", title, flags=re.I).strip()
+            # Google News can omit the source suffix from its result title.
+            # Try the clean headline first, then the exact stored headline.
+            queries = [
+                f'site:{domain} "{clean_title[:180]}"',
+                f'site:{domain} {clean_title[:180]}',
+            ]
+            candidates = []
+            for query in queries:
+                rss_url = "https://news.google.com/rss/search?q=" + quote(query) + "&hl=pt-PT&gl=PT&ceid=PT:pt"
+                rr = session.get(rss_url, timeout=15, headers={"User-Agent": USER_AGENT})
+                rr.raise_for_status()
+                xml = BeautifulSoup(rr.text, "xml")
+                candidates.extend(xml.find_all("item")[:10])
+                if candidates:
+                    break
             title_norm = re.sub(r"[^a-z0-9áàâãéêíóôõúç]+", " ", title.lower()).strip()
             best = None
             best_score = 0
