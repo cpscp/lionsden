@@ -4354,8 +4354,8 @@ def fetch_news():
         item.pop("media_content", None)
         # Keep the extracted article body so the PWA can render it natively in the news popup.
 
-    # Final safety pass: never persist Google News transport HTML or proxy links
-    # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
+    # Final safety pass: remove publisher navigation/related-story content
+    # after every enrichment/fallback has completed.
     source_headlines = {}
     for x in final:
         src = str(x.get("source") or "")
@@ -4368,58 +4368,50 @@ def fetch_news():
         body = str(item.get("article_text") or "")
 
         if body and source == "A Bola":
-            # A BOLA's app-promo is injected into the article container before
-            # the real body. Remove it even when the publisher changes spacing.
+            # App-promo injected before the editorial body.
             body = re.sub(
                 r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
-                r"(?:\n\s*)?(?:Notícias,\s*golos\s+e\s+análises\s*-\s*"
+                r"(?:Notícias,\s*golos\s+e\s+análises\s*-\s*"
                 r"apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.?\s*)?",
                 "",
                 body,
             ).strip()
-
-            # Related content is rendered as dated // Category // headlines.
+            # Dated A BOLA related modules.
             body = re.split(
                 r"\n\s*//[^\n]*\b\d{2}\.\d{2}\.\d{4}\b",
                 body,
                 maxsplit=1,
             )[0].strip()
 
-        elif body and source == "O Jogo":
-            # O Jogo sometimes injects its recommendation rail as plain
-            # paragraphs inside the article body. Remove paragraphs that are
-            # exact matches for another O Jogo headline in this same feed.
-            parts = re.split(r"\n\s*\n", body)
+        elif body and source in {"O Jogo", "Record"}:
             headlines = source_headlines.get(source, set())
+            # Remove any standalone line that is another article headline.
+            # This is intentionally line-based: publisher templates can place
+            # recommendation cards with or without blank lines.
+            lines = body.splitlines()
             kept = []
-            for idx, part in enumerate(parts):
-                normalized = re.sub(r"\s+", " ", clean(part)).strip().casefold()
-                # Keep the first paragraph: it is normally the article lead and
-                # may legitimately resemble the description, but is not a
-                # related-story card.
+            for idx, line in enumerate(lines):
+                normalized = re.sub(r"\s+", " ", clean(line)).strip().casefold()
                 if idx > 0 and normalized in headlines:
                     continue
-                kept.append(part)
-            body = "\n\n".join(kept).strip()
-
-        elif body and source == "Record":
-            # Record repeats the current/related headlines as standalone
-            # paragraphs after the editorial body.
-            parts = re.split(r"\n\s*\n", body)
-            headlines = source_headlines.get(source, set())
-            cut_at = None
-            for idx, part in enumerate(parts):
-                if idx < 2:
-                    continue
-                normalized = re.sub(r"\s+", " ", clean(part)).strip().casefold()
-                if normalized in headlines:
-                    cut_at = idx
-                    break
-            if cut_at is not None:
-                body = "\n\n".join(parts[:cut_at]).strip()
+                kept.append(line)
+            body = "\n".join(kept)
+            # Record's related module begins with a repeated headline; once a
+            # headline is encountered after the first two body paragraphs, the
+            # remaining recommendation rail is discarded.
+            if source == "Record":
+                parts = re.split(r"\n\s*\n", body)
+                cut_at = None
+                for idx, part in enumerate(parts):
+                    normalized = re.sub(r"\s+", " ", clean(part)).strip().casefold()
+                    if idx >= 2 and normalized in headlines:
+                        cut_at = idx
+                        break
+                if cut_at is not None:
+                    body = "\n\n".join(parts[:cut_at])
 
         if body:
-            item["article_text"] = body
+            item["article_text"] = body.strip()
 
         if _bad_news_payload_text(item.get("description")):
             item.pop("description", None)
