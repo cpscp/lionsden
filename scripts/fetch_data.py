@@ -4356,30 +4356,70 @@ def fetch_news():
 
     # Final safety pass: never persist Google News transport HTML or proxy links
     # as visible news copy. This runs after ALL fallbacks/cross-source enrichment.
-    record_headlines = {
-        re.sub(r"\s+", " ", clean(x.get("title") or "")).strip().casefold()
-        for x in final
-        if x.get("source") == "Record" and x.get("title")
-    }
+    source_headlines = {}
+    for x in final:
+        src = str(x.get("source") or "")
+        title = re.sub(r"\s+", " ", clean(x.get("title") or "")).strip().casefold()
+        if src and title:
+            source_headlines.setdefault(src, set()).add(title)
 
     for item in final:
-        # Final Record sanitation: the publisher can append a related-story
-        # module as ordinary text. Match whole paragraphs against the Record
-        # headlines in the same feed, so this works even when the HTML markup
-        # or the current article title changes.
-        if item.get("source") == "Record" and item.get("article_text"):
-            body = str(item.get("article_text") or "")
+        source = str(item.get("source") or "")
+        body = str(item.get("article_text") or "")
+
+        if body and source == "A Bola":
+            # A BOLA's app-promo is injected into the article container before
+            # the real body. Remove it even when the publisher changes spacing.
+            body = re.sub(
+                r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
+                r"(?:\n\s*)?(?:Notícias,\s*golos\s+e\s+análises\s*-\s*"
+                r"apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.?\s*)?",
+                "",
+                body,
+            ).strip()
+
+            # Related content is rendered as dated // Category // headlines.
+            body = re.split(
+                r"\n\s*//[^\n]*\b\d{2}\.\d{2}\.\d{4}\b",
+                body,
+                maxsplit=1,
+            )[0].strip()
+
+        elif body and source == "O Jogo":
+            # O Jogo sometimes injects its recommendation rail as plain
+            # paragraphs inside the article body. Remove paragraphs that are
+            # exact matches for another O Jogo headline in this same feed.
             parts = re.split(r"\n\s*\n", body)
-            cut_at = None
-            for part_index, part in enumerate(parts):
-                if part_index < 2:
+            headlines = source_headlines.get(source, set())
+            kept = []
+            for idx, part in enumerate(parts):
+                normalized = re.sub(r"\s+", " ", clean(part)).strip().casefold()
+                # Keep the first paragraph: it is normally the article lead and
+                # may legitimately resemble the description, but is not a
+                # related-story card.
+                if idx > 0 and normalized in headlines:
                     continue
-                normalized_part = re.sub(r"\s+", " ", clean(part)).strip().casefold()
-                if normalized_part in record_headlines:
-                    cut_at = part_index
+                kept.append(part)
+            body = "\n\n".join(kept).strip()
+
+        elif body and source == "Record":
+            # Record repeats the current/related headlines as standalone
+            # paragraphs after the editorial body.
+            parts = re.split(r"\n\s*\n", body)
+            headlines = source_headlines.get(source, set())
+            cut_at = None
+            for idx, part in enumerate(parts):
+                if idx < 2:
+                    continue
+                normalized = re.sub(r"\s+", " ", clean(part)).strip().casefold()
+                if normalized in headlines:
+                    cut_at = idx
                     break
             if cut_at is not None:
-                item["article_text"] = "\n\n".join(parts[:cut_at]).strip()
+                body = "\n\n".join(parts[:cut_at]).strip()
+
+        if body:
+            item["article_text"] = body
 
         if _bad_news_payload_text(item.get("description")):
             item.pop("description", None)
