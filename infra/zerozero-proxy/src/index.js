@@ -5,7 +5,7 @@ const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:
 const validArticlePath=p=>p.startsWith("/noticias/")&&p.length>12;
 
 function htmlSizeLooksUseful(html){
-  if(!html||html.length<2500)return false;
+  if(!html||html.length<1200)return false;
   const low=html.toLowerCase();
   if(/cf-chl-|just a moment|attention required|cloudflare|access denied|captcha/i.test(low))return false;
   return /<article\b|articlebody|og:description|<main\b|<p[ >]/i.test(html);
@@ -50,13 +50,23 @@ export default{async fetch(request){
    "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
    "Accept-Language":"pt-PT,pt;q=0.9,en;q=0.7",
    "Cache-Control":"no-cache",
-   "Pragma":"no-cache"
+   "Pragma":"no-cache",
+   "Referer":"https://www.zerozero.pt/",
+   "Sec-Fetch-Dest":"document",
+   "Sec-Fetch-Mode":"navigate",
+   "Sec-Fetch-Site":"same-origin"
  };
 
  const candidates=[];
  const add=u=>{if(u&&!candidates.includes(u))candidates.push(u)};
  add(target);
  for(const host of MIRROR_HOSTS)add(new URL(parsed.pathname+parsed.search,"https://"+host).toString());
+ // Jina can sometimes retrieve the regional mirrors even when the main .pt
+ // host returns the Cloudflare challenge. Try every mirror, over both schemes.
+ for(const host of MIRROR_HOSTS){
+   add("https://r.jina.ai/https://"+host+parsed.pathname+parsed.search);
+   add("https://r.jina.ai/http://"+host+parsed.pathname+parsed.search);
+ }
 
  try{
    const host=parsed.hostname.replace(/\./g,"-");
@@ -79,19 +89,21 @@ export default{async fetch(request){
    }catch(e){lastError=String(e?.message||e);}
  }
 
- try{
-   const jina="https://r.jina.ai/"+target;
-   const response=await fetch(jina,{headers:{"User-Agent":"Mozilla/5.0","Accept":"text/plain,text/markdown;q=0.9,*/*;q=0.8"},redirect:"follow"});
-   lastStatus=response.status;
-   const markdown=await response.text();
-   if(response.ok&&markdown.length>=1200&&!/error|forbidden|access denied|cloudflare/i.test(markdown.slice(0,500))){
-     const html=markdownToHtml(markdown);
-     if(html.length>=500){
-       return json({ok:true,format:"markdown-html",source:"r.jina.ai",requested_url:target,html});
+ for(const jinaTarget of [target,...MIRROR_HOSTS.map(host=>"https://"+host+parsed.pathname+parsed.search),...MIRROR_HOSTS.map(host=>"http://"+host+parsed.pathname+parsed.search)]){
+   try{
+     const jina="https://r.jina.ai/"+jinaTarget;
+     const response=await fetch(jina,{headers:{"User-Agent":"Mozilla/5.0","Accept":"text/plain,text/markdown;q=0.9,*/*;q=0.8"},redirect:"follow"});
+     lastStatus=response.status;
+     const markdown=await response.text();
+     if(response.ok&&markdown.length>=700&&!/just a moment|attention required|access denied|captcha/i.test(markdown.slice(0,1200))){
+       const html=markdownToHtml(markdown);
+       if(html.length>=500){
+         return json({ok:true,format:"markdown-html",source:"r.jina.ai",requested_url:target,html});
+       }
      }
-   }
-   lastError=response.ok?"jina_response_not_useful":"Jina HTTP "+response.status;
- }catch(e){lastError=String(e?.message||e);}
+     lastError=response.ok?"jina_response_not_useful":"Jina HTTP "+response.status;
+   }catch(e){lastError=String(e?.message||e);}
+ }
 
  return json({ok:false,error:"zerozero_unavailable",status:lastStatus,detail:lastError},502);
 }};
