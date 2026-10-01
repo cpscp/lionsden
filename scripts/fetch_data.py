@@ -2864,7 +2864,10 @@ def fetch_news():
         source = str(item.get("source") or "")
         title = clean(item.get("title") or "")
         description = clean(item.get("description") or "")
-        article_text = clean(item.get("article_text") or "")
+        # Relevance must come from the headline/preview itself.
+        # Do NOT use article_text here: publisher pages often append related
+        # stories from Porto, Benfica, Seleção, etc., which can falsely make
+        # an unrelated article look like a Sporting article.
         url = str(item.get("url") or "").lower()
         # Relevance is decided from the article's own editorial metadata.
         # NEVER use the canonical URL as positive evidence: publishers often
@@ -3640,10 +3643,16 @@ def fetch_news():
             "there might be too much traffic or a configuration error",
             "title: the request could not be satisfied",
             "url source:",
+            "news.google.com/rss/articles/",
+            "<a href=",
+            "href=\"https://news.google.com/",
+            "oc=5",
         ))
 
     def _google_news_image_fallback(item):
-        if item.get("image"):
+        # Continue when either image OR description is missing. A malformed
+        # Google News anchor in description must not block recovery of both.
+        if item.get("image") and item.get("description"):
             return
         source = str(item.get("source") or "")
         domain = {
@@ -3885,6 +3894,8 @@ def fetch_news():
         if _bad_proxy_text(item.get("article_text")):
             item.pop("article_text", None)
         if _bad_proxy_text(item.get("description")):
+            # Drop broken/proxy/Google-News HTML and let the external fallback
+            # rebuild a clean preview instead of displaying raw markup.
             item.pop("description", None)
         if not item.get("image") or not item.get("description"):
             _google_news_image_fallback(item)
