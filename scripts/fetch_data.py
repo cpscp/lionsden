@@ -3874,6 +3874,37 @@ def fetch_news():
                     if isinstance(decoded, dict):
                         decoded = [decoded]
                     for row, result in zip(pending, decoded):
+                        # Google News RSS carries a precise pubDate even when
+                        # its article URL cannot be decoded. Transfer that
+                        # timestamp to an already-discovered publisher article
+                        # by normalized source + headline, so Record does not
+                        # fall back to date-only ordering.
+                        row_title_key = re.sub(
+                            r"[^a-z0-9áàâãéêíóôõúç]+",
+                            " ",
+                            re.sub(
+                                r"\s*[-–—]\s*(?:record|a bola|abola\.pt|o jogo|sporting\.pt)\s*$",
+                                "",
+                                str(row.get("title") or ""),
+                                flags=re.I,
+                            ).lower(),
+                        ).strip()
+                        if row.get("published") and row_title_key:
+                            for existing in items:
+                                existing_title_key = re.sub(
+                                    r"[^a-z0-9áàâãéêíóôõúç]+",
+                                    " ",
+                                    re.sub(
+                                        r"\s*[-–—]\s*(?:record|a bola|abola\.pt|o jogo|sporting\.pt)\s*$",
+                                        "",
+                                        str(existing.get("title") or ""),
+                                        flags=re.I,
+                                    ).lower(),
+                                ).strip()
+                                if existing.get("source") == source and existing_title_key == row_title_key:
+                                    existing["published"] = row["published"]
+                                    break
+
                         if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
                             final_url = result["decoded_url"]
                             if source_for(final_url) == source:
