@@ -2865,7 +2865,10 @@ def fetch_news():
         description = clean(item.get("description") or "")
         article_text = clean(item.get("article_text") or "")
         url = str(item.get("url") or "").lower()
-        blob = zz_norm(" ".join((title, description, article_text, url)))
+        # Relevance is decided primarily from headline, preview and canonical
+        # URL. Article body text can mention Sporting incidentally in related
+        # links/sidebars and must not be enough to admit an unrelated story.
+        blob = zz_norm(" ".join((title, description, url)))
 
         if source == "Sporting.pt":
             corporate = (
@@ -3010,7 +3013,7 @@ def fetch_news():
         results = []
         sporting_listing = (
             (source == "A Bola" and "/futebol/sporting-" in url)
-            or (source == "Record" and ("/sporting" in url or "/futebol-feminino" in url))
+            or (source == "Record" and "/sporting" in url)
             or (source == "Zerozero" and "agrupamento=91" in url)
             or (source == "Sporting.pt" and "/pt/noticias" in url)
         )
