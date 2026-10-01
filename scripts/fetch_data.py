@@ -3494,8 +3494,8 @@ def fetch_news():
                 # list. Keep only the editorial body.
                 if item.get("source") == "A Bola" and article_text:
                     article_text = re.sub(
-                        r"(?is)^\\s*VIVES\\s+O\\s+DESPORTO\\s+COMO\\s+NÓS\\?\\s*"
-                        r"(?:Notícias,\\s*golos\\s+e\\s+análises\\s*-\\s*apenas\\s+na\\s+aplicação\\s+oficial\\s+A\\s+BOLA\\.\\s*)?",
+                        r"(?is)^\s*VIVES\s+O\s+DESPORTO\s+COMO\s+NÓS\?\s*"
+                        r"(?:Notícias,\s*golos\s+e\s+análises\s*-\s*apenas\s+na\s+aplicação\s+oficial\s+A\s+BOLA\.\s*)?",
                         "",
                         article_text,
                     ).strip()
@@ -3504,7 +3504,7 @@ def fetch_news():
                     # "// Seleção // 01.10.2026 ..." after the real article.
                     # Stop at the first such dated related-story marker.
                     article_text = re.split(
-                        r"\\n\\s*//[^\\n]*\\b\\d{2}\\.\\d{2}\\.\\d{4}\\b",
+                        r"\n\s*//[^\n]*\b\d{2}\.\d{2}\.\d{4}\b",
                         article_text,
                         maxsplit=1,
                     )[0].strip()
