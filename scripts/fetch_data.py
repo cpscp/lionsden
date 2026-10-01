@@ -2799,6 +2799,12 @@ def fetch_news():
         # fonte primária. A tag global fica como fallback para modalidades,
         # formação e notícias que possam não estar indexadas na página da equipa.
         ("Zerozero", "https://www.zerozero.pt/equipa/sporting/noticias"),
+        # Regional Zerozero mirrors: the .pt host can be blocked from CI while
+        # these public mirrors remain accessible and expose the same live feed.
+        ("Zerozero", "https://www.zerozero.africa/equipa/sporting/noticias"),
+        ("Zerozero", "https://www.zerozero.dk/equipa/sporting/noticias"),
+        ("Zerozero", "https://www.zerozero.football/equipa/sporting/noticias"),
+        ("Zerozero", "https://www.zerozero.gr/equipa/sporting/noticias"),
         ("Zerozero", "https://www.zerozero.pt/noticias?agrupamento=91"),
         # Sporting.pt — fonte oficial, universo completo
         ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
