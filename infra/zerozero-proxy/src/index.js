@@ -8,30 +8,31 @@ function htmlSizeLooksUseful(html){
   if(!html||html.length<2500)return false;
   const low=html.toLowerCase();
   if(/cf-chl-|just a moment|attention required|cloudflare|access denied|captcha/i.test(low))return false;
-  return /<article\\b|articlebody|og:description|<main\\b|<p[ >]/i.test(html);
+  return /<article\b|articlebody|og:description|<main\b|<p[ >]/i.test(html);
 }
 
 function markdownToHtml(md){
   const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   const out=[];
-  for(const raw of String(md||"").split(/\\r?\\n/)){
+  for(const raw of String(md||"").split(/\r?\n/)){
     const line=raw.trim();
     if(!line)continue;
-    if(/^!\\[[^\\]]*\\]\\([^)]*\\)$/.test(line))continue;
-    if(/^#{1,6}\\s+/.test(line)){
-      const m=line.match(/^(#{1,6})\\s+(.*)$/);
-      out.push("<h"+Math.min(m[1].length,3)+">"+esc(m[2])+"</h"+Math.min(m[1].length,3)+">");
+    if(/^!\[[^\]]*\]\([^)]*\)$/.test(line))continue;
+    if(/^#{1,6}\s+/.test(line)){
+      const m=line.match(/^(#{1,6})\s+(.*)$/);
+      const level=Math.min(m[1].length,3);
+      out.push("<h"+level+">"+esc(m[2])+"</h"+level+">");
       continue;
     }
-    if(/^[-*]\\s+/.test(line)){
-      out.push("<p>"+esc(line.replace(/^[-*]\\s+/,""))+"</p>");
+    if(/^[-*]\s+/.test(line)){
+      out.push("<p>"+esc(line.replace(/^[-*]\s+/,""))+"</p>");
       continue;
     }
     if(/^(menu|pesquisar|publicidade|partilhar|comentários?|comments?)$/i.test(line))continue;
-    const clean=line.replace(/\\[([^\\]]+)\\]\\((https?:\\/\\/[^)]+)\\)/g,"$1");
+    const clean=line.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,"$1");
     if(clean.length>=25)out.push("<p>"+esc(clean)+"</p>");
   }
-  return out.join("\\n");
+  return out.join("\n");
 }
 
 export default{async fetch(request){
@@ -57,10 +58,8 @@ export default{async fetch(request){
  add(target);
  for(const host of MIRROR_HOSTS)add(new URL(parsed.pathname+parsed.search,"https://"+host).toString());
 
- // Google Translate sometimes exposes the publisher HTML even when the
- // publisher blocks non-browser/server-side clients.
  try{
-   const host=parsed.hostname.replace(/\\./g,"-");
+   const host=parsed.hostname.replace(/\./g,"-");
    let tr="https://"+host+".translate.goog"+parsed.pathname;
    tr+=(parsed.search?"?"+parsed.search.slice(1)+"&":"?")+"_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en";
    add(tr);
@@ -80,9 +79,6 @@ export default{async fetch(request){
    }catch(e){lastError=String(e?.message||e);}
  }
 
- // Last-resort server-side reader. Jina fetches the public page from its own
- // egress and returns a readable Markdown representation. Convert that to
- // simple HTML so the existing BeautifulSoup article extractor can consume it.
  try{
    const jina="https://r.jina.ai/"+target;
    const response=await fetch(jina,{headers:{"User-Agent":"Mozilla/5.0","Accept":"text/plain,text/markdown;q=0.9,*/*;q=0.8"},redirect:"follow"});
