@@ -2884,6 +2884,21 @@ def fetch_news():
             return True
 
         title_blob = zz_norm(title)
+
+        # A rival-led headline that merely compares itself with Sporting is not
+        # a Sporting story. This specifically blocks headlines such as
+        # "FC Porto vence ABC e iguala Sporting" while keeping direct Sporting
+        # stories such as "Sporting e Benfica..." or "Sporting vence...".
+        rival_terms = (
+            "fc porto", "porto", "benfica", "sc braga", "braga", "boavista",
+            "vitoria", "vitoria guimaraes", "gil vicente", "moreirense",
+            "famalicao", "rio ave", "torrense", "torreense"
+        )
+        rival_led = any(title_blob.startswith(x + " ") or title_blob.startswith(x + ":") for x in rival_terms)
+        if rival_led and "sporting" in title_blob:
+            return False
+
+        # Player/staff names in the headline are strong Sporting evidence.
         if any(name and name in title_blob for name in sporting_names if len(name) >= 6):
             return True
 
@@ -2892,8 +2907,6 @@ def fetch_news():
             # A publisher's Sporting section is useful discovery context, but it
             # is not proof that every card belongs to Sporting. Some publishers
             # inject rival/selection/general-sport articles into those listings.
-            # At this point all positive Sporting evidence has already been
-            # checked above (club terms, staff/players, and article URL/preview).
             return False
 
         return False
