@@ -2893,7 +2893,7 @@ def fetch_news():
                 "famalicão", "rio ave", "manchester united", "barcelona"
             )
             if any(zz_norm(x) in title_blob for x in rival_only) and not any(
-                zz_norm(x) in blob for x in ("sporting", "alvalade", "leonino", "leoas", "leão", "leoes", "leões")
+                zz_norm(x) in headline_url_blob for x in ("sporting", "alvalade", "leonino", "leoas", "leão", "leoes", "leões")
             ):
                 return False
             return True
