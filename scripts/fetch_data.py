@@ -3505,6 +3505,69 @@ def fetch_news():
             except Exception as ex:
                 print("News discovery warning:", ex)
 
+    # Zerozero official RSS feed.
+    #
+    # The website blocks GitHub Actions with 403, while the public RSS endpoint
+    # remains available and is the authoritative discovery channel for new
+    # Zerozero articles. Use it as the primary Zerozero transport and keep the
+    # Google News queries below only as a secondary fallback.
+    try:
+        zz_rss_url = "https://www.zerozero.pt/rss/noticias.php"
+        zz_raw = session.get(
+            zz_rss_url,
+            timeout=20,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "pt-PT,pt;q=0.9",
+            },
+        )
+        zz_raw.raise_for_status()
+        zz_xml = BeautifulSoup(zz_raw.text, "xml")
+        zz_pending = []
+        for node in zz_xml.find_all("item")[:100]:
+            title = clean(node.find("title").get_text(" ", strip=True) if node.find("title") else "")
+            href = clean(node.find("link").get_text(" ", strip=True) if node.find("link") else "")
+            if not href or not title or "zerozero.pt" not in href.lower():
+                continue
+
+            desc_node = node.find("description")
+            raw_desc = desc_node.decode_contents() if desc_node else ""
+            desc_soup = BeautifulSoup(raw_desc, "html.parser")
+            desc = clean(desc_soup.get_text(" ", strip=True))
+            desc = re.sub(r"\s*[-–—]\s*zerozero\.pt\s*$", "", desc, flags=re.I).strip()[:300]
+
+            image = None
+            for tag_name in ("media:content", "media:thumbnail", "enclosure"):
+                media = node.find(tag_name)
+                if media and (media.get("url") or media.get("href")):
+                    image = media.get("url") or media.get("href")
+                    break
+            if not image:
+                img = desc_soup.find("img")
+                if img:
+                    image = img.get("src") or img.get("data-src")
+
+            pub_node = node.find("pubDate")
+            published = clean(pub_node.get_text(" ", strip=True)) if pub_node else None
+
+            zz_pending.append({
+                "title": title,
+                "url": href,
+                "source": "Zerozero",
+                "_sporting_context": False,
+                "published": published,
+                **({"description": desc} if desc else {}),
+                **({"image": image, "image_source": "Zerozero RSS"} if image else {}),
+            })
+
+        for row in zz_pending:
+            add(row)
+
+        print(f"Zerozero official RSS: {len(zz_pending)} items discovered.")
+    except Exception as ex:
+        print("Zerozero official RSS warning:", ex)
+
     # RSS transport fallback for the two press sources. The final stored
     # URL/source remains Record or A Bola; Google News is only transport.
     try:
@@ -4007,6 +4070,17 @@ def fetch_news():
             if not item.get("image") and best.get("image"):
                 item["image"] = best["image"]
                 item["image_source"] = "cross-source same story"
+            # When Zerozero blocks the article page, use the complete body from
+            # the same story published by an accessible source (typically
+            # Sporting.pt). Keep the Zerozero source label and canonical URL;
+            # this is a content fallback, not a source replacement.
+            if (
+                not item.get("article_text")
+                and best.get("article_text")
+                and len(clean(best.get("article_text"))) >= 300
+            ):
+                item["article_text"] = clean(best["article_text"])[:30000]
+                item["article_text_source"] = "cross-source same story"
             print(
                 "Zerozero cross-source metadata:",
                 item.get("title","")[:90],
