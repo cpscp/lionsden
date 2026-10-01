@@ -3063,20 +3063,9 @@ def fetch_news():
             pass
         for candidate in candidates:
             try:
-                is_zerozero_proxy = (
-                    item.get("source") == "Zerozero"
-                    and zerozero_proxy
-                    and candidate.startswith(zerozero_proxy + "/?")
-                )
                 rr = session.get(candidate, timeout=25, headers={"User-Agent": USER_AGENT})
                 rr.raise_for_status()
-                if is_zerozero_proxy:
-                    payload = rr.json()
-                    if not payload.get("ok") or not payload.get("html"):
-                        raise RuntimeError("Zerozero proxy returned no HTML")
-                    candidate_html = payload["html"]
-                else:
-                    candidate_html = rr.text
+                candidate_html = rr.text
                 soup = BeautifulSoup(candidate_html, "html.parser")
                 local_seen = set()
                 for a in soup.select("a[href]"):
@@ -3265,7 +3254,16 @@ def fetch_news():
             try:
                 rr = session.get(candidate, timeout=18, headers={"User-Agent": USER_AGENT})
                 rr.raise_for_status()
-                soup = BeautifulSoup(rr.text, "html.parser")
+                candidate_html = rr.text
+                if item.get("source") == "Zerozero" and zerozero_proxy and candidate.startswith(zerozero_proxy + "/?"):
+                    try:
+                        payload = rr.json()
+                    except Exception as ex:
+                        raise RuntimeError("Zerozero proxy returned non-JSON response") from ex
+                    if not payload.get("ok") or not payload.get("html"):
+                        raise RuntimeError("Zerozero proxy returned no usable HTML")
+                    candidate_html = payload["html"]
+                soup = BeautifulSoup(candidate_html, "html.parser")
 
                 # Record Premium: the public page exposes the lead but not the
                 # subscriber-only body. Keep this flag so the PWA never presents
