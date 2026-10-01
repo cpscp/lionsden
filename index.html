@@ -291,13 +291,15 @@
   <div class="stadium-carousel" aria-label="Fotografias do Estádio José Alvalade">
     <div class="stadium-carousel-track">
       <div class="stadium-carousel-slide is-active"><img src="https://images.pexels.com/photos/34304310/pexels-photo-34304310.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Vista aérea geral do Estádio José Alvalade" loading="eager"></div>
-      <div class="stadium-carousel-slide"><img src="https://images.pexels.com/photos/34304312/pexels-photo-34304312.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Vista aérea do interior do Estádio José Alvalade" loading="lazy"></div>
+      <div class="stadium-carousel-slide"><img src="https://images.pexels.com/photos/34304314/pexels-photo-34304314.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Vista aérea do interior do Estádio José Alvalade" loading="lazy"></div>
+      <div class="stadium-carousel-slide"><img src="https://images.pexels.com/photos/34304313/pexels-photo-34304313.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Vista exterior do Estádio José Alvalade" loading="lazy"></div>
     </div>
     <button class="stadium-carousel-arrow stadium-carousel-prev" type="button" aria-label="Imagem anterior" onclick="stadiumCarouselPrev()">‹</button>
     <button class="stadium-carousel-arrow stadium-carousel-next" type="button" aria-label="Imagem seguinte" onclick="stadiumCarouselNext()">›</button>
     <div class="stadium-carousel-dots" role="tablist" aria-label="Selecionar fotografia">
       <button class="stadium-carousel-dot is-active" type="button" aria-label="Vista geral" onclick="stadiumCarouselGo(0)"></button>
       <button class="stadium-carousel-dot" type="button" aria-label="Interior" onclick="stadiumCarouselGo(1)"></button>
+      <button class="stadium-carousel-dot" type="button" aria-label="Vista exterior" onclick="stadiumCarouselGo(2)"></button>
     </div>
   </div>
   <div class="stadium-hero-info">
@@ -1267,12 +1269,12 @@ function stadiumCarouselRender(){
   dots.forEach((d,i)=>d.classList.toggle('is-active',i===stadiumCarouselIndex));
 }
 function stadiumCarouselGo(index){
-  stadiumCarouselIndex=index%2;
+  stadiumCarouselIndex=index%3;
   stadiumCarouselRender();
   stadiumCarouselStart();
 }
 function stadiumCarouselNext(){stadiumCarouselGo(stadiumCarouselIndex+1)}
-function stadiumCarouselPrev(){stadiumCarouselGo((stadiumCarouselIndex+1)%2)}
+function stadiumCarouselPrev(){stadiumCarouselGo((stadiumCarouselIndex+2)%3)}
 function stadiumCarouselStart(){
   clearInterval(stadiumCarouselTimer);
   stadiumCarouselTimer=setInterval(()=>stadiumCarouselGo(stadiumCarouselIndex+1),7000);
