@@ -2,6 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="utf-8">
+<link rel="preload" as="image" href="https://images.fotmob.com/image_resources/logo/teamlogo/228.png" fetchpriority="high">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100b">
 <link rel="manifest" href="./manifest.json">
@@ -599,14 +600,14 @@ function updateCountdown(ts){const el=document.getElementById('nextCountdown');i
 function lastFixture(){const now=Math.floor(Date.now()/1000);return allFixtures().filter(x=>x.date&&x.date<=now&&x.goals&&x.goals.home!=null&&x.goals.away!=null).sort((x,y)=>y.date-x.date)[0]||null;}
 function renderHome(){
 const f=nextFixture();document.getElementById('homeComp').textContent=f?.competition?.name||'—';
-const homeTeamHtml=(team,small=false)=>{const name=team?.name||team||'';const url=teamLogoUrl(team);const size=small?'':'';
-return '<div class="home-match-team"><div class="home-match-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(name)+'" loading="lazy">':'<span class="home-match-logo-fallback">'+esc(initials(name))+'</span>')+'</div><div class="home-match-name">'+esc(name)+'</div></div>';};
+const homeTeamHtml=(team,small=false)=>{const name=team?.name||team||'';const url=teamLogoUrl(team);const isSporting=/^sporting(?: cp)?$/i.test(String(name).trim());const size=small?'':'';
+return '<div class="home-match-team"><div class="home-match-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(name)+'" loading="eager" fetchpriority="'+(isSporting?'high':'auto')+'" decoding="async">':'<span class="home-match-logo-fallback">'+esc(initials(name))+'</span>')+'</div><div class="home-match-name">'+esc(name)+'</div></div>';};
 document.getElementById('nextGame').innerHTML=f?'<div class="home-match-teams">'+homeTeamHtml(f.home)+'<div class="home-match-center"><div class="match-date">'+fmtHomeDate(f.date)+'</div><div class="match-date">'+fmtHomeTime(f.date)+'</div><div class="vs-text">VS</div></div>'+homeTeamHtml(f.away)+'</div><div class="home-match-meta"><span class="home-match-meta-item truncate"><span class="ui-icon">'+stadiumSvg()+'</span><span class="truncate">'+esc(venueInfo(f.venue).name||'Estádio por confirmar')+'</span></span><span class="home-match-meta-item center">'+(resolveTransmission(f)?'<span class="ui-icon">'+tvSvg()+'</span><span>'+esc(resolveTransmission(f))+'</span>':'')+'</span><span class="home-match-meta-item right truncate"><span class="ui-icon">'+whistleSvg()+'</span><span class="truncate">'+esc(f.referee||'Árbitro por confirmar')+'</span></span></div>'+countdownHtml(f.date)+'<button type="button" data-game-id="'+esc(f.id)+'" onclick="openGame(this.dataset.gameId);return false" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>':'<div class="text-center py-8 muted">Sem próximo jogo disponível.</div>';
 if(f) updateCountdown(f.date);
 const last=lastFixture(),lastEl=document.getElementById('lastGame');
 if(last){
  const hg=Number(last.goals.home),ag=Number(last.goals.away);
- const lastTeamHtml=(team)=>{const name=team?.name||team||'';const url=teamLogoUrl(team);return '<div class="home-last-team">'+(url?'<div class="home-match-logo"><img src="'+esc(url)+'" alt="'+esc(name)+'" loading="lazy"></div>':'<div class="home-match-logo home-match-logo-fallback">'+esc(initials(name))+'</div>')+'<div class="home-match-name">'+esc(name)+'</div></div>';};
+ const lastTeamHtml=(team)=>{const name=team?.name||team||'';const url=teamLogoUrl(team);const isSporting=/^sporting(?: cp)?$/i.test(String(name).trim());return '<div class="home-last-team">'+(url?'<div class="home-match-logo"><img src="'+esc(url)+'" alt="'+esc(name)+'" loading="eager" fetchpriority="'+(isSporting?'high':'auto')+'" decoding="async"></div>':'<div class="home-match-logo home-match-logo-fallback">'+esc(initials(name))+'</div>')+'<div class="home-match-name">'+esc(name)+'</div></div>';};
  lastEl.innerHTML='<button type="button" data-game-id="'+esc(last.id)+'" onclick="openGame(this.dataset.gameId);return false" class="w-full text-left"><div class="flex items-center justify-between gap-3"><div class="text-[9px] uppercase tracking-[.14em] muted">Último jogo</div><div class="text-[9px] muted">'+esc(fmtDate(last.date))+' · '+esc(last.competition?.name||'')+'</div></div><div class="home-last-teams mt-3">'+lastTeamHtml(last.home)+'<div class="home-last-score"><strong>'+esc(hg)+' - '+esc(ag)+'</strong></div>'+lastTeamHtml(last.away)+'</div></button>';
 }else lastEl.innerHTML='<div class="text-center py-2 muted text-sm">Sem último jogo disponível.</div>';
 const rows=D['standings.json']?.table||D['standings.json']?.standings||[];
