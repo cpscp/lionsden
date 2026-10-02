@@ -1309,9 +1309,12 @@ function newsRelativeDate(value){
 }
 function newsNormaliseSource(v){return String(v||'').trim()||'Outra';}
 function newsSources(items){
-  const seen=new Set(), out=[];
-  items.forEach(n=>{const s=newsNormaliseSource(n.source);if(!seen.has(s)){seen.add(s);out.push(s)}});
-  return out;
+  const seen=new Set();
+  items.forEach(n=>seen.add(newsNormaliseSource(n.source)));
+  const preferred=['Sporting.pt','Record','A Bola','O Jogo'];
+  const ordered=preferred.filter(s=>seen.has(s));
+  const remaining=[...seen].filter(s=>!preferred.includes(s)).sort((a,b)=>a.localeCompare(b,'pt'));
+  return ordered.concat(remaining);
 }
 let newsSourceFilter='Todas';
 function setNewsFilter(source){
