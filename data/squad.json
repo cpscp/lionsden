@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-03T16:33:16.444585+00:00",
+  "_updated_at": "2026-10-03T21:29:55.722807+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -1506,6 +1506,10 @@
         {
           "period": "2022-09-20T00:00:00 → 2023-11-02T00:00:00",
           "club": "Spain U19"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Spain"
         },
         {
           "period": "2025/2026",
