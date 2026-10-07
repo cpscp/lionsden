@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-07T06:14:22.336209+00:00",
+  "_updated_at": "2026-10-07T13:39:11.014254+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -491,7 +491,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Joao Pinheiro', 'countryCode': 'POR', 'country': 'Portugal'}",
       "venue": {
         "name": "Estádio Municipal de Braga",
         "city": "Braga",
