@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-09T06:22:57.434670+00:00",
+  "_updated_at": "2026-10-09T18:28:44.662818+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -491,7 +491,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Joao Pinheiro', 'countryCode': 'POR', 'country': 'Portugal'}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Pinheiro', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080381, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 28, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.82, 'valueType': 'perMatch', 'average': 4.98, 'total': 135, 'averageType': 'average', 'fillPercentage': 44.9, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.85, 'valueType': 'perMatch', 'average': 27.54, 'total': 698, 'averageType': 'below', 'fillPercentage': 42.32, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio Municipal de Braga",
         "city": "Braga",

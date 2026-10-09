@@ -157,17 +157,35 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
         },
-        "playedGames": 6,
+        "playedGames": 7,
         "won": 2,
-        "draw": 2,
+        "draw": 3,
         "lost": 2,
-        "points": 8,
+        "points": 9,
         "goalsFor": 5,
         "goalsAgainst": 5,
         "goalDifference": 0
       },
       {
         "position": 10,
+        "team": {
+          "id": 8348,
+          "name": "Moreirense",
+          "shortName": "Moreirense",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
+        },
+        "playedGames": 8,
+        "won": 2,
+        "draw": 3,
+        "lost": 3,
+        "points": 9,
+        "goalsFor": 8,
+        "goalsAgainst": 14,
+        "goalDifference": -6
+      },
+      {
+        "position": 11,
         "team": {
           "id": 9780,
           "name": "Alverca",
@@ -185,7 +203,7 @@
         "goalDifference": -2
       },
       {
-        "position": 11,
+        "position": 12,
         "team": {
           "id": 10212,
           "name": "Marítimo",
@@ -201,24 +219,6 @@
         "goalsFor": 8,
         "goalsAgainst": 12,
         "goalDifference": -4
-      },
-      {
-        "position": 12,
-        "team": {
-          "id": 8348,
-          "name": "Moreirense",
-          "shortName": "Moreirense",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
-        },
-        "playedGames": 7,
-        "won": 2,
-        "draw": 2,
-        "lost": 3,
-        "points": 8,
-        "goalsFor": 8,
-        "goalsAgainst": 14,
-        "goalDifference": -6
       },
       {
         "position": 13,
