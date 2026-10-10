@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-09T23:08:45.783254+00:00",
+  "_updated_at": "2026-10-10T02:19:32.477217+00:00",
   "channel": "Sporting CP",
   "channel_id": "UCHpcLaddGlZUVdtX302fpHA",
   "pages_fetched": 10,
@@ -8,9 +8,17 @@
       "id": "XTurR9j7z7M",
       "title": "Highlights | Liga Portugal Betclic: SC Braga 1-3 Sporting CP",
       "url": "https://www.youtube.com/watch?v=XTurR9j7z7M",
-      "published": "há 1 hora",
+      "published": "há 4 horas",
       "thumbnail": "https://i.ytimg.com/vi/XTurR9j7z7M/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBeUlbKvL8pvOPpBfgSwPk3fbkxUQ",
-      "published_text": "há 1 hora"
+      "published_text": "há 4 horas"
+    },
+    {
+      "id": "hirWKJhquKA",
+      "title": "Pós-jogo | Liga Portugal Betclic: SC Braga 1-3 Sporting CP",
+      "url": "https://www.youtube.com/watch?v=hirWKJhquKA",
+      "published": "há 3 horas",
+      "thumbnail": "https://i.ytimg.com/vi/hirWKJhquKA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBnJILARlNeziMwlKigHqIn917XWQ",
+      "published_text": "há 3 horas"
     },
     {
       "id": "-6HEKBjDY7c",
@@ -19,30 +27,6 @@
       "published": "Transmitido há 1 dia",
       "thumbnail": "https://i.ytimg.com/vi/-6HEKBjDY7c/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAWsbA416dYe_5GQCLCRwo3uVzMOA",
       "published_text": "Transmitido há 1 dia"
-    },
-    {
-      "id": "hirWKJhquKA",
-      "title": "Pós-jogo | Liga Portugal Betclic: SC Braga 1-3 Sporting CP",
-      "url": "https://www.youtube.com/watch?v=hirWKJhquKA",
-      "published": "há 11 minutos",
-      "thumbnail": "https://i.ytimg.com/vi/hirWKJhquKA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBnJILARlNeziMwlKigHqIn917XWQ",
-      "published_text": "há 11 minutos"
-    },
-    {
-      "id": "8RtqnW4iErs",
-      "title": "Resumo | Liga dos Campeões: Sporting CP 5-0 FK Bodø/Glimt",
-      "url": "https://www.youtube.com/watch?v=8RtqnW4iErs",
-      "published": "há 6 meses",
-      "thumbnail": "https://i.ytimg.com/vi/8RtqnW4iErs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3GkW8Ukoq3DteJYiI4o-ByE3jqg",
-      "published_text": "há 6 meses"
-    },
-    {
-      "id": "3vH_kpZv-w8",
-      "title": "BEM-VINDO, SILAS ANDERSEN!",
-      "url": "https://www.youtube.com/watch?v=3vH_kpZv-w8",
-      "published": "há 4 meses",
-      "thumbnail": "https://i.ytimg.com/vi/3vH_kpZv-w8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDQJlyKKtcFGWksSBfuawMkMwNPsg",
-      "published_text": "há 4 meses"
     },
     {
       "id": "AXXVz0rX0_8",
@@ -61,6 +45,14 @@
       "published_text": "há 1 mês"
     },
     {
+      "id": "8RtqnW4iErs",
+      "title": "Resumo | Liga dos Campeões: Sporting CP 5-0 FK Bodø/Glimt",
+      "url": "https://www.youtube.com/watch?v=8RtqnW4iErs",
+      "published": "há 6 meses",
+      "thumbnail": "https://i.ytimg.com/vi/8RtqnW4iErs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3GkW8Ukoq3DteJYiI4o-ByE3jqg",
+      "published_text": "há 6 meses"
+    },
+    {
       "id": "hBG4pKH7DTM",
       "title": "BACKSTAGE SPORTING | Estágio 2026/2027",
       "url": "https://www.youtube.com/watch?v=hBG4pKH7DTM",
@@ -77,20 +69,12 @@
       "published_text": "Transmitido há 1 mês"
     },
     {
-      "id": "06qv0ym4Az0",
-      "title": "BACKSTAGE SPORTING | Rio Ave FC x Sporting CP",
-      "url": "https://www.youtube.com/watch?v=06qv0ym4Az0",
-      "published": "há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/06qv0ym4Az0/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLASK2C9Qwy4snrLKzxBreHd_oWxmQ",
-      "published_text": "há 1 mês"
-    },
-    {
-      "id": "bwME0BZ16eM",
-      "title": "Highlights | Troféu Cinco Violinos: Sporting CP 2-0 AS Monaco",
-      "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
-      "published": "há 2 meses",
-      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
-      "published_text": "há 2 meses"
+      "id": "si7z28nTcQg",
+      "title": "BACKSTAGE SPORTING | Sporting CP x Galatasaray SK",
+      "url": "https://www.youtube.com/watch?v=si7z28nTcQg",
+      "published": "há 4 semanas",
+      "thumbnail": "https://i.ytimg.com/vi/si7z28nTcQg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBMYeYL1fU6qrKBBjeqpd-ft2a9ow",
+      "published_text": "há 4 semanas"
     },
     {
       "id": "LFMfqhXv8NU",
@@ -101,20 +85,28 @@
       "published_text": "há 2 meses"
     },
     {
+      "id": "bwME0BZ16eM",
+      "title": "Highlights | Troféu Cinco Violinos: Sporting CP 2-0 AS Monaco",
+      "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
+      "published_text": "há 2 meses"
+    },
+    {
+      "id": "XU1fSa3h7ps",
+      "title": "CAMPEÕES DA EUROPA DE FUTSAL 🏆",
+      "url": "https://www.youtube.com/watch?v=XU1fSa3h7ps",
+      "published": "há 4 meses",
+      "thumbnail": "https://i.ytimg.com/vi/XU1fSa3h7ps/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCrZGbiuP3RFFmo5Hf-uuxjMhBNXw",
+      "published_text": "há 4 meses"
+    },
+    {
       "id": "PDkW9xuzs-U",
       "title": "OBRIGADO, POTE!",
       "url": "https://www.youtube.com/watch?v=PDkW9xuzs-U",
       "published": "há 1 mês",
       "thumbnail": "https://i.ytimg.com/vi/PDkW9xuzs-U/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAhaU_HnGaT9puShFFyZNyZePpQqQ",
       "published_text": "há 1 mês"
-    },
-    {
-      "id": "LblsWW0ujso",
-      "title": "Antevisão | UEFA Champions League: Sporting CP x Galatasaray SK",
-      "url": "https://www.youtube.com/watch?v=LblsWW0ujso",
-      "published": "Transmitido há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/LblsWW0ujso/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIKIcrWzUQFlT9sF3Tvlbi1VS_Lg",
-      "published_text": "Transmitido há 1 mês"
     },
     {
       "id": "4zKBW85qZ6M",
@@ -125,12 +117,12 @@
       "published_text": "há 1 mês"
     },
     {
-      "id": "XU1fSa3h7ps",
-      "title": "CAMPEÕES DA EUROPA DE FUTSAL 🏆",
-      "url": "https://www.youtube.com/watch?v=XU1fSa3h7ps",
-      "published": "há 4 meses",
-      "thumbnail": "https://i.ytimg.com/vi/XU1fSa3h7ps/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCrZGbiuP3RFFmo5Hf-uuxjMhBNXw",
-      "published_text": "há 4 meses"
+      "id": "06qv0ym4Az0",
+      "title": "BACKSTAGE SPORTING | Rio Ave FC x Sporting CP",
+      "url": "https://www.youtube.com/watch?v=06qv0ym4Az0",
+      "published": "há 1 mês",
+      "thumbnail": "https://i.ytimg.com/vi/06qv0ym4Az0/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLASK2C9Qwy4snrLKzxBreHd_oWxmQ",
+      "published_text": "há 1 mês"
     },
     {
       "id": "4KfQOouQDCM",
@@ -149,12 +141,12 @@
       "published_text": "há 1 mês"
     },
     {
-      "id": "TTraXMywAp0",
-      "title": "BACKSTAGE SPORTING | Sporting CP x CD Nacional",
-      "url": "https://www.youtube.com/watch?v=TTraXMywAp0",
-      "published": "há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/TTraXMywAp0/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCSCWHeRDCKVZwHFpCzY05xFFYujQ",
-      "published_text": "há 1 mês"
+      "id": "LblsWW0ujso",
+      "title": "Antevisão | UEFA Champions League: Sporting CP x Galatasaray SK",
+      "url": "https://www.youtube.com/watch?v=LblsWW0ujso",
+      "published": "Transmitido há 1 mês",
+      "thumbnail": "https://i.ytimg.com/vi/LblsWW0ujso/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIKIcrWzUQFlT9sF3Tvlbi1VS_Lg",
+      "published_text": "Transmitido há 1 mês"
     },
     {
       "id": "vtLVbqoOeUk",
@@ -165,28 +157,92 @@
       "published_text": "Transmitido há 3 semanas"
     },
     {
-      "id": "CW18wJVBtdI",
-      "title": "Juntos. Sempre. Até ao fim. ⚔️",
-      "url": "https://www.youtube.com/watch?v=CW18wJVBtdI",
+      "id": "TTraXMywAp0",
+      "title": "BACKSTAGE SPORTING | Sporting CP x CD Nacional",
+      "url": "https://www.youtube.com/watch?v=TTraXMywAp0",
+      "published": "há 1 mês",
+      "thumbnail": "https://i.ytimg.com/vi/TTraXMywAp0/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCSCWHeRDCKVZwHFpCzY05xFFYujQ",
+      "published_text": "há 1 mês"
+    },
+    {
+      "id": "0adGh_BrcHs",
+      "title": "Pós-jogo | Liga Portugal Betclic: Sporting CP 2-0 CD Nacional",
+      "url": "https://www.youtube.com/watch?v=0adGh_BrcHs",
+      "published": "há 1 mês",
+      "thumbnail": "https://i.ytimg.com/vi/0adGh_BrcHs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCduCR2cxQzyNnACEVmCPPn_euxDA",
+      "published_text": "há 1 mês"
+    },
+    {
+      "id": "AqH3Ik_Fx2I",
+      "title": "THE WINNER TAKES IT ALL | Época 2024/2025",
+      "url": "https://www.youtube.com/watch?v=AqH3Ik_Fx2I",
+      "published": "há 11 meses",
+      "thumbnail": "https://i.ytimg.com/vi/AqH3Ik_Fx2I/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBWdSjHDvTN5fz2IZxIZQnbVi5icw&usqp=CBQ",
+      "published_text": "há 11 meses"
+    },
+    {
+      "id": "mWmdKR13shQ",
+      "title": "UM DIA COM | Viktor Gyökeres",
+      "url": "https://www.youtube.com/watch?v=mWmdKR13shQ",
+      "published": "há 1 ano",
+      "thumbnail": "https://i.ytimg.com/vi/mWmdKR13shQ/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBzrMqq119Z-64VmcPr1nFd7a7Q1Q&usqp=CBQ",
+      "published_text": "há 1 ano"
+    },
+    {
+      "id": "j77Lm5H6euE",
+      "title": "Tudo Sobre as Negociações de Yeremay e Sporting 🟢Telejornal Leonino Ep.1🦁",
+      "url": "https://www.youtube.com/watch?v=j77Lm5H6euE",
+      "published": "há 4 meses",
+      "thumbnail": "https://i.ytimg.com/vi/j77Lm5H6euE/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA1L113He-ise1KfbOKa0dY5LRmZw&usqp=CBQ",
+      "published_text": "há 4 meses"
+    },
+    {
+      "id": "YNV_zciRsuM",
+      "title": "Highlights | Liga Portugal Betclic: CF E. Amadora 2-2 Sporting CP",
+      "url": "https://www.youtube.com/watch?v=YNV_zciRsuM",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/YNV_zciRsuM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDhxqHbHCLXa3W7I6DFqZODQ98jYg&usqp=CBQ",
+      "published_text": "há 2 meses"
+    },
+    {
+      "id": "G9z0oDXBx78",
+      "title": "Face to Face | Mauro Couto vs. Rafael Nel",
+      "url": "https://www.youtube.com/watch?v=G9z0oDXBx78",
+      "published": "há 2 meses",
+      "thumbnail": "https://i.ytimg.com/vi/G9z0oDXBx78/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDRbuzPoBDoPVR3tgofWUyU5X30PA&usqp=CBQ",
+      "published_text": "há 2 meses"
+    },
+    {
+      "id": "wA7gJhR134M",
+      "title": "Entrevista Despedida - João Matos",
+      "url": "https://www.youtube.com/watch?v=wA7gJhR134M",
+      "published": "há 3 meses",
+      "thumbnail": "https://i.ytimg.com/vi/wA7gJhR134M/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBZ9nofz2RMrKO-0f4zWr8d7LaSNQ&usqp=CBQ",
+      "published_text": "há 3 meses"
+    },
+    {
+      "id": "3344RpbjuyY",
+      "title": "SCP. 120 Years. Becoming.",
+      "url": "https://www.youtube.com/watch?v=3344RpbjuyY",
+      "published": "há 3 meses",
+      "thumbnail": "https://i.ytimg.com/vi/3344RpbjuyY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAIkihL4LD3t6q1vHiWlGMIXicBjA&usqp=CBQ",
+      "published_text": "há 3 meses"
+    },
+    {
+      "id": "i9C889dirt8",
+      "title": "Francisco Trincão: \"Dá-me vontade de querer ganhar mais e de fazer mais e melhor.”",
+      "url": "https://www.youtube.com/watch?v=i9C889dirt8",
       "published": "há 5 meses",
-      "thumbnail": "https://i.ytimg.com/vi/CW18wJVBtdI/hq720.jpg?sqp=-oaymwExCNAFEJQDSFryq4qpAyMIARUAAIhCGAHwAQH4Af4JgALQBYoCDAgAEAEYciBMKD4wDw==&rs=AOn4CLBk70bsJ-yCIkz7v9bP8QYjwvW5RA",
+      "thumbnail": "https://i.ytimg.com/vi/i9C889dirt8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBCs8wwCX8IE4_WdsvU6udO5QT7hQ&usqp=CBQ",
       "published_text": "há 5 meses"
     },
     {
-      "id": "5NNfMgSmM2g",
-      "title": "BEM-VINDO, MONCEF ZEKRI!",
-      "url": "https://www.youtube.com/watch?v=5NNfMgSmM2g",
-      "published": "há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/5NNfMgSmM2g/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBvpn1FIM4o_uu2UqMLtWFGkgiBbQ",
-      "published_text": "há 1 mês"
-    },
-    {
-      "id": "DhK900aIiCk",
-      "title": "BACKSTAGE SPORTING | Sporting CP x FC Alverca",
-      "url": "https://www.youtube.com/watch?v=DhK900aIiCk",
-      "published": "há 1 mês",
-      "thumbnail": "https://i.ytimg.com/vi/DhK900aIiCk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLB5FY9rTgwju3go7_MhVNJ9uLKjkQ",
-      "published_text": "há 1 mês"
+      "id": "HVSa_Jz6UIs",
+      "title": "\"É o passo mais importante da minha carreira.\" - Issa Doumbia",
+      "url": "https://www.youtube.com/watch?v=HVSa_Jz6UIs",
+      "published": "há 4 meses",
+      "thumbnail": "https://i.ytimg.com/vi/HVSa_Jz6UIs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBU2lUEL12nAQDsgeS0eof6KzZwHQ&usqp=CBQ",
+      "published_text": "há 4 meses"
     },
     {
       "id": "jtQZsYF9n_Y",
@@ -259,22 +315,6 @@
       "published": "há 2 semanas",
       "thumbnail": "https://i.ytimg.com/vi/BQQXJRVNj7E/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBn9dedCV1_6nroeFbVGMtQp40ziQ",
       "published_text": "há 2 semanas"
-    },
-    {
-      "id": "LHoBei3WClY",
-      "title": "BEM-VINDO, RODRIGO ZALAZAR!",
-      "url": "https://www.youtube.com/watch?v=LHoBei3WClY",
-      "published": "há 2 meses",
-      "thumbnail": "https://i.ytimg.com/vi/LHoBei3WClY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCs36Ru_XG_osNwM3m926ShAN0PIg",
-      "published_text": "há 2 meses"
-    },
-    {
-      "id": "si7z28nTcQg",
-      "title": "BACKSTAGE SPORTING | Sporting CP x Galatasaray SK",
-      "url": "https://www.youtube.com/watch?v=si7z28nTcQg",
-      "published": "há 4 semanas",
-      "thumbnail": "https://i.ytimg.com/vi/si7z28nTcQg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBMYeYL1fU6qrKBBjeqpd-ft2a9ow",
-      "published_text": "há 4 semanas"
     }
   ],
   "source": "YouTube official channel"
