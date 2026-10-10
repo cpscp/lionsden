@@ -25,6 +25,24 @@
       {
         "position": 2,
         "team": {
+          "id": 9768,
+          "name": "Sporting CP",
+          "shortName": "Sporting CP",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+        },
+        "playedGames": 8,
+        "won": 5,
+        "draw": 3,
+        "lost": 0,
+        "points": 18,
+        "goalsFor": 20,
+        "goalsAgainst": 9,
+        "goalDifference": 11
+      },
+      {
+        "position": 3,
+        "team": {
           "id": 9772,
           "name": "Benfica",
           "shortName": "Benfica",
@@ -39,24 +57,6 @@
         "goalsFor": 22,
         "goalsAgainst": 7,
         "goalDifference": 15
-      },
-      {
-        "position": 3,
-        "team": {
-          "id": 9768,
-          "name": "Sporting CP",
-          "shortName": "Sporting CP",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
-        },
-        "playedGames": 7,
-        "won": 4,
-        "draw": 3,
-        "lost": 0,
-        "points": 15,
-        "goalsFor": 17,
-        "goalsAgainst": 8,
-        "goalDifference": 9
       },
       {
         "position": 4,
@@ -97,20 +97,20 @@
       {
         "position": 6,
         "team": {
-          "id": 10264,
-          "name": "Braga",
-          "shortName": "Braga",
+          "id": 9764,
+          "name": "Gil Vicente",
+          "shortName": "Gil Vicente",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
         },
-        "playedGames": 6,
+        "playedGames": 7,
         "won": 3,
         "draw": 2,
-        "lost": 1,
+        "lost": 2,
         "points": 11,
-        "goalsFor": 7,
+        "goalsFor": 6,
         "goalsAgainst": 5,
-        "goalDifference": 2
+        "goalDifference": 1
       },
       {
         "position": 7,
@@ -133,6 +133,24 @@
       {
         "position": 8,
         "team": {
+          "id": 10264,
+          "name": "Braga",
+          "shortName": "Braga",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
+        },
+        "playedGames": 7,
+        "won": 3,
+        "draw": 2,
+        "lost": 2,
+        "points": 11,
+        "goalsFor": 8,
+        "goalsAgainst": 8,
+        "goalDifference": 0
+      },
+      {
+        "position": 9,
+        "team": {
           "id": 1074320,
           "name": "Estrela da Amadora",
           "shortName": "Estrela da Amadora",
@@ -149,43 +167,7 @@
         "goalDifference": 0
       },
       {
-        "position": 9,
-        "team": {
-          "id": 9764,
-          "name": "Gil Vicente",
-          "shortName": "Gil Vicente",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
-        },
-        "playedGames": 7,
-        "won": 2,
-        "draw": 3,
-        "lost": 2,
-        "points": 9,
-        "goalsFor": 5,
-        "goalsAgainst": 5,
-        "goalDifference": 0
-      },
-      {
         "position": 10,
-        "team": {
-          "id": 8348,
-          "name": "Moreirense",
-          "shortName": "Moreirense",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
-        },
-        "playedGames": 8,
-        "won": 2,
-        "draw": 3,
-        "lost": 3,
-        "points": 9,
-        "goalsFor": 8,
-        "goalsAgainst": 14,
-        "goalDifference": -6
-      },
-      {
-        "position": 11,
         "team": {
           "id": 9780,
           "name": "Alverca",
@@ -203,7 +185,7 @@
         "goalDifference": -2
       },
       {
-        "position": 12,
+        "position": 11,
         "team": {
           "id": 10212,
           "name": "Marítimo",
@@ -219,6 +201,24 @@
         "goalsFor": 8,
         "goalsAgainst": 12,
         "goalDifference": -4
+      },
+      {
+        "position": 12,
+        "team": {
+          "id": 8348,
+          "name": "Moreirense",
+          "shortName": "Moreirense",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
+        },
+        "playedGames": 8,
+        "won": 2,
+        "draw": 2,
+        "lost": 4,
+        "points": 8,
+        "goalsFor": 8,
+        "goalsAgainst": 15,
+        "goalDifference": -7
       },
       {
         "position": 13,

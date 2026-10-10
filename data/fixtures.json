@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-09T18:28:44.662818+00:00",
+  "_updated_at": "2026-10-10T06:05:34.180114+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -488,17 +488,16 @@
       "kickoff_date": "2026-10-09",
       "kickoff_local_time": "19:15",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Pinheiro', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080381, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 28, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.82, 'valueType': 'perMatch', 'average': 4.98, 'total': 135, 'averageType': 'average', 'fillPercentage': 44.9, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.85, 'valueType': 'perMatch', 'average': 27.54, 'total': 698, 'averageType': 'below', 'fillPercentage': 42.32, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio Municipal de Braga",
         "city": "Braga",
-        "lat": 41.562553702,
-        "lon": -8.429903984,
-        "capacity": 30286.0,
-        "country": "Portugal"
+        "lat": 41.562554,
+        "lon": -8.429904,
+        "capacity": null
       },
       "competition": {
         "name": "Liga Portugal",
@@ -514,8 +513,8 @@
         "name": "Sporting CP"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
       "half_time": {
         "home": null,
@@ -827,13 +826,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Champions League",

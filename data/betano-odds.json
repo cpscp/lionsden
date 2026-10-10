@@ -1,27 +1,8 @@
 {
-  "_updated_at": "2026-10-09T18:28:30.513820+00:00",
+  "_updated_at": "2026-10-10T06:05:21.526032+00:00",
   "fixtures": {
-    "5887647": {
-      "updated_at": "2026-10-09T18:28:30.401531+00:00",
-      "source": "SportyTrader public odds comparator",
-      "bookmaker_name": "Mercado",
-      "bookmakers": {
-        "Mercado": [
-          {
-            "name": "ML",
-            "odds": [
-              {
-                "home": "3.07",
-                "draw": "3.3",
-                "away": "2.45"
-              }
-            ]
-          }
-        ]
-      }
-    },
     "6106414": {
-      "updated_at": "2026-10-09T18:28:30.403552+00:00",
+      "updated_at": "2026-10-10T06:05:21.414607+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -30,9 +11,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "2.45",
+                "home": "2.5",
                 "draw": "3.75",
-                "away": "2.75"
+                "away": "2.72"
               }
             ]
           }
@@ -42,6 +23,6 @@
   },
   "source": "SportyTrader public odds comparator",
   "status": "public_fallback",
-  "coverage": 2,
-  "error": "400 Client Error: Bad Request for url: https://api.oddspapi.io/v4/odds-by-tournaments?bookmaker=betano&tournamentIds=7%2C238%2C239%2C463%2C668%2C696%2C1054%2C1222%2C2468%2C32303%2C32361%2C34900%2C41488%2C42985%2C49214%2C53328%2C53330%2C53340%2C53386%2C53388%2C53390%2C53652&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932&oddsFormat=decimal"
+  "coverage": 1,
+  "error": "400 Client Error: Bad Request for url: https://api.oddspapi.io/v4/odds-by-tournaments?bookmaker=betano&tournamentIds=7%2C238%2C239%2C463%2C668%2C696%2C1054%2C1222%2C2468%2C32303%2C32361%2C34900%2C41488%2C42985%2C49214%2C53328%2C53330%2C53340%2C53386%2C53388%2C53390%2C53652%2C53692&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932&oddsFormat=decimal"
 }

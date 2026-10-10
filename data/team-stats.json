@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-10-09T18:28:31.955554+00:00",
+  "_updated_at": "2026-10-10T06:05:23.157133+00:00",
   "season": "2026/27",
   "team": {
-    "matches": 12,
-    "wins": 9,
+    "matches": 13,
+    "wins": 10,
     "draws": 3,
     "losses": 0,
-    "goals": 37,
-    "goals_against": 11,
+    "goals": 40,
+    "goals_against": 12,
     "clean_sheets": 4,
     "form": [
       "W",
       "W",
       "W",
-      "W",
       "D",
-      "D"
+      "D",
+      "W"
     ],
     "recent_matches": [
-      {
-        "date": "2026-08-22",
-        "competition": "Liga Portugal",
-        "venue": "Casa",
-        "result": "W",
-        "gf": 3,
-        "ga": 1,
-        "opponent": "Alverca"
-      },
       {
         "date": "2026-08-28",
         "competition": "Liga Portugal",
@@ -71,10 +62,19 @@
         "gf": 2,
         "ga": 2,
         "opponent": "Arouca"
+      },
+      {
+        "date": "2026-10-09",
+        "competition": "Liga Portugal",
+        "venue": "Fora",
+        "result": "W",
+        "gf": 3,
+        "ga": 1,
+        "opponent": "Braga"
       }
     ],
-    "points": 30,
-    "win_rate": 75.0,
+    "points": 33,
+    "win_rate": 76.9,
     "goals_per_match": 3.08,
     "goals_against_per_match": 0.92
   },
