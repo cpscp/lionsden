@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-10T06:05:26.518481+00:00",
+  "_updated_at": "2026-10-10T12:46:45.352318+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -12493,7 +12493,7 @@
         "referee": {
           "name": "João Pinheiro"
         },
-        "attendance": null,
+        "attendance": 20265,
         "venue": {
           "name": "Estádio Municipal de Braga",
           "city": "Braga"
@@ -12547,7 +12547,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 5.9
+                "rating": 6
               }
             },
             {
@@ -12566,7 +12566,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.1
+                "rating": 5.9
               }
             },
             {
@@ -12585,7 +12585,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 5.9
+                "rating": 5.8
               }
             },
             {
@@ -12642,7 +12642,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.4
+                "rating": 7.6
               }
             },
             {
@@ -12661,7 +12661,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 5.8
+                "rating": 5.5
               }
             },
             {
@@ -12699,7 +12699,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.8
+                "rating": 6.7
               }
             },
             {
@@ -12951,7 +12951,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 8
+                "rating": 7.9
               }
             },
             {
@@ -12989,7 +12989,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.8
+                "rating": 7
               }
             },
             {
@@ -13008,7 +13008,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.7
+                "rating": 6.5
               }
             },
             {
@@ -13084,7 +13084,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.7
+                "rating": 6.8
               }
             },
             {
@@ -13634,7 +13634,7 @@
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "366 (84%)",
+                    "home": "367 (84%)",
                     "away": "394 (85%)"
                   },
                   {
@@ -13729,23 +13729,23 @@
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "366 (84%)",
+                    "home": "367 (84%)",
                     "away": "394 (85%)"
                   },
                   {
                     "name": "Own half",
-                    "home": 181,
-                    "away": 255
+                    "home": 182,
+                    "away": 254
                   },
                   {
                     "name": "Opposition half",
                     "home": 185,
-                    "away": 139
+                    "away": 140
                   },
                   {
                     "name": "Accurate long balls",
                     "home": "16 (47%)",
-                    "away": "29 (51%)"
+                    "away": "30 (53%)"
                   },
                   {
                     "name": "Accurate crosses",
@@ -13774,12 +13774,12 @@
                   },
                   {
                     "name": "Tackles",
-                    "home": 22,
-                    "away": 17
+                    "home": 23,
+                    "away": 18
                   },
                   {
                     "name": "Interceptions",
-                    "home": 7,
+                    "home": 6,
                     "away": 7
                   },
                   {
@@ -13789,8 +13789,8 @@
                   },
                   {
                     "name": "Clearances",
-                    "home": 18,
-                    "away": 24
+                    "home": 19,
+                    "away": 23
                   },
                   {
                     "name": "Keeper saves",
@@ -13804,13 +13804,13 @@
                   },
                   {
                     "name": "Duels won",
-                    "home": 49,
-                    "away": 49
+                    "home": 50,
+                    "away": 50
                   },
                   {
                     "name": "Ground duels won",
-                    "home": "41 (51%)",
-                    "away": "40 (49%)"
+                    "home": "42 (51%)",
+                    "away": "41 (49%)"
                   },
                   {
                     "name": "Aerial duels won",
@@ -13819,7 +13819,7 @@
                   },
                   {
                     "name": "Successful dribbles",
-                    "home": "10 (53%)",
+                    "home": "10 (59%)",
                     "away": "12 (43%)"
                   },
                   {

@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-10T06:05:17.205531+00:00",
+  "_updated_at": "2026-10-10T12:46:34.525483+00:00",
   "fixtures": {
     "6106414": {
       "home": {
@@ -113,7 +113,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:12.537541+00:00"
+      "updated_at": "2026-10-10T12:46:29.871746+00:00"
     },
     "6106281": {
       "home": {
@@ -255,7 +255,7 @@
         "away_wins": 2,
         "total": 3
       },
-      "updated_at": "2026-10-10T06:05:12.562663+00:00"
+      "updated_at": "2026-10-10T12:46:29.886952+00:00"
     },
     "5887661": {
       "home": {
@@ -304,9 +304,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -369,7 +369,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:12.588954+00:00"
+      "updated_at": "2026-10-10T12:46:29.902109+00:00"
     },
     "5985964": {
       "home": {
@@ -520,7 +520,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-10T06:05:12.618130+00:00"
+      "updated_at": "2026-10-10T12:46:29.918617+00:00"
     },
     "5887666": {
       "home": {
@@ -621,9 +621,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -671,7 +671,7 @@
         "away_wins": 9,
         "total": 9
       },
-      "updated_at": "2026-10-10T06:05:12.646438+00:00"
+      "updated_at": "2026-10-10T12:46:29.934321+00:00"
     },
     "6106335": {
       "home": {
@@ -785,7 +785,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:12.672593+00:00"
+      "updated_at": "2026-10-10T12:46:29.949526+00:00"
     },
     "5887679": {
       "home": {
@@ -834,9 +834,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -886,9 +886,9 @@
           }
         ],
         "table": {
-          "position": 10,
+          "position": 12,
           "played": 8,
-          "points": 9,
+          "points": 8,
           "name": "Moreirense"
         }
       },
@@ -936,7 +936,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-10-10T06:05:12.699426+00:00"
+      "updated_at": "2026-10-10T12:46:29.965785+00:00"
     },
     "6106279": {
       "home": {
@@ -1050,7 +1050,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:12.724041+00:00"
+      "updated_at": "2026-10-10T12:46:29.980526+00:00"
     },
     "5887687": {
       "home": {
@@ -1151,9 +1151,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1201,7 +1201,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-10-10T06:05:12.903984+00:00"
+      "updated_at": "2026-10-10T12:46:30.155997+00:00"
     },
     "5887698": {
       "home": {
@@ -1250,9 +1250,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1302,7 +1302,7 @@
           }
         ],
         "table": {
-          "position": 12,
+          "position": 11,
           "played": 7,
           "points": 8,
           "name": "Marítimo"
@@ -1352,7 +1352,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-10T06:05:13.063234+00:00"
+      "updated_at": "2026-10-10T12:46:30.443687+00:00"
     },
     "6106275": {
       "home": {
@@ -1485,7 +1485,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-10T06:05:13.228299+00:00"
+      "updated_at": "2026-10-10T12:46:30.761508+00:00"
     },
     "5887702": {
       "home": {
@@ -1534,9 +1534,9 @@
           }
         ],
         "table": {
-          "position": 9,
+          "position": 6,
           "played": 7,
-          "points": 9,
+          "points": 11,
           "name": "Gil Vicente"
         }
       },
@@ -1586,9 +1586,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1599,7 +1599,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:13.371805+00:00"
+      "updated_at": "2026-10-10T12:46:30.900928+00:00"
     },
     "5887716": {
       "home": {
@@ -1648,9 +1648,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1713,7 +1713,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:13.530513+00:00"
+      "updated_at": "2026-10-10T12:46:31.173483+00:00"
     },
     "5887724": {
       "home": {
@@ -1762,7 +1762,7 @@
           }
         ],
         "table": {
-          "position": 2,
+          "position": 3,
           "played": 7,
           "points": 16,
           "name": "Benfica"
@@ -1814,9 +1814,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1827,7 +1827,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:13.671026+00:00"
+      "updated_at": "2026-10-10T12:46:31.501397+00:00"
     },
     "5887734": {
       "home": {
@@ -1876,9 +1876,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -1941,7 +1941,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:13.980328+00:00"
+      "updated_at": "2026-10-10T12:46:31.775332+00:00"
     },
     "5887735": {
       "home": {
@@ -1990,9 +1990,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2042,7 +2042,7 @@
           }
         ],
         "table": {
-          "position": 8,
+          "position": 9,
           "played": 7,
           "points": 10,
           "name": "Estrela da Amadora"
@@ -2055,7 +2055,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:14.139330+00:00"
+      "updated_at": "2026-10-10T12:46:31.959244+00:00"
     },
     "6106278": {
       "home": {
@@ -2188,7 +2188,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-10T06:05:14.446081+00:00"
+      "updated_at": "2026-10-10T12:46:32.137488+00:00"
     },
     "5887752": {
       "home": {
@@ -2289,9 +2289,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2302,7 +2302,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:14.599184+00:00"
+      "updated_at": "2026-10-10T12:46:32.280007+00:00"
     },
     "6106255": {
       "home": {
@@ -2453,7 +2453,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-10-10T06:05:14.997905+00:00"
+      "updated_at": "2026-10-10T12:46:32.461081+00:00"
     },
     "5887760": {
       "home": {
@@ -2502,7 +2502,7 @@
           }
         ],
         "table": {
-          "position": 11,
+          "position": 10,
           "played": 7,
           "points": 8,
           "name": "Alverca"
@@ -2554,9 +2554,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2567,7 +2567,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:15.143033+00:00"
+      "updated_at": "2026-10-10T12:46:32.762680+00:00"
     },
     "5887769": {
       "home": {
@@ -2616,9 +2616,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2681,7 +2681,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:15.380444+00:00"
+      "updated_at": "2026-10-10T12:46:32.905276+00:00"
     },
     "5887778": {
       "home": {
@@ -2782,9 +2782,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2795,7 +2795,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:15.524345+00:00"
+      "updated_at": "2026-10-10T12:46:33.183280+00:00"
     },
     "5887784": {
       "home": {
@@ -2844,9 +2844,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -2909,7 +2909,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:15.817579+00:00"
+      "updated_at": "2026-10-10T12:46:33.327281+00:00"
     },
     "5887796": {
       "home": {
@@ -3010,9 +3010,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3023,7 +3023,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:15.994434+00:00"
+      "updated_at": "2026-10-10T12:46:33.473033+00:00"
     },
     "5887800": {
       "home": {
@@ -3072,9 +3072,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3124,8 +3124,8 @@
           }
         ],
         "table": {
-          "position": 6,
-          "played": 6,
+          "position": 8,
+          "played": 7,
           "points": 11,
           "name": "Braga"
         }
@@ -3137,7 +3137,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:16.174599+00:00"
+      "updated_at": "2026-10-10T12:46:33.631390+00:00"
     },
     "5887814": {
       "home": {
@@ -3238,9 +3238,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3251,7 +3251,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:16.355645+00:00"
+      "updated_at": "2026-10-10T12:46:33.770548+00:00"
     },
     "5887819": {
       "home": {
@@ -3300,9 +3300,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3365,7 +3365,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:16.524931+00:00"
+      "updated_at": "2026-10-10T12:46:34.076735+00:00"
     },
     "5887832": {
       "home": {
@@ -3414,9 +3414,9 @@
           }
         ],
         "table": {
-          "position": 10,
+          "position": 12,
           "played": 8,
-          "points": 9,
+          "points": 8,
           "name": "Moreirense"
         }
       },
@@ -3466,9 +3466,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3479,7 +3479,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:16.843529+00:00"
+      "updated_at": "2026-10-10T12:46:34.216194+00:00"
     },
     "5887840": {
       "home": {
@@ -3528,9 +3528,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3593,7 +3593,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:17.023679+00:00"
+      "updated_at": "2026-10-10T12:46:34.369824+00:00"
     },
     "5887851": {
       "home": {
@@ -3642,7 +3642,7 @@
           }
         ],
         "table": {
-          "position": 12,
+          "position": 11,
           "played": 7,
           "points": 8,
           "name": "Marítimo"
@@ -3694,9 +3694,9 @@
           }
         ],
         "table": {
-          "position": 3,
-          "played": 7,
-          "points": 15,
+          "position": 2,
+          "played": 8,
+          "points": 18,
           "name": "Sporting CP"
         }
       },
@@ -3707,7 +3707,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-10T06:05:17.205509+00:00"
+      "updated_at": "2026-10-10T12:46:34.525459+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
