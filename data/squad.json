@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-10T12:46:15.764319+00:00",
+  "_updated_at": "2026-10-10T21:54:31.324959+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -670,6 +670,10 @@
         "red": 0
       },
       "career": [
+        {
+          "period": "2026-10-09T00:00:00",
+          "club": "Sporting CP B"
+        },
         {
           "period": "2026-08-25T00:00:00",
           "club": "Sporting CP"

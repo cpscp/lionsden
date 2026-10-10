@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-10T12:46:16.438639+00:00",
+  "_updated_at": "2026-10-10T21:54:31.735819+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -12,14 +12,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
       },
-      "playedGames": 7,
-      "won": 7,
+      "playedGames": 8,
+      "won": 8,
       "draw": 0,
       "lost": 0,
-      "points": 21,
-      "goalsFor": 18,
-      "goalsAgainst": 3,
-      "goalDifference": 15
+      "points": 24,
+      "goalsFor": 20,
+      "goalsAgainst": 4,
+      "goalDifference": 16
     },
     {
       "position": 2,
@@ -42,6 +42,24 @@
     {
       "position": 3,
       "team": {
+        "id": 1567,
+        "name": "Santa Clara",
+        "shortName": "Santa Clara",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
+      },
+      "playedGames": 8,
+      "won": 5,
+      "draw": 3,
+      "lost": 0,
+      "points": 18,
+      "goalsFor": 12,
+      "goalsAgainst": 4,
+      "goalDifference": 8
+    },
+    {
+      "position": 4,
+      "team": {
         "id": 9772,
         "name": "Benfica",
         "shortName": "Benfica",
@@ -58,25 +76,25 @@
       "goalDifference": 15
     },
     {
-      "position": 4,
+      "position": 5,
       "team": {
-        "id": 1567,
-        "name": "Santa Clara",
-        "shortName": "Santa Clara",
+        "id": 1786,
+        "name": "Académico Viseu",
+        "shortName": "Académico Viseu",
         "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
       },
-      "playedGames": 7,
+      "playedGames": 8,
       "won": 4,
-      "draw": 3,
-      "lost": 0,
-      "points": 15,
+      "draw": 2,
+      "lost": 2,
+      "points": 14,
       "goalsFor": 11,
-      "goalsAgainst": 4,
-      "goalDifference": 7
+      "goalsAgainst": 10,
+      "goalDifference": 1
     },
     {
-      "position": 5,
+      "position": 6,
       "team": {
         "id": 158085,
         "name": "Arouca",
@@ -94,7 +112,7 @@
       "goalDifference": 3
     },
     {
-      "position": 6,
+      "position": 7,
       "team": {
         "id": 9764,
         "name": "Gil Vicente",
@@ -110,24 +128,6 @@
       "goalsFor": 6,
       "goalsAgainst": 5,
       "goalDifference": 1
-    },
-    {
-      "position": 7,
-      "team": {
-        "id": 1786,
-        "name": "Académico Viseu",
-        "shortName": "Académico Viseu",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
-      },
-      "playedGames": 7,
-      "won": 3,
-      "draw": 2,
-      "lost": 2,
-      "points": 11,
-      "goalsFor": 9,
-      "goalsAgainst": 9,
-      "goalDifference": 0
     },
     {
       "position": 8,
@@ -192,14 +192,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
       },
-      "playedGames": 7,
+      "playedGames": 8,
       "won": 2,
       "draw": 2,
-      "lost": 3,
+      "lost": 4,
       "points": 8,
-      "goalsFor": 8,
-      "goalsAgainst": 12,
-      "goalDifference": -4
+      "goalsFor": 9,
+      "goalsAgainst": 14,
+      "goalDifference": -5
     },
     {
       "position": 12,
@@ -300,14 +300,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
       },
-      "playedGames": 7,
+      "playedGames": 8,
       "won": 1,
       "draw": 1,
-      "lost": 5,
+      "lost": 6,
       "points": 4,
       "goalsFor": 3,
-      "goalsAgainst": 16,
-      "goalDifference": -13
+      "goalsAgainst": 17,
+      "goalDifference": -14
     },
     {
       "position": 18,
@@ -318,14 +318,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7842.png"
       },
-      "playedGames": 7,
+      "playedGames": 8,
       "won": 0,
       "draw": 2,
-      "lost": 5,
+      "lost": 6,
       "points": 2,
-      "goalsFor": 3,
-      "goalsAgainst": 10,
-      "goalDifference": -7
+      "goalsFor": 4,
+      "goalsAgainst": 12,
+      "goalDifference": -8
     }
   ],
   "source": "FotMob"
