@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-11T06:03:05.468066+00:00",
+  "_updated_at": "2026-10-11T13:08:45.709681+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -671,16 +671,20 @@
       },
       "career": [
         {
-          "period": "2026-10-09T00:00:00",
-          "club": "Sporting CP B"
-        },
-        {
           "period": "2026-08-25T00:00:00",
           "club": "Sporting CP"
         },
         {
+          "period": "2026-10-09T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
           "period": "2025-05-09T00:00:00 → 2026-08-25T00:00:00",
           "club": "KV Mechelen"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
         },
         {
           "period": "2026/2027",
@@ -2123,6 +2127,10 @@
         {
           "period": "2025-10-27T00:00:00 → 2026-06-30T00:00:00",
           "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
         },
         {
           "period": "2025/2026",
