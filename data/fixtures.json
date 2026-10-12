@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-12T06:14:25.237226+00:00",
+  "_updated_at": "2026-10-12T15:49:01.994295+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -532,7 +532,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/cro.png', 'text': 'Igor Pajač', 'countryCode': 'CRO', 'country': 'Croatia', 'id': 1001071686, 'leagueId': 252, 'leagueName': 'HNL', 'stats': [{'type': 'matches', 'value': 27, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.15, 'valueType': 'perMatch', 'average': 4.28, 'total': 112, 'averageType': 'average', 'fillPercentage': 48.41, 'averagePercentage': 50}, {'type': 'redCards', 'value': 0, 'valueType': 'total'}, {'type': 'unknown', 'value': 2, 'valueType': 'total'}, {'type': 'penalties', 'value': 6, 'valueType': 'total'}, {'type': 'fouls', 'value': 23.64, 'valueType': 'perMatch', 'average': 25.65, 'total': 591, 'averageType': 'below', 'fillPercentage': 36.86, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Stade Bollaert-Delelis",
         "city": "Lens",
