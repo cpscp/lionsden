@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-11T13:09:10.987683+00:00",
+  "_updated_at": "2026-10-12T06:14:17.561806+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -12547,7 +12547,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6
+                "rating": 6.1
               }
             },
             {
@@ -12566,7 +12566,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 5.9
+                "rating": 5.6
               }
             },
             {
@@ -12604,7 +12604,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 5.9
+                "rating": 6
               }
             },
             {
@@ -12623,7 +12623,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.3
+                "rating": 6.5
               }
             },
             {
@@ -12642,7 +12642,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.6
+                "rating": 7.4
               }
             },
             {
@@ -12746,7 +12746,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 6.1
+                "rating": 6.3
               }
             },
             {
@@ -12760,7 +12760,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 6.4
+                "rating": 6.2
               }
             },
             {
@@ -12774,7 +12774,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 6.4
+                "rating": 6.5
               }
             },
             {
@@ -12970,7 +12970,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.8
+                "rating": 6.7
               }
             },
             {
@@ -13027,7 +13027,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.4
+                "rating": 7.6
               }
             },
             {
@@ -13065,7 +13065,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 8.3
+                "rating": 8.2
               }
             },
             {
@@ -13084,7 +13084,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 6.8
+                "rating": 6.6
               }
             },
             {
@@ -13117,7 +13117,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 6.8
+                "rating": 6.6
               }
             },
             {
@@ -13145,7 +13145,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 7.4
+                "rating": 7.3
               }
             },
             {
@@ -13604,12 +13604,12 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.50",
-                    "away": "0.95"
+                    "home": "1.74",
+                    "away": "0.85"
                   },
                   {
                     "name": "Total shots",
-                    "home": 15,
+                    "home": 16,
                     "away": 9
                   },
                   {
@@ -13619,8 +13619,8 @@
                   },
                   {
                     "name": "Touches in opposition box",
-                    "home": 35,
-                    "away": 27
+                    "home": 37,
+                    "away": 26
                   },
                   {
                     "name": "Big chances",
@@ -13634,8 +13634,8 @@
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "367 (84%)",
-                    "away": "394 (85%)"
+                    "home": "368 (83%)",
+                    "away": "393 (86%)"
                   },
                   {
                     "name": "Yellow cards",
@@ -13654,7 +13654,7 @@
                   },
                   {
                     "name": "Total shots",
-                    "home": 15,
+                    "home": 16,
                     "away": 9
                   },
                   {
@@ -13669,7 +13669,7 @@
                   },
                   {
                     "name": "Blocked shots",
-                    "home": 6,
+                    "home": 7,
                     "away": 0
                   },
                   {
@@ -13679,7 +13679,7 @@
                   },
                   {
                     "name": "Shots inside box",
-                    "home": 11,
+                    "home": 12,
                     "away": 7
                   },
                   {
@@ -13694,28 +13694,28 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.50",
-                    "away": "0.95"
+                    "home": "1.74",
+                    "away": "0.85"
                   },
                   {
                     "name": "xG open play",
-                    "home": "1.29",
-                    "away": "0.93"
+                    "home": "1.42",
+                    "away": "0.83"
                   },
                   {
                     "name": "xG set play",
-                    "home": "0.21",
+                    "home": "0.32",
                     "away": "0.02"
                   },
                   {
                     "name": "xG non-penalty",
-                    "home": "1.50",
-                    "away": "0.95"
+                    "home": "1.74",
+                    "away": "0.85"
                   },
                   {
                     "name": "xG on target (xGOT)",
                     "home": "1.51",
-                    "away": "1.02"
+                    "away": "1.01"
                   },
                   {
                     "name": "Passes",
@@ -13724,32 +13724,32 @@
                   },
                   {
                     "name": "Passes",
-                    "home": 438,
-                    "away": 461
+                    "home": 442,
+                    "away": 459
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "367 (84%)",
-                    "away": "394 (85%)"
+                    "home": "368 (83%)",
+                    "away": "393 (86%)"
                   },
                   {
                     "name": "Own half",
-                    "home": 182,
-                    "away": 254
+                    "home": 186,
+                    "away": 255
                   },
                   {
                     "name": "Opposition half",
-                    "home": 185,
-                    "away": 140
+                    "home": 182,
+                    "away": 138
                   },
                   {
                     "name": "Accurate long balls",
-                    "home": "16 (47%)",
-                    "away": "30 (53%)"
+                    "home": "15 (45%)",
+                    "away": "30 (54%)"
                   },
                   {
                     "name": "Accurate crosses",
-                    "home": "2 (17%)",
+                    "home": "3 (23%)",
                     "away": "3 (25%)"
                   },
                   {
@@ -13759,8 +13759,8 @@
                   },
                   {
                     "name": "Touches in opposition box",
-                    "home": 35,
-                    "away": 27
+                    "home": 37,
+                    "away": 26
                   },
                   {
                     "name": "Offsides",
@@ -13774,18 +13774,18 @@
                   },
                   {
                     "name": "Tackles",
-                    "home": 23,
-                    "away": 18
+                    "home": 24,
+                    "away": 19
                   },
                   {
                     "name": "Interceptions",
-                    "home": 6,
+                    "home": 5,
                     "away": 7
                   },
                   {
                     "name": "Blocks",
                     "home": 0,
-                    "away": 7
+                    "away": 8
                   },
                   {
                     "name": "Clearances",
@@ -13804,23 +13804,23 @@
                   },
                   {
                     "name": "Duels won",
-                    "home": 50,
-                    "away": 50
+                    "home": 52,
+                    "away": 49
                   },
                   {
                     "name": "Ground duels won",
-                    "home": "42 (51%)",
-                    "away": "41 (49%)"
+                    "home": "44 (51%)",
+                    "away": "42 (49%)"
                   },
                   {
                     "name": "Aerial duels won",
-                    "home": "8 (47%)",
-                    "away": "9 (53%)"
+                    "home": "8 (53%)",
+                    "away": "7 (47%)"
                   },
                   {
                     "name": "Successful dribbles",
-                    "home": "10 (59%)",
-                    "away": "12 (43%)"
+                    "home": "11 (58%)",
+                    "away": "12 (44%)"
                   },
                   {
                     "name": "Discipline",
