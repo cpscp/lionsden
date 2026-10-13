@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-10-13T14:26:17.463966+00:00",
+  "_updated_at": "2026-10-13T22:58:06.427391+00:00",
   "seasons": {
     "2026/27": {
-      "matches": 13,
-      "wins": 10,
+      "matches": 14,
+      "wins": 11,
       "draws": 3,
       "losses": 0,
-      "goals": 40,
+      "goals": 42,
       "goals_against": 12,
-      "clean_sheets": 4,
+      "clean_sheets": 5,
       "form": [
         "W",
         "W",
+        "D",
+        "D",
         "W",
-        "D",
-        "D",
         "W"
       ],
       "recent_matches": [
-        {
-          "date": "2026-08-28",
-          "competition": "Liga Portugal",
-          "venue": "Fora",
-          "result": "W",
-          "gf": 4,
-          "ga": 0,
-          "opponent": "Rio Ave"
-        },
         {
           "date": "2026-09-05",
           "competition": "Liga Portugal",
@@ -71,12 +62,21 @@
           "gf": 3,
           "ga": 1,
           "opponent": "Braga"
+        },
+        {
+          "date": "2026-10-13",
+          "competition": "Champions League",
+          "venue": "Fora",
+          "result": "W",
+          "gf": 2,
+          "ga": 0,
+          "opponent": "Lens"
         }
       ],
-      "points": 33,
-      "win_rate": 76.9,
-      "goals_per_match": 3.08,
-      "goals_against_per_match": 0.92
+      "points": 36,
+      "win_rate": 78.6,
+      "goals_per_match": 3.0,
+      "goals_against_per_match": 0.86
     },
     "2025/26": {
       "matches": 56,

@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-13T14:26:29.253538+00:00",
+  "_updated_at": "2026-10-13T22:58:18.528109+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -529,17 +529,16 @@
       "kickoff_date": "2026-10-13",
       "kickoff_local_time": "16:45",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/cro.png', 'text': 'Igor Pajač', 'countryCode': 'CRO', 'country': 'Croatia', 'id': 1001071686, 'leagueId': 252, 'leagueName': 'HNL', 'stats': [{'type': 'matches', 'value': 27, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.15, 'valueType': 'perMatch', 'average': 4.28, 'total': 112, 'averageType': 'average', 'fillPercentage': 48.41, 'averagePercentage': 50}, {'type': 'redCards', 'value': 0, 'valueType': 'total'}, {'type': 'unknown', 'value': 2, 'valueType': 'total'}, {'type': 'penalties', 'value': 6, 'valueType': 'total'}, {'type': 'fouls', 'value': 23.68, 'valueType': 'perMatch', 'average': 25.65, 'total': 592, 'averageType': 'below', 'fillPercentage': 37.11, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Stade Bollaert-Delelis",
         "city": "Lens",
-        "lat": 50.432866762,
-        "lon": 2.81494081,
-        "capacity": 41233.0,
-        "country": "France"
+        "lat": 50.432867,
+        "lon": 2.814941,
+        "capacity": null
       },
       "competition": {
         "name": "Champions League",
@@ -555,8 +554,8 @@
         "name": "Sporting CP"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "half_time": {
         "home": null,
@@ -867,13 +866,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estádio do Dragão",
+        "name": "Estádio Do Dragão",
         "city": "Porto",
-        "lat": 41.161778,
-        "lon": -8.584028,
-        "capacity": null
+        "lat": 41.16179085,
+        "lon": -8.5837394,
+        "capacity": 50399.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
