@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-14T17:40:39.573612+00:00",
+  "_updated_at": "2026-10-14T22:00:30.218182+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -103,7 +103,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573462+00:00"
+      "updated_at": "2026-10-14T22:00:30.217960+00:00"
     },
     "5887679": {
       "matches": [
@@ -150,7 +150,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573476+00:00"
+      "updated_at": "2026-10-14T22:00:30.217978+00:00"
     },
     "5887687": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 47,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573488+00:00"
+      "updated_at": "2026-10-14T22:00:30.217993+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,54 +244,54 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573490+00:00"
+      "updated_at": "2026-10-14T22:00:30.217996+00:00"
     },
     "5887702": {
       "matches": [
         {
           "id": null,
-          "date": "2026-05-16",
+          "date": "2026-05-16T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Gil Vicente",
           "home_score": 3,
           "away_score": 0,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2026-01-02",
+          "date": "2026-01-02T18:45:00.000Z",
           "home": "Gil Vicente",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-05-04",
+          "date": "2025-05-04T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Gil Vicente",
           "home_score": 2,
           "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2024-12-22",
+          "date": "2025-02-27T20:45:00.000Z",
           "home": "Gil Vicente",
           "away": "Sporting CP",
           "home_score": 0,
-          "away_score": 0,
-          "competition": "Primeira Liga"
+          "away_score": 1,
+          "competition": "Taca de Portugal"
         }
       ],
-      "home_wins": 0,
-      "draws": 2,
-      "away_wins": 2,
-      "total": 4,
-      "source": "FBref historical H2H fallback",
+      "home_wins": 3,
+      "draws": 3,
+      "away_wins": 19,
+      "total": 25,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573499+00:00"
+      "updated_at": "2026-10-14T22:00:30.218002+00:00"
     },
     "5887716": {
       "matches": [
@@ -381,7 +381,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573508+00:00"
+      "updated_at": "2026-10-14T22:00:30.218014+00:00"
     },
     "5887734": {
       "matches": [
@@ -428,7 +428,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573515+00:00"
+      "updated_at": "2026-10-14T22:00:30.218024+00:00"
     },
     "5887735": {
       "matches": [
@@ -475,7 +475,7 @@
       "total": 6,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573517+00:00"
+      "updated_at": "2026-10-14T22:00:30.218027+00:00"
     },
     "5887752": {
       "matches": [
@@ -522,7 +522,7 @@
       "total": 35,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573522+00:00"
+      "updated_at": "2026-10-14T22:00:30.218033+00:00"
     },
     "5887760": {
       "matches": [
@@ -569,7 +569,7 @@
       "total": 4,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573526+00:00"
+      "updated_at": "2026-10-14T22:00:30.218039+00:00"
     },
     "5887769": {
       "matches": [
@@ -616,7 +616,7 @@
       "total": 37,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573529+00:00"
+      "updated_at": "2026-10-14T22:00:30.218042+00:00"
     },
     "5887778": {
       "matches": [
@@ -663,7 +663,7 @@
       "total": 27,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573531+00:00"
+      "updated_at": "2026-10-14T22:00:30.218045+00:00"
     },
     "5887784": {
       "matches": [
@@ -710,7 +710,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573533+00:00"
+      "updated_at": "2026-10-14T22:00:30.218049+00:00"
     },
     "5887796": {
       "matches": [
@@ -757,7 +757,7 @@
       "total": 21,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573535+00:00"
+      "updated_at": "2026-10-14T22:00:30.218052+00:00"
     },
     "5887800": {
       "matches": [
@@ -804,7 +804,7 @@
       "total": 42,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573537+00:00"
+      "updated_at": "2026-10-14T22:00:30.218055+00:00"
     },
     "5887814": {
       "matches": [],
@@ -861,7 +861,7 @@
       "total": 9,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573544+00:00"
+      "updated_at": "2026-10-14T22:00:30.218064+00:00"
     },
     "5887832": {
       "matches": [
@@ -908,7 +908,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573546+00:00"
+      "updated_at": "2026-10-14T22:00:30.218067+00:00"
     },
     "5887840": {
       "matches": [
@@ -955,7 +955,7 @@
       "total": 47,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573548+00:00"
+      "updated_at": "2026-10-14T22:00:30.218070+00:00"
     },
     "5887851": {
       "matches": [
@@ -1002,54 +1002,54 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573551+00:00"
+      "updated_at": "2026-10-14T22:00:30.218073+00:00"
     },
     "5887855": {
       "matches": [
         {
           "id": null,
-          "date": "2026-05-16",
+          "date": "2026-05-16T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Gil Vicente",
           "home_score": 3,
           "away_score": 0,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2026-01-02",
+          "date": "2026-01-02T18:45:00.000Z",
           "home": "Gil Vicente",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-05-04",
+          "date": "2025-05-04T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Gil Vicente",
           "home_score": 2,
           "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2024-12-22",
+          "date": "2025-02-27T20:45:00.000Z",
           "home": "Gil Vicente",
           "away": "Sporting CP",
           "home_score": 0,
-          "away_score": 0,
-          "competition": "Primeira Liga"
+          "away_score": 1,
+          "competition": "Taca de Portugal"
         }
       ],
-      "home_wins": 2,
-      "draws": 2,
-      "away_wins": 0,
-      "total": 4,
-      "source": "FBref historical H2H fallback",
+      "home_wins": 3,
+      "draws": 3,
+      "away_wins": 19,
+      "total": 25,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573556+00:00"
+      "updated_at": "2026-10-14T22:00:30.218076+00:00"
     },
     "5887869": {
       "matches": [],
@@ -1106,7 +1106,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573562+00:00"
+      "updated_at": "2026-10-14T22:00:30.218084+00:00"
     },
     "5887887": {
       "matches": [
@@ -1153,7 +1153,7 @@
       "total": 4,
       "source": "FBref historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573568+00:00"
+      "updated_at": "2026-10-14T22:00:30.218092+00:00"
     },
     "5985964": {
       "matches": [
@@ -1200,7 +1200,7 @@
       "total": 33,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573459+00:00"
+      "updated_at": "2026-10-14T22:00:30.217956+00:00"
     },
     "6106255": {
       "matches": [
@@ -1247,7 +1247,7 @@
       "total": 6,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573524+00:00"
+      "updated_at": "2026-10-14T22:00:30.218036+00:00"
     },
     "6106275": {
       "matches": [
@@ -1276,7 +1276,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573492+00:00"
+      "updated_at": "2026-10-14T22:00:30.217999+00:00"
     },
     "6106278": {
       "matches": [
@@ -1305,7 +1305,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573520+00:00"
+      "updated_at": "2026-10-14T22:00:30.218030+00:00"
     },
     "6106279": {
       "matches": [
@@ -1352,7 +1352,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573485+00:00"
+      "updated_at": "2026-10-14T22:00:30.217989+00:00"
     },
     "6106281": {
       "matches": [
@@ -1390,7 +1390,7 @@
       "total": 3,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573420+00:00"
+      "updated_at": "2026-10-14T22:00:30.217918+00:00"
     },
     "6106335": {
       "matches": [
@@ -1419,7 +1419,7 @@
       "total": 2,
       "source": "WorldFootball historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-10-14T17:40:39.573473+00:00"
+      "updated_at": "2026-10-14T22:00:30.217974+00:00"
     },
     "6106414": {
       "matches": [],
