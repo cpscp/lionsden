@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-14T05:06:23.713885+00:00",
+  "_updated_at": "2026-10-14T12:08:43.071205+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -2134,11 +2134,11 @@
       "shirtNumber": 70,
       "career": [
         {
-          "period": "2025-04-11T00:00:00",
+          "period": "2025-04-11T00:00:00Z",
           "club": "Sporting CP B"
         },
         {
-          "period": "2025-10-27T00:00:00 → 2026-06-30T00:00:00",
+          "period": "2025-10-27T00:00:00Z → 2026-06-30T00:00:00Z",
           "club": "Sporting CP"
         },
         {
@@ -2158,15 +2158,15 @@
           "club": "Sporting CP"
         },
         {
-          "period": "2024-09-16T00:00:00",
+          "period": "2024-09-16T00:00:00Z",
           "club": "Sporting CP U19"
         },
         {
-          "period": "2025-07-01T00:00:00 → 2026-06-30T00:00:00",
+          "period": "2025-07-01T00:00:00Z → 2026-06-30T00:00:00Z",
           "club": "Sporting Clube de Portugal Under 21"
         },
         {
-          "period": "2024-01-03T00:00:00 → 2024-06-30T00:00:00",
+          "period": "2024-01-03T00:00:00Z → 2024-06-30T00:00:00Z",
           "club": "Sporting CP Under 17"
         },
         {
@@ -2186,11 +2186,11 @@
           "club": "Sporting CP Under 17"
         },
         {
-          "period": "2025-09-01T00:00:00 → 2025-11-30T00:00:00",
+          "period": "2025-09-01T00:00:00Z → 2025-11-30T00:00:00Z",
           "club": "Portugal U19"
         },
         {
-          "period": "2024-09-02T00:00:00 → 2025-10-31T00:00:00",
+          "period": "2024-09-02T00:00:00Z → 2025-10-31T00:00:00Z",
           "club": "Portugal Under 18"
         },
         {
