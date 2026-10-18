@@ -1,8 +1,8 @@
 {
-  "_updated_at": "2026-10-17T20:46:07.826990+00:00",
+  "_updated_at": "2026-10-18T04:49:00.855472+00:00",
   "fixtures": {
     "6106281": {
-      "updated_at": "2026-10-17T20:46:07.754643+00:00",
+      "updated_at": "2026-10-18T04:49:00.763393+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -11,9 +11,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "1.25",
-                "draw": "6.80",
-                "away": "10.50"
+                "home": "1.24",
+                "draw": "7.10",
+                "away": "11.00"
               }
             ]
           }
@@ -21,7 +21,7 @@
       }
     },
     "5887661": {
-      "updated_at": "2026-10-17T20:46:07.754730+00:00",
+      "updated_at": "2026-10-18T04:49:00.763515+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
