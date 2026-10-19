@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-19T04:57:24.356977+00:00",
+  "_updated_at": "2026-10-19T13:40:36.022524+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -573,7 +573,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/sco.png', 'text': 'Nicholas Walsh', 'countryCode': 'SCO', 'country': 'Scotland'}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
