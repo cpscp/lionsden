@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-19T13:39:58.664666+00:00",
+  "_updated_at": "2026-10-19T22:30:48.300288+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -96,6 +96,24 @@
     {
       "position": 6,
       "team": {
+        "id": 9764,
+        "name": "Gil Vicente",
+        "shortName": "Gil Vicente",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
+      },
+      "playedGames": 8,
+      "won": 4,
+      "draw": 2,
+      "lost": 2,
+      "points": 14,
+      "goalsFor": 8,
+      "goalsAgainst": 6,
+      "goalDifference": 2
+    },
+    {
+      "position": 7,
+      "team": {
         "id": 1786,
         "name": "Académico Viseu",
         "shortName": "Académico Viseu",
@@ -112,7 +130,25 @@
       "goalDifference": 1
     },
     {
-      "position": 7,
+      "position": 8,
+      "team": {
+        "id": 10264,
+        "name": "Braga",
+        "shortName": "Braga",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
+      },
+      "playedGames": 8,
+      "won": 3,
+      "draw": 2,
+      "lost": 3,
+      "points": 11,
+      "goalsFor": 9,
+      "goalsAgainst": 10,
+      "goalDifference": -1
+    },
+    {
+      "position": 9,
       "team": {
         "id": 9780,
         "name": "Alverca",
@@ -128,42 +164,6 @@
       "goalsFor": 13,
       "goalsAgainst": 12,
       "goalDifference": 1
-    },
-    {
-      "position": 8,
-      "team": {
-        "id": 9764,
-        "name": "Gil Vicente",
-        "shortName": "Gil Vicente",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
-      },
-      "playedGames": 7,
-      "won": 3,
-      "draw": 2,
-      "lost": 2,
-      "points": 11,
-      "goalsFor": 6,
-      "goalsAgainst": 5,
-      "goalDifference": 1
-    },
-    {
-      "position": 9,
-      "team": {
-        "id": 10264,
-        "name": "Braga",
-        "shortName": "Braga",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
-      },
-      "playedGames": 7,
-      "won": 3,
-      "draw": 2,
-      "lost": 2,
-      "points": 11,
-      "goalsFor": 8,
-      "goalsAgainst": 8,
-      "goalDifference": 0
     },
     {
       "position": 10,
