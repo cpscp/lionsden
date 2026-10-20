@@ -345,35 +345,53 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png"
         },
-        "playedGames": 2,
-        "won": 2,
+        "playedGames": 3,
+        "won": 3,
         "draw": 0,
         "lost": 0,
-        "points": 6,
-        "goalsFor": 10,
-        "goalsAgainst": 3,
-        "goalDifference": 7
+        "points": 9,
+        "goalsFor": 14,
+        "goalsAgainst": 5,
+        "goalDifference": 9
       },
       {
         "position": 2,
         "team": {
-          "id": 8634,
-          "name": "Barcelona",
-          "shortName": "Barcelona",
+          "id": 8650,
+          "name": "Liverpool",
+          "shortName": "Liverpool",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
         },
-        "playedGames": 2,
-        "won": 2,
+        "playedGames": 3,
+        "won": 3,
         "draw": 0,
         "lost": 0,
-        "points": 6,
-        "goalsFor": 9,
-        "goalsAgainst": 2,
-        "goalDifference": 7
+        "points": 9,
+        "goalsFor": 12,
+        "goalsAgainst": 7,
+        "goalDifference": 5
       },
       {
         "position": 3,
+        "team": {
+          "id": 10269,
+          "name": "VfB Stuttgart",
+          "shortName": "VfB Stuttgart",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png"
+        },
+        "playedGames": 3,
+        "won": 2,
+        "draw": 1,
+        "lost": 0,
+        "points": 7,
+        "goalsFor": 7,
+        "goalsAgainst": 2,
+        "goalDifference": 5
+      },
+      {
+        "position": 4,
         "team": {
           "id": 10252,
           "name": "Aston Villa",
@@ -391,43 +409,43 @@
         "goalDifference": 7
       },
       {
-        "position": 4,
+        "position": 5,
         "team": {
-          "id": 10269,
-          "name": "VfB Stuttgart",
-          "shortName": "VfB Stuttgart",
+          "id": 8634,
+          "name": "Barcelona",
+          "shortName": "Barcelona",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 2,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "points": 6,
-        "goalsFor": 6,
-        "goalsAgainst": 1,
+        "goalsFor": 11,
+        "goalsAgainst": 6,
         "goalDifference": 5
       },
       {
-        "position": 5,
+        "position": 6,
         "team": {
-          "id": 8650,
-          "name": "Liverpool",
-          "shortName": "Liverpool",
+          "id": 8456,
+          "name": "Manchester City",
+          "shortName": "Man City",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 2,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "points": 6,
-        "goalsFor": 8,
-        "goalsAgainst": 4,
+        "goalsFor": 9,
+        "goalsAgainst": 5,
         "goalDifference": 4
       },
       {
-        "position": 6,
+        "position": 7,
         "team": {
           "id": 9768,
           "name": "Sporting CP",
@@ -445,7 +463,7 @@
         "goalDifference": 4
       },
       {
-        "position": 7,
+        "position": 8,
         "team": {
           "id": 9825,
           "name": "Arsenal",
@@ -463,7 +481,7 @@
         "goalDifference": 4
       },
       {
-        "position": 8,
+        "position": 9,
         "team": {
           "id": 8633,
           "name": "Real Madrid",
@@ -481,7 +499,7 @@
         "goalDifference": 2
       },
       {
-        "position": 9,
+        "position": 10,
         "team": {
           "id": 8603,
           "name": "Real Betis",
@@ -499,7 +517,7 @@
         "goalDifference": 2
       },
       {
-        "position": 10,
+        "position": 11,
         "team": {
           "id": 9789,
           "name": "Borussia Dortmund",
@@ -512,12 +530,12 @@
         "draw": 0,
         "lost": 1,
         "points": 6,
-        "goalsFor": 4,
-        "goalsAgainst": 3,
+        "goalsFor": 5,
+        "goalsAgainst": 4,
         "goalDifference": 1
       },
       {
-        "position": 11,
+        "position": 12,
         "team": {
           "id": 9823,
           "name": "Bayern München",
@@ -535,7 +553,25 @@
         "goalDifference": 5
       },
       {
-        "position": 12,
+        "position": 13,
+        "team": {
+          "id": 8686,
+          "name": "Roma",
+          "shortName": "Roma",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png"
+        },
+        "playedGames": 3,
+        "won": 1,
+        "draw": 1,
+        "lost": 1,
+        "points": 4,
+        "goalsFor": 8,
+        "goalsAgainst": 5,
+        "goalDifference": 3
+      },
+      {
+        "position": 14,
         "team": {
           "id": 9728,
           "name": "Shakhtar Donetsk",
@@ -553,25 +589,43 @@
         "goalDifference": 2
       },
       {
-        "position": 13,
+        "position": 15,
         "team": {
-          "id": 8695,
-          "name": "Fenerbahçe",
-          "shortName": "Fenerbahçe",
+          "id": 9906,
+          "name": "Atlético Madrid",
+          "shortName": "Atlético Madrid",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8695.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png"
         },
         "playedGames": 3,
         "won": 1,
         "draw": 1,
         "lost": 1,
         "points": 4,
-        "goalsFor": 3,
-        "goalsAgainst": 8,
-        "goalDifference": -5
+        "goalsFor": 4,
+        "goalsAgainst": 3,
+        "goalDifference": 1
       },
       {
-        "position": 14,
+        "position": 16,
+        "team": {
+          "id": 8640,
+          "name": "PSV Eindhoven",
+          "shortName": "PSV Eindhoven",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png"
+        },
+        "playedGames": 3,
+        "won": 1,
+        "draw": 1,
+        "lost": 1,
+        "points": 4,
+        "goalsFor": 2,
+        "goalsAgainst": 2,
+        "goalDifference": 0
+      },
+      {
+        "position": 17,
         "team": {
           "id": 10171,
           "name": "Como",
@@ -589,7 +643,7 @@
         "goalDifference": 2
       },
       {
-        "position": 15,
+        "position": 18,
         "team": {
           "id": 10260,
           "name": "Manchester United",
@@ -607,7 +661,7 @@
         "goalDifference": 2
       },
       {
-        "position": 16,
+        "position": 19,
         "team": {
           "id": 10205,
           "name": "Villarreal",
@@ -615,35 +669,17 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10205.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 1,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "points": 3,
-        "goalsFor": 5,
-        "goalsAgainst": 4,
-        "goalDifference": 1
+        "goalsFor": 8,
+        "goalsAgainst": 8,
+        "goalDifference": 0
       },
       {
-        "position": 17,
-        "team": {
-          "id": 9906,
-          "name": "Atlético Madrid",
-          "shortName": "Atlético Madrid",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png"
-        },
-        "playedGames": 2,
-        "won": 1,
-        "draw": 0,
-        "lost": 1,
-        "points": 3,
-        "goalsFor": 3,
-        "goalsAgainst": 2,
-        "goalDifference": 1
-      },
-      {
-        "position": 18,
+        "position": 20,
         "team": {
           "id": 8342,
           "name": "Club Brugge",
@@ -661,25 +697,7 @@
         "goalDifference": 0
       },
       {
-        "position": 19,
-        "team": {
-          "id": 8456,
-          "name": "Manchester City",
-          "shortName": "Man City",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
-        },
-        "playedGames": 2,
-        "won": 1,
-        "draw": 0,
-        "lost": 1,
-        "points": 3,
-        "goalsFor": 4,
-        "goalsAgainst": 4,
-        "goalDifference": 0
-      },
-      {
-        "position": 20,
+        "position": 21,
         "team": {
           "id": 8588,
           "name": "Lens",
@@ -697,25 +715,25 @@
         "goalDifference": -1
       },
       {
-        "position": 21,
+        "position": 22,
         "team": {
-          "id": 8563,
-          "name": "AEK Athens",
-          "shortName": "AEK Athens",
+          "id": 9875,
+          "name": "Napoli",
+          "shortName": "Napoli",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8563.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 1,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "points": 3,
-        "goalsFor": 2,
-        "goalsAgainst": 3,
-        "goalDifference": -1
+        "goalsFor": 5,
+        "goalsAgainst": 7,
+        "goalDifference": -2
       },
       {
-        "position": 22,
+        "position": 23,
         "team": {
           "id": 178475,
           "name": "RB Leipzig",
@@ -733,7 +751,7 @@
         "goalDifference": -2
       },
       {
-        "position": 23,
+        "position": 24,
         "team": {
           "id": 10235,
           "name": "Feyenoord",
@@ -751,7 +769,7 @@
         "goalDifference": -3
       },
       {
-        "position": 24,
+        "position": 25,
         "team": {
           "id": 951893,
           "name": "Sabah FK",
@@ -764,12 +782,12 @@
         "draw": 0,
         "lost": 2,
         "points": 3,
-        "goalsFor": 2,
-        "goalsAgainst": 5,
+        "goalsFor": 3,
+        "goalsAgainst": 6,
         "goalDifference": -3
       },
       {
-        "position": 25,
+        "position": 26,
         "team": {
           "id": 8402,
           "name": "Bodø/Glimt",
@@ -777,53 +795,53 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8402.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 1,
         "draw": 0,
-        "lost": 1,
+        "lost": 2,
         "points": 3,
-        "goalsFor": 1,
-        "goalsAgainst": 5,
-        "goalDifference": -4
-      },
-      {
-        "position": 26,
-        "team": {
-          "id": 8686,
-          "name": "Roma",
-          "shortName": "Roma",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png"
-        },
-        "playedGames": 2,
-        "won": 0,
-        "draw": 1,
-        "lost": 1,
-        "points": 1,
         "goalsFor": 4,
-        "goalsAgainst": 5,
-        "goalDifference": -1
+        "goalsAgainst": 9,
+        "goalDifference": -5
       },
       {
         "position": 27,
         "team": {
-          "id": 8640,
-          "name": "PSV Eindhoven",
-          "shortName": "PSV Eindhoven",
+          "id": 8563,
+          "name": "AEK Athens",
+          "shortName": "AEK Athens",
           "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png"
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8563.png"
         },
-        "playedGames": 2,
-        "won": 0,
-        "draw": 1,
-        "lost": 1,
-        "points": 1,
-        "goalsFor": 1,
-        "goalsAgainst": 2,
-        "goalDifference": -1
+        "playedGames": 3,
+        "won": 1,
+        "draw": 0,
+        "lost": 2,
+        "points": 3,
+        "goalsFor": 3,
+        "goalsAgainst": 8,
+        "goalDifference": -5
       },
       {
         "position": 28,
+        "team": {
+          "id": 8695,
+          "name": "Fenerbahçe",
+          "shortName": "Fenerbahçe",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8695.png"
+        },
+        "playedGames": 3,
+        "won": 0,
+        "draw": 2,
+        "lost": 1,
+        "points": 2,
+        "goalsFor": 3,
+        "goalsAgainst": 9,
+        "goalDifference": -6
+      },
+      {
+        "position": 29,
         "team": {
           "id": 8478,
           "name": "Viking",
@@ -841,7 +859,25 @@
         "goalDifference": -2
       },
       {
-        "position": 29,
+        "position": 30,
+        "team": {
+          "id": 7787,
+          "name": "Slavia Prague",
+          "shortName": "Slavia Prague",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7787.png"
+        },
+        "playedGames": 3,
+        "won": 0,
+        "draw": 1,
+        "lost": 2,
+        "points": 1,
+        "goalsFor": 4,
+        "goalsAgainst": 7,
+        "goalDifference": -3
+      },
+      {
+        "position": 31,
         "team": {
           "id": 8636,
           "name": "Inter",
@@ -859,61 +895,7 @@
         "goalDifference": -2
       },
       {
-        "position": 30,
-        "team": {
-          "id": 9773,
-          "name": "FC Porto",
-          "shortName": "FC Porto",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
-        },
-        "playedGames": 2,
-        "won": 0,
-        "draw": 0,
-        "lost": 2,
-        "points": 0,
-        "goalsFor": 2,
-        "goalsAgainst": 5,
-        "goalDifference": -3
-      },
-      {
-        "position": 31,
-        "team": {
-          "id": 9875,
-          "name": "Napoli",
-          "shortName": "Napoli",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png"
-        },
-        "playedGames": 2,
-        "won": 0,
-        "draw": 0,
-        "lost": 2,
-        "points": 0,
-        "goalsFor": 1,
-        "goalsAgainst": 4,
-        "goalDifference": -3
-      },
-      {
         "position": 32,
-        "team": {
-          "id": 7787,
-          "name": "Slavia Prague",
-          "shortName": "Slavia Prague",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7787.png"
-        },
-        "playedGames": 3,
-        "won": 0,
-        "draw": 0,
-        "lost": 3,
-        "points": 0,
-        "goalsFor": 3,
-        "goalsAgainst": 7,
-        "goalDifference": -4
-      },
-      {
-        "position": 33,
         "team": {
           "id": 9977,
           "name": "LASK",
@@ -928,6 +910,24 @@
         "points": 0,
         "goalsFor": 3,
         "goalsAgainst": 7,
+        "goalDifference": -4
+      },
+      {
+        "position": 33,
+        "team": {
+          "id": 9773,
+          "name": "FC Porto",
+          "shortName": "FC Porto",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
+        },
+        "playedGames": 3,
+        "won": 0,
+        "draw": 0,
+        "lost": 3,
+        "points": 0,
+        "goalsFor": 2,
+        "goalsAgainst": 6,
         "goalDifference": -4
       },
       {
@@ -975,14 +975,14 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/6019.png"
         },
-        "playedGames": 2,
+        "playedGames": 3,
         "won": 0,
         "draw": 0,
-        "lost": 2,
+        "lost": 3,
         "points": 0,
         "goalsFor": 1,
-        "goalsAgainst": 9,
-        "goalDifference": -8
+        "goalsAgainst": 13,
+        "goalDifference": -12
       }
     ],
     "source": "FotMob",
@@ -999,16 +999,16 @@
             "stage": "playoff",
             "bestOf": 0,
             "home": {
-              "id": 9823,
-              "name": "Bayern München",
-              "shortName": "FCB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png"
+              "id": 9789,
+              "name": "Borussia Dortmund",
+              "shortName": "BVB",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png"
             },
             "away": {
-              "id": 8563,
-              "name": "AEK Athens",
-              "shortName": "AEK",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8563.png"
+              "id": 8588,
+              "name": "Lens",
+              "shortName": "RCL",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1022,16 +1022,16 @@
             "stage": "playoff",
             "bestOf": 0,
             "home": {
-              "id": 8695,
-              "name": "Fenerbahçe",
-              "shortName": "FB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8695.png"
+              "id": 8686,
+              "name": "Roma",
+              "shortName": "ROM",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png"
             },
             "away": {
-              "id": 8456,
-              "name": "Manchester City",
-              "shortName": "MCI",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
+              "id": 10205,
+              "name": "Villarreal",
+              "shortName": "VIL",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10205.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1042,6 +1042,98 @@
           },
           {
             "drawOrder": 3,
+            "stage": "playoff",
+            "bestOf": 0,
+            "home": {
+              "id": 8633,
+              "name": "Real Madrid",
+              "shortName": "RMA",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png"
+            },
+            "away": {
+              "id": 178475,
+              "name": "RB Leipzig",
+              "shortName": "RBL",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": []
+          },
+          {
+            "drawOrder": 4,
+            "stage": "playoff",
+            "bestOf": 0,
+            "home": {
+              "id": 9906,
+              "name": "Atlético Madrid",
+              "shortName": "ATM",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png"
+            },
+            "away": {
+              "id": 10171,
+              "name": "Como",
+              "shortName": "COM",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": []
+          },
+          {
+            "drawOrder": 5,
+            "stage": "playoff",
+            "bestOf": 0,
+            "home": {
+              "id": 9823,
+              "name": "Bayern München",
+              "shortName": "FCB",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png"
+            },
+            "away": {
+              "id": 9875,
+              "name": "Napoli",
+              "shortName": "NAP",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": []
+          },
+          {
+            "drawOrder": 6,
+            "stage": "playoff",
+            "bestOf": 0,
+            "home": {
+              "id": 9728,
+              "name": "Shakhtar Donetsk",
+              "shortName": "SHK",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9728.png"
+            },
+            "away": {
+              "id": 8342,
+              "name": "Club Brugge",
+              "shortName": "CLB",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8342.png"
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "winner": null,
+            "aggregatedWinner": null,
+            "aggregatedLoser": null,
+            "matches": []
+          },
+          {
+            "drawOrder": 7,
             "stage": "playoff",
             "bestOf": 0,
             "home": {
@@ -1064,112 +1156,20 @@
             "matches": []
           },
           {
-            "drawOrder": 4,
-            "stage": "playoff",
-            "bestOf": 0,
-            "home": {
-              "id": 10260,
-              "name": "Manchester United",
-              "shortName": "MUN",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
-            },
-            "away": {
-              "id": 9906,
-              "name": "Atlético Madrid",
-              "shortName": "ATM",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9906.png"
-            },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
-            "matches": []
-          },
-          {
-            "drawOrder": 5,
-            "stage": "playoff",
-            "bestOf": 0,
-            "home": {
-              "id": 9728,
-              "name": "Shakhtar Donetsk",
-              "shortName": "SHK",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9728.png"
-            },
-            "away": {
-              "id": 178475,
-              "name": "RB Leipzig",
-              "shortName": "RBL",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png"
-            },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
-            "matches": []
-          },
-          {
-            "drawOrder": 6,
-            "stage": "playoff",
-            "bestOf": 0,
-            "home": {
-              "id": 10171,
-              "name": "Como",
-              "shortName": "COM",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10171.png"
-            },
-            "away": {
-              "id": 8588,
-              "name": "Lens",
-              "shortName": "RCL",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png"
-            },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
-            "matches": []
-          },
-          {
-            "drawOrder": 7,
-            "stage": "playoff",
-            "bestOf": 0,
-            "home": {
-              "id": 9789,
-              "name": "Borussia Dortmund",
-              "shortName": "BVB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png"
-            },
-            "away": {
-              "id": 951893,
-              "name": "Sabah FK",
-              "shortName": "SAB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/951893.png"
-            },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
-            "matches": []
-          },
-          {
             "drawOrder": 8,
             "stage": "playoff",
             "bestOf": 0,
             "home": {
-              "id": 10205,
-              "name": "Villarreal",
-              "shortName": "VIL",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10205.png"
+              "id": 8640,
+              "name": "PSV Eindhoven",
+              "shortName": "PSV",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png"
             },
             "away": {
-              "id": 8342,
-              "name": "Club Brugge",
-              "shortName": "CLB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8342.png"
+              "id": 10260,
+              "name": "Manchester United",
+              "shortName": "MUN",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1191,15 +1191,15 @@
             "bestOf": 0,
             "home": {
               "id": -1,
-              "name": "Bayern München/Shakhtar Donetsk",
+              "name": "Borussia Dortmund/Bayern München",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-1.png"
             },
             "away": {
-              "id": 8650,
-              "name": "Liverpool",
-              "shortName": "LIV",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
+              "id": 8634,
+              "name": "Barcelona",
+              "shortName": "BAR",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1214,15 +1214,15 @@
             "bestOf": 0,
             "home": {
               "id": -2,
-              "name": "Fenerbahçe/Como",
+              "name": "Roma/Shakhtar Donetsk",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-2.png"
             },
             "away": {
-              "id": 10252,
-              "name": "Aston Villa",
-              "shortName": "AVL",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
+              "id": 10269,
+              "name": "VfB Stuttgart",
+              "shortName": "VFB",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1237,15 +1237,15 @@
             "bestOf": 0,
             "home": {
               "id": -3,
-              "name": "Real Betis/Borussia Dortmund",
+              "name": "Real Madrid/Real Betis",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-3.png"
             },
             "away": {
-              "id": 9825,
-              "name": "Arsenal",
-              "shortName": "ARS",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
+              "id": 9768,
+              "name": "Sporting CP",
+              "shortName": "SCP",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1260,7 +1260,7 @@
             "bestOf": 0,
             "home": {
               "id": -4,
-              "name": "Manchester United/Villarreal",
+              "name": "Atlético Madrid/PSV Eindhoven",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-4.png"
             },
@@ -1283,15 +1283,15 @@
             "bestOf": 0,
             "home": {
               "id": -1,
-              "name": "AEK Athens/RB Leipzig",
+              "name": "Lens/Napoli",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-1.png"
             },
             "away": {
-              "id": 9768,
-              "name": "Sporting CP",
-              "shortName": "SCP",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+              "id": 8456,
+              "name": "Manchester City",
+              "shortName": "MCI",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8456.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1306,15 +1306,15 @@
             "bestOf": 0,
             "home": {
               "id": -2,
-              "name": "Manchester City/Lens",
+              "name": "Villarreal/Club Brugge",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-2.png"
             },
             "away": {
-              "id": 10269,
-              "name": "VfB Stuttgart",
-              "shortName": "VFB",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png"
+              "id": 10252,
+              "name": "Aston Villa",
+              "shortName": "AVL",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1329,15 +1329,15 @@
             "bestOf": 0,
             "home": {
               "id": -3,
-              "name": "Feyenoord/Sabah FK",
+              "name": "RB Leipzig/Feyenoord",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-3.png"
             },
             "away": {
-              "id": 8633,
-              "name": "Real Madrid",
-              "shortName": "RMA",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png"
+              "id": 9825,
+              "name": "Arsenal",
+              "shortName": "ARS",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1352,15 +1352,15 @@
             "bestOf": 0,
             "home": {
               "id": -4,
-              "name": "Atlético Madrid/Club Brugge",
+              "name": "Como/Manchester United",
               "shortName": "TBD",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/-4.png"
             },
             "away": {
-              "id": 8634,
-              "name": "Barcelona",
-              "shortName": "BAR",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png"
+              "id": 8650,
+              "name": "Liverpool",
+              "shortName": "LIV",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png"
             },
             "homeScore": null,
             "awayScore": null,
