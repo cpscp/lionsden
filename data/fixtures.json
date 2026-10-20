@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-19T22:31:25.518703+00:00",
+  "_updated_at": "2026-10-20T05:03:37.406652+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -573,7 +573,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/sco.png', 'text': 'Nick Walsh', 'countryCode': 'SCO', 'country': 'Scotland', 'id': 1001072495, 'leagueId': 64, 'leagueName': 'Premiership', 'stats': [{'type': 'matches', 'value': 50, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.14, 'valueType': 'perMatch', 'average': 3.81, 'total': 207, 'averageType': 'above', 'fillPercentage': 74.36, 'averagePercentage': 50}, {'type': 'redCards', 'value': 6, 'valueType': 'total'}, {'type': 'unknown', 'value': 2, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.98, 'valueType': 'perMatch', 'average': 23.07, 'total': 1174, 'averageType': 'above', 'fillPercentage': 75.6, 'averagePercentage': 50}]}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/sco.png', 'text': 'Nick Walsh', 'countryCode': 'SCO', 'country': 'Scotland', 'id': 1001072495, 'leagueId': 64, 'leagueName': 'Premiership', 'stats': [{'type': 'matches', 'value': 49, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.1, 'valueType': 'perMatch', 'average': 3.81, 'total': 201, 'averageType': 'above', 'fillPercentage': 72.22, 'averagePercentage': 50}, {'type': 'redCards', 'value': 6, 'valueType': 'total'}, {'type': 'unknown', 'value': 2, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.98, 'valueType': 'perMatch', 'average': 23.06, 'total': 1174, 'averageType': 'above', 'fillPercentage': 75.7, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
