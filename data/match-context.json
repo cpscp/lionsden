@@ -1,162 +1,12 @@
 {
-  "_updated_at": "2026-10-21T17:25:44.097884+00:00",
+  "_updated_at": "2026-10-21T21:52:36.609223+00:00",
   "fixtures": {
-    "6106281": {
-      "home": {
-        "id": 9768,
-        "name": "Sporting CP",
-        "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
-            "result": "D",
-            "score": "1 - 1",
-            "date": "2026-09-13T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Famalicão",
-            "match_id": null
-          },
-          {
-            "result": "D",
-            "score": "2 - 2",
-            "date": "2026-09-19T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Arouca",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "1 - 3",
-            "date": "2026-10-09T19:15:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "0 - 2",
-            "date": "2026-10-13T16:45:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Lens",
-            "match_id": null
-          }
-        ],
-        "table": {
-          "position": 7,
-          "played": 2,
-          "points": 6,
-          "name": "Sporting CP"
-        }
-      },
-      "away": {
-        "id": 9977,
-        "name": "LASK",
-        "form": [
-          {
-            "result": "L",
-            "score": "2 - 1",
-            "date": "2026-09-13T15:00:00.000Z",
-            "competition": "Bundesliga",
-            "opponent": "Sturm Graz",
-            "match_id": null
-          },
-          {
-            "result": "D",
-            "score": "3 - 3",
-            "date": "2026-09-20T12:30:00.000Z",
-            "competition": "Bundesliga",
-            "opponent": "Hartberg",
-            "match_id": null
-          },
-          {
-            "result": "L",
-            "score": "0 - 2",
-            "date": "2026-10-11T15:00:00.000Z",
-            "competition": "Bundesliga",
-            "opponent": "Rapid Wien",
-            "match_id": null
-          },
-          {
-            "result": "L",
-            "score": "3 - 6",
-            "date": "2026-10-14T16:45:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Liverpool",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "0 - 4",
-            "date": "2026-10-17T15:00:00.000Z",
-            "competition": "Bundesliga",
-            "opponent": "Austria Lustenau",
-            "match_id": null
-          }
-        ],
-        "table": {
-          "position": 32,
-          "played": 2,
-          "points": 0,
-          "name": "LASK"
-        }
-      },
-      "h2h": {
-        "matches": [
-          {
-            "id": null,
-            "date": "2020-10-01T19:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "LASK",
-            "home_score": 1,
-            "away_score": 4,
-            "competition": "Europa League Qualification"
-          },
-          {
-            "id": null,
-            "date": "2019-12-12T17:55:00.000Z",
-            "home": "LASK",
-            "away": "Sporting CP",
-            "home_score": 3,
-            "away_score": 0,
-            "competition": "Europa League Grp. D"
-          },
-          {
-            "id": null,
-            "date": "2019-10-03T19:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "LASK",
-            "home_score": 2,
-            "away_score": 1,
-            "competition": "Europa League Grp. D"
-          }
-        ],
-        "home_wins": 1,
-        "draws": 0,
-        "away_wins": 2,
-        "total": 3
-      },
-      "updated_at": "2026-10-21T17:25:39.045669+00:00"
-    },
     "5887661": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -186,6 +36,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -255,21 +113,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:39.074983+00:00"
+      "updated_at": "2026-10-21T21:52:29.722541+00:00"
     },
     "5985964": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -300,6 +150,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -406,7 +264,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-21T17:25:39.102830+00:00"
+      "updated_at": "2026-10-21T21:52:29.755715+00:00"
     },
     "5887666": {
       "home": {
@@ -466,14 +324,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -503,6 +353,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -557,21 +415,13 @@
         "away_wins": 9,
         "total": 9
       },
-      "updated_at": "2026-10-21T17:25:39.130290+00:00"
+      "updated_at": "2026-10-21T21:52:29.785977+00:00"
     },
     "6106335": {
       "home": {
         "id": 9728,
         "name": "Shakhtar Donetsk",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 0",
-            "date": "2026-09-14T15:00:00.000Z",
-            "competition": "Premier League",
-            "opponent": "Chornomorets Odesa",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "3 - 0",
@@ -603,10 +453,18 @@
             "competition": "Premier League",
             "opponent": "FC Kolos Kovalivka",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Inter",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 14,
+          "position": 15,
           "played": 2,
           "points": 4,
           "name": "Shakhtar Donetsk"
@@ -616,14 +474,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -654,6 +504,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -671,21 +529,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:39.157248+00:00"
+      "updated_at": "2026-10-21T21:52:29.815532+00:00"
     },
     "5887679": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -716,6 +566,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -822,21 +680,13 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-10-21T17:25:39.184174+00:00"
+      "updated_at": "2026-10-21T21:52:29.847331+00:00"
     },
     "6106279": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -868,6 +718,14 @@
             "competition": "Champions League",
             "opponent": "Lens",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
+            "match_id": null
           }
         ],
         "table": {
@@ -881,14 +739,6 @@
         "id": 10260,
         "name": "Man United",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-09-16T19:00:00.000Z",
-            "competition": "EFL Cup",
-            "opponent": "Brighton & Hove Albion",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -920,11 +770,19 @@
             "competition": "Premier League",
             "opponent": "Leeds United",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "4 - 1",
+            "date": "2026-10-21T16:45:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Como",
+            "match_id": null
           }
         ],
         "table": {
           "position": 18,
-          "played": 2,
+          "played": 3,
           "points": 3,
           "name": "Manchester United"
         }
@@ -936,7 +794,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:39.230130+00:00"
+      "updated_at": "2026-10-21T21:52:29.876329+00:00"
     },
     "5887687": {
       "home": {
@@ -996,14 +854,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -1033,6 +883,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1087,21 +945,13 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-10-21T17:25:39.261341+00:00"
+      "updated_at": "2026-10-21T21:52:29.908401+00:00"
     },
     "5887698": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1132,6 +982,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1238,7 +1096,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-21T17:25:39.600951+00:00"
+      "updated_at": "2026-10-21T21:52:29.938354+00:00"
     },
     "6106275": {
       "home": {
@@ -1287,7 +1145,7 @@
           }
         ],
         "table": {
-          "position": 13,
+          "position": 14,
           "played": 3,
           "points": 4,
           "name": "Roma"
@@ -1297,14 +1155,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1335,6 +1185,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1371,7 +1229,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-21T17:25:39.778963+00:00"
+      "updated_at": "2026-10-21T21:52:30.417097+00:00"
     },
     "5887702": {
       "home": {
@@ -1431,14 +1289,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -1468,6 +1318,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1522,21 +1380,13 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-10-21T17:25:39.965254+00:00"
+      "updated_at": "2026-10-21T21:52:30.820974+00:00"
     },
     "5887716": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1567,6 +1417,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1673,7 +1531,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-10-21T17:25:40.254990+00:00"
+      "updated_at": "2026-10-21T21:52:31.085662+00:00"
     },
     "5887724": {
       "home": {
@@ -1733,14 +1591,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -1770,6 +1620,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1787,21 +1645,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:40.527619+00:00"
+      "updated_at": "2026-10-21T21:52:31.618644+00:00"
     },
     "5887734": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1832,6 +1682,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -1901,21 +1759,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:40.676712+00:00"
+      "updated_at": "2026-10-21T21:52:31.817242+00:00"
     },
     "5887735": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1946,6 +1796,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2015,21 +1873,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:40.844401+00:00"
+      "updated_at": "2026-10-21T21:52:32.218790+00:00"
     },
     "6106278": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -2060,6 +1910,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2131,7 +1989,7 @@
             "away": "Sporting CP",
             "home_score": 2,
             "away_score": 0,
-            "competition": "Champions League"
+            "competition": "Champions League Grp. D"
           },
           {
             "id": null,
@@ -2140,7 +1998,7 @@
             "away": "Barcelona",
             "home_score": 0,
             "away_score": 1,
-            "competition": "Champions League"
+            "competition": "Champions League Grp. D"
           }
         ],
         "home_wins": 0,
@@ -2148,7 +2006,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-21T17:25:41.143497+00:00"
+      "updated_at": "2026-10-21T21:52:32.540146+00:00"
     },
     "5887752": {
       "home": {
@@ -2208,14 +2066,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -2246,6 +2096,14 @@
             "competition": "Champions League",
             "opponent": "Lens",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
+            "match_id": null
           }
         ],
         "table": {
@@ -2262,7 +2120,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:41.301607+00:00"
+      "updated_at": "2026-10-21T21:52:32.852719+00:00"
     },
     "6106255": {
       "home": {
@@ -2322,14 +2180,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -2359,6 +2209,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2413,7 +2271,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-10-21T17:25:41.583261+00:00"
+      "updated_at": "2026-10-21T21:52:33.125997+00:00"
     },
     "5887760": {
       "home": {
@@ -2473,14 +2331,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -2510,6 +2360,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2527,21 +2385,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:41.728057+00:00"
+      "updated_at": "2026-10-21T21:52:33.330710+00:00"
     },
     "5887769": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -2572,6 +2422,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2641,7 +2499,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:42.016177+00:00"
+      "updated_at": "2026-10-21T21:52:33.527142+00:00"
     },
     "5887778": {
       "home": {
@@ -2701,14 +2559,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -2738,6 +2588,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2755,21 +2613,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:42.308789+00:00"
+      "updated_at": "2026-10-21T21:52:33.731329+00:00"
     },
     "5887784": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -2800,6 +2650,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -2906,7 +2764,7 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-10-21T17:25:42.619825+00:00"
+      "updated_at": "2026-10-21T21:52:34.168871+00:00"
     },
     "5887796": {
       "home": {
@@ -2966,14 +2824,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -3003,6 +2853,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3020,21 +2878,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:42.918808+00:00"
+      "updated_at": "2026-10-21T21:52:34.521094+00:00"
     },
     "5887800": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -3065,6 +2915,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3171,7 +3029,7 @@
         "away_wins": 10,
         "total": 43
       },
-      "updated_at": "2026-10-21T17:25:43.177271+00:00"
+      "updated_at": "2026-10-21T21:52:35.066104+00:00"
     },
     "5887814": {
       "home": {
@@ -3231,14 +3089,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -3268,6 +3118,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3285,21 +3143,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:43.343213+00:00"
+      "updated_at": "2026-10-21T21:52:35.376985+00:00"
     },
     "5887819": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -3330,6 +3180,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3399,7 +3257,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:43.564505+00:00"
+      "updated_at": "2026-10-21T21:52:35.579416+00:00"
     },
     "5887832": {
       "home": {
@@ -3459,14 +3317,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -3496,6 +3346,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3513,21 +3371,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:43.733451+00:00"
+      "updated_at": "2026-10-21T21:52:35.966235+00:00"
     },
     "5887840": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -3558,6 +3408,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3627,7 +3485,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:43.906703+00:00"
+      "updated_at": "2026-10-21T21:52:36.160867+00:00"
     },
     "5887851": {
       "home": {
@@ -3687,14 +3545,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
-          {
             "result": "D",
             "score": "1 - 1",
             "date": "2026-09-13T19:30:00.000Z",
@@ -3724,6 +3574,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3741,21 +3599,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:44.072533+00:00"
+      "updated_at": "2026-10-21T21:52:36.548062+00:00"
     },
     "5887855": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "3 - 1",
-            "date": "2026-09-09T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -3786,6 +3636,14 @@
             "date": "2026-10-13T16:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
             "match_id": null
           }
         ],
@@ -3855,7 +3713,158 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-21T17:25:44.097845+00:00"
+      "updated_at": "2026-10-21T21:52:36.578745+00:00"
+    },
+    "5887869": {
+      "home": {
+        "id": 7842,
+        "name": "Estoril",
+        "form": [
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-09-07T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-09-14T19:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-09-20T17:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Casa Pia AC",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 1",
+            "date": "2026-10-10T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-10-18T14:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Salgueiros",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 18,
+          "played": 8,
+          "points": 2,
+          "name": "Estoril"
+        }
+      },
+      "away": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-09-13T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 3",
+            "date": "2026-10-09T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-10-13T16:45:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 8,
+          "points": 18,
+          "name": "Sporting CP"
+        }
+      },
+      "h2h": {
+        "matches": [
+          {
+            "id": null,
+            "date": "2026-02-27T20:45:00.000Z",
+            "home": "Sporting CP",
+            "away": "Estoril",
+            "home_score": 3,
+            "away_score": 0,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-09-27T19:30:00.000Z",
+            "home": "Estoril",
+            "away": "Sporting CP",
+            "home_score": 0,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-03-03T20:15:00.000Z",
+            "home": "Sporting CP",
+            "away": "Estoril",
+            "home_score": 3,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2024-09-27T19:15:00.000Z",
+            "home": "Estoril",
+            "away": "Sporting CP",
+            "home_score": 0,
+            "away_score": 3,
+            "competition": "Liga Portugal"
+          }
+        ],
+        "home_wins": 5,
+        "draws": 3,
+        "away_wins": 16,
+        "total": 24
+      },
+      "updated_at": "2026-10-21T21:52:36.609208+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

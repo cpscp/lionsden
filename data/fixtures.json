@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-21T17:26:06.203064+00:00",
+  "_updated_at": "2026-10-21T21:52:58.858528+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -570,17 +570,16 @@
       "kickoff_date": "2026-10-21",
       "kickoff_local_time": "19:00",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/sco.png', 'text': 'Nick Walsh', 'countryCode': 'SCO', 'country': 'Scotland', 'id': 1001072495, 'leagueId': 64, 'leagueName': 'Premiership', 'stats': [{'type': 'matches', 'value': 49, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.1, 'valueType': 'perMatch', 'average': 3.81, 'total': 201, 'averageType': 'above', 'fillPercentage': 72.26, 'averagePercentage': 50}, {'type': 'redCards', 'value': 6, 'valueType': 'total'}, {'type': 'unknown', 'value': 2, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.98, 'valueType': 'perMatch', 'average': 23.06, 'total': 1174, 'averageType': 'above', 'fillPercentage': 75.7, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207228,
-        "lon": -9.160875678,
-        "capacity": 52095.0,
-        "country": "Portugal"
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "Champions League",
@@ -596,8 +595,8 @@
         "name": "LASK"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 3
       },
       "half_time": {
         "home": null,
@@ -741,7 +740,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": null,
       "venue": {
         "name": "Stamford Bridge",
         "city": "London",
@@ -825,7 +824,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
@@ -908,13 +907,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estádio José Alvalade",
+        "name": "Estadio Jose Alvalade",
         "city": "Lisboa",
         "lat": 38.761207,
         "lon": -9.160876,
-        "capacity": null
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
