@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-21T12:04:52.154024+00:00",
+  "_updated_at": "2026-10-21T17:25:21.239190+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -1132,6 +1132,14 @@
         {
           "period": "2024/2025",
           "club": "KV Mechelen"
+        },
+        {
+          "period": "2026-10-20T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP U19"
         },
         {
           "period": "2025-08-30T00:00:00",
