@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-22T05:05:36.220776+00:00",
+  "_updated_at": "2026-10-22T12:09:17.554130+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -614,7 +614,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Nogueira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001072016, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 36, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.78, 'valueType': 'perMatch', 'average': 4.98, 'total': 172, 'averageType': 'average', 'fillPercentage': 43.31, 'averagePercentage': 50}, {'type': 'redCards', 'value': 4, 'valueType': 'total'}, {'type': 'unknown', 'value': 6, 'valueType': 'total'}, {'type': 'penalties', 'value': 15, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.13, 'valueType': 'perMatch', 'average': 27.54, 'total': 836, 'averageType': 'below', 'fillPercentage': 34.41, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
@@ -740,7 +740,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
         "name": "Stamford Bridge",
         "city": "London",
@@ -824,7 +824,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
