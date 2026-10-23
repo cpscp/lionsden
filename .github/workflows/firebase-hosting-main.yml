@@ -14,6 +14,7 @@ on:
   # Deploy after the automated data pipelines finish successfully.
   workflow_run:
     workflows:
+      - Refresh central de dados
       - Atualizar notícias
       - Atualizar futebol e estatísticas
       - Atualizar H2H
@@ -24,6 +25,11 @@ on:
 
 permissions:
   contents: read
+
+# Only one deploy at a time; a newer data commit supersedes a queued deploy.
+concurrency:
+  group: firebase-hosting-live
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -39,3 +45,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIONSDENSCP }}
           projectId: lionsdenscp
           channelId: live
+          # firebase-tools 15.34.1 (2026-10-21) added a mandatory Service Usage
+          # check that this service account is not allowed to perform. Keep the
+          # pin until the account has roles/serviceusage.serviceUsageConsumer.
+          firebaseToolsVersion: 15.34.0

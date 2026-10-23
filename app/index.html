@@ -2,23 +2,22 @@
 <!doctype html>
 <html lang="pt">
 <head>
-<base href="/lionsden/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100b">
-<link rel="manifest" href="/lionsden/manifest-app.json?v=1">
-<link rel="icon" href="./icons/lions-den-final.svg" type="image/webp">
+<link rel="manifest" href="../manifest-app.json?v=2">
+<link rel="icon" href="../icons/lions-den-final.svg" type="image/webp">
 <title>Lion's Den · Sporting CP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>.stadium-menu-icon svg{width:20px;height:20px;display:block}\n
-@font-face{font-family:'CustomDigits';src:url('./assets/CustomDigits.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}.jersey-number,.shirt-number{font-family:'CustomDigits'!important;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400!important;font-style:normal!important;font-synthesis:none}
+@font-face{font-family:'CustomDigits';src:url('../assets/CustomDigits.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}.jersey-number,.shirt-number{font-family:'CustomDigits'!important;font-variant-numeric:normal;font-feature-settings:normal;font-weight:400!important;font-style:normal!important;font-synthesis:none}
 :root{--bg:#060b08;--surface:#0d1510;--surface2:#121d16;--green:#08a56e;--muted:#799087;--line:rgba(255,255,255,.08);--gold:#e7c35b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f3f7f4;font-family:'Space Grotesk',system-ui,sans-serif}button{font:inherit}
 .wrap{max-width:540px;margin:auto;min-height:100vh;padding-bottom:94px}.header{position:sticky;top:0;z-index:30;background:rgba(6,11,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}.next-match-hero{position:relative}.next-match-hero::before{content:"";position:absolute;inset:0;background:url('./assets/estadio2.png') center/cover no-repeat;opacity:.10;pointer-events:none;z-index:0}.next-match-hero>*{position:relative;z-index:1}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px}.hero{background:radial-gradient(100% 130% at 15% 0%,#123d29 0%,#0a1710 48%,#0a100c 100%);border-radius:26px;border:1px solid var(--line);overflow:hidden}.next-match-hero{position:relative}.next-match-hero::before{content:"";position:absolute;inset:0;background:url('../assets/estadio2.png') center/cover no-repeat;opacity:.10;pointer-events:none;z-index:0}.next-match-hero>*{position:relative;z-index:1}
 .muted{color:var(--muted)}.screen{display:none}.screen.active{display:block}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(18,29,22,.97);border-top:1px solid var(--line);backdrop-filter:blur(14px)}
 .navbtn{color:var(--muted)}.navbtn.active{color:#fff}.pill{border:1px solid var(--line);border-radius:999px}.logo{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;overflow:hidden;flex:0 0 40px}.logo img{width:40px;height:40px;display:block;object-fit:contain;border-radius:50%}
 .row{border-top:1px solid var(--line)}.statbox{background:#09110c;border:1px solid var(--line);border-radius:16px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:80;display:none}.modal.open{display:flex}
@@ -168,7 +167,7 @@
 <div class="wrap">
 <header class="header"><div class="px-4 py-3 flex items-center justify-between relative min-h-[72px]">
 <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleDrawer(true)">☰</button>
-<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-3"><div class="logo"><img src="./icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><div class="text-[20px] font-bold leading-none">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted mt-1">Sporting CP</div></div></div>
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-3"><div class="logo"><img src="../icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><div class="text-[20px] font-bold leading-none">Lion's Den</div><div class="text-[9px] uppercase tracking-[.22em] muted mt-1">Sporting CP</div></div></div>
 </div></header>
 
 <main class="px-4 pt-4 space-y-5">
@@ -198,7 +197,7 @@
 
 <div class="stadium-hero">
   <div class="stadium-model" aria-label="Fotografia exterior do Estádio José Alvalade">
-    <img class="stadium-hero-photo" src="./assets/estadio1.png?v=3" alt="Estádio José Alvalade" loading="eager">
+    <img class="stadium-hero-photo" src="../assets/estadio1.png?v=3" alt="Estádio José Alvalade" loading="eager">
   </div>
   <div class="p-4 flex items-center justify-between gap-3">
     <div><b>Estádio José Alvalade</b><div class="text-[10px] muted mt-1">Lisboa · 52.095 lugares</div></div>
@@ -307,7 +306,7 @@
 
 <div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
 <aside id="drawer" class="drawer" aria-label="Menu principal">
-<div class="p-4 border-b border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo"><img src="./icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><b>Lion's Den</b><div class="text-[9px] uppercase tracking-[.18em] muted">Sporting CP</div></div></div><button class="pill w-9 h-9" onclick="toggleDrawer(false)">×</button></div><div class="mt-3"><span id="updated" class="pill inline-flex px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span></div></div>
+<div class="p-4 border-b border-white/5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="logo"><img src="../icons/lions-den-final.svg?v=final" alt="Lion's Den" /></div><div><b>Lion's Den</b><div class="text-[9px] uppercase tracking-[.18em] muted">Sporting CP</div></div></div><button class="pill w-9 h-9" onclick="toggleDrawer(false)">×</button></div><div class="mt-3"><span id="updated" class="pill inline-flex px-3 py-1 text-[9px] uppercase tracking-widest muted">a carregar</span></div></div>
 <div class="p-3">
 <button class="drawer-link navbtn active" data-go="home"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 9.5 10 3l7 6.5"/><path d="M5 8.5V17h10V8.5"/><path d="M8 17v-5h4v5"/></svg></span><span>Início</span></button>
 <div class="drawer-section">Futebol</div>
@@ -337,7 +336,7 @@
 <script>
 async function ensureCustomDigitsFont(){
   try{
-    const r=await fetch('./assets/CustomDigits.ttf?font='+Date.now(),{cache:'no-store'});
+    const r=await fetch('../assets/CustomDigits.ttf?font='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error('CustomDigits HTTP '+r.status);
     const buffer=await r.arrayBuffer();
     const font=new FontFace('CustomDigits',buffer,{style:'normal',weight:'400',display:'block'});
@@ -358,7 +357,7 @@ async function load(){
     const ctl=new AbortController();
     const timer=setTimeout(()=>ctl.abort(),5000);
     try{
-      const r=await fetch('./data/'+f+'?t='+Date.now(),{cache:'no-store',signal:ctl.signal});
+      const r=await fetch('../data/'+f+'?t='+Date.now(),{cache:'no-store',signal:ctl.signal});
       if(r.ok) D[f]=await r.json();
     }catch(e){ console.warn("Lion's Den data:",f,e?.message||e); }
     finally{ clearTimeout(timer); }
@@ -658,7 +657,7 @@ function renderTV(){
    }
    return 0;
  };
- const cards=[...items].sort((a,b)=>videoTime(b)-videoTime(a)).map(v=>`<button onclick="openVideo('${esc(v.id)}','${esc(v.title).replace(/'/g,'&#39;')}')" class="card overflow-hidden w-full text-left">
+ const cards=[...items].sort((a,b)=>videoTime(b)-videoTime(a)).map(v=>`<button type="button" data-video-id="${esc(v.id)}" data-video-title="${esc(v.title)}" onclick="openVideo(this.dataset.videoId,this.dataset.videoTitle)" class="card overflow-hidden w-full text-left">
    <div class="relative aspect-video bg-black">
      <img src="${esc(v.thumbnail||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'))}" class="w-full h-full object-cover" alt="">
      <div class="absolute inset-0 flex items-center justify-center"><span class="w-12 h-12 rounded-full bg-black/70 border border-white/20 flex items-center justify-center text-white text-lg">▶</span></div>
@@ -674,8 +673,8 @@ function stadiumPhotoUrl(venueName){
  const n=String(venueName||'').toLowerCase();
  const map=[
   ['municipal de braga','https://commons.wikimedia.org/wiki/Special:FilePath/Estadio%20Municipal%20de%20Braga.jpg'],
-  ['josé alvalade','./assets/estadio1.png'],
-  ['jose alvalade','./assets/estadio1.png'],
+  ['josé alvalade','../assets/estadio1.png'],
+  ['jose alvalade','../assets/estadio1.png'],
   ['bollaert-delelis','https://commons.wikimedia.org/wiki/Special:FilePath/Stade%20Bollaert-Delelis.jpg'],
   ['dragão','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20do%20Drag%C3%A3o.jpg'],
   ['luz','https://commons.wikimedia.org/wiki/Special:FilePath/Est%C3%A1dio%20da%20Luz.jpg']
@@ -818,7 +817,7 @@ function renderCoachCard(){
       <h3 class="text-[13px] font-bold uppercase tracking-[.16em]">Treinador</h3>
     </div>
     <button onclick="openCoach()" class="card w-full p-3 flex items-center gap-3 text-left">
-      <div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden shrink-0"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='<span class="w-full h-full flex items-center justify-center text-lg font-bold">RB</span>'"></div>
+      <div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden shrink-0"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-lg font-bold&quot;&gt;RB&lt;/span&gt;'"></div>
       <div class="flex-1 min-w-0">
         <div class="font-semibold text-[13px]">Rui Borges</div>
         <div class="text-[10px] muted mt-1">Treinador · Portugal</div>
@@ -1226,7 +1225,7 @@ function openCoach(){
   document.getElementById('modalTitle').textContent='Rui Borges';
   document.getElementById('modalBody').innerHTML=`
     <div class="flex items-center gap-4 mb-5">
-      <div class="w-28 h-28 shrink-0 rounded-2xl bg-white/5 overflow-hidden"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='<span class="w-full h-full flex items-center justify-center text-3xl font-bold">RB</span>'"></div>
+      <div class="w-28 h-28 shrink-0 rounded-2xl bg-white/5 overflow-hidden"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-3xl font-bold&quot;&gt;RB&lt;/span&gt;'"></div>
       <div class="min-w-0 flex-1">
         <div class="text-xl font-bold">Rui Borges</div>
         <div class="muted text-sm mt-1">Treinador · Portugal</div>
