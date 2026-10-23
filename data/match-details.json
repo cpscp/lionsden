@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-23T05:06:27.070729+00:00",
+  "_updated_at": "2026-10-23T11:54:04.283220+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -16475,6 +16475,36 @@
                     "name": "xG on target (xGOT)",
                     "home": "2.69",
                     "away": "2.98"
+                  },
+                  {
+                    "name": "Physical performance",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Distance covered",
+                    "home": 120472,
+                    "away": 123791
+                  },
+                  {
+                    "name": "Walking distance",
+                    "home": 34011,
+                    "away": 32396
+                  },
+                  {
+                    "name": "Running distance",
+                    "home": 83395,
+                    "away": 88393
+                  },
+                  {
+                    "name": "Sprinting distance",
+                    "home": 3066,
+                    "away": 3002
+                  },
+                  {
+                    "name": "Number of sprints",
+                    "home": 146,
+                    "away": 140
                   },
                   {
                     "name": "Passes",
