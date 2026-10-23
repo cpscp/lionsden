@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-23T11:54:04.283220+00:00",
+  "_updated_at": "2026-10-23T17:19:47.775314+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -14179,11 +14179,11 @@
             },
             {
               "player": {
-                "name": "Nidal Čelik",
-                "shortName": "Nidal Čelik",
-                "id": 1657810
+                "name": "Jean-Clair Todibo",
+                "shortName": "Jean-Clair Todibo",
+                "id": 955214
               },
-              "shirtNumber": "4",
+              "shirtNumber": "20",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
@@ -14193,11 +14193,11 @@
             },
             {
               "player": {
-                "name": "Jean-Clair Todibo",
-                "shortName": "Jean-Clair Todibo",
-                "id": 955214
+                "name": "Nidal Čelik",
+                "shortName": "Nidal Čelik",
+                "id": 1657810
               },
-              "shirtNumber": "20",
+              "shirtNumber": "4",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
@@ -14235,11 +14235,11 @@
             },
             {
               "player": {
-                "name": "Thorgan Hazard",
-                "shortName": "Thorgan Hazard",
-                "id": 264190
+                "name": "Florian Sotoca",
+                "shortName": "Florian Sotoca",
+                "id": 612699
               },
-              "shirtNumber": "9",
+              "shirtNumber": "7",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
@@ -14249,11 +14249,11 @@
             },
             {
               "player": {
-                "name": "Florian Sotoca",
-                "shortName": "Florian Sotoca",
-                "id": 612699
+                "name": "Thorgan Hazard",
+                "shortName": "Thorgan Hazard",
+                "id": 264190
               },
-              "shirtNumber": "7",
+              "shirtNumber": "9",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
@@ -14271,8 +14271,8 @@
           "players": [
             {
               "player": {
-                "name": "Kaique",
-                "shortName": "Kaique",
+                "name": "Kaique Pereira",
+                "shortName": "Kaique Pereira",
                 "id": 1320169
               },
               "shirtNumber": "30",
@@ -14666,30 +14666,7 @@
           },
           {
             "incidentType": "substitution",
-            "time": 58,
-            "player": {
-              "id": null,
-              "profileUrl": ""
-            },
-            "isHome": true,
-            "description": "Substitution",
-            "swap": [
-              {
-                "name": "Ruben Aguilar",
-                "id": "561046",
-                "profileUrl": "/players/561046/ruben-aguilar"
-              },
-              {
-                "name": "Samson Baidoo",
-                "id": "1276626",
-                "profileUrl": "/players/1276626/samson-baidoo"
-              }
-            ],
-            "cardType": ""
-          },
-          {
-            "incidentType": "substitution",
-            "time": 58,
+            "time": 57,
             "player": {
               "id": null,
               "profileUrl": ""
@@ -14706,6 +14683,29 @@
                 "name": "Franjo Ivanović",
                 "id": "1406419",
                 "profileUrl": "/players/1406419/franjo-ivanovic"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 57,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Ruben Aguilar",
+                "id": "561046",
+                "profileUrl": "/players/561046/ruben-aguilar"
+              },
+              {
+                "name": "Samson Baidoo",
+                "id": "1276626",
+                "profileUrl": "/players/1276626/samson-baidoo"
               }
             ],
             "cardType": ""
@@ -14898,14 +14898,14 @@
             "description": "Substitution",
             "swap": [
               {
-                "name": "Fotis Ioannidis",
-                "id": "899701",
-                "profileUrl": "/players/899701/fotis-ioannidis"
+                "name": "Pedro Lima",
+                "id": "1459257",
+                "profileUrl": "/players/1459257/pedro-lima"
               },
               {
-                "name": "Luis Suárez",
-                "id": "792303",
-                "profileUrl": "/players/792303/luis-suarez"
+                "name": "Issa Doumbia",
+                "id": "1339345",
+                "profileUrl": "/players/1339345/issa-doumbia"
               }
             ],
             "cardType": ""
@@ -14921,14 +14921,14 @@
             "description": "Substitution",
             "swap": [
               {
-                "name": "Pedro Lima",
-                "id": "1459257",
-                "profileUrl": "/players/1459257/pedro-lima"
+                "name": "Fotis Ioannidis",
+                "id": "899701",
+                "profileUrl": "/players/899701/fotis-ioannidis"
               },
               {
-                "name": "Issa Doumbia",
-                "id": "1339345",
-                "profileUrl": "/players/1339345/issa-doumbia"
+                "name": "Luis Suárez",
+                "id": "792303",
+                "profileUrl": "/players/792303/luis-suarez"
               }
             ],
             "cardType": ""
@@ -15062,6 +15062,36 @@
                     "name": "xG on target (xGOT)",
                     "home": "1.30",
                     "away": "1.21"
+                  },
+                  {
+                    "name": "Physical performance",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Distance covered",
+                    "home": 124121,
+                    "away": 120889
+                  },
+                  {
+                    "name": "Walking distance",
+                    "home": 31940,
+                    "away": 32820
+                  },
+                  {
+                    "name": "Running distance",
+                    "home": 89205,
+                    "away": 85289
+                  },
+                  {
+                    "name": "Sprinting distance",
+                    "home": 2976,
+                    "away": 2780
+                  },
+                  {
+                    "name": "Number of sprints",
+                    "home": 143,
+                    "away": 139
                   },
                   {
                     "name": "Passes",
