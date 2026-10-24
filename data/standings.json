@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-24T11:19:36.144562+00:00",
+  "_updated_at": "2026-10-24T16:07:36.964700+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -174,14 +174,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1074320.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 2,
       "draw": 4,
-      "lost": 2,
+      "lost": 3,
       "points": 10,
       "goalsFor": 14,
-      "goalsAgainst": 15,
-      "goalDifference": -1
+      "goalsAgainst": 16,
+      "goalDifference": -2
     },
     {
       "position": 11,
@@ -276,6 +276,24 @@
     {
       "position": 16,
       "team": {
+        "id": 212821,
+        "name": "Casa Pia AC",
+        "shortName": "Casa Pia AC",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
+      },
+      "playedGames": 9,
+      "won": 2,
+      "draw": 1,
+      "lost": 6,
+      "points": 7,
+      "goalsFor": 4,
+      "goalsAgainst": 17,
+      "goalDifference": -13
+    },
+    {
+      "position": 17,
+      "team": {
         "id": 10214,
         "name": "Nacional",
         "shortName": "Nacional",
@@ -290,24 +308,6 @@
       "goalsFor": 9,
       "goalsAgainst": 18,
       "goalDifference": -9
-    },
-    {
-      "position": 17,
-      "team": {
-        "id": 212821,
-        "name": "Casa Pia AC",
-        "shortName": "Casa Pia AC",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
-      },
-      "playedGames": 8,
-      "won": 1,
-      "draw": 1,
-      "lost": 6,
-      "points": 4,
-      "goalsFor": 3,
-      "goalsAgainst": 17,
-      "goalDifference": -14
     },
     {
       "position": 18,
