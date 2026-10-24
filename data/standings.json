@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-24T16:07:36.964700+00:00",
+  "_updated_at": "2026-10-24T21:00:42.056488+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -12,14 +12,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
       },
-      "playedGames": 8,
-      "won": 8,
+      "playedGames": 9,
+      "won": 9,
       "draw": 0,
       "lost": 0,
-      "points": 24,
-      "goalsFor": 20,
+      "points": 27,
+      "goalsFor": 21,
       "goalsAgainst": 4,
-      "goalDifference": 16
+      "goalDifference": 17
     },
     {
       "position": 2,
@@ -84,35 +84,17 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/158085.png"
       },
-      "playedGames": 8,
-      "won": 4,
+      "playedGames": 9,
+      "won": 5,
       "draw": 2,
       "lost": 2,
-      "points": 14,
-      "goalsFor": 11,
+      "points": 17,
+      "goalsFor": 12,
       "goalsAgainst": 7,
-      "goalDifference": 4
+      "goalDifference": 5
     },
     {
       "position": 6,
-      "team": {
-        "id": 9764,
-        "name": "Gil Vicente",
-        "shortName": "Gil Vicente",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
-      },
-      "playedGames": 8,
-      "won": 4,
-      "draw": 2,
-      "lost": 2,
-      "points": 14,
-      "goalsFor": 8,
-      "goalsAgainst": 6,
-      "goalDifference": 2
-    },
-    {
-      "position": 7,
       "team": {
         "id": 1786,
         "name": "Académico Viseu",
@@ -127,6 +109,24 @@
       "points": 14,
       "goalsFor": 11,
       "goalsAgainst": 10,
+      "goalDifference": 1
+    },
+    {
+      "position": 7,
+      "team": {
+        "id": 9764,
+        "name": "Gil Vicente",
+        "shortName": "Gil Vicente",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
+      },
+      "playedGames": 9,
+      "won": 4,
+      "draw": 2,
+      "lost": 3,
+      "points": 14,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
       "goalDifference": 1
     },
     {
@@ -156,14 +156,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9780.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 3,
       "draw": 2,
-      "lost": 3,
+      "lost": 4,
       "points": 11,
       "goalsFor": 13,
-      "goalsAgainst": 12,
-      "goalDifference": 1
+      "goalsAgainst": 13,
+      "goalDifference": 0
     },
     {
       "position": 10,
@@ -180,8 +180,8 @@
       "lost": 3,
       "points": 10,
       "goalsFor": 14,
-      "goalsAgainst": 16,
-      "goalDifference": -2
+      "goalsAgainst": 17,
+      "goalDifference": -3
     },
     {
       "position": 11,
@@ -287,9 +287,9 @@
       "draw": 1,
       "lost": 6,
       "points": 7,
-      "goalsFor": 4,
+      "goalsFor": 5,
       "goalsAgainst": 17,
-      "goalDifference": -13
+      "goalDifference": -12
     },
     {
       "position": 17,
