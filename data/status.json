@@ -1,11 +1,12 @@
 {
-  "_updated_at": "2026-10-25T19:31:29.022326+00:00",
-  "mode": "news",
+  "_updated_at": "2026-10-25T19:46:30.303619+00:00",
+  "mode": "live",
   "errors": [],
   "sources": {
+    "live": true,
+    "news": false,
     "football_api": false,
-    "fbref": true,
-    "news": true,
-    "maps": true
+    "fbref": false,
+    "maps": false
   }
 }
