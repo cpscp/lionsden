@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-25T16:37:53.686713+00:00",
+  "_updated_at": "2026-10-25T21:01:40.669846+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -611,17 +611,16 @@
       "kickoff_date": "2026-10-25",
       "kickoff_local_time": "20:30",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "live",
+        "long": "Em direto"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Nogueira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001072016, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 36, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.78, 'valueType': 'perMatch', 'average': 4.97, 'total': 172, 'averageType': 'average', 'fillPercentage': 43.59, 'averagePercentage': 50}, {'type': 'redCards', 'value': 4, 'valueType': 'total'}, {'type': 'unknown', 'value': 6, 'valueType': 'total'}, {'type': 'penalties', 'value': 15, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.13, 'valueType': 'perMatch', 'average': 27.54, 'total': 836, 'averageType': 'below', 'fillPercentage': 34.43, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207228,
-        "lon": -9.160875678,
-        "capacity": 52095.0,
-        "country": "Portugal"
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "Liga Portugal",
@@ -948,13 +947,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
         "name": "Stadio Olimpico",
         "city": "Roma",
-        "lat": 41.933886,
-        "lon": 12.454786,
-        "capacity": null
+        "lat": 41.933947912,
+        "lon": 12.454757094,
+        "capacity": 70634.0,
+        "country": "Italy"
       },
       "competition": {
         "name": "Champions League",

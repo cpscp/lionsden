@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-25T16:37:15.697979+00:00",
+  "_updated_at": "2026-10-25T21:00:52.496799+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -48,14 +48,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 5,
       "draw": 3,
-      "lost": 0,
+      "lost": 1,
       "points": 18,
       "goalsFor": 20,
-      "goalsAgainst": 9,
-      "goalDifference": 11
+      "goalsAgainst": 10,
+      "goalDifference": 10
     },
     {
       "position": 4,
@@ -102,14 +102,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
       },
-      "playedGames": 8,
-      "won": 4,
+      "playedGames": 9,
+      "won": 5,
       "draw": 2,
       "lost": 2,
-      "points": 14,
-      "goalsFor": 11,
+      "points": 17,
+      "goalsFor": 12,
       "goalsAgainst": 10,
-      "goalDifference": 1
+      "goalDifference": 2
     },
     {
       "position": 7,
@@ -156,14 +156,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 3,
       "draw": 2,
-      "lost": 3,
+      "lost": 4,
       "points": 11,
       "goalsFor": 9,
-      "goalsAgainst": 10,
-      "goalDifference": -1
+      "goalsAgainst": 11,
+      "goalDifference": -2
     },
     {
       "position": 10,
@@ -180,11 +180,29 @@
       "lost": 4,
       "points": 11,
       "goalsFor": 11,
-      "goalsAgainst": 15,
-      "goalDifference": -4
+      "goalsAgainst": 16,
+      "goalDifference": -5
     },
     {
       "position": 11,
+      "team": {
+        "id": 1634,
+        "name": "Famalicão",
+        "shortName": "Famalicão",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
+      },
+      "playedGames": 9,
+      "won": 2,
+      "draw": 4,
+      "lost": 3,
+      "points": 10,
+      "goalsFor": 14,
+      "goalsAgainst": 11,
+      "goalDifference": 3
+    },
+    {
+      "position": 12,
       "team": {
         "id": 1074320,
         "name": "Estrela da Amadora",
@@ -202,7 +220,7 @@
       "goalDifference": -3
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 7844,
         "name": "Vitória de Guimarães",
@@ -220,7 +238,7 @@
       "goalDifference": 0
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 10212,
         "name": "Marítimo",
@@ -238,40 +256,22 @@
       "goalDifference": -10
     },
     {
-      "position": 14,
-      "team": {
-        "id": 1634,
-        "name": "Famalicão",
-        "shortName": "Famalicão",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
-      },
-      "playedGames": 8,
-      "won": 1,
-      "draw": 4,
-      "lost": 3,
-      "points": 7,
-      "goalsFor": 10,
-      "goalsAgainst": 11,
-      "goalDifference": -1
-    },
-    {
       "position": 15,
       "team": {
-        "id": 7841,
-        "name": "Rio Ave",
-        "shortName": "Rio Ave",
+        "id": 10214,
+        "name": "Nacional",
+        "shortName": "Nacional",
         "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7841.png"
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 2,
       "draw": 1,
-      "lost": 5,
+      "lost": 6,
       "points": 7,
-      "goalsFor": 8,
-      "goalsAgainst": 17,
-      "goalDifference": -9
+      "goalsFor": 10,
+      "goalsAgainst": 18,
+      "goalDifference": -8
     },
     {
       "position": 16,
@@ -294,20 +294,20 @@
     {
       "position": 17,
       "team": {
-        "id": 10214,
-        "name": "Nacional",
-        "shortName": "Nacional",
+        "id": 7841,
+        "name": "Rio Ave",
+        "shortName": "Rio Ave",
         "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7841.png"
       },
-      "playedGames": 8,
-      "won": 1,
+      "playedGames": 9,
+      "won": 2,
       "draw": 1,
       "lost": 6,
-      "points": 4,
-      "goalsFor": 9,
-      "goalsAgainst": 18,
-      "goalDifference": -9
+      "points": 7,
+      "goalsFor": 8,
+      "goalsAgainst": 21,
+      "goalDifference": -13
     },
     {
       "position": 18,
@@ -323,9 +323,9 @@
       "draw": 2,
       "lost": 7,
       "points": 2,
-      "goalsFor": 4,
+      "goalsFor": 5,
       "goalsAgainst": 15,
-      "goalDifference": -11
+      "goalDifference": -10
     }
   ],
   "source": "FotMob"

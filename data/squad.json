@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-25T16:37:14.864774+00:00",
+  "_updated_at": "2026-10-25T21:00:51.531948+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -3291,6 +3291,118 @@
       "dateOfBirth": "2003-03-27T00:00:00.000Z"
     },
     {
+      "fotmob_id": 1648470,
+      "name": "Eduardo Felicíssimo",
+      "position": "DF",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
+      "stats": {
+        "matches": 1,
+        "byCompetition": {
+          "Club Friendlies": {
+            "matches": 1,
+            "minutes": 44,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          }
+        },
+        "minutes": 44,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 73,
+      "career": [
+        {
+          "period": "2024-07-01T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024-12-21T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2024-09-16T00:00:00 → 2026-09-07T00:00:00",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024-07-01T00:00:00 → 2026-06-30T00:00:00",
+          "club": "Sporting Clube de Portugal Under 21"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Sporting CP U19"
+        },
+        {
+          "period": "2026-09-17T00:00:00",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2024-09-06T00:00:00 → 2026-09-27T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2023-09-01T00:00:00 → 2024-11-07T00:00:00",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Portugal U21"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2024",
+          "club": "Portugal U17"
+        },
+        {
+          "period": "2023",
+          "club": "Portugal U17"
+        }
+      ],
+      "careerStats": [],
+      "dateOfBirth": "2007-01-08T00:00:00.000Z",
+      "sofascore_id": 1586645,
+      "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874"
+    },
+    {
       "fotmob_id": 1339345,
       "name": "Issa Doumbia",
       "position": "MF",
@@ -5298,27 +5410,6 @@
         }
       ],
       "dateOfBirth": "1997-12-02T00:00:00.000Z"
-    },
-    {
-      "sofascore_id": 1586645,
-      "name": "Eduardo Felicíssimo",
-      "position": "DF",
-      "nationality": "Portugal",
-      "dateOfBirth": "2007-01-08T00:00:00.000Z",
-      "shirtNumber": 73,
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
-      "zerozero_url": "https://www.zerozero.pt/jogador/eduardo-felicissimo/847874",
-      "stats": {
-        "matches": 0,
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "competitions": {},
-      "careerStats": [],
-      "career": []
     },
     {
       "sofascore_id": 1184327,
