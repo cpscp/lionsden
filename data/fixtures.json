@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-24T21:01:21.762167+00:00",
+  "_updated_at": "2026-10-25T04:58:50.711452+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -614,7 +614,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Nogueira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001072016, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 36, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.78, 'valueType': 'perMatch', 'average': 4.99, 'total': 172, 'averageType': 'average', 'fillPercentage': 43.22, 'averagePercentage': 50}, {'type': 'redCards', 'value': 4, 'valueType': 'total'}, {'type': 'unknown', 'value': 6, 'valueType': 'total'}, {'type': 'penalties', 'value': 15, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.13, 'valueType': 'perMatch', 'average': 27.54, 'total': 836, 'averageType': 'below', 'fillPercentage': 34.44, 'averagePercentage': 50}]}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Nogueira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001072016, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 36, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.78, 'valueType': 'perMatch', 'average': 4.97, 'total': 172, 'averageType': 'average', 'fillPercentage': 43.59, 'averagePercentage': 50}, {'type': 'redCards', 'value': 4, 'valueType': 'total'}, {'type': 'unknown', 'value': 6, 'valueType': 'total'}, {'type': 'penalties', 'value': 15, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.13, 'valueType': 'perMatch', 'average': 27.54, 'total': 836, 'averageType': 'below', 'fillPercentage': 34.43, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
