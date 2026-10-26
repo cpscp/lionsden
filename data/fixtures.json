@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-26T05:02:44.075417+00:00",
+  "_updated_at": "2026-10-26T13:22:16.750973+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -655,7 +655,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Iancu Vasilica', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001077947, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 23, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.83, 'valueType': 'perMatch', 'average': 4.96, 'total': 88, 'averageType': 'below', 'fillPercentage': 12.82, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 0, 'valueType': 'total'}, {'type': 'penalties', 'value': 4, 'valueType': 'total'}, {'type': 'fouls', 'value': 27.86, 'valueType': 'perMatch', 'average': 27.55, 'total': 613, 'averageType': 'average', 'fillPercentage': 53.41, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",

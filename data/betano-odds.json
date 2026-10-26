@@ -1,8 +1,46 @@
 {
-  "_updated_at": "2026-10-26T05:02:25.456202+00:00",
+  "_updated_at": "2026-10-26T13:22:01.770394+00:00",
   "fixtures": {
+    "5985964": {
+      "updated_at": "2026-10-26T13:22:01.666720+00:00",
+      "source": "SportyTrader public odds comparator",
+      "bookmaker_name": "Mercado",
+      "bookmakers": {
+        "Mercado": [
+          {
+            "name": "ML",
+            "odds": [
+              {
+                "home": "1.27",
+                "draw": "5.60",
+                "away": "10.00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "5887666": {
+      "updated_at": "2026-10-26T13:22:01.666799+00:00",
+      "source": "SportyTrader public odds comparator",
+      "bookmaker_name": "Mercado",
+      "bookmakers": {
+        "Mercado": [
+          {
+            "name": "ML",
+            "odds": [
+              {
+                "home": "11.25",
+                "draw": "6.00",
+                "away": "1.26"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "6106335": {
-      "updated_at": "2026-10-26T05:02:25.362720+00:00",
+      "updated_at": "2026-10-26T13:22:01.669127+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -19,10 +57,29 @@
           }
         ]
       }
+    },
+    "5887698": {
+      "updated_at": "2026-10-26T13:22:01.680917+00:00",
+      "source": "SportyTrader public odds comparator",
+      "bookmaker_name": "Mercado",
+      "bookmakers": {
+        "Mercado": [
+          {
+            "name": "ML",
+            "odds": [
+              {
+                "home": "1.27",
+                "draw": "5.60",
+                "away": "10.00"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "source": "SportyTrader public odds comparator",
   "status": "public_fallback",
-  "coverage": 1,
+  "coverage": 4,
   "error": "429 Client Error: Too Many Requests for url: https://api.oddspapi.io/v4/tournaments?sportId=10&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932"
 }
