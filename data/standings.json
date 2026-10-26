@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-26T13:21:40.889304+00:00",
+  "_updated_at": "2026-10-26T22:48:44.347430+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -30,14 +30,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
       },
-      "playedGames": 8,
-      "won": 6,
+      "playedGames": 9,
+      "won": 7,
       "draw": 1,
       "lost": 1,
-      "points": 19,
-      "goalsFor": 24,
-      "goalsAgainst": 7,
-      "goalDifference": 17
+      "points": 22,
+      "goalsFor": 26,
+      "goalsAgainst": 8,
+      "goalDifference": 18
     },
     {
       "position": 3,
@@ -66,14 +66,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
       },
-      "playedGames": 8,
+      "playedGames": 9,
       "won": 5,
       "draw": 3,
-      "lost": 0,
+      "lost": 1,
       "points": 18,
-      "goalsFor": 12,
-      "goalsAgainst": 4,
-      "goalDifference": 8
+      "goalsFor": 13,
+      "goalsAgainst": 6,
+      "goalDifference": 7
     },
     {
       "position": 5,

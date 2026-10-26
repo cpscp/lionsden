@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-26T13:21:58.053283+00:00",
+  "_updated_at": "2026-10-26T22:49:05.525343+00:00",
   "fixtures": {
     "5985964": {
       "home": {
@@ -150,7 +150,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-26T13:21:54.101313+00:00"
+      "updated_at": "2026-10-26T22:49:01.292604+00:00"
     },
     "5887666": {
       "home": {
@@ -301,7 +301,7 @@
         "away_wins": 9,
         "total": 9
       },
-      "updated_at": "2026-10-26T13:21:54.119023+00:00"
+      "updated_at": "2026-10-26T22:49:01.321736+00:00"
     },
     "6106335": {
       "home": {
@@ -415,7 +415,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:54.136113+00:00"
+      "updated_at": "2026-10-26T22:49:01.349202+00:00"
     },
     "5887679": {
       "home": {
@@ -566,7 +566,92 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-10-26T13:21:54.156294+00:00"
+      "updated_at": "2026-10-26T22:49:01.377544+00:00"
+    },
+    "6506259": {
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP",
+        "form": [
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-09-19T19:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 3",
+            "date": "2026-10-09T19:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-10-13T16:45:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Lens",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "2 - 3",
+            "date": "2026-10-21T19:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "LASK",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-10-25T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
+            "match_id": null
+          }
+        ],
+        "table": {
+          "position": 3,
+          "played": 9,
+          "points": 18,
+          "name": "Sporting CP"
+        }
+      },
+      "away": {
+        "id": 188158,
+        "name": "União Serra",
+        "form": [
+          {
+            "result": "W",
+            "score": "3 - 4",
+            "date": "2026-09-20T14:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Amora FC",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "1 - 1",
+            "date": "2026-10-18T14:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Vitória de Setúbal",
+            "match_id": null
+          }
+        ],
+        "table": null
+      },
+      "h2h": {
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
+      },
+      "updated_at": "2026-10-26T22:49:01.404894+00:00"
     },
     "6106279": {
       "home": {
@@ -680,7 +765,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:54.172504+00:00"
+      "updated_at": "2026-10-26T22:49:01.432427+00:00"
     },
     "5887687": {
       "home": {
@@ -831,7 +916,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-10-26T13:21:54.192940+00:00"
+      "updated_at": "2026-10-26T22:49:01.459806+00:00"
     },
     "5887698": {
       "home": {
@@ -982,7 +1067,7 @@
         "away_wins": 6,
         "total": 33
       },
-      "updated_at": "2026-10-26T13:21:54.212684+00:00"
+      "updated_at": "2026-10-26T22:49:01.488763+00:00"
     },
     "6106275": {
       "home": {
@@ -1115,7 +1200,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-26T13:21:54.228259+00:00"
+      "updated_at": "2026-10-26T22:49:01.593682+00:00"
     },
     "5887702": {
       "home": {
@@ -1266,7 +1351,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-10-26T13:21:54.462675+00:00"
+      "updated_at": "2026-10-26T22:49:01.808956+00:00"
     },
     "5887716": {
       "home": {
@@ -1417,21 +1502,13 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-10-26T13:21:54.743171+00:00"
+      "updated_at": "2026-10-26T22:49:02.012932+00:00"
     },
     "5887724": {
       "home": {
         "id": 9772,
         "name": "Benfica",
         "form": [
-          {
-            "result": "W",
-            "score": "0 - 2",
-            "date": "2026-09-16T19:00:00.000Z",
-            "competition": "Europa League",
-            "opponent": "Milan",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "3 - 1",
@@ -1462,6 +1539,14 @@
             "date": "2026-10-22T19:00:00.000Z",
             "competition": "Europa League",
             "opponent": "Omonia Nicosia",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-10-26T18:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
             "match_id": null
           }
         ],
@@ -1531,7 +1616,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:54.875470+00:00"
+      "updated_at": "2026-10-26T22:49:02.163387+00:00"
     },
     "5887734": {
       "home": {
@@ -1592,14 +1677,6 @@
         "form": [
           {
             "result": "W",
-            "score": "4 - 0",
-            "date": "2026-09-06T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Rio Ave",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "1 - 2",
             "date": "2026-09-13T17:00:00.000Z",
             "competition": "Liga Portugal",
@@ -1629,6 +1706,14 @@
             "competition": "Taca de Portugal",
             "opponent": "Mafra",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-10-26T18:45:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
           }
         ],
         "table": {
@@ -1645,7 +1730,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:55.005273+00:00"
+      "updated_at": "2026-10-26T22:49:02.455414+00:00"
     },
     "5887735": {
       "home": {
@@ -1759,7 +1844,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:55.141076+00:00"
+      "updated_at": "2026-10-26T22:49:02.631774+00:00"
     },
     "6106278": {
       "home": {
@@ -1892,7 +1977,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-26T13:21:55.214688+00:00"
+      "updated_at": "2026-10-26T22:49:02.794613+00:00"
     },
     "5887752": {
       "home": {
@@ -2006,7 +2091,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:55.340889+00:00"
+      "updated_at": "2026-10-26T22:49:02.942025+00:00"
     },
     "6106255": {
       "home": {
@@ -2157,7 +2242,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-10-26T13:21:55.613757+00:00"
+      "updated_at": "2026-10-26T22:49:03.242450+00:00"
     },
     "5887760": {
       "home": {
@@ -2271,7 +2356,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:55.766185+00:00"
+      "updated_at": "2026-10-26T22:49:03.400259+00:00"
     },
     "5887769": {
       "home": {
@@ -2385,7 +2470,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:55.991205+00:00"
+      "updated_at": "2026-10-26T22:49:03.553661+00:00"
     },
     "5887778": {
       "home": {
@@ -2536,7 +2621,7 @@
         "away_wins": 20,
         "total": 28
       },
-      "updated_at": "2026-10-26T13:21:56.127866+00:00"
+      "updated_at": "2026-10-26T22:49:03.853712+00:00"
     },
     "5887784": {
       "home": {
@@ -2650,7 +2735,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:56.267844+00:00"
+      "updated_at": "2026-10-26T22:49:04.139407+00:00"
     },
     "5887796": {
       "home": {
@@ -2764,7 +2849,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:56.395509+00:00"
+      "updated_at": "2026-10-26T22:49:04.294554+00:00"
     },
     "5887800": {
       "home": {
@@ -2878,7 +2963,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:56.521815+00:00"
+      "updated_at": "2026-10-26T22:49:04.457177+00:00"
     },
     "5887814": {
       "home": {
@@ -2992,7 +3077,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:56.863068+00:00"
+      "updated_at": "2026-10-26T22:49:04.604730+00:00"
     },
     "5887819": {
       "home": {
@@ -3106,7 +3191,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:57.171618+00:00"
+      "updated_at": "2026-10-26T22:49:04.755194+00:00"
     },
     "5887832": {
       "home": {
@@ -3220,7 +3305,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:57.463714+00:00"
+      "updated_at": "2026-10-26T22:49:05.037157+00:00"
     },
     "5887840": {
       "home": {
@@ -3334,7 +3419,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:57.740211+00:00"
+      "updated_at": "2026-10-26T22:49:05.189595+00:00"
     },
     "5887851": {
       "home": {
@@ -3448,7 +3533,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:58.000201+00:00"
+      "updated_at": "2026-10-26T22:49:05.469955+00:00"
     },
     "5887855": {
       "home": {
@@ -3562,7 +3647,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:58.016435+00:00"
+      "updated_at": "2026-10-26T22:49:05.499012+00:00"
     },
     "5887869": {
       "home": {
@@ -3676,121 +3761,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-26T13:21:58.036456+00:00"
-    },
-    "5887877": {
-      "home": {
-        "id": 9768,
-        "name": "Sporting CP",
-        "form": [
-          {
-            "result": "D",
-            "score": "2 - 2",
-            "date": "2026-09-19T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Arouca",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "1 - 3",
-            "date": "2026-10-09T19:15:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "0 - 2",
-            "date": "2026-10-13T16:45:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Lens",
-            "match_id": null
-          },
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          }
-        ],
-        "table": {
-          "position": 3,
-          "played": 9,
-          "points": 18,
-          "name": "Sporting CP"
-        }
-      },
-      "away": {
-        "id": 9772,
-        "name": "Benfica",
-        "form": [
-          {
-            "result": "W",
-            "score": "0 - 2",
-            "date": "2026-09-16T19:00:00.000Z",
-            "competition": "Europa League",
-            "opponent": "Milan",
-            "match_id": null
-          },
-          {
-            "result": "L",
-            "score": "3 - 1",
-            "date": "2026-09-20T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "FC Porto",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "2 - 0",
-            "date": "2026-10-11T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Vitória de Guimarães",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "4 - 1",
-            "date": "2026-10-15T19:00:00.000Z",
-            "competition": "Europa League",
-            "opponent": "Celtic",
-            "match_id": null
-          },
-          {
-            "result": "W",
-            "score": "1 - 4",
-            "date": "2026-10-22T19:00:00.000Z",
-            "competition": "Europa League",
-            "opponent": "Omonia Nicosia",
-            "match_id": null
-          }
-        ],
-        "table": {
-          "position": 2,
-          "played": 8,
-          "points": 19,
-          "name": "Benfica"
-        }
-      },
-      "h2h": {
-        "matches": [],
-        "home_wins": 0,
-        "draws": 0,
-        "away_wins": 0,
-        "total": 0
-      },
-      "updated_at": "2026-10-26T13:21:58.053267+00:00"
+      "updated_at": "2026-10-26T22:49:05.525330+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

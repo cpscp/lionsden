@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-26T13:22:16.750973+00:00",
+  "_updated_at": "2026-10-26T22:49:22.987058+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -815,6 +815,46 @@
       "transmission": "SportTV 1"
     },
     {
+      "id": 6506259,
+      "date": 1795273200,
+      "kickoff_date": "2026-11-21",
+      "kickoff_local_time": "15:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
+      },
+      "competition": {
+        "name": "Taca de Portugal",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 188158,
+        "name": "União Serra"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
       "id": 6106279,
       "date": 1795636800,
       "kickoff_date": "2026-11-25",
@@ -947,14 +987,13 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": null,
       "venue": {
         "name": "Stadio Olimpico",
         "city": "Roma",
-        "lat": 41.933947912,
-        "lon": 12.454757094,
-        "capacity": 70634.0,
-        "country": "Italy"
+        "lat": 41.933886,
+        "lon": 12.454786,
+        "capacity": null
       },
       "competition": {
         "name": "Champions League",

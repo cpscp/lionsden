@@ -1,8 +1,8 @@
 {
-  "_updated_at": "2026-10-26T13:22:01.770394+00:00",
+  "_updated_at": "2026-10-26T22:49:08.307269+00:00",
   "fixtures": {
     "5985964": {
-      "updated_at": "2026-10-26T13:22:01.666720+00:00",
+      "updated_at": "2026-10-26T22:49:08.228645+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -11,9 +11,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "1.27",
-                "draw": "5.60",
-                "away": "10.00"
+                "home": "1.34",
+                "draw": "5.30",
+                "away": "8.75"
               }
             ]
           }
@@ -21,7 +21,7 @@
       }
     },
     "5887666": {
-      "updated_at": "2026-10-26T13:22:01.666799+00:00",
+      "updated_at": "2026-10-26T22:49:08.228712+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -30,9 +30,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "11.25",
-                "draw": "6.00",
-                "away": "1.26"
+                "home": "10.25",
+                "draw": "5.50",
+                "away": "1.30"
               }
             ]
           }
@@ -40,7 +40,7 @@
       }
     },
     "6106335": {
-      "updated_at": "2026-10-26T13:22:01.669127+00:00",
+      "updated_at": "2026-10-26T22:49:08.230512+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -59,7 +59,7 @@
       }
     },
     "5887698": {
-      "updated_at": "2026-10-26T13:22:01.680917+00:00",
+      "updated_at": "2026-10-26T22:49:08.242413+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -68,9 +68,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "1.27",
-                "draw": "5.60",
-                "away": "10.00"
+                "home": "1.34",
+                "draw": "5.30",
+                "away": "8.75"
               }
             ]
           }
