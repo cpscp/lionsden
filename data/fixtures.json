@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-25T21:01:40.669846+00:00",
+  "_updated_at": "2026-10-26T05:02:44.075417+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -611,8 +611,8 @@
       "kickoff_date": "2026-10-25",
       "kickoff_local_time": "20:30",
       "status": {
-        "short": "live",
-        "long": "Em direto"
+        "short": "finished",
+        "long": "Terminado"
       },
       "referee": null,
       "venue": {
@@ -636,8 +636,8 @@
         "name": "Académico Viseu"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       },
       "half_time": {
         "home": null,

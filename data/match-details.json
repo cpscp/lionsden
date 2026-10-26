@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-25T21:01:31.205543+00:00",
+  "_updated_at": "2026-10-26T05:02:35.229687+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -16673,6 +16673,1394 @@
         },
         "awayManager": {
           "name": "Dietmar Kühbauer"
+        }
+      }
+    },
+    {
+      "match_id": 5887661,
+      "source_match_id": 5887661,
+      "source": "FotMob",
+      "event": {
+        "referee": {
+          "name": "Miguel Nogueira"
+        },
+        "attendance": null,
+        "venue": {
+          "name": "Estádio José Alvalade",
+          "city": "Lisboa"
+        },
+        "homeScore": {
+          "current": "1"
+        },
+        "awayScore": {
+          "current": "2"
+        }
+      },
+      "lineups": {
+        "home": {
+          "id": 9768,
+          "name": "Sporting CP",
+          "formation": "4-2-3-1",
+          "coach": "Rui Borges",
+          "players": [
+            {
+              "player": {
+                "name": "Kaique Pereira",
+                "shortName": "Kaique Pereira",
+                "id": 1320169
+              },
+              "shirtNumber": "30",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.1,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 4.9
+              }
+            },
+            {
+              "player": {
+                "name": "Iván Fresneda",
+                "shortName": "Iván Fresneda",
+                "id": 1325998
+              },
+              "shirtNumber": "22",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.875,
+                "height": 0.25,
+                "width": 0.385
+              },
+              "statistics": {
+                "rating": 7.8
+              }
+            },
+            {
+              "player": {
+                "name": "Ibrahima Ba",
+                "shortName": "Ibrahima Ba",
+                "id": 1609327
+              },
+              "shirtNumber": "55",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.625,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.4
+              }
+            },
+            {
+              "player": {
+                "name": "Gonçalo Inácio",
+                "shortName": "Gonçalo Inácio",
+                "id": 1165710
+              },
+              "shirtNumber": "25",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.375,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6.8
+              }
+            },
+            {
+              "player": {
+                "name": "Maxi Araújo",
+                "shortName": "Maxi Araújo",
+                "id": 1031656
+              },
+              "shirtNumber": "20",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.125,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.8
+              }
+            },
+            {
+              "player": {
+                "name": "Sergi Altimira",
+                "shortName": "Sergi Altimira",
+                "id": 1310480
+              },
+              "shirtNumber": "5",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.485,
+                "y": 0.7,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.1
+              }
+            },
+            {
+              "player": {
+                "name": "Issa Doumbia",
+                "shortName": "Issa Doumbia",
+                "id": 1339345
+              },
+              "shirtNumber": "77",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.485,
+                "y": 0.3,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6
+              }
+            },
+            {
+              "player": {
+                "name": "Flávio Gonçalves",
+                "shortName": "Flávio Gonçalves",
+                "id": 1691190
+              },
+              "shirtNumber": "58",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.837,
+                "height": 0.25,
+                "width": 0.385
+              },
+              "statistics": {
+                "rating": 7
+              }
+            },
+            {
+              "player": {
+                "name": "Luís Guilherme",
+                "shortName": "Luís Guilherme",
+                "id": 1458757
+              },
+              "shirtNumber": "31",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6.8
+              }
+            },
+            {
+              "player": {
+                "name": "Nestory Irankunda",
+                "shortName": "Nestory Irankunda",
+                "id": 1327214
+              },
+              "shirtNumber": "19",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.163,
+                "height": 0.25,
+                "width": 0.193
+              },
+              "statistics": {
+                "rating": 8.1
+              }
+            },
+            {
+              "player": {
+                "name": "Luis Suárez",
+                "shortName": "Luis Suárez",
+                "id": 792303
+              },
+              "shirtNumber": "97",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.87,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.8
+              }
+            },
+            {
+              "player": {
+                "name": "Fotis Ioannidis",
+                "shortName": "Fotis Ioannidis",
+                "id": 899701
+              },
+              "shirtNumber": "7",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": 5.9
+              }
+            },
+            {
+              "player": {
+                "name": "Geny Catamo",
+                "shortName": "Geny Catamo",
+                "id": 1088753
+              },
+              "shirtNumber": "10",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": 6.4
+              }
+            },
+            {
+              "player": {
+                "name": "Georgios Vagiannidis",
+                "shortName": "Georgios Vagiannidis",
+                "id": 1119687
+              },
+              "shirtNumber": "13",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Silas Andersen",
+                "shortName": "Silas Andersen",
+                "id": 1425101
+              },
+              "shirtNumber": "4",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Jesse Derry",
+                "shortName": "Jesse Derry",
+                "id": 1526704
+              },
+              "shirtNumber": "28",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rui Silva",
+                "shortName": "Rui Silva",
+                "id": 361717
+              },
+              "shirtNumber": "1",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Eduardo Quaresma",
+                "shortName": "Eduardo Quaresma",
+                "id": 1156380
+              },
+              "shirtNumber": "72",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Moncef Zekri",
+                "shortName": "Moncef Zekri",
+                "id": 1755850
+              },
+              "shirtNumber": "18",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Eduardo Felicíssimo",
+                "shortName": "Eduardo Felicíssimo",
+                "id": 1648470
+              },
+              "shirtNumber": "73",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "João Simões",
+                "shortName": "João Simões",
+                "id": 1663855
+              },
+              "shirtNumber": "8",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Pedro Lima",
+                "shortName": "Pedro Lima",
+                "id": 1459257
+              },
+              "shirtNumber": "21",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rafael Nel",
+                "shortName": "Rafael Nel",
+                "id": 1525416
+              },
+              "shirtNumber": "9",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            }
+          ]
+        },
+        "away": {
+          "id": 1786,
+          "name": "Académico Viseu",
+          "formation": "4-2-3-1",
+          "coach": "Bruno Pinheiro",
+          "players": [
+            {
+              "player": {
+                "name": "Ewerton",
+                "shortName": "Ewerton",
+                "id": 1282311
+              },
+              "shirtNumber": "98",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.1,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7
+              }
+            },
+            {
+              "player": {
+                "name": "Robinho",
+                "shortName": "Robinho",
+                "id": 1030839
+              },
+              "shirtNumber": "75",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.875,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 8.2
+              }
+            },
+            {
+              "player": {
+                "name": "Anthony Correia",
+                "shortName": "Anthony Correia",
+                "id": 958529
+              },
+              "shirtNumber": "41",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.625,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6.9
+              }
+            },
+            {
+              "player": {
+                "name": "Nikolaos Michelis",
+                "shortName": "Nikolaos Michelis",
+                "id": 1183735
+              },
+              "shirtNumber": "2",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.375,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.7
+              }
+            },
+            {
+              "player": {
+                "name": "Miguel Ángel Brau",
+                "shortName": "Miguel Ángel Brau",
+                "id": 1358582
+              },
+              "shirtNumber": "3",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.292,
+                "y": 0.125,
+                "height": 0.25,
+                "width": 0.385
+              },
+              "statistics": {
+                "rating": 6.9
+              }
+            },
+            {
+              "player": {
+                "name": "Cihan Kahraman",
+                "shortName": "Cihan Kahraman",
+                "id": 726551
+              },
+              "shirtNumber": "8",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.485,
+                "y": 0.7,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6.7
+              }
+            },
+            {
+              "player": {
+                "name": "Luís Silva",
+                "shortName": "Luís Silva",
+                "id": 476945
+              },
+              "shirtNumber": "7",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.485,
+                "y": 0.3,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7
+              }
+            },
+            {
+              "player": {
+                "name": "Nils Mortimer Moreno",
+                "shortName": "Nils Mortimer Moreno",
+                "id": 942377
+              },
+              "shirtNumber": "22",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.837,
+                "height": 0.25,
+                "width": 0.193
+              },
+              "statistics": {
+                "rating": 6.4
+              }
+            },
+            {
+              "player": {
+                "name": "Soufiane Messeguem",
+                "shortName": "Soufiane Messeguem",
+                "id": 1274539
+              },
+              "shirtNumber": "14",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 7.9
+              }
+            },
+            {
+              "player": {
+                "name": "João Guilherme",
+                "shortName": "João Guilherme",
+                "id": 1641845
+              },
+              "shirtNumber": "31",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.678,
+                "y": 0.163,
+                "height": 0.25,
+                "width": 0.385
+              },
+              "statistics": {
+                "rating": 8.9
+              }
+            },
+            {
+              "player": {
+                "name": "André Clovis",
+                "shortName": "André Clovis",
+                "id": 929680
+              },
+              "shirtNumber": "33",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": {
+                "x": 0.87,
+                "y": 0.5,
+                "height": 0.25,
+                "width": 0.192
+              },
+              "statistics": {
+                "rating": 6.7
+              }
+            },
+            {
+              "player": {
+                "name": "Lorougnon Gohi",
+                "shortName": "Lorougnon Gohi",
+                "id": 1695981
+              },
+              "shirtNumber": "47",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": 6.2
+              }
+            },
+            {
+              "player": {
+                "name": "Alejandro Mestanza",
+                "shortName": "Alejandro Mestanza",
+                "id": 1477850
+              },
+              "shirtNumber": "45",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": 6.3
+              }
+            },
+            {
+              "player": {
+                "name": "Álvaro Zamora",
+                "shortName": "Álvaro Zamora",
+                "id": 1401581
+              },
+              "shirtNumber": "10",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Mohamed Bouldini",
+                "shortName": "Mohamed Bouldini",
+                "id": 955586
+              },
+              "shirtNumber": "9",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Juan Soriano",
+                "shortName": "Juan Soriano",
+                "id": 582878
+              },
+              "shirtNumber": "12",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Matheus Sampaio",
+                "shortName": "Matheus Sampaio",
+                "id": 1637274
+              },
+              "shirtNumber": "58",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Gu Costa",
+                "shortName": "Gu Costa",
+                "id": 1712396
+              },
+              "shirtNumber": "57",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Pedro Barcelos",
+                "shortName": "Pedro Barcelos",
+                "id": 1228061
+              },
+              "shirtNumber": "5",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rúben Pereira",
+                "shortName": "Rúben Pereira",
+                "id": 1150326
+              },
+              "shirtNumber": "44",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "André Ceitil",
+                "shortName": "André Ceitil",
+                "id": 908826
+              },
+              "shirtNumber": "6",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Cristian Ferreira",
+                "shortName": "Cristian Ferreira",
+                "id": 892175
+              },
+              "shirtNumber": "18",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Valery Fernández",
+                "shortName": "Valery Fernández",
+                "id": 977760
+              },
+              "shirtNumber": "17",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            }
+          ]
+        }
+      },
+      "incidents": {
+        "incidents": [
+          {
+            "incidentType": "card",
+            "time": 9,
+            "player": {
+              "id": 476945,
+              "name": "Luís Silva",
+              "profileUrl": "/players/476945/luis-silva"
+            },
+            "isHome": false,
+            "description": "Luís Silva",
+            "swap": [],
+            "cardType": "yellow"
+          },
+          {
+            "incidentType": "card",
+            "time": 11,
+            "player": {
+              "id": 726551,
+              "name": "Cihan Kahraman",
+              "profileUrl": "/players/726551/cihan-kahraman"
+            },
+            "isHome": false,
+            "description": "Cihan Kahraman",
+            "swap": [],
+            "cardType": "yellow"
+          },
+          {
+            "incidentType": "goal",
+            "time": 24,
+            "player": {
+              "id": 1641845,
+              "name": "João Guilherme",
+              "profileUrl": "/players/1641845/joao-guilherme"
+            },
+            "isHome": false,
+            "description": "João Guilherme",
+            "swap": [],
+            "cardType": ""
+          },
+          {
+            "incidentType": "card",
+            "time": 41,
+            "player": {
+              "id": 1339345,
+              "name": "Issa Doumbia",
+              "profileUrl": "/players/1339345/issa-doumbia"
+            },
+            "isHome": true,
+            "description": "Issa Doumbia",
+            "swap": [],
+            "cardType": "yellow"
+          },
+          {
+            "incidentType": "card",
+            "time": 45,
+            "player": {
+              "id": 942377,
+              "name": "Nils Mortimer Moreno",
+              "profileUrl": "/players/942377/nils-mortimer-moreno"
+            },
+            "isHome": false,
+            "description": "Nils Mortimer Moreno",
+            "swap": [],
+            "cardType": "yellow"
+          },
+          {
+            "incidentType": "substitution",
+            "time": 58,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Geny Catamo",
+                "id": "1088753",
+                "profileUrl": "/players/1088753/geny-catamo"
+              },
+              {
+                "name": "Luís Guilherme",
+                "id": "1458757",
+                "profileUrl": "/players/1458757/luis-guilherme"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 58,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Fotis Ioannidis",
+                "id": "899701",
+                "profileUrl": "/players/899701/fotis-ioannidis"
+              },
+              {
+                "name": "Flávio Gonçalves",
+                "id": "1691190",
+                "profileUrl": "/players/1691190/flavio-goncalves"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "goal",
+            "time": 62,
+            "player": {
+              "id": 792303,
+              "name": "Luis Suárez",
+              "profileUrl": "/players/792303/luis-suarez"
+            },
+            "isHome": true,
+            "description": "Luis Suárez",
+            "swap": [],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 63,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": false,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Lorougnon Gohi",
+                "id": "1695981",
+                "profileUrl": "/players/1695981/lorougnon-gohi"
+              },
+              {
+                "name": "Nils Mortimer Moreno",
+                "id": "942377",
+                "profileUrl": "/players/942377/nils-mortimer-moreno"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 72,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": false,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Alejandro Mestanza",
+                "id": "1477850",
+                "profileUrl": "/players/1477850/alejandro-mestanza"
+              },
+              {
+                "name": "Cihan Kahraman",
+                "id": "726551",
+                "profileUrl": "/players/726551/cihan-kahraman"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "goal",
+            "time": 74,
+            "player": {
+              "id": 1641845,
+              "name": "João Guilherme",
+              "profileUrl": "/players/1641845/joao-guilherme"
+            },
+            "isHome": false,
+            "description": "João Guilherme",
+            "swap": [],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 85,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Georgios Vagiannidis",
+                "id": "1119687",
+                "profileUrl": "/players/1119687/georgios-vagiannidis"
+              },
+              {
+                "name": "Iván Fresneda",
+                "id": "1325998",
+                "profileUrl": "/players/1325998/ivan-fresneda"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 85,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Jesse Derry",
+                "id": "1526704",
+                "profileUrl": "/players/1526704/jesse-derry"
+              },
+              {
+                "name": "Nestory Irankunda",
+                "id": "1327214",
+                "profileUrl": "/players/1327214/nestory-irankunda"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 85,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": true,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Silas Andersen",
+                "id": "1425101",
+                "profileUrl": "/players/1425101/silas-andersen"
+              },
+              {
+                "name": "Sergi Altimira",
+                "id": "1310480",
+                "profileUrl": "/players/1310480/sergi-altimira"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 87,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": false,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Mohamed Bouldini",
+                "id": "955586",
+                "profileUrl": "/players/955586/mohamed-bouldini"
+              },
+              {
+                "name": "André Clovis",
+                "id": "929680",
+                "profileUrl": "/players/929680/andre-clovis"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "substitution",
+            "time": 87,
+            "player": {
+              "id": null,
+              "profileUrl": ""
+            },
+            "isHome": false,
+            "description": "Substitution",
+            "swap": [
+              {
+                "name": "Álvaro Zamora",
+                "id": "1401581",
+                "profileUrl": "/players/1401581/alvaro-zamora"
+              },
+              {
+                "name": "João Guilherme",
+                "id": "1641845",
+                "profileUrl": "/players/1641845/joao-guilherme"
+              }
+            ],
+            "cardType": ""
+          },
+          {
+            "incidentType": "card",
+            "time": 88,
+            "player": {
+              "id": 1031656,
+              "name": "Maxi Araújo",
+              "profileUrl": "/players/1031656/maxi-araujo"
+            },
+            "isHome": true,
+            "description": "Maxi Araújo",
+            "swap": [],
+            "cardType": "yellow"
+          },
+          {
+            "incidentType": "card",
+            "time": 90,
+            "player": {
+              "id": 1477850,
+              "name": "Alejandro Mestanza",
+              "profileUrl": "/players/1477850/alejandro-mestanza"
+            },
+            "isHome": false,
+            "description": "Alejandro Mestanza",
+            "swap": [],
+            "cardType": "yellow"
+          }
+        ]
+      },
+      "statistics": {
+        "statistics": [
+          {
+            "period": "ALL",
+            "groups": [
+              {
+                "groupName": "FotMob",
+                "statisticsItems": [
+                  {
+                    "name": "Ball possession",
+                    "home": 71,
+                    "away": 29
+                  },
+                  {
+                    "name": "Expected goals (xG)",
+                    "home": "1.98",
+                    "away": "0.80"
+                  },
+                  {
+                    "name": "Total shots",
+                    "home": 28,
+                    "away": 9
+                  },
+                  {
+                    "name": "Shots on target",
+                    "home": 4,
+                    "away": 3
+                  },
+                  {
+                    "name": "Touches in opposition box",
+                    "home": 62,
+                    "away": 17
+                  },
+                  {
+                    "name": "Big chances",
+                    "home": 2,
+                    "away": 4
+                  },
+                  {
+                    "name": "Big chances missed",
+                    "home": 2,
+                    "away": 2
+                  },
+                  {
+                    "name": "Accurate passes",
+                    "home": "540 (91%)",
+                    "away": "188 (75%)"
+                  },
+                  {
+                    "name": "Yellow cards",
+                    "home": 2,
+                    "away": 4
+                  },
+                  {
+                    "name": "Corners",
+                    "home": 10,
+                    "away": 0
+                  },
+                  {
+                    "name": "Shots",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Total shots",
+                    "home": 28,
+                    "away": 9
+                  },
+                  {
+                    "name": "Shots off target",
+                    "home": 13,
+                    "away": 4
+                  },
+                  {
+                    "name": "Shots on target",
+                    "home": 4,
+                    "away": 3
+                  },
+                  {
+                    "name": "Blocked shots",
+                    "home": 11,
+                    "away": 2
+                  },
+                  {
+                    "name": "Hit woodwork",
+                    "home": 3,
+                    "away": 0
+                  },
+                  {
+                    "name": "Shots inside box",
+                    "home": 22,
+                    "away": 6
+                  },
+                  {
+                    "name": "Shots outside box",
+                    "home": 6,
+                    "away": 3
+                  },
+                  {
+                    "name": "Expected goals (xG)",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Expected goals (xG)",
+                    "home": "1.98",
+                    "away": "0.80"
+                  },
+                  {
+                    "name": "xG open play",
+                    "home": "1.67",
+                    "away": "0.76"
+                  },
+                  {
+                    "name": "xG set play",
+                    "home": "0.31",
+                    "away": "0.04"
+                  },
+                  {
+                    "name": "xG non-penalty",
+                    "home": "1.98",
+                    "away": "0.80"
+                  },
+                  {
+                    "name": "xG on target (xGOT)",
+                    "home": "0.29",
+                    "away": "0.91"
+                  },
+                  {
+                    "name": "Passes",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Passes",
+                    "home": 596,
+                    "away": 251
+                  },
+                  {
+                    "name": "Accurate passes",
+                    "home": "540 (91%)",
+                    "away": "188 (75%)"
+                  },
+                  {
+                    "name": "Own half",
+                    "home": 195,
+                    "away": 123
+                  },
+                  {
+                    "name": "Opposition half",
+                    "home": 345,
+                    "away": 65
+                  },
+                  {
+                    "name": "Accurate long balls",
+                    "home": "24 (73%)",
+                    "away": "20 (34%)"
+                  },
+                  {
+                    "name": "Accurate crosses",
+                    "home": "11 (28%)",
+                    "away": "2 (50%)"
+                  },
+                  {
+                    "name": "Throws",
+                    "home": 18,
+                    "away": 15
+                  },
+                  {
+                    "name": "Touches in opposition box",
+                    "home": 62,
+                    "away": 17
+                  },
+                  {
+                    "name": "Offsides",
+                    "home": 2,
+                    "away": 2
+                  },
+                  {
+                    "name": "Defence",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Tackles",
+                    "home": 16,
+                    "away": 16
+                  },
+                  {
+                    "name": "Interceptions",
+                    "home": 8,
+                    "away": 10
+                  },
+                  {
+                    "name": "Blocks",
+                    "home": 3,
+                    "away": 10
+                  },
+                  {
+                    "name": "Clearances",
+                    "home": 15,
+                    "away": 42
+                  },
+                  {
+                    "name": "Keeper saves",
+                    "home": 0,
+                    "away": 3
+                  },
+                  {
+                    "name": "Duels",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Duels won",
+                    "home": 53,
+                    "away": 47
+                  },
+                  {
+                    "name": "Ground duels won",
+                    "home": "36 (49%)",
+                    "away": "37 (51%)"
+                  },
+                  {
+                    "name": "Aerial duels won",
+                    "home": "17 (63%)",
+                    "away": "10 (37%)"
+                  },
+                  {
+                    "name": "Successful dribbles",
+                    "home": "11 (55%)",
+                    "away": "9 (50%)"
+                  },
+                  {
+                    "name": "Discipline",
+                    "home": null,
+                    "away": null
+                  },
+                  {
+                    "name": "Yellow cards",
+                    "home": 2,
+                    "away": 4
+                  },
+                  {
+                    "name": "Red cards",
+                    "home": 0,
+                    "away": 0
+                  },
+                  {
+                    "name": "Fouls committed",
+                    "home": 14,
+                    "away": 9
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "managers": {
+        "homeManager": {
+          "name": "Rui Borges"
+        },
+        "awayManager": {
+          "name": "Bruno Pinheiro"
         }
       }
     }
