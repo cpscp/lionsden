@@ -1494,11 +1494,11 @@
               "shortName": "MAR",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
             },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
+            "homeScore": 2,
+            "awayScore": 1,
+            "winner": 9768,
+            "aggregatedWinner": 9768,
+            "aggregatedLoser": 10212,
             "matches": [
               {
                 "match_id": 5985964,
@@ -1507,13 +1507,13 @@
                   "id": 9768,
                   "name": "Sporting CP",
                   "shortName": "SCP",
-                  "score": 0
+                  "score": 2
                 },
                 "away": {
                   "id": 10212,
                   "name": "Marítimo",
                   "shortName": "MAR",
-                  "score": 0
+                  "score": 1
                 },
                 "page_url": "/matches/sporting-cp-vs-maritimo/3aujqu#5985964"
               }
@@ -1613,10 +1613,10 @@
             "stage": "1/2",
             "bestOf": 0,
             "home": {
-              "id": 2118533,
-              "name": "Sporting CP/Maritimo",
-              "shortName": "TBD",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118533.png"
+              "id": 9768,
+              "name": "Sporting CP",
+              "shortName": "SCP",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
             },
             "away": {
               "id": 2118535,
@@ -1634,9 +1634,9 @@
                 "match_id": 5985969,
                 "date": null,
                 "home": {
-                  "id": 2118533,
-                  "name": "Sporting CP/Maritimo",
-                  "shortName": "TBD",
+                  "id": 9768,
+                  "name": "Sporting CP",
+                  "shortName": "SCP",
                   "score": 0
                 },
                 "away": {
@@ -1645,7 +1645,7 @@
                   "shortName": "TBD",
                   "score": 0
                 },
-                "page_url": "/matches/sporting-cpmaritimo-vs-bragafamalicao/36jov0led#5985969"
+                "page_url": "/matches/sporting-cp-vs-bragafamalicao/swga0ez4#5985969"
               }
             ]
           }

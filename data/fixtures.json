@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-27T12:29:50.459923+00:00",
+  "_updated_at": "2026-10-27T22:27:52.228044+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -652,17 +652,16 @@
       "kickoff_date": "2026-10-27",
       "kickoff_local_time": "20:15",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Iancu Vasilica', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001077947, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 23, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.83, 'valueType': 'perMatch', 'average': 4.97, 'total': 88, 'averageType': 'below', 'fillPercentage': 12.71, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 0, 'valueType': 'total'}, {'type': 'penalties', 'value': 4, 'valueType': 'total'}, {'type': 'fouls', 'value': 27.86, 'valueType': 'perMatch', 'average': 27.56, 'total': 613, 'averageType': 'average', 'fillPercentage': 53.36, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207228,
-        "lon": -9.160875678,
-        "capacity": 52095.0,
-        "country": "Portugal"
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "League Cup",
@@ -678,8 +677,8 @@
         "name": "Marítimo"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "half_time": {
         "home": null,
@@ -987,13 +986,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
         "name": "Stadio Olimpico",
         "city": "Roma",
-        "lat": 41.933886,
-        "lon": 12.454786,
-        "capacity": null
+        "lat": 41.933947912,
+        "lon": 12.454757094,
+        "capacity": 70634.0,
+        "country": "Italy"
       },
       "competition": {
         "name": "Champions League",
@@ -1128,6 +1128,46 @@
       "away": {
         "id": 9768,
         "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5985969,
+      "date": 1799265600,
+      "kickoff_date": "2027-01-06",
+      "kickoff_local_time": "20:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": null,
+      "venue": {
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
+      },
+      "competition": {
+        "name": "League Cup",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 2118535,
+        "name": "Braga/Famalicao"
       },
       "goals": {
         "home": null,

@@ -1,27 +1,8 @@
 {
-  "_updated_at": "2026-10-27T12:29:34.397356+00:00",
+  "_updated_at": "2026-10-27T22:27:37.354934+00:00",
   "fixtures": {
-    "5985964": {
-      "updated_at": "2026-10-27T12:29:34.289696+00:00",
-      "source": "SportyTrader public odds comparator",
-      "bookmaker_name": "Mercado",
-      "bookmakers": {
-        "Mercado": [
-          {
-            "name": "ML",
-            "odds": [
-              {
-                "home": "1.34",
-                "draw": "5.25",
-                "away": "7.80"
-              }
-            ]
-          }
-        ]
-      }
-    },
     "5887666": {
-      "updated_at": "2026-10-27T12:29:34.289781+00:00",
+      "updated_at": "2026-10-27T22:27:37.242423+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -30,9 +11,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "10.75",
+                "home": "10.00",
                 "draw": "5.75",
-                "away": "1.30"
+                "away": "1.31"
               }
             ]
           }
@@ -40,7 +21,7 @@
       }
     },
     "6106335": {
-      "updated_at": "2026-10-27T12:29:34.292239+00:00",
+      "updated_at": "2026-10-27T22:27:37.244766+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -57,29 +38,10 @@
           }
         ]
       }
-    },
-    "5887698": {
-      "updated_at": "2026-10-27T12:29:34.308472+00:00",
-      "source": "SportyTrader public odds comparator",
-      "bookmaker_name": "Mercado",
-      "bookmakers": {
-        "Mercado": [
-          {
-            "name": "ML",
-            "odds": [
-              {
-                "home": "1.34",
-                "draw": "5.25",
-                "away": "7.80"
-              }
-            ]
-          }
-        ]
-      }
     }
   },
   "source": "SportyTrader public odds comparator",
   "status": "public_fallback",
-  "coverage": 4,
+  "coverage": 2,
   "error": "429 Client Error: Too Many Requests for url: https://api.oddspapi.io/v4/tournaments?sportId=10&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932"
 }

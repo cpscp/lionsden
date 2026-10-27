@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-27T12:29:04.825248+00:00",
+  "_updated_at": "2026-10-27T22:27:11.539899+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
@@ -12,8 +12,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
-        "matches": 10,
+        "matches": 11,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 8,
             "minutes": 720,
@@ -39,7 +47,7 @@
             "red": 0
           }
         },
-        "minutes": 856,
+        "minutes": 946,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -157,7 +165,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 10,
+          "matches": 11,
           "goals": 0,
           "assists": 0
         },
@@ -757,8 +765,16 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
       "stats": {
-        "matches": 7,
+        "matches": 8,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 5,
             "minutes": 236,
@@ -784,7 +800,7 @@
             "red": 0
           }
         },
-        "minutes": 366,
+        "minutes": 456,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -913,7 +929,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 7,
+          "matches": 8,
           "goals": 0,
           "assists": 0
         },
@@ -976,9 +992,18 @@
       "nationality": "Morocco",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1755850.png",
       "stats": {
-        "matches": 0,
-        "byCompetition": {},
-        "minutes": 0,
+        "matches": 1,
+        "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 73,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          }
+        },
+        "minutes": 73,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -987,12 +1012,12 @@
       "shirtNumber": 18,
       "career": [
         {
-          "period": "2026-08-25T00:00:00Z",
-          "club": "Sporting CP"
-        },
-        {
           "period": "2026-10-09T00:00:00Z",
           "club": "Sporting CP B"
+        },
+        {
+          "period": "2026-08-25T00:00:00Z",
+          "club": "Sporting CP"
         },
         {
           "period": "2025-05-09T00:00:00Z → 2026-08-25T00:00:00Z",
@@ -1001,6 +1026,10 @@
         {
           "period": "2026/2027",
           "club": "Sporting CP B"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP"
         },
         {
           "period": "2026/2027",
@@ -1730,8 +1759,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1703622.png",
       "stats": {
-        "matches": 2,
+        "matches": 3,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 17,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 1,
             "minutes": 90,
@@ -1749,7 +1786,7 @@
             "red": 0
           }
         },
-        "minutes": 101,
+        "minutes": 118,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -1934,7 +1971,7 @@
           "club": "Sporting CP B"
         },
         {
-          "period": "2025-10-27T00:00:00Z → 2026-06-30T00:00:00Z",
+          "period": "2025-10-27T00:00:00Z",
           "club": "Sporting CP"
         },
         {
@@ -2012,8 +2049,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1156380.png",
       "stats": {
-        "matches": 9,
+        "matches": 10,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 1,
+            "red": 0
+          },
           "Champions League": {
             "matches": 3,
             "minutes": 264,
@@ -2039,10 +2084,10 @@
             "red": 0
           }
         },
-        "minutes": 672,
+        "minutes": 762,
         "goals": 0,
         "assists": 0,
-        "yellow": 2,
+        "yellow": 3,
         "red": 0
       },
       "shirtNumber": 72,
@@ -2140,7 +2185,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 9,
+          "matches": 10,
           "goals": 0,
           "assists": 0
         },
@@ -2273,8 +2318,16 @@
       "nationality": "Denmark",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
       "stats": {
-        "matches": 10,
+        "matches": 11,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 7,
             "minutes": 159,
@@ -2300,7 +2353,7 @@
             "red": 0
           }
         },
-        "minutes": 255,
+        "minutes": 345,
         "goals": 0,
         "assists": 1,
         "yellow": 0,
@@ -2425,7 +2478,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 10,
+          "matches": 11,
           "goals": 0,
           "assists": 1
         },
@@ -2674,8 +2727,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1663855.png",
       "stats": {
-        "matches": 3,
+        "matches": 4,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 85,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 2,
             "minutes": 140,
@@ -2693,7 +2754,7 @@
             "red": 0
           }
         },
-        "minutes": 146,
+        "minutes": 231,
         "goals": 0,
         "assists": 0,
         "yellow": 1,
@@ -2782,14 +2843,14 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 3,
+          "matches": 4,
           "goals": 0,
           "assists": 0
         },
         {
           "season": "2026/27",
           "club": "Sporting [B]",
-          "matches": 3,
+          "matches": 4,
           "goals": 0,
           "assists": 0
         },
@@ -3117,8 +3178,16 @@
       "nationality": "Brazil",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
       "stats": {
-        "matches": 4,
+        "matches": 5,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 78,
+            "goals": 2,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 1,
             "minutes": 5,
@@ -3144,8 +3213,8 @@
             "red": 0
           }
         },
-        "minutes": 22,
-        "goals": 0,
+        "minutes": 100,
+        "goals": 2,
         "assists": 0,
         "yellow": 0,
         "red": 0
@@ -3221,8 +3290,8 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 4,
-          "goals": 0,
+          "matches": 5,
+          "goals": 2,
           "assists": 0
         },
         {
@@ -3305,8 +3374,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
       "stats": {
-        "matches": 1,
+        "matches": 2,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Club Friendlies": {
             "matches": 1,
             "minutes": 44,
@@ -3316,7 +3393,7 @@
             "red": 0
           }
         },
-        "minutes": 44,
+        "minutes": 134,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -3597,70 +3674,22 @@
       "dateOfBirth": null
     },
     {
-      "fotmob_id": 1759322,
-      "name": "Rodrigo Rodrigues",
-      "position": "MF",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/1759322.png",
-      "stats": {
-        "matches": 0,
-        "byCompetition": {},
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "career": [
-        {
-          "period": "2026-09-01T00:00:00",
-          "club": "Sporting CP"
-        },
-        {
-          "period": "2026-07-07T00:00:00",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2025-05-15T00:00:00 → 2026-07-07T00:00:00",
-          "club": "Gil Vicente"
-        },
-        {
-          "period": "2026/2027",
-          "club": "Sporting CP B"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Gil Vicente"
-        },
-        {
-          "period": "2024/2025",
-          "club": "Gil Vicente"
-        },
-        {
-          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        }
-      ],
-      "careerStats": [],
-      "dateOfBirth": null
-    },
-    {
       "fotmob_id": 899701,
       "name": "Fotis Ioannidis",
       "position": "FW",
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
       "stats": {
-        "matches": 12,
+        "matches": 13,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 85,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 8,
             "minutes": 305,
@@ -3686,7 +3715,7 @@
             "red": 0
           }
         },
-        "minutes": 399,
+        "minutes": 484,
         "goals": 2,
         "assists": 2,
         "yellow": 0,
@@ -3811,7 +3840,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 12,
+          "matches": 13,
           "goals": 2,
           "assists": 2
         },
@@ -3895,8 +3924,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
       "stats": {
-        "matches": 2,
+        "matches": 3,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 5,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 1,
             "minutes": 15,
@@ -3914,7 +3951,7 @@
             "red": 0
           }
         },
-        "minutes": 42,
+        "minutes": 47,
         "goals": 2,
         "assists": 0,
         "yellow": 0,
@@ -4013,8 +4050,16 @@
       "nationality": "Mozambique",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
-        "matches": 13,
+        "matches": 14,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 9,
             "minutes": 631,
@@ -4040,7 +4085,7 @@
             "red": 0
           }
         },
-        "minutes": 929,
+        "minutes": 1019,
         "goals": 2,
         "assists": 4,
         "yellow": 3,
@@ -4169,7 +4214,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 13,
+          "matches": 14,
           "goals": 2,
           "assists": 4
         },
@@ -4653,8 +4698,16 @@
       "nationality": "England",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
       "stats": {
-        "matches": 7,
+        "matches": 8,
         "byCompetition": {
+          "League Cup": {
+            "matches": 1,
+            "minutes": 73,
+            "goals": 0,
+            "assists": 1,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 4,
             "minutes": 32,
@@ -4680,9 +4733,9 @@
             "red": 0
           }
         },
-        "minutes": 87,
+        "minutes": 160,
         "goals": 0,
-        "assists": 0,
+        "assists": 1,
         "yellow": 1,
         "red": 0
       },
@@ -4785,9 +4838,9 @@
         {
           "season": "2026/27",
           "club": "Sporting (E) [Chelsea]",
-          "matches": 7,
+          "matches": 8,
           "goals": 0,
-          "assists": 0
+          "assists": 1
         },
         {
           "season": "2025/26",
@@ -5145,6 +5198,63 @@
         }
       ],
       "dateOfBirth": "2007-05-30T00:00:00.000Z"
+    },
+    {
+      "fotmob_id": 1759322,
+      "name": "Rodrigo Rodrigues",
+      "position": "MF",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/1759322.png",
+      "stats": {
+        "matches": 0,
+        "byCompetition": {},
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "shirtNumber": 76,
+      "career": [
+        {
+          "period": "2026-09-01T00:00:00",
+          "club": "Sporting CP"
+        },
+        {
+          "period": "2026-07-07T00:00:00",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025-05-15T00:00:00 → 2026-07-07T00:00:00",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2026/2027",
+          "club": "Sporting CP B"
+        },
+        {
+          "period": "2025/2026",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2024/2025",
+          "club": "Gil Vicente"
+        },
+        {
+          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2026",
+          "club": "Portugal U19"
+        },
+        {
+          "period": "2025",
+          "club": "Portugal U19"
+        }
+      ],
+      "careerStats": [],
+      "dateOfBirth": null
     },
     {
       "fotmob_id": 792303,

@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-10-27T12:29:35.875311+00:00",
+  "_updated_at": "2026-10-27T22:27:38.885504+00:00",
   "season": "2026/27",
   "team": {
-    "matches": 16,
-    "wins": 11,
+    "matches": 17,
+    "wins": 12,
     "draws": 3,
     "losses": 2,
-    "goals": 45,
-    "goals_against": 17,
+    "goals": 47,
+    "goals_against": 18,
     "clean_sheets": 5,
     "form": [
-      "D",
       "D",
       "W",
       "W",
       "L",
-      "L"
+      "L",
+      "W"
     ],
     "recent_matches": [
-      {
-        "date": "2026-09-13",
-        "competition": "Liga Portugal",
-        "venue": "Fora",
-        "result": "D",
-        "gf": 1,
-        "ga": 1,
-        "opponent": "Famalicão"
-      },
       {
         "date": "2026-09-19",
         "competition": "Liga Portugal",
@@ -71,11 +62,20 @@
         "gf": 1,
         "ga": 2,
         "opponent": "Académico Viseu"
+      },
+      {
+        "date": "2026-10-27",
+        "competition": "League Cup",
+        "venue": "Casa",
+        "result": "W",
+        "gf": 2,
+        "ga": 1,
+        "opponent": "Marítimo"
       }
     ],
-    "points": 36,
-    "win_rate": 68.8,
-    "goals_per_match": 2.81,
+    "points": 39,
+    "win_rate": 70.6,
+    "goals_per_match": 2.76,
     "goals_against_per_match": 1.06
   },
   "source": "Sporting CP fixture feed"
