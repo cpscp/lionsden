@@ -1,8 +1,8 @@
 {
-  "_updated_at": "2026-10-27T05:19:58.046229+00:00",
+  "_updated_at": "2026-10-27T12:29:34.397356+00:00",
   "fixtures": {
     "5985964": {
-      "updated_at": "2026-10-27T05:19:57.933877+00:00",
+      "updated_at": "2026-10-27T12:29:34.289696+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -11,9 +11,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "1.36",
-                "draw": "5.50",
-                "away": "8.50"
+                "home": "1.34",
+                "draw": "5.25",
+                "away": "7.80"
               }
             ]
           }
@@ -21,7 +21,7 @@
       }
     },
     "5887666": {
-      "updated_at": "2026-10-27T05:19:57.933961+00:00",
+      "updated_at": "2026-10-27T12:29:34.289781+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -30,7 +30,7 @@
             "name": "ML",
             "odds": [
               {
-                "home": "10.25",
+                "home": "10.75",
                 "draw": "5.75",
                 "away": "1.30"
               }
@@ -40,7 +40,7 @@
       }
     },
     "6106335": {
-      "updated_at": "2026-10-27T05:19:57.936462+00:00",
+      "updated_at": "2026-10-27T12:29:34.292239+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -59,7 +59,7 @@
       }
     },
     "5887698": {
-      "updated_at": "2026-10-27T05:19:57.953353+00:00",
+      "updated_at": "2026-10-27T12:29:34.308472+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -68,9 +68,9 @@
             "name": "ML",
             "odds": [
               {
-                "home": "1.36",
-                "draw": "5.50",
-                "away": "8.50"
+                "home": "1.34",
+                "draw": "5.25",
+                "away": "7.80"
               }
             ]
           }
