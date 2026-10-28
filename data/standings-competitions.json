@@ -1412,11 +1412,11 @@
               "shortName": "VIS",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
             },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
+            "homeScore": 1,
+            "awayScore": 0,
+            "winner": 9773,
+            "aggregatedWinner": 9773,
+            "aggregatedLoser": 1786,
             "matches": [
               {
                 "match_id": 5985963,
@@ -1425,7 +1425,7 @@
                   "id": 9773,
                   "name": "FC Porto",
                   "shortName": "POR",
-                  "score": 0
+                  "score": 1
                 },
                 "away": {
                   "id": 1786,
