@@ -1453,11 +1453,11 @@
               "shortName": "GV",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
             },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
+            "homeScore": 4,
+            "awayScore": 1,
+            "winner": 9772,
+            "aggregatedWinner": 9772,
+            "aggregatedLoser": 9764,
             "matches": [
               {
                 "match_id": 5985965,
@@ -1466,13 +1466,13 @@
                   "id": 9772,
                   "name": "Benfica",
                   "shortName": "BEN",
-                  "score": 0
+                  "score": 4
                 },
                 "away": {
                   "id": 9764,
                   "name": "Gil Vicente",
                   "shortName": "GV",
-                  "score": 0
+                  "score": 1
                 },
                 "page_url": "/matches/gil-vicente-vs-benfica/35mims#5985965"
               }
@@ -1535,11 +1535,11 @@
               "shortName": "FAM",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
             },
-            "homeScore": null,
-            "awayScore": null,
-            "winner": null,
-            "aggregatedWinner": null,
-            "aggregatedLoser": null,
+            "homeScore": 2,
+            "awayScore": 2,
+            "winner": 1634,
+            "aggregatedWinner": 1634,
+            "aggregatedLoser": 10264,
             "matches": [
               {
                 "match_id": 5985966,
@@ -1548,13 +1548,13 @@
                   "id": 10264,
                   "name": "Braga",
                   "shortName": "BRA",
-                  "score": 0
+                  "score": 2
                 },
                 "away": {
                   "id": 1634,
                   "name": "Famalicão",
                   "shortName": "FAM",
-                  "score": 0
+                  "score": 2
                 },
                 "page_url": "/matches/famalicao-vs-braga/1658z5#5985966"
               }
@@ -1578,10 +1578,10 @@
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
             },
             "away": {
-              "id": 2118534,
-              "name": "Benfica/Gil Vicente",
-              "shortName": "TBD",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118534.png"
+              "id": 9772,
+              "name": "Benfica",
+              "shortName": "BEN",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1599,12 +1599,12 @@
                   "score": 0
                 },
                 "away": {
-                  "id": 2118534,
-                  "name": "Benfica/Gil Vicente",
-                  "shortName": "TBD",
+                  "id": 9772,
+                  "name": "Benfica",
+                  "shortName": "BEN",
                   "score": 0
                 },
-                "page_url": "/matches/fc-porto-vs-benficagil-vicente/swgf2vtn#5985968"
+                "page_url": "/matches/benfica-vs-fc-porto/35qac2#5985968"
               }
             ]
           },
@@ -1619,10 +1619,10 @@
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
             },
             "away": {
-              "id": 2118535,
-              "name": "Braga/Famalicao",
-              "shortName": "TBD",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2118535.png"
+              "id": 1634,
+              "name": "Famalicão",
+              "shortName": "FAM",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1634.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1640,12 +1640,12 @@
                   "score": 0
                 },
                 "away": {
-                  "id": 2118535,
-                  "name": "Braga/Famalicao",
-                  "shortName": "TBD",
+                  "id": 1634,
+                  "name": "Famalicão",
+                  "shortName": "FAM",
                   "score": 0
                 },
-                "page_url": "/matches/sporting-cp-vs-bragafamalicao/swga0ez4#5985969"
+                "page_url": "/matches/famalicao-vs-sporting-cp/12pkf3#5985969"
               }
             ]
           }

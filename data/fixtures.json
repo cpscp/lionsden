@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-29T13:23:52.440212+00:00",
+  "_updated_at": "2026-10-29T22:55:00.473449+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -696,7 +696,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Fonseca', 'countryCode': 'POR', 'country': 'Portugal'}",
       "venue": {
         "name": "Estádio Municipal de Rio Maior",
         "city": "Rio Maior",
@@ -1166,8 +1166,8 @@
         "name": "Sporting CP"
       },
       "away": {
-        "id": 2118535,
-        "name": "Braga/Famalicao"
+        "id": 1634,
+        "name": "Famalicão"
       },
       "goals": {
         "home": null,

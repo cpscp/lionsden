@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-29T13:23:42.851889+00:00",
+  "_updated_at": "2026-10-29T22:54:49.948999+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -9491,28 +9491,28 @@
                   },
                   {
                     "name": "Distance covered",
-                    "home": 114802,
-                    "away": 115168
+                    "home": 114884,
+                    "away": 115329
                   },
                   {
                     "name": "Walking distance",
-                    "home": 33960,
-                    "away": 32804
+                    "home": 33897,
+                    "away": 32794
                   },
                   {
                     "name": "Running distance",
-                    "home": 78104,
-                    "away": 79620
+                    "home": 78250,
+                    "away": 79767
                   },
                   {
                     "name": "Sprinting distance",
-                    "home": 2738,
-                    "away": 2744
+                    "home": 2737,
+                    "away": 2768
                   },
                   {
                     "name": "Number of sprints",
-                    "home": 130,
-                    "away": 125
+                    "home": 131,
+                    "away": 127
                   },
                   {
                     "name": "Passes",
