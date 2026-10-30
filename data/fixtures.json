@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-30T13:14:56.322452+00:00",
+  "_updated_at": "2026-10-30T22:32:38.758750+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -693,17 +693,16 @@
       "kickoff_date": "2026-10-30",
       "kickoff_local_time": "20:15",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Fonseca', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080496, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 18, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.89, 'valueType': 'perMatch', 'average': 4.99, 'total': 88, 'averageType': 'average', 'fillPercentage': 46.89, 'averagePercentage': 50}, {'type': 'redCards', 'value': 0, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 6, 'valueType': 'total'}, {'type': 'fouls', 'value': 28, 'valueType': 'perMatch', 'average': 27.56, 'total': 504, 'averageType': 'average', 'fillPercentage': 54.85, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio Municipal de Rio Maior",
         "city": "Rio Maior",
-        "lat": 39.344540974,
-        "lon": -8.935162425,
-        "capacity": 8500.0,
-        "country": "Portugal"
+        "lat": 39.344541,
+        "lon": -8.935162,
+        "capacity": null
       },
       "competition": {
         "name": "Liga Portugal",
@@ -719,8 +718,8 @@
         "name": "Sporting CP"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "half_time": {
         "home": null,
@@ -1029,13 +1028,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estádio Cidade de Barcelos",
+        "name": "Estadio Cidade de Barcelos",
         "city": "Barcelos",
         "lat": 41.55123,
         "lon": -8.62311,
-        "capacity": null
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",

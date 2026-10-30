@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-30T13:14:12.711125+00:00",
+  "_updated_at": "2026-10-30T22:31:55.924720+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -48,14 +48,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
       },
-      "playedGames": 9,
-      "won": 5,
+      "playedGames": 10,
+      "won": 6,
       "draw": 3,
       "lost": 1,
-      "points": 18,
-      "goalsFor": 21,
+      "points": 21,
+      "goalsFor": 23,
       "goalsAgainst": 11,
-      "goalDifference": 10
+      "goalDifference": 12
     },
     {
       "position": 4,
@@ -276,24 +276,6 @@
     {
       "position": 16,
       "team": {
-        "id": 212821,
-        "name": "Casa Pia AC",
-        "shortName": "Casa Pia AC",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
-      },
-      "playedGames": 9,
-      "won": 2,
-      "draw": 1,
-      "lost": 6,
-      "points": 7,
-      "goalsFor": 5,
-      "goalsAgainst": 17,
-      "goalDifference": -12
-    },
-    {
-      "position": 17,
-      "team": {
         "id": 7841,
         "name": "Rio Ave",
         "shortName": "Rio Ave",
@@ -308,6 +290,24 @@
       "goalsFor": 8,
       "goalsAgainst": 21,
       "goalDifference": -13
+    },
+    {
+      "position": 17,
+      "team": {
+        "id": 212821,
+        "name": "Casa Pia AC",
+        "shortName": "Casa Pia AC",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
+      },
+      "playedGames": 10,
+      "won": 2,
+      "draw": 1,
+      "lost": 7,
+      "points": 7,
+      "goalsFor": 5,
+      "goalsAgainst": 19,
+      "goalDifference": -14
     },
     {
       "position": 18,

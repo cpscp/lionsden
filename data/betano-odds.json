@@ -1,27 +1,8 @@
 {
-  "_updated_at": "2026-10-30T13:14:39.050344+00:00",
+  "_updated_at": "2026-10-30T22:32:20.447700+00:00",
   "fixtures": {
-    "5887666": {
-      "updated_at": "2026-10-30T13:14:38.978625+00:00",
-      "source": "SportyTrader public odds comparator",
-      "bookmaker_name": "Mercado",
-      "bookmakers": {
-        "Mercado": [
-          {
-            "name": "ML",
-            "odds": [
-              {
-                "home": "11.50",
-                "draw": "5.80",
-                "away": "1.29"
-              }
-            ]
-          }
-        ]
-      }
-    },
     "6106335": {
-      "updated_at": "2026-10-30T13:14:38.979933+00:00",
+      "updated_at": "2026-10-30T22:32:20.345126+00:00",
       "source": "SportyTrader public odds comparator",
       "bookmaker_name": "Mercado",
       "bookmakers": {
@@ -31,7 +12,7 @@
             "odds": [
               {
                 "home": "3.65",
-                "draw": "3.75",
+                "draw": "3.70",
                 "away": "2.00"
               }
             ]
@@ -42,6 +23,6 @@
   },
   "source": "SportyTrader public odds comparator",
   "status": "public_fallback",
-  "coverage": 2,
+  "coverage": 1,
   "error": "429 Client Error: Too Many Requests for url: https://api.oddspapi.io/v4/tournaments?sportId=10&apiKey=c8b1f61d-f0ef-4fa4-9d1f-8adda151b932"
 }
