@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-30T06:05:06.968708+00:00",
+  "_updated_at": "2026-10-30T13:14:46.064356+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -15276,7 +15276,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 6.6
+                "rating": 6.5
               }
             },
             {
@@ -16489,12 +16489,12 @@
                   {
                     "name": "xG open play",
                     "home": "2.36",
-                    "away": "0.75"
+                    "away": "0.78"
                   },
                   {
                     "name": "xG set play",
                     "home": "0.10",
-                    "away": "0.38"
+                    "away": "0.34"
                   },
                   {
                     "name": "xG non-penalty",
@@ -16504,7 +16504,7 @@
                   {
                     "name": "xG on target (xGOT)",
                     "home": "2.69",
-                    "away": "2.98"
+                    "away": "2.70"
                   },
                   {
                     "name": "Physical performance",

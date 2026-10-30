@@ -1661,16 +1661,16 @@
             "stage": "final",
             "bestOf": 0,
             "home": {
-              "id": 1841372,
-              "name": "Winner SF1",
-              "shortName": "SF1",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1841372.png"
+              "id": 2424898,
+              "name": "FC Porto/Benfica",
+              "shortName": "TBD",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2424898.png"
             },
             "away": {
-              "id": 1216849,
-              "name": "Winner SF 2",
+              "id": 2424899,
+              "name": "Sporting CP/Famalicao",
               "shortName": "TBD",
-              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1216849.png"
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/2424899.png"
             },
             "homeScore": null,
             "awayScore": null,
@@ -1682,18 +1682,18 @@
                 "match_id": 5985970,
                 "date": null,
                 "home": {
-                  "id": 1841372,
-                  "name": "Winner SF1",
-                  "shortName": "SF1",
-                  "score": 0
-                },
-                "away": {
-                  "id": 1216849,
-                  "name": "Winner SF 2",
+                  "id": 2424898,
+                  "name": "FC Porto/Benfica",
                   "shortName": "TBD",
                   "score": 0
                 },
-                "page_url": "/matches/winner-sf-2-vs-winner-sf1/1noagq50n#5985970"
+                "away": {
+                  "id": 2424899,
+                  "name": "Sporting CP/Famalicao",
+                  "shortName": "TBD",
+                  "score": 0
+                },
+                "page_url": "/matches/fc-portobenfica-vs-sporting-cpfamalicao/462ldb2mq#5985970"
               }
             ]
           }

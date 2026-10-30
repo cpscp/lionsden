@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-30T06:05:16.091507+00:00",
+  "_updated_at": "2026-10-30T13:14:56.322452+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -696,7 +696,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Fonseca', 'countryCode': 'POR', 'country': 'Portugal'}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'Miguel Fonseca', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080496, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 18, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.89, 'valueType': 'perMatch', 'average': 4.99, 'total': 88, 'averageType': 'average', 'fillPercentage': 46.89, 'averagePercentage': 50}, {'type': 'redCards', 'value': 0, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 6, 'valueType': 'total'}, {'type': 'fouls', 'value': 28, 'valueType': 'perMatch', 'average': 27.56, 'total': 504, 'averageType': 'average', 'fillPercentage': 54.85, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio Municipal de Rio Maior",
         "city": "Rio Maior",
@@ -815,8 +815,8 @@
     },
     {
       "id": 6506259,
-      "date": 1795273200,
-      "kickoff_date": "2026-11-21",
+      "date": 1795359600,
+      "kickoff_date": "2026-11-22",
       "kickoff_local_time": "15:00",
       "status": {
         "short": "scheduled",
@@ -826,9 +826,10 @@
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Taca de Portugal",
@@ -1141,9 +1142,9 @@
     },
     {
       "id": 5985969,
-      "date": 1799265600,
+      "date": 1799266500,
       "kickoff_date": "2027-01-06",
-      "kickoff_local_time": "20:00",
+      "kickoff_local_time": "20:15",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
