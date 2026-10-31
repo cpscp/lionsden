@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-30T22:32:27.076679+00:00",
+  "_updated_at": "2026-10-31T05:58:58.833854+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -19367,7 +19367,7 @@
         "referee": {
           "name": "Miguel Fonseca"
         },
-        "attendance": null,
+        "attendance": 5478,
         "venue": {
           "name": "Estádio Municipal de Rio Maior",
           "city": "Rio Maior"
