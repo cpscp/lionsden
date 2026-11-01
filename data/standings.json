@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-31T21:46:22.652103+00:00",
+  "_updated_at": "2026-11-01T06:28:02.432853+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -17,9 +17,9 @@
       "draw": 0,
       "lost": 0,
       "points": 30,
-      "goalsFor": 22,
+      "goalsFor": 25,
       "goalsAgainst": 4,
-      "goalDifference": 18
+      "goalDifference": 21
     },
     {
       "position": 2,
@@ -324,8 +324,8 @@
       "lost": 8,
       "points": 2,
       "goalsFor": 5,
-      "goalsAgainst": 16,
-      "goalDifference": -11
+      "goalsAgainst": 19,
+      "goalDifference": -14
     }
   ],
   "source": "FotMob"

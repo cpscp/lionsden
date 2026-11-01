@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-10-31T21:46:39.530632+00:00",
+  "_updated_at": "2026-11-01T06:28:28.070370+00:00",
   "fixtures": {
     "6106335": {
       "home": {
@@ -113,7 +113,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:36.030455+00:00"
+      "updated_at": "2026-11-01T06:28:22.078366+00:00"
     },
     "5887679": {
       "home": {
@@ -214,9 +214,9 @@
           }
         ],
         "table": {
-          "position": 10,
-          "played": 9,
-          "points": 11,
+          "position": 8,
+          "played": 10,
+          "points": 14,
           "name": "Moreirense"
         }
       },
@@ -264,7 +264,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-10-31T21:46:36.045476+00:00"
+      "updated_at": "2026-11-01T06:28:22.108606+00:00"
     },
     "6506259": {
       "home": {
@@ -349,7 +349,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:36.059123+00:00"
+      "updated_at": "2026-11-01T06:28:22.138001+00:00"
     },
     "6106279": {
       "home": {
@@ -463,21 +463,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:36.073249+00:00"
+      "updated_at": "2026-11-01T06:28:22.168451+00:00"
     },
     "5887687": {
       "home": {
         "id": 9773,
         "name": "FC Porto",
         "form": [
-          {
-            "result": "W",
-            "score": "1 - 2",
-            "date": "2026-10-10T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "3 - 2",
@@ -509,12 +501,20 @@
             "competition": "League Cup",
             "opponent": "Académico Viseu",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-10-31T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
           }
         ],
         "table": {
           "position": 1,
-          "played": 9,
-          "points": 27,
+          "played": 10,
+          "points": 30,
           "name": "FC Porto"
         }
       },
@@ -614,7 +614,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-10-31T21:46:36.091318+00:00"
+      "updated_at": "2026-11-01T06:28:22.202478+00:00"
     },
     "5887698": {
       "home": {
@@ -765,7 +765,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-10-31T21:46:36.107976+00:00"
+      "updated_at": "2026-11-01T06:28:22.235634+00:00"
     },
     "6106275": {
       "home": {
@@ -898,7 +898,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-31T21:46:36.120384+00:00"
+      "updated_at": "2026-11-01T06:28:22.267169+00:00"
     },
     "5887702": {
       "home": {
@@ -1049,7 +1049,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-10-31T21:46:36.135080+00:00"
+      "updated_at": "2026-11-01T06:28:22.298222+00:00"
     },
     "5887716": {
       "home": {
@@ -1110,14 +1110,6 @@
         "form": [
           {
             "result": "L",
-            "score": "1 - 0",
-            "date": "2026-09-14T19:45:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-09-20T17:00:00.000Z",
             "competition": "Liga Portugal",
@@ -1147,11 +1139,19 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "4 - 0",
+            "date": "2026-10-31T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
           }
         ],
         "table": {
           "position": 18,
-          "played": 9,
+          "played": 10,
           "points": 2,
           "name": "Estoril"
         }
@@ -1200,7 +1200,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-10-31T21:46:36.443107+00:00"
+      "updated_at": "2026-11-01T06:28:22.516698+00:00"
     },
     "5887724": {
       "home": {
@@ -1351,7 +1351,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-10-31T21:46:36.669108+00:00"
+      "updated_at": "2026-11-01T06:28:22.915568+00:00"
     },
     "5985969": {
       "home": {
@@ -1465,7 +1465,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:36.926575+00:00"
+      "updated_at": "2026-11-01T06:28:23.115544+00:00"
     },
     "5887734": {
       "home": {
@@ -1579,7 +1579,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:37.046380+00:00"
+      "updated_at": "2026-11-01T06:28:23.457438+00:00"
     },
     "5887735": {
       "home": {
@@ -1681,7 +1681,7 @@
         ],
         "table": {
           "position": 12,
-          "played": 9,
+          "played": 10,
           "points": 10,
           "name": "Estrela da Amadora"
         }
@@ -1693,7 +1693,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:37.168786+00:00"
+      "updated_at": "2026-11-01T06:28:23.662762+00:00"
     },
     "6106278": {
       "home": {
@@ -1754,14 +1754,6 @@
         "form": [
           {
             "result": "W",
-            "score": "3 - 0",
-            "date": "2026-10-10T16:30:00.000Z",
-            "competition": "LaLiga",
-            "opponent": "Getafe",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "1 - 4",
             "date": "2026-10-13T19:00:00.000Z",
             "competition": "Champions League",
@@ -1790,6 +1782,14 @@
             "date": "2026-10-25T20:00:00.000Z",
             "competition": "LaLiga",
             "opponent": "Real Madrid",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "6 - 1",
+            "date": "2026-10-31T20:00:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Deportivo Alavés",
             "match_id": null
           }
         ],
@@ -1826,7 +1826,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-10-31T21:46:37.302910+00:00"
+      "updated_at": "2026-11-01T06:28:24.022842+00:00"
     },
     "5887752": {
       "home": {
@@ -1940,7 +1940,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:37.566948+00:00"
+      "updated_at": "2026-11-01T06:28:24.234745+00:00"
     },
     "6106255": {
       "home": {
@@ -2091,7 +2091,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-10-31T21:46:37.698899+00:00"
+      "updated_at": "2026-11-01T06:28:24.577127+00:00"
     },
     "5887760": {
       "home": {
@@ -2140,7 +2140,7 @@
           }
         ],
         "table": {
-          "position": 8,
+          "position": 10,
           "played": 9,
           "points": 11,
           "name": "Alverca"
@@ -2205,7 +2205,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:37.902698+00:00"
+      "updated_at": "2026-11-01T06:28:24.949486+00:00"
     },
     "5887769": {
       "home": {
@@ -2319,7 +2319,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.031734+00:00"
+      "updated_at": "2026-11-01T06:28:25.277242+00:00"
     },
     "5887778": {
       "home": {
@@ -2433,7 +2433,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.362908+00:00"
+      "updated_at": "2026-11-01T06:28:25.663543+00:00"
     },
     "5887784": {
       "home": {
@@ -2547,7 +2547,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.478846+00:00"
+      "updated_at": "2026-11-01T06:28:26.020500+00:00"
     },
     "5887796": {
       "home": {
@@ -2661,7 +2661,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.598917+00:00"
+      "updated_at": "2026-11-01T06:28:26.228143+00:00"
     },
     "5887800": {
       "home": {
@@ -2775,7 +2775,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.732763+00:00"
+      "updated_at": "2026-11-01T06:28:26.562699+00:00"
     },
     "5887814": {
       "home": {
@@ -2889,7 +2889,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:38.851318+00:00"
+      "updated_at": "2026-11-01T06:28:26.762958+00:00"
     },
     "5887819": {
       "home": {
@@ -3003,7 +3003,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.107649+00:00"
+      "updated_at": "2026-11-01T06:28:27.100636+00:00"
     },
     "5887832": {
       "home": {
@@ -3052,9 +3052,9 @@
           }
         ],
         "table": {
-          "position": 10,
-          "played": 9,
-          "points": 11,
+          "position": 8,
+          "played": 10,
+          "points": 14,
           "name": "Moreirense"
         }
       },
@@ -3117,7 +3117,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.235563+00:00"
+      "updated_at": "2026-11-01T06:28:27.435181+00:00"
     },
     "5887840": {
       "home": {
@@ -3177,14 +3177,6 @@
         "name": "FC Porto",
         "form": [
           {
-            "result": "W",
-            "score": "1 - 2",
-            "date": "2026-10-10T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "3 - 2",
             "date": "2026-10-14T19:00:00.000Z",
@@ -3215,12 +3207,20 @@
             "competition": "League Cup",
             "opponent": "Académico Viseu",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-10-31T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Estoril",
+            "match_id": null
           }
         ],
         "table": {
           "position": 1,
-          "played": 9,
-          "points": 27,
+          "played": 10,
+          "points": 30,
           "name": "FC Porto"
         }
       },
@@ -3231,7 +3231,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.353919+00:00"
+      "updated_at": "2026-11-01T06:28:27.633764+00:00"
     },
     "5887851": {
       "home": {
@@ -3345,7 +3345,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.488165+00:00"
+      "updated_at": "2026-11-01T06:28:27.976230+00:00"
     },
     "5887855": {
       "home": {
@@ -3459,21 +3459,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.501764+00:00"
+      "updated_at": "2026-11-01T06:28:28.006195+00:00"
     },
     "5887869": {
       "home": {
         "id": 7842,
         "name": "Estoril",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 0",
-            "date": "2026-09-14T19:45:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -3505,11 +3497,19 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "4 - 0",
+            "date": "2026-10-31T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
+            "match_id": null
           }
         ],
         "table": {
           "position": 18,
-          "played": 9,
+          "played": 10,
           "points": 2,
           "name": "Estoril"
         }
@@ -3610,7 +3610,7 @@
         "away_wins": 16,
         "total": 24
       },
-      "updated_at": "2026-10-31T21:46:39.516965+00:00"
+      "updated_at": "2026-11-01T06:28:28.036495+00:00"
     },
     "5887877": {
       "home": {
@@ -3724,7 +3724,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-10-31T21:46:39.530613+00:00"
+      "updated_at": "2026-11-01T06:28:28.070358+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
