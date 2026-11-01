@@ -61,6 +61,24 @@
       {
         "position": 4,
         "team": {
+          "id": 158085,
+          "name": "Arouca",
+          "shortName": "Arouca",
+          "tla": null,
+          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/158085.png"
+        },
+        "playedGames": 10,
+        "won": 6,
+        "draw": 2,
+        "lost": 2,
+        "points": 20,
+        "goalsFor": 13,
+        "goalsAgainst": 7,
+        "goalDifference": 6
+      },
+      {
+        "position": 5,
+        "team": {
           "id": 1567,
           "name": "Santa Clara",
           "shortName": "Santa Clara",
@@ -75,24 +93,6 @@
         "goalsFor": 13,
         "goalsAgainst": 6,
         "goalDifference": 7
-      },
-      {
-        "position": 5,
-        "team": {
-          "id": 158085,
-          "name": "Arouca",
-          "shortName": "Arouca",
-          "tla": null,
-          "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/158085.png"
-        },
-        "playedGames": 9,
-        "won": 5,
-        "draw": 2,
-        "lost": 2,
-        "points": 17,
-        "goalsFor": 12,
-        "goalsAgainst": 7,
-        "goalDifference": 5
       },
       {
         "position": 6,
@@ -265,14 +265,14 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
         },
-        "playedGames": 9,
+        "playedGames": 10,
         "won": 2,
         "draw": 1,
-        "lost": 6,
+        "lost": 7,
         "points": 7,
         "goalsFor": 10,
-        "goalsAgainst": 18,
-        "goalDifference": -8
+        "goalsAgainst": 19,
+        "goalDifference": -9
       },
       {
         "position": 16,
