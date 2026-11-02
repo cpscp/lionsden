@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-01T22:14:30.105991+00:00",
+  "_updated_at": "2026-11-02T06:29:35.784698+00:00",
   "fixtures": {
     "6106335": {
       "home": {
@@ -113,7 +113,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:24.747147+00:00"
+      "updated_at": "2026-11-02T06:29:28.431545+00:00"
     },
     "5887679": {
       "home": {
@@ -214,7 +214,7 @@
           }
         ],
         "table": {
-          "position": 8,
+          "position": 9,
           "played": 10,
           "points": 14,
           "name": "Moreirense"
@@ -264,7 +264,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-11-01T22:14:24.771477+00:00"
+      "updated_at": "2026-11-02T06:29:28.459768+00:00"
     },
     "6506259": {
       "home": {
@@ -349,7 +349,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:24.793699+00:00"
+      "updated_at": "2026-11-02T06:29:28.486247+00:00"
     },
     "6106279": {
       "home": {
@@ -463,7 +463,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:24.816715+00:00"
+      "updated_at": "2026-11-02T06:29:28.510585+00:00"
     },
     "5887687": {
       "home": {
@@ -614,7 +614,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-01T22:14:24.842058+00:00"
+      "updated_at": "2026-11-02T06:29:28.541444+00:00"
     },
     "5887698": {
       "home": {
@@ -716,7 +716,7 @@
         ],
         "table": {
           "position": 14,
-          "played": 9,
+          "played": 10,
           "points": 8,
           "name": "Marítimo"
         }
@@ -765,7 +765,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-01T22:14:24.866653+00:00"
+      "updated_at": "2026-11-02T06:29:28.575524+00:00"
     },
     "6106275": {
       "home": {
@@ -898,7 +898,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-01T22:14:24.890738+00:00"
+      "updated_at": "2026-11-02T06:29:28.604912+00:00"
     },
     "5887702": {
       "home": {
@@ -947,7 +947,7 @@
           }
         ],
         "table": {
-          "position": 7,
+          "position": 8,
           "played": 9,
           "points": 14,
           "name": "Gil Vicente"
@@ -1049,7 +1049,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-01T22:14:24.914529+00:00"
+      "updated_at": "2026-11-02T06:29:28.633020+00:00"
     },
     "5887716": {
       "home": {
@@ -1200,7 +1200,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-01T22:14:25.264197+00:00"
+      "updated_at": "2026-11-02T06:29:29.087629+00:00"
     },
     "5887724": {
       "home": {
@@ -1351,7 +1351,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-01T22:14:25.522675+00:00"
+      "updated_at": "2026-11-02T06:29:29.427172+00:00"
     },
     "5985969": {
       "home": {
@@ -1411,14 +1411,6 @@
         "name": "Famalicão",
         "form": [
           {
-            "result": "W",
-            "score": "0 - 4",
-            "date": "2026-09-19T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Nacional",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "1 - 4",
             "date": "2026-10-12T19:15:00.000Z",
@@ -1449,6 +1441,14 @@
             "competition": "League Cup",
             "opponent": "Braga",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "3 - 0",
+            "date": "2026-11-01T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
           }
         ],
         "table": {
@@ -1465,7 +1465,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:25.853840+00:00"
+      "updated_at": "2026-11-02T06:29:29.888246+00:00"
     },
     "5887734": {
       "home": {
@@ -1566,9 +1566,9 @@
           }
         ],
         "table": {
-          "position": 5,
-          "played": 9,
-          "points": 18,
+          "position": 4,
+          "played": 10,
+          "points": 21,
           "name": "Santa Clara"
         }
       },
@@ -1579,7 +1579,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:26.167058+00:00"
+      "updated_at": "2026-11-02T06:29:30.097732+00:00"
     },
     "5887735": {
       "home": {
@@ -1693,7 +1693,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:26.500517+00:00"
+      "updated_at": "2026-11-02T06:29:30.523601+00:00"
     },
     "6106278": {
       "home": {
@@ -1826,7 +1826,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-01T22:14:26.832445+00:00"
+      "updated_at": "2026-11-02T06:29:31.007741+00:00"
     },
     "5887752": {
       "home": {
@@ -1940,7 +1940,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:27.001285+00:00"
+      "updated_at": "2026-11-02T06:29:31.466543+00:00"
     },
     "6106255": {
       "home": {
@@ -2091,7 +2091,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-01T22:14:27.176296+00:00"
+      "updated_at": "2026-11-02T06:29:31.696845+00:00"
     },
     "5887760": {
       "home": {
@@ -2205,7 +2205,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:27.345327+00:00"
+      "updated_at": "2026-11-02T06:29:32.010877+00:00"
     },
     "5887769": {
       "home": {
@@ -2307,7 +2307,7 @@
         ],
         "table": {
           "position": 16,
-          "played": 9,
+          "played": 10,
           "points": 7,
           "name": "Rio Ave"
         }
@@ -2319,7 +2319,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:27.689467+00:00"
+      "updated_at": "2026-11-02T06:29:32.444696+00:00"
     },
     "5887778": {
       "home": {
@@ -2433,7 +2433,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:27.989222+00:00"
+      "updated_at": "2026-11-02T06:29:32.889323+00:00"
     },
     "5887784": {
       "home": {
@@ -2493,14 +2493,6 @@
         "name": "Famalicão",
         "form": [
           {
-            "result": "W",
-            "score": "0 - 4",
-            "date": "2026-09-19T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Nacional",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "1 - 4",
             "date": "2026-10-12T19:15:00.000Z",
@@ -2531,11 +2523,19 @@
             "competition": "League Cup",
             "opponent": "Braga",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "3 - 0",
+            "date": "2026-11-01T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Braga",
+            "match_id": null
           }
         ],
         "table": {
           "position": 11,
-          "played": 9,
+          "played": 10,
           "points": 10,
           "name": "Famalicão"
         }
@@ -2547,7 +2547,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:28.306484+00:00"
+      "updated_at": "2026-11-02T06:29:33.213076+00:00"
     },
     "5887796": {
       "home": {
@@ -2596,7 +2596,7 @@
           }
         ],
         "table": {
-          "position": 4,
+          "position": 5,
           "played": 10,
           "points": 20,
           "name": "Arouca"
@@ -2661,7 +2661,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:28.619616+00:00"
+      "updated_at": "2026-11-02T06:29:33.649880+00:00"
     },
     "5887800": {
       "home": {
@@ -2722,14 +2722,6 @@
         "form": [
           {
             "result": "L",
-            "score": "3 - 0",
-            "date": "2026-10-15T19:00:00.000Z",
-            "competition": "Conference League",
-            "opponent": "FC København",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-19T19:15:00.000Z",
             "competition": "Liga Portugal",
@@ -2759,12 +2751,20 @@
             "competition": "League Cup",
             "opponent": "Famalicão",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 0",
+            "date": "2026-11-01T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Famalicão",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 9,
-          "played": 9,
-          "points": 11,
+          "position": 7,
+          "played": 10,
+          "points": 14,
           "name": "Braga"
         }
       },
@@ -2775,7 +2775,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:28.806315+00:00"
+      "updated_at": "2026-11-02T06:29:33.952783+00:00"
     },
     "5887814": {
       "home": {
@@ -2825,8 +2825,8 @@
         ],
         "table": {
           "position": 6,
-          "played": 9,
-          "points": 17,
+          "played": 10,
+          "points": 20,
           "name": "Académico Viseu"
         }
       },
@@ -2889,7 +2889,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:29.011139+00:00"
+      "updated_at": "2026-11-02T06:29:34.389876+00:00"
     },
     "5887819": {
       "home": {
@@ -3003,7 +3003,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:29.347914+00:00"
+      "updated_at": "2026-11-02T06:29:34.744913+00:00"
     },
     "5887832": {
       "home": {
@@ -3052,7 +3052,7 @@
           }
         ],
         "table": {
-          "position": 8,
+          "position": 9,
           "played": 10,
           "points": 14,
           "name": "Moreirense"
@@ -3117,7 +3117,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:29.524634+00:00"
+      "updated_at": "2026-11-02T06:29:34.938830+00:00"
     },
     "5887840": {
       "home": {
@@ -3231,7 +3231,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:29.692328+00:00"
+      "updated_at": "2026-11-02T06:29:35.390864+00:00"
     },
     "5887851": {
       "home": {
@@ -3281,7 +3281,7 @@
         ],
         "table": {
           "position": 14,
-          "played": 9,
+          "played": 10,
           "points": 8,
           "name": "Marítimo"
         }
@@ -3345,7 +3345,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:30.033024+00:00"
+      "updated_at": "2026-11-02T06:29:35.707446+00:00"
     },
     "5887855": {
       "home": {
@@ -3446,7 +3446,7 @@
           }
         ],
         "table": {
-          "position": 7,
+          "position": 8,
           "played": 9,
           "points": 14,
           "name": "Gil Vicente"
@@ -3459,7 +3459,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:30.055382+00:00"
+      "updated_at": "2026-11-02T06:29:35.734398+00:00"
     },
     "5887869": {
       "home": {
@@ -3610,7 +3610,7 @@
         "away_wins": 16,
         "total": 24
       },
-      "updated_at": "2026-11-01T22:14:30.079457+00:00"
+      "updated_at": "2026-11-02T06:29:35.759448+00:00"
     },
     "5887877": {
       "home": {
@@ -3724,7 +3724,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-01T22:14:30.105975+00:00"
+      "updated_at": "2026-11-02T06:29:35.784687+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
