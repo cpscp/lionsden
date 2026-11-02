@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-02T06:30:02.369328+00:00",
+  "_updated_at": "2026-11-02T21:51:20.380523+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -737,7 +737,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/svk.png', 'text': 'Ivan Kružliak', 'countryCode': 'SVK', 'country': 'Slovakia', 'id': 1001075982, 'leagueId': 176, 'leagueName': '1. liga', 'stats': [{'type': 'matches', 'value': 30, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 5.2, 'valueType': 'perMatch', 'average': 4.26, 'total': 156, 'averageType': 'above', 'fillPercentage': 66.93, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 16, 'valueType': 'total'}, {'type': 'fouls', 'value': 28.61, 'valueType': 'perMatch', 'average': 25.99, 'total': 801, 'averageType': 'above', 'fillPercentage': 65.44, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Stamford Bridge",
         "city": "London",

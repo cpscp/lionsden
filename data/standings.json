@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-02T06:29:07.157628+00:00",
+  "_updated_at": "2026-11-02T21:50:40.723066+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -30,14 +30,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
       },
-      "playedGames": 9,
-      "won": 7,
+      "playedGames": 10,
+      "won": 8,
       "draw": 1,
       "lost": 1,
-      "points": 22,
-      "goalsFor": 26,
+      "points": 25,
+      "goalsFor": 27,
       "goalsAgainst": 8,
-      "goalDifference": 18
+      "goalDifference": 19
     },
     {
       "position": 3,
@@ -114,6 +114,24 @@
     {
       "position": 7,
       "team": {
+        "id": 9764,
+        "name": "Gil Vicente",
+        "shortName": "Gil Vicente",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
+      },
+      "playedGames": 10,
+      "won": 4,
+      "draw": 3,
+      "lost": 3,
+      "points": 15,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
+      "goalDifference": 1
+    },
+    {
+      "position": 8,
+      "team": {
         "id": 10264,
         "name": "Braga",
         "shortName": "Braga",
@@ -127,24 +145,6 @@
       "points": 14,
       "goalsFor": 12,
       "goalsAgainst": 11,
-      "goalDifference": 1
-    },
-    {
-      "position": 8,
-      "team": {
-        "id": 9764,
-        "name": "Gil Vicente",
-        "shortName": "Gil Vicente",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
-      },
-      "playedGames": 9,
-      "won": 4,
-      "draw": 2,
-      "lost": 3,
-      "points": 14,
-      "goalsFor": 8,
-      "goalsAgainst": 7,
       "goalDifference": 1
     },
     {
@@ -174,14 +174,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9780.png"
       },
-      "playedGames": 9,
+      "playedGames": 10,
       "won": 3,
       "draw": 2,
-      "lost": 4,
+      "lost": 5,
       "points": 11,
       "goalsFor": 13,
-      "goalsAgainst": 13,
-      "goalDifference": 0
+      "goalsAgainst": 14,
+      "goalDifference": -1
     },
     {
       "position": 11,
@@ -228,11 +228,11 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7844.png"
       },
-      "playedGames": 9,
+      "playedGames": 10,
       "won": 2,
-      "draw": 2,
+      "draw": 3,
       "lost": 5,
-      "points": 8,
+      "points": 9,
       "goalsFor": 10,
       "goalsAgainst": 10,
       "goalDifference": 0
