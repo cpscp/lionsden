@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-11-03T07:01:26.680955+00:00",
+  "_updated_at": "2026-11-03T19:41:28.038433+00:00",
   "seasons": {
     "2026/27": {
-      "matches": 18,
-      "wins": 13,
+      "matches": 19,
+      "wins": 14,
       "draws": 3,
       "losses": 2,
-      "goals": 49,
+      "goals": 50,
       "goals_against": 18,
-      "clean_sheets": 6,
+      "clean_sheets": 7,
       "form": [
         "W",
+        "L",
+        "L",
         "W",
-        "L",
-        "L",
         "W",
         "W"
       ],
       "recent_matches": [
-        {
-          "date": "2026-10-09",
-          "competition": "Liga Portugal",
-          "venue": "Fora",
-          "result": "W",
-          "gf": 3,
-          "ga": 1,
-          "opponent": "Braga"
-        },
         {
           "date": "2026-10-13",
           "competition": "Champions League",
@@ -71,12 +62,21 @@
           "gf": 2,
           "ga": 0,
           "opponent": "Casa Pia AC"
+        },
+        {
+          "date": "2026-11-03",
+          "competition": "Champions League",
+          "venue": "Fora",
+          "result": "W",
+          "gf": 1,
+          "ga": 0,
+          "opponent": "Shakhtar Donetsk"
         }
       ],
-      "points": 42,
-      "win_rate": 72.2,
-      "goals_per_match": 2.72,
-      "goals_against_per_match": 1.0
+      "points": 45,
+      "win_rate": 73.7,
+      "goals_per_match": 2.63,
+      "goals_against_per_match": 0.95
     },
     "2025/26": {
       "matches": 56,

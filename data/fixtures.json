@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-03T07:01:46.198394+00:00",
+  "_updated_at": "2026-11-03T19:41:46.851244+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -734,17 +734,16 @@
       "kickoff_date": "2026-11-03",
       "kickoff_local_time": "17:45",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "finished",
+        "long": "Terminado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/svk.png', 'text': 'Ivan Kružliak', 'countryCode': 'SVK', 'country': 'Slovakia', 'id': 1001075982, 'leagueId': 176, 'leagueName': '1. liga', 'stats': [{'type': 'matches', 'value': 30, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 5.2, 'valueType': 'perMatch', 'average': 4.26, 'total': 156, 'averageType': 'above', 'fillPercentage': 66.99, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 16, 'valueType': 'total'}, {'type': 'fouls', 'value': 28.61, 'valueType': 'perMatch', 'average': 26, 'total': 801, 'averageType': 'above', 'fillPercentage': 65.32, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Stamford Bridge",
         "city": "London",
-        "lat": 51.481711963,
-        "lon": -0.190974623,
-        "capacity": 40044.0,
-        "country": "England"
+        "lat": 51.481711,
+        "lon": -0.190975,
+        "capacity": null
       },
       "competition": {
         "name": "Champions League",
@@ -760,8 +759,8 @@
         "name": "Sporting CP"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "half_time": {
         "home": null,
@@ -1069,13 +1068,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estádio José Alvalade",
+        "name": "Estadio Jose Alvalade",
         "city": "Lisboa",
         "lat": 38.761207,
         "lon": -9.160876,
-        "capacity": null
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
