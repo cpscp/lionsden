@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-02T21:50:59.747271+00:00",
+  "_updated_at": "2026-11-03T07:01:22.758146+00:00",
   "fixtures": {
     "6106335": {
       "home": {
@@ -113,7 +113,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:54.817493+00:00"
+      "updated_at": "2026-11-03T07:01:16.309796+00:00"
     },
     "5887679": {
       "home": {
@@ -264,7 +264,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-11-02T21:50:54.848868+00:00"
+      "updated_at": "2026-11-03T07:01:16.331834+00:00"
     },
     "6506259": {
       "home": {
@@ -349,7 +349,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:54.877797+00:00"
+      "updated_at": "2026-11-03T07:01:16.351844+00:00"
     },
     "6106279": {
       "home": {
@@ -463,7 +463,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:54.907280+00:00"
+      "updated_at": "2026-11-03T07:01:16.371467+00:00"
     },
     "5887687": {
       "home": {
@@ -614,7 +614,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-02T21:50:54.941011+00:00"
+      "updated_at": "2026-11-03T07:01:16.391626+00:00"
     },
     "5887698": {
       "home": {
@@ -765,7 +765,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-02T21:50:54.988547+00:00"
+      "updated_at": "2026-11-03T07:01:16.411245+00:00"
     },
     "6106275": {
       "home": {
@@ -898,21 +898,13 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-02T21:50:55.019587+00:00"
+      "updated_at": "2026-11-03T07:01:16.433479+00:00"
     },
     "5887702": {
       "home": {
         "id": 9764,
         "name": "Gil Vicente",
         "form": [
-          {
-            "result": "W",
-            "score": "0 - 1",
-            "date": "2026-10-09T17:45:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Moreirense",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 3",
@@ -944,12 +936,20 @@
             "competition": "League Cup",
             "opponent": "Benfica",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 8,
-          "played": 9,
-          "points": 14,
+          "position": 7,
+          "played": 10,
+          "points": 15,
           "name": "Gil Vicente"
         }
       },
@@ -1049,7 +1049,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-02T21:50:55.050339+00:00"
+      "updated_at": "2026-11-03T07:01:16.453473+00:00"
     },
     "5887716": {
       "home": {
@@ -1200,21 +1200,13 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-02T21:50:55.382912+00:00"
+      "updated_at": "2026-11-03T07:01:16.671285+00:00"
     },
     "5887724": {
       "home": {
         "id": 9772,
         "name": "Benfica",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 0",
-            "date": "2026-10-11T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Vitória de Guimarães",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "4 - 1",
@@ -1246,12 +1238,20 @@
             "competition": "League Cup",
             "opponent": "Gil Vicente",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
           }
         ],
         "table": {
           "position": 2,
-          "played": 9,
-          "points": 22,
+          "played": 10,
+          "points": 25,
           "name": "Benfica"
         }
       },
@@ -1351,7 +1351,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-02T21:50:55.689803+00:00"
+      "updated_at": "2026-11-03T07:01:16.964099+00:00"
     },
     "5985969": {
       "home": {
@@ -1465,7 +1465,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:55.978915+00:00"
+      "updated_at": "2026-11-03T07:01:17.147481+00:00"
     },
     "5887734": {
       "home": {
@@ -1579,7 +1579,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:56.269276+00:00"
+      "updated_at": "2026-11-03T07:01:17.636791+00:00"
     },
     "5887735": {
       "home": {
@@ -1693,7 +1693,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:56.422492+00:00"
+      "updated_at": "2026-11-03T07:01:17.975378+00:00"
     },
     "6106278": {
       "home": {
@@ -1826,21 +1826,13 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-02T21:50:56.729594+00:00"
+      "updated_at": "2026-11-03T07:01:18.198752+00:00"
     },
     "5887752": {
       "home": {
         "id": 7844,
         "name": "Vitória de Guimarães",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 1",
-            "date": "2026-09-12T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -1872,12 +1864,20 @@
             "competition": "Liga Portugal",
             "opponent": "Marítimo",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
           }
         ],
         "table": {
           "position": 13,
-          "played": 9,
-          "points": 8,
+          "played": 10,
+          "points": 9,
           "name": "Vitória de Guimarães"
         }
       },
@@ -1940,7 +1940,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:56.912547+00:00"
+      "updated_at": "2026-11-03T07:01:18.523633+00:00"
     },
     "6106255": {
       "home": {
@@ -2091,21 +2091,13 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-02T21:50:57.055048+00:00"
+      "updated_at": "2026-11-03T07:01:18.861038+00:00"
     },
     "5887760": {
       "home": {
         "id": 9780,
         "name": "Alverca",
         "form": [
-          {
-            "result": "W",
-            "score": "1 - 3",
-            "date": "2026-09-12T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Nacional",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "1 - 0",
@@ -2137,11 +2129,19 @@
             "competition": "Liga Portugal",
             "opponent": "Arouca",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Benfica",
+            "match_id": null
           }
         ],
         "table": {
           "position": 10,
-          "played": 9,
+          "played": 10,
           "points": 11,
           "name": "Alverca"
         }
@@ -2205,7 +2205,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:57.224733+00:00"
+      "updated_at": "2026-11-03T07:01:19.070515+00:00"
     },
     "5887769": {
       "home": {
@@ -2319,7 +2319,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:57.538971+00:00"
+      "updated_at": "2026-11-03T07:01:19.407061+00:00"
     },
     "5887778": {
       "home": {
@@ -2433,7 +2433,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:57.705165+00:00"
+      "updated_at": "2026-11-03T07:01:19.754321+00:00"
     },
     "5887784": {
       "home": {
@@ -2547,7 +2547,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:57.847804+00:00"
+      "updated_at": "2026-11-03T07:01:20.223239+00:00"
     },
     "5887796": {
       "home": {
@@ -2661,7 +2661,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:58.098871+00:00"
+      "updated_at": "2026-11-03T07:01:20.625631+00:00"
     },
     "5887800": {
       "home": {
@@ -2762,7 +2762,7 @@
           }
         ],
         "table": {
-          "position": 7,
+          "position": 8,
           "played": 10,
           "points": 14,
           "name": "Braga"
@@ -2775,7 +2775,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:58.581813+00:00"
+      "updated_at": "2026-11-03T07:01:20.813050+00:00"
     },
     "5887814": {
       "home": {
@@ -2889,7 +2889,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:58.861909+00:00"
+      "updated_at": "2026-11-03T07:01:21.137484+00:00"
     },
     "5887819": {
       "home": {
@@ -3003,7 +3003,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.044224+00:00"
+      "updated_at": "2026-11-03T07:01:21.620576+00:00"
     },
     "5887832": {
       "home": {
@@ -3117,7 +3117,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.335742+00:00"
+      "updated_at": "2026-11-03T07:01:21.828587+00:00"
     },
     "5887840": {
       "home": {
@@ -3231,7 +3231,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.483937+00:00"
+      "updated_at": "2026-11-03T07:01:22.359912+00:00"
     },
     "5887851": {
       "home": {
@@ -3345,7 +3345,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.657982+00:00"
+      "updated_at": "2026-11-03T07:01:22.699739+00:00"
     },
     "5887855": {
       "home": {
@@ -3406,14 +3406,6 @@
         "form": [
           {
             "result": "W",
-            "score": "0 - 1",
-            "date": "2026-10-09T17:45:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Moreirense",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "2 - 3",
             "date": "2026-10-14T18:00:00.000Z",
             "competition": "Taca de Portugal",
@@ -3443,12 +3435,20 @@
             "competition": "League Cup",
             "opponent": "Benfica",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 8,
-          "played": 9,
-          "points": 14,
+          "position": 7,
+          "played": 10,
+          "points": 15,
           "name": "Gil Vicente"
         }
       },
@@ -3459,7 +3459,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.687522+00:00"
+      "updated_at": "2026-11-03T07:01:22.719118+00:00"
     },
     "5887869": {
       "home": {
@@ -3573,7 +3573,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.717775+00:00"
+      "updated_at": "2026-11-03T07:01:22.739297+00:00"
     },
     "5887877": {
       "home": {
@@ -3634,14 +3634,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 0",
-            "date": "2026-10-11T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Vitória de Guimarães",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "4 - 1",
             "date": "2026-10-15T19:00:00.000Z",
             "competition": "Europa League",
@@ -3671,12 +3663,20 @@
             "competition": "League Cup",
             "opponent": "Gil Vicente",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-02T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Alverca",
+            "match_id": null
           }
         ],
         "table": {
           "position": 2,
-          "played": 9,
-          "points": 22,
+          "played": 10,
+          "points": 25,
           "name": "Benfica"
         }
       },
@@ -3687,7 +3687,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-02T21:50:59.747251+00:00"
+      "updated_at": "2026-11-03T07:01:22.758131+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
