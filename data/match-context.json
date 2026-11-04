@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-03T19:41:21.723150+00:00",
+  "_updated_at": "2026-11-04T06:45:13.364846+00:00",
   "fixtures": {
     "5887679": {
       "home": {
@@ -150,7 +150,7 @@
         "away_wins": 1,
         "total": 25
       },
-      "updated_at": "2026-11-03T19:41:15.811679+00:00"
+      "updated_at": "2026-11-04T06:45:08.311214+00:00"
     },
     "6506259": {
       "home": {
@@ -235,7 +235,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:15.832254+00:00"
+      "updated_at": "2026-11-04T06:45:08.323287+00:00"
     },
     "6106279": {
       "home": {
@@ -284,9 +284,9 @@
           }
         ],
         "table": {
-          "position": 12,
-          "played": 3,
-          "points": 6,
+          "position": 5,
+          "played": 4,
+          "points": 9,
           "name": "Sporting CP"
         }
       },
@@ -294,14 +294,6 @@
         "id": 10260,
         "name": "Man United",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 0",
-            "date": "2026-10-13T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Atlético Madrid",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "1 - 1",
@@ -333,10 +325,18 @@
             "competition": "Premier League",
             "opponent": "Chelsea",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 2",
+            "date": "2026-11-03T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Roma",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 21,
+          "position": 22,
           "played": 3,
           "points": 3,
           "name": "Manchester United"
@@ -349,7 +349,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:15.852351+00:00"
+      "updated_at": "2026-11-04T06:45:08.334678+00:00"
     },
     "5887687": {
       "home": {
@@ -500,7 +500,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-03T19:41:15.874662+00:00"
+      "updated_at": "2026-11-04T06:45:08.349226+00:00"
     },
     "5887698": {
       "home": {
@@ -651,21 +651,13 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-03T19:41:15.897797+00:00"
+      "updated_at": "2026-11-04T06:45:08.360789+00:00"
     },
     "6106275": {
       "home": {
         "id": 8686,
         "name": "Roma",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 0",
-            "date": "2026-10-17T18:45:00.000Z",
-            "competition": "Serie A",
-            "opponent": "Genoa",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "4 - 0",
@@ -697,10 +689,18 @@
             "competition": "Serie A",
             "opponent": "Udinese",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "3 - 2",
+            "date": "2026-11-03T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 15,
+          "position": 16,
           "played": 3,
           "points": 4,
           "name": "Roma"
@@ -752,9 +752,9 @@
           }
         ],
         "table": {
-          "position": 12,
-          "played": 3,
-          "points": 6,
+          "position": 5,
+          "played": 4,
+          "points": 9,
           "name": "Sporting CP"
         }
       },
@@ -784,7 +784,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-03T19:41:15.919009+00:00"
+      "updated_at": "2026-11-04T06:45:08.371400+00:00"
     },
     "5887702": {
       "home": {
@@ -935,7 +935,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-03T19:41:15.940262+00:00"
+      "updated_at": "2026-11-04T06:45:08.391830+00:00"
     },
     "5887716": {
       "home": {
@@ -1086,7 +1086,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-03T19:41:15.965281+00:00"
+      "updated_at": "2026-11-04T06:45:08.402494+00:00"
     },
     "5887724": {
       "home": {
@@ -1237,7 +1237,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-03T19:41:16.516791+00:00"
+      "updated_at": "2026-11-04T06:45:08.596149+00:00"
     },
     "5985969": {
       "home": {
@@ -1351,7 +1351,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:16.863034+00:00"
+      "updated_at": "2026-11-04T06:45:08.696763+00:00"
     },
     "5887734": {
       "home": {
@@ -1465,7 +1465,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:17.312347+00:00"
+      "updated_at": "2026-11-04T06:45:09.027941+00:00"
     },
     "5887735": {
       "home": {
@@ -1579,7 +1579,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:17.505663+00:00"
+      "updated_at": "2026-11-04T06:45:09.206991+00:00"
     },
     "6106278": {
       "home": {
@@ -1628,9 +1628,9 @@
           }
         ],
         "table": {
-          "position": 12,
-          "played": 3,
-          "points": 6,
+          "position": 5,
+          "played": 4,
+          "points": 9,
           "name": "Sporting CP"
         }
       },
@@ -1638,14 +1638,6 @@
         "id": 8634,
         "name": "Barcelona",
         "form": [
-          {
-            "result": "W",
-            "score": "1 - 4",
-            "date": "2026-10-13T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "Galatasaray",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 5",
@@ -1677,10 +1669,18 @@
             "competition": "LaLiga",
             "opponent": "Deportivo Alavés",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "3 - 0",
+            "date": "2026-11-03T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Aston Villa",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 8,
+          "position": 9,
           "played": 3,
           "points": 6,
           "name": "Barcelona"
@@ -1712,7 +1712,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-03T19:41:17.696579+00:00"
+      "updated_at": "2026-11-04T06:45:09.696379+00:00"
     },
     "5887752": {
       "home": {
@@ -1826,7 +1826,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:18.011905+00:00"
+      "updated_at": "2026-11-04T06:45:09.884890+00:00"
     },
     "6106255": {
       "home": {
@@ -1875,7 +1875,7 @@
           }
         ],
         "table": {
-          "position": 10,
+          "position": 11,
           "played": 3,
           "points": 6,
           "name": "Manchester City"
@@ -1927,9 +1927,9 @@
           }
         ],
         "table": {
-          "position": 12,
-          "played": 3,
-          "points": 6,
+          "position": 5,
+          "played": 4,
+          "points": 9,
           "name": "Sporting CP"
         }
       },
@@ -1977,7 +1977,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-03T19:41:18.225942+00:00"
+      "updated_at": "2026-11-04T06:45:10.234098+00:00"
     },
     "5887760": {
       "home": {
@@ -2091,7 +2091,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:18.551688+00:00"
+      "updated_at": "2026-11-04T06:45:10.414252+00:00"
     },
     "5887769": {
       "home": {
@@ -2205,7 +2205,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:19.007533+00:00"
+      "updated_at": "2026-11-04T06:45:10.733729+00:00"
     },
     "5887778": {
       "home": {
@@ -2319,7 +2319,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:19.206558+00:00"
+      "updated_at": "2026-11-04T06:45:10.912694+00:00"
     },
     "5887784": {
       "home": {
@@ -2433,7 +2433,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:19.403869+00:00"
+      "updated_at": "2026-11-04T06:45:11.107938+00:00"
     },
     "5887796": {
       "home": {
@@ -2547,7 +2547,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:19.707541+00:00"
+      "updated_at": "2026-11-04T06:45:11.401597+00:00"
     },
     "5887800": {
       "home": {
@@ -2661,7 +2661,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:20.141946+00:00"
+      "updated_at": "2026-11-04T06:45:11.846044+00:00"
     },
     "5887814": {
       "home": {
@@ -2775,7 +2775,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:20.430468+00:00"
+      "updated_at": "2026-11-04T06:45:12.166351+00:00"
     },
     "5887819": {
       "home": {
@@ -2889,7 +2889,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:20.744996+00:00"
+      "updated_at": "2026-11-04T06:45:12.484313+00:00"
     },
     "5887832": {
       "home": {
@@ -3003,7 +3003,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.094787+00:00"
+      "updated_at": "2026-11-04T06:45:12.670569+00:00"
     },
     "5887840": {
       "home": {
@@ -3117,7 +3117,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.291281+00:00"
+      "updated_at": "2026-11-04T06:45:13.006103+00:00"
     },
     "5887851": {
       "home": {
@@ -3231,7 +3231,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.627050+00:00"
+      "updated_at": "2026-11-04T06:45:13.324482+00:00"
     },
     "5887855": {
       "home": {
@@ -3345,7 +3345,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.651570+00:00"
+      "updated_at": "2026-11-04T06:45:13.335076+00:00"
     },
     "5887869": {
       "home": {
@@ -3459,7 +3459,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.671023+00:00"
+      "updated_at": "2026-11-04T06:45:13.345868+00:00"
     },
     "5887877": {
       "home": {
@@ -3573,7 +3573,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.703023+00:00"
+      "updated_at": "2026-11-04T06:45:13.354350+00:00"
     },
     "5887887": {
       "home": {
@@ -3687,7 +3687,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-03T19:41:21.723139+00:00"
+      "updated_at": "2026-11-04T06:45:13.364804+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

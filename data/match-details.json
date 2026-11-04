@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-03T19:41:37.025292+00:00",
+  "_updated_at": "2026-11-04T06:45:26.356325+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -20739,7 +20739,7 @@
         "referee": {
           "name": "Ivan Kružliak"
         },
-        "attendance": null,
+        "attendance": 28260,
         "venue": {
           "name": "Stamford Bridge",
           "city": "London"
@@ -20850,7 +20850,7 @@
                 "width": 0.385
               },
               "statistics": {
-                "rating": 7.5
+                "rating": 6.8
               }
             },
             {
@@ -20888,7 +20888,7 @@
                 "width": 0.385
               },
               "statistics": {
-                "rating": 6.6
+                "rating": 7.3
               }
             },
             {
@@ -20907,7 +20907,7 @@
                 "width": 0.385
               },
               "statistics": {
-                "rating": 7.2
+                "rating": 7
               }
             },
             {
@@ -20926,7 +20926,7 @@
                 "width": 0.193
               },
               "statistics": {
-                "rating": 7.1
+                "rating": 7
               }
             },
             {
@@ -20964,7 +20964,7 @@
                 "width": 0.212
               },
               "statistics": {
-                "rating": 6.6
+                "rating": 6.7
               }
             },
             {
@@ -20992,7 +20992,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 6.5
+                "rating": 6.4
               }
             },
             {
@@ -21159,7 +21159,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.8
+                "rating": 7.6
               }
             },
             {
@@ -21178,7 +21178,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.7
+                "rating": 7.8
               }
             },
             {
@@ -21197,7 +21197,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 8
+                "rating": 7.9
               }
             },
             {
@@ -21235,7 +21235,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.3
+                "rating": 7.2
               }
             },
             {
@@ -21292,7 +21292,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.2
+                "rating": 7.3
               }
             },
             {
@@ -21622,7 +21622,7 @@
           },
           {
             "incidentType": "card",
-            "time": 75,
+            "time": 74,
             "player": {
               "id": 1697412,
               "name": "Isaque",
@@ -21788,8 +21788,8 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.97",
-                    "away": "1.30"
+                    "home": "1.60",
+                    "away": "1.52"
                   },
                   {
                     "name": "Total shots",
@@ -21804,22 +21804,22 @@
                   {
                     "name": "Touches in opposition box",
                     "home": 27,
-                    "away": 18
+                    "away": 17
                   },
                   {
                     "name": "Big chances",
-                    "home": 3,
+                    "home": 4,
                     "away": 3
                   },
                   {
                     "name": "Big chances missed",
-                    "home": 3,
+                    "home": 4,
                     "away": 2
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "379 (87%)",
-                    "away": "316 (86%)"
+                    "home": "381 (86%)",
+                    "away": "318 (85%)"
                   },
                   {
                     "name": "Yellow cards",
@@ -21878,27 +21878,27 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.97",
-                    "away": "1.30"
+                    "home": "1.60",
+                    "away": "1.52"
                   },
                   {
                     "name": "xG open play",
-                    "home": "1.44",
-                    "away": "1.11"
+                    "home": "1.01",
+                    "away": "1.34"
                   },
                   {
                     "name": "xG set play",
-                    "home": "0.53",
+                    "home": "0.59",
                     "away": "0.19"
                   },
                   {
                     "name": "xG non-penalty",
-                    "home": "1.97",
-                    "away": "1.30"
+                    "home": "1.60",
+                    "away": "1.52"
                   },
                   {
                     "name": "xG on target (xGOT)",
-                    "home": "0.74",
+                    "home": "0.39",
                     "away": "0.87"
                   },
                   {
@@ -21908,33 +21908,33 @@
                   },
                   {
                     "name": "Passes",
-                    "home": 436,
-                    "away": 369
+                    "home": 441,
+                    "away": 372
                   },
                   {
                     "name": "Accurate passes",
-                    "home": "379 (87%)",
-                    "away": "316 (86%)"
+                    "home": "381 (86%)",
+                    "away": "318 (85%)"
                   },
                   {
                     "name": "Own half",
-                    "home": 173,
-                    "away": 161
+                    "home": 176,
+                    "away": 163
                   },
                   {
                     "name": "Opposition half",
-                    "home": 206,
+                    "home": 205,
                     "away": 155
                   },
                   {
                     "name": "Accurate long balls",
-                    "home": "22 (55%)",
-                    "away": "28 (60%)"
+                    "home": "24 (57%)",
+                    "away": "26 (57%)"
                   },
                   {
                     "name": "Accurate crosses",
-                    "home": "5 (29%)",
-                    "away": "5 (83%)"
+                    "home": "5 (31%)",
+                    "away": "4 (80%)"
                   },
                   {
                     "name": "Throws",
@@ -21944,7 +21944,7 @@
                   {
                     "name": "Touches in opposition box",
                     "home": 27,
-                    "away": 18
+                    "away": 17
                   },
                   {
                     "name": "Offsides",
@@ -21958,12 +21958,12 @@
                   },
                   {
                     "name": "Tackles",
-                    "home": 18,
+                    "home": 19,
                     "away": 23
                   },
                   {
                     "name": "Interceptions",
-                    "home": 10,
+                    "home": 12,
                     "away": 8
                   },
                   {
@@ -21973,7 +21973,7 @@
                   },
                   {
                     "name": "Clearances",
-                    "home": 9,
+                    "home": 7,
                     "away": 24
                   },
                   {
@@ -21988,23 +21988,23 @@
                   },
                   {
                     "name": "Duels won",
-                    "home": 50,
-                    "away": 51
+                    "home": 57,
+                    "away": 52
                   },
                   {
                     "name": "Ground duels won",
-                    "home": "45 (52%)",
-                    "away": "42 (48%)"
+                    "home": "51 (54%)",
+                    "away": "44 (46%)"
                   },
                   {
                     "name": "Aerial duels won",
-                    "home": "5 (36%)",
-                    "away": "9 (64%)"
+                    "home": "6 (43%)",
+                    "away": "8 (57%)"
                   },
                   {
                     "name": "Successful dribbles",
-                    "home": "10 (40%)",
-                    "away": "10 (50%)"
+                    "home": "15 (50%)",
+                    "away": "12 (52%)"
                   },
                   {
                     "name": "Discipline",
