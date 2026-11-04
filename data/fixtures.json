@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-04T06:45:37.822562+00:00",
+  "_updated_at": "2026-11-04T19:56:50.604876+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -813,9 +813,9 @@
     },
     {
       "id": 6506259,
-      "date": 1795359600,
-      "kickoff_date": "2026-11-22",
-      "kickoff_local_time": "15:00",
+      "date": 1795284000,
+      "kickoff_date": "2026-11-21",
+      "kickoff_local_time": "18:00",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
