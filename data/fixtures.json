@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-05T07:03:23.251529+00:00",
+  "_updated_at": "2026-11-05T20:10:15.872995+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -778,7 +778,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Ferreira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001071250, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 37, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 5.41, 'valueType': 'perMatch', 'average': 4.98, 'total': 200, 'averageType': 'average', 'fillPercentage': 63.66, 'averagePercentage': 50}, {'type': 'redCards', 'value': 8, 'valueType': 'total'}, {'type': 'unknown', 'value': 10, 'valueType': 'total'}, {'type': 'penalties', 'value': 17, 'valueType': 'total'}, {'type': 'fouls', 'value': 25.63, 'valueType': 'perMatch', 'average': 27.54, 'total': 897, 'averageType': 'below', 'fillPercentage': 28.93, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
