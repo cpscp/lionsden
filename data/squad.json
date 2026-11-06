@@ -1,10 +1,28 @@
 {
-  "_updated_at": "2026-11-06T07:02:35.072176+00:00",
+  "_updated_at": "2026-11-06T19:35:07.594213+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Rui Borges",
   "season": "2026/27",
   "squad": [
+    {
+      "fotmob_id": 361759,
+      "name": "Paulo Fonseca",
+      "position": "",
+      "nationality": "Portugal",
+      "photo": "https://images.fotmob.com/image_resources/playerimages/361759.png",
+      "stats": {
+        "matches": 0,
+        "byCompetition": {},
+        "minutes": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellow": 0,
+        "red": 0
+      },
+      "careerStats": [],
+      "dateOfBirth": null
+    },
     {
       "fotmob_id": 361717,
       "name": "Rui Silva",
@@ -141,24 +159,12 @@
           "club": "Portugal"
         },
         {
-          "period": "2014-01-01T00:00:00 → 2015-12-31T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2013-01-01T00:00:00 → 2013-07-31T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
           "period": "2026",
           "club": "Portugal"
         },
         {
           "period": "2021",
           "club": "Portugal"
-        },
-        {
-          "period": "2014",
-          "club": "Portugal U21"
         }
       ],
       "careerStats": [
@@ -397,18 +403,6 @@
         {
           "period": "2023",
           "club": "Palmeiras U20"
-        },
-        {
-          "period": "2024-01-05T00:00:00",
-          "club": "Brazil U23"
-        },
-        {
-          "period": "2023-01-01T00:00:00 → 2024-12-31T00:00:00",
-          "club": "Brazil U20"
-        },
-        {
-          "period": "2023",
-          "club": "Brazil U20"
         }
       ],
       "careerStats": [],
@@ -631,18 +625,6 @@
           "club": "Belgium"
         },
         {
-          "period": "2022-05-18T00:00:00 → 2023-09-02T00:00:00",
-          "club": "Belgium U21"
-        },
-        {
-          "period": "2021-10-08T00:00:00 → 2021-11-30T00:00:00",
-          "club": "Belgium U19"
-        },
-        {
-          "period": "2019-10-08T00:00:00 → 2020-09-02T00:00:00",
-          "club": "Belgium U17"
-        },
-        {
           "period": "2026",
           "club": "Belgium"
         },
@@ -673,22 +655,6 @@
         {
           "period": "2022",
           "club": "Belgium"
-        },
-        {
-          "period": "2023",
-          "club": "Belgium U21"
-        },
-        {
-          "period": "2022",
-          "club": "Belgium U19"
-        },
-        {
-          "period": "2021",
-          "club": "Belgium U19"
-        },
-        {
-          "period": "2020",
-          "club": "Belgium U17"
         }
       ],
       "careerStats": [
@@ -881,18 +847,6 @@
           "club": "Greece"
         },
         {
-          "period": "2022-05-24T00:00:00 → 2023-03-14T00:00:00",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2019-09-04T00:00:00 → 2019-11-30T00:00:00",
-          "club": "Greece U19"
-        },
-        {
-          "period": "2017-10-17T00:00:00 → 2018-03-13T00:00:00",
-          "club": "Greece U17"
-        },
-        {
           "period": "2026/2027",
           "club": "Greece"
         },
@@ -911,18 +865,6 @@
         {
           "period": "2024/2026",
           "club": "Greece"
-        },
-        {
-          "period": "2020",
-          "club": "Greece U19"
-        },
-        {
-          "period": "2019",
-          "club": "Greece U19"
-        },
-        {
-          "period": "2018",
-          "club": "Greece U17"
         }
       ],
       "careerStats": [
@@ -1050,22 +992,6 @@
         {
           "period": "2026/2027",
           "club": "Sporting CP U19"
-        },
-        {
-          "period": "2025-08-30T00:00:00Z",
-          "club": "Morocco Under 18"
-        },
-        {
-          "period": "2025-03-24T00:00:00Z → 2026-04-30T00:00:00Z",
-          "club": "Morocco U17"
-        },
-        {
-          "period": "2025",
-          "club": "Morocco Under 18"
-        },
-        {
-          "period": "2025",
-          "club": "Morocco U17"
         }
       ],
       "careerStats": [],
@@ -1190,18 +1116,6 @@
           "club": "Uruguay"
         },
         {
-          "period": "2019-12-01T00:00:00 → 2023-10-18T00:00:00",
-          "club": "Uruguay U23"
-        },
-        {
-          "period": "2019-07-01T00:00:00 → 2019-12-31T00:00:00",
-          "club": "Uruguay U22"
-        },
-        {
-          "period": "2018-01-01T00:00:00 → 2019-12-31T00:00:00",
-          "club": "Uruguay U20"
-        },
-        {
           "period": "2026",
           "club": "Uruguay"
         },
@@ -1220,18 +1134,6 @@
         {
           "period": "2023",
           "club": "Uruguay"
-        },
-        {
-          "period": "2020",
-          "club": "Uruguay U23"
-        },
-        {
-          "period": "2019",
-          "club": "Uruguay U22"
-        },
-        {
-          "period": "2019",
-          "club": "Uruguay U20"
         }
       ],
       "careerStats": [
@@ -1417,24 +1319,8 @@
           "club": "Spain"
         },
         {
-          "period": "2025-10-01T00:00:00 → 2026-09-21T00:00:00",
-          "club": "Spain U21"
-        },
-        {
-          "period": "2022-09-20T00:00:00 → 2023-11-02T00:00:00",
-          "club": "Spain U19"
-        },
-        {
           "period": "2026/2027",
           "club": "Spain"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Spain U21"
-        },
-        {
-          "period": "2023",
-          "club": "Spain U19"
         }
       ],
       "careerStats": [
@@ -1580,10 +1466,6 @@
           "club": "Portugal"
         },
         {
-          "period": "2021-11-09T00:00:00 → 2023-03-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
           "period": "2026",
           "club": "Portugal"
         },
@@ -1602,10 +1484,6 @@
         {
           "period": "2023/2024",
           "club": "Portugal"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Portugal U21"
         }
       ],
       "careerStats": [
@@ -2030,26 +1908,6 @@
         {
           "period": "2024",
           "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2025-09-01T00:00:00Z → 2025-11-30T00:00:00Z",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024-09-02T00:00:00Z → 2025-10-31T00:00:00Z",
-          "club": "Portugal Under 18"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal Under 18"
         }
       ],
       "careerStats": [],
@@ -2168,30 +2026,6 @@
         {
           "period": "2019/2020",
           "club": "Sporting CP"
-        },
-        {
-          "period": "2020-08-24T00:00:00 → 2025-06-09T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2018-09-01T00:00:00 → 2019-05-30T00:00:00",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2023/2024",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2019",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2018",
-          "club": "Portugal U17"
         }
       ],
       "careerStats": [
@@ -2441,50 +2275,6 @@
         {
           "period": "2021/2022",
           "club": "Inter U19"
-        },
-        {
-          "period": "2025-08-26T00:00:00",
-          "club": "Denmark U21"
-        },
-        {
-          "period": "2022-09-01T00:00:00 → 2023-10-13T00:00:00",
-          "club": "Denmark U19"
-        },
-        {
-          "period": "2022-03-01T00:00:00 → 2023-10-13T00:00:00",
-          "club": "Denmark Under 18"
-        },
-        {
-          "period": "2020-02-01T00:00:00 → 2021-09-30T00:00:00",
-          "club": "Denmark U17"
-        },
-        {
-          "period": "2019-08-01T00:00:00 → 2020-02-20T00:00:00",
-          "club": "Denmark U16"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Denmark U21"
-        },
-        {
-          "period": "2023",
-          "club": "Denmark U19"
-        },
-        {
-          "period": "2022",
-          "club": "Denmark Under 18"
-        },
-        {
-          "period": "2020",
-          "club": "Denmark U17"
-        },
-        {
-          "period": "2020",
-          "club": "Denmark U16"
-        },
-        {
-          "period": "2019",
-          "club": "Denmark U16"
         }
       ],
       "careerStats": [
@@ -2814,42 +2604,6 @@
         {
           "period": "2024/2025",
           "club": "Sporting CP U19"
-        },
-        {
-          "period": "2025-10-03T00:00:00 → 2026-06-30T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2024-10-08T00:00:00 → 2025-11-04T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2022-11-12T00:00:00 → 2024-11-07T00:00:00",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2023",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2022/2023",
-          "club": "Portugal U17"
         }
       ],
       "careerStats": [
@@ -3090,10 +2844,6 @@
           "club": "Australia"
         },
         {
-          "period": "2022-10-01T00:00:00 → 2025-03-29T00:00:00",
-          "club": "Australia U17"
-        },
-        {
           "period": "2026",
           "club": "Australia"
         },
@@ -3104,10 +2854,6 @@
         {
           "period": "2023/2025",
           "club": "Australia"
-        },
-        {
-          "period": "2023",
-          "club": "Australia U17"
         }
       ],
       "careerStats": [
@@ -3469,42 +3215,6 @@
         {
           "period": "2024/2025",
           "club": "Sporting CP U19"
-        },
-        {
-          "period": "2026-09-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2024-09-06T00:00:00 → 2026-09-27T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2023-09-01T00:00:00 → 2024-11-07T00:00:00",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2024",
-          "club": "Portugal U17"
-        },
-        {
-          "period": "2023",
-          "club": "Portugal U17"
         }
       ],
       "careerStats": [],
@@ -3595,16 +3305,8 @@
           "club": "Italy"
         },
         {
-          "period": "2025-03-14T00:00:00 → 2025-06-30T00:00:00",
-          "club": "Italy U21"
-        },
-        {
           "period": "2026/2027",
           "club": "Italy"
-        },
-        {
-          "period": "2025",
-          "club": "Italy U21"
         }
       ],
       "careerStats": [
@@ -3809,14 +3511,6 @@
           "club": "Greece"
         },
         {
-          "period": "2019-11-06T00:00:00 → 2022-03-31T00:00:00",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2018-11-07T00:00:00 → 2019-10-31T00:00:00",
-          "club": "Greece U19"
-        },
-        {
           "period": "2026/2027",
           "club": "Greece"
         },
@@ -3847,18 +3541,6 @@
         {
           "period": "2022",
           "club": "Greece"
-        },
-        {
-          "period": "2021/2022",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2019/2021",
-          "club": "Greece U21"
-        },
-        {
-          "period": "2019",
-          "club": "Greece U19"
         }
       ],
       "careerStats": [
@@ -4039,30 +3721,6 @@
         {
           "period": "2022/2023",
           "club": "Sporting CP U19"
-        },
-        {
-          "period": "2026-09-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026-05-26T00:00:00",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2023-11-01T00:00:00 → 2024-03-14T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2023",
-          "club": "Portugal U19"
         }
       ],
       "careerStats": [],
@@ -4197,10 +3855,6 @@
         {
           "period": "2019-08-26T00:00:00",
           "club": "Mozambique"
-        },
-        {
-          "period": "2021-02-05T00:00:00 → 2021-02-13T00:00:00",
-          "club": "Mozambique U20"
         },
         {
           "period": "2026/2027",
@@ -4389,30 +4043,6 @@
         {
           "period": "2013/2014",
           "club": "Benfica U19"
-        },
-        {
-          "period": "2015-01-01T00:00:00 → 2017-03-20T00:00:00",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2015-01-01T00:00:00 → 2015-12-31T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2013-01-01T00:00:00 → 2014-10-31T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2015",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2015/2017",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2014",
-          "club": "Portugal U19"
         }
       ],
       "careerStats": [
@@ -4625,10 +4255,6 @@
           "club": "Uruguay"
         },
         {
-          "period": "2019-01-01T00:00:00 → 2019-02-28T00:00:00",
-          "club": "Uruguay U20"
-        },
-        {
           "period": "2026",
           "club": "Uruguay"
         },
@@ -4643,10 +4269,6 @@
         {
           "period": "2023",
           "club": "Uruguay"
-        },
-        {
-          "period": "2019",
-          "club": "Uruguay U20"
         }
       ],
       "careerStats": [
@@ -4821,42 +4443,6 @@
         {
           "period": "2022/2023",
           "club": "Crystal Palace U18"
-        },
-        {
-          "period": "2026-09-18T00:00:00",
-          "club": "England U20"
-        },
-        {
-          "period": "2024-11-08T00:00:00 → 2026-09-18T00:00:00",
-          "club": "England U19"
-        },
-        {
-          "period": "2024-08-30T00:00:00 → 2025-05-31T00:00:00",
-          "club": "England Under 18"
-        },
-        {
-          "period": "2023-11-02T00:00:00 → 2024-05-20T00:00:00",
-          "club": "England U17"
-        },
-        {
-          "period": "2026",
-          "club": "England U19"
-        },
-        {
-          "period": "2025",
-          "club": "England U19"
-        },
-        {
-          "period": "2025",
-          "club": "England Under 18"
-        },
-        {
-          "period": "2024",
-          "club": "England Under 18"
-        },
-        {
-          "period": "2024",
-          "club": "England U17"
         }
       ],
       "careerStats": [
@@ -5011,22 +4597,6 @@
         {
           "period": "2024/2025",
           "club": "West Ham United U21"
-        },
-        {
-          "period": "2022-03-18T00:00:00",
-          "club": "Brazil Under 16"
-        },
-        {
-          "period": "2023-01-01T00:00:00 → 2023-05-01T00:00:00",
-          "club": "Brazil U20"
-        },
-        {
-          "period": "2022",
-          "club": "Brazil Under 16"
-        },
-        {
-          "period": "2023",
-          "club": "Brazil U20"
         }
       ],
       "careerStats": [
@@ -5154,42 +4724,6 @@
         {
           "period": "2024",
           "club": "Sporting CP Under 17"
-        },
-        {
-          "period": "2026-09-17T00:00:00",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026-05-26T00:00:00",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025-03-21T00:00:00 → 2025-10-31T00:00:00",
-          "club": "Portugal Under 18"
-        },
-        {
-          "period": "2025/2026",
-          "club": "Portugal U21"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U20"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal Under 18"
         }
       ],
       "careerStats": [
@@ -5264,18 +4798,6 @@
         {
           "period": "2024/2025",
           "club": "Gil Vicente"
-        },
-        {
-          "period": "2025-09-01T00:00:00 → 2026-09-27T00:00:00",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2026",
-          "club": "Portugal U19"
-        },
-        {
-          "period": "2025",
-          "club": "Portugal U19"
         }
       ],
       "careerStats": [],
