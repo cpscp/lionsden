@@ -49,14 +49,14 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
         },
-        "playedGames": 10,
-        "won": 6,
+        "playedGames": 11,
+        "won": 7,
         "draw": 3,
         "lost": 1,
-        "points": 21,
-        "goalsFor": 23,
+        "points": 24,
+        "goalsFor": 24,
         "goalsAgainst": 11,
-        "goalDifference": 12
+        "goalDifference": 13
       },
       {
         "position": 4,
@@ -157,14 +157,14 @@
           "tla": null,
           "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/8348.png"
         },
-        "playedGames": 10,
+        "playedGames": 11,
         "won": 4,
         "draw": 2,
-        "lost": 4,
+        "lost": 5,
         "points": 14,
         "goalsFor": 13,
-        "goalsAgainst": 17,
-        "goalDifference": -4
+        "goalsAgainst": 18,
+        "goalDifference": -5
       },
       {
         "position": 10,

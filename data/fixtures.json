@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T19:33:00.620364+00:00",
+  "_updated_at": "2026-11-07T22:04:13.843358+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -775,17 +775,16 @@
       "kickoff_date": "2026-11-07",
       "kickoff_local_time": "20:30",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "live",
+        "long": "Em direto"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Ferreira', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001071250, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 37, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 5.41, 'valueType': 'perMatch', 'average': 4.98, 'total': 200, 'averageType': 'average', 'fillPercentage': 63.65, 'averagePercentage': 50}, {'type': 'redCards', 'value': 8, 'valueType': 'total'}, {'type': 'unknown', 'value': 10, 'valueType': 'total'}, {'type': 'penalties', 'value': 17, 'valueType': 'total'}, {'type': 'fouls', 'value': 25.63, 'valueType': 'perMatch', 'average': 27.53, 'total': 897, 'averageType': 'below', 'fillPercentage': 28.98, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207228,
-        "lon": -9.160875678,
-        "capacity": 52095.0,
-        "country": "Portugal"
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1109,13 +1108,14 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": null,
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estádio da Luz",
+        "name": "Estadio da Luz",
         "city": "Lisboa",
         "lat": 38.752778,
         "lon": -9.184722,
-        "capacity": null
+        "capacity": null,
+        "country": ""
       },
       "competition": {
         "name": "Liga Portugal",
