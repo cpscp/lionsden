@@ -2,27 +2,9 @@
   "_updated_at": "2026-11-07T13:19:54.393258+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
-  "coach": "Rui Borges",
+  "coach": "Paulo Fonseca",
   "season": "2026/27",
   "squad": [
-    {
-      "fotmob_id": 361759,
-      "name": "Paulo Fonseca",
-      "position": "",
-      "nationality": "Portugal",
-      "photo": "https://images.fotmob.com/image_resources/playerimages/361759.png",
-      "stats": {
-        "matches": 0,
-        "byCompetition": {},
-        "minutes": 0,
-        "goals": 0,
-        "assists": 0,
-        "yellow": 0,
-        "red": 0
-      },
-      "careerStats": [],
-      "dateOfBirth": null
-    },
     {
       "fotmob_id": 361717,
       "name": "Rui Silva",

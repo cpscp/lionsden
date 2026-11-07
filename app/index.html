@@ -770,21 +770,12 @@ function squadGroup(title, players, indexMap){
     </div>
   </div>`;
 }
-const RUI_BORGES_HISTORY=[
-  {season:'2026/27',club:'Sporting',matches:8,wins:5,draws:3,losses:0},
-  {season:'2025/26',club:'Sporting',matches:56,wins:37,draws:10,losses:9},
-  {season:'2024/25',club:'Sporting',matches:29,wins:18,draws:9,losses:2},
-  {season:'2024/25',club:'Vitória SC',matches:30,wins:18,draws:7,losses:5},
-  {season:'2023/24',club:'Moreirense',matches:36,wins:16,draws:8,losses:12},
-  {season:'2022/23',club:'CD Mafra',matches:15,wins:7,draws:6,losses:2},
-  {season:'2022/23',club:'Vilafranquense',matches:24,wins:9,draws:8,losses:7},
-  {season:'2021/22',club:'Nacional',matches:30,wins:13,draws:8,losses:9},
-  {season:'2021/22',club:'Académica OAF',matches:7,wins:0,draws:2,losses:5},
-  {season:'2020/21',club:'Académica OAF',matches:37,wins:19,draws:11,losses:7},
-  {season:'2019/20',club:'Académico de Viseu',matches:32,wins:14,draws:8,losses:10},
-  {season:'2018/19',club:'Académico de Viseu',matches:14,wins:7,draws:2,losses:5},
-  {season:'2018/19',club:'Mirandela',matches:23,wins:12,draws:5,losses:6},
-  {season:'2017/18',club:'Mirandela',matches:32,wins:17,draws:7,losses:8}
+const COACH_NAME='Paulo Fonseca';
+// Paulo Fonseca took over on 04/11/2026 (Rui Borges left on 01/11; Tiago
+// Fernandes was interim in London on 03/11). Only matches from then count.
+const COACH_START='2026-11-04T00:00:00Z';
+const COACH_HISTORY=[
+  {season:'2026/27',club:'Sporting',matches:0,wins:0,draws:0,losses:0}
 ];
 function coachCurrentStats(){
   const f=allFixtures(),now=Math.floor(Date.now()/1000);
@@ -801,7 +792,7 @@ function coachCurrentStats(){
 }
 function coachHistoryRows(){
   const current=coachCurrentStats();
-  return RUI_BORGES_HISTORY.map(r=>r.season==='2026/27'&&r.club==='Sporting'?{...r,...current}:r);
+  return COACH_HISTORY.map(r=>r.season==='2026/27'&&r.club==='Sporting'?{...r,...current}:r);
 }
 function coachCareer(){
   return coachHistoryRows().map(r=>`<div class="grid grid-cols-[1fr_1.6fr_.6fr_.6fr_.6fr_.6fr] gap-2 items-center px-3 py-3 border-t border-white/5 text-[11px]">
@@ -817,9 +808,9 @@ function renderCoachCard(){
       <h3 class="text-[13px] font-bold uppercase tracking-[.16em]">Treinador</h3>
     </div>
     <button onclick="openCoach()" class="card w-full p-3 flex items-center gap-3 text-left">
-      <div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden shrink-0"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-lg font-bold&quot;&gt;RB&lt;/span&gt;'"></div>
+      <div class="w-12 h-12 rounded-full bg-white/5 overflow-hidden shrink-0"><img src="https://images.fotmob.com/image_resources/playerimages/361759.png" class="w-full h-full object-cover" alt="Paulo Fonseca" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-lg font-bold&quot;&gt;PF&lt;/span&gt;'"></div>
       <div class="flex-1 min-w-0">
-        <div class="font-semibold text-[13px]">Rui Borges</div>
+        <div class="font-semibold text-[13px]">Paulo Fonseca</div>
         <div class="text-[10px] muted mt-1">Treinador · Portugal</div>
       </div>
 
@@ -828,7 +819,7 @@ function renderCoachCard(){
 }
 function renderSquad(){
   const raw=D['squad.json']||{};
-  const ps=raw.players||raw.squad||[];
+  const ps=(raw.players||raw.squad||[]).filter(p=>p.name!==COACH_NAME&&p.name!=='Rui Borges');
   const groups=[['Guarda-Redes',ps.filter(p=>positionLabel(p.position||p.officialPosition)==='Guarda-redes')],
                 ['Defesas',ps.filter(p=>positionLabel(p.position||p.officialPosition)==='Defesa')],
                 ['Médios',ps.filter(p=>positionLabel(p.position||p.officialPosition)==='Médio')],
@@ -1222,12 +1213,12 @@ function renderCareer(p){
 }
 function openCoach(){
   const st=coachCurrentStats();
-  document.getElementById('modalTitle').textContent='Rui Borges';
+  document.getElementById('modalTitle').textContent='Paulo Fonseca';
   document.getElementById('modalBody').innerHTML=`
     <div class="flex items-center gap-4 mb-5">
-      <div class="w-28 h-28 shrink-0 rounded-2xl bg-white/5 overflow-hidden"><img src="https://images.fotmob.com/image_resources/playerimages/1135797.png" class="w-full h-full object-cover" alt="Rui Borges" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-3xl font-bold&quot;&gt;RB&lt;/span&gt;'"></div>
+      <div class="w-28 h-28 shrink-0 rounded-2xl bg-white/5 overflow-hidden"><img src="https://images.fotmob.com/image_resources/playerimages/361759.png" class="w-full h-full object-cover" alt="Paulo Fonseca" onerror="this.parentElement.innerHTML='&lt;span class=&quot;w-full h-full flex items-center justify-center text-3xl font-bold&quot;&gt;PF&lt;/span&gt;'"></div>
       <div class="min-w-0 flex-1">
-        <div class="text-xl font-bold">Rui Borges</div>
+        <div class="text-xl font-bold">Paulo Fonseca</div>
         <div class="muted text-sm mt-1">Treinador · Portugal</div>
         <div class="text-sm text-white/80 mt-3">Sporting CP</div>
         <div class="text-[11px] muted mt-1">Época 2026/27 · todas as competições</div>

@@ -130,6 +130,8 @@ MANUAL_SQUAD_ADDITIONS = {
 }
 
 EXCLUDED_SQUAD_PLAYERS = {"Sotiris Alexandropoulos"}
+COACH = "Paulo Fonseca"
+COACH_NAMES = {COACH, "Rui Borges"}  # never list coaches as players
 
 POSITION_FALLBACKS = {
     "Rui Silva": "GK", "Kaique Pereira": "GK", "Diego Callai": "GK",
@@ -808,7 +810,7 @@ def fetch_fotmob_core():
         if isinstance(obj, dict):
             pid = obj.get("id") or obj.get("playerId")
             name = obj.get("name")
-            if pid and name and not isinstance(name, dict) and not obj.get("isCoach") and name != "Rui Borges": groups.append(obj)
+            if pid and name and not isinstance(name, dict) and not obj.get("isCoach") and name not in COACH_NAMES: groups.append(obj)
             for value in obj.values(): collect_squad_nodes(value)
         elif isinstance(obj, list):
             for value in obj: collect_squad_nodes(value)
@@ -1107,7 +1109,7 @@ def fetch_fotmob_core():
         write_json("squad.json", {
             "team": "Sporting Clube de Portugal",
             "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
-            "coach": "Rui Borges",
+            "coach": COACH,
             "season": "2026/27",
             "squad": players,
             "source": "FotMob"
@@ -2219,12 +2221,12 @@ def fetch_sofascore_player_stats():
             p["career"] = []
             players.append(p)
             final_by_name[key] = p
-    players[:] = [p for p in players if clean(p.get("name")) not in EXCLUDED_SQUAD_PLAYERS]
+    players[:] = [p for p in players if clean(p.get("name")) not in EXCLUDED_SQUAD_PLAYERS | COACH_NAMES]
 
     write_json("squad.json", {
         "team": "Sporting Clube de Portugal",
         "crest": "https://img.sofascore.com/api/v1/team/3001/image",
-        "coach": "Rui Borges",
+        "coach": COACH,
         "season": "2026/27",
         "squad": players,
         "source": "Sofascore public data"
