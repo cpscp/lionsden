@@ -10,7 +10,7 @@
       "url": "https://www.youtube.com/watch?v=B8-QVYcgNKc",
       "embed": "https://www.youtube.com/embed/B8-QVYcgNKc",
       "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPx2ujTtRPCdoRWTfJO_4JUIgzFg",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
     },
@@ -23,7 +23,7 @@
       "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
       "embed": "https://www.youtube.com/embed/LFMfqhXv8NU",
       "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDqPAyayjUqiE5NDgUbTRNw0Uj5XQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
     },
@@ -36,7 +36,7 @@
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
       "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
     },
@@ -49,7 +49,7 @@
       "url": "https://www.youtube.com/watch?v=WmDjGUp2pwY",
       "embed": "https://www.youtube.com/embed/WmDjGUp2pwY",
       "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAC7VZj2qXHdB90Vkbw1YnzntE_bQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
     },
@@ -62,7 +62,7 @@
       "url": "https://www.youtube.com/watch?v=HOae-HEHCy8",
       "embed": "https://www.youtube.com/embed/HOae-HEHCy8",
       "thumbnail": "https://i.ytimg.com/vi/HOae-HEHCy8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA27z1yGX0uGs4qVAfEXAu2KeNwfg",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 2 meses"
     },
@@ -75,7 +75,7 @@
       "url": "https://www.youtube.com/watch?v=q6iKmAL4YFQ",
       "embed": "https://www.youtube.com/embed/q6iKmAL4YFQ",
       "thumbnail": "https://i.ytimg.com/vi/q6iKmAL4YFQ/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAYE84HE2NT6jowNFC4eWk6CIdyTw",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 meses"
     },
@@ -88,7 +88,7 @@
       "url": "https://www.youtube.com/watch?v=9V0I8Ifiiho",
       "embed": "https://www.youtube.com/embed/9V0I8Ifiiho",
       "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAc2WuH1MjskfjB9zPoB6QBVk0q-Q",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 meses"
     },
@@ -101,7 +101,7 @@
       "url": "https://www.youtube.com/watch?v=WCGez8Kemwg",
       "embed": "https://www.youtube.com/embed/WCGez8Kemwg",
       "thumbnail": "https://i.ytimg.com/vi/WCGez8Kemwg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBgfzm4sGbJ-LCR_b2Rch7XaodVKw",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 2 meses"
     },
@@ -114,7 +114,7 @@
       "url": "https://www.youtube.com/watch?v=dxpcW8HJgGo",
       "embed": "https://www.youtube.com/embed/dxpcW8HJgGo",
       "thumbnail": "https://i.ytimg.com/vi/dxpcW8HJgGo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDBIo4mKDVFG3DNvjqphKr2Bj29NQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 meses"
     },
@@ -127,7 +127,7 @@
       "url": "https://www.youtube.com/watch?v=Sgu7UdPWsO4",
       "embed": "https://www.youtube.com/embed/Sgu7UdPWsO4",
       "thumbnail": "https://i.ytimg.com/vi/Sgu7UdPWsO4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD3gycO4FEPDQ_kSMMXyX9v-A_1_g",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 1 mês"
     },
@@ -140,7 +140,7 @@
       "url": "https://www.youtube.com/watch?v=Iv5LBsbqEhs",
       "embed": "https://www.youtube.com/embed/Iv5LBsbqEhs",
       "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 1 mês"
     },
@@ -156,7 +156,7 @@
       "preferred_for_home": true,
       "published_text": "19/09/2026",
       "provider": "youtube",
-      "embed_allowed": false
+      "embed_allowed": true
     },
     {
       "match_id": 5887647,
@@ -167,7 +167,7 @@
       "url": "https://www.youtube.com/watch?v=erD3D59shpk",
       "embed": "https://www.youtube.com/embed/erD3D59shpk",
       "thumbnail": "https://i.ytimg.com/vi/erD3D59shpk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAoNWETvKmezldUycIWqk0jg9qqbg",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 4 semanas"
     },
@@ -180,7 +180,7 @@
       "url": "https://www.youtube.com/watch?v=xUW-DuDF_EU",
       "embed": "https://www.youtube.com/embed/xUW-DuDF_EU",
       "thumbnail": "https://i.ytimg.com/vi/xUW-DuDF_EU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAW1P-AB5qvlSr_F1tqjdUywqwyvQ",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 3 semanas"
     },
@@ -193,7 +193,7 @@
       "url": "https://www.youtube.com/watch?v=l2TvkaX310Y",
       "embed": "https://www.youtube.com/embed/l2TvkaX310Y",
       "thumbnail": "https://i.ytimg.com/vi/l2TvkaX310Y/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAq21bOtd-nXVOegtmIt2spmW909A",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 semanas"
     },
@@ -206,7 +206,7 @@
       "url": "https://www.youtube.com/watch?v=2IYfn7_EshY",
       "embed": "https://www.youtube.com/embed/2IYfn7_EshY",
       "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwZ3Gekqfu3ZRM3DEEH6x2ZdSODw",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 12 dias"
     },
@@ -219,7 +219,7 @@
       "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
       "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
       "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 7 dias"
     },
@@ -232,7 +232,7 @@
       "url": "https://www.youtube.com/watch?v=IIFAb5NM24s",
       "embed": "https://www.youtube.com/embed/IIFAb5NM24s",
       "thumbnail": "https://i.ytimg.com/vi/IIFAb5NM24s/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCE-OqOtSv2C10SBb1g-FC23lRYYg",
-      "embed_allowed": false,
+      "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 2 dias"
     }

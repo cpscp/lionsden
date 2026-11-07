@@ -2657,33 +2657,6 @@ def fetch_match_summary_videos():
             except Exception:pass
         return None
 
-    embed_cache = {}
-    def embeddable(vid):
-        """True/False from YouTube's embedded player; None when it can't be checked.
-        Some Liga summaries are blocked on third-party sites (Content ID)."""
-        if vid in embed_cache:
-            return embed_cache[vid]
-        result = None
-        try:
-            r = session.post(
-                "https://www.youtube.com/youtubei/v1/player?prettyPrint=false",
-                json={"context": {"client": {"clientName": "WEB_EMBEDDED_PLAYER", "clientVersion": "1.20260924.01.00", "hl": "pt-PT", "gl": "PT"},
-                                  "thirdParty": {"embedUrl": "https://lionsdenscp.web.app/"}},
-                      "videoId": vid},
-                timeout=20,
-            )
-            r.raise_for_status()
-            ps = (r.json() or {}).get("playabilityStatus") or {}
-            status = clean(ps.get("status")).upper()
-            if status == "OK":
-                result = ps.get("playableInEmbed", True) is not False
-            elif status in {"UNPLAYABLE", "ERROR", "LOGIN_REQUIRED"}:
-                result = False
-        except Exception as e:
-            print("YouTube embed check warning:", vid, e)
-        embed_cache[vid] = result
-        return result
-
     previous = safe_existing("match-videos.json") or {}
     previous_by_match = {str(x.get("match_id")): x for x in previous.get("videos", []) if x.get("match_id") and x.get("video_id")}
     videos = []
@@ -2793,7 +2766,7 @@ def fetch_match_summary_videos():
                 "url": f"https://www.youtube.com/watch?v={best['id']}",
                 "embed": f"https://www.youtube.com/embed/{best['id']}",
                 "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg",
-                "embed_allowed": embeddable(best["id"]) is not False,
+                "embed_allowed": True,  # the app falls back to YouTube if the embed is blocked
                 "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner"))),
                 "published_text": best.get("published_text","")
             })
@@ -2802,7 +2775,7 @@ def fetch_match_summary_videos():
             # temporarily returned no candidates or changed its published-time label.
             kept = dict(previous_by_match[str(f.get("id"))])
             if kept.get("provider") != "vsports" and kept.get("video_id"):
-                kept["embed_allowed"] = embeddable(kept["video_id"]) is not False
+                kept["embed_allowed"] = True
             videos.append(kept)
 
     write_json("match-videos.json", {
