@@ -2744,7 +2744,9 @@ def fetch_match_summary_videos():
             else:
                 freshness=0; proximity=0
             source_priority = sporting * 3 if is_sporting_home else vsports * 3
-            if not (opp_hit or score_hit):
+            # The opponent must be named in the title; the score alone is not
+            # enough (e.g. two different 0-2 wins in the same week).
+            if not opp_hit:
                 return (-1, -1, -1, -1, -1, -1)
             return (freshness, source_priority, opp_hit + score_hit, score_hit, summary, proximity)
 
