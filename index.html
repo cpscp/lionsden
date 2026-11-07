@@ -1610,6 +1610,32 @@ function gameInfoIcon(type){
  return '<span class="game-info-icon"><svg viewBox="0 0 20 20" aria-hidden="true">'+(icons[type]||icons.people)+'</svg></span>';
 }
 function gameInfoRow(icon,label,value){return '<div class="game-info-row">'+gameInfoIcon(icon)+'<div class="game-info-copy"><div class="game-info-label">'+esc(label)+'</div><div class="game-info-value">'+esc(value||'Por confirmar')+'</div></div></div>';}
+// ---- Resumo em vídeo: thumbnail sempre; reproduz na app quando o YouTube
+// permite, senão abre no YouTube (alguns resumos da Liga bloqueiam embeds).
+function ytBlockedSet(){try{return new Set(JSON.parse(localStorage.getItem('ld-yt-blocked')||'[]'))}catch(e){return new Set()}}
+function ytBlocked(id){return ytBlockedSet().has(String(id))}
+function ytMarkBlocked(id){try{const s=ytBlockedSet();s.add(String(id));localStorage.setItem('ld-yt-blocked',JSON.stringify([...s].slice(-200)))}catch(e){}}
+function ytThumbHtml(vid,thumb,url,embeddable,note){
+  return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" class="yt-thumb block absolute inset-0" data-vid="'+esc(vid)+'" data-thumb="'+esc(thumb)+'" data-embed="'+(embeddable?'1':'0')+'" onclick="return playMatchVideo(this,event)">'+
+    '<img src="'+esc(thumb)+'" class="w-full h-full object-cover" alt="" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'https://i.ytimg.com/vi/'+esc(vid)+'/hqdefault.jpg\'}">'+
+    '<div class="absolute inset-0 bg-black/30"></div><div class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl shadow-lg">▶</span></div>'+
+    '<div class="absolute bottom-3 left-3 right-3 text-white font-semibold text-[12px]">'+(note?esc(note):(embeddable?'Ver resumo':'Ver no YouTube →'))+'</div></a>';
+}
+let _ytApi=null;
+function loadYtApi(){if(window.YT&&window.YT.Player)return Promise.resolve();if(_ytApi)return _ytApi;_ytApi=new Promise((res,rej)=>{const prev=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=()=>{try{prev&&prev()}catch(e){}res()};const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';s.onerror=rej;document.head.appendChild(s);setTimeout(()=>rej(new Error('yt timeout')),8000)});return _ytApi;}
+function playMatchVideo(el,ev){
+  if(el.dataset.embed!=='1')return true;              // segue o link para o YouTube
+  ev&&ev.preventDefault();
+  const box=el.parentElement,vid=el.dataset.vid,url=el.href,thumb=el.dataset.thumb;
+  const fallback=()=>{ytMarkBlocked(vid);box.innerHTML=ytThumbHtml(vid,thumb,url,false,'Este resumo só pode ser visto no YouTube · tocar para abrir →');};
+  const holder=document.createElement('div');holder.className='absolute inset-0';box.innerHTML='';box.appendChild(holder);
+  loadYtApi().then(()=>{new YT.Player(holder,{videoId:vid,host:'https://www.youtube-nocookie.com',width:'100%',height:'100%',
+    playerVars:{autoplay:1,rel:0,playsinline:1,modestbranding:1},
+    events:{onError:e=>{if([2,5,100,101,150,152,153].includes(Number(e.data)))fallback();}}});
+    const f=box.querySelector('iframe');if(f){f.style.width='100%';f.style.height='100%';f.style.position='absolute';f.style.inset='0';}
+  }).catch(()=>{box.innerHTML=ytThumbHtml(vid,thumb,url,false);window.open(url,'_blank','noopener');});
+  return false;
+}
 function matchVideoFor(id){
   const direct=(D['match-videos.json']?.videos||[]).find(v=>String(v.match_id)===String(id));
   if(direct?.video_id && direct.provider!=='vsports') return direct;
@@ -1767,13 +1793,13 @@ function openGame(id){try{
    return '<div class="game-incident">'+icon+'<b class="game-incident-time">'+esc(x.time!=null?x.time+"'" :'—')+'</b>'+body+'</div>';
  }).join(''):'<div class="text-[10px] muted">Sem incidentes disponíveis.</div>';
 ; const video=matchVideoFor(id);
- const videoSrc=video?.video_id && video.embed_allowed!==false ? 'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.video_id)+'?rel=0' : '';
  const videoSection=video?safeHtml(()=>{
-   const thumb=video.thumbnail||('https://i.ytimg.com/vi/'+encodeURIComponent(video.video_id||'')+'/hq720.jpg');
-   const watchUrl=video.url||('https://www.youtube.com/watch?v='+encodeURIComponent(video.video_id||''));
+   const vid=String(video.video_id||'');
+   const thumb=video.thumbnail||('https://i.ytimg.com/vi/'+encodeURIComponent(vid)+'/hqdefault.jpg');
+   const watchUrl=video.url||('https://www.youtube.com/watch?v='+encodeURIComponent(vid));
+   const embeddable=!!vid&&video.embed_allowed!==false&&!ytBlocked(vid);
    return '<div class="card game-video-card p-3 mt-3"><div class="font-semibold px-1 mb-3">Resumo em vídeo</div>'+
-     (videoSrc?'<div class="relative aspect-video rounded-[13px] overflow-hidden bg-black"><iframe class="absolute inset-0 w-full h-full" src="'+esc(videoSrc)+'" title="'+esc(video.title||'Resumo do jogo')+'" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>':'')+
-     '<a href="'+esc(watchUrl)+'" target="_blank" rel="noopener noreferrer" class="block relative aspect-video rounded-[13px] overflow-hidden bg-black mt-0 '+(videoSrc?'hidden':'')+'"><img src="'+esc(thumb)+'" class="w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-black/35"></div><div class="absolute inset-0 flex items-center justify-center"><span class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl">▶</span></div><div class="absolute bottom-3 left-3 right-3 text-white font-semibold text-sm">Ver no YouTube →</div></a>'+
+     '<div class="yt-box relative aspect-video rounded-[13px] overflow-hidden bg-black">'+ytThumbHtml(vid,thumb,watchUrl,embeddable)+'</div>'+
      '<div class="game-video-source">'+esc(video.channel||'Fonte oficial')+' · <a href="'+esc(watchUrl)+'" target="_blank" rel="noopener noreferrer" class="underline">Abrir no YouTube</a></div></div>';
  },''):'';
 
