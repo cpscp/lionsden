@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T19:03:18.479616+00:00",
+  "_updated_at": "2026-11-07T19:19:50.276704+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -10,8 +10,9 @@
       "url": "https://www.youtube.com/watch?v=B8-QVYcgNKc",
       "embed": "https://www.youtube.com/embed/B8-QVYcgNKc",
       "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPx2ujTtRPCdoRWTfJO_4JUIgzFg",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 2 meses"
+      "published_text": "há 3 meses"
     },
     {
       "match_id": 5900292,
@@ -22,8 +23,9 @@
       "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
       "embed": "https://www.youtube.com/embed/LFMfqhXv8NU",
       "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLAONA7m5DUUXuV-lWbHqkO8z-a5Aw",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 2 meses"
+      "published_text": "há 3 meses"
     },
     {
       "match_id": 5900240,
@@ -34,7 +36,34 @@
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
       "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
+      "embed_allowed": true,
       "preferred_for_home": true,
+      "published_text": "há 3 meses"
+    },
+    {
+      "match_id": 5899095,
+      "sofascore_id": null,
+      "video_id": "WmDjGUp2pwY",
+      "title": "Highlights | Pré-Época: Sporting CP 4-1 Nottingham Forest FC",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=WmDjGUp2pwY",
+      "embed": "https://www.youtube.com/embed/WmDjGUp2pwY",
+      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAC7VZj2qXHdB90Vkbw1YnzntE_bQ",
+      "embed_allowed": true,
+      "preferred_for_home": true,
+      "published_text": "há 3 meses"
+    },
+    {
+      "match_id": 5887558,
+      "sofascore_id": null,
+      "video_id": "HOae-HEHCy8",
+      "title": "Resumo: Estrela Amadora 2-2 Sporting (Liga 26/27 #1)",
+      "channel": "VSPORTS - Liga Portugal",
+      "url": "https://www.youtube.com/watch?v=HOae-HEHCy8",
+      "embed": "https://www.youtube.com/embed/HOae-HEHCy8",
+      "thumbnail": "https://i.ytimg.com/vi/HOae-HEHCy8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA27z1yGX0uGs4qVAfEXAu2KeNwfg",
+      "embed_allowed": true,
+      "preferred_for_home": false,
       "published_text": "há 2 meses"
     },
     {
@@ -45,9 +74,10 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=9V0I8Ifiiho",
       "embed": "https://www.youtube.com/embed/9V0I8Ifiiho",
-      "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLB3_qa6KWcvfjSAfksLxe9R4jjPDQ",
+      "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4Ioc2o1AYY4OoEIOCoAQ==&rs=AOn4CLDmWOXvJcbj_CnCu8YpRBGXn3h6JA&usqp=CBU",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 1 mês"
+      "published_text": "há 2 meses"
     },
     {
       "match_id": 5887616,
@@ -58,8 +88,9 @@
       "url": "https://www.youtube.com/watch?v=WCGez8Kemwg",
       "embed": "https://www.youtube.com/embed/WCGez8Kemwg",
       "thumbnail": "https://i.ytimg.com/vi/WCGez8Kemwg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBgfzm4sGbJ-LCR_b2Rch7XaodVKw",
+      "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 4 semanas"
+      "published_text": "há 2 meses"
     },
     {
       "match_id": 5887625,
@@ -70,8 +101,9 @@
       "url": "https://www.youtube.com/watch?v=dxpcW8HJgGo",
       "embed": "https://www.youtube.com/embed/dxpcW8HJgGo",
       "thumbnail": "https://i.ytimg.com/vi/dxpcW8HJgGo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDBIo4mKDVFG3DNvjqphKr2Bj29NQ",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 2 semanas"
+      "published_text": "há 2 meses"
     },
     {
       "match_id": 6106280,
@@ -82,8 +114,9 @@
       "url": "https://www.youtube.com/watch?v=Sgu7UdPWsO4",
       "embed": "https://www.youtube.com/embed/Sgu7UdPWsO4",
       "thumbnail": "https://i.ytimg.com/vi/Sgu7UdPWsO4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD3gycO4FEPDQ_kSMMXyX9v-A_1_g",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 2 semanas"
+      "published_text": "há 1 mês"
     },
     {
       "match_id": 5887631,
@@ -93,9 +126,10 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=Iv5LBsbqEhs",
       "embed": "https://www.youtube.com/embed/Iv5LBsbqEhs",
-      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLDpih_Wnyq-KK02465x6qPSoycQAA",
+      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ",
+      "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 13 dias"
+      "published_text": "há 1 mês"
     },
     {
       "match_id": 5887643,
@@ -110,6 +144,84 @@
       "published_text": "19/09/2026",
       "provider": "youtube",
       "embed_allowed": false
+    },
+    {
+      "match_id": 5887647,
+      "sofascore_id": null,
+      "video_id": "erD3D59shpk",
+      "title": "Resumo: Braga 1-3 Sporting (Liga 26/27 #8)",
+      "channel": "VSPORTS - Liga Portugal",
+      "url": "https://www.youtube.com/watch?v=erD3D59shpk",
+      "embed": "https://www.youtube.com/embed/erD3D59shpk",
+      "thumbnail": "https://i.ytimg.com/vi/erD3D59shpk/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAoNWETvKmezldUycIWqk0jg9qqbg",
+      "embed_allowed": true,
+      "preferred_for_home": false,
+      "published_text": "há 4 semanas"
+    },
+    {
+      "match_id": 6106414,
+      "sofascore_id": null,
+      "video_id": "8bFVmvAZj4o",
+      "title": "Resumo: Casa Pia 0-2 Sporting (Liga 26/27 #10)",
+      "channel": "VSPORTS - Liga Portugal",
+      "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
+      "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
+      "embed_allowed": true,
+      "preferred_for_home": false,
+      "published_text": "há 7 dias"
+    },
+    {
+      "match_id": 6106281,
+      "sofascore_id": null,
+      "video_id": "l2TvkaX310Y",
+      "title": "Highlights | UEFA Champions League: Sporting CP 2-3 LASK",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=l2TvkaX310Y",
+      "embed": "https://www.youtube.com/embed/l2TvkaX310Y",
+      "thumbnail": "https://i.ytimg.com/vi/l2TvkaX310Y/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAq21bOtd-nXVOegtmIt2spmW909A",
+      "embed_allowed": true,
+      "preferred_for_home": true,
+      "published_text": "há 2 semanas"
+    },
+    {
+      "match_id": 5887661,
+      "sofascore_id": null,
+      "video_id": "2IYfn7_EshY",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 1-2 Académico de Viseu FC",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=2IYfn7_EshY",
+      "embed": "https://www.youtube.com/embed/2IYfn7_EshY",
+      "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwZ3Gekqfu3ZRM3DEEH6x2ZdSODw",
+      "embed_allowed": true,
+      "preferred_for_home": true,
+      "published_text": "há 12 dias"
+    },
+    {
+      "match_id": 5887666,
+      "sofascore_id": null,
+      "video_id": "8bFVmvAZj4o",
+      "title": "Resumo: Casa Pia 0-2 Sporting (Liga 26/27 #10)",
+      "channel": "VSPORTS - Liga Portugal",
+      "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
+      "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA&usqp=CBQ",
+      "embed_allowed": true,
+      "preferred_for_home": false,
+      "published_text": "há 7 dias"
+    },
+    {
+      "match_id": 6106335,
+      "sofascore_id": null,
+      "video_id": "IIFAb5NM24s",
+      "title": "Highlights | UEFA Champions League: FC Shakhtar Donetsk 0-1 Sporting CP",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=IIFAb5NM24s",
+      "embed": "https://www.youtube.com/embed/IIFAb5NM24s",
+      "thumbnail": "https://i.ytimg.com/vi/IIFAb5NM24s/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4IypOp1wYY4OoEIOCoAQ==&rs=AOn4CLAFGn1NoPiOs8r8l_naDCv0TKnshA&usqp=CBU",
+      "embed_allowed": true,
+      "preferred_for_home": false,
+      "published_text": "há 2 dias"
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
