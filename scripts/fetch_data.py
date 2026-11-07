@@ -2694,10 +2694,13 @@ def fetch_match_summary_videos():
 
         candidates = []
         for q in queries:
-            batch = search_videos(q)
-            candidates.extend(batch)
-            if batch:
-                break
+            candidates.extend(search_videos(q))
+        # The official Sporting channel uploads (data/youtube.json) are also
+        # eligible candidates, so a summary is found even if search misses it.
+        for item in (safe_existing("youtube.json") or {}).get("items", []) or []:
+            if item.get("id") and item.get("title"):
+                candidates.append({"id": item["id"], "title": item["title"], "owner": "Sporting Clube de Portugal",
+                                   "thumbnail": item.get("thumbnail", ""), "published_text": item.get("published_text") or item.get("published", "")})
 
         home_n, away_n = norm(home), norm(away)
         def score_candidate(v):
@@ -2707,15 +2710,18 @@ def fetch_match_summary_videos():
             # Home matches: Sporting CP is the preferred source.
             # Away matches: VSPORTS - Liga Portugal is preferred, with Sporting CP
             # as an official fallback when VSPORTS has no suitable summary.
-            is_sporting_source = "sporting clube de portugal" in owner_n or owner_n == "sporting cp"
-            is_vsports_source = "vsports" in owner_n and "liga portugal" in owner_n
+            is_sporting_source = "sportingclubedeportugal" in owner_n or owner_n == "sportingcp"
+            is_vsports_source = "vsports" in owner_n
             if is_sporting_home:
                 if not is_sporting_source:
                     return (-1, -1, -1, -1, -1, -1)
             else:
                 if not (is_vsports_source or is_sporting_source):
                     return (-1, -1, -1, -1, -1, -1)
-            team_hits = int(home_n in title_n) + int(away_n in title_n)
+            opp_n = away_n if is_sporting_home else home_n
+            opp_tokens = [norm(w) for w in re.split(r"\s+", zz_norm(away if is_sporting_home else home)) if len(norm(w)) >= 4 and norm(w) not in {"sporting", "clube", "club", "futebol"}]
+            opp_hit = int(opp_n in title_n or any(t in title_n for t in opp_tokens))
+            team_hits = int(home_n in title_n) + int(away_n in title_n) + opp_hit
             score_hit = int(f"{hg}{ag}" in title_n or f"{hg} - {ag}" in title_n)
             sporting = int(is_sporting_source)
             vsports = int(is_vsports_source)
@@ -2731,12 +2737,16 @@ def fetch_match_summary_videos():
             pub_dt=published_date(v.get("published_text"))
             if match_dt and pub_dt:
                 delta=abs((pub_dt-match_dt).total_seconds())/86400
-                freshness=int(delta<=21)
+                pt=zz_norm(v.get("published_text") or "")
+                tol=31 if re.search(r"month|mes|meses",pt) else 7 if re.search(r"week|semana",pt) else 1
+                freshness=int(delta<=21+tol)
                 proximity=max(0,21-delta)
             else:
                 freshness=0; proximity=0
             source_priority = sporting * 3 if is_sporting_home else vsports * 3
-            return (freshness, source_priority, team_hits, score_hit, summary, proximity)
+            if not (opp_hit or score_hit):
+                return (-1, -1, -1, -1, -1, -1)
+            return (freshness, source_priority, opp_hit + score_hit, score_hit, summary, proximity)
 
         best = None
         for v in candidates:
@@ -2754,11 +2764,7 @@ def fetch_match_summary_videos():
                 "url": f"https://www.youtube.com/watch?v={best['id']}",
                 "embed": f"https://www.youtube.com/embed/{best['id']}",
                 "thumbnail": best.get("thumbnail") or f"https://i.ytimg.com/vi/{best['id']}/hqdefault.jpg",
-                "embed_allowed": not (
-                    "sporting clube de portugal" in norm(best.get("owner"))
-                    or norm(best.get("owner")) == "sporting cp"
-                    or ("vsports" in norm(best.get("owner")) and "liga portugal" in norm(best.get("owner")))
-                ),
+                "embed_allowed": True,
                 "preferred_for_home": bool(is_sporting_home and "sporting" in norm(best.get("owner"))),
                 "published_text": best.get("published_text","")
             })
