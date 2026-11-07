@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T13:19:54.797899+00:00",
+  "_updated_at": "2026-11-07T19:02:41.212293+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -192,17 +192,35 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9780.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 3,
       "draw": 2,
-      "lost": 5,
+      "lost": 6,
       "points": 11,
       "goalsFor": 13,
-      "goalsAgainst": 14,
-      "goalDifference": -1
+      "goalsAgainst": 15,
+      "goalDifference": -2
     },
     {
       "position": 12,
+      "team": {
+        "id": 212821,
+        "name": "Casa Pia AC",
+        "shortName": "Casa Pia AC",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
+      },
+      "playedGames": 11,
+      "won": 3,
+      "draw": 1,
+      "lost": 7,
+      "points": 10,
+      "goalsFor": 6,
+      "goalsAgainst": 19,
+      "goalDifference": -13
+    },
+    {
+      "position": 13,
       "team": {
         "id": 1074320,
         "name": "Estrela da Amadora",
@@ -220,7 +238,7 @@
       "goalDifference": -4
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 7844,
         "name": "Vitória de Guimarães",
@@ -238,7 +256,7 @@
       "goalDifference": 0
     },
     {
-      "position": 14,
+      "position": 15,
       "team": {
         "id": 10212,
         "name": "Marítimo",
@@ -254,24 +272,6 @@
       "goalsFor": 9,
       "goalsAgainst": 21,
       "goalDifference": -12
-    },
-    {
-      "position": 15,
-      "team": {
-        "id": 10214,
-        "name": "Nacional",
-        "shortName": "Nacional",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
-      },
-      "playedGames": 10,
-      "won": 2,
-      "draw": 1,
-      "lost": 7,
-      "points": 7,
-      "goalsFor": 10,
-      "goalsAgainst": 19,
-      "goalDifference": -9
     },
     {
       "position": 16,
@@ -294,20 +294,20 @@
     {
       "position": 17,
       "team": {
-        "id": 212821,
-        "name": "Casa Pia AC",
-        "shortName": "Casa Pia AC",
+        "id": 10214,
+        "name": "Nacional",
+        "shortName": "Nacional",
         "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/212821.png"
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
       },
       "playedGames": 10,
       "won": 2,
       "draw": 1,
       "lost": 7,
       "points": 7,
-      "goalsFor": 5,
+      "goalsFor": 10,
       "goalsAgainst": 19,
-      "goalDifference": -14
+      "goalDifference": -9
     },
     {
       "position": 18,
