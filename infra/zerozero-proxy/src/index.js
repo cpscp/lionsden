@@ -107,10 +107,96 @@ function responseLooksUseful(body){
   return /<p\b|<article\b|<main\b|application\/ld\+json|og:description/i.test(low);
 }
 
+
+// ---------------------------------------------------------------------------
+// /live — estado em direto do jogo do Sporting para o cartão "A decorrer".
+// Fonte principal: SofaScore (feed da equipa + incidentes). Fallback: FotMob
+// matchDetails com o id do jogo (?fotmob=ID). Resposta sempre com CORS.
+// ---------------------------------------------------------------------------
+const SOFA_TEAM_ID=3001;
+const UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
+async function getJson(url,referer){
+  const r=await fetch(url,{headers:{"User-Agent":UA,"Accept":"application/json,text/plain,*/*","Referer":referer,"Origin":new URL(referer).origin},cf:{cacheTtl:0,cacheEverything:false}});
+  if(!r.ok)throw new Error(url+" HTTP "+r.status);
+  return r.json();
+}
+function sofaMinute(e,nowSec){
+  const code=Number(e.status?.code),start=Number(e.time?.currentPeriodStartTimestamp||0);
+  const base={6:0,7:45,41:90,42:105}[code];
+  if(base==null||!start)return null;
+  const cap={6:45,7:90,41:105,42:120}[code];
+  const m=base+Math.max(1,Math.floor((nowSec-start)/60)+1);
+  return m>cap?cap+"+"+(m-cap)+"'":m+"'";
+}
+async function liveFromSofa(){
+  const nowSec=Math.floor(Date.now()/1000);
+  const ref="https://www.sofascore.com/";
+  const feeds=await Promise.allSettled(["last","next"].map(d=>getJson(`https://api.sofascore.com/api/v1/team/${SOFA_TEAM_ID}/events/${d}/0`,ref)));
+  const ok=feeds.filter(f=>f.status==="fulfilled");
+  if(!ok.length)throw new Error("sofascore feed unavailable");
+  const events=ok.flatMap(f=>f.value.events||[]);
+  // jogo em curso, ou terminado há menos de 3h (para o cliente saber que acabou)
+  const ev=events.find(e=>String(e.status?.type).toLowerCase()==="inprogress")
+        ||events.filter(e=>String(e.status?.type).toLowerCase()==="finished"&&nowSec-Number(e.startTimestamp||0)<4*3600).sort((a,b)=>b.startTimestamp-a.startTimestamp)[0];
+  if(!ev)return {state:"none",source:"sofascore"};
+  const live=String(ev.status?.type).toLowerCase()==="inprogress";
+  let scorers=[];
+  try{
+    const inc=await getJson(`https://api.sofascore.com/api/v1/event/${ev.id}/incidents`,ref);
+    scorers=(inc.incidents||[]).filter(i=>i.incidentType==="goal").map(i=>({
+      side:i.isHome?"home":"away",
+      player:i.player?.shortName||i.player?.name||i.playerName||"",
+      minute:(i.time!=null?i.time:"")+(i.addedTime?"+"+i.addedTime:"")+"'",
+      type:i.incidentClass==="ownGoal"?"og":(i.incidentClass==="penalty"?"pen":"")
+    })).sort((a,b)=>parseInt(a.minute)-parseInt(b.minute));
+  }catch(e){}
+  const code=Number(ev.status?.code);
+  return {
+    state:live?"live":"finished",source:"sofascore",
+    kickoff:Number(ev.startTimestamp||0),
+    home:{name:ev.homeTeam?.name||"",id:ev.homeTeam?.id},
+    away:{name:ev.awayTeam?.name||"",id:ev.awayTeam?.id},
+    score:{home:ev.homeScore?.current??0,away:ev.awayScore?.current??0},
+    clock:live?(code===31?"Intervalo":(sofaMinute(ev,nowSec)||ev.status?.description||"Em direto")):"Terminado",
+    status:ev.status?.description||"",
+    scorers
+  };
+}
+async function liveFromFotmob(id){
+  const d=await getJson(`https://www.fotmob.com/api/data/matchDetails?matchId=${encodeURIComponent(id)}`,"https://www.fotmob.com/");
+  const h=d.header||{},st=h.status||d.general||{},teams=h.teams||[];
+  const started=!!(st.started??d.general?.started),finished=!!(st.finished??d.general?.finished);
+  if(!started)return {state:"none",source:"fotmob"};
+  const goals=(side,obj)=>Object.entries(obj||{}).flatMap(([name,list])=>(Array.isArray(list)?list:[]).map(g=>({
+    side,player:g.player?.name||g.nameStr||name,
+    minute:(g.time??g.timeStr??"")+(g.overloadTime?"+"+g.overloadTime:"")+"'",
+    type:g.ownGoal?"og":(/penal/i.test(g.goalDescription||g.suffix||"")?"pen":"")})));
+  const ev=h.events||{};
+  const scorers=[...goals("home",ev.homeTeamGoals),...goals("away",ev.awayTeamGoals)].sort((a,b)=>parseInt(a.minute)-parseInt(b.minute));
+  const lt=st.liveTime?.short||st.liveTime?.long||"";
+  return {
+    state:finished?"finished":"live",source:"fotmob",
+    home:{name:teams[0]?.name||"",id:teams[0]?.id},away:{name:teams[1]?.name||"",id:teams[1]?.id},
+    score:{home:teams[0]?.score??0,away:teams[1]?.score??0},
+    clock:finished?"Terminado":(/^HT$|half/i.test(st.reason?.short||lt)?"Intervalo":(lt||"Em direto")),
+    status:st.reason?.long||"",scorers
+  };
+}
+async function handleLive(url){
+  const fotmobId=url.searchParams.get("fotmob");
+  const errors=[];
+  try{const r=await liveFromSofa();if(r.state!=="none"||!fotmobId)return json({ok:true,...r});}catch(e){errors.push(String(e.message||e));}
+  if(fotmobId&&/^\d+$/.test(fotmobId)){
+    try{return json({ok:true,...(await liveFromFotmob(fotmobId))});}catch(e){errors.push(String(e.message||e));}
+  }
+  return json({ok:false,error:"live_unavailable",detail:errors},502);
+}
+
 export default{async fetch(request){
   const headers=corsHeaders();
   if(request.method==="OPTIONS")return new Response(null,{headers});
   if(request.method!=="GET")return json({error:"method_not_allowed"},405);
+  {const u=new URL(request.url);if(u.pathname==="/live")return handleLive(u);}
 
   const target=new URL(request.url).searchParams.get("url");
   if(!target)return json({error:"missing_url"},400);

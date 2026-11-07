@@ -1466,6 +1466,118 @@ document.addEventListener('click',e=>{const trigger=e.target.closest?.('[data-ga
 window.addEventListener('error',e=>{console.error("Lion's Den:",e.error||e.message);const u=document.getElementById('updated');if(u&&!u.textContent.includes('dados'))u.textContent='erro de interface';});
 window.addEventListener('unhandledrejection',e=>console.error("Lion's Den promise:",e.reason));
 setTimeout(()=>load(),0);
+// ---- Jogo em direto no cartão inicial ("A decorrer") ----
+// A partir da hora de início, o cartão "Próximo jogo" passa a "A decorrer" com
+// resultado, tempo e marcadores em direto (endpoint /live do Worker). Quando o
+// jogo termina, o cartão volta a "Próximo jogo" com o jogo seguinte.
+const LIVE_URL='https://lions-den-zerozero-proxy.lionsdenscp.workers.dev/live';
+const LIVE_WINDOW=3*3600;      // janela máxima após o início
+const LIVE_POLL_MS=20000;
+const LIVE={fixtureId:null,data:null,error:false,ended:new Set(),timer:null,busy:false};
+(function(){const st=document.createElement('style');st.textContent=`
+.live-label{display:inline-flex;align-items:center;gap:6px;color:#eaf7f0!important}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ef3e4a;box-shadow:0 0 0 0 rgba(239,62,74,.6);animation:livePulse 1.6s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(239,62,74,.55)}70%{box-shadow:0 0 0 8px rgba(239,62,74,0)}100%{box-shadow:0 0 0 0 rgba(239,62,74,0)}}
+.live-clock{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:.04em}
+.live-score{font-size:34px;font-weight:800;line-height:1;margin:8px 0 4px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.live-sub{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
+.live-scorers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:11px}
+.live-scorers .away{text-align:right}
+.live-goal{margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#e8f2ed}
+.live-goal b{color:var(--green);font-size:10px;margin-right:4px}
+.live-scorers .away .live-goal b{margin:0 0 0 4px}
+.live-note{margin-top:10px;text-align:center;font-size:9px;color:var(--muted)}
+`;document.head.appendChild(st);})();
+function liveCandidate(){
+  const now=Math.floor(Date.now()/1000);
+  return allFixtures().filter(x=>x.date&&Number(x.date)<=now&&now-Number(x.date)<LIVE_WINDOW
+    &&!LIVE.ended.has(String(x.id))
+    &&!['finished','postponed','cancelled','canceled'].includes(String(x.status?.short||'').toLowerCase()))
+    .sort((a,b)=>b.date-a.date)[0]||null;
+}
+function liveMatches(f,d){
+  if(!d||d.state==='none')return false;
+  if(d.source==='fotmob')return true;           // pedido feito com o id do jogo
+  if(d.kickoff&&Math.abs(Number(d.kickoff)-Number(f.date))>3*3600)return false;
+  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\b(cp|fc|sc|cd|sad)\b/g,'').trim();
+  const opp=x=>/sporting/.test(norm(x.home?.name))?norm(x.away?.name):norm(x.home?.name);
+  const a=opp(f),b=opp(d);
+  return !a||!b||a.includes(b)||b.includes(a)||a.split(' ')[0]===b.split(' ')[0];
+}
+function setNextLabel(live){
+  const el=document.querySelector('.next-match-hero > div:first-child > span:first-child');
+  if(!el)return;
+  el.innerHTML=live?'<span class="live-label"><span class="live-dot"></span>A decorrer</span>':'Próximo jogo';
+}
+function liveTeamHtml(team){
+  const name=team?.name||team||'';const url=teamLogoUrl(team);
+  return '<div class="home-match-team"><div class="home-match-logo">'+(url?'<img src="'+esc(url)+'" alt="'+esc(name)+'" loading="eager" decoding="async">':'<span class="home-match-logo-fallback">'+esc(initials(name))+'</span>')+'</div><div class="home-match-name">'+esc(name)+'</div></div>';
+}
+function renderLiveCard(f){
+  const d=liveMatches(f,LIVE.data)?LIVE.data:null;
+  const hs=d?d.score?.home:(f.goals?.home??null), as=d?d.score?.away:(f.goals?.away??null);
+  const score=(hs!=null&&as!=null)?esc(hs)+' - '+esc(as):'– : –';
+  const clock=d?d.clock:(LIVE.error?'Em direto':'A começar');
+  const goals=side=>(d?.scorers||[]).filter(g=>g.side===side).map(g=>{
+    const tag=g.type==='pen'?' (g.p.)':g.type==='og'?' (a.g.)':'';
+    return side==='away'
+      ?'<div class="live-goal">'+esc(g.player)+tag+'<b>'+esc(g.minute)+'</b></div>'
+      :'<div class="live-goal"><b>'+esc(g.minute)+'</b>'+esc(g.player)+tag+'</div>';
+  }).join('');
+  const hasGoals=(d?.scorers||[]).length>0;
+  clearInterval(window._nextCountdown);
+  document.getElementById('nextGame').innerHTML=
+    '<div class="home-match-teams">'+liveTeamHtml(f.home)+
+    '<div class="home-match-center"><div class="live-clock"><span class="live-dot"></span>'+esc(clock)+'</div>'+
+    '<div class="live-score">'+score+'</div><div class="live-sub">Em direto</div></div>'+
+    liveTeamHtml(f.away)+'</div>'+
+    (hasGoals?'<div class="live-scorers"><div>'+goals('home')+'</div><div class="away">'+goals('away')+'</div></div>':'')+
+    (LIVE.error&&!d?'<div class="live-note">Sem ligação ao resultado em direto · a tentar novamente</div>':'')+
+    '<button type="button" data-game-id="'+esc(f.id)+'" onclick="openGame(this.dataset.gameId);return false" class="mt-3 w-full pill py-2.5 text-[11px] font-semibold">Ver detalhes do jogo →</button>';
+}
+function finishLive(f,d){
+  LIVE.ended.add(String(f.id));
+  // Atualiza o jogo em memória para o "Último jogo" mostrar já o resultado final.
+  const raw=D['fixtures.json']?.fixtures||D['fixtures.json']?.matches||[];
+  const r=raw.find(x=>String(x.id||x.match_id)===String(f.id));
+  if(r&&d?.score){r.status={short:'finished',long:'Terminado'};r.goals={home:d.score.home,away:d.score.away};}
+  stopLivePolling();
+  try{renderHome();}catch(e){}
+  try{renderGames();}catch(e){}
+}
+async function pollLive(){
+  const f=liveCandidate();
+  if(!f){stopLivePolling();try{renderHome();}catch(e){}return;}
+  if(LIVE.busy||document.hidden)return;
+  LIVE.busy=true;
+  try{
+    const r=await fetch(LIVE_URL+'?fotmob='+encodeURIComponent(f.id)+'&t='+Date.now(),{cache:'no-store'});
+    const d=await r.json();
+    if(!d.ok)throw new Error(d.error||'live');
+    LIVE.fixtureId=String(f.id);LIVE.error=false;
+    if(liveMatches(f,d)&&d.state==='finished'){LIVE.data=d;finishLive(f,d);return;}
+    LIVE.data=d;
+  }catch(e){LIVE.error=true;}
+  finally{LIVE.busy=false;}
+  if(liveCandidate()===null)return;
+  renderLiveCard(liveCandidate());
+}
+function stopLivePolling(){clearInterval(LIVE.timer);LIVE.timer=null;LIVE.data=null;}
+function applyLive(){
+  const f=liveCandidate();
+  if(!f){setNextLabel(false);if(LIVE.timer)stopLivePolling();return;}
+  if(LIVE.fixtureId!==String(f.id)){LIVE.data=null;LIVE.fixtureId=String(f.id);}
+  setNextLabel(true);
+  const comp=document.getElementById('homeComp');if(comp)comp.textContent=f.competition?.name||'—';
+  renderLiveCard(f);
+  if(!LIVE.timer){LIVE.timer=setInterval(pollLive,LIVE_POLL_MS);pollLive();}
+}
+const _renderHomeBase=renderHome;
+renderHome=function(){_renderHomeBase();try{applyLive();}catch(e){console.warn('live',e);}};
+// Verifica a cada minuto se um jogo começou (passagem automática a "A decorrer").
+setInterval(()=>{const f=liveCandidate();if(f&&!LIVE.timer)renderHome();},60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&LIVE.timer)pollLive();});
+
 setInterval(load,300000);
 </script>
 </body></html>
