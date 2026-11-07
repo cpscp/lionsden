@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T06:17:31.267611+00:00",
+  "_updated_at": "2026-11-07T13:20:36.211416+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -937,9 +937,9 @@
     },
     {
       "id": 5887698,
-      "date": 1796576400,
-      "kickoff_date": "2026-12-06",
-      "kickoff_local_time": "17:00",
+      "date": 1796415300,
+      "kickoff_date": "2026-12-04",
+      "kickoff_local_time": "20:15",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
@@ -1020,9 +1020,9 @@
     },
     {
       "id": 5887702,
-      "date": 1797181200,
-      "kickoff_date": "2026-12-13",
-      "kickoff_local_time": "17:00",
+      "date": 1797107400,
+      "kickoff_date": "2026-12-12",
+      "kickoff_local_time": "20:30",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
