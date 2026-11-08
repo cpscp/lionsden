@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-08T06:22:34.040623+00:00",
+  "_updated_at": "2026-11-08T13:45:51.481813+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -945,12 +945,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estadio Jose Alvalade",
+        "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null,
-        "country": ""
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1028,12 +1028,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estadio Cidade de Barcelos",
+        "name": "Estádio Cidade de Barcelos",
         "city": "Barcelos",
-        "lat": 41.55123,
-        "lon": -8.62311,
-        "capacity": null,
-        "country": ""
+        "lat": 41.551129336,
+        "lon": -8.623033762,
+        "capacity": 12046.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
