@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T22:04:13.843358+00:00",
+  "_updated_at": "2026-11-08T00:24:17.178030+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -775,8 +775,8 @@
       "kickoff_date": "2026-11-07",
       "kickoff_local_time": "20:30",
       "status": {
-        "short": "live",
-        "long": "Em direto"
+        "short": "finished",
+        "long": "Terminado"
       },
       "referee": null,
       "venue": {
@@ -800,8 +800,8 @@
         "name": "Moreirense"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "half_time": {
         "home": null,

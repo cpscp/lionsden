@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-07T22:04:11.369535+00:00",
+  "_updated_at": "2026-11-08T00:24:14.797555+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -148,15 +148,14 @@
       "match_id": 5887643,
       "sofascore_id": null,
       "video_id": "prnO0lzEpdo",
-      "title": "Resumo | Liga Portugal Betclic: Sporting CP 2-2 Arouca",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 2-2 FC Arouca",
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=prnO0lzEpdo",
-      "embed": "https://www.youtube-nocookie.com/embed/prnO0lzEpdo?rel=0",
-      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg",
+      "embed": "https://www.youtube.com/embed/prnO0lzEpdo",
+      "thumbnail": "https://i.ytimg.com/vi/prnO0lzEpdo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4Ik5e81QYY4OoEIOCoAQ==&rs=AOn4CLDH93g0cs8YlJ2l1uylYwKGO0oTBQ&usqp=CBU",
+      "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "19/09/2026",
-      "provider": "youtube",
-      "embed_allowed": true
+      "published_text": "há 1 mês"
     },
     {
       "match_id": 5887647,
@@ -208,7 +207,7 @@
       "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwZ3Gekqfu3ZRM3DEEH6x2ZdSODw",
       "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 12 dias"
+      "published_text": "há 13 dias"
     },
     {
       "match_id": 5887666,
@@ -218,10 +217,10 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
       "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
-      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLB3ge_96rP7NVYDW0LXG6HbfIB-Lw",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 7 dias"
+      "published_text": "há 8 dias"
     },
     {
       "match_id": 6106335,
@@ -234,7 +233,20 @@
       "thumbnail": "https://i.ytimg.com/vi/IIFAb5NM24s/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCE-OqOtSv2C10SBb1g-FC23lRYYg",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 2 dias"
+      "published_text": "há 3 dias"
+    },
+    {
+      "match_id": 5887679,
+      "sofascore_id": null,
+      "video_id": "8poAq61s6sY",
+      "title": "Highlights | Liga Portugal Betclic: Sporting CP 1-0 Moreirense FC",
+      "channel": "Sporting Clube de Portugal",
+      "url": "https://www.youtube.com/watch?v=8poAq61s6sY",
+      "embed": "https://www.youtube.com/embed/8poAq61s6sY",
+      "thumbnail": "https://i.ytimg.com/vi/8poAq61s6sY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDjqULyDzOPBBXFkQbalqa_TqZvRQ",
+      "embed_allowed": true,
+      "preferred_for_home": true,
+      "published_text": "há 49 minutos"
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",

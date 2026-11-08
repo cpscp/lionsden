@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-11-07T22:03:44.067323+00:00",
+  "_updated_at": "2026-11-08T00:23:39.747493+00:00",
   "season": "2026/27",
   "team": {
-    "matches": 19,
-    "wins": 14,
+    "matches": 20,
+    "wins": 15,
     "draws": 3,
     "losses": 2,
-    "goals": 50,
+    "goals": 51,
     "goals_against": 18,
-    "clean_sheets": 7,
+    "clean_sheets": 8,
     "form": [
+      "L",
+      "L",
       "W",
-      "L",
-      "L",
       "W",
       "W",
       "W"
     ],
     "recent_matches": [
-      {
-        "date": "2026-10-13",
-        "competition": "Champions League",
-        "venue": "Fora",
-        "result": "W",
-        "gf": 2,
-        "ga": 0,
-        "opponent": "Lens"
-      },
       {
         "date": "2026-10-21",
         "competition": "Champions League",
@@ -71,12 +62,21 @@
         "gf": 1,
         "ga": 0,
         "opponent": "Shakhtar Donetsk"
+      },
+      {
+        "date": "2026-11-07",
+        "competition": "Liga Portugal",
+        "venue": "Casa",
+        "result": "W",
+        "gf": 1,
+        "ga": 0,
+        "opponent": "Moreirense"
       }
     ],
-    "points": 45,
-    "win_rate": 73.7,
-    "goals_per_match": 2.63,
-    "goals_against_per_match": 0.95
+    "points": 48,
+    "win_rate": 75.0,
+    "goals_per_match": 2.55,
+    "goals_against_per_match": 0.9
   },
   "source": "Sporting CP fixture feed"
 }

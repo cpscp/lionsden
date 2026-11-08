@@ -1,19 +1,11 @@
 {
-  "_updated_at": "2026-11-07T22:03:38.512057+00:00",
+  "_updated_at": "2026-11-08T00:23:34.642192+00:00",
   "fixtures": {
     "6506259": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -44,6 +36,14 @@
             "date": "2026-11-03T17:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
             "match_id": null
           }
         ],
@@ -84,21 +84,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:34.117959+00:00"
+      "updated_at": "2026-11-08T00:23:29.028038+00:00"
     },
     "6106279": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -129,6 +121,14 @@
             "date": "2026-11-03T17:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
             "match_id": null
           }
         ],
@@ -198,7 +198,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:34.132718+00:00"
+      "updated_at": "2026-11-08T00:23:29.043527+00:00"
     },
     "5887687": {
       "home": {
@@ -259,14 +259,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -296,12 +288,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -349,21 +349,13 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-07T22:03:34.149582+00:00"
+      "updated_at": "2026-11-08T00:23:29.059281+00:00"
     },
     "5887698": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -395,12 +387,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -500,7 +500,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-07T22:03:34.166699+00:00"
+      "updated_at": "2026-11-08T00:23:29.075666+00:00"
     },
     "6106275": {
       "home": {
@@ -561,14 +561,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -597,6 +589,14 @@
             "date": "2026-11-03T17:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
             "match_id": null
           }
         ],
@@ -633,7 +633,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-07T22:03:34.180910+00:00"
+      "updated_at": "2026-11-08T00:23:29.089920+00:00"
     },
     "5887702": {
       "home": {
@@ -694,14 +694,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -731,12 +723,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -784,21 +784,13 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-07T22:03:34.196824+00:00"
+      "updated_at": "2026-11-08T00:23:29.105187+00:00"
     },
     "5887716": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -830,12 +822,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -935,7 +935,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-07T22:03:34.212547+00:00"
+      "updated_at": "2026-11-08T00:23:29.119938+00:00"
     },
     "5887724": {
       "home": {
@@ -996,14 +996,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -1033,12 +1025,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -1086,21 +1086,13 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-07T22:03:34.239776+00:00"
+      "updated_at": "2026-11-08T00:23:29.136240+00:00"
     },
     "5985969": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -1131,6 +1123,14 @@
             "date": "2026-11-03T17:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
             "match_id": null
           }
         ],
@@ -1194,27 +1194,56 @@
         }
       },
       "h2h": {
-        "matches": [],
-        "home_wins": 0,
-        "draws": 0,
-        "away_wins": 0,
-        "total": 0
+        "matches": [
+          {
+            "id": null,
+            "date": "2026-09-13T19:30:00.000Z",
+            "home": "Famalicão",
+            "away": "Sporting CP",
+            "home_score": 1,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2026-02-15T20:30:00.000Z",
+            "home": "Sporting CP",
+            "away": "Famalicão",
+            "home_score": 1,
+            "away_score": 0,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-09-13T19:30:00.000Z",
+            "home": "Famalicão",
+            "away": "Sporting CP",
+            "home_score": 1,
+            "away_score": 2,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-03-15T20:30:00.000Z",
+            "home": "Sporting CP",
+            "away": "Famalicão",
+            "home_score": 3,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          }
+        ],
+        "home_wins": 12,
+        "draws": 4,
+        "away_wins": 2,
+        "total": 18
       },
-      "updated_at": "2026-11-07T22:03:34.422004+00:00"
+      "updated_at": "2026-11-08T00:23:29.664189+00:00"
     },
     "5887734": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -1246,12 +1275,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -1314,21 +1351,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:34.734868+00:00"
+      "updated_at": "2026-11-08T00:23:29.875703+00:00"
     },
     "5887735": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -1360,12 +1389,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -1428,21 +1465,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:35.027442+00:00"
+      "updated_at": "2026-11-08T00:23:30.327261+00:00"
     },
     "6106278": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -1473,6 +1502,14 @@
             "date": "2026-11-03T17:45:00.000Z",
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
             "match_id": null
           }
         ],
@@ -1561,7 +1598,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-07T22:03:35.218399+00:00"
+      "updated_at": "2026-11-08T00:23:30.647273+00:00"
     },
     "5887752": {
       "home": {
@@ -1622,14 +1659,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -1659,12 +1688,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -1675,7 +1712,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:35.504279+00:00"
+      "updated_at": "2026-11-08T00:23:31.001827+00:00"
     },
     "6106255": {
       "home": {
@@ -1736,14 +1773,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -1773,6 +1802,14 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
@@ -1783,50 +1820,13 @@
         }
       },
       "h2h": {
-        "matches": [
-          {
-            "id": null,
-            "date": "2024-11-05T20:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "Manchester City",
-            "home_score": 4,
-            "away_score": 1,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2022-03-09T20:00:00.000Z",
-            "home": "Manchester City",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2022-02-15T20:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "Manchester City",
-            "home_score": 0,
-            "away_score": 5,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2012-03-15T20:05:00.000Z",
-            "home": "Manchester City",
-            "away": "Sporting CP",
-            "home_score": 3,
-            "away_score": 2,
-            "competition": "Europa League"
-          }
-        ],
-        "home_wins": 2,
-        "draws": 1,
-        "away_wins": 3,
-        "total": 6
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-11-07T22:03:35.802751+00:00"
+      "updated_at": "2026-11-08T00:23:31.461474+00:00"
     },
     "5887760": {
       "home": {
@@ -1887,14 +1887,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -1924,12 +1916,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -1940,21 +1940,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:36.089081+00:00"
+      "updated_at": "2026-11-08T00:23:31.666082+00:00"
     },
     "5887769": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -1986,12 +1978,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2054,7 +2054,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:36.382098+00:00"
+      "updated_at": "2026-11-08T00:23:32.103023+00:00"
     },
     "5887778": {
       "home": {
@@ -2115,14 +2115,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -2152,12 +2144,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2168,21 +2168,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:36.539734+00:00"
+      "updated_at": "2026-11-08T00:23:32.417297+00:00"
     },
     "5887784": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -2214,12 +2206,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2282,7 +2282,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:36.827517+00:00"
+      "updated_at": "2026-11-08T00:23:32.617312+00:00"
     },
     "5887796": {
       "home": {
@@ -2343,14 +2343,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -2380,12 +2372,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2396,21 +2396,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:37.118338+00:00"
+      "updated_at": "2026-11-08T00:23:32.810148+00:00"
     },
     "5887800": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -2442,12 +2434,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2510,7 +2510,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:37.288256+00:00"
+      "updated_at": "2026-11-08T00:23:33.117853+00:00"
     },
     "5887814": {
       "home": {
@@ -2571,14 +2571,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -2608,12 +2600,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2624,21 +2624,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:37.451818+00:00"
+      "updated_at": "2026-11-08T00:23:33.336812+00:00"
     },
     "5887819": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -2670,12 +2662,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2738,21 +2738,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:37.735178+00:00"
+      "updated_at": "2026-11-08T00:23:33.778781+00:00"
     },
     "5887832": {
       "home": {
         "id": 8348,
         "name": "Moreirense",
         "form": [
-          {
-            "result": "D",
-            "score": "1 - 1",
-            "date": "2026-09-20T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Vitória de Guimarães",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "0 - 1",
@@ -2784,11 +2776,19 @@
             "competition": "Liga Portugal",
             "opponent": "Estrela da Amadora",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Sporting CP",
+            "match_id": null
           }
         ],
         "table": {
           "position": 9,
-          "played": 10,
+          "played": 11,
           "points": 14,
           "name": "Moreirense"
         }
@@ -2799,14 +2799,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -2836,12 +2828,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2852,21 +2852,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.020457+00:00"
+      "updated_at": "2026-11-08T00:23:34.074560+00:00"
     },
     "5887840": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -2898,12 +2890,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -2966,7 +2966,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.165651+00:00"
+      "updated_at": "2026-11-08T00:23:34.368695+00:00"
     },
     "5887851": {
       "home": {
@@ -3027,14 +3027,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -3064,12 +3056,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -3080,21 +3080,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.454864+00:00"
+      "updated_at": "2026-11-08T00:23:34.566066+00:00"
     },
     "5887855": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -3126,12 +3118,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -3194,7 +3194,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.469791+00:00"
+      "updated_at": "2026-11-08T00:23:34.582027+00:00"
     },
     "5887869": {
       "home": {
@@ -3255,14 +3255,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -3292,12 +3284,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -3308,21 +3308,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.484368+00:00"
+      "updated_at": "2026-11-08T00:23:34.614645+00:00"
     },
     "5887877": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 2",
@@ -3354,12 +3346,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -3422,7 +3422,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.498206+00:00"
+      "updated_at": "2026-11-08T00:23:34.628240+00:00"
     },
     "5887887": {
       "home": {
@@ -3483,14 +3483,6 @@
         "form": [
           {
             "result": "L",
-            "score": "2 - 3",
-            "date": "2026-10-21T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "LASK",
-            "match_id": null
-          },
-          {
-            "result": "L",
             "score": "1 - 2",
             "date": "2026-10-25T20:30:00.000Z",
             "competition": "Liga Portugal",
@@ -3520,12 +3512,20 @@
             "competition": "Champions League",
             "opponent": "Shakhtar Donetsk",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-07T20:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Moreirense",
+            "match_id": null
           }
         ],
         "table": {
           "position": 3,
-          "played": 10,
-          "points": 21,
+          "played": 11,
+          "points": 24,
           "name": "Sporting CP"
         }
       },
@@ -3536,7 +3536,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-07T22:03:38.512048+00:00"
+      "updated_at": "2026-11-08T00:23:34.642173+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
