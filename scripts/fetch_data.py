@@ -637,10 +637,29 @@ def fetch_fbref_stats():
     })
 
 
+SOFA_PROXY_URL = os.environ.get("SOFA_PROXY_URL", "https://lions-den-zerozero-proxy.lionsdenscp.workers.dev/sofa")
+_SOFA_DIRECT_BLOCKED = False
+
+
 def sofa_get(path, params=None):
-    url = "https://api.sofascore.com/api/v1" + path
-    r = session.get(url, params=params or {}, timeout=10,
-                    headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
+    """SofaScore API. GitHub Actions IPs get 403, so after the first block all
+    requests go through the Cloudflare Worker passthrough (/sofa)."""
+    global _SOFA_DIRECT_BLOCKED
+    if not _SOFA_DIRECT_BLOCKED:
+        try:
+            r = session.get("https://api.sofascore.com/api/v1" + path, params=params or {}, timeout=10,
+                            headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
+            if r.status_code not in (401, 403, 429):
+                r.raise_for_status()
+                return r.json()
+            _SOFA_DIRECT_BLOCKED = True
+            print(f"SofaScore direct blocked ({r.status_code}); using Worker proxy.")
+        except requests.exceptions.ConnectionError:
+            _SOFA_DIRECT_BLOCKED = True
+    if not SOFA_PROXY_URL:
+        raise RuntimeError("SofaScore blocked and no proxy configured")
+    r = session.get(SOFA_PROXY_URL, params={"path": path, **(params or {})}, timeout=25,
+                    headers={"User-Agent": USER_AGENT})
     r.raise_for_status()
     return r.json()
 

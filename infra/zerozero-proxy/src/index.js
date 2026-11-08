@@ -137,7 +137,7 @@ async function liveFromSofa(){
   const events=ok.flatMap(f=>f.value.events||[]);
   // jogo em curso, ou terminado há menos de 3h (para o cliente saber que acabou)
   const ev=events.find(e=>String(e.status?.type).toLowerCase()==="inprogress")
-        ||events.filter(e=>String(e.status?.type).toLowerCase()==="finished"&&nowSec-Number(e.startTimestamp||0)<4*3600).sort((a,b)=>b.startTimestamp-a.startTimestamp)[0];
+        ||events.filter(e=>String(e.status?.type).toLowerCase()==="finished"&&nowSec-Number(e.startTimestamp||0)<12*3600).sort((a,b)=>b.startTimestamp-a.startTimestamp)[0];
   if(!ev)return {state:"none",source:"sofascore"};
   const live=String(ev.status?.type).toLowerCase()==="inprogress";
   let scorers=[];
@@ -192,11 +192,23 @@ async function handleLive(url){
   return json({ok:false,error:"live_unavailable",detail:errors},502);
 }
 
+// /sofa?path=/team/3001/events/last/0 — passthrough só de leitura para a API
+// do SofaScore (que bloqueia pedidos vindos do GitHub Actions).
+async function handleSofa(url){
+  const path=url.searchParams.get("path")||"";
+  if(!/^\/[A-Za-z0-9\-_/.]{1,200}$/.test(path)||path.includes(".."))return json({ok:false,error:"bad_path"},400);
+  const target=new URL("https://api.sofascore.com/api/v1"+path);
+  for(const [k,v] of url.searchParams){if(k!=="path")target.searchParams.set(k,v);}
+  const r=await fetch(target.toString(),{headers:{"User-Agent":UA,"Accept":"application/json,text/plain,*/*","Referer":"https://www.sofascore.com/","Origin":"https://www.sofascore.com"},cf:{cacheTtl:30,cacheEverything:true}});
+  const body=await r.text();
+  return new Response(body,{status:r.status,headers:{...corsHeaders(),"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"}});
+}
+
 export default{async fetch(request){
   const headers=corsHeaders();
   if(request.method==="OPTIONS")return new Response(null,{headers});
   if(request.method!=="GET")return json({error:"method_not_allowed"},405);
-  {const u=new URL(request.url);if(u.pathname==="/live")return handleLive(u);}
+  {const u=new URL(request.url);if(u.pathname==="/live")return handleLive(u);if(u.pathname==="/sofa")return handleSofa(u);}
 
   const target=new URL(request.url).searchParams.get("url");
   if(!target)return json({error:"missing_url"},400);

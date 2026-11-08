@@ -45,8 +45,41 @@ jobs:
           LIONS_DEN_MODE: live
         run: python scripts/fetch_data.py
 
+      - name: Verificar jogo terminado (onzes, stats, resumo)
+        id: postmatch
+        run: |
+          python - <<'PY'
+          import json, os, time
+          now = time.time()
+          def load(name):
+              try:
+                  return json.load(open(f"data/{name}", encoding="utf-8"))
+              except Exception:
+                  return {}
+          fixtures = load("fixtures.json").get("fixtures") or []
+          details = {str(d.get("match_id")): d for d in (load("match-details.json").get("fixtures") or [])}
+          videos = {str(v.get("match_id")) for v in (load("match-videos.json").get("videos") or [])}
+          minute = time.gmtime().tm_min
+          need, why = False, ""
+          for f in fixtures:
+              age = now - float(f.get("date") or 0)
+              fid = str(f.get("id"))
+              if not (100 * 60 <= age <= 48 * 3600):
+                  continue
+              d = details.get(fid) or {}
+              lineups = (d.get("lineups") or {}).get("home") or {}
+              finished = str((f.get("status") or {}).get("short", "")).lower() == "finished"
+              if age <= 12 * 3600 and (not finished or not lineups.get("players") or not d.get("statistics")):
+                  need, why = True, f"{fid}: resultado/detalhes em falta"
+              elif fid not in videos and minute % 30 < 10:
+                  need, why = True, f"{fid}: resumo em vídeo em falta"
+          print("Pós-jogo:", why or "nada pendente")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"football={'true' if need else 'false'}\n")
+          PY
+
       - name: Atualizar futebol e estatísticas
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.schedule == '20 */6 * * *'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.schedule == '20 */6 * * *' || steps.postmatch.outputs.football == 'true'
         env:
           FSAPI_KEY: ${{ secrets.FSAPI_KEY }}
           ODDSPAPI_API_KEY: ${{ secrets.ODDSPAPI_API_KEY }}

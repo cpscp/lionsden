@@ -1826,6 +1826,9 @@ function openGame(id){try{
  const ctx=matchContextFor(id); const formSectionHtml=past?'':formSection(ctx); const tableSectionHtml=past?'':tableSection(ctx); const h2hSectionHtml=past?'':h2hSection(ctx); const calendarButton=past?'':'<div class="card p-3 mt-3"><button onclick="downloadMatchCalendar('+esc(String(id))+')" class="w-full pill py-3 flex items-center justify-center gap-2"><span>＋</span><span>Adicionar ao Calendário</span></button></div>'; const oddsHtml=oddsSection(id,base);
  document.getElementById('modalTitle').textContent=past?'Detalhes do jogo':'Próximo jogo';
  const infoCard='<div class="card game-info-card">'+gameInfoRow('venue','Estádio',(v.name||'Por confirmar')+(v.city?' · '+v.city:''))+(season?gameInfoRow('calendar','Época',season):'')+(v.capacity?gameInfoRow('people','Capacidade',Number(v.capacity).toLocaleString('pt-PT')):'')+(surface?gameInfoRow('field','Piso',surface):'')+gameInfoRow('whistle','Árbitro',referee)+(resolveTransmission(base)?gameInfoRow('tv','',resolveTransmission(base)):'')+(event.attendance?gameInfoRow('people','Assistência',Number(event.attendance).toLocaleString('pt-PT')): '')+((event.homeScore?.period1!=null&&event.awayScore?.period1!=null)?gameInfoRow('clock','Intervalo',String(event.homeScore.period1)+' - '+String(event.awayScore.period1)):'')+'</div>'; const managersCard=((homeManager||awayManager)?'<div class="card game-info-card mt-3">'+(homeManager?gameInfoRow('person','Treinador · '+esc(base.home?.name),homeManager):'')+(awayManager?gameInfoRow('person','Treinador · '+esc(base.away?.name),awayManager):'')+'</div>':''); document.getElementById('modalBody').innerHTML='<div class="text-center mb-5"><div class="text-[10px] muted">'+esc(fmtDate(base.date))+' · '+esc(base.competition?.name||'')+'</div><div class="game-modal-head mt-4"><div class="game-modal-team">'+(homeUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(homeUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.home?.name)+'</div>'+goalListHtml(detail,base,true)+'</div><div class="game-modal-score">'+score+'</div><div class="game-modal-team">'+(awayUrl?'<div class="team-logo-wrap"><img class="team-logo" src="'+esc(awayUrl)+'" alt=""></div>':'')+'<div class="game-modal-name">'+esc(base.away?.name)+'</div>'+goalListHtml(detail,base,false)+'</div></div></div>'+infoCard+managersCard+formSectionHtml+tableSectionHtml+h2hSectionHtml+lineupSection+bestOnPitchSection+statsSection+subsSection+timelineSection+videoSection+oddsHtml+map+calendarButton+'<div class="text-[9px] muted mt-3">Dados avançados apresentados quando disponíveis através das fontes do jogo.</div>';
+ if(past){const missing=[];if(!(lineups?.home&&lineups?.away))missing.push('onzes, classificações dos jogadores, estatísticas e homem do jogo');if(!video)missing.push('resumo em vídeo');
+   if(missing.length)document.getElementById('modalBody').insertAdjacentHTML('beforeend','<div class="card p-4 mt-3 game-pending"><div class="font-semibold text-[13px]">A atualizar…</div><div class="text-[11px] muted mt-1">Ainda em falta: '+esc(missing.join(' e '))+'. Aparece aqui automaticamente assim que estiver disponível.</div></div>');}
+ window._openGameId=String(id);
  openModal();
 }catch(err){console.error("Lion's Den openGame:",err);const mt=document.getElementById('modalTitle'),mb=document.getElementById('modalBody');if(mt)mt.textContent='Detalhes do jogo';if(mb)mb.innerHTML='<div class="card p-5"><div class="font-semibold">Detalhes indisponíveis</div><div class="text-xs muted mt-2">Os dados deste jogo ainda não estão totalmente disponíveis. Tenta novamente em instantes.</div></div>';openModal();}}
 
@@ -1949,6 +1952,42 @@ renderHome=function(){_renderHomeBase();try{applyLive();}catch(e){console.warn('
 // Verifica a cada minuto se um jogo começou (passagem automática a "A decorrer").
 setInterval(()=>{const f=liveCandidate();if(f&&!LIVE.timer)renderHome();},60000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&LIVE.timer)pollLive();});
+
+// ---- Pós-jogo: resultado e detalhes sem esperar pela atualização dos dados ----
+// Jogos terminados há pouco que ainda não têm resultado nos dados: pergunta ao
+// Worker /live e atualiza em memória (Último jogo + cartão do jogo).
+const _recoverTried=new Map();
+async function recoverRecentResults(){
+  const now=Math.floor(Date.now()/1000);
+  const raw=D['fixtures.json']?.fixtures||[];
+  for(const r of raw){
+    const age=now-Number(r.date||0);
+    const done=String(r.status?.short||'').toLowerCase()==='finished'&&r.goals?.home!=null;
+    if(done||age<100*60||age>12*3600||LIVE.timer)continue;
+    const k=String(r.id);if(now-(_recoverTried.get(k)||0)<120)continue;_recoverTried.set(k,now);
+    try{
+      const d=await (await fetch(LIVE_URL+'?fotmob='+encodeURIComponent(r.id)+'&t='+Date.now(),{cache:'no-store'})).json();
+      if(d.ok&&d.state==='finished'&&liveMatches(r,d)){r.status={short:'finished',long:'Terminado'};r.goals={home:d.score.home,away:d.score.away};LIVE.ended.add(k);try{renderHome();}catch(e){}try{renderGames();}catch(e){}refreshOpenGame();}
+    }catch(e){}
+  }
+}
+function recentPendingDetails(){
+  const now=Math.floor(Date.now()/1000);
+  return allFixtures().some(f=>{const age=now-Number(f.date||0);if(age<100*60||age>48*3600)return false;const d=fixtureDetail(f.id);return !(d?.lineups?.home&&d?.lineups?.away)||!matchVideoFor(f.id);});
+}
+function refreshOpenGame(){
+  const modal=document.getElementById('modal');
+  if(!window._openGameId||!modal?.classList.contains('open')||!document.querySelector('#modalBody .game-modal-head'))return;
+  const body=document.getElementById('modalBody');const sc=body?.scrollTop||0;
+  const cont=modal.querySelector('.overflow-y-auto,.modal-scroll')||body;const sc2=cont?.scrollTop||0;
+  try{openGame(window._openGameId);}catch(e){}
+  if(body)body.scrollTop=sc;if(cont)cont.scrollTop=sc2;
+}
+const _loadBase=load;
+load=async function(){await _loadBase();try{refreshOpenGame();}catch(e){}try{recoverRecentResults();}catch(e){}};
+// Enquanto faltarem dados de um jogo recente, recarrega a cada 2 minutos.
+setInterval(()=>{if(!document.hidden&&recentPendingDetails())load();},120000);
+setTimeout(()=>{try{recoverRecentResults();}catch(e){}},4000);
 
 setInterval(load,300000);
 </script>
