@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-08T13:44:46.869516+00:00",
+  "_updated_at": "2026-11-08T22:18:56.347608+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -12,14 +12,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png"
       },
-      "playedGames": 10,
-      "won": 10,
+      "playedGames": 11,
+      "won": 11,
       "draw": 0,
       "lost": 0,
-      "points": 30,
-      "goalsFor": 25,
-      "goalsAgainst": 4,
-      "goalDifference": 21
+      "points": 33,
+      "goalsFor": 27,
+      "goalsAgainst": 5,
+      "goalDifference": 22
     },
     {
       "position": 2,
@@ -30,13 +30,13 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9772.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 8,
-      "draw": 1,
+      "draw": 2,
       "lost": 1,
-      "points": 25,
-      "goalsFor": 27,
-      "goalsAgainst": 8,
+      "points": 26,
+      "goalsFor": 29,
+      "goalsAgainst": 10,
       "goalDifference": 19
     },
     {
@@ -66,14 +66,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1567.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 6,
       "draw": 3,
-      "lost": 1,
+      "lost": 2,
       "points": 21,
-      "goalsFor": 15,
-      "goalsAgainst": 6,
-      "goalDifference": 9
+      "goalsFor": 16,
+      "goalsAgainst": 8,
+      "goalDifference": 8
     },
     {
       "position": 5,
@@ -102,14 +102,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1786.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 6,
       "draw": 2,
-      "lost": 2,
+      "lost": 3,
       "points": 20,
       "goalsFor": 15,
-      "goalsAgainst": 12,
-      "goalDifference": 3
+      "goalsAgainst": 13,
+      "goalDifference": 2
     },
     {
       "position": 7,
@@ -120,14 +120,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9764.png"
       },
-      "playedGames": 10,
-      "won": 4,
+      "playedGames": 11,
+      "won": 5,
       "draw": 3,
       "lost": 3,
-      "points": 15,
-      "goalsFor": 8,
-      "goalsAgainst": 7,
-      "goalDifference": 1
+      "points": 18,
+      "goalsFor": 10,
+      "goalsAgainst": 8,
+      "goalDifference": 2
     },
     {
       "position": 8,
@@ -138,14 +138,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10264.png"
       },
-      "playedGames": 10,
-      "won": 4,
+      "playedGames": 11,
+      "won": 5,
       "draw": 2,
       "lost": 4,
-      "points": 14,
-      "goalsFor": 12,
+      "points": 17,
+      "goalsFor": 13,
       "goalsAgainst": 11,
-      "goalDifference": 1
+      "goalDifference": 2
     },
     {
       "position": 9,
@@ -210,17 +210,35 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/1074320.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 2,
-      "draw": 4,
+      "draw": 5,
       "lost": 4,
-      "points": 10,
-      "goalsFor": 15,
-      "goalsAgainst": 19,
+      "points": 11,
+      "goalsFor": 17,
+      "goalsAgainst": 21,
       "goalDifference": -4
     },
     {
       "position": 13,
+      "team": {
+        "id": 10214,
+        "name": "Nacional",
+        "shortName": "Nacional",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
+      },
+      "playedGames": 11,
+      "won": 3,
+      "draw": 1,
+      "lost": 7,
+      "points": 10,
+      "goalsFor": 11,
+      "goalsAgainst": 19,
+      "goalDifference": -8
+    },
+    {
+      "position": 14,
       "team": {
         "id": 7844,
         "name": "Vitória de Guimarães",
@@ -228,17 +246,17 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7844.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 2,
       "draw": 3,
-      "lost": 5,
+      "lost": 6,
       "points": 9,
-      "goalsFor": 10,
-      "goalsAgainst": 10,
-      "goalDifference": 0
+      "goalsFor": 11,
+      "goalsAgainst": 12,
+      "goalDifference": -1
     },
     {
-      "position": 14,
+      "position": 15,
       "team": {
         "id": 10212,
         "name": "Marítimo",
@@ -256,7 +274,7 @@
       "goalDifference": -12
     },
     {
-      "position": 15,
+      "position": 16,
       "team": {
         "id": 212821,
         "name": "Casa Pia AC",
@@ -274,7 +292,7 @@
       "goalDifference": -14
     },
     {
-      "position": 16,
+      "position": 17,
       "team": {
         "id": 7841,
         "name": "Rio Ave",
@@ -282,32 +300,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/7841.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 2,
       "draw": 1,
-      "lost": 7,
+      "lost": 8,
       "points": 7,
       "goalsFor": 9,
-      "goalsAgainst": 23,
-      "goalDifference": -14
-    },
-    {
-      "position": 17,
-      "team": {
-        "id": 10214,
-        "name": "Nacional",
-        "shortName": "Nacional",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
-      },
-      "playedGames": 10,
-      "won": 2,
-      "draw": 1,
-      "lost": 7,
-      "points": 7,
-      "goalsFor": 10,
-      "goalsAgainst": 19,
-      "goalDifference": -9
+      "goalsAgainst": 24,
+      "goalDifference": -15
     },
     {
       "position": 18,

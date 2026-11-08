@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-08T13:45:25.291827+00:00",
+  "_updated_at": "2026-11-08T22:19:28.121178+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -11725,8 +11725,8 @@
             },
             {
               "player": {
-                "name": "Jakub Vinarcík",
-                "shortName": "Jakub Vinarcík",
+                "name": "Jakub Vinarčík",
+                "shortName": "Jakub Vinarčík",
                 "id": 1427016
               },
               "shirtNumber": "1",
@@ -11795,9 +11795,9 @@
             },
             {
               "player": {
-                "name": "Mamadu Balde",
-                "shortName": "Mamadu Balde",
-                "id": 2196470
+                "name": "Rachid Gomes",
+                "shortName": "Rachid Gomes",
+                "id": 2192769
               },
               "shirtNumber": "27",
               "position": "",

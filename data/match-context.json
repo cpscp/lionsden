@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-08T13:45:09.927240+00:00",
+  "_updated_at": "2026-11-08T22:19:14.136086+00:00",
   "fixtures": {
     "6506259": {
       "home": {
@@ -84,7 +84,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:04.150174+00:00"
+      "updated_at": "2026-11-08T22:19:09.853656+00:00"
     },
     "6106279": {
       "home": {
@@ -144,14 +144,6 @@
         "name": "Man United",
         "form": [
           {
-            "result": "D",
-            "score": "1 - 1",
-            "date": "2026-10-18T13:00:00.000Z",
-            "competition": "Premier League",
-            "opponent": "Leeds United",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "4 - 1",
             "date": "2026-10-21T16:45:00.000Z",
@@ -182,6 +174,14 @@
             "competition": "Champions League",
             "opponent": "Roma",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "4 - 4",
+            "date": "2026-11-08T16:30:00.000Z",
+            "competition": "Premier League",
+            "opponent": "Aston Villa",
+            "match_id": null
           }
         ],
         "table": {
@@ -198,21 +198,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:04.214883+00:00"
+      "updated_at": "2026-11-08T22:19:09.871363+00:00"
     },
     "5887687": {
       "home": {
         "id": 9773,
         "name": "FC Porto",
         "form": [
-          {
-            "result": "L",
-            "score": "0 - 1",
-            "date": "2026-10-20T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "PSV Eindhoven",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 1",
@@ -243,6 +235,14 @@
             "date": "2026-11-04T20:00:00.000Z",
             "competition": "Champions League",
             "opponent": "Napoli",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-08T18:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
             "match_id": null
           }
         ],
@@ -349,7 +349,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-08T13:45:04.244037+00:00"
+      "updated_at": "2026-11-08T22:19:09.891215+00:00"
     },
     "5887698": {
       "home": {
@@ -500,7 +500,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-08T13:45:04.273723+00:00"
+      "updated_at": "2026-11-08T22:19:09.911759+00:00"
     },
     "6106275": {
       "home": {
@@ -633,21 +633,13 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-08T13:45:04.299713+00:00"
+      "updated_at": "2026-11-08T22:19:09.930055+00:00"
     },
     "5887702": {
       "home": {
         "id": 9764,
         "name": "Gil Vicente",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 3",
-            "date": "2026-10-14T18:00:00.000Z",
-            "competition": "Taca de Portugal",
-            "opponent": "Santarém",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "1 - 2",
@@ -678,6 +670,14 @@
             "date": "2026-11-02T20:15:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Vitória de Guimarães",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
             "match_id": null
           }
         ],
@@ -784,7 +784,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-08T13:45:04.328107+00:00"
+      "updated_at": "2026-11-08T22:19:09.949601+00:00"
     },
     "5887716": {
       "home": {
@@ -935,7 +935,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-08T13:45:04.355880+00:00"
+      "updated_at": "2026-11-08T22:19:09.969110+00:00"
     },
     "5887724": {
       "home": {
@@ -1086,7 +1086,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-08T13:45:04.385138+00:00"
+      "updated_at": "2026-11-08T22:19:09.989068+00:00"
     },
     "5985969": {
       "home": {
@@ -1237,7 +1237,7 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-11-08T13:45:04.723063+00:00"
+      "updated_at": "2026-11-08T22:19:10.217891+00:00"
     },
     "5887734": {
       "home": {
@@ -1297,14 +1297,6 @@
         "name": "Santa Clara",
         "form": [
           {
-            "result": "D",
-            "score": "0 - 0",
-            "date": "2026-09-20T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "0 - 1",
             "date": "2026-10-10T19:30:00.000Z",
@@ -1335,6 +1327,14 @@
             "competition": "Liga Portugal",
             "opponent": "Marítimo",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
+            "match_id": null
           }
         ],
         "table": {
@@ -1351,7 +1351,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:04.926299+00:00"
+      "updated_at": "2026-11-08T22:19:10.383681+00:00"
     },
     "5887735": {
       "home": {
@@ -1465,7 +1465,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:05.230933+00:00"
+      "updated_at": "2026-11-08T22:19:10.686930+00:00"
     },
     "6106278": {
       "home": {
@@ -1525,14 +1525,6 @@
         "name": "Barcelona",
         "form": [
           {
-            "result": "W",
-            "score": "2 - 5",
-            "date": "2026-10-17T16:30:00.000Z",
-            "competition": "LaLiga",
-            "opponent": "Real Betis",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "4 - 2",
             "date": "2026-10-20T19:00:00.000Z",
@@ -1562,6 +1554,14 @@
             "date": "2026-11-03T20:00:00.000Z",
             "competition": "Champions League",
             "opponent": "Aston Villa",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-08T20:00:00.000Z",
+            "competition": "LaLiga",
+            "opponent": "Atlético Madrid",
             "match_id": null
           }
         ],
@@ -1598,21 +1598,13 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-08T13:45:05.555047+00:00"
+      "updated_at": "2026-11-08T22:19:10.987524+00:00"
     },
     "5887752": {
       "home": {
         "id": 7844,
         "name": "Vitória de Guimarães",
         "form": [
-          {
-            "result": "D",
-            "score": "1 - 1",
-            "date": "2026-09-20T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Moreirense",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "2 - 0",
@@ -1643,6 +1635,14 @@
             "date": "2026-11-02T20:15:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Gil Vicente",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-11-08T18:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "FC Porto",
             "match_id": null
           }
         ],
@@ -1712,7 +1712,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:05.773412+00:00"
+      "updated_at": "2026-11-08T22:19:11.340677+00:00"
     },
     "6106255": {
       "home": {
@@ -1863,7 +1863,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-08T13:45:06.090933+00:00"
+      "updated_at": "2026-11-08T22:19:11.668292+00:00"
     },
     "5887760": {
       "home": {
@@ -1977,7 +1977,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:06.539723+00:00"
+      "updated_at": "2026-11-08T22:19:11.833318+00:00"
     },
     "5887769": {
       "home": {
@@ -2091,21 +2091,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:06.931761+00:00"
+      "updated_at": "2026-11-08T22:19:12.011277+00:00"
     },
     "5887778": {
       "home": {
         "id": 10214,
         "name": "Nacional",
         "form": [
-          {
-            "result": "L",
-            "score": "0 - 4",
-            "date": "2026-09-19T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Famalicão",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "3 - 2",
@@ -2136,6 +2128,14 @@
             "date": "2026-11-01T15:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Arouca",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 0",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Académico Viseu",
             "match_id": null
           }
         ],
@@ -2205,7 +2205,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:07.267368+00:00"
+      "updated_at": "2026-11-08T22:19:12.183784+00:00"
     },
     "5887784": {
       "home": {
@@ -2319,7 +2319,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:07.470002+00:00"
+      "updated_at": "2026-11-08T22:19:12.351049+00:00"
     },
     "5887796": {
       "home": {
@@ -2433,7 +2433,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:07.769379+00:00"
+      "updated_at": "2026-11-08T22:19:12.584060+00:00"
     },
     "5887800": {
       "home": {
@@ -2547,21 +2547,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:07.976025+00:00"
+      "updated_at": "2026-11-08T22:19:12.892702+00:00"
     },
     "5887814": {
       "home": {
         "id": 1786,
         "name": "Académico Viseu",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-10T19:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Estoril",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 0",
@@ -2592,6 +2584,14 @@
             "date": "2026-11-01T18:00:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Rio Ave",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 0",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
             "match_id": null
           }
         ],
@@ -2661,7 +2661,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:08.412392+00:00"
+      "updated_at": "2026-11-08T22:19:13.191150+00:00"
     },
     "5887819": {
       "home": {
@@ -2775,7 +2775,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:08.754334+00:00"
+      "updated_at": "2026-11-08T22:19:13.401193+00:00"
     },
     "5887832": {
       "home": {
@@ -2889,7 +2889,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.205072+00:00"
+      "updated_at": "2026-11-08T22:19:13.601788+00:00"
     },
     "5887840": {
       "home": {
@@ -2949,14 +2949,6 @@
         "name": "FC Porto",
         "form": [
           {
-            "result": "L",
-            "score": "0 - 1",
-            "date": "2026-10-20T19:00:00.000Z",
-            "competition": "Champions League",
-            "opponent": "PSV Eindhoven",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "0 - 1",
             "date": "2026-10-24T19:30:00.000Z",
@@ -2987,6 +2979,14 @@
             "competition": "Champions League",
             "opponent": "Napoli",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-08T18:00:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
           }
         ],
         "table": {
@@ -3003,7 +3003,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.513701+00:00"
+      "updated_at": "2026-11-08T22:19:13.895017+00:00"
     },
     "5887851": {
       "home": {
@@ -3117,7 +3117,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.820943+00:00"
+      "updated_at": "2026-11-08T22:19:14.063837+00:00"
     },
     "5887855": {
       "home": {
@@ -3178,14 +3178,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 3",
-            "date": "2026-10-14T18:00:00.000Z",
-            "competition": "Taca de Portugal",
-            "opponent": "Santarém",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "1 - 2",
             "date": "2026-10-19T19:15:00.000Z",
             "competition": "Liga Portugal",
@@ -3215,6 +3207,14 @@
             "competition": "Liga Portugal",
             "opponent": "Vitória de Guimarães",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Santa Clara",
+            "match_id": null
           }
         ],
         "table": {
@@ -3231,7 +3231,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.846725+00:00"
+      "updated_at": "2026-11-08T22:19:14.081744+00:00"
     },
     "5887869": {
       "home": {
@@ -3345,7 +3345,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.873714+00:00"
+      "updated_at": "2026-11-08T22:19:14.099760+00:00"
     },
     "5887877": {
       "home": {
@@ -3459,21 +3459,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.900235+00:00"
+      "updated_at": "2026-11-08T22:19:14.117711+00:00"
     },
     "5887887": {
       "home": {
         "id": 1567,
         "name": "Santa Clara",
         "form": [
-          {
-            "result": "D",
-            "score": "0 - 0",
-            "date": "2026-09-20T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Braga",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 1",
@@ -3504,6 +3496,14 @@
             "date": "2026-11-01T18:00:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Marítimo",
+            "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-11-08T15:30:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Gil Vicente",
             "match_id": null
           }
         ],
@@ -3573,7 +3573,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-08T13:45:09.927221+00:00"
+      "updated_at": "2026-11-08T22:19:14.136070+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
