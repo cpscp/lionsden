@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-12T07:27:48.703364+00:00",
+  "_updated_at": "2026-11-12T20:10:17.871111+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -1442,6 +1442,10 @@
         {
           "period": "2020/2021",
           "club": "Sporting CP"
+        },
+        {
+          "period": "2026-11-09T00:00:00",
+          "club": "Portugal"
         },
         {
           "period": "2021-08-29T00:00:00 → 2026-11-06T00:00:00",

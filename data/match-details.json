@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-12T07:28:16.819683+00:00",
+  "_updated_at": "2026-11-12T20:11:00.995026+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -22209,7 +22209,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.4
+                "rating": 7.6
               }
             },
             {
@@ -22518,7 +22518,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.8
+                "rating": 7.4
               }
             },
             {
@@ -23112,7 +23112,7 @@
                   },
                   {
                     "name": "Shots on target",
-                    "home": 6,
+                    "home": 5,
                     "away": 2
                   },
                   {
@@ -23157,12 +23157,12 @@
                   },
                   {
                     "name": "Shots off target",
-                    "home": 9,
+                    "home": 10,
                     "away": 4
                   },
                   {
                     "name": "Shots on target",
-                    "home": 6,
+                    "home": 5,
                     "away": 2
                   },
                   {
@@ -23173,7 +23173,7 @@
                   {
                     "name": "Hit woodwork",
                     "home": 1,
-                    "away": 0
+                    "away": 1
                   },
                   {
                     "name": "Shots inside box",
@@ -23197,12 +23197,12 @@
                   },
                   {
                     "name": "xG open play",
-                    "home": "1.46",
+                    "home": "1.25",
                     "away": "0.41"
                   },
                   {
                     "name": "xG set play",
-                    "home": "0.56",
+                    "home": "0.77",
                     "away": "0.22"
                   },
                   {
@@ -23283,7 +23283,7 @@
                   {
                     "name": "Blocks",
                     "home": 3,
-                    "away": 6
+                    "away": 5
                   },
                   {
                     "name": "Clearances",
