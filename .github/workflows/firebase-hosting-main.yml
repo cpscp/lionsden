@@ -39,6 +39,48 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Every data refresh creates a new Hosting version, and Firebase keeps them
+      # all by default, which fills the free (Spark) storage quota and makes
+      # deploys fail with HTTP 429. Keep only the latest releases and delete the
+      # older versions before each deploy, so the site can update as often as needed.
+      - name: Authenticate to Google Cloud
+        id: gauth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIONSDENSCP }}
+          token_format: access_token
+
+      - name: Prune old Hosting versions
+        continue-on-error: true
+        env:
+          TOKEN: ${{ steps.gauth.outputs.access_token }}
+          SITE: lionsdenscp
+          KEEP: '5'
+        run: |
+          set -u
+          API="https://firebasehosting.googleapis.com/v1beta1/sites/$SITE"
+          AUTH="Authorization: Bearer $TOKEN"
+
+          echo "Setting live channel retention to $KEEP releases"
+          curl -sS -X PATCH -H "$AUTH" -H 'Content-Type: application/json' \
+            "$API/channels/live?updateMask=retainedReleaseCount" \
+            -d "{\"retainedReleaseCount\": $KEEP}" | jq -c '{name, retainedReleaseCount, error}'
+
+          : > versions.tsv
+          PAGE=""
+          while :; do
+            RESP=$(curl -sS -H "$AUTH" "$API/versions?pageSize=100${PAGE:+&pageToken=$PAGE}")
+            echo "$RESP" | jq -r '.versions[]? | select(.status=="FINALIZED") | [.createTime, .name] | @tsv' >> versions.tsv
+            PAGE=$(echo "$RESP" | jq -r '.nextPageToken // empty')
+            [ -z "$PAGE" ] && break
+          done
+
+          TOTAL=$(wc -l < versions.tsv)
+          sort -r versions.tsv | tail -n +$((KEEP + 1)) | cut -f2 > to_delete.txt
+          echo "Finalized versions: $TOTAL, deleting: $(wc -l < to_delete.txt)"
+          xargs -P 8 -I{} curl -sS -o /dev/null -w '%{http_code} {}\n' -X DELETE -H "$AUTH" \
+            "https://firebasehosting.googleapis.com/v1beta1/{}" < to_delete.txt | awk '{print $1}' | sort | uniq -c
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
