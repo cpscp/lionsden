@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-11T19:55:56.311224+00:00",
+  "_updated_at": "2026-11-12T07:48:52.788467+00:00",
   "fixtures": {
     "5887647": {
       "matches": [
@@ -197,7 +197,7 @@
       "total": 47,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311109+00:00"
+      "updated_at": "2026-11-12T07:48:52.788308+00:00"
     },
     "5887698": {
       "matches": [
@@ -244,7 +244,7 @@
       "total": 33,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311114+00:00"
+      "updated_at": "2026-11-12T07:48:52.788314+00:00"
     },
     "5887702": {
       "matches": [
@@ -291,7 +291,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311120+00:00"
+      "updated_at": "2026-11-12T07:48:52.788322+00:00"
     },
     "5887716": {
       "matches": [
@@ -338,7 +338,7 @@
       "total": 24,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311122+00:00"
+      "updated_at": "2026-11-12T07:48:52.788325+00:00"
     },
     "5887724": {
       "matches": [
@@ -385,54 +385,54 @@
       "total": 46,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311124+00:00"
+      "updated_at": "2026-11-12T07:48:52.788329+00:00"
     },
     "5887734": {
       "matches": [
         {
           "id": null,
-          "date": "2026-04-03",
+          "date": "2026-04-03T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Santa Clara",
           "home_score": 4,
           "away_score": 2,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-11-08",
+          "date": "2025-12-18T18:45:00.000Z",
+          "home": "Santa Clara",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 3,
+          "competition": "Taca de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-11-08T20:30:00.000Z",
           "home": "Santa Clara",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 2,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-04-12",
+          "date": "2025-04-12T17:00:00.000Z",
           "home": "Santa Clara",
           "away": "Sporting CP",
           "home_score": 0,
           "away_score": 1,
-          "competition": "Primeira Liga"
-        },
-        {
-          "id": null,
-          "date": "2024-11-30",
-          "home": "Sporting CP",
-          "away": "Santa Clara",
-          "home_score": 0,
-          "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         }
       ],
-      "home_wins": 3,
+      "home_wins": 15,
       "draws": 0,
-      "away_wins": 1,
-      "total": 4,
-      "source": "FBref historical H2H fallback",
+      "away_wins": 2,
+      "total": 17,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311136+00:00"
+      "updated_at": "2026-11-12T07:48:52.788336+00:00"
     },
     "5887735": {
       "matches": [
@@ -479,7 +479,7 @@
       "total": 6,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311139+00:00"
+      "updated_at": "2026-11-12T07:48:52.788339+00:00"
     },
     "5887752": {
       "matches": [
@@ -526,7 +526,7 @@
       "total": 35,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311143+00:00"
+      "updated_at": "2026-11-12T07:48:52.788346+00:00"
     },
     "5887760": {
       "matches": [
@@ -573,7 +573,7 @@
       "total": 4,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311147+00:00"
+      "updated_at": "2026-11-12T07:48:52.788352+00:00"
     },
     "5887769": {
       "matches": [
@@ -620,7 +620,7 @@
       "total": 37,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311149+00:00"
+      "updated_at": "2026-11-12T07:48:52.788356+00:00"
     },
     "5887778": {
       "matches": [
@@ -667,7 +667,7 @@
       "total": 27,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311152+00:00"
+      "updated_at": "2026-11-12T07:48:52.788359+00:00"
     },
     "5887784": {
       "matches": [
@@ -714,7 +714,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311154+00:00"
+      "updated_at": "2026-11-12T07:48:52.788362+00:00"
     },
     "5887796": {
       "matches": [
@@ -761,7 +761,7 @@
       "total": 21,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311156+00:00"
+      "updated_at": "2026-11-12T07:48:52.788366+00:00"
     },
     "5887800": {
       "matches": [
@@ -808,7 +808,7 @@
       "total": 42,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311158+00:00"
+      "updated_at": "2026-11-12T07:48:52.788369+00:00"
     },
     "5887814": {
       "matches": [],
@@ -865,7 +865,7 @@
       "total": 9,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311166+00:00"
+      "updated_at": "2026-11-12T07:48:52.788381+00:00"
     },
     "5887832": {
       "matches": [
@@ -912,7 +912,7 @@
       "total": 25,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311169+00:00"
+      "updated_at": "2026-11-12T07:48:52.788384+00:00"
     },
     "5887840": {
       "matches": [
@@ -959,7 +959,7 @@
       "total": 47,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311171+00:00"
+      "updated_at": "2026-11-12T07:48:52.788388+00:00"
     },
     "5887851": {
       "matches": [
@@ -1006,7 +1006,7 @@
       "total": 33,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311173+00:00"
+      "updated_at": "2026-11-12T07:48:52.788391+00:00"
     },
     "5887855": {
       "matches": [
@@ -1053,7 +1053,7 @@
       "total": 25,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311175+00:00"
+      "updated_at": "2026-11-12T07:48:52.788394+00:00"
     },
     "5887869": {
       "matches": [
@@ -1100,7 +1100,7 @@
       "total": 24,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311177+00:00"
+      "updated_at": "2026-11-12T07:48:52.788397+00:00"
     },
     "5887877": {
       "matches": [
@@ -1147,54 +1147,54 @@
       "total": 46,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311179+00:00"
+      "updated_at": "2026-11-12T07:48:52.788400+00:00"
     },
     "5887887": {
       "matches": [
         {
           "id": null,
-          "date": "2026-04-03",
+          "date": "2026-04-03T19:30:00.000Z",
           "home": "Sporting CP",
           "away": "Santa Clara",
           "home_score": 4,
           "away_score": 2,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-11-08",
+          "date": "2025-12-18T18:45:00.000Z",
+          "home": "Santa Clara",
+          "away": "Sporting CP",
+          "home_score": 2,
+          "away_score": 3,
+          "competition": "Taca de Portugal"
+        },
+        {
+          "id": null,
+          "date": "2025-11-08T20:30:00.000Z",
           "home": "Santa Clara",
           "away": "Sporting CP",
           "home_score": 1,
           "away_score": 2,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         },
         {
           "id": null,
-          "date": "2025-04-12",
+          "date": "2025-04-12T17:00:00.000Z",
           "home": "Santa Clara",
           "away": "Sporting CP",
           "home_score": 0,
           "away_score": 1,
-          "competition": "Primeira Liga"
-        },
-        {
-          "id": null,
-          "date": "2024-11-30",
-          "home": "Sporting CP",
-          "away": "Santa Clara",
-          "home_score": 0,
-          "away_score": 1,
-          "competition": "Primeira Liga"
+          "competition": "Liga Portugal"
         }
       ],
-      "home_wins": 1,
+      "home_wins": 15,
       "draws": 0,
-      "away_wins": 3,
-      "total": 4,
-      "source": "FBref historical H2H fallback",
+      "away_wins": 2,
+      "total": 17,
+      "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311185+00:00"
+      "updated_at": "2026-11-12T07:48:52.788404+00:00"
     },
     "5985964": {
       "matches": [
@@ -1288,7 +1288,7 @@
       "total": 6,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311145+00:00"
+      "updated_at": "2026-11-12T07:48:52.788349+00:00"
     },
     "6106275": {
       "matches": [
@@ -1317,7 +1317,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311117+00:00"
+      "updated_at": "2026-11-12T07:48:52.788318+00:00"
     },
     "6106278": {
       "matches": [
@@ -1346,7 +1346,7 @@
       "total": 2,
       "source": "FotMob",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311141+00:00"
+      "updated_at": "2026-11-12T07:48:52.788342+00:00"
     },
     "6106279": {
       "matches": [
@@ -1393,7 +1393,7 @@
       "total": 4,
       "source": "UEFA historical H2H fallback",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311083+00:00"
+      "updated_at": "2026-11-12T07:48:52.788281+00:00"
     },
     "6106281": {
       "matches": [
@@ -1527,7 +1527,7 @@
       "total": 17,
       "source": "FotMob historical event",
       "history_found": true,
-      "updated_at": "2026-11-11T19:55:56.311127+00:00"
+      "updated_at": "2026-11-12T07:48:52.788332+00:00"
     }
   },
   "source": "ZeroZero all-competitions H2H with SofaScore/FotMob fallback + non-destructive cache",
