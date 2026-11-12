@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-11T19:46:36.438521+00:00",
+  "_updated_at": "2026-11-12T07:28:16.819683+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -14304,7 +14304,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.6
+                "rating": 7.7
               }
             },
             {
@@ -14418,7 +14418,7 @@
                 "width": 0.257
               },
               "statistics": {
-                "rating": 7.8
+                "rating": 7.9
               }
             },
             {
@@ -14503,7 +14503,7 @@
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
-                "rating": 7.3
+                "rating": 7.4
               }
             },
             {
@@ -14950,7 +14950,7 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.52",
+                    "home": "1.50",
                     "away": "1.67"
                   },
                   {
@@ -15040,7 +15040,7 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "1.52",
+                    "home": "1.50",
                     "away": "1.67"
                   },
                   {
@@ -15050,12 +15050,12 @@
                   },
                   {
                     "name": "xG set play",
-                    "home": "0.62",
+                    "home": "0.61",
                     "away": "0.00"
                   },
                   {
                     "name": "xG non-penalty",
-                    "home": "1.52",
+                    "home": "1.50",
                     "away": "1.67"
                   },
                   {
