@@ -45,19 +45,20 @@ jobs:
       # older versions before each deploy, so the site can update as often as needed.
       - name: Authenticate to Google Cloud
         id: gauth
+        continue-on-error: true
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIONSDENSCP }}
-          token_format: access_token
 
       - name: Prune old Hosting versions
         continue-on-error: true
+        if: steps.gauth.outcome == 'success'
         env:
-          TOKEN: ${{ steps.gauth.outputs.access_token }}
           SITE: lionsdenscp
           KEEP: '5'
         run: |
           set -u
+          TOKEN=$(gcloud auth print-access-token)
           API="https://firebasehosting.googleapis.com/v1beta1/sites/$SITE"
           AUTH="Authorization: Bearer $TOKEN"
 
