@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-13T07:00:31.490056+00:00",
+  "_updated_at": "2026-11-13T19:56:19.166767+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -35,7 +35,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
-      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
+      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ&usqp=CBQ",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
@@ -87,7 +87,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=9V0I8Ifiiho",
       "embed": "https://www.youtube.com/embed/9V0I8Ifiiho",
-      "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLBsnQ73eKjPqOirIJUHwoXO2y-AaQ",
+      "thumbnail": "https://i.ytimg.com/vi/9V0I8Ifiiho/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAc2WuH1MjskfjB9zPoB6QBVk0q-Q",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 meses"
@@ -225,15 +225,15 @@
     {
       "match_id": 5887666,
       "sofascore_id": null,
-      "video_id": "8bFVmvAZj4o",
-      "title": "Resumo: Casa Pia 0-2 Sporting (Liga 26/27 #10)",
+      "video_id": "Ow18yhQ4JNU",
+      "title": "Resumo: Estrela Amadora 0-2 Casa Pia (Liga 26/27 #9)",
       "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
-      "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
-      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
+      "url": "https://www.youtube.com/watch?v=Ow18yhQ4JNU",
+      "embed": "https://www.youtube.com/embed/Ow18yhQ4JNU",
+      "thumbnail": "https://i.ytimg.com/vi/Ow18yhQ4JNU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBEmkx6iuUYahAT_x1g8SXCEMh8qg",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 13 dias"
+      "published_text": "há 2 semanas"
     },
     {
       "match_id": 6106335,

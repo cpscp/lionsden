@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-13T07:00:09.176835+00:00",
+  "_updated_at": "2026-11-13T19:55:56.062648+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -8642,8 +8642,8 @@
           "players": [
             {
               "player": {
-                "name": "Uğurcan Çakir",
-                "shortName": "Uğurcan Çakir",
+                "name": "Uğurcan Çakır",
+                "shortName": "Uğurcan Çakır",
                 "id": 603669
               },
               "shirtNumber": "1",
@@ -8879,8 +8879,8 @@
             },
             {
               "player": {
-                "name": "Ilkay Gündogan",
-                "shortName": "Ilkay Gündogan",
+                "name": "İlkay Gündoğan",
+                "shortName": "İlkay Gündoğan",
                 "id": 178818
               },
               "shirtNumber": "20",
@@ -9306,7 +9306,7 @@
             "description": "Substitution",
             "swap": [
               {
-                "name": "Ilkay Gündogan",
+                "name": "İlkay Gündoğan",
                 "id": "178818",
                 "profileUrl": "/players/178818/ilkay-gundogan"
               },
