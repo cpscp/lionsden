@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-15T19:00:28.196449+00:00",
+  "_updated_at": "2026-11-16T06:51:11.739885+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -48,7 +48,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=WmDjGUp2pwY",
       "embed": "https://www.youtube.com/embed/WmDjGUp2pwY",
-      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAC7VZj2qXHdB90Vkbw1YnzntE_bQ",
+      "thumbnail": "https://i.ytimg.com/vi/WmDjGUp2pwY/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLAF09eJCYW6-ATwHrGMuqDSAGcj9Q",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
@@ -207,7 +207,7 @@
       "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwZ3Gekqfu3ZRM3DEEH6x2ZdSODw",
       "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 2 semanas"
+      "published_text": "há 3 semanas"
     },
     {
       "match_id": 5985964,
@@ -246,7 +246,7 @@
       "thumbnail": "https://i.ytimg.com/vi/IIFAb5NM24s/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCE-OqOtSv2C10SBb1g-FC23lRYYg",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 10 dias"
+      "published_text": "há 11 dias"
     },
     {
       "match_id": 5887679,
@@ -259,7 +259,7 @@
       "thumbnail": "https://i.ytimg.com/vi/8poAq61s6sY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDjqULyDzOPBBXFkQbalqa_TqZvRQ",
       "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 7 dias"
+      "published_text": "há 8 dias"
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",
