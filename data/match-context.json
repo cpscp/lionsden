@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-18T07:44:55.749875+00:00",
+  "_updated_at": "2026-11-18T20:44:58.576731+00:00",
   "fixtures": {
     "6506259": {
       "home": {
@@ -84,7 +84,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:52.296024+00:00"
+      "updated_at": "2026-11-18T20:44:54.611708+00:00"
     },
     "6106279": {
       "home": {
@@ -198,7 +198,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:52.305443+00:00"
+      "updated_at": "2026-11-18T20:44:54.630303+00:00"
     },
     "5887687": {
       "home": {
@@ -349,7 +349,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-18T07:44:52.315836+00:00"
+      "updated_at": "2026-11-18T20:44:54.652756+00:00"
     },
     "5887698": {
       "home": {
@@ -500,7 +500,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-18T07:44:52.325533+00:00"
+      "updated_at": "2026-11-18T20:44:54.673000+00:00"
     },
     "6106275": {
       "home": {
@@ -633,7 +633,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-18T07:44:52.333636+00:00"
+      "updated_at": "2026-11-18T20:44:54.691150+00:00"
     },
     "5887702": {
       "home": {
@@ -784,7 +784,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-18T07:44:52.343994+00:00"
+      "updated_at": "2026-11-18T20:44:54.711967+00:00"
     },
     "5887716": {
       "home": {
@@ -935,7 +935,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-18T07:44:52.353642+00:00"
+      "updated_at": "2026-11-18T20:44:54.731251+00:00"
     },
     "5887724": {
       "home": {
@@ -1086,7 +1086,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-18T07:44:52.363532+00:00"
+      "updated_at": "2026-11-18T20:44:54.751938+00:00"
     },
     "5985969": {
       "home": {
@@ -1237,7 +1237,7 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-11-18T07:44:52.641126+00:00"
+      "updated_at": "2026-11-18T20:44:54.896615+00:00"
     },
     "5887734": {
       "home": {
@@ -1388,7 +1388,7 @@
         "away_wins": 2,
         "total": 17
       },
-      "updated_at": "2026-11-18T07:44:52.790731+00:00"
+      "updated_at": "2026-11-18T20:44:55.214553+00:00"
     },
     "5887735": {
       "home": {
@@ -1496,13 +1496,50 @@
         }
       },
       "h2h": {
-        "matches": [],
-        "home_wins": 0,
-        "draws": 0,
+        "matches": [
+          {
+            "id": null,
+            "date": "2026-08-08T19:30:00.000Z",
+            "home": "Estrela da Amadora",
+            "away": "Sporting CP",
+            "home_score": 2,
+            "away_score": 2,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2026-04-11T19:30:00.000Z",
+            "home": "Estrela da Amadora",
+            "away": "Sporting CP",
+            "home_score": 0,
+            "away_score": 1,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-11-30T18:00:00.000Z",
+            "home": "Sporting CP",
+            "away": "Estrela da Amadora",
+            "home_score": 4,
+            "away_score": 0,
+            "competition": "Liga Portugal"
+          },
+          {
+            "id": null,
+            "date": "2025-03-29T18:00:00.000Z",
+            "home": "Estrela da Amadora",
+            "away": "Sporting CP",
+            "home_score": 0,
+            "away_score": 3,
+            "competition": "Liga Portugal"
+          }
+        ],
+        "home_wins": 6,
+        "draws": 1,
         "away_wins": 0,
-        "total": 0
+        "total": 7
       },
-      "updated_at": "2026-11-18T07:44:52.905912+00:00"
+      "updated_at": "2026-11-18T20:44:55.378287+00:00"
     },
     "6106278": {
       "home": {
@@ -1635,7 +1672,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-18T07:44:53.196156+00:00"
+      "updated_at": "2026-11-18T20:44:55.517267+00:00"
     },
     "5887752": {
       "home": {
@@ -1749,7 +1786,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:53.234129+00:00"
+      "updated_at": "2026-11-18T20:44:55.661016+00:00"
     },
     "6106255": {
       "home": {
@@ -1857,50 +1894,13 @@
         }
       },
       "h2h": {
-        "matches": [
-          {
-            "id": null,
-            "date": "2024-11-05T20:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "Manchester City",
-            "home_score": 4,
-            "away_score": 1,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2022-03-09T20:00:00.000Z",
-            "home": "Manchester City",
-            "away": "Sporting CP",
-            "home_score": 0,
-            "away_score": 0,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2022-02-15T20:00:00.000Z",
-            "home": "Sporting CP",
-            "away": "Manchester City",
-            "home_score": 0,
-            "away_score": 5,
-            "competition": "Champions League"
-          },
-          {
-            "id": null,
-            "date": "2012-03-15T20:05:00.000Z",
-            "home": "Manchester City",
-            "away": "Sporting CP",
-            "home_score": 3,
-            "away_score": 2,
-            "competition": "Europa League"
-          }
-        ],
-        "home_wins": 2,
-        "draws": 1,
-        "away_wins": 3,
-        "total": 6
+        "matches": [],
+        "home_wins": 0,
+        "draws": 0,
+        "away_wins": 0,
+        "total": 0
       },
-      "updated_at": "2026-11-18T07:44:53.507167+00:00"
+      "updated_at": "2026-11-18T20:44:55.800273+00:00"
     },
     "5887760": {
       "home": {
@@ -2014,7 +2014,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:53.628376+00:00"
+      "updated_at": "2026-11-18T20:44:56.156643+00:00"
     },
     "5887769": {
       "home": {
@@ -2128,7 +2128,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:53.887630+00:00"
+      "updated_at": "2026-11-18T20:44:56.309170+00:00"
     },
     "5887778": {
       "home": {
@@ -2242,7 +2242,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:54.006902+00:00"
+      "updated_at": "2026-11-18T20:44:56.588659+00:00"
     },
     "5887784": {
       "home": {
@@ -2356,7 +2356,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:54.271281+00:00"
+      "updated_at": "2026-11-18T20:44:56.837159+00:00"
     },
     "5887796": {
       "home": {
@@ -2470,7 +2470,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:54.539139+00:00"
+      "updated_at": "2026-11-18T20:44:57.581338+00:00"
     },
     "5887800": {
       "home": {
@@ -2584,7 +2584,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:54.659818+00:00"
+      "updated_at": "2026-11-18T20:44:57.729975+00:00"
     },
     "5887814": {
       "home": {
@@ -2698,7 +2698,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:54.777594+00:00"
+      "updated_at": "2026-11-18T20:44:57.887465+00:00"
     },
     "5887819": {
       "home": {
@@ -2812,7 +2812,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.047827+00:00"
+      "updated_at": "2026-11-18T20:44:58.039579+00:00"
     },
     "5887832": {
       "home": {
@@ -2926,7 +2926,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.178219+00:00"
+      "updated_at": "2026-11-18T20:44:58.209812+00:00"
     },
     "5887840": {
       "home": {
@@ -3040,7 +3040,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.435425+00:00"
+      "updated_at": "2026-11-18T20:44:58.361988+00:00"
     },
     "5887851": {
       "home": {
@@ -3154,7 +3154,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.710913+00:00"
+      "updated_at": "2026-11-18T20:44:58.501697+00:00"
     },
     "5887855": {
       "home": {
@@ -3268,7 +3268,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.721804+00:00"
+      "updated_at": "2026-11-18T20:44:58.521068+00:00"
     },
     "5887869": {
       "home": {
@@ -3382,7 +3382,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.730444+00:00"
+      "updated_at": "2026-11-18T20:44:58.538311+00:00"
     },
     "5887877": {
       "home": {
@@ -3496,7 +3496,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.740922+00:00"
+      "updated_at": "2026-11-18T20:44:58.557899+00:00"
     },
     "5887887": {
       "home": {
@@ -3610,7 +3610,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-18T07:44:55.749836+00:00"
+      "updated_at": "2026-11-18T20:44:58.576714+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",
