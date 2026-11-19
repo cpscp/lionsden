@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-19T07:41:44.854371+00:00",
+  "_updated_at": "2026-11-19T20:51:30.515184+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -9,7 +9,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=B8-QVYcgNKc",
       "embed": "https://www.youtube.com/embed/B8-QVYcgNKc",
-      "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPx2ujTtRPCdoRWTfJO_4JUIgzFg",
+      "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLDFcLdxBS4S25Y3dW-X98vBtU8ITA",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 4 meses"
@@ -22,7 +22,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=LFMfqhXv8NU",
       "embed": "https://www.youtube.com/embed/LFMfqhXv8NU",
-      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLCf4AODKD6RYUwXvmJYmEiawuq7QQ",
+      "thumbnail": "https://i.ytimg.com/vi/LFMfqhXv8NU/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvcY&rs=AOn4CLAONA7m5DUUXuV-lWbHqkO8z-a5Aw",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 meses"
@@ -139,7 +139,7 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=Iv5LBsbqEhs",
       "embed": "https://www.youtube.com/embed/Iv5LBsbqEhs",
-      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ&usqp=CBQ",
+      "thumbnail": "https://i.ytimg.com/vi/Iv5LBsbqEhs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCBMf7ORqOyGPICZcebOFMH179VkQ",
       "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 2 meses"
@@ -204,7 +204,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=2IYfn7_EshY",
       "embed": "https://www.youtube.com/embed/2IYfn7_EshY",
-      "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAwZ3Gekqfu3ZRM3DEEH6x2ZdSODw&usqp=CBQ",
+      "thumbnail": "https://i.ytimg.com/vi/2IYfn7_EshY/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLAafAJmdambpQmCbajOp9mp0lot4w",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 3 semanas"
@@ -225,15 +225,15 @@
     {
       "match_id": 5887666,
       "sofascore_id": null,
-      "video_id": "Ow18yhQ4JNU",
-      "title": "Resumo: Estrela Amadora 0-2 Casa Pia (Liga 26/27 #9)",
+      "video_id": "8bFVmvAZj4o",
+      "title": "Resumo: Casa Pia 0-2 Sporting (Liga 26/27 #10)",
       "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=Ow18yhQ4JNU",
-      "embed": "https://www.youtube.com/embed/Ow18yhQ4JNU",
-      "thumbnail": "https://i.ytimg.com/vi/Ow18yhQ4JNU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBEmkx6iuUYahAT_x1g8SXCEMh8qg",
+      "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
+      "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 3 semanas"
+      "published_text": "há 2 semanas"
     },
     {
       "match_id": 6106335,
