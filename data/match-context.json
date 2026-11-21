@@ -1,19 +1,11 @@
 {
-  "_updated_at": "2026-11-21T19:31:37.989105+00:00",
+  "_updated_at": "2026-11-21T23:30:41.325688+00:00",
   "fixtures": {
     "6106279": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -44,6 +36,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -113,7 +113,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:34.026948+00:00"
+      "updated_at": "2026-11-21T23:30:38.303658+00:00"
     },
     "5887687": {
       "home": {
@@ -173,14 +173,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -210,6 +202,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -264,21 +264,13 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-21T19:31:34.098807+00:00"
+      "updated_at": "2026-11-21T23:30:38.319452+00:00"
     },
     "5887698": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -310,6 +302,14 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
+            "match_id": null
           }
         ],
         "table": {
@@ -323,14 +323,6 @@
         "id": 10212,
         "name": "Marítimo",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-10T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "FC Porto",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "1 - 2",
@@ -361,6 +353,14 @@
             "date": "2026-11-01T18:00:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Santa Clara",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-11-21T17:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Chaves",
             "match_id": null
           }
         ],
@@ -415,7 +415,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-21T19:31:34.127996+00:00"
+      "updated_at": "2026-11-21T23:30:38.339986+00:00"
     },
     "6106275": {
       "home": {
@@ -475,14 +475,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -512,6 +504,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -548,7 +548,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-21T19:31:34.156298+00:00"
+      "updated_at": "2026-11-21T23:30:38.354340+00:00"
     },
     "5887702": {
       "home": {
@@ -608,14 +608,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -645,6 +637,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -699,21 +699,13 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-21T19:31:34.184743+00:00"
+      "updated_at": "2026-11-21T23:30:38.370216+00:00"
     },
     "5887716": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -744,6 +736,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -850,7 +850,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-21T19:31:34.218039+00:00"
+      "updated_at": "2026-11-21T23:30:38.387064+00:00"
     },
     "5887724": {
       "home": {
@@ -910,14 +910,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -947,6 +939,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1001,21 +1001,13 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-21T19:31:34.290626+00:00"
+      "updated_at": "2026-11-21T23:30:38.402916+00:00"
     },
     "5985969": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -1046,6 +1038,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1152,21 +1152,13 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-11-21T19:31:34.318916+00:00"
+      "updated_at": "2026-11-21T23:30:38.428586+00:00"
     },
     "5887734": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -1197,6 +1189,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1303,21 +1303,13 @@
         "away_wins": 2,
         "total": 17
       },
-      "updated_at": "2026-11-21T19:31:34.536577+00:00"
+      "updated_at": "2026-11-21T23:30:38.579437+00:00"
     },
     "5887735": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -1348,6 +1340,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1454,21 +1454,13 @@
         "away_wins": 0,
         "total": 7
       },
-      "updated_at": "2026-11-21T19:31:34.728911+00:00"
+      "updated_at": "2026-11-21T23:30:38.707755+00:00"
     },
     "6106278": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -1499,6 +1491,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1587,21 +1587,13 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-21T19:31:34.922875+00:00"
+      "updated_at": "2026-11-21T23:30:38.847381+00:00"
     },
     "5887752": {
       "home": {
         "id": 7844,
         "name": "Vitória de Guimarães",
         "form": [
-          {
-            "result": "L",
-            "score": "2 - 0",
-            "date": "2026-10-11T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Benfica",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 1",
@@ -1633,6 +1625,14 @@
             "competition": "Liga Portugal",
             "opponent": "FC Porto",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "0 - 2",
+            "date": "2026-11-21T20:30:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Braga",
+            "match_id": null
           }
         ],
         "table": {
@@ -1646,14 +1646,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -1685,6 +1677,14 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
+            "match_id": null
           }
         ],
         "table": {
@@ -1701,7 +1701,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:35.164754+00:00"
+      "updated_at": "2026-11-21T23:30:38.985497+00:00"
     },
     "6106255": {
       "home": {
@@ -1761,14 +1761,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -1798,6 +1790,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1852,7 +1852,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-21T19:31:35.359010+00:00"
+      "updated_at": "2026-11-21T23:30:39.126353+00:00"
     },
     "5887760": {
       "home": {
@@ -1912,14 +1912,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -1949,6 +1941,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -1966,21 +1966,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:35.548708+00:00"
+      "updated_at": "2026-11-21T23:30:39.268710+00:00"
     },
     "5887769": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -2011,6 +2003,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2080,7 +2080,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:35.740836+00:00"
+      "updated_at": "2026-11-21T23:30:39.405512+00:00"
     },
     "5887778": {
       "home": {
@@ -2140,14 +2140,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -2177,6 +2169,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2194,21 +2194,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:35.953058+00:00"
+      "updated_at": "2026-11-21T23:30:39.562140+00:00"
     },
     "5887784": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -2239,6 +2231,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2308,7 +2308,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:36.147257+00:00"
+      "updated_at": "2026-11-21T23:30:40.179981+00:00"
     },
     "5887796": {
       "home": {
@@ -2368,14 +2368,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -2405,6 +2397,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2422,21 +2422,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:36.595407+00:00"
+      "updated_at": "2026-11-21T23:30:40.360104+00:00"
     },
     "5887800": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -2468,6 +2460,14 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
+            "match_id": null
           }
         ],
         "table": {
@@ -2481,14 +2481,6 @@
         "id": 10264,
         "name": "Braga",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 0",
-            "date": "2026-10-25T18:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Nacional",
-            "match_id": null
-          },
           {
             "result": "D",
             "score": "2 - 2",
@@ -2520,6 +2512,14 @@
             "competition": "Liga Portugal",
             "opponent": "Rio Ave",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "0 - 2",
+            "date": "2026-11-21T20:30:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Vitória de Guimarães",
+            "match_id": null
           }
         ],
         "table": {
@@ -2536,7 +2536,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:36.810627+00:00"
+      "updated_at": "2026-11-21T23:30:40.504673+00:00"
     },
     "5887814": {
       "home": {
@@ -2596,14 +2596,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -2633,6 +2625,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2650,21 +2650,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.000880+00:00"
+      "updated_at": "2026-11-21T23:30:40.660008+00:00"
     },
     "5887819": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -2695,6 +2687,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2764,7 +2764,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.214570+00:00"
+      "updated_at": "2026-11-21T23:30:40.798828+00:00"
     },
     "5887832": {
       "home": {
@@ -2824,14 +2824,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -2861,6 +2853,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2878,21 +2878,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.427480+00:00"
+      "updated_at": "2026-11-21T23:30:40.953879+00:00"
     },
     "5887840": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -2923,6 +2915,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -2992,21 +2992,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.636097+00:00"
+      "updated_at": "2026-11-21T23:30:41.105346+00:00"
     },
     "5887851": {
       "home": {
         "id": 10212,
         "name": "Marítimo",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-10T17:00:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "FC Porto",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "1 - 2",
@@ -3038,6 +3030,14 @@
             "competition": "Liga Portugal",
             "opponent": "Santa Clara",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "0 - 0",
+            "date": "2026-11-21T17:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "Chaves",
+            "match_id": null
           }
         ],
         "table": {
@@ -3051,14 +3051,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -3089,6 +3081,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -3106,21 +3106,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.833633+00:00"
+      "updated_at": "2026-11-21T23:30:41.267640+00:00"
     },
     "5887855": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -3151,6 +3143,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -3220,7 +3220,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.861046+00:00"
+      "updated_at": "2026-11-21T23:30:41.283066+00:00"
     },
     "5887869": {
       "home": {
@@ -3280,14 +3280,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -3317,6 +3309,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -3334,21 +3334,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.932216+00:00"
+      "updated_at": "2026-11-21T23:30:41.297394+00:00"
     },
     "5887877": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 1",
@@ -3379,6 +3371,14 @@
             "date": "2026-11-07T20:30:00.000Z",
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
+            "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
             "match_id": null
           }
         ],
@@ -3448,7 +3448,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.960329+00:00"
+      "updated_at": "2026-11-21T23:30:41.311553+00:00"
     },
     "5887887": {
       "home": {
@@ -3508,14 +3508,6 @@
         "name": "Sporting CP",
         "form": [
           {
-            "result": "L",
-            "score": "1 - 2",
-            "date": "2026-10-25T20:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Académico Viseu",
-            "match_id": null
-          },
-          {
             "result": "W",
             "score": "2 - 1",
             "date": "2026-10-27T20:15:00.000Z",
@@ -3546,6 +3538,14 @@
             "competition": "Liga Portugal",
             "opponent": "Moreirense",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "4 - 0",
+            "date": "2026-11-21T18:00:00.000Z",
+            "competition": "Taca de Portugal",
+            "opponent": "União Serra",
+            "match_id": null
           }
         ],
         "table": {
@@ -3562,7 +3562,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-21T19:31:37.989098+00:00"
+      "updated_at": "2026-11-21T23:30:41.325679+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

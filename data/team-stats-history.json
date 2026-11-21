@@ -1,32 +1,23 @@
 {
-  "_updated_at": "2026-11-21T19:31:43.149667+00:00",
+  "_updated_at": "2026-11-21T23:30:50.606678+00:00",
   "seasons": {
     "2026/27": {
-      "matches": 20,
-      "wins": 15,
+      "matches": 21,
+      "wins": 16,
       "draws": 3,
       "losses": 2,
-      "goals": 51,
+      "goals": 55,
       "goals_against": 18,
-      "clean_sheets": 8,
+      "clean_sheets": 9,
       "form": [
         "L",
-        "L",
+        "W",
         "W",
         "W",
         "W",
         "W"
       ],
       "recent_matches": [
-        {
-          "date": "2026-10-21",
-          "competition": "Champions League",
-          "venue": "Casa",
-          "result": "L",
-          "gf": 2,
-          "ga": 3,
-          "opponent": "LASK"
-        },
         {
           "date": "2026-10-25",
           "competition": "Liga Portugal",
@@ -71,12 +62,21 @@
           "gf": 1,
           "ga": 0,
           "opponent": "Moreirense"
+        },
+        {
+          "date": "2026-11-21",
+          "competition": "Taca de Portugal",
+          "venue": "Casa",
+          "result": "W",
+          "gf": 4,
+          "ga": 0,
+          "opponent": "União Serra"
         }
       ],
-      "points": 48,
-      "win_rate": 75.0,
-      "goals_per_match": 2.55,
-      "goals_against_per_match": 0.9
+      "points": 51,
+      "win_rate": 76.2,
+      "goals_per_match": 2.62,
+      "goals_against_per_match": 0.86
     },
     "2025/26": {
       "matches": 56,
