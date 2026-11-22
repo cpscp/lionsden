@@ -1,0 +1,6 @@
+{
+  "_info": "Dados introduzidos à mão quando nenhuma fonte automática os tem. man_of_the_match: id do jogo (fixtures.json) -> homem do jogo oficial.",
+  "man_of_the_match": {
+    "6506259": {"name": "Nestory Irankunda", "team": "Sporting CP", "source": "Sporting CP"}
+  }
+}
