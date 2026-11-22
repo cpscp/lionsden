@@ -8,7 +8,18 @@ jobs:
           set +e
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
           g(){ curl -sS -L -m 30 -A "$UA" "$@"; }
-          txt(){ python3 -c "import sys,re,html;s=sys.stdin.read();t=re.sub(r'<script.*?</script>|<style.*?</style>',' ',s,flags=re.S);t=re.sub(r'<[^>]+>',' ',t);t=re.sub(r'\s+',' ',html.unescape(t));print(t[:${1:-1500}])"; }
-          echo "== sitemap"; g https://sporting.pt/sitemap.xml | grep -oE '<loc>[^<]+' | sed 's/<loc>//' | head -80
-          for u in https://sporting.pt/noticias https://sporting.pt/modalidades https://sporting.pt/modalidades/futsal https://sporting.pt/calendario; do echo "== $u"; g "$u" -o /tmp/p -w "%{http_code} %{size_download}\n"; txt 900 < /tmp/p; grep -oE 'href="/[^"]+"' /tmp/p | sort -u | grep -viE 'socios|loja|bilhete|museu' | head -25; grep -oE '"(https?:)?//[^"]*api[^"]*"' /tmp/p | sort -u | head -5; done
-          echo "== fpp"; g https://www.fpp.pt/ -o /tmp/f; grep -oE 'href="[^"]+"' /tmp/f | grep -iE 'hoquei|calend|result|compet|jogos' | sort -u | head -25
+          g https://sporting.pt/ -o home.html
+          echo "== inline data in home"; grep -oE '__[A-Z_]+__|window\.[A-Za-z_]+\s*=' home.html | sort | uniq -c | head
+          python3 - <<'PY'
+          import re
+          s=open('home.html',encoding='utf-8',errors='ignore').read()
+          for m in re.finditer(r'<script[^>]*>(.{0,200})',s):
+              if len(m.group(1))>50: print('SCRIPT:',m.group(1)[:200].replace('\n',' '))
+          for k in ['home-jogos','Futsal','Hóquei','Andebol','"date"','kickoff','opponent','modality']:
+              i=s.find(k); print('##',k,i, s[max(0,i-200):i+300].replace('\n',' ') if i>=0 else '')
+          PY
+          for a in index-BTlkSvbi.js matchContext-eZpU_Zo8.js assets-CwqqSMZF.js site-seo-paths-G1_lBHSz.js; do
+            g "https://sporting.pt/assets/$a" -o $a
+            echo "== $a $(wc -c < $a)"; grep -oE '"(/[a-z0-9_./-]*(api|__l5e|graphql|json)[a-z0-9_./?=&-]*)"|https://[a-z0-9.-]+/[a-z0-9_./-]*(api|graphql)[a-z0-9_./-]*' $a | sort -u | head -20
+            grep -oE '.{80}fetch\(.{120}' $a | head -5
+          done
