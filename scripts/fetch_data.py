@@ -1578,6 +1578,10 @@ def fetch_sofascore_match_details():
     except Exception as e:
         print("ESPN match detail backup warning:", e)
     try:
+        enrich_details_with_sofa_reader(details, finished)
+    except Exception as e:
+        print("SofaScore reader backup warning:", e)
+    try:
         fill_missing_pitch_layouts(details)
     except Exception as e:
         print("Pitch layout inference warning:", e)
@@ -1910,6 +1914,135 @@ def espn_match_detail(league, event_id):
                 break
     return {"lineups": lineups, "incidents": incidents, "referee": referee,
             "attendance": gi.get("attendance"), "espn_league": league, "espn_id": event_id}
+
+
+_SOFA_READER_BUDGET = int(os.environ.get("SOFA_READER_BUDGET", "24"))
+_SOFA_READER_CACHE = {}
+
+
+def sofa_get_via_reader(path):
+    """SofaScore through the public r.jina.ai reader (different IPs from GitHub
+    Actions/Cloudflare). Rate-limited and budgeted: only used for matches whose
+    details are still incomplete after FotMob and ESPN."""
+    global _SOFA_READER_BUDGET
+    if path in _SOFA_READER_CACHE:
+        return _SOFA_READER_CACHE[path]
+    last = None
+    for base in ("https://api.sofascore.com/api/v1", "https://www.sofascore.com/api/v1"):
+        if _SOFA_READER_BUDGET <= 0:
+            raise RuntimeError("SofaScore reader budget exhausted")
+        _SOFA_READER_BUDGET -= 1
+        try:
+            r = session.get("https://r.jina.ai/" + base + path, timeout=45, headers={
+                "User-Agent": USER_AGENT, "Accept": "application/json",
+                "X-Return-Format": "text", "X-No-Cache": "true"})
+            time.sleep(3.2)  # free tier: ~20 requests/minute
+            r.raise_for_status()
+            try:
+                payload = r.json()
+                content = (payload.get("data") or {}).get("content") or (payload.get("data") or {}).get("text") or ""
+            except ValueError:
+                content = r.text
+            start = content.find("{")
+            if start < 0:
+                raise ValueError("no JSON in reader response: " + content[:120].replace("\n", " "))
+            data = json.loads(content[start:content.rfind("}") + 1])
+            if isinstance(data, dict) and data.get("error"):
+                raise ValueError(f"SofaScore error {data.get('error')}")
+            _SOFA_READER_CACHE[path] = data
+            return data
+        except Exception as e:
+            last = e
+            print("SofaScore reader warning:", base + path, str(e)[:160])
+    raise RuntimeError(f"SofaScore reader failed: {last}")
+
+
+def enrich_details_with_sofa_reader(details, fixtures):
+    pending = [d for d in details if _detail_needs_backup(d)]
+    if not pending:
+        return
+    by_id = {str(f.get("id")): f for f in fixtures}
+    try:
+        events = []
+        for page in (0, 1):
+            events.extend((sofa_get_via_reader(f"/team/3001/events/last/{page}") or {}).get("events") or [])
+    except Exception as e:
+        print("SofaScore reader backup unavailable:", e)
+        return
+    print("SofaScore reader: events indexed:", len(events))
+
+    def find(f):
+        ts = int(f.get("date") or 0)
+        home = (f.get("home") or {}).get("name") or ""
+        away = (f.get("away") or {}).get("name") or ""
+        rival = _team_tokens(away if "sporting" in zz_norm(home) else home)
+        best = None
+        for e in events:
+            st = int(e.get("startTimestamp") or 0)
+            if not ts or abs(st - ts) > 36 * 3600:
+                continue
+            names = [(e.get("homeTeam") or {}).get("name") or "", (e.get("awayTeam") or {}).get("name") or ""]
+            if not any("sporting" in zz_norm(n) for n in names):
+                continue
+            other = names[1] if "sporting" in zz_norm(names[0]) else names[0]
+            if rival and not (rival & _team_tokens(other)):
+                continue
+            if best is None or abs(st - ts) < abs(int(best.get("startTimestamp") or 0) - ts):
+                best = e
+        return best
+
+    # Most recent matches first: they are the ones people open.
+    for d in sorted(pending, key=lambda x: -int((by_id.get(str(x.get("match_id"))) or {}).get("date") or 0)):
+        f = by_id.get(str(d.get("match_id")))
+        ev = find(f) if f else None
+        if not ev:
+            print("SofaScore reader: match not found:", d.get("match_id"))
+            continue
+        sid = ev.get("id")
+        filled = []
+        try:
+            lineups = sofa_get_via_reader(f"/event/{sid}/lineups")
+            lu = d.setdefault("lineups", {})
+            for side in ("home", "away"):
+                new = lineups.get(side) or {}
+                starters = [p for p in (new.get("players") or []) if not p.get("substitute")]
+                if len(starters) < 11 or _has_layout(lu.get(side) or {}):
+                    continue
+                for p in new.get("players") or []:
+                    p["position"] = clean(p.get("position") or (p.get("player") or {}).get("position"))
+                    p.setdefault("shirtNumber", p.get("jerseyNumber") or (p.get("player") or {}).get("jerseyNumber"))
+                new.setdefault("name", ((lu.get(side) or {}).get("name")))
+                new.setdefault("coach", (lu.get(side) or {}).get("coach") or "")
+                lu[side] = new
+                filled.append(f"{side}-onze")
+        except Exception as e:
+            print("SofaScore reader lineups warning:", d.get("match_id"), e)
+        try:
+            inc = (sofa_get_via_reader(f"/event/{sid}/incidents") or {}).get("incidents") or []
+            kinds = {i.get("incidentType") for i in inc}
+            have = {i.get("incidentType") for i in ((d.get("incidents") or {}).get("incidents") or [])}
+            if ({"card", "substitution"} & kinds) and not ({"card", "substitution"} <= have):
+                d["incidents"] = {"incidents": sorted([i for i in inc if i.get("incidentType") in {"goal", "card", "substitution"}],
+                                                      key=lambda i: (i.get("time") or 0))}
+                filled.append("eventos")
+        except Exception as e:
+            print("SofaScore reader incidents warning:", d.get("match_id"), e)
+        try:
+            evd = (sofa_get_via_reader(f"/event/{sid}") or {}).get("event") or {}
+            ref = (evd.get("referee") or {}).get("name") if isinstance(evd.get("referee"), dict) else None
+            cur = (d.get("event") or {}).get("referee")
+            cur = cur.get("name") if isinstance(cur, dict) else cur
+            if ref and not clean(cur):
+                d.setdefault("event", {})["referee"] = {"name": clean(ref)}
+                filled.append("árbitro")
+        except Exception as e:
+            print("SofaScore reader event warning:", d.get("match_id"), e)
+        if filled:
+            d.setdefault("backup_sources", [])
+            if "SofaScore" not in d["backup_sources"]:
+                d["backup_sources"].append("SofaScore")
+            d["sofascore_id"] = sid
+        print("SofaScore reader:", d.get("match_id"), sid, "→", ", ".join(filled) or "nada novo")
 
 
 def enrich_details_with_espn(details, fixtures):
