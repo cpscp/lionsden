@@ -4,20 +4,31 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install playwright patchright && python -m playwright install --with-deps chromium && python -m patchright install chromium && sudo apt-get install -y xvfb >/dev/null
       - run: |
-          set +e
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          P="/jogo/2026-11-21-sporting-uniao-da-serra/12799247"
-          for u in \
-            "https://www-zerozero-pt.translate.goog$P?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-PT&_x_tr_pto=wapp" \
-            "https://translate.google.com/translate?sl=en&tl=pt&u=https://www.zerozero.pt$P" \
-            "https://web.archive.org/web/2026/https://www.zerozero.pt$P" \
-            "http://archive.org/wayback/available?url=zerozero.pt$P" \
-            "https://webcache.googleusercontent.com/search?q=cache:https://www.zerozero.pt$P" \
-            "https://m.zerozero.pt$P" \
-            "https://zerozero.pt$P"; do
-            code=$(curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9" -o /tmp/p -w "%{http_code} %{size_download}" "$u")
-            title=$(grep -oE '<title>[^<]{0,120}' /tmp/p | head -1)
-            echo "$code | $title | $u"
-            grep -oiE '(rbitro|Diogo Rosa|Irankunda)[^<]{0,60}' /tmp/p | head -3
-          done
+          cat > p.py <<'PY'
+          import sys, time
+          mod = sys.argv[1]; headless = sys.argv[2] == "1"
+          if mod == "patchright":
+              from patchright.sync_api import sync_playwright
+          else:
+              from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              b = p.chromium.launch(headless=headless, channel="chrome" if mod=="chrome" else None)
+              pg = b.new_page(locale="pt-PT")
+              pg.goto("https://www.zerozero.pt/jogo/2026-11-21-sporting-uniao-da-serra/12799247", timeout=60000)
+              for i in range(12):
+                  t = pg.title()
+                  if "moment" not in t.lower(): break
+                  time.sleep(2.5)
+              html = pg.content()
+              print(mod, "headless" if headless else "headful", "| title:", pg.title(), "| len", len(html), "| árbitro" , "Diogo" in html)
+              b.close()
+          PY
+          xvfb-run -a python p.py playwright 1
+          xvfb-run -a python p.py playwright 0
+          xvfb-run -a python p.py patchright 0
+          xvfb-run -a python p.py patchright 1
+          (sudo apt-get install -y google-chrome-stable >/dev/null 2>&1; xvfb-run -a python p.py chrome 0) || true
