@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T13:57:46.187551+00:00",
+  "_updated_at": "2026-11-22T14:00:44.613276+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -23603,169 +23603,21 @@
       },
       "lineups": {
         "home": {
-          "id": 890,
+          "id": 9768,
           "name": "Sporting CP",
           "formation": "",
           "coach": "",
           "players": [
             {
               "player": {
-                "name": "Sergi Altimira",
-                "shortName": "Altimira",
-                "id": 138490
-              },
-              "shirtNumber": 5,
-              "position": "CM",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.59,
-                "y": 0.12,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "João Simões",
-                "shortName": "Simões",
-                "id": 188310
-              },
-              "shirtNumber": 8,
-              "position": "CM",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.59,
-                "y": 0.31,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Ibrahima Ba",
-                "shortName": "Ba",
-                "id": 156832
-              },
-              "shirtNumber": 55,
-              "position": "CD",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.3,
-                "y": 0.375,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Salvador Blopa",
-                "shortName": "Blopa",
-                "id": 219198
-              },
-              "shirtNumber": 70,
-              "position": "RM",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.59,
-                "y": 0.88,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
                 "name": "Rui Silva",
-                "shortName": "Silva",
-                "id": 10688
+                "shortName": "Rui Silva",
+                "id": 361717
               },
-              "shirtNumber": 1,
-              "position": "G",
+              "shirtNumber": "1",
+              "position": "GK",
               "substitute": false,
-              "horizontalLayout": {
-                "x": 0.1,
-                "y": 0.5,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Rafael Nel",
-                "shortName": "Nel",
-                "id": 152590
-              },
-              "shirtNumber": 9,
-              "position": "F",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.88,
-                "y": 0.25,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Nestory Irankunda",
-                "shortName": "Irankunda",
-                "id": 104967
-              },
-              "shirtNumber": 19,
-              "position": "F",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.88,
-                "y": 0.5,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Pedro Lima",
-                "shortName": "Lima",
-                "id": 123216
-              },
-              "shirtNumber": 21,
-              "position": "CM",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.59,
-                "y": 0.5,
-                "inferred": true
-              },
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Luis Guilherme",
-                "shortName": "Guilherme",
-                "id": 124990
-              },
-              "shirtNumber": 31,
-              "position": "F",
-              "substitute": false,
-              "horizontalLayout": {
-                "x": 0.88,
-                "y": 0.75,
-                "inferred": true
-              },
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -23773,17 +23625,97 @@
             {
               "player": {
                 "name": "Georgios Vagiannidis",
-                "shortName": "Vagiannidis",
-                "id": 77992
+                "shortName": "Georgios Vagiannidis",
+                "id": 1119687
               },
-              "shirtNumber": 13,
-              "position": "RB",
+              "shirtNumber": "13",
+              "position": "DF",
               "substitute": false,
-              "horizontalLayout": {
-                "x": 0.3,
-                "y": 0.625,
-                "inferred": true
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Ibrahima Ba",
+                "shortName": "Ibrahima Ba",
+                "id": 1609327
               },
+              "shirtNumber": "55",
+              "position": "DF",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Salvador Blopa",
+                "shortName": "Salvador Blopa",
+                "id": 1712326
+              },
+              "shirtNumber": "70",
+              "position": "FW",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "João Simões",
+                "shortName": "João Simões",
+                "id": 1663855
+              },
+              "shirtNumber": "8",
+              "position": "MF",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Nestory Irankunda",
+                "shortName": "Nestory Irankunda",
+                "id": 1327214
+              },
+              "shirtNumber": "19",
+              "position": "FW",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Sergi Altimira",
+                "shortName": "Sergi Altimira",
+                "id": 1310480
+              },
+              "shirtNumber": "5",
+              "position": "MF",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Pedro Lima",
+                "shortName": "Pedro Lima",
+                "id": 1459257
+              },
+              "shirtNumber": "21",
+              "position": "MF",
+              "substitute": false,
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
@@ -23791,29 +23723,53 @@
             {
               "player": {
                 "name": "Eduardo Felicíssimo",
-                "shortName": "Felicíssimo",
-                "id": 194685
+                "shortName": "Eduardo Felicíssimo",
+                "id": 1648470
               },
-              "shirtNumber": 73,
-              "position": "M",
+              "shirtNumber": "73",
+              "position": "DF",
               "substitute": false,
-              "horizontalLayout": {
-                "x": 0.59,
-                "y": 0.69,
-                "inferred": true
-              },
+              "horizontalLayout": null,
               "statistics": {
                 "rating": null
               }
             },
             {
               "player": {
-                "name": "Goncalo Inacio",
-                "shortName": "Inacio",
-                "id": 80353
+                "name": "Luís Guilherme",
+                "shortName": "Luís Guilherme",
+                "id": 1458757
               },
-              "shirtNumber": 25,
-              "position": "CD",
+              "shirtNumber": "31",
+              "position": "FW",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rafael Nel",
+                "shortName": "Rafael Nel",
+                "id": 1525416
+              },
+              "shirtNumber": "9",
+              "position": "FW",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Diego Callai",
+                "shortName": "Diego Callai",
+                "id": 1282449
+              },
+              "shirtNumber": "41",
+              "position": "",
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
@@ -23822,68 +23778,12 @@
             },
             {
               "player": {
-                "name": "Silas Andersen",
-                "shortName": "S. Andersen",
-                "id": 145549
+                "name": "Gonçalo Inácio",
+                "shortName": "Gonçalo Inácio",
+                "id": 1165710
               },
-              "shirtNumber": 4,
-              "position": "M",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Rodrigo Zalazar",
-                "shortName": "Zalazar",
-                "id": 64027
-              },
-              "shirtNumber": 17,
-              "position": "AM",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Geny Catamo",
-                "shortName": "Catamo",
-                "id": 102272
-              },
-              "shirtNumber": 10,
-              "position": "F",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Jesse Derry",
-                "shortName": "J. Derry",
-                "id": 205620
-              },
-              "shirtNumber": 28,
-              "position": "F",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Diego Calai",
-                "shortName": "Calai",
-                "id": 115657
-              },
-              "shirtNumber": 41,
-              "position": "G",
+              "shirtNumber": "25",
+              "position": "",
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
@@ -23893,11 +23793,81 @@
             {
               "player": {
                 "name": "Moncef Zekri",
-                "shortName": "Zekri",
-                "id": 203744
+                "shortName": "Moncef Zekri",
+                "id": 1755850
               },
-              "shirtNumber": 18,
-              "position": "LB",
+              "shirtNumber": "18",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Silas Andersen",
+                "shortName": "Silas Andersen",
+                "id": 1425101
+              },
+              "shirtNumber": "4",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Jesse Derry",
+                "shortName": "Jesse Derry",
+                "id": 1526704
+              },
+              "shirtNumber": "28",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Geny Catamo",
+                "shortName": "Geny Catamo",
+                "id": 1088753
+              },
+              "shirtNumber": "10",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rodrigo Zalazar",
+                "shortName": "Rodrigo Zalazar",
+                "id": 1070776
+              },
+              "shirtNumber": "17",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Luis Suárez",
+                "shortName": "Luis Suárez",
+                "id": 792303
+              },
+              "shirtNumber": "97",
+              "position": "",
               "substitute": true,
               "horizontalLayout": null,
               "statistics": {
@@ -23907,66 +23877,10 @@
             {
               "player": {
                 "name": "Mauro Couto",
-                "shortName": "M. Couto",
-                "id": 132814
+                "shortName": "Mauro Couto",
+                "id": 1402606
               },
-              "shirtNumber": 78,
-              "position": "F",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Luis Suarez",
-                "shortName": "Suarez",
-                "id": 60400
-              },
-              "shirtNumber": 97,
-              "position": "F",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Zeno Debast",
-                "shortName": "Debast",
-                "id": 88359
-              },
-              "shirtNumber": 6,
-              "position": "CD",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Nuno Santos",
-                "shortName": "Santos",
-                "id": 27698
-              },
-              "shirtNumber": 11,
-              "position": "LB",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
-                "name": "Paulo Fonseca",
-                "shortName": "Fonseca",
-                "id": 50746
-              },
-              "shirtNumber": 0,
+              "shirtNumber": "78",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
