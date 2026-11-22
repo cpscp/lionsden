@@ -6,9 +6,20 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          get(){ echo "=== $1"; curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9" -o /tmp/o -w "HTTP %{http_code} %{size_download}\n" "$1"; head -c "${2:-1500}" /tmp/o | tr '\n' ' '; echo; }
-          get "https://webws.365scores.com/web/search/?langId=31&timezoneName=Europe/Lisbon&userCountryId=131&query=sporting" 3000
-          get "https://webws.365scores.com/web/games/results/?appTypeId=5&langId=31&timezoneName=Europe/Lisbon&userCountryId=131&competitors=5128" 2500
-          get "https://www.abola.pt/futebol/competicao/112" 600
-          get "https://www.abola.pt/futebol/jogo/santa-clara-sporting-8290727/liveblog" 600
-          get "https://maisfutebol.iol.pt/jogo/ud-da-serra/peniche/13829367" 600
+          Q="appTypeId=5&langId=31&timezoneName=Europe/Lisbon&userCountryId=131"
+          j(){ curl -sS -L -m 40 -A "$UA" "https://webws.365scores.com/web/$1"; }
+          j "search/?$Q&query=sporting" | jq -c '.competitors[]? | select(.sportId==1) | {id,name,countryId}' | head -8
+          SID=$(j "search/?$Q&query=sporting%20cp" | jq '[.competitors[]?|select(.sportId==1 and .countryId==11 and (.name|test("Sporting";"i")))][0].id')
+          echo "SID=$SID"
+          j "games/results/?$Q&competitors=$SID" > r.json
+          jq -c '.games[]? | {id, s:.startTime, c:.competitionDisplayName, h:.homeCompetitor.name, a:.awayCompetitor.name, hs:.homeCompetitor.score, as:.awayCompetitor.score}' r.json | tail -6
+          GID=$(jq '[.games[]?|select((.homeCompetitor.name+.awayCompetitor.name)|test("Serra";"i"))][0].id' r.json); echo "GID=$GID"
+          j "game/?$Q&gameId=$GID" > g.json
+          echo "KEYS game:"; jq -c '.game|keys' g.json
+          jq -c '.game|{officials:.officials, venue:.venue.name, att:.attendance, hasStats, hasLineups, hasPlayerStats, hasFieldPositions}' g.json
+          jq -c '.game.homeCompetitor.lineups | {status,formation,hasFieldPositions, n:(.members|length), m:(.members[:3])}' g.json | cut -c1-1500
+          jq -c '.game.members[:3]' g.json | cut -c1-800
+          jq -c '.game.events[:4]' g.json | cut -c1-1200
+          jq -c '.game.statistics? // empty' g.json | cut -c1-600
+          jq -c '[.game|..|objects|select(has("playerOfTheMatch") or has("manOfTheMatch") or has("topPerformers"))]|.[:2]' g.json | cut -c1-800
+          j "game/stats/?$Q&games=$GID" | jq -c '{n:(.statistics|length), s:(.statistics[:6]|map({name,competitorId,value}))}' | cut -c1-1500
