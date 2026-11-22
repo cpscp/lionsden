@@ -181,6 +181,56 @@
 .pitch-spot.is-top{top:17%}.pitch-spot.is-bot{bottom:17%}.pitch-spot.is-mid{top:50%;margin-top:-1.5px}
 </style>
 <style id="motm-v1">.best-on-pitch-card{background:linear-gradient(135deg,rgba(8,165,110,.11),rgba(13,21,16,.92));border-color:rgba(8,165,110,.28)}.best-on-pitch-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}.best-on-pitch-name{font-size:17px;font-weight:700;margin-top:4px}.best-on-pitch-team{font-size:11px;color:var(--muted);margin-top:2px}.best-on-pitch-rating{font-size:26px;font-weight:700;color:#08a56e}.best-on-pitch-source{font-size:9px;color:var(--muted);margin-top:10px}</style>
+<style id="modalidades-v1">
+.mod-chip{display:inline-flex;align-items:center;gap:6px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8ead2;white-space:nowrap}
+.mod-dot{width:7px;height:7px;border-radius:50%;flex:0 0 7px;background:var(--green)}
+.mod-tabs{grid-template-columns:repeat(var(--n,3),1fr)}
+.mod-tabs .games-tab{padding:9px 4px;font-size:9px;letter-spacing:.08em}
+.mod-tab-count{opacity:.55;margin-left:4px}
+.mod-day{display:flex;align-items:center;justify-content:space-between;margin:14px 2px 8px}
+.mod-day:first-child{margin-top:2px}
+.mod-day h3{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0}
+.mod-day span{font-size:9px;color:var(--muted)}
+.mod-event{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:18px}
+.mod-time{text-align:center;border-right:1px solid var(--line);padding-right:10px}
+.mod-time strong{display:block;font-size:15px;font-weight:700;line-height:1.1}
+.mod-time span{display:block;font-size:8px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.mod-body{min-width:0}
+.mod-teams{font-size:13px;font-weight:600;margin-top:5px;line-height:1.25;overflow-wrap:anywhere}
+.mod-teams .scp{color:#fff}.mod-teams .opp{color:#d7e3dc}
+.mod-meta{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.35;overflow-wrap:anywhere}
+.mod-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.mod-ha{border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mod-ha.casa{background:rgba(8,165,110,.12);border-color:rgba(8,165,110,.3);color:#b8ead2}
+.mod-tickets{font-size:9px;font-weight:700;color:#b8ead2;text-decoration:none;white-space:nowrap}
+.mod-label{display:inline-block;margin-top:6px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(231,195,91,.3);border-radius:999px;padding:3px 7px}
+.mod-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:18px}
+.mod-score{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;margin-top:6px;font-size:12px}
+.mod-score .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mod-score .s{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.mod-score .win{color:#fff;font-weight:700}
+.mod-outcome{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:12px}
+.mod-outcome.V{background:rgba(8,165,110,.18);color:#7fe0b5}
+.mod-outcome.D{background:rgba(220,70,70,.16);color:#ff9d9d}
+.mod-outcome.E{background:rgba(255,255,255,.07);color:#d7e3dc}
+.mod-form{display:flex;gap:5px}
+.mod-form .mod-outcome{width:24px;height:24px;border-radius:8px;font-size:10px}
+.mod-hero-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mod-hero-teams{font-size:19px;font-weight:700;line-height:1.2;margin-top:10px}
+.mod-hero-meta{font-size:11px;color:#c9d6cf;margin-top:6px;line-height:1.4}
+.mod-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.mod-kpi{background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+.mod-kpi strong{display:block;font-size:18px;font-weight:700}
+.mod-kpi span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
+.mod-more{width:100%;padding:11px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.mod-empty{padding:18px;font-size:11px;color:var(--muted);text-align:center}
+.mod-home-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid rgba(255,255,255,.05);cursor:pointer}
+.mod-home-row:first-child{border-top:0;padding-top:0}
+.mod-home-row .mod-teams{font-size:12px;margin-top:4px}
+.mod-home-when{text-align:right;font-size:10px;color:var(--muted);line-height:1.35;white-space:nowrap}
+.mod-home-when strong{display:block;color:#fff;font-size:12px}
+.mod-source{font-size:9px;color:var(--muted);text-align:center;padding:4px 0 2px}
+</style>
 <style id="lineup-list-v1">.lineup-list{display:flex;flex-direction:column;gap:2px;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:6px 10px;background:rgba(8,165,110,.06)}.lineup-list-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px}.lineup-list-row:last-child{border-bottom:0}.lineup-list-num{min-width:24px;height:24px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);color:#0b1410;font-weight:700;font-size:11px}.lineup-list-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lineup-list-note{margin-top:6px;font-size:9px;color:var(--muted);letter-spacing:.04em}</style>
 </head>
 <body>
@@ -196,6 +246,7 @@
 <div id="lastGame" class="home-last-card p-4"></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Primeira Liga</span></div><div class="card p-3 home-standings"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div></div></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('stats')">Ver stats →</button></div><div class="form-order"><span>← Mais antigo</span><span>Mais recente →</span></div><div class="grid grid-cols-6 gap-2" id="form"></div></div>
+<div class="card p-4"><div class="flex items-center justify-between mb-3"><h2 class="font-bold">Modalidades</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('modalidades')">Ver todas →</button></div><div id="homeModalidades"></div></div>
 <div class="card p-4"><div class="flex items-center justify-between mb-3"><h2 class="font-bold">Últimas notícias</h2><button class="text-[10px] uppercase tracking-widest muted" onclick="go('news')">Ver todas →</button></div><div id="homeNews" class="space-y-3"></div></div>
 </section>
 
@@ -210,6 +261,14 @@
 <div id="teamStats"></div>
 </section>
 <section id="news" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Notícias</h2></div><div id="newsList" class="space-y-3"></div></section>
+<section id="modalidades" class="screen space-y-4">
+<div><h2 class="text-[21px] font-bold">Modalidades</h2><div class="text-[10px] muted mt-1">Sporting CP · época 2026/27 · todas as modalidades exceto futebol</div></div>
+<div id="modFilters" class="news-filters" role="tablist" aria-label="Filtrar por modalidade"></div>
+<div id="modSummary"></div>
+<div id="modTabs" class="games-tabs mod-tabs"></div>
+<div id="modContent"></div>
+<div id="modSources" class="mod-source"></div>
+</section>
 <section id="classification" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">Classificação</h2><div class="text-[10px] muted mt-1">2026/27 · J = jogos · P = pontos</div></div><div id="classificationTabs"></div><div id="classificationList" class="card p-3 overflow-x-auto"></div></section>
 <section id="tv" class="screen space-y-4"><div><h2 class="text-[21px] font-bold">TV</h2><div class="text-[10px] muted mt-1">Vídeos oficiais do Sporting CP</div></div><div id="tvList" class="space-y-3"></div></section>
 <section id="stadium" class="screen space-y-5">
@@ -334,6 +393,8 @@
 <button class="drawer-link navbtn" data-go="squad"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c.8-3 2.8-4.5 6-4.5s5.2 1.5 6 4.5"/></svg></span><span>Plantel</span></button>
 <button class="drawer-link navbtn" data-go="stats"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 17V9M10 17V5M16 17v-6"/></svg></span><span>Estatísticas</span></button>
 <button class="drawer-link navbtn" data-go="classification"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12M12 4v12"/></svg></span><span>Classificação</span></button>
+<div class="drawer-section">Modalidades</div>
+<button class="drawer-link navbtn" data-go="modalidades"><span class="ui-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M3.3 8.2c3.6 1 9.8 1 13.4 0M3.3 11.8c3.6-1 9.8-1 13.4 0M10 3c-2.4 2.6-2.4 11.4 0 14"/></svg></span><span>Modalidades</span></button>
 <div class="drawer-section">Estádio</div>
 <button class="drawer-link navbtn" data-go="stadium"><span class="ui-icon stadium-menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10c0-3 4-5.5 9-5.5S21 7 21 10v5c0 3-4 5.5-9 5.5S3 18 3 15z"/><path d="M3 10c0 3 4 5.5 9 5.5S21 13 21 10"/><path d="M6 11.5V16M9 13V18M12 14.5V20M15 13V18M18 11.5V16"/><path d="M5 4V2M19 4V2M5 2h3M16 2h3"/></svg></span><span>Estádio</span></button>
 <div class="drawer-section">Conteúdo</div>
@@ -369,7 +430,7 @@ async function ensureCustomDigitsFont(){
     return false;
   }
 }
-const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json','manual.json'];const D={};
+const files=['fixtures.json','standings.json','standings-competitions.json','squad.json','team-stats.json','team-stats-history.json','news.json','venues.json','match-details.json','match-videos.json','match-context.json','h2h.json','betano-odds.json','public-odds.json','fbref-schedule.json','status.json','youtube.json','manual.json','modalidades.json'];const D={};
 async function load(){
   // A fonte é apenas visual: nunca pode bloquear o carregamento da app.
   await Promise.race([ensureCustomDigitsFont(), new Promise(resolve=>setTimeout(resolve,2500))]);
@@ -512,6 +573,7 @@ function render(){
 const u=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=u?`dados ${timeAgo(u)}`:'sem dados';
 renderHome();renderGames();renderSquad();
 renderStats();renderNews();renderClassification();renderTV();
+try{renderModalidades();renderHomeModalidades();}catch(e){console.warn("Lion's Den modalidades:",e)}
 }
 function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-center"><div class="text-[9px] uppercase tracking-[.2em] muted">Contagem decrescente</div><div class="text-xl font-bold mt-1">a calcular…</div></div>';}
 function updateCountdown(ts){const el=document.getElementById('nextCountdown');if(!el)return;const tick=()=>{const diff=Math.max(0,Number(ts)*1000-Date.now());const total=Math.floor(diff/1000);const d=Math.floor(total/86400),h=Math.floor(total%86400/3600),m=Math.floor(total%3600/60),sec=total%60;el.querySelector('div:last-child').textContent=diff?'em '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s':'A começar agora';};tick();clearInterval(window._nextCountdown);window._nextCountdown=setInterval(tick,1000);}
@@ -1369,6 +1431,101 @@ function matchVideoFor(id){
 function compactPlayerName(name){const n=String(name||'').trim();if(!n)return '';const p=n.split(/\s+/).filter(Boolean);if(p.length<=1)return n.length<=16?n:n.slice(0,15)+'…';const surname=p[p.length-1];const initial=p[0].charAt(0);return (initial+'. '+surname).length<=18?(initial+'. '+surname):(initial+'. '+surname.slice(0,14)+'…')}
 function personShortName(n){const raw=String(n||'').replace(/\s+/g,' ').trim();if(!raw)return raw;let t=raw.split(' ').filter(x=>!/^[A-Za-zÀ-ÿ]\.?$/.test(x));if(!t.length)t=raw.split(' ');if(t.length<=2)return t.join(' ');const keep=new Set(['van','von','der','den','ter','ten','le','la','del','della','di','du','mac','mc','el','al','bin','ben']);let last=[t[t.length-1]];for(let i=t.length-2;i>0&&keep.has(t[i].toLowerCase());i--)last.unshift(t[i]);return t[0]+' '+last.join(' ')}
 function normalizePersonNames(){const fix=o=>{if(o&&typeof o.name==='string')o.name=personShortName(o.name)};for(const d of (D['match-details.json']?.fixtures||[])){for(const side of['home','away'])for(const p of (d?.lineups?.[side]?.players||[]))fix(p?.player);for(const x of (d?.incidents?.incidents||[])){const orig=x?.player?.name;fix(x?.player);fix(x?.playerIn);fix(x?.playerOut);(x?.swap||[]).forEach(fix);if(orig&&x.description===orig)x.description=personShortName(orig)}if(d?.event?.referee&&typeof d.event.referee==='object')fix(d.event.referee);else if(typeof d?.event?.referee==='string')d.event.referee=personShortName(d.event.referee)}for(const f of (D['fixtures.json']?.fixtures||[])){if(typeof f?.referee==='string')f.referee=personShortName(f.referee);else if(f?.referee&&typeof f.referee==='object')fix(f.referee)}for(const m of Object.values(D['manual.json']?.man_of_the_match||{}))fix(m)}
+// ---- Modalidades (tudo exceto futebol) ----
+const MOD_COLORS={'futsal':'#08a56e','andebol':'#e7c35b','hoquei-em-patins':'#4aa3ff','basquetebol':'#ff8a3d','voleibol':'#c77dff','voleibol-feminino':'#ff6fae','futsal-feminino':'#5fd3a0','andebol-feminino':'#f1d88a','basquetebol-feminino':'#ffb27a','hoquei-em-patins-feminino':'#8cc4ff'};
+window._modSport=window._modSport||'all';window._modTab=window._modTab||'calendar';window._modLimit=window._modLimit||30;
+function modData(){return D['modalidades.json']||{sports:[],news:[]}}
+function modColor(key){return MOD_COLORS[key]||'#79a893'}
+function modChip(key,label){return '<span class="mod-chip"><span class="mod-dot" style="background:'+modColor(key)+'"></span>'+esc(label||'')+'</span>'}
+function modFmt(iso,opts){const t=Date.parse(iso||'');if(!t)return '';return new Intl.DateTimeFormat('pt-PT',{timeZone:'Europe/Lisbon',...opts}).format(new Date(t)).replace('.','')}
+function modDayKey(iso){return modFmt(iso,{year:'numeric',month:'2-digit',day:'2-digit'})}
+function modDayLabel(iso){const k=modDayKey(iso),today=modDayKey(new Date().toISOString()),tm=modDayKey(new Date(Date.now()+864e5).toISOString());if(k===today)return 'Hoje';if(k===tm)return 'Amanhã';const s=modFmt(iso,{weekday:'long',day:'numeric',month:'short'});return s.charAt(0).toUpperCase()+s.slice(1)}
+function modTimeTbc(f){return (f.labels||[]).some(l=>/confirmar/i.test(l))}
+function modTbcText(f){const l=(f.labels||[]).find(x=>/confirmar/i.test(x));return l?l.charAt(0).toLowerCase()+l.slice(1):''}
+function modTeams(f){const opp=esc(f.opponent||'Adversário'),scp='<span class="scp">Sporting CP</span>';return f.home_away==='casa'?scp+' <span class="muted">vs</span> <span class="opp">'+opp+'</span>':'<span class="opp">'+opp+'</span> <span class="muted">vs</span> '+scp}
+function modAllFixtures(){const now=Date.now()-3*3600e3;return modData().sports.flatMap(s=>s.fixtures||[]).filter(f=>Date.parse(f.date)>=now).sort((a,b)=>Date.parse(a.date)-Date.parse(b.date))}
+function modAllResults(){return modData().sports.flatMap(s=>s.results||[]).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date))}
+function modEventHtml(f,withSport=true){
+ const tbc=modTimeTbc(f);
+ return '<div class="card mod-event"><div class="mod-time"><strong>'+esc(tbc?'—':modFmt(f.date,{hour:'2-digit',minute:'2-digit'}))+'</strong><span>'+esc(modFmt(f.date,{day:'numeric',month:'short'}))+'</span></div>'+
+  '<div class="mod-body">'+(withSport?modChip(f.sport,f.sport_label):'')+'<div class="mod-teams">'+modTeams(f)+'</div><div class="mod-meta">'+esc(f.competition||'')+(f.venue?' · '+esc(f.venue):'')+'</div>'+((f.labels||[]).map(l=>'<span class="mod-label">'+esc(l)+'</span>').join(' '))+'</div>'+
+  '<div class="mod-side"><span class="mod-ha '+(f.home_away==='casa'?'casa':'')+'">'+(f.home_away==='casa'?'Casa':'Fora')+'</span>'+(f.tickets?'<a class="mod-tickets" href="'+esc(f.tickets)+'" target="_blank" rel="noopener noreferrer">Bilhetes →</a>':'')+'</div></div>';
+}
+function modResultHtml(r,withSport=true){
+ const hw=r.home_score>r.away_score,aw=r.away_score>r.home_score;
+ return '<div class="card mod-result"><div class="min-w-0">'+(withSport?modChip(r.sport,r.sport_label):'')+'<div class="mod-meta" style="margin-top:'+(withSport?'5px':'0')+'">'+esc(modFmt(r.date,{weekday:'short',day:'numeric',month:'short'}))+' · '+esc(r.competition||'')+'</div>'+
+  '<div class="mod-score"><span class="n '+(hw?'win':'')+'">'+esc(r.home)+'</span><span class="s">'+esc(r.home_score)+'</span><span class="n '+(aw?'win':'')+'">'+esc(r.away)+'</span><span class="s">'+esc(r.away_score)+'</span></div></div>'+
+  '<span class="mod-outcome '+esc(r.outcome)+'" title="'+(r.outcome==='V'?'Vitória':r.outcome==='D'?'Derrota':'Empate')+'">'+esc(r.outcome)+'</span></div>';
+}
+function modStandingsHtml(st){
+ if(!st?.rows?.length)return '<div class="card mod-empty">Classificação indisponível para esta modalidade.</div>';
+ const hasDraw=st.rows.some(r=>Number(r.drawn)>0);
+ return '<div class="card p-3 overflow-x-auto"><div class="text-[10px] uppercase tracking-widest muted px-1 pb-2">'+esc(st.competition||'Classificação')+'</div><table class="class-table"><thead><tr><th>#</th><th>Equipa</th><th>J</th><th>V</th>'+(hasDraw?'<th>E</th>':'')+'<th>D</th><th>Pts</th></tr></thead><tbody>'+
+  st.rows.map(r=>'<tr class="'+(r.sporting?'sc-row':'')+'"><td>'+esc(r.pos??'')+'</td><td class="club">'+esc(r.team)+'</td><td>'+esc(r.played??'—')+'</td><td>'+esc(r.won??'—')+'</td>'+(hasDraw?'<td>'+esc(r.drawn??'—')+'</td>':'')+'<td>'+esc(r.lost??'—')+'</td><td><b>'+esc(r.points!=null?Math.round(r.points):'—')+'</b></td></tr>').join('')+'</tbody></table></div>';
+}
+function modNewsHtml(list){
+ if(!list.length)return '<div class="card mod-empty">Sem notícias recentes desta modalidade.</div>';
+ return '<div class="news-feed">'+list.slice(0,window._modLimit).map((n,i)=>newsCard({...n,description:n.summary,source:(n.sport_label?n.sport_label+' · ':'')+(n.source||'')},i)).join('')+'</div>'+(list.length>window._modLimit?'<button class="mod-more mt-3" onclick="window._modLimit+=20;renderModalidades()">Ver mais notícias</button>':'');
+}
+function setModSport(key){window._modSport=key;window._modLimit=30;renderModalidades();document.getElementById('modalidades')?.scrollIntoView({block:'start',behavior:'smooth'})}
+function setModTab(tab){window._modTab=tab;window._modLimit=30;renderModalidades()}
+function renderModalidades(){
+ const data=modData(),fEl=document.getElementById('modFilters'),sEl=document.getElementById('modSummary'),tEl=document.getElementById('modTabs'),cEl=document.getElementById('modContent'),srcEl=document.getElementById('modSources');
+ if(!fEl||!cEl)return;
+ const sports=data.sports||[];
+ if(!sports.length){fEl.innerHTML='';sEl.innerHTML='';tEl.innerHTML='';cEl.innerHTML='<div class="card mod-empty">Os dados das modalidades ainda não estão disponíveis. Tenta novamente daqui a pouco.</div>';return}
+ if(window._modSport!=='all'&&!sports.some(s=>s.key===window._modSport))window._modSport='all';
+ const key=window._modSport,sp=sports.find(s=>s.key===key);
+ fEl.innerHTML=[['all','Todas']].concat(sports.map(s=>[s.key,s.label])).map(([k,l])=>'<button type="button" role="tab" class="news-filter '+(k===key?'active':'')+'" aria-selected="'+(k===key)+'" onclick="setModSport(\''+k+'\')">'+(k==='all'?'':'<span class="mod-dot" style="display:inline-block;margin-right:6px;vertical-align:1px;background:'+modColor(k)+'"></span>')+esc(l)+'</button>').join('');
+ const fixtures=key==='all'?modAllFixtures():(sp.fixtures||[]).filter(f=>Date.parse(f.date)>=Date.now()-3*3600e3);
+ const results=key==='all'?modAllResults():(sp.results||[]);
+ const news=(data.news||[]).filter(n=>key==='all'||n.sport===key);
+ // Resumo
+ const next=fixtures[0];
+ let hero='';
+ if(next){
+  hero='<div class="mod-hero-row"><span class="text-[10px] uppercase tracking-[.18em] muted">'+(key==='all'?'Próximo jogo nas modalidades':'Próximo jogo')+'</span>'+modChip(next.sport,next.sport_label)+'</div>'+
+   '<div class="mod-hero-teams">'+modTeams(next)+'</div><div class="mod-hero-meta">'+esc(modDayLabel(next.date))+(modTimeTbc(next)?' · '+esc(modTbcText(next)):' · '+esc(modFmt(next.date,{hour:'2-digit',minute:'2-digit'})))+'<br>'+esc(next.competition||'')+(next.venue?' · '+esc(next.venue):'')+'</div>'+
+   (next.tickets?'<a class="pill inline-flex mt-3 px-3 py-2 text-[10px] uppercase tracking-widest" href="'+esc(next.tickets)+'" target="_blank" rel="noopener noreferrer">Comprar bilhetes →</a>':'');
+ }else hero='<span class="text-[10px] uppercase tracking-[.18em] muted">Sem jogos agendados'+(sp?' de '+esc(sp.label):'')+'</span>';
+ let kpis='';
+ if(key==='all'){
+  const week=fixtures.filter(f=>Date.parse(f.date)<=Date.now()+7*864e5).length;
+  const recent=results.filter(r=>Date.parse(r.date)>=Date.now()-14*864e5),w=recent.filter(r=>r.outcome==='V').length;
+  kpis='<div class="mod-kpis"><div class="mod-kpi"><strong>'+week+'</strong><span>Jogos em 7 dias</span></div><div class="mod-kpi"><strong>'+(recent.length?w+'/'+recent.length:'—')+'</strong><span>Vitórias em 14 dias</span></div><div class="mod-kpi"><strong>'+sports.filter(s=>(s.fixtures||[]).length).length+'</strong><span>Modalidades em prova</span></div></div>';
+ }else{
+  const me=sp.standings?.rows?.find(r=>r.sporting),form=(sp.results||[]).slice(0,5).reverse();
+  kpis='<div class="mod-kpis"><div class="mod-kpi"><strong>'+(me?esc(me.pos)+'.º':'—')+'</strong><span>'+esc(me?(sp.standings.competition||'Classificação'):'Classificação')+'</span></div><div class="mod-kpi"><strong>'+(me&&me.points!=null?Math.round(me.points):'—')+'</strong><span>Pontos</span></div><div class="mod-kpi"><strong>'+fixtures.length+'</strong><span>Jogos agendados</span></div></div>'+
+   (form.length?'<div class="flex items-center justify-between mt-3"><span class="text-[9px] uppercase tracking-widest muted">Últimos jogos</span><div class="mod-form">'+form.map(r=>'<span class="mod-outcome '+esc(r.outcome)+'">'+esc(r.outcome)+'</span>').join('')+'</div></div>':'');
+ }
+ sEl.innerHTML='<div class="hero next-match-hero p-4">'+hero+kpis+'</div>';
+ // Separadores
+ const tabs=[['calendar','Calendário',fixtures.length],['results','Resultados',results.length],['news','Notícias',news.length]];
+ if(sp?.standings?.rows?.length)tabs.push(['table','Classificação',null]);
+ if(!tabs.some(t=>t[0]===window._modTab))window._modTab='calendar';
+ tEl.style.setProperty('--n',tabs.length);
+ tEl.innerHTML=tabs.map(([k,l,n])=>'<button class="games-tab '+(k===window._modTab?'active':'')+'" onclick="setModTab(\''+k+'\')">'+esc(l)+(n!=null?'<span class="mod-tab-count">'+n+'</span>':'')+'</button>').join('');
+ // Conteúdo
+ const tab=window._modTab,all=key==='all';
+ if(tab==='calendar'){
+  if(!fixtures.length){cEl.innerHTML='<div class="card mod-empty">Sem jogos agendados.</div>';}
+  else{let html='',day='';fixtures.slice(0,window._modLimit).forEach(f=>{const d=modDayKey(f.date);if(d!==day){day=d;const n=fixtures.filter(x=>modDayKey(x.date)===d).length;html+='<div class="mod-day"><h3>'+esc(modDayLabel(f.date))+'</h3><span>'+n+' '+(n===1?'jogo':'jogos')+'</span></div>'}html+=modEventHtml(f,all)});
+   if(fixtures.length>window._modLimit)html+='<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais jogos</button>';cEl.innerHTML=html;}
+ }else if(tab==='results'){
+  const noRes=sports.filter(s=>(s.fixtures||[]).length&&!(s.results||[]).length).map(s=>s.label);
+  cEl.innerHTML=(results.length?'<div class="space-y-3">'+results.slice(0,window._modLimit).map(r=>modResultHtml(r,all)).join('')+'</div>'+(results.length>window._modLimit?'<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais resultados</button>':''):'<div class="card mod-empty">'+(sp?'Resultados de '+esc(sp.label)+' ainda indisponíveis nas fontes públicas.':'Sem resultados recentes.')+'</div>')+
+   (all&&noRes.length?'<div class="mod-source mt-2">Sem resultados públicos disponíveis para: '+esc(noRes.join(', '))+'.</div>':'');
+ }else if(tab==='news'){cEl.innerHTML=modNewsHtml(news);}
+ else if(tab==='table'){cEl.innerHTML=modStandingsHtml(sp.standings);}
+ const s=data.sources||{};srcEl.textContent='Calendário: '+(s.calendario||'Sporting.pt')+' · Resultados e classificações: '+(s.resultados||'365scores')+' · Notícias: '+(s.noticias||'Sporting.pt, Record, O Jogo');
+}
+function renderHomeModalidades(){
+ const el=document.getElementById('homeModalidades');if(!el)return;
+ const list=modAllFixtures().slice(0,4);
+ if(!list.length){el.innerHTML='<div class="text-[11px] muted">Sem jogos agendados nas modalidades.</div>';return}
+ el.innerHTML=list.map(f=>'<div class="mod-home-row" onclick="go(\'modalidades\')"><div class="min-w-0">'+modChip(f.sport,f.sport_label)+'<div class="mod-teams">'+modTeams(f)+'</div></div><div class="mod-home-when"><strong>'+esc(modDayLabel(f.date))+'</strong>'+esc(modTimeTbc(f)?modTbcText(f):modFmt(f.date,{hour:'2-digit',minute:'2-digit'}))+'</div></div>').join('');
+}
+
 function manualMotmHtml(base,lineups){const m=(D['manual.json']?.man_of_the_match||{})[String(base?.id)];if(!m?.name)return '';const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();const p=[...(lineups?.home?.players||[]),...(lineups?.away?.players||[])].find(x=>norm(x?.player?.name)===norm(m.name));const r=p?.statistics?.rating;return '<div class="card p-4 mt-3 best-on-pitch-card"><div class="flex items-center justify-between gap-3"><div><div class="best-on-pitch-label">Homem do jogo</div><div class="best-on-pitch-name">'+esc(m.name)+'</div><div class="best-on-pitch-team">'+esc(m.team||'')+'</div></div>'+(r!=null?'<div class="best-on-pitch-rating">'+Number(r).toFixed(1)+'</div>':'<div class="best-on-pitch-rating">★</div>')+'</div><div class="best-on-pitch-source">Fonte: '+esc(m.source||'oficial')+'</div></div>';}
 function lineupHasLayout(st){if(st.length<11)return false;const pts=new Set();for(const p of st){const h=p.horizontalLayout||{},x=Number(h.x),y=Number(h.y);if(h.x==null||h.y==null||!Number.isFinite(x)||!Number.isFinite(y))return false;pts.add(x.toFixed(2)+','+y.toFixed(2))}return pts.size>=9}
 function lineupListHtml(starters,formation,teamName){const rows=starters.map(p=>{const num=p.shirtNumber??p.jerseyNumber??'',rating=p.statistics?.rating??p.rating;return '<div class="lineup-list-row"><span class="lineup-list-num">'+esc(num||'•')+'</span><span class="lineup-list-name">'+esc(p.player?.name||p.player?.shortName||'')+'</span>'+(rating!=null?'<span class="pitch-player-rating">'+Number(rating).toFixed(1)+'</span>':'')+'</div>'}).join('');return '<div class="game-tactical-team"><div class="game-tactical-head"><div class="game-tactical-name">'+esc(teamName||'Equipa')+'</div><div class="game-tactical-formation">'+esc(formation||'')+'</div></div><div class="lineup-list">'+rows+'</div><div class="lineup-list-note">Posições em campo indisponíveis nas fontes para este jogo.</div></div>'}

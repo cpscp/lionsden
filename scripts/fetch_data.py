@@ -2267,7 +2267,7 @@ MOD_SPORTS = [
     ("basquetebol", "Basquetebol", ("basquetebol", "basquete")),
     ("voleibol", "Voleibol", ("voleibol",)),
     ("futebol-de-praia", "Futebol de Praia", ("futebol de praia",)),
-    ("atletismo", "Atletismo", ("atletismo", "maratona", "corta-mato", "corta mato")),
+    ("atletismo", "Atletismo", ("atletismo", "corta-mato", "corta mato", "meia-maratona")),
     ("natacao", "Natação", ("natacao",)),
     ("judo", "Judo", ("judo",)),
     ("ginastica", "Ginástica", ("ginastica", "trampolins")),
@@ -2335,6 +2335,37 @@ def _pt_date(value):
     return f"{int(m.group(3)):04d}-{month:02d}-{int(m.group(1)):02d}T12:00:00Z"
 
 
+def _iso_date(value):
+    if not value:
+        return None
+    v = str(value)
+    try:
+        return datetime.fromisoformat(v.replace("Z", "+00:00")).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        pass
+    try:
+        from email.utils import parsedate_to_datetime
+        return parsedate_to_datetime(v).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        return _pt_date(v)
+
+
+def _mod_comp(name):
+    n = re.sub(r"\s*\((W|F)\)\s*$", "", clean(name))
+    for a, b in ((" - Regular Season", " · Fase regular"), ("Champions League", "Liga dos Campeões"),
+                 ("Semi Finals", "Meias-finais"), ("Quarter Finals", "Quartos-de-final"), ("Round of 64", "1/32 de final"),
+                 ("Round of 32", "1/16 de final"), ("Round of 16", "Oitavos-de-final"), ("2nd Round", "2.ª ronda"),
+                 ("1st Round", "1.ª ronda"), ("3rd Round", "3.ª ronda"), ("Group ", "Grupo "), ("Main Round", "Fase principal"),
+                 ("Play Offs", "Play-off"), ("Playoffs", "Play-off"), ("Finals", "Final"), (" - ", " · ")):
+        n = n.replace(a, b)
+    return n
+
+
+def _mod_team(name):
+    n = clean(re.sub(r"\s*\((W|F)\)\s*$", "", str(name or "")))
+    return "Sporting CP" if zz_norm(n) in ("sporting", "sporting cp") else n
+
+
 def fetch_sporting_site_state():
     r = session.get("https://sporting.pt/", timeout=30, headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
     r.raise_for_status()
@@ -2359,10 +2390,10 @@ def _mod_result_row(g, key, label, cid):
     mine, theirs = (hs, as_) if sp_home else (as_, hs)
     return {
         "sport": key, "sport_label": label, "date": g.get("startTime"),
-        "competition": clean(g.get("competitionDisplayName")),
-        "home": clean(hc.get("name")), "away": clean(ac.get("name")),
+        "competition": _mod_comp(g.get("competitionDisplayName")),
+        "home": _mod_team(hc.get("name")), "away": _mod_team(ac.get("name")),
         "home_score": int(hs), "away_score": int(as_), "sporting_home": sp_home,
-        "outcome": "V" if mine > theirs else ("D" if mine < theirs else "E"),
+        "outcome": "V" if mine > theirs else ("D" if mine < theirs else "E"), "date_iso": _iso_date(g.get("startTime")),
         "source": "365scores", "id": g.get("id"), "competition_id": g.get("competitionId"),
     }
 
@@ -2374,11 +2405,11 @@ def _mod_standings(comp_id, cid):
     for r in st.get("rows") or []:
         c = r.get("competitor") or {}
         rows.append({
-            "pos": r.get("position"), "team": clean(c.get("name")), "sporting": c.get("id") == cid,
+            "pos": r.get("position"), "team": _mod_team(c.get("name")), "sporting": c.get("id") == cid,
             "played": r.get("gamePlayed"), "won": r.get("gamesWon"), "drawn": r.get("gamesEven"),
             "lost": r.get("gamesLost"), "points": r.get("points"),
         })
-    name = clean(((data.get("competitions") or [{}])[0]).get("name")) if data.get("competitions") else ""
+    name = _mod_comp(((data.get("competitions") or [{}])[0]).get("name")) if data.get("competitions") else ""
     return {"competition": name, "rows": rows} if rows else None
 
 
@@ -2434,8 +2465,8 @@ def fetch_modalidades():
                     home = hc.get("id") == cid
                     sp["fixtures"].append({
                         "sport": key, "sport_label": label, "date": g.get("startTime"),
-                        "competition": clean(g.get("competitionDisplayName")),
-                        "opponent": clean((ac if home else hc).get("name")), "home_away": "casa" if home else "fora",
+                        "competition": _mod_comp(g.get("competitionDisplayName")),
+                        "opponent": _mod_team((ac if home else hc).get("name")), "home_away": "casa" if home else "fora",
                         "venue": "", "labels": [], "tickets": None, "source": "365scores",
                     })
             domestic = [r for r in rows if not re.search(r"champions|cup|ehf|fiba|cev|europe|euro|challenge", r["competition"] or "", re.I)]
@@ -2443,7 +2474,7 @@ def fetch_modalidades():
                 try:
                     sp["standings"] = _mod_standings(domestic[0]["competition_id"], cid)
                     if sp["standings"] and not sp["standings"]["competition"]:
-                        sp["standings"]["competition"] = re.sub(r"\s*-\s*(Regular Season|Round.*)$", "", domestic[0]["competition"])
+                        sp["standings"]["competition"] = re.sub(r"\s*·\s*(Fase regular|.*ronda.*)$", "", domestic[0]["competition"])
                 except Exception as e:
                     print("Modalidades: classificação indisponível:", key, e)
             sources["resultados"] = "365scores"
@@ -2465,7 +2496,9 @@ def fetch_modalidades():
                      "image": n.get("cover"), "published": _pt_date(n.get("date")), "sport": cls[0],
                      "sport_label": cls[1], "source": "Sporting.pt"})
     for n in ((safe_existing("news.json") or {}).get("items") or []):
-        cls = mod_classify((n.get("title") or "") + " " + (n.get("description") or ""))
+        # Na imprensa, a modalidade tem de estar no título (a descrição traz
+        # muitas vezes referências laterais a outras modalidades).
+        cls = mod_classify(n.get("title") or "")
         if not cls:
             continue
         t = zz_norm(n.get("title"))
@@ -2475,7 +2508,7 @@ def fetch_modalidades():
             continue
         seen.add(n.get("url"))
         news.append({"title": clean(n.get("title")), "summary": clean(n.get("description")), "url": n.get("url"),
-                     "image": n.get("image"), "published": n.get("published"), "sport": cls[0],
+                     "image": n.get("image"), "published": _iso_date(n.get("published")), "sport": cls[0],
                      "sport_label": cls[1], "source": n.get("source")})
     news.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
     for n in news:

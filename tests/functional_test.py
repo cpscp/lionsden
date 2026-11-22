@@ -189,6 +189,33 @@ def run_variant(browser, path, label, viewport, mobile):
     rows = page.evaluate("document.getElementById('classificationList').innerText")
     check(f"[{label}] classificação com o Sporting", "Sporting" in rows)
 
+
+    # Modalidades
+    page.evaluate("go('modalidades')")
+    page.wait_for_timeout(300)
+    sports = page.evaluate("[...document.querySelectorAll('#modFilters .news-filter')].map(b=>b.textContent.trim())")
+    check(f"[{label}] modalidades: filtros por modalidade", len(sports) >= 4, ", ".join(sports))
+    keys = page.evaluate("(D['modalidades.json']?.sports||[]).map(s=>s.key)")
+    bad = []
+    for k in ["all"] + keys:
+        for tab in ("calendar", "results", "news", "table"):
+            before = len(js_errors)
+            page.evaluate(f"setModSport('{k}');setModTab('{tab}')")
+            page.wait_for_timeout(60)
+            txt = page.evaluate("document.getElementById('modContent').innerText.trim().length")
+            if len(js_errors) > before or txt < 10:
+                bad.append(f"{k}/{tab}")
+    check(f"[{label}] modalidades: {len(keys)} modalidades × separadores sem erros", not bad, ", ".join(bad))
+    page.evaluate("setModSport('all');setModTab('calendar')")
+    n_ev = page.locator("#modContent .mod-event").count()
+    football = page.evaluate("[...document.querySelectorAll('#modContent .mod-chip')].filter(c=>/futebol(?! de praia)/i.test(c.textContent)).length")
+    check(f"[{label}] modalidades: calendário com jogos e sem futebol", n_ev > 0 and football == 0, f"{n_ev} jogos")
+    page.evaluate("setModTab('results')")
+    check(f"[{label}] modalidades: resultados", page.locator("#modContent .mod-result").count() > 0)
+    page.evaluate("setModTab('news')")
+    check(f"[{label}] modalidades: notícias", page.locator("#modContent .news-card").count() > 0)
+    page.evaluate("go('home')")
+    check(f"[{label}] início: bloco Modalidades com próximos jogos", page.locator("#homeModalidades .mod-home-row").count() > 0)
     real_errors = [e for e in js_errors if "tailwind" not in e.lower()]
     check(f"[{label}] sem erros de JavaScript", not real_errors, " | ".join(real_errors[:3]))
     ctx.close()
