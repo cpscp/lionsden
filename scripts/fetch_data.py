@@ -7599,6 +7599,12 @@ def _fotmob_career_stats(fid):
             if club and season:
                 rows.append({"season": season, "club": club, "matches": apps, "goals": goals, "assists": assists,
                              "competitions": [clean(t.get("leagueName")) for t in ts if t.get("leagueName")]})
+    # Mais recente primeiro; na mesma época, equipa principal antes de B/sub-23/sub-19.
+    def order(r):
+        y = re.match(r"(\d{4})", r["season"])
+        reserve = 1 if re.search(r"\b(B|U\d+|Sub-?\d+|II)\b|\[|\(E\)", r["club"]) else 0
+        return (-(int(y.group(1)) if y else 0), reserve)
+    rows.sort(key=order)
     return rows
 
 
