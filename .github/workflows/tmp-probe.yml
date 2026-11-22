@@ -1,0 +1,22 @@
+name: tmp probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          curl -sS -L -m 30 -A "$UA" "https://sporting.pt/noticias/em-casa-manda-o-leao" -o a.html -w "art %{http_code} %{size_download}\n"
+          python3 - <<'PY'
+          import re
+          s=open('a.html',encoding='utf-8',errors='ignore').read()
+          i=s.find('em-casa-manda-o-leao')
+          for k in ['body:','content:','html:','blocks:','paragraphs','text:"','markdown']:
+              for m in list(re.finditer(re.escape(k),s))[:2]:
+                  print('##',k,m.start(),s[m.start()-120:m.start()+400].replace('\n',' '))
+          print('article tags',len(re.findall(r'<article',s)),'p tags',len(re.findall(r'<p[ >]',s)))
+          ps=[re.sub(r'<[^>]+>','',x) for x in re.findall(r'<p[^>]*>(.*?)</p>',s,re.S)]
+          print([x[:80] for x in ps if len(x)>60][:8])
+          PY
+          for p in "/api/data/playerData?id=1320169" "/api/playerData?id=1320169" "/api/data/playerData?playerId=1320169"; do curl -sS -m 30 -A "$UA" "https://www.fotmob.com$p" -o f.json -w "fm %{http_code} $p\n"; head -c 300 f.json; echo; done
