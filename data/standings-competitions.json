@@ -1425,10 +1425,10 @@
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
             },
             "away": {
-              "id": null,
+              "id": 4665,
               "name": "Atlético CP",
               "shortName": "ATL",
-              "crest": null
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/4665.png"
             },
             "homeScore": null,
             "awayScore": null,
