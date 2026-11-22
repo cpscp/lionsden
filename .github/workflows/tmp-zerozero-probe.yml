@@ -6,20 +6,21 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          Q="appTypeId=5&langId=31&timezoneName=Europe/Lisbon&userCountryId=131"
-          j(){ curl -sS -L -m 40 -A "$UA" "https://webws.365scores.com/web/$1"; }
-          j "search/?$Q&query=sporting" | jq -c '.competitors[]? | select(.sportId==1) | {id,name,countryId}' | head -8
-          SID=$(j "search/?$Q&query=sporting%20cp" | jq '[.competitors[]?|select(.sportId==1 and .countryId==11 and (.name|test("Sporting";"i")))][0].id')
-          echo "SID=$SID"
-          j "games/results/?$Q&competitors=$SID" > r.json
-          jq -c '.games[]? | {id, s:.startTime, c:.competitionDisplayName, h:.homeCompetitor.name, a:.awayCompetitor.name, hs:.homeCompetitor.score, as:.awayCompetitor.score}' r.json | tail -6
-          GID=$(jq '[.games[]?|select((.homeCompetitor.name+.awayCompetitor.name)|test("Serra";"i"))][0].id' r.json); echo "GID=$GID"
-          j "game/?$Q&gameId=$GID" > g.json
-          echo "KEYS game:"; jq -c '.game|keys' g.json
-          jq -c '.game|{officials:.officials, venue:.venue.name, att:.attendance, hasStats, hasLineups, hasPlayerStats, hasFieldPositions}' g.json
-          jq -c '.game.homeCompetitor.lineups | {status,formation,hasFieldPositions, n:(.members|length), m:(.members[:3])}' g.json | cut -c1-1500
-          jq -c '.game.members[:3]' g.json | cut -c1-800
-          jq -c '.game.events[:4]' g.json | cut -c1-1200
-          jq -c '.game.statistics? // empty' g.json | cut -c1-600
-          jq -c '[.game|..|objects|select(has("playerOfTheMatch") or has("manOfTheMatch") or has("topPerformers"))]|.[:2]' g.json | cut -c1-800
-          j "game/stats/?$Q&games=$GID" | jq -c '{n:(.statistics|length), s:(.statistics[:6]|map({name,competitorId,value}))}' | cut -c1-1500
+          curl -sS -L -m 40 -A "$UA" "https://www.abola.pt/futebol/equipa/sporting-16" -o eq.html -w "eq %{http_code}\n" || true
+          curl -sS -L -m 40 -A "$UA" "https://www.abola.pt/futebol/competicao/112" -o comp.html -w "comp %{http_code}\n"
+          grep -ohE 'https?://(www\.)?abola\.pt/futebol/jogo/[a-z0-9-]*serra[a-z0-9-]*|/futebol/jogo/[a-z0-9-]*serra[a-z0-9-]*' eq.html comp.html | sort -u | head
+          U=$(grep -ohE '/futebol/jogo/sporting-[a-z0-9-]*serra-[0-9]+' eq.html comp.html | head -1); echo "U=$U"
+          [ -z "$U" ] && U=$(grep -ohE '/futebol/jogo/[a-z0-9-]*serra[a-z0-9-]*-[0-9]+' eq.html comp.html | head -1)
+          curl -sS -L -m 40 -A "$UA" "https://www.abola.pt$U/liveblog" -o m.html -w "match %{http_code} %{size_download}\n"
+          python3 - <<'PY'
+          import re,html
+          s=open('m.html',encoding='utf-8',errors='ignore').read()
+          t=re.sub(r'<script.*?</script>|<style.*?</style>',' ',s,flags=re.S)
+          t=html.unescape(re.sub(r'<[^>]+>',' ',t)); t=re.sub(r'\s+',' ',t)
+          for k in ['Melhor em campo','Homem do jogo','Homem do Jogo','MVP','Figura','rbitro','Posse','Remates','Cantos','Estatística','Ficha']:
+              for m in list(re.finditer(k,t))[:2]:
+                  print('##',k,'::',t[max(0,m.start()-150):m.start()+300])
+          for k in ['mvp','manOfTheMatch','bestPlayer','referee','"stats"','statistics','possession']:
+              i=s.find(k); 
+              if i>=0: print('RAW',k,'::',s[max(0,i-200):i+400].replace('\n',' '))
+          PY
