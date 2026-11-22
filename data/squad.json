@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T16:01:51.915049+00:00",
+  "_updated_at": "2026-11-22T16:05:35.169690+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -896,7 +896,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 9,
+          "matches": 8,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -1081,16 +1081,6 @@
       "careerStats": [
         {
           "season": "2026/27",
-          "club": "Sporting CP B",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
-          ]
-        },
-        {
-          "season": "2026/27",
           "club": "Sporting CP",
           "matches": 1,
           "goals": 0,
@@ -1107,6 +1097,26 @@
           "assists": 0,
           "competitions": [
             "First Division A"
+          ]
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting CP B",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
+          ]
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting CP U19",
+          "matches": 2,
+          "goals": 0,
+          "assists": 1,
+          "competitions": [
+            "UEFA Youth League"
           ]
         },
         {
@@ -1128,16 +1138,6 @@
           "assists": 0,
           "competitions": [
             "First Division A"
-          ]
-        },
-        {
-          "season": "2026/27",
-          "club": "Sporting CP U19",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "UEFA Youth League"
           ]
         }
       ],
@@ -1278,7 +1278,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 15,
+          "matches": 14,
           "goals": 1,
           "assists": 2,
           "competitions": [
@@ -1896,7 +1896,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 3,
+          "matches": 2,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -1907,7 +1907,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 3,
+          "matches": 7,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -2172,6 +2172,26 @@
           ]
         },
         {
+          "season": "2026/27",
+          "club": "Sporting CP B",
+          "matches": 3,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
+          ]
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting CP U19",
+          "matches": 2,
+          "goals": 1,
+          "assists": 0,
+          "competitions": [
+            "UEFA Youth League"
+          ]
+        },
+        {
           "season": "2025/26",
           "club": "Sporting CP",
           "matches": 8,
@@ -2185,16 +2205,6 @@
           ]
         },
         {
-          "season": "2026/27",
-          "club": "Sporting CP B",
-          "matches": 2,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
-          ]
-        },
-        {
           "season": "2025/26",
           "club": "Sporting CP B",
           "matches": 16,
@@ -2205,39 +2215,9 @@
           ]
         },
         {
-          "season": "2024/25",
-          "club": "Sporting CP B",
-          "matches": 6,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga 3"
-          ]
-        },
-        {
-          "season": "2026/27",
-          "club": "Sporting CP U19",
-          "matches": 2,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "UEFA Youth League"
-          ]
-        },
-        {
           "season": "2025/26",
           "club": "Sporting CP U19",
           "matches": 4,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "UEFA Youth League"
-          ]
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting CP U19",
-          "matches": 7,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -2252,6 +2232,26 @@
           "assists": 0,
           "competitions": [
             "Puskás Cup"
+          ]
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting CP B",
+          "matches": 6,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga 3"
+          ]
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting CP U19",
+          "matches": 7,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "UEFA Youth League"
           ]
         }
       ],
@@ -2617,7 +2617,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 15,
+          "matches": 14,
           "goals": 0,
           "assists": 1,
           "competitions": [
@@ -2680,16 +2680,6 @@
           ]
         },
         {
-          "season": "2023/24",
-          "club": "FC Utrecht",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Eredivisie"
-          ]
-        },
-        {
           "season": "2024/25",
           "club": "Jong FC Utrecht",
           "matches": 16,
@@ -2697,6 +2687,16 @@
           "assists": 1,
           "competitions": [
             "Eerste Divisie"
+          ]
+        },
+        {
+          "season": "2023/24",
+          "club": "FC Utrecht",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Eredivisie"
           ]
         },
         {
@@ -3619,13 +3619,23 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 4,
+          "matches": 3,
           "goals": 0,
           "assists": 0,
           "competitions": [
             "League Cup",
             "Taça de Portugal",
             "Champions League"
+          ]
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting CP B",
+          "matches": 7,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
           ]
         },
         {
@@ -3636,6 +3646,26 @@
           "assists": 0,
           "competitions": [
             "Liga Portugal"
+          ]
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting CP B",
+          "matches": 24,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
+          ]
+        },
+        {
+          "season": "2025/26",
+          "club": "Sporting CP U19",
+          "matches": 8,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "UEFA Youth League"
           ]
         },
         {
@@ -3650,26 +3680,6 @@
           ]
         },
         {
-          "season": "2026/27",
-          "club": "Sporting CP B",
-          "matches": 4,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
-          ]
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting CP B",
-          "matches": 24,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
-          ]
-        },
-        {
           "season": "2024/25",
           "club": "Sporting CP B",
           "matches": 22,
@@ -3677,16 +3687,6 @@
           "assists": 0,
           "competitions": [
             "Liga 3"
-          ]
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting CP U19",
-          "matches": 8,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "UEFA Youth League"
           ]
         },
         {
@@ -4193,13 +4193,23 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 4,
-          "goals": 2,
+          "matches": 3,
+          "goals": 1,
           "assists": 0,
           "competitions": [
             "Liga Portugal",
             "League Cup",
             "Taça de Portugal"
+          ]
+        },
+        {
+          "season": "2026/27",
+          "club": "Sporting CP B",
+          "matches": 6,
+          "goals": 3,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
           ]
         },
         {
@@ -4215,26 +4225,6 @@
           ]
         },
         {
-          "season": "2023/24",
-          "club": "Sporting CP",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Europa League"
-          ]
-        },
-        {
-          "season": "2026/27",
-          "club": "Sporting CP B",
-          "matches": 4,
-          "goals": 2,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
-          ]
-        },
-        {
           "season": "2025/26",
           "club": "Sporting CP B",
           "matches": 23,
@@ -4242,26 +4232,6 @@
           "assists": 0,
           "competitions": [
             "Liga Portugal 2"
-          ]
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting CP B",
-          "matches": 14,
-          "goals": 6,
-          "assists": 0,
-          "competitions": [
-            "Liga 3"
-          ]
-        },
-        {
-          "season": "2023/24",
-          "club": "Sporting CP B",
-          "matches": 27,
-          "goals": 8,
-          "assists": 0,
-          "competitions": [
-            "Liga 3"
           ]
         },
         {
@@ -4276,12 +4246,42 @@
         },
         {
           "season": "2024/25",
+          "club": "Sporting CP B",
+          "matches": 14,
+          "goals": 6,
+          "assists": 0,
+          "competitions": [
+            "Liga 3"
+          ]
+        },
+        {
+          "season": "2024/25",
           "club": "Sporting CP U19",
           "matches": 1,
           "goals": 1,
           "assists": 0,
           "competitions": [
             "UEFA Youth League"
+          ]
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting CP",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Europa League"
+          ]
+        },
+        {
+          "season": "2023/24",
+          "club": "Sporting CP B",
+          "matches": 27,
+          "goals": 8,
+          "assists": 0,
+          "competitions": [
+            "Liga 3"
           ]
         },
         {
@@ -4464,8 +4464,8 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 18,
-          "goals": 3,
+          "matches": 16,
+          "goals": 4,
           "assists": 4,
           "competitions": [
             "Liga Portugal",
@@ -4516,16 +4516,6 @@
         },
         {
           "season": "2022/23",
-          "club": "Marítimo B",
-          "matches": 1,
-          "goals": 1,
-          "assists": 0,
-          "competitions": [
-            "Campeonato de Portugal Prio"
-          ]
-        },
-        {
-          "season": "2022/23",
           "club": "Marítimo",
           "matches": 11,
           "goals": 1,
@@ -4533,6 +4523,16 @@
           "competitions": [
             "Liga Portugal",
             "Liga Portugal Qualification"
+          ]
+        },
+        {
+          "season": "2022/23",
+          "club": "Marítimo B",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0,
+          "competitions": [
+            "Campeonato de Portugal Prio"
           ]
         },
         {
@@ -4712,6 +4712,16 @@
           ]
         },
         {
+          "season": "2025/26",
+          "club": "Sporting CP B",
+          "matches": 1,
+          "goals": 0,
+          "assists": 0,
+          "competitions": [
+            "Liga Portugal 2"
+          ]
+        },
+        {
           "season": "2024/25",
           "club": "Sporting CP",
           "matches": 10,
@@ -4775,16 +4785,6 @@
             "League Cup",
             "Taça de Portugal",
             "Europa League"
-          ]
-        },
-        {
-          "season": "2025/26",
-          "club": "Sporting CP B",
-          "matches": 1,
-          "goals": 0,
-          "assists": 0,
-          "competitions": [
-            "Liga Portugal 2"
           ]
         },
         {
@@ -5339,7 +5339,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 14,
+          "matches": 13,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -5397,6 +5397,16 @@
           ]
         },
         {
+          "season": "2024/25",
+          "club": "West Ham United U21",
+          "matches": 1,
+          "goals": 1,
+          "assists": 0,
+          "competitions": [
+            "Premier League International Cup"
+          ]
+        },
+        {
           "season": "2023",
           "club": "Palmeiras",
           "matches": 27,
@@ -5406,16 +5416,6 @@
             "Série A",
             "Copa Libertadores",
             "Copa do Brasil"
-          ]
-        },
-        {
-          "season": "2024/25",
-          "club": "West Ham United U21",
-          "matches": 1,
-          "goals": 1,
-          "assists": 0,
-          "competitions": [
-            "Premier League International Cup"
           ]
         }
       ],
@@ -5512,7 +5512,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 13,
+          "matches": 12,
           "goals": 3,
           "assists": 1,
           "competitions": [
@@ -5543,31 +5543,11 @@
           ]
         },
         {
-          "season": "2024/25",
-          "club": "Sporting CP B",
-          "matches": 17,
-          "goals": 2,
-          "assists": 0,
-          "competitions": [
-            "Liga 3"
-          ]
-        },
-        {
           "season": "2025/26",
           "club": "Sporting CP U19",
           "matches": 7,
           "goals": 5,
           "assists": 0,
-          "competitions": [
-            "UEFA Youth League"
-          ]
-        },
-        {
-          "season": "2024/25",
-          "club": "Sporting CP U19",
-          "matches": 6,
-          "goals": 3,
-          "assists": 1,
           "competitions": [
             "UEFA Youth League"
           ]
@@ -5590,6 +5570,26 @@
           "assists": 3,
           "competitions": [
             "Puskás Cup"
+          ]
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting CP B",
+          "matches": 17,
+          "goals": 2,
+          "assists": 0,
+          "competitions": [
+            "Liga 3"
+          ]
+        },
+        {
+          "season": "2024/25",
+          "club": "Sporting CP U19",
+          "matches": 6,
+          "goals": 3,
+          "assists": 1,
+          "competitions": [
+            "UEFA Youth League"
           ]
         }
       ],
@@ -5641,7 +5641,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 0,
+          "matches": 10,
           "goals": 0,
           "assists": 0,
           "competitions": [
