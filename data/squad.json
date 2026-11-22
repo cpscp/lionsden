@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T07:08:31.250995+00:00",
+  "_updated_at": "2026-11-22T13:36:28.945974+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -12,8 +12,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
-        "matches": 12,
+        "matches": 13,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 2,
             "minutes": 180,
@@ -47,12 +55,12 @@
             "red": 0
           }
         },
-        "minutes": 1036,
+        "minutes": 1126,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
         "red": 0,
-        "cleanSheets": 3
+        "cleanSheets": 4
       },
       "shirtNumber": 1,
       "career": [
@@ -153,7 +161,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 12,
+          "matches": 13,
           "goals": 0,
           "assists": 0
         },
@@ -713,8 +721,16 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
       "stats": {
-        "matches": 8,
+        "matches": 9,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "League Cup": {
             "matches": 1,
             "minutes": 90,
@@ -748,7 +764,7 @@
             "red": 0
           }
         },
-        "minutes": 456,
+        "minutes": 546,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -853,7 +869,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 8,
+          "matches": 9,
           "goals": 0,
           "assists": 0
         },
@@ -1372,8 +1388,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
       "stats": {
-        "matches": 15,
+        "matches": 16,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 10,
             "minutes": 900,
@@ -1399,7 +1423,7 @@
             "red": 0
           }
         },
-        "minutes": 1306,
+        "minutes": 1351,
         "goals": 2,
         "assists": 0,
         "yellow": 2,
@@ -1476,7 +1500,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 15,
+          "matches": 16,
           "goals": 2,
           "assists": 0
         },
@@ -1697,8 +1721,16 @@
       "nationality": "Senegal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1609327.png",
       "stats": {
-        "matches": 2,
+        "matches": 3,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 2,
             "minutes": 180,
@@ -1708,7 +1740,7 @@
             "red": 0
           }
         },
-        "minutes": 180,
+        "minutes": 225,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -1757,7 +1789,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 2,
+          "matches": 3,
           "goals": 0,
           "assists": 0
         },
@@ -1820,8 +1852,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1712326.png",
       "stats": {
-        "matches": 1,
+        "matches": 2,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 1,
             "minutes": 2,
@@ -1831,7 +1871,7 @@
             "red": 0
           }
         },
-        "minutes": 2,
+        "minutes": 92,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -2151,8 +2191,16 @@
       "nationality": "Denmark",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
       "stats": {
-        "matches": 14,
+        "matches": 15,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 9,
             "minutes": 311,
@@ -2186,7 +2234,7 @@
             "red": 0
           }
         },
-        "minutes": 587,
+        "minutes": 632,
         "goals": 0,
         "assists": 1,
         "yellow": 1,
@@ -2267,7 +2315,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 14,
+          "matches": 15,
           "goals": 0,
           "assists": 1
         },
@@ -2344,8 +2392,16 @@
       "nationality": "Spain",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1310480.png",
       "stats": {
-        "matches": 16,
+        "matches": 17,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 11,
             "minutes": 982,
@@ -2371,7 +2427,7 @@
             "red": 0
           }
         },
-        "minutes": 1432,
+        "minutes": 1477,
         "goals": 1,
         "assists": 0,
         "yellow": 3,
@@ -2432,7 +2488,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 16,
+          "matches": 17,
           "goals": 1,
           "assists": 0
         },
@@ -2516,8 +2572,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1663855.png",
       "stats": {
-        "matches": 6,
+        "matches": 7,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 3,
             "minutes": 142,
@@ -2543,7 +2607,7 @@
             "red": 0
           }
         },
-        "minutes": 247,
+        "minutes": 337,
         "goals": 0,
         "assists": 0,
         "yellow": 1,
@@ -2596,14 +2660,14 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 6,
+          "matches": 7,
           "goals": 0,
           "assists": 0
         },
         {
           "season": "2026/27",
           "club": "Sporting [B]",
-          "matches": 6,
+          "matches": 7,
           "goals": 0,
           "assists": 0
         },
@@ -2722,8 +2786,16 @@
       "nationality": "Australia",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
       "stats": {
-        "matches": 11,
+        "matches": 12,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 75,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 9,
             "minutes": 414,
@@ -2741,7 +2813,7 @@
             "red": 0
           }
         },
-        "minutes": 566,
+        "minutes": 641,
         "goals": 0,
         "assists": 2,
         "yellow": 1,
@@ -2846,7 +2918,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 11,
+          "matches": 12,
           "goals": 0,
           "assists": 2
         },
@@ -2923,8 +2995,16 @@
       "nationality": "Brazil",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
       "stats": {
-        "matches": 6,
+        "matches": 7,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 69,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 3,
             "minutes": 82,
@@ -2958,7 +3038,7 @@
             "red": 0
           }
         },
-        "minutes": 176,
+        "minutes": 245,
         "goals": 3,
         "assists": 0,
         "yellow": 0,
@@ -3035,7 +3115,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 6,
+          "matches": 7,
           "goals": 3,
           "assists": 0
         },
@@ -3119,8 +3199,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
       "stats": {
-        "matches": 3,
+        "matches": 4,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Champions League": {
             "matches": 1,
             "minutes": 90,
@@ -3146,7 +3234,7 @@
             "red": 0
           }
         },
-        "minutes": 224,
+        "minutes": 314,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -3617,8 +3705,16 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
       "stats": {
-        "matches": 3,
+        "matches": 4,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 90,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "League Cup": {
             "matches": 1,
             "minutes": 5,
@@ -3644,7 +3740,7 @@
             "red": 0
           }
         },
-        "minutes": 47,
+        "minutes": 137,
         "goals": 2,
         "assists": 0,
         "yellow": 0,
@@ -3719,8 +3815,16 @@
       "nationality": "Mozambique",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
-        "matches": 17,
+        "matches": 18,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 11,
             "minutes": 687,
@@ -3754,7 +3858,7 @@
             "red": 0
           }
         },
-        "minutes": 1158,
+        "minutes": 1203,
         "goals": 3,
         "assists": 4,
         "yellow": 3,
@@ -3879,7 +3983,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 17,
+          "matches": 18,
           "goals": 3,
           "assists": 4
         },
@@ -4133,8 +4237,16 @@
       "nationality": "Uruguay",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
       "stats": {
-        "matches": 12,
+        "matches": 13,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 21,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 9,
             "minutes": 562,
@@ -4160,7 +4272,7 @@
             "red": 0
           }
         },
-        "minutes": 721,
+        "minutes": 742,
         "goals": 3,
         "assists": 1,
         "yellow": 0,
@@ -4261,7 +4373,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 12,
+          "matches": 13,
           "goals": 3,
           "assists": 1
         },
@@ -4331,8 +4443,16 @@
       "nationality": "England",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
       "stats": {
-        "matches": 8,
+        "matches": 9,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 15,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "League Cup": {
             "matches": 1,
             "minutes": 73,
@@ -4366,7 +4486,7 @@
             "red": 0
           }
         },
-        "minutes": 160,
+        "minutes": 175,
         "goals": 0,
         "assists": 1,
         "yellow": 1,
@@ -4435,7 +4555,7 @@
         {
           "season": "2026/27",
           "club": "Sporting (E) [Chelsea]",
-          "matches": 8,
+          "matches": 9,
           "goals": 0,
           "assists": 1
         },
@@ -4505,8 +4625,16 @@
       "nationality": "Brazil",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1458757.png",
       "stats": {
-        "matches": 13,
+        "matches": 14,
         "byCompetition": {
+          "Taca de Portugal": {
+            "matches": 1,
+            "minutes": 45,
+            "goals": 0,
+            "assists": 0,
+            "yellow": 0,
+            "red": 0
+          },
           "Liga Portugal": {
             "matches": 9,
             "minutes": 352,
@@ -4532,7 +4660,7 @@
             "red": 0
           }
         },
-        "minutes": 504,
+        "minutes": 549,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -4589,7 +4717,7 @@
         {
           "season": "2026/27",
           "club": "Sporting",
-          "matches": 13,
+          "matches": 14,
           "goals": 0,
           "assists": 0
         },

@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T07:08:56.756870+00:00",
+  "_updated_at": "2026-11-22T13:37:05.532432+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -23387,7 +23387,7 @@
                 "id": 361717
               },
               "shirtNumber": "1",
-              "position": "",
+              "position": "GK",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23401,7 +23401,7 @@
                 "id": 1119687
               },
               "shirtNumber": "13",
-              "position": "",
+              "position": "DF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23415,7 +23415,7 @@
                 "id": 1609327
               },
               "shirtNumber": "55",
-              "position": "",
+              "position": "DF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23429,7 +23429,7 @@
                 "id": 1712326
               },
               "shirtNumber": "70",
-              "position": "",
+              "position": "FW",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23443,7 +23443,7 @@
                 "id": 1663855
               },
               "shirtNumber": "8",
-              "position": "",
+              "position": "MF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23457,7 +23457,7 @@
                 "id": 1327214
               },
               "shirtNumber": "19",
-              "position": "",
+              "position": "FW",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23471,7 +23471,7 @@
                 "id": 1310480
               },
               "shirtNumber": "5",
-              "position": "",
+              "position": "MF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23485,7 +23485,7 @@
                 "id": 1459257
               },
               "shirtNumber": "21",
-              "position": "",
+              "position": "MF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23499,7 +23499,7 @@
                 "id": 1648470
               },
               "shirtNumber": "73",
-              "position": "",
+              "position": "DF",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23513,7 +23513,7 @@
                 "id": 1458757
               },
               "shirtNumber": "31",
-              "position": "",
+              "position": "FW",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23527,7 +23527,7 @@
                 "id": 1525416
               },
               "shirtNumber": "9",
-              "position": "",
+              "position": "FW",
               "substitute": false,
               "horizontalLayout": null,
               "statistics": {
@@ -23957,9 +23957,9 @@
             "incidentType": "goal",
             "time": 58,
             "player": {
-              "id": 0,
+              "id": 1525416,
               "name": "Rafael Nel",
-              "profileUrl": ""
+              "profileUrl": "/players/1525416/rafael-nel"
             },
             "isHome": true,
             "description": "Rafael Nel",
@@ -23970,9 +23970,9 @@
             "incidentType": "goal",
             "time": 61,
             "player": {
-              "id": 0,
+              "id": 1327214,
               "name": "Nestory Irankunda",
-              "profileUrl": ""
+              "profileUrl": "/players/1327214/nestory-irankunda"
             },
             "isHome": true,
             "description": "Nestory Irankunda",
@@ -23983,9 +23983,9 @@
             "incidentType": "goal",
             "time": 69,
             "player": {
-              "id": 0,
+              "id": 1088753,
               "name": "Geny Catamo",
-              "profileUrl": ""
+              "profileUrl": "/players/1088753/geny-catamo"
             },
             "isHome": true,
             "description": "Geny Catamo",
@@ -23996,9 +23996,9 @@
             "incidentType": "goal",
             "time": 73,
             "player": {
-              "id": 0,
+              "id": 1327214,
               "name": "Nestory Irankunda",
-              "profileUrl": ""
+              "profileUrl": "/players/1327214/nestory-irankunda"
             },
             "isHome": true,
             "description": "Nestory Irankunda",
