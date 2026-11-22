@@ -1,0 +1,41 @@
+name: Testes (funcionais e carga)
+
+on:
+  workflow_dispatch:
+    inputs:
+      load:
+        description: "Correr também o teste de carga (usa ~50 MB da quota diária do Firebase)"
+        type: boolean
+        default: false
+
+jobs:
+  functional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Testes funcionais (produção)
+        env:
+          BASE_URL: https://lionsdenscp.web.app
+        run: python tests/functional_test.py
+
+  load:
+    if: ${{ inputs.load }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Teste de carga (produção, com teto de tráfego)
+        env:
+          BASE_URL: https://lionsdenscp.web.app
+          STAGES: 5,15,30
+          VISITS: '3'
+          MAX_MB: '60'
+        run: python tests/load_test.py
