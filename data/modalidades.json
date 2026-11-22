@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T18:41:20.131426+00:00",
+  "_updated_at": "2026-11-22T19:53:11.981476+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -470,7 +470,7 @@
         ],
         "computed": true
       },
-      "news_count": 17
+      "news_count": 18
     },
     {
       "key": "andebol",
@@ -682,6 +682,19 @@
         }
       ],
       "results": [
+        {
+          "sport": "andebol",
+          "sport_label": "Andebol",
+          "date": "2026-11-22T18:00:00Z",
+          "competition": "Campeonato Betclic · Jornada 13",
+          "home": "AA Avanca",
+          "away": "Sporting CP",
+          "home_score": 25,
+          "away_score": 41,
+          "sporting_home": false,
+          "outcome": "V",
+          "source": "Flashscore"
+        },
         {
           "sport": "andebol",
           "sport_label": "Andebol",
@@ -955,6 +968,19 @@
         "competition": "Campeonato Betclic",
         "rows": [
           {
+            "team": "Sporting CP",
+            "played": 13,
+            "won": 12,
+            "drawn": 0,
+            "lost": 1,
+            "gf": 529,
+            "ga": 352,
+            "points": 37,
+            "pos": 1,
+            "sporting": true,
+            "gd": 177
+          },
+          {
             "team": "FC Porto",
             "played": 12,
             "won": 12,
@@ -963,7 +989,7 @@
             "gf": 488,
             "ga": 323,
             "points": 36,
-            "pos": 1,
+            "pos": 2,
             "sporting": false,
             "gd": 165
           },
@@ -976,22 +1002,9 @@
             "gf": 417,
             "ga": 371,
             "points": 35,
-            "pos": 2,
+            "pos": 3,
             "sporting": false,
             "gd": 46
-          },
-          {
-            "team": "Sporting CP",
-            "played": 12,
-            "won": 11,
-            "drawn": 0,
-            "lost": 1,
-            "gf": 488,
-            "ga": 327,
-            "points": 34,
-            "pos": 3,
-            "sporting": true,
-            "gd": 161
           },
           {
             "team": "Benfica",
@@ -1085,6 +1098,19 @@
             "gd": -92
           },
           {
+            "team": "AA Avanca",
+            "played": 13,
+            "won": 1,
+            "drawn": 1,
+            "lost": 11,
+            "gf": 317,
+            "ga": 444,
+            "points": 16,
+            "pos": 11,
+            "sporting": false,
+            "gd": -127
+          },
+          {
             "team": "Carvalhos",
             "played": 13,
             "won": 1,
@@ -1093,22 +1119,9 @@
             "gf": 334,
             "ga": 440,
             "points": 15,
-            "pos": 11,
-            "sporting": false,
-            "gd": -106
-          },
-          {
-            "team": "AA Avanca",
-            "played": 12,
-            "won": 1,
-            "drawn": 1,
-            "lost": 10,
-            "gf": 292,
-            "ga": 403,
-            "points": 15,
             "pos": 12,
             "sporting": false,
-            "gd": -111
+            "gd": -106
           }
         ],
         "computed": true
@@ -1119,6 +1132,19 @@
       "key": "hoquei-em-patins",
       "label": "Hóquei em Patins",
       "fixtures": [
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-22T19:30:00Z",
+          "competition": "Campeonato Placard · Jornada 3",
+          "opponent": "SL Benfica",
+          "home_away": "casa",
+          "venue": "",
+          "labels": [],
+          "tickets": null,
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/live?l=9960895B07BD4723826AA36AD712C8E6022992"
+        },
         {
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
@@ -1468,8 +1494,223 @@
           "source": "Sporting.pt"
         }
       ],
-      "results": [],
-      "standings": null,
+      "results": [
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-14T18:30:00Z",
+          "competition": "Campeonato Placard · Jornada 2",
+          "home": "AD Valongo / Colquímica",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 3,
+          "sporting_home": false,
+          "outcome": "V",
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/video?videoId=e-5578&metaname=compID&metavalue=CPHP&stageId=&metaseason="
+        },
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-10T20:30:00Z",
+          "competition": "Campeonato Placard · Jornada 1",
+          "home": "Sporting CP",
+          "away": "Candelária SC",
+          "home_score": 5,
+          "away_score": 0,
+          "sporting_home": true,
+          "outcome": "V",
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/video?videoId=e-5529&metaname=compID&metavalue=CPHP&stageId=&metaseason="
+        }
+      ],
+      "standings": {
+        "competition": "Campeonato Placard",
+        "rows": [
+          {
+            "pos": 1,
+            "team": "OC Barcelos SAD",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 22,
+            "ga": 9,
+            "gd": 13
+          },
+          {
+            "pos": 2,
+            "team": "FC Porto",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 15,
+            "ga": 5,
+            "gd": 10
+          },
+          {
+            "pos": 3,
+            "team": "UD Oliveirense / Simoldes",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 12,
+            "ga": 4,
+            "gd": 8
+          },
+          {
+            "pos": 4,
+            "team": "J. Pacense / Des Compagnons",
+            "sporting": false,
+            "points": 7,
+            "played": 3,
+            "won": 2,
+            "drawn": 1,
+            "lost": 0,
+            "gf": 14,
+            "ga": 10,
+            "gd": 4
+          },
+          {
+            "pos": 5,
+            "team": "Sporting CP",
+            "sporting": true,
+            "points": 6,
+            "played": 2,
+            "won": 2,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 8,
+            "ga": 1,
+            "gd": 7
+          },
+          {
+            "pos": 6,
+            "team": "HC Braga SAD/SPORMEX",
+            "sporting": false,
+            "points": 6,
+            "played": 3,
+            "won": 2,
+            "drawn": 0,
+            "lost": 1,
+            "gf": 12,
+            "ga": 10,
+            "gd": 2
+          },
+          {
+            "pos": 7,
+            "team": "Riba d' Ave HC / CSJ Group",
+            "sporting": false,
+            "points": 4,
+            "played": 3,
+            "won": 1,
+            "drawn": 1,
+            "lost": 1,
+            "gf": 8,
+            "ga": 8,
+            "gd": 0
+          },
+          {
+            "pos": 8,
+            "team": "SL Benfica",
+            "sporting": false,
+            "points": 3,
+            "played": 2,
+            "won": 1,
+            "drawn": 0,
+            "lost": 1,
+            "gf": 6,
+            "ga": 3,
+            "gd": 3
+          },
+          {
+            "pos": 9,
+            "team": "AJ Viana",
+            "sporting": false,
+            "points": 3,
+            "played": 3,
+            "won": 1,
+            "drawn": 0,
+            "lost": 2,
+            "gf": 9,
+            "ga": 13,
+            "gd": -4
+          },
+          {
+            "pos": 10,
+            "team": "AD Valongo / Colquímica",
+            "sporting": false,
+            "points": 1,
+            "played": 3,
+            "won": 0,
+            "drawn": 1,
+            "lost": 2,
+            "gf": 6,
+            "ga": 9,
+            "gd": -3
+          },
+          {
+            "pos": 11,
+            "team": "AD Sanjoanense",
+            "sporting": false,
+            "points": 1,
+            "played": 3,
+            "won": 0,
+            "drawn": 1,
+            "lost": 2,
+            "gf": 11,
+            "ga": 17,
+            "gd": -6
+          },
+          {
+            "pos": 12,
+            "team": "Candelária SC",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 2,
+            "ga": 11,
+            "gd": -9
+          },
+          {
+            "pos": 13,
+            "team": "AD Oeiras",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 7,
+            "ga": 19,
+            "gd": -12
+          },
+          {
+            "pos": 14,
+            "team": "SCT / UP TOMAR",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 5,
+            "ga": 18,
+            "gd": -13
+          }
+        ]
+      },
       "news_count": 12
     },
     {
@@ -3265,6 +3506,26 @@
       "source": "Sporting.pt"
     },
     {
+      "title": "Missão cumprida no Campeonato antes do regresso ao palco europeu",
+      "summary": "Arranque fulminante e domínio absoluto diante da AA Avanca (25-41)",
+      "url": "https://sporting.pt/noticias/missao-cumprida-no-campeonato-antes-do-regresso-ao-palco-europeu",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795372855435-ISAA0913.webp",
+      "published": "2026-11-22T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Nuno Dias: \"Fazer um bom jogo e obter um bom resultado\"",
+      "summary": "Antevisão do treinador ao jogo em casa do TFK Beitar Riga para a primeira mão dos oitavos-de-final da UEFA Futsal Champions League",
+      "url": "https://sporting.pt/noticias/nuno-dias-fazer-um-bom-jogo-e-obter-um-bom-resultado",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795375745224-ISAA1282_1_.webp",
+      "published": "2026-11-22T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
+    {
       "title": "O longo caminho de Tiago Rodrigues: dos treinos com o pai ao topo do futsal mundial pelo Sporting",
       "summary": "João Rodrigues treinou várias equipas no Barreiro e incutiu no filho o amor pela modalidade",
       "url": "https://www.record.pt/futebol/futsal/detalhe/o-longo-caminho-de-tiago-rodrigues-dos-treinos-com-o-pai-ao-topo-do-futsal-mundial-pelo-sporting?ref=Sporting_BucketDestaquesPrincipais",
@@ -3433,16 +3694,6 @@
       "sport": "futsal",
       "sport_label": "Futsal",
       "source": "O Jogo"
-    },
-    {
-      "title": "Frederico Varandas, Eduardo Quaresma e Kaique no Pavilhão João Rocha a apoiarem o andebol",
-      "summary": "Os jogadores do Sporting vibraram com a vitória da equipa orientada por Ricardo Costa frente ao Dínamo de Bucareste",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/frederico-varandas-eduardo-quaresma-e-kaique-no-pavilhao-joao-rocha-a-apoiarem-o-andebol?ref=Modalidades_BucketDestaquesPrincipais",
-      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-19-21-38-14-2476080.jpg",
-      "published": "2026-11-19T21:38:22Z",
-      "sport": "andebol",
-      "sport_label": "Andebol",
-      "source": "Record"
     },
     {
       "title": "Leões na final da Taça Intercontinental",
