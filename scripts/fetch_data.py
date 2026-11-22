@@ -2366,6 +2366,59 @@ def _mod_team(name):
     return "Sporting CP" if zz_norm(n) in ("sporting", "sporting cp") else n
 
 
+
+def _sporting_article_text(html_text):
+    import html as _h
+    body = ""
+    m = re.search(r"<article\b.*?</article>", html_text, re.S) or re.search(r"<main\b.*?</main>", html_text, re.S)
+    chunk = m.group(0) if m else html_text
+    paras = []
+    for p in re.findall(r"<p\b[^>]*>(.*?)</p>", chunk, re.S):
+        t = clean(_h.unescape(re.sub(r"<[^>]+>", " ", p)))
+        if len(t) >= 40 and not re.search(r"cookies|newsletter|todos os direitos|sócio num minuto|loja verde online", t, re.I):
+            paras.append(t)
+    seen, out = set(), []
+    for t in paras:
+        if t not in seen:
+            seen.add(t); out.append(t)
+    body = "\n\n".join(out)
+    return body if len(body) > 200 else ""
+
+
+def fetch_sporting_site_news(previous_items=None, fetch_bodies=25):
+    """Notícias oficiais do novo sporting.pt (estado embutido na página inicial)."""
+    _, raw = fetch_sporting_site_state()
+    prev = {str(x.get("url")): x for x in (previous_items or []) if x.get("source") == "Sporting.pt"}
+    items = []
+    for n in raw:
+        slug, title = n.get("slug"), clean(n.get("title"))
+        if not slug or not title:
+            continue
+        url = "https://sporting.pt/noticias/" + slug
+        pub = _pt_date(n.get("date"))
+        tm = re.match(r"\s*(\d{1,2})[:h](\d{2})", str(n.get("time") or ""))
+        if pub and tm:
+            pub = pub[:11] + f"{int(tm.group(1)):02d}:{tm.group(2)}:00Z"
+        item = {"title": title, "url": url, "source": "Sporting.pt", "image": n.get("cover"),
+                "image_source": "Sporting.pt", "description": clean(n.get("summary")), "published": pub,
+                "category": clean(n.get("tag"))}
+        old = prev.get(url) or {}
+        if old.get("article_text"):
+            item["article_text"] = old["article_text"]
+        items.append(item)
+    items.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
+    for item in [x for x in items if not x.get("article_text")][:fetch_bodies]:
+        try:
+            r = session.get(item["url"], timeout=20, headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
+            if r.ok:
+                txt = _sporting_article_text(r.text)
+                if txt:
+                    item["article_text"] = txt
+        except Exception as e:
+            print("Sporting.pt article warning:", item["url"], e)
+    print("Sporting.pt: textos completos:", sum(1 for x in items if x.get("article_text")), "de", len(items))
+    return items
+
 def fetch_sporting_site_state():
     r = session.get("https://sporting.pt/", timeout=30, headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
     r.raise_for_status()
@@ -4085,11 +4138,8 @@ def fetch_news():
         # O Jogo — futebol e modalidades
         ("O Jogo", "https://www.ojogo.pt/futebol"),
         ("O Jogo", "https://www.ojogo.pt/modalidades"),
-        # Sporting.pt — fonte oficial, universo completo
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias"),
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol"),
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/futebol/futebol-feminino"),
-        ("Sporting.pt", "https://www.sporting.pt/pt/noticias/modalidades"),
+        # Sporting.pt — fonte oficial: o novo site (2026) é lido à parte, a partir
+        # do estado embutido na página (ver fetch_sporting_site_news).
     ]
 
     # Each listing gets its own allowance; the final feed is a single
@@ -5685,6 +5735,15 @@ def fetch_news():
                     return datetime.fromisoformat(str(value)).replace(tzinfo=timezone.utc).timestamp()
                 except Exception:
                     return 0
+
+    # Sporting.pt (novo site): notícias oficiais de todo o universo Sporting.
+    try:
+        official = fetch_sporting_site_news(previous_items)
+        known = {re.sub(r"[?#].*$", "", str(x.get("url") or "").rstrip("/")).lower() for x in enriched}
+        enriched.extend(x for x in official if x["url"].lower() not in known)
+        print(f"Sporting.pt: {len(official)} notícias oficiais.")
+    except Exception as e:
+        print("Sporting.pt news warning:", e)
 
     # Hard relevance gate AFTER article enrichment. This removes unrelated
     # football/modalities stories and also cleans the historical rolling window.
@@ -7398,6 +7457,236 @@ def enforce_manual_squad():
     print("Final plantel normalization: Eduardo #73 DF, Francisco #99 GK, Sotiris removed.")
 
 
+
+# ---------------------------------------------------------------------------
+# Etapa final: estatísticas dos jogadores só com jogos oficiais da equipa
+# principal, reconciliadas com as fichas de jogo; datas de nascimento em falta;
+# eliminatórias das taças quando o fornecedor ainda não publica o quadro.
+# ---------------------------------------------------------------------------
+OFFICIAL_COMP_LABELS = {"primeira-liga": "Liga Portugal", "champions": "Champions League",
+                        "taca-portugal": "Taça de Portugal", "taca-liga": "Taça da Liga",
+                        "supertaca": "Supertaça", "europa": "Liga Europa"}
+
+
+def official_comp_key(name):
+    n = zz_norm(name)
+    if not n or not is_official_sporting_competition(name) or "friend" in n or "amig" in n or "club friendl" in n:
+        return None
+    if "supertaca" in n or "super cup" in n:
+        return "supertaca"
+    if "taca de portugal" in n or "portuguese cup" in n:
+        return "taca-portugal"
+    if "league cup" in n or "taca da liga" in n:
+        return "taca-liga"
+    if "champions" in n:
+        return "champions"
+    if "europa" in n:
+        return "europa"
+    if "liga portugal" in n or "primeira liga" in n or "liga betclic" in n:
+        return "primeira-liga"
+    return None
+
+
+def _computed_player_match_stats():
+    """Por competição e jogador: jogos, minutos, golos, amarelos, vermelhos e
+    jogos sem sofrer (guarda-redes), a partir das fichas de jogo oficiais."""
+    fixtures = {str(f.get("id")): f for f in ((safe_existing("fixtures.json") or {}).get("fixtures") or [])}
+    details = (safe_existing("match-details.json") or {}).get("fixtures") or []
+    out = {}
+    for d in details:
+        f = fixtures.get(str(d.get("match_id")))
+        if not f or str((f.get("status") or {}).get("short")) != "finished":
+            continue
+        comp = official_comp_key((f.get("competition") or {}).get("name"))
+        if not comp:
+            continue
+        sp_home = _is_scp((f.get("home") or {}).get("name"))
+        side = "home" if sp_home else "away"
+        lu = (d.get("lineups") or {}).get(side) or {}
+        incs = (d.get("incidents") or {}).get("incidents") or []
+        mine = [i for i in incs if i.get("isHome") == sp_home]
+        conceded = (f.get("goals") or {}).get("away" if sp_home else "home")
+        bucket = out.setdefault(comp, {})
+
+        def rec(name):
+            return bucket.setdefault(zz_norm(name), {"matches": 0, "minutes": 0, "goals": 0, "yellow": 0, "red": 0, "cs": 0})
+
+        def nm(x):
+            return (x or {}).get("name") if isinstance(x, dict) else x
+
+        sub_out = {}
+        sub_in = {}
+        for i in mine:
+            if i.get("incidentType") == "substitution":
+                sw = i.get("swap") or []
+                pin = nm(i.get("playerIn")) or nm(sw[0] if sw else None)
+                pout = nm(i.get("playerOut")) or nm(sw[1] if len(sw) > 1 else None)
+                t = i.get("time") or 0
+                if pout:
+                    sub_out[zz_norm(pout)] = t
+                if pin:
+                    sub_in[zz_norm(pin)] = t
+        for p in (lu.get("players") or []):
+            name = nm(p.get("player"))
+            if not name:
+                continue
+            k = zz_norm(name)
+            if not p.get("substitute"):
+                r = rec(name); r["matches"] += 1; r["minutes"] += int(min(90, sub_out.get(k, 90)))
+                # Jogo completo sem sofrer golos; só conta para quem é guarda-redes no plantel.
+                if conceded == 0 and k not in sub_out:
+                    r["cs"] += 1
+            elif k in sub_in:
+                r = rec(name); r["matches"] += 1; r["minutes"] += int(max(1, 90 - sub_in[k]))
+        for i in mine:
+            who = nm(i.get("player")) or i.get("description")
+            if not who:
+                continue
+            if i.get("incidentType") == "goal" and not i.get("ownGoal"):
+                rec(who)["goals"] += 1
+            elif i.get("incidentType") == "card":
+                if i.get("cardType") in ("red", "second_yellow"):
+                    rec(who)["red"] += 1
+                else:
+                    rec(who)["yellow"] += 1
+    return out
+
+
+def _fotmob_birthdate(fid):
+    try:
+        data = fotmob_get("/api/playerData", {"id": fid}) or {}
+        bd = data.get("birthDate") or {}
+        v = bd.get("utcTime") if isinstance(bd, dict) else bd
+        if v:
+            return v
+        for item in (data.get("playerInformation") or []):
+            if zz_norm(item.get("title")) in ("age", "idade"):
+                ut = ((item.get("value") or {}).get("options") or {}).get("utcTime") or (item.get("dateOfBirth"))
+                if ut:
+                    return ut
+    except Exception as e:
+        print("FotMob birth date warning:", fid, e)
+    return None
+
+
+def finalize_player_stats():
+    squad = safe_existing("squad.json") or {}
+    players = squad.get("squad") or squad.get("players") or []
+    if not players:
+        return
+    computed = _computed_player_match_stats()
+    names = {zz_norm(p.get("name")): p for p in players if p.get("name")}
+
+    def find_player(key):
+        if key in names:
+            return names[key]
+        parts = key.split()
+        if len(parts) >= 2:
+            cands = [p for k, p in names.items() if k.split() and k.split()[-1] == parts[-1] and k[0] == key[0]]
+            if len(cands) == 1:
+                return cands[0]
+        return None
+
+    comp_hits = {}
+    for comp, recs in computed.items():
+        for key, r in recs.items():
+            p = find_player(key)
+            if p is not None:
+                comp_hits.setdefault(id(p), {})[comp] = r
+
+    fixed = 0
+    for p in players:
+        st = p.setdefault("stats", {})
+        by_old = st.get("byCompetition") or {}
+        by = {}
+        for cname, v in by_old.items():
+            key = official_comp_key(cname)
+            if not key:
+                continue
+            label = OFFICIAL_COMP_LABELS[key]
+            b = by.setdefault(label, {"matches": 0, "minutes": 0, "goals": 0, "assists": 0, "yellow": 0, "red": 0})
+            for k in b:
+                b[k] += int(fnum((v or {}).get(k)) or 0)
+        cs_comp = 0
+        for comp, r in (comp_hits.get(id(p)) or {}).items():
+            label = OFFICIAL_COMP_LABELS[comp]
+            b = by.setdefault(label, {"matches": 0, "minutes": 0, "goals": 0, "assists": 0, "yellow": 0, "red": 0})
+            before = dict(b)
+            for k in ("matches", "minutes", "goals", "yellow", "red"):
+                b[k] = max(b[k], r[k])
+            if b != before:
+                fixed += 1
+            cs_comp += r["cs"]
+        st["byCompetition"] = by
+        for k in ("matches", "minutes", "goals", "assists", "yellow", "red"):
+            st[k] = sum(v.get(k, 0) for v in by.values())
+        if p.get("position") == "GK" or "goalkeeper" in zz_norm(p.get("position")):
+            st["cleanSheets"] = cs_comp if comp_hits.get(id(p)) else st.get("cleanSheets", 0)
+        if not p.get("dateOfBirth") and p.get("fotmob_id"):
+            bd = _fotmob_birthdate(p["fotmob_id"])
+            if bd:
+                p["dateOfBirth"] = bd
+                print("Data de nascimento (FotMob):", p.get("name"), bd)
+    write_json("squad.json", squad)
+    print(f"Estatísticas dos jogadores: só jogos oficiais; {fixed} competições corrigidas com as fichas de jogo.")
+
+
+S365_ROUND_PT = (("Final", "Final"), ("Semi Finals", "Meias-finais"), ("Semi-Finals", "Meias-finais"),
+                 ("Quarter Finals", "Quartos de final"), ("Quarter-Finals", "Quartos de final"),
+                 ("Round of 16", "Oitavos de final"), ("1st Round", "1.ª eliminatória"), ("2nd Round", "2.ª eliminatória"),
+                 ("3rd Round", "3.ª eliminatória"), ("4th Round", "4.ª eliminatória"), ("5th Round", "5.ª eliminatória"))
+
+
+def fill_cup_rounds_from_fixtures():
+    sc = safe_existing("standings-competitions.json") or {}
+    fixtures = (safe_existing("fixtures.json") or {}).get("fixtures") or []
+    s365 = []
+    try:
+        for path in ("/games/results/", "/games/fixtures/"):
+            s365 += (s365_get(path, {"competitors": S365_SPORTING_ID}) or {}).get("games") or []
+    except Exception as e:
+        print("Taças: 365scores indisponível:", e)
+    changed = False
+    for key in ("taca-portugal", "taca-liga"):
+        comp = sc.get(key)
+        if not isinstance(comp, dict) or comp.get("rounds"):
+            continue
+        mine = [f for f in fixtures if official_comp_key((f.get("competition") or {}).get("name")) == key]
+        word = "taca de portugal" if key == "taca-portugal" else "taca da liga"
+        rounds = {}
+        for f in sorted(mine, key=lambda x: x.get("date") or 0):
+            label = clean((f.get("competition") or {}).get("round")) or ""
+            for g in s365:
+                name = g.get("competitionDisplayName") or ""
+                if word not in zz_norm(name) and not (key == "taca-liga" and "league cup" in zz_norm(name)):
+                    continue
+                try:
+                    gt = datetime.fromisoformat(str(g.get("startTime"))).timestamp()
+                except Exception:
+                    continue
+                if abs(gt - float(f.get("date") or 0)) < 36 * 3600:
+                    tail = name.split(" - ", 1)[1] if " - " in name else ""
+                    for a, b in S365_ROUND_PT:
+                        if a.lower() in tail.lower():
+                            label = b
+                            break
+            label = label or "Eliminatória"
+            fin = f.get("goals", {}).get("home") is not None and str((f.get("status") or {}).get("short")) == "finished"
+            team = lambda t: {"id": t.get("id"), "name": t.get("name"), "shortName": (t.get("name") or "")[:3].upper(),
+                              "crest": f"https://images.fotmob.com/image_resources/logo/teamlogo/{t.get('id')}.png" if t.get("id") else None}
+            r = rounds.setdefault(label, {"stage": label, "label": label, "participantCount": None, "matchups": []})
+            r["matchups"].append({"home": team(f.get("home") or {}), "away": team(f.get("away") or {}),
+                                  "homeScore": f["goals"]["home"] if fin else None, "awayScore": f["goals"]["away"] if fin else None,
+                                  "matches": [{"match_id": f.get("id"), "date": f.get("date")}], "sporting_only": True})
+        if rounds:
+            comp["rounds"] = list(rounds.values())
+            comp["note"] = "Percurso do Sporting na prova (o quadro completo aparece quando for publicado)."
+            comp["source"] = (comp.get("source") or "") + " + jogos do Sporting"
+            changed = True
+            print("Taças:", key, [(r["label"], len(r["matchups"])) for r in comp["rounds"]])
+    if changed:
+        write_json("standings-competitions.json", sc)
+
 def main():
     mode = os.environ.get("LIONS_DEN_MODE", "full")
     errors = []
@@ -7516,6 +7805,15 @@ def main():
             enforce_manual_squad()
         except Exception as e:
             print(f"Final squad normalization skipped: {e}")
+
+        try:
+            fill_cup_rounds_from_fixtures()
+        except Exception as e:
+            print(f"Cup rounds fallback skipped: {e}")
+        try:
+            finalize_player_stats()
+        except Exception as e:
+            print(f"Final player stats skipped: {e}")
 
         # TV/transmission is deliberately the LAST fixture enrichment step.
         # Several upstream sources rewrite fixtures.json during the pipeline;

@@ -961,6 +961,7 @@ function seasonStatsCard(season,st){
     </div>
   </div>`;
 }
+function compKeyFromName(name){const n=String(name||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');if(!n||/friend|amig|particular/.test(n))return null;if(/supertaca|super cup/.test(n))return 'supertaca';if(/taca de portugal|portuguese cup/.test(n))return 'taca-portugal';if(/league cup|taca da liga/.test(n))return 'taca-liga';if(/champions/.test(n))return 'champions';if(/liga portugal|primeira liga|liga betclic/.test(n))return 'primeira-liga';return null}
 function currentCompetitionStats(key){
   const names={
     'primeira-liga':'Liga Portugal',
@@ -970,8 +971,8 @@ function currentCompetitionStats(key){
   };
   const fixtures=allFixtures().filter(f=>{
     const name=String(f.competition?.name||'').trim();
-    const isOfficial=name!=='Club Friendlies'&&name!=='Friendly Match'&&name!=='Friendlies';
-    const same=names[key]===name;
+    const isOfficial=compKeyFromName(name)!==null;
+    const same=compKeyFromName(name)===key;
     const finished=f.goals?.home!=null&&f.goals?.away!=null&&!isFuture(f);
     return isOfficial&&same&&finished;
   });
@@ -1126,7 +1127,7 @@ function renderStats(){
     const a={matches:0,wins:0,draws:0,losses:0,goals:0,goals_against:0,clean_sheets:0,failed_to_score:0,home:{matches:0,wins:0,draws:0,losses:0},away:{matches:0,wins:0,draws:0,losses:0},results:[]};
     vals.forEach(v=>{['matches','wins','draws','losses','goals','goals_against','clean_sheets','failed_to_score'].forEach(k=>a[k]+=v[k]||0);['home','away'].forEach(side=>['matches','wins','draws','losses'].forEach(k=>a[side][k]+=v[side][k]||0));a.results.push(...v.results);});
     a.goal_difference=a.goals-a.goals_against;a.win_rate=a.matches?a.wins/a.matches*100:0;a.points=a.wins*3+a.draws;a.goals_per_match=a.matches?a.goals/a.matches:0;a.goals_against_per_match=a.matches?a.goals_against/a.matches:0;a.avg_goal_difference=a.matches?a.goal_difference/a.matches:0;a.unbeaten=a.matches>0&&a.losses===0;a.form=a.results.sort((x,y)=>x.date-y.date).slice(-6).map(x=>x.result);
-    const all=allFixtures().filter(f=>f.goals?.home!=null&&f.goals?.away!=null&&!isFuture(f)&&!['Club Friendlies','Friendly Match','Friendlies'].includes(String(f.competition?.name||'')));
+    const all=allFixtures().filter(f=>f.goals?.home!=null&&f.goals?.away!=null&&!isFuture(f)&&compKeyFromName(f.competition?.name)!==null);
     const wins=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf>ga;});
     const losses=all.filter(f=>{const h=String(f.home?.name||'').toLowerCase().includes('sporting');const gf=Number(h?f.goals.home:f.goals.away),ga=Number(h?f.goals.away:f.goals.home);return gf<ga;});
     a.biggest_win=wins.sort((x,y)=>{const h1=String(x.home?.name||'').toLowerCase().includes('sporting'),h2=String(y.home?.name||'').toLowerCase().includes('sporting');return (Number(h2?y.goals.home:y.goals.away)-Number(h2?y.goals.away:y.goals.home))-(Number(h1?x.goals.home:x.goals.away)-Number(h1?x.goals.away:x.goals.home));})[0]||null;
