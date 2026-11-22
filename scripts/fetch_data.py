@@ -2367,8 +2367,21 @@ def _mod_team(name):
 
 
 
-def _sporting_article_text(html_text):
+def _sporting_article_text(html_text, slug=None):
     import html as _h
+    # O novo site guarda o corpo do artigo no estado embutido: {slug:"...",...,html:"<p>..."}
+    if slug:
+        m = re.search(r'slug:"' + re.escape(slug) + r'"[^{}]*?html:"((?:[^"\\]|\\.)*)"', html_text)
+        if m:
+            raw = re.sub(r"\\x([0-9A-Fa-f]{2})", lambda x: "\\u00" + x.group(1), m.group(1))
+            try:
+                frag = json.loads('"' + raw + '"')
+            except Exception:
+                frag = raw.replace("\\n", "\n")
+            paras = [clean(_h.unescape(re.sub(r"<[^>]+>", " ", x))) for x in re.split(r"</p>|<br\s*/?>\s*<br\s*/?>", frag)]
+            paras = [x for x in paras if len(x) > 1]
+            if paras:
+                return "\n\n".join(paras)
     body = ""
     m = re.search(r"<article\b.*?</article>", html_text, re.S) or re.search(r"<main\b.*?</main>", html_text, re.S)
     chunk = m.group(0) if m else html_text
@@ -2411,7 +2424,7 @@ def fetch_sporting_site_news(previous_items=None, fetch_bodies=25):
         try:
             r = session.get(item["url"], timeout=20, headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
             if r.ok:
-                txt = _sporting_article_text(r.text)
+                txt = _sporting_article_text(r.text, item["url"].rsplit("/", 1)[-1])
                 if txt:
                     item["article_text"] = txt
         except Exception as e:
@@ -7554,7 +7567,7 @@ def _computed_player_match_stats():
 
 def _fotmob_birthdate(fid):
     try:
-        data = fotmob_get("/api/playerData", {"id": fid}) or {}
+        data = fotmob_get("/api/data/playerData", {"id": fid}) or {}
         bd = data.get("birthDate") or {}
         v = bd.get("utcTime") if isinstance(bd, dict) else bd
         if v:
