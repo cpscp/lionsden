@@ -642,28 +642,29 @@ _SOFA_DIRECT_BLOCKED = False
 
 
 def sofa_get(path, params=None):
-    """SofaScore API. GitHub Actions IPs get 403, so after the first block all
-    requests go through the Cloudflare Worker passthrough (/sofa)."""
+    """SofaScore API. GitHub Actions IPs often get 403, so try the API host,
+    then the website's /api/v1 path, then the Cloudflare Worker passthrough."""
     global _SOFA_DIRECT_BLOCKED
     if not _SOFA_DIRECT_BLOCKED:
-        try:
-            r = session.get("https://api.sofascore.com/api/v1" + path, params=params or {}, timeout=10,
-                            headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/"})
-            if r.status_code not in (401, 403, 429):
-                r.raise_for_status()
-                return r.json()
-            _SOFA_DIRECT_BLOCKED = True
-            print(f"SofaScore direct blocked ({r.status_code}); using Worker proxy.")
-        except requests.exceptions.ConnectionError:
-            _SOFA_DIRECT_BLOCKED = True
+        for base in ("https://api.sofascore.com/api/v1", "https://www.sofascore.com/api/v1"):
+            try:
+                r = session.get(base + path, params=params or {}, timeout=10,
+                                headers={"User-Agent": USER_AGENT, "Referer": "https://www.sofascore.com/",
+                                         "Accept": "application/json,text/plain,*/*"})
+                if r.status_code not in (401, 403, 429):
+                    r.raise_for_status()
+                    return r.json()
+                print(f"SofaScore direct blocked at {base} ({r.status_code}).")
+            except requests.exceptions.ConnectionError:
+                pass
+        _SOFA_DIRECT_BLOCKED = True
+        print("SofaScore direct blocked; using Worker proxy.")
     if not SOFA_PROXY_URL:
         raise RuntimeError("SofaScore blocked and no proxy configured")
     r = session.get(SOFA_PROXY_URL, params={"path": path, **(params or {})}, timeout=25,
                     headers={"User-Agent": USER_AGENT})
     r.raise_for_status()
     return r.json()
-
-
 
 
 def fotmob_get(path, params=None):
@@ -1568,12 +1569,410 @@ def fetch_sofascore_match_details():
             except Exception as e:
                 print("FotMob match detail fallback warning:", f.get("id"), e)
 
+    # Backup for matches where SofaScore/FotMob have low coverage (e.g. early
+    # Taça de Portugal rounds): fill formation, positions, cards, substitutions
+    # and referee from ESPN's public API, and never leave starters without a
+    # usable pitch layout when their positions are known.
+    try:
+        enrich_details_with_espn(details, finished)
+    except Exception as e:
+        print("ESPN match detail backup warning:", e)
+    try:
+        fill_missing_pitch_layouts(details)
+    except Exception as e:
+        print("Pitch layout inference warning:", e)
+
     write_json("match-details.json", {
         "fixtures": details,
         "source": "SofaScore",
         "scope": "Sporting CP first team, finished matches, 2026/27"
     })
     print(f"SofaScore: {len(details)} detailed matches written.")
+
+
+# ---------------------------------------------------------------------------
+# Match detail backup: ESPN public API + pitch layout inference
+# ---------------------------------------------------------------------------
+
+ESPN_SOCCER_API = "https://site.api.espn.com/apis/site/v2/sports/soccer"
+ESPN_LEAGUES = [
+    "por.1", "por.taca.portugal", "por.league_cup", "por.super_cup",
+    "uefa.champions", "uefa.europa", "uefa.europa.conf",
+    "uefa.champions_qual", "uefa.europa_qual", "club.friendly",
+]
+
+
+def espn_get(path, params=None):
+    r = session.get(ESPN_SOCCER_API + path, params=params or {}, timeout=20,
+                    headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    r.raise_for_status()
+    return r.json()
+
+
+def _lineup_players(lineup):
+    return [p for p in ((lineup or {}).get("players") or []) if isinstance(p, dict)]
+
+
+def _starters(lineup):
+    return [p for p in _lineup_players(lineup) if not p.get("substitute")][:11]
+
+
+def _has_layout(lineup):
+    st = _starters(lineup)
+    if len(st) < 11:
+        return False
+    pts = set()
+    for p in st:
+        h = p.get("horizontalLayout") or {}
+        if not isinstance(h, dict) or h.get("x") is None or h.get("y") is None:
+            return False
+        pts.add((round(float(h["x"]), 2), round(float(h["y"]), 2)))
+    return len(pts) >= 9  # not everybody stacked on the same spot
+
+
+def _detail_needs_backup(d):
+    lu = d.get("lineups") or {}
+    home, away = lu.get("home") or {}, lu.get("away") or {}
+    incidents = (d.get("incidents") or {}).get("incidents") or []
+    kinds = {str(i.get("incidentType")) for i in incidents if isinstance(i, dict)}
+    referee = ((d.get("event") or {}).get("referee") or {})
+    referee = referee.get("name") if isinstance(referee, dict) else referee
+    return (
+        not _has_layout(home) or not _has_layout(away)
+        or not clean(home.get("formation")) or not clean(away.get("formation"))
+        or "substitution" not in kinds
+        or not clean(referee)
+    )
+
+
+def _team_tokens(name):
+    stop = {"fc", "cf", "cd", "sc", "ud", "ad", "gd", "sad", "clube", "club", "de", "da", "do", "dos", "das", "futebol", "uniao", "sporting", "cp"}
+    toks = [t for t in re.split(r"[^a-z0-9]+", zz_norm(name)) if len(t) > 2]
+    core = [t for t in toks if t not in stop]
+    return set(core or toks)
+
+
+def _espn_find_event(fixture):
+    ts = int(fixture.get("date") or 0)
+    if not ts:
+        return None, None
+    home = (fixture.get("home") or {}).get("name") or ""
+    away = (fixture.get("away") or {}).get("name") or ""
+    sporting_home = "sporting" in zz_norm(home)
+    rival_tokens = _team_tokens(away if sporting_home else home)
+    days = sorted({time.strftime("%Y%m%d", time.gmtime(ts + off)) for off in (-6 * 3600, 0, 6 * 3600)})
+    for league in ESPN_LEAGUES:
+        for day in days:
+            try:
+                sb = espn_get(f"/{league}/scoreboard", {"dates": day})
+            except Exception:
+                continue
+            for ev in sb.get("events") or []:
+                comp = (ev.get("competitions") or [{}])[0]
+                teams = comp.get("competitors") or []
+                names = {c.get("homeAway"): ((c.get("team") or {}).get("displayName") or (c.get("team") or {}).get("name") or "") for c in teams}
+                hn, an = names.get("home", ""), names.get("away", "")
+                sp_side = "home" if "sporting" in zz_norm(hn) else ("away" if "sporting" in zz_norm(an) else None)
+                if sp_side is None:
+                    continue
+                if (sp_side == "home") != sporting_home:
+                    continue
+                rival = an if sp_side == "home" else hn
+                if rival_tokens and not (rival_tokens & _team_tokens(rival)):
+                    continue
+                return league, ev.get("id")
+    return None, None
+
+
+def _pos_depth(abbr):
+    """Return (depth, side) for an ESPN/FotMob/SofaScore-like position label.
+    depth: 0 GK, 1 defence, 2 defensive midfield, 3 midfield, 4 attacking mid, 5 attack.
+    side: -2 wide left, -1 left-centre, 0 centre, 1 right-centre, 2 wide right."""
+    a = str(abbr or "").upper().replace(" ", "")
+    base = a.split("-")[0]
+    if a.endswith("-L"):
+        side = -1
+    elif a.endswith("-R"):
+        side = 1
+    elif base[:1] == "L" and len(base) > 1:
+        side = -2  # LB, LWB, LM, LW: outside left
+    elif base[:1] == "R" and len(base) > 1:
+        side = 2
+    else:
+        side = 0
+    full = zz_norm(abbr)
+    if base in {"G", "GK"} or "goalkeeper" in full or "guarda" in full:
+        return 0, 0
+    if base in {"D", "DF", "CD", "CB", "LB", "RB", "LWB", "RWB", "SW", "WB"} or "defen" in full or "back" in full:
+        return 1, side
+    if base in {"DM", "CDM"} or "defensive mid" in full:
+        return 2, side
+    if base in {"AM", "CAM", "LAM", "RAM"} or "attacking mid" in full:
+        return 4, side
+    if base in {"M", "MF", "CM", "LM", "RM"} or "midfield" in full or "medio" in full:
+        return 3, side
+    if base in {"F", "FW", "CF", "ST", "LW", "RW", "SS"} or "forward" in full or "striker" in full or "wing" in full or "avancado" in full:
+        return 5, side
+    return None, side
+
+
+def _layout_from_lines(lines):
+    """lines: list of rows (GK row first), each a list of players already ordered
+    left→right. Writes SofaScore/FotMob-style horizontalLayout (x=depth, y=lateral)."""
+    n = len(lines)
+    for i, row in enumerate(lines):
+        x = 0.1 if i == 0 else 0.3 + (i - 1) * (0.58 / max(1, n - 2))
+        k = len(row)
+        for j, p in enumerate(row):
+            width = min(0.76, 0.25 * (k - 1))
+            y = 0.5 if k == 1 else 0.5 - width / 2 + j * (width / (k - 1))
+            p["horizontalLayout"] = {"x": round(x, 3), "y": round(y, 3), "inferred": True}
+
+
+def _plausible_shape(starters):
+    """Generic squad positions (DF/MF/FW) are only trusted when they form a
+    realistic shape; otherwise we show a list instead of inventing a tactic."""
+    groups = {}
+    for p in starters:
+        d, _ = _pos_depth(p.get("position"))
+        band = 0 if d == 0 else 1 if d == 1 else 5 if d == 5 else 3
+        groups[band] = groups.get(band, 0) + 1
+    return groups.get(0) == 1 and 3 <= groups.get(1, 0) <= 5 and 2 <= groups.get(3, 0) <= 6 and 1 <= groups.get(5, 0) <= 3
+
+
+def infer_pitch_layout(starters, formation=""):
+    """Place 11 starters on the pitch from their positions (+ formation when known).
+    Returns True when a layout was written; never guesses positions it does not know."""
+    if len(starters) != 11:
+        return False
+    info = []
+    for idx, p in enumerate(starters):
+        depth, side = _pos_depth(p.get("position"))
+        info.append((p, depth, side, idx))
+    if any(d is None for _, d, _, _ in info):
+        return False
+    gks = [x for x in info if x[1] == 0]
+    if len(gks) != 1:
+        return False
+    outfield = sorted([x for x in info if x[1] != 0], key=lambda x: (x[1], x[3]))
+    counts = [int(c) for c in re.findall(r"\d", str(formation or ""))]
+    if not counts or sum(counts) != 10:
+        # Build the rows from the position groups themselves.
+        rows, cur, cur_depth = [], [], None
+        for x in outfield:
+            if cur and x[1] != cur_depth:
+                rows.append(cur); cur = []
+            cur.append(x); cur_depth = x[1]
+        if cur:
+            rows.append(cur)
+    else:
+        rows, i = [], 0
+        for c in counts:
+            rows.append(outfield[i:i + c]); i += c
+    ordered = [[gks[0][0]]]
+    for row in rows:
+        ordered.append([x[0] for x in sorted(row, key=lambda x: (x[2], x[3]))])
+    _layout_from_lines(ordered)
+    return True
+
+
+def _squad_positions():
+    sq = (safe_existing("squad.json") or {}).get("squad") or []
+    out = {}
+    for p in sq:
+        pos = p.get("position")
+        if not pos:
+            continue
+        for key in (p.get("fotmob_id"), p.get("sofascore_id"), p.get("id")):
+            if key:
+                out[str(key)] = pos
+        out[zz_norm(p.get("name"))] = pos
+    return out
+
+
+def fill_missing_pitch_layouts(details):
+    """For lineups without coordinates, infer them from known positions
+    (lineup data first, Sporting squad positions as fallback)."""
+    squad_pos = _squad_positions()
+    for d in details:
+        for side in ("home", "away"):
+            lu = (d.get("lineups") or {}).get(side) or {}
+            if not lu or _has_layout(lu):
+                continue
+            st = _starters(lu)
+            from_squad = False
+            for p in st:
+                if not clean(p.get("position")):
+                    pl = p.get("player") or {}
+                    pos = squad_pos.get(str(pl.get("id"))) or squad_pos.get(zz_norm(pl.get("name")))
+                    if pos:
+                        p["position"] = pos
+                        from_squad = True
+            if from_squad and not clean(lu.get("formation")) and not _plausible_shape(st):
+                print("Pitch layout skipped (posições do plantel não formam uma tática plausível):", d.get("match_id"), side)
+                continue
+            if infer_pitch_layout(st, lu.get("formation")):
+                lu["layoutInferred"] = True
+                print("Pitch layout inferred:", d.get("match_id"), side, lu.get("formation") or "(sem tática)")
+
+
+def _espn_minute(clock):
+    txt = str((clock or {}).get("displayValue") or "")
+    m = re.match(r"\s*(\d+)(?:'\s*\+\s*(\d+))?", txt.replace("'+", "'+"))
+    if m:
+        return int(m.group(1)) + (int(m.group(2)) if m.group(2) else 0)
+    try:
+        return int(float((clock or {}).get("value") or 0) // 60) or None
+    except Exception:
+        return None
+
+
+def espn_match_detail(league, event_id):
+    s = espn_get(f"/{league}/summary", {"event": event_id})
+    rosters = s.get("rosters") or []
+    home_espn_id = None
+    lineups = {}
+    for r in rosters:
+        side = r.get("homeAway")
+        if side not in ("home", "away"):
+            continue
+        team = r.get("team") or {}
+        if side == "home":
+            home_espn_id = str(team.get("id"))
+        players = []
+        for e in r.get("roster") or []:
+            a = e.get("athlete") or {}
+            pos = e.get("position") or {}
+            players.append({
+                "player": {"name": clean(a.get("displayName") or a.get("fullName")),
+                           "shortName": clean(a.get("shortName") or a.get("displayName")),
+                           "id": a.get("id")},
+                "shirtNumber": e.get("jersey"),
+                "position": clean(pos.get("abbreviation") or pos.get("name")),
+                "substitute": not bool(e.get("starter")),
+                "horizontalLayout": None,
+                "formationPlace": e.get("formationPlace"),
+                "statistics": {"rating": None},
+            })
+        starters = [p for p in players if not p["substitute"]]
+        try:
+            starters.sort(key=lambda p: int(p.get("formationPlace") or 99))
+        except Exception:
+            pass
+        players = starters + [p for p in players if p["substitute"]]
+        lineups[side] = {
+            "id": team.get("id"),
+            "name": clean(team.get("displayName") or team.get("name")),
+            "formation": clean(r.get("formation")),
+            "coach": "",
+            "players": players,
+        }
+        infer_pitch_layout(starters, r.get("formation"))
+
+    incidents = []
+    for k in s.get("keyEvents") or []:
+        t = zz_norm(((k.get("type") or {}).get("type") or "") + " " + ((k.get("type") or {}).get("text") or ""))
+        parts = [clean(((p or {}).get("athlete") or {}).get("displayName")) for p in (k.get("participants") or [])]
+        parts = [p for p in parts if p]
+        is_home = str((k.get("team") or {}).get("id")) == home_espn_id if home_espn_id else None
+        minute = _espn_minute(k.get("clock"))
+        if "goal" in t and "disallow" not in t and "miss" not in t:
+            name = parts[0] if parts else ""
+            incidents.append({"incidentType": "goal", "time": minute, "player": {"name": name},
+                              "isHome": is_home, "description": name, "swap": [], "cardType": "",
+                              "ownGoal": "own" in t, "penalty": "penalty" in t})
+        elif "card" in t:
+            ctype = "second_yellow" if ("second" in t or "2nd" in t) else ("red" if "red" in t else "yellow")
+            name = parts[0] if parts else ""
+            incidents.append({"incidentType": "card", "time": minute, "player": {"name": name},
+                              "isHome": is_home, "description": name, "swap": [], "cardType": ctype})
+        elif "substitution" in t:
+            text = clean(k.get("text"))
+            m = re.search(r"\.\s*(.+?)\s+replaces\s+(.+?)(?:\s+because.*)?\.?$", text or "")
+            p_in, p_out = (m.group(1), m.group(2)) if m else ((parts + ["", ""])[0], (parts + ["", ""])[1])
+            incidents.append({"incidentType": "substitution", "time": minute, "player": {"name": p_in},
+                              "isHome": is_home, "description": "Substitution",
+                              "playerIn": {"name": clean(p_in)}, "playerOut": {"name": clean(p_out)},
+                              "swap": [{"name": clean(p_in)}, {"name": clean(p_out)}], "cardType": ""})
+
+    gi = s.get("gameInfo") or {}
+    referee = ""
+    for o in gi.get("officials") or []:
+        role = zz_norm(((o.get("position") or {}).get("name")) or "")
+        if not referee or role == "referee":
+            referee = clean(o.get("displayName") or o.get("fullName"))
+            if role == "referee":
+                break
+    return {"lineups": lineups, "incidents": incidents, "referee": referee,
+            "attendance": gi.get("attendance"), "espn_league": league, "espn_id": event_id}
+
+
+def enrich_details_with_espn(details, fixtures):
+    by_id = {str(f.get("id")): f for f in fixtures}
+    for d in details:
+        if not _detail_needs_backup(d):
+            continue
+        f = by_id.get(str(d.get("match_id")))
+        if not f:
+            continue
+        try:
+            league, eid = _espn_find_event(f)
+            if not eid:
+                print("ESPN backup: match not found:", d.get("match_id"), (f.get("home") or {}).get("name"), (f.get("away") or {}).get("name"))
+                continue
+            e = espn_match_detail(league, eid)
+        except Exception as ex:
+            print("ESPN backup warning:", d.get("match_id"), ex)
+            continue
+
+        filled = []
+        lu = d.setdefault("lineups", {})
+        for side in ("home", "away"):
+            cur = lu.get(side) or {}
+            new = (e["lineups"] or {}).get(side)
+            if not new or len(_starters(new)) < 11:
+                continue
+            if not _has_layout(cur) and _has_layout(new):
+                # Keep ratings we already had (matched by name).
+                ratings = {zz_norm((p.get("player") or {}).get("name")): (p.get("statistics") or {}).get("rating") for p in _lineup_players(cur)}
+                for p in new["players"]:
+                    r = ratings.get(zz_norm(p["player"]["name"]))
+                    if r is not None:
+                        p["statistics"]["rating"] = r
+                new["coach"] = cur.get("coach") or new.get("coach") or ""
+                lu[side] = new
+                filled.append(f"{side}-onze")
+            elif not clean(cur.get("formation")) and new.get("formation"):
+                cur["formation"] = new["formation"]
+                filled.append(f"{side}-tática")
+
+        incs = d.setdefault("incidents", {}).setdefault("incidents", [])
+        have = {str(i.get("incidentType")) for i in incs if isinstance(i, dict)}
+        for kind in ("card", "substitution"):
+            if kind not in have:
+                add = [i for i in e["incidents"] if i["incidentType"] == kind]
+                if add:
+                    incs.extend(add); filled.append(kind)
+        if "goal" not in have:
+            add = [i for i in e["incidents"] if i["incidentType"] == "goal"]
+            if add:
+                incs.extend(add); filled.append("goal")
+        incs.sort(key=lambda i: (i.get("time") is None, i.get("time") or 0))
+
+        ev = d.setdefault("event", {})
+        ref = ev.get("referee")
+        ref_name = ref.get("name") if isinstance(ref, dict) else ref
+        if not clean(ref_name) and e.get("referee"):
+            ev["referee"] = {"name": e["referee"]}
+            filled.append("árbitro")
+        if not ev.get("attendance") and e.get("attendance"):
+            ev["attendance"] = e["attendance"]
+        if filled:
+            d.setdefault("backup_sources", [])
+            if "ESPN" not in d["backup_sources"]:
+                d["backup_sources"].append("ESPN")
+            d["espn_id"] = e["espn_id"]
+        print("ESPN backup:", d.get("match_id"), league, eid, "→", ", ".join(filled) or "nada novo")
 
 def enrich_player_profiles():
     """Enrich player cards from SofaScore: birth date, shirt number, nationality and career."""

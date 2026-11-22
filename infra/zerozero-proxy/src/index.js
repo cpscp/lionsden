@@ -197,10 +197,15 @@ async function handleLive(url){
 async function handleSofa(url){
   const path=url.searchParams.get("path")||"";
   if(!/^\/[A-Za-z0-9\-_/.]{1,200}$/.test(path)||path.includes(".."))return json({ok:false,error:"bad_path"},400);
-  const target=new URL("https://api.sofascore.com/api/v1"+path);
-  for(const [k,v] of url.searchParams){if(k!=="path")target.searchParams.set(k,v);}
-  const r=await fetch(target.toString(),{headers:{"User-Agent":UA,"Accept":"application/json,text/plain,*/*","Referer":"https://www.sofascore.com/","Origin":"https://www.sofascore.com"},cf:{cacheTtl:30,cacheEverything:true}});
-  const body=await r.text();
+  // O SofaScore bloqueia por vezes o host da API; tenta também o caminho /api/v1 do site.
+  let r=null,body="";
+  for(const base of ["https://api.sofascore.com/api/v1","https://www.sofascore.com/api/v1"]){
+    const target=new URL(base+path);
+    for(const [k,v] of url.searchParams){if(k!=="path")target.searchParams.set(k,v);}
+    r=await fetch(target.toString(),{headers:{"User-Agent":UA,"Accept":"application/json,text/plain,*/*","Accept-Language":"pt-PT,pt;q=0.9,en;q=0.8","Referer":"https://www.sofascore.com/","Origin":"https://www.sofascore.com"},cf:{cacheTtl:30,cacheEverything:true}});
+    body=await r.text();
+    if(r.ok)break;
+  }
   return new Response(body,{status:r.status,headers:{...corsHeaders(),"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"}});
 }
 
