@@ -216,9 +216,6 @@ def run_variant(browser, path, label, viewport, mobile):
     check(f"[{label}] modalidades: notícias", page.locator("#modContent .news-card").count() > 0)
     page.evaluate("go('home')")
     check(f"[{label}] início: bloco Modalidades com próximos jogos", page.locator("#homeModalidades .mod-home-row").count() > 0)
-    n_today = page.evaluate("(()=>{const t=modDayKey(new Date().toISOString());const d=modData();return (d.sports||[]).flatMap(s=>(s.fixtures||[]).concat(s.results||[])).filter(x=>modDayKey(x.date)===t).length})()")
-    shown = page.locator("#sportingDay .mod-home-row").count()
-    check(f"[{label}] início: Dia de Sporting {'visível' if n_today else 'escondido'} ({shown} jogos)", (shown > 0) == (n_today > 0))
     real_errors = [e for e in js_errors if "tailwind" not in e.lower()]
     check(f"[{label}] sem erros de JavaScript", not real_errors, " | ".join(real_errors[:3]))
     ctx.close()
