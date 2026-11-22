@@ -1,0 +1,26 @@
+name: tmp probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          t(){ code=$(curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9,en;q=0.8" -o /tmp/p -w "%{http_code} %{size_download}" "$1"); echo "$code | $(grep -oE '<title>[^<]{0,90}' /tmp/p | head -1) | $1"; grep -oiE '.{0,60}Sporting.{0,80}' /tmp/p | sed 's/<[^>]*>//g' | head -${2:-3}; }
+          t "https://www.betexplorer.com/futsal/portugal/liga-placard/" 4
+          t "https://www.betexplorer.com/futsal/portugal/" 4
+          t "https://www.betexplorer.com/handball/portugal/andebol-1/" 4
+          t "https://www.betexplorer.com/handball/portugal/andebol-1/standings/" 4
+          t "https://www.oddsportal.com/handball/portugal/andebol-1/standings/" 2
+          t "https://fpp.pt/fpp-lanca-aplicacao-oficial-do-hoquei-em-patins-fpp-hoquei/" 2
+          grep -oE 'https?://[^"<> ]*(app|api|play\.google|apps\.apple|resultados|hoquei)[^"<> ]*' /tmp/p | sort -u | head -15
+          t "https://fpp.pt/hoquei-em-patins/" 2
+          grep -oE 'href="[^"]*(classifica|resultado|calend|jornada)[^"]*"' /tmp/p | sort -u | head -15
+          t "https://portal.fpa.pt/" 2
+          t "https://www.fpa.pt/" 2
+          t "https://www.andebol.pt/" 2
+          t "https://www.flashscore.pt/futsal/portugal/liga-placard/classificacao/" 2
+          t "https://www.livesport.com/pt/futsal/portugal/" 2
+          t "https://www.futsalfeed.com/" 1
+          t "https://www.sofascore.com/futsal/tournament/portugal/liga-placard/1263" 1
