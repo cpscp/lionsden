@@ -1378,8 +1378,8 @@
     "season": "2026/27",
     "table": [],
     "type": "knockout",
-    "note": "Percurso do Sporting na prova (o quadro completo aparece quando for publicado).",
-    "source": "FotMob + jogos do Sporting",
+    "note": "Competição a eliminar; as eliminatórias serão mostradas assim que o calendário oficial da fase estiver disponível.",
+    "source": "FotMob",
     "tournament_id": 186,
     "rounds": [
       {
