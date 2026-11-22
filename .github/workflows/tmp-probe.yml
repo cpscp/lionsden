@@ -7,9 +7,15 @@ jobs:
       - run: |
           set +e
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          g(){ curl -sS -L -m 40 -A "$UA" "$@"; }
-          echo "== page content"; g "https://fpp.pt/wp-json/wp/v2/pages?slug=hoquei-em-patins-classificacao-1a-div" | python3 -c "import sys,json,re;d=json.load(sys.stdin);c=d[0]['content']['rendered'] if d else '';print(len(c));print(re.findall(r'(?:src|href|data-[a-z-]+)=\"([^\"]+)\"',c)[:20]);print(re.sub(r'<[^>]+>',' ',c)[:800])"
-          echo "== app article"; g "https://fpp.pt/wp-json/wp/v2/posts?search=FPP%20H%C3%B3quei&per_page=3" | python3 -c "import sys,json,re;d=json.load(sys.stdin);[print(p['link'], re.findall(r'(?:src|href)=\"([^\"]+)\"',p['content']['rendered'])[:12]) for p in d]"
-          echo "== sporting posts"; g "https://fpp.pt/wp-json/wp/v2/posts?search=Sporting&per_page=8&_fields=date,title,link,excerpt" | python3 -c "import sys,json,re;d=json.load(sys.stdin);[print(p['date'],re.sub(r'<[^>]+>','',p['title']['rendered']),'|',re.sub(r'<[^>]+>','',p['excerpt']['rendered'])[:160].replace(chr(10),' ')) for p in d]"
-          echo "== jornada post"; g "https://fpp.pt/wp-json/wp/v2/posts?search=jornada&per_page=3&_fields=date,title,content" | python3 -c "import sys,json,re,html;d=json.load(sys.stdin);[print(p['date'],re.sub(r'<[^>]+>','',p['title']['rendered']),'||',html.unescape(re.sub(r'<[^>]+>',' ',p['content']['rendered']))[:900].replace(chr(10),' ')) for p in d]"
-          for u in "https://www.flashscore.pt/hoquei-em-patins/" "https://www.flashscore.pt/rink-hockey/" "https://www.livesport.com/pt/hoquei-em-patins/" "https://www.betexplorer.com/rink-hockey/"; do g "$u" -o /tmp/p -w "%{http_code} %{size_download} $u\n"; done
+          curl -sS -L -m 40 -A "$UA" "https://hp.fpp.pt/Competicao/493" -o c.html -w "%{http_code} %{size_download}\n"
+          python3 - <<'PY'
+          import re,html
+          s=open('c.html',encoding='utf-8',errors='ignore').read()
+          print(re.findall(r'<title>(.*?)</title>',s,re.S)[:1])
+          t=re.sub(r'<script.*?</script>|<style.*?</style>',' ',s,flags=re.S)
+          txt=re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',t)))
+          i=txt.find('Sporting'); print('TEXT:',txt[:600]); print('SP:',txt[max(0,i-800):i+1200])
+          print('tables',len(re.findall(r'<table',s)))
+          print('links',sorted(set(re.findall(r'href="(/[^"]+)"',s)))[:60])
+          print('api',sorted(set(re.findall(r'["\'](/api/[^"\']+|https?://[^"\']*api[^"\']*)["\']',s)))[:20])
+          PY
