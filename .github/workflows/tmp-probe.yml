@@ -7,35 +7,9 @@ jobs:
       - run: |
           set +e
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          g(){ curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9" "$@"; }
-          for u in futsal/portugal/liga-placard/resultados/ futsal/portugal/liga-placard/calendario/ futsal/portugal/liga-placard/classificacao/ andebol/portugal/andebol-1/resultados/ andebol/portugal/andebol-1/classificacao/; do
-            g "https://www.flashscore.pt/$u" -o p.html -w "== $u %{http_code} %{size_download}\n"
-            python3 - <<'PY'
-          import re
-          s=open('p.html',encoding='utf-8',errors='ignore').read()
-          feeds=re.findall(r"cjs\.initialFeeds\['([^']+)'\]\s*=\s*\{\s*data:\s*`(.*?)`",s,re.S)
-          print('feeds:',[(k,len(v)) for k,v in feeds])
-          for k,v in feeds:
-              recs=v.split('~')
-              print('  feed',k,'records',len(recs))
-              for r in recs[:3]: print('   ',r[:300])
-              sp=[r for r in recs if 'Sporting' in r][:2]
-              for r in sp: print('   SP',r[:400])
-          for k in ['standings','tournamentStage','ttb','fsign','feed_sign','"tournament"']:
-              i=s.find(k); 
-              if i>=0: print('  ctx',k,s[max(0,i-100):i+200].replace('\n',' '))
-          PY
-          done
-          echo "== FPP classificação"; g https://fpp.pt/hoquei-em-patins-classificacao-1a-div/ -o f.html
-          python3 - <<'PY'
-          import re,html
-          s=open('f.html',encoding='utf-8',errors='ignore').read()
-          tabs=re.findall(r'<table.*?</table>',s,re.S); print('tables',len(tabs))
-          for t in tabs[:2]:
-              rows=re.findall(r'<tr.*?</tr>',t,re.S)
-              for r in rows[:6]: print('  ',' | '.join(html.unescape(re.sub(r'<[^>]+>','',c)).strip() for c in re.findall(r'<t[dh].*?</t[dh]>',r,re.S)))
-          for m in re.findall(r'(?:src|href)="([^"]+(?:iframe|google|sheet|pdf|resultad|jornada)[^"]*)"',s)[:12]: print('  link',m)
-          i=s.find('Sporting'); print('ctx', re.sub(r'<[^>]+>',' ',s[i-300:i+500]))
-          PY
-          echo "== FPP menu"; g https://fpp.pt/ | grep -oE 'href="https://fpp.pt/[^"]*hoquei[^"]*"' | sort -u | head -30
-          echo "== FAP"; g https://portal.fpa.pt/ | grep -oE 'href="https://portal.fpa.pt/[^"]*(classifica|resultad|competi|calend)[^"]*"' | sort -u | head -20
+          g(){ curl -sS -L -m 40 -A "$UA" "$@"; }
+          echo "== page content"; g "https://fpp.pt/wp-json/wp/v2/pages?slug=hoquei-em-patins-classificacao-1a-div" | python3 -c "import sys,json,re;d=json.load(sys.stdin);c=d[0]['content']['rendered'] if d else '';print(len(c));print(re.findall(r'(?:src|href|data-[a-z-]+)=\"([^\"]+)\"',c)[:20]);print(re.sub(r'<[^>]+>',' ',c)[:800])"
+          echo "== app article"; g "https://fpp.pt/wp-json/wp/v2/posts?search=FPP%20H%C3%B3quei&per_page=3" | python3 -c "import sys,json,re;d=json.load(sys.stdin);[print(p['link'], re.findall(r'(?:src|href)=\"([^\"]+)\"',p['content']['rendered'])[:12]) for p in d]"
+          echo "== sporting posts"; g "https://fpp.pt/wp-json/wp/v2/posts?search=Sporting&per_page=8&_fields=date,title,link,excerpt" | python3 -c "import sys,json,re;d=json.load(sys.stdin);[print(p['date'],re.sub(r'<[^>]+>','',p['title']['rendered']),'|',re.sub(r'<[^>]+>','',p['excerpt']['rendered'])[:160].replace(chr(10),' ')) for p in d]"
+          echo "== jornada post"; g "https://fpp.pt/wp-json/wp/v2/posts?search=jornada&per_page=3&_fields=date,title,content" | python3 -c "import sys,json,re,html;d=json.load(sys.stdin);[print(p['date'],re.sub(r'<[^>]+>','',p['title']['rendered']),'||',html.unescape(re.sub(r'<[^>]+>',' ',p['content']['rendered']))[:900].replace(chr(10),' ')) for p in d]"
+          for u in "https://www.flashscore.pt/hoquei-em-patins/" "https://www.flashscore.pt/rink-hockey/" "https://www.livesport.com/pt/hoquei-em-patins/" "https://www.betexplorer.com/rink-hockey/"; do g "$u" -o /tmp/p -w "%{http_code} %{size_download} $u\n"; done
