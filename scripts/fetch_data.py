@@ -7682,7 +7682,8 @@ def finalize_player_stats():
         if p.get("fotmob_id"):
             hist = _fotmob_career_stats(p["fotmob_id"])
             old = p.get("careerStats") or []
-            if hist and len({r["season"] for r in hist}) > len({str(r.get("season")) for r in old}):
+            from_fotmob = any("competitions" in r for r in old)
+            if hist and (from_fotmob or len({r["season"] for r in hist}) > len({str(r.get("season")) for r in old})):
                 p["careerStats"] = hist
         if not p.get("dateOfBirth") and p.get("fotmob_id"):
             bd = _fotmob_birthdate(p["fotmob_id"])
