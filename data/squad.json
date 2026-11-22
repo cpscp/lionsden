@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T15:58:19.148073+00:00",
+  "_updated_at": "2026-11-22T16:01:51.915049+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -896,7 +896,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 8,
+          "matches": 9,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -1133,9 +1133,9 @@
         {
           "season": "2026/27",
           "club": "Sporting CP U19",
-          "matches": 2,
+          "matches": 1,
           "goals": 0,
-          "assists": 1,
+          "assists": 0,
           "competitions": [
             "UEFA Youth League"
           ]
@@ -1278,7 +1278,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 14,
+          "matches": 15,
           "goals": 1,
           "assists": 2,
           "competitions": [
@@ -1896,7 +1896,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 2,
+          "matches": 3,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -1907,7 +1907,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 7,
+          "matches": 3,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -2187,7 +2187,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 3,
+          "matches": 2,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -2218,7 +2218,7 @@
           "season": "2026/27",
           "club": "Sporting CP U19",
           "matches": 2,
-          "goals": 1,
+          "goals": 0,
           "assists": 0,
           "competitions": [
             "UEFA Youth League"
@@ -2617,7 +2617,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 14,
+          "matches": 15,
           "goals": 0,
           "assists": 1,
           "competitions": [
@@ -3619,7 +3619,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 3,
+          "matches": 4,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -3652,7 +3652,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 7,
+          "matches": 4,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -4193,8 +4193,8 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 3,
-          "goals": 1,
+          "matches": 4,
+          "goals": 2,
           "assists": 0,
           "competitions": [
             "Liga Portugal",
@@ -4227,8 +4227,8 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 6,
-          "goals": 3,
+          "matches": 4,
+          "goals": 2,
           "assists": 0,
           "competitions": [
             "Liga Portugal 2"
@@ -4464,8 +4464,8 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 16,
-          "goals": 4,
+          "matches": 18,
+          "goals": 3,
           "assists": 4,
           "competitions": [
             "Liga Portugal",
@@ -5339,7 +5339,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 13,
+          "matches": 14,
           "goals": 0,
           "assists": 0,
           "competitions": [
@@ -5512,7 +5512,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 12,
+          "matches": 13,
           "goals": 3,
           "assists": 1,
           "competitions": [
@@ -5641,7 +5641,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP B",
-          "matches": 10,
+          "matches": 0,
           "goals": 0,
           "assists": 0,
           "competitions": [

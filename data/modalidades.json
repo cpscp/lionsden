@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T15:58:10.636539+00:00",
+  "_updated_at": "2026-11-22T16:01:39.233640+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -2900,7 +2900,7 @@
             "pos": 3,
             "team": "SL Benfica",
             "sporting": false,
-            "played": 5,
+            "played": 6,
             "won": 5,
             "drawn": 0,
             "lost": 0,
@@ -2970,7 +2970,7 @@
             "pos": 10,
             "team": "Castelo da Maia GC",
             "sporting": false,
-            "played": 5,
+            "played": 6,
             "won": 1,
             "drawn": 0,
             "lost": 4,
@@ -3348,11 +3348,11 @@
             "pos": 2,
             "team": "Fc Porto",
             "sporting": false,
-            "played": 8,
-            "won": 7,
+            "played": 7,
+            "won": 6,
             "drawn": 0,
             "lost": 1,
-            "points": 21.0
+            "points": 18.0
           },
           {
             "pos": 3,
@@ -3366,26 +3366,16 @@
           },
           {
             "pos": 4,
-            "team": "S.C. Braga",
-            "sporting": false,
-            "played": 8,
-            "won": 5,
-            "drawn": 0,
-            "lost": 3,
-            "points": 15.0
-          },
-          {
-            "pos": 5,
             "team": "Leixões S.C.",
             "sporting": false,
-            "played": 7,
+            "played": 8,
             "won": 5,
             "drawn": 0,
             "lost": 2,
             "points": 13.0
           },
           {
-            "pos": 6,
+            "pos": 5,
             "team": "Clube Kairos",
             "sporting": false,
             "played": 8,
@@ -3393,6 +3383,16 @@
             "drawn": 0,
             "lost": 4,
             "points": 13.0
+          },
+          {
+            "pos": 6,
+            "team": "S.C. Braga",
+            "sporting": false,
+            "played": 7,
+            "won": 4,
+            "drawn": 0,
+            "lost": 3,
+            "points": 12.0
           },
           {
             "pos": 7,
@@ -3408,7 +3408,7 @@
             "pos": 8,
             "team": "Castelo da Maia GC",
             "sporting": false,
-            "played": 7,
+            "played": 8,
             "won": 3,
             "drawn": 0,
             "lost": 4,
@@ -3418,10 +3418,10 @@
             "pos": 9,
             "team": "Vilacondense",
             "sporting": false,
-            "played": 8,
+            "played": 7,
             "won": 3,
             "drawn": 0,
-            "lost": 5,
+            "lost": 4,
             "points": 8.0
           },
           {
@@ -3448,10 +3448,10 @@
             "pos": 12,
             "team": "CD Fiães",
             "sporting": false,
-            "played": 8,
+            "played": 7,
             "won": 0,
             "drawn": 0,
-            "lost": 8,
+            "lost": 7,
             "points": 0.0
           }
         ]
