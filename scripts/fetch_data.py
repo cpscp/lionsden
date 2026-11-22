@@ -2351,7 +2351,7 @@ def _iso_date(value):
 
 
 def _mod_comp(name):
-    n = re.sub(r"\s*\((W|F)\)\s*$", "", clean(name))
+    n = re.sub(r"\s*\((W|F)\)", "", clean(name))
     for a, b in ((" - Regular Season", " · Fase regular"), ("Champions League", "Liga dos Campeões"),
                  ("Semi Finals", "Meias-finais"), ("Quarter Finals", "Quartos-de-final"), ("Round of 64", "1/32 de final"),
                  ("Round of 32", "1/16 de final"), ("Round of 16", "Oitavos-de-final"), ("2nd Round", "2.ª ronda"),
