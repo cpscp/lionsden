@@ -1,0 +1,18 @@
+name: tmp zerozero probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir out; i=0
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          for path in "/jogo/2026-11-21-sporting-uniao-da-serra/12799247" "/live-ao-minuto/2026-11-21-sporting-uniao-da-serra/12799247" "/jogo/2026-11-21-sporting-uniao-da-serra/12799247/estatisticas"; do
+            for u in "https://r.jina.ai/https://www.zerozero.pt$path" "https://r.jina.ai/https://zerozero.football$path" "https://zerozero.football$path" "https://zerozero.dk$path" "https://www.zerozero.pt$path" "https://lions-den-zerozero-proxy.lionsdenscp.workers.dev/?url=https%3A%2F%2Fwww.zerozero.pt${path//\//%2F}"; do
+              i=$((i+1)); code=$(curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9" -o out/$i.txt -w "%{http_code}" "$u" || echo ERR)
+              echo "$i $code $(wc -c < out/$i.txt 2>/dev/null) $u" | tee -a out/index.txt
+              sleep 3
+            done
+          done
+      - uses: actions/upload-artifact@v4
+        with: {name: probe, path: out}
