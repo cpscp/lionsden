@@ -7745,6 +7745,20 @@ def fill_cup_rounds_from_fixtures():
             r["matchups"].append({"home": team(f.get("home") or {}), "away": team(f.get("away") or {}),
                                   "homeScore": f["goals"]["home"] if fin else None, "awayScore": f["goals"]["away"] if fin else None,
                                   "matches": [{"match_id": f.get("id"), "date": f.get("date")}], "sporting_only": True})
+        # Próximas eliminatórias já sorteadas mas ainda sem jogo nas fontes (data/manual.json).
+        for pend in ((safe_existing("manual.json") or {}).get("cup_pending") or []):
+            if pend.get("competition") != key:
+                continue
+            opp = _team_tokens((pend.get("away") or {}).get("name")) | _team_tokens((pend.get("home") or {}).get("name"))
+            opp -= _team_tokens("Sporting CP")
+            if any(opp & (_team_tokens(m["home"]["name"]) | _team_tokens(m["away"]["name"])) for r in rounds.values() for m in r["matchups"]):
+                continue  # o jogo já chegou pelas fontes
+            label = pend.get("round") or "Próxima eliminatória"
+            team = lambda t: {"id": t.get("id"), "name": t.get("name"), "shortName": t.get("shortName") or (t.get("name") or "")[:3].upper(),
+                              "crest": f"https://images.fotmob.com/image_resources/logo/teamlogo/{t.get('id')}.png" if t.get("id") else None}
+            rounds.setdefault(label, {"stage": label, "label": label, "participantCount": None, "matchups": []})["matchups"].append({
+                "home": team(pend.get("home") or {}), "away": team(pend.get("away") or {}), "homeScore": None, "awayScore": None,
+                "date_label": pend.get("date_label"), "venue": pend.get("venue"), "matches": [], "sporting_only": True})
         if rounds:
             comp["rounds"] = list(rounds.values())
             comp["note"] = "Percurso do Sporting na prova (o quadro completo aparece quando for publicado)."

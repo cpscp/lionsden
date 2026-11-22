@@ -663,7 +663,7 @@ function renderClassification(){
      const played=hs!=null||as!=null;
      const score=played?'<strong>'+esc(hs??'—')+' - '+esc(as??'—')+'</strong>':'Por jogar';
      const ts=knockoutMatchDate(m);
-     const dateText=ts?fmtDate(ts):'Data por confirmar';
+     const dateText=ts?fmtDate(ts):(m.date_label||'Data por confirmar');
      return '<article class="knockout-match">'+
        '<div class="knockout-date">'+esc(dateText)+'</div>'+
        '<div class="knockout-teams">'+

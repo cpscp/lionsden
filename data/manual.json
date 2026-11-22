@@ -1,5 +1,5 @@
 {
-  "_info": "Dados introduzidos à mão quando nenhuma fonte automática os tem. man_of_the_match: id do jogo -> homem do jogo oficial. modalidades_fixtures: jogos das modalidades em falta no calendário oficial.",
+  "_info": "Dados introduzidos à mão quando nenhuma fonte automática os tem. man_of_the_match: id do jogo -> homem do jogo oficial. modalidades_fixtures: jogos das modalidades em falta no calendário oficial. cup_pending: próximas eliminatórias já sorteadas mas ainda sem jogo nas fontes (saem sozinhas quando o jogo aparece).",
   "man_of_the_match": {
     "6506259": {
       "name": "Nestory Irankunda",
@@ -7,5 +7,23 @@
       "source": "Sporting CP"
     }
   },
-  "modalidades_fixtures": []
+  "modalidades_fixtures": [],
+  "cup_pending": [
+    {
+      "competition": "taca-portugal",
+      "round": "Oitavos de final",
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": null,
+        "name": "Atlético CP",
+        "shortName": "ATL"
+      },
+      "venue": "Estádio José Alvalade",
+      "date_label": "15 a 17 dez · Estádio José Alvalade",
+      "source": "Sorteio FPF (ligaportugal.pt, abola.pt)"
+    }
+  ]
 }
