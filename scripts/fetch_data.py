@@ -2254,6 +2254,250 @@ def enrich_details_with_365scores(details, fixtures):
         print("365scores backup:", d.get("match_id"), e["id"], "→", ", ".join(filled) or "nada novo")
 
 
+
+# ---------------------------------------------------------------------------
+# Modalidades (tudo exceto futebol): calendário oficial do Sporting.pt,
+# resultados/classificações do 365scores e notícias (Sporting.pt + imprensa).
+# ---------------------------------------------------------------------------
+MOD_SPORTS = [
+    # key, label, palavras-chave (normalizadas)
+    ("futsal", "Futsal", ("futsal",)),
+    ("andebol", "Andebol", ("andebol",)),
+    ("hoquei-em-patins", "Hóquei em Patins", ("hoquei em patins", "hoquei patins", "hoquei")),
+    ("basquetebol", "Basquetebol", ("basquetebol", "basquete")),
+    ("voleibol", "Voleibol", ("voleibol",)),
+    ("futebol-de-praia", "Futebol de Praia", ("futebol de praia",)),
+    ("atletismo", "Atletismo", ("atletismo", "maratona", "corta-mato", "corta mato")),
+    ("natacao", "Natação", ("natacao",)),
+    ("judo", "Judo", ("judo",)),
+    ("ginastica", "Ginástica", ("ginastica", "trampolins")),
+    ("tenis-de-mesa", "Ténis de Mesa", ("tenis de mesa",)),
+    ("ciclismo", "Ciclismo", ("ciclismo",)),
+    ("triatlo", "Triatlo", ("triatlo",)),
+    ("karate", "Karaté", ("karate",)),
+    ("taekwondo", "Taekwondo", ("taekwondo",)),
+    ("boxe", "Boxe", ("boxe",)),
+    ("rugby", "Râguebi", ("rugby", "raguebi")),
+    ("goalball", "Goalball", ("goalball",)),
+    ("desporto-adaptado", "Desporto Adaptado", ("desporto adaptado", "paralimpic")),
+    ("xadrez", "Xadrez", ("xadrez",)),
+    ("badminton", "Badminton", ("badminton",)),
+    ("tiro", "Tiro", ("tiro com arco", "tiro desportivo")),
+    ("patinagem", "Patinagem", ("patinagem",)),
+    ("esports", "eSports", ("esports", "e-sports")),
+]
+MOD_365_TEAMS = [("andebol", 17697), ("basquetebol", 57261), ("voleibol", 50477), ("voleibol-feminino", 77805)]
+MOD_SEASON_START = "2026-08-01"
+PT_MONTHS = {"jan": 1, "fev": 2, "mar": 3, "abr": 4, "mai": 5, "jun": 6, "jul": 7, "ago": 8, "set": 9, "out": 10, "nov": 11, "dez": 12}
+
+
+def mod_classify(text):
+    """Return (key, label) of the modality named in text, or None. Football is excluded
+    unless it is beach soccer."""
+    n = zz_norm(text)
+    if not n:
+        return None
+    female = "feminin" in n or "leoas" in n
+    for key, label, words in MOD_SPORTS:
+        if any(w in n for w in words):
+            if female and key in ("futsal", "andebol", "hoquei-em-patins", "basquetebol", "voleibol"):
+                return key + "-feminino", label + " Feminino"
+            return key, label
+    return None
+
+
+def _js_obj(text):
+    """Parse a flat JavaScript object literal from TanStack's dehydrated state."""
+    out = {}
+    for m in re.finditer(r'(\w+):(?:\$R\[\d+\]=)?("(?:[^"\\]|\\.)*"|null|!0|!1|-?\d+(?:\.\d+)?|\[[^\[\]]*\])', text):
+        k, v = m.group(1), m.group(2)
+        if v == "null":
+            out[k] = None
+        elif v in ("!0", "!1"):
+            out[k] = v == "!0"
+        elif v.startswith('"') or v.startswith("["):
+            try:
+                out[k] = json.loads(v)
+            except Exception:
+                out[k] = v.strip('"')
+        else:
+            out[k] = float(v) if "." in v else int(v)
+    return out
+
+
+def _pt_date(value):
+    m = re.match(r"\s*(\d{1,2})\s+([A-Za-zçÇ]{3})[A-Za-z]*\.?\s+(\d{4})", str(value or ""))
+    if not m:
+        return None
+    month = PT_MONTHS.get(zz_norm(m.group(2))[:3])
+    if not month:
+        return None
+    return f"{int(m.group(3)):04d}-{month:02d}-{int(m.group(1)):02d}T12:00:00Z"
+
+
+def fetch_sporting_site_state():
+    r = session.get("https://sporting.pt/", timeout=30, headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
+    r.raise_for_status()
+    html = r.text
+    events = [_js_obj(x) for x in re.findall(r'\{id:"ecal-[^{}]*\}', html)]
+    news = [_js_obj(x) for x in re.findall(r'\{id:"[^"]+",slug:"[^"]+",title:[^{}]*\}', html)]
+    return events, news
+
+
+def _s365_games(path, cid):
+    data = s365_get(path, {"competitors": cid}) or {}
+    comps = {c.get("id"): c for c in (data.get("competitions") or [])}
+    return data.get("games") or [], comps
+
+
+def _mod_result_row(g, key, label, cid):
+    hc, ac = g.get("homeCompetitor") or {}, g.get("awayCompetitor") or {}
+    hs, as_ = hc.get("score"), ac.get("score")
+    if hs is None or as_ is None or hs < 0 or as_ < 0:
+        return None
+    sp_home = hc.get("id") == cid
+    mine, theirs = (hs, as_) if sp_home else (as_, hs)
+    return {
+        "sport": key, "sport_label": label, "date": g.get("startTime"),
+        "competition": clean(g.get("competitionDisplayName")),
+        "home": clean(hc.get("name")), "away": clean(ac.get("name")),
+        "home_score": int(hs), "away_score": int(as_), "sporting_home": sp_home,
+        "outcome": "V" if mine > theirs else ("D" if mine < theirs else "E"),
+        "source": "365scores", "id": g.get("id"), "competition_id": g.get("competitionId"),
+    }
+
+
+def _mod_standings(comp_id, cid):
+    data = s365_get("/standings/", {"competitions": comp_id}) or {}
+    st = (data.get("standings") or [{}])[0]
+    rows = []
+    for r in st.get("rows") or []:
+        c = r.get("competitor") or {}
+        rows.append({
+            "pos": r.get("position"), "team": clean(c.get("name")), "sporting": c.get("id") == cid,
+            "played": r.get("gamePlayed"), "won": r.get("gamesWon"), "drawn": r.get("gamesEven"),
+            "lost": r.get("gamesLost"), "points": r.get("points"),
+        })
+    name = clean(((data.get("competitions") or [{}])[0]).get("name")) if data.get("competitions") else ""
+    return {"competition": name, "rows": rows} if rows else None
+
+
+def fetch_modalidades():
+    now = time.time()
+    sports = {}
+
+    def sport(key, label):
+        return sports.setdefault(key, {"key": key, "label": label, "fixtures": [], "results": [], "standings": None})
+
+    sources = {}
+    # 1) Calendário oficial (Sporting.pt)
+    site_events, site_news = [], []
+    try:
+        site_events, site_news = fetch_sporting_site_state()
+        sources["calendario"] = "Sporting.pt"
+    except Exception as e:
+        print("Modalidades: Sporting.pt indisponível:", e)
+    for ev in site_events:
+        if ev.get("group") != "modalidades":
+            continue
+        cls = mod_classify(" ".join(str(ev.get(k) or "") for k in ("teamLabel", "team"))) or (clean(ev.get("team")), clean(ev.get("teamLabel") or ev.get("team")))
+        key, label = cls
+        try:
+            ts = datetime.fromisoformat(str(ev.get("date")).replace("Z", "+00:00")).timestamp()
+        except Exception:
+            continue
+        if ts < now - 3 * 3600:
+            continue
+        sport(key, label)["fixtures"].append({
+            "sport": key, "sport_label": label, "date": ev.get("date"),
+            "competition": clean(ev.get("competition")), "opponent": clean(ev.get("opponent")),
+            "home_away": "casa" if str(ev.get("homeAway")).lower() == "casa" else "fora",
+            "venue": clean(ev.get("venue")), "labels": [clean(x) for x in (ev.get("labels") or []) if clean(x)],
+            "tickets": ev.get("ticketsUrl") if not ev.get("ticketsBlocked") else None, "source": "Sporting.pt",
+        })
+
+    # 2) Resultados, jogos e classificações (365scores)
+    for key, cid in MOD_365_TEAMS:
+        label = dict((k, l) for k, l, _ in MOD_SPORTS).get(key.replace("-feminino", ""), key)
+        if key.endswith("-feminino"):
+            label += " Feminino"
+        sp = sport(key, label)
+        try:
+            games, _ = _s365_games("/games/results/", cid)
+            rows = [r for r in (_mod_result_row(g, key, label, cid) for g in games) if r and str(r["date"]) >= MOD_SEASON_START]
+            rows.sort(key=lambda r: r["date"], reverse=True)
+            sp["results"] = rows[:20]
+            if not sp["fixtures"]:
+                fx, _ = _s365_games("/games/fixtures/", cid)
+                for g in fx[:20]:
+                    hc, ac = g.get("homeCompetitor") or {}, g.get("awayCompetitor") or {}
+                    home = hc.get("id") == cid
+                    sp["fixtures"].append({
+                        "sport": key, "sport_label": label, "date": g.get("startTime"),
+                        "competition": clean(g.get("competitionDisplayName")),
+                        "opponent": clean((ac if home else hc).get("name")), "home_away": "casa" if home else "fora",
+                        "venue": "", "labels": [], "tickets": None, "source": "365scores",
+                    })
+            domestic = [r for r in rows if not re.search(r"champions|cup|ehf|fiba|cev|europe|euro|challenge", r["competition"] or "", re.I)]
+            if domestic:
+                try:
+                    sp["standings"] = _mod_standings(domestic[0]["competition_id"], cid)
+                    if sp["standings"] and not sp["standings"]["competition"]:
+                        sp["standings"]["competition"] = re.sub(r"\s*-\s*(Regular Season|Round.*)$", "", domestic[0]["competition"])
+                except Exception as e:
+                    print("Modalidades: classificação indisponível:", key, e)
+            sources["resultados"] = "365scores"
+        except Exception as e:
+            print("Modalidades: 365scores indisponível:", key, e)
+
+    # 3) Notícias: oficiais (Sporting.pt) + imprensa já recolhida (news.json)
+    news, seen = [], set()
+    for n in site_news:
+        cls = mod_classify(n.get("tag") or "") or mod_classify((n.get("title") or "") + " " + (n.get("summary") or ""))
+        tag = zz_norm(n.get("tag"))
+        if not cls or tag.startswith("futebol") and "praia" not in tag:
+            continue
+        url = "https://sporting.pt/noticias/" + str(n.get("slug"))
+        if url in seen:
+            continue
+        seen.add(url)
+        news.append({"title": clean(n.get("title")), "summary": clean(n.get("summary")), "url": url,
+                     "image": n.get("cover"), "published": _pt_date(n.get("date")), "sport": cls[0],
+                     "sport_label": cls[1], "source": "Sporting.pt"})
+    for n in ((safe_existing("news.json") or {}).get("items") or []):
+        cls = mod_classify((n.get("title") or "") + " " + (n.get("description") or ""))
+        if not cls:
+            continue
+        t = zz_norm(n.get("title"))
+        if re.search(r"\b(liga betclic|rui borges|paulo fonseca|alvalade)\b", t):
+            continue
+        if n.get("url") in seen:
+            continue
+        seen.add(n.get("url"))
+        news.append({"title": clean(n.get("title")), "summary": clean(n.get("description")), "url": n.get("url"),
+                     "image": n.get("image"), "published": n.get("published"), "sport": cls[0],
+                     "sport_label": cls[1], "source": n.get("source")})
+    news.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
+    for n in news:
+        sport(n["sport"], n["sport_label"])
+
+    ordered = []
+    order = [k for k, _, _ in MOD_SPORTS]
+    for sp in sorted(sports.values(), key=lambda s: (order.index(s["key"].replace("-feminino", "")) if s["key"].replace("-feminino", "") in order else 99, s["key"])):
+        sp["fixtures"].sort(key=lambda f: str(f.get("date")))
+        sp["news_count"] = sum(1 for n in news if n["sport"] == sp["key"])
+        ordered.append(sp)
+
+    if not any(s["fixtures"] or s["results"] for s in ordered) and not news:
+        raise RuntimeError("Modalidades: nenhuma fonte devolveu dados; mantém o ficheiro anterior.")
+    write_json("modalidades.json", {
+        "season": "2026/27",
+        "sports": ordered,
+        "news": news[:120],
+        "sources": {"calendario": "Sporting.pt", "resultados": "365scores", "noticias": "Sporting.pt, Record, O Jogo"},
+    })
+    print("Modalidades:", {s["key"]: (len(s["fixtures"]), len(s["results"]), bool(s["standings"]), s["news_count"]) for s in ordered}, "notícias:", len(news))
+
 def enrich_details_with_espn(details, fixtures):
     by_id = {str(f.get("id")): f for f in fixtures}
     for d in details:
@@ -6917,6 +7161,10 @@ def main():
         fetch_youtube()
     except Exception as e:
         errors.append(f"youtube: {e}")
+    try:
+        fetch_modalidades()
+    except Exception as e:
+        errors.append(f"modalidades: {e}")
 
     if mode in {"full", "football"}:
         try:
