@@ -1,0 +1,23 @@
+name: tmp probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          P="/jogo/2026-11-21-sporting-uniao-da-serra/12799247"
+          for u in \
+            "https://www-zerozero-pt.translate.goog$P?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-PT&_x_tr_pto=wapp" \
+            "https://translate.google.com/translate?sl=en&tl=pt&u=https://www.zerozero.pt$P" \
+            "https://web.archive.org/web/2026/https://www.zerozero.pt$P" \
+            "http://archive.org/wayback/available?url=zerozero.pt$P" \
+            "https://webcache.googleusercontent.com/search?q=cache:https://www.zerozero.pt$P" \
+            "https://m.zerozero.pt$P" \
+            "https://zerozero.pt$P"; do
+            code=$(curl -sS -L -m 40 -A "$UA" -H "Accept-Language: pt-PT,pt;q=0.9" -o /tmp/p -w "%{http_code} %{size_download}" "$u")
+            title=$(grep -oE '<title>[^<]{0,120}' /tmp/p | head -1)
+            echo "$code | $title | $u"
+            grep -oiE '(rbitro|Diogo Rosa|Irankunda)[^<]{0,60}' /tmp/p | head -3
+          done
