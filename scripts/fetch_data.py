@@ -7565,9 +7565,46 @@ def _computed_player_match_stats():
     return out
 
 
+_FOTMOB_PLAYER_CACHE = {}
+
+
+def _fotmob_player(fid):
+    if fid not in _FOTMOB_PLAYER_CACHE:
+        try:
+            _FOTMOB_PLAYER_CACHE[fid] = fotmob_get("/api/data/playerData", {"id": fid}) or {}
+        except Exception as e:
+            print("FotMob player warning:", fid, e)
+            _FOTMOB_PLAYER_CACHE[fid] = {}
+    return _FOTMOB_PLAYER_CACHE[fid]
+
+
+def _fotmob_career_stats(fid):
+    """Percurso por época (sénior primeiro, depois formação), só jogos oficiais."""
+    ch = ((_fotmob_player(fid).get("careerHistory") or {}).get("careerItems") or {})
+    rows = []
+    for group in ("senior", "youth"):
+        for e in ((ch.get(group) or {}).get("seasonEntries") or []):
+            season = str(e.get("seasonName") or "")
+            m = re.match(r"(\d{4})/(\d{4})$", season)
+            if m:
+                season = f"{m.group(1)}/{m.group(2)[2:]}"
+            ts = [t for t in (e.get("tournamentStats") or []) if not t.get("isFriendly")]
+            if ts:
+                apps = sum(int(fnum(t.get("appearances")) or 0) for t in ts)
+                goals = sum(int(fnum(t.get("goals")) or 0) for t in ts)
+                assists = sum(int(fnum(t.get("assists")) or 0) for t in ts)
+            else:
+                apps, goals, assists = int(fnum(e.get("appearances")) or 0), int(fnum(e.get("goals")) or 0), int(fnum(e.get("assists")) or 0)
+            club = clean(e.get("team"))
+            if club and season:
+                rows.append({"season": season, "club": club, "matches": apps, "goals": goals, "assists": assists,
+                             "competitions": [clean(t.get("leagueName")) for t in ts if t.get("leagueName")]})
+    return rows
+
+
 def _fotmob_birthdate(fid):
     try:
-        data = fotmob_get("/api/data/playerData", {"id": fid}) or {}
+        data = _fotmob_player(fid)
         bd = data.get("birthDate") or {}
         v = bd.get("utcTime") if isinstance(bd, dict) else bd
         if v:
@@ -7635,13 +7672,20 @@ def finalize_player_stats():
             st[k] = sum(v.get(k, 0) for v in by.values())
         if p.get("position") == "GK" or "goalkeeper" in zz_norm(p.get("position")):
             st["cleanSheets"] = cs_comp if comp_hits.get(id(p)) else st.get("cleanSheets", 0)
+        # Percurso: o zerozero deixou de estar acessível; o FotMob tem o histórico por época.
+        if p.get("fotmob_id"):
+            hist = _fotmob_career_stats(p["fotmob_id"])
+            old = p.get("careerStats") or []
+            if hist and len({r["season"] for r in hist}) > len({str(r.get("season")) for r in old}):
+                p["careerStats"] = hist
         if not p.get("dateOfBirth") and p.get("fotmob_id"):
             bd = _fotmob_birthdate(p["fotmob_id"])
             if bd:
                 p["dateOfBirth"] = bd
                 print("Data de nascimento (FotMob):", p.get("name"), bd)
     write_json("squad.json", squad)
-    print(f"Estatísticas dos jogadores: só jogos oficiais; {fixed} competições corrigidas com as fichas de jogo.")
+    print(f"Estatísticas dos jogadores: só jogos oficiais; {fixed} competições corrigidas com as fichas de jogo; "
+          f"percurso FotMob em {sum(1 for p in players if any(r.get('competitions') is not None for r in (p.get('careerStats') or [])))} jogadores.")
 
 
 S365_ROUND_PT = (("Final", "Final"), ("Semi Finals", "Meias-finais"), ("Semi-Finals", "Meias-finais"),
