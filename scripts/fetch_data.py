@@ -1578,9 +1578,9 @@ def fetch_sofascore_match_details():
     except Exception as e:
         print("ESPN match detail backup warning:", e)
     try:
-        enrich_details_with_sofa_reader(details, finished)
+        enrich_details_with_365scores(details, finished)
     except Exception as e:
-        print("SofaScore reader backup warning:", e)
+        print("365scores backup warning:", e)
     try:
         fill_missing_pitch_layouts(details)
     except Exception as e:
@@ -1641,8 +1641,13 @@ def _detail_needs_backup(d):
     kinds = {str(i.get("incidentType")) for i in incidents if isinstance(i, dict)}
     referee = ((d.get("event") or {}).get("referee") or {})
     referee = referee.get("name") if isinstance(referee, dict) else referee
+    stats_items = []
+    for per in ((d.get("statistics") or {}).get("statistics") or []):
+        for g in per.get("groups") or []:
+            stats_items.extend(g.get("statisticsItems") or [])
     return (
-        not _has_layout(home) or not _has_layout(away)
+        not stats_items
+        or not _has_layout(home) or not _has_layout(away)
         or not clean(home.get("formation")) or not clean(away.get("formation"))
         or "substitution" not in kinds
         or not clean(referee)
@@ -2043,6 +2048,208 @@ def enrich_details_with_sofa_reader(details, fixtures):
                 d["backup_sources"].append("SofaScore")
             d["sofascore_id"] = sid
         print("SofaScore reader:", d.get("match_id"), sid, "→", ", ".join(filled) or "nada novo")
+
+
+# ---------------------------------------------------------------------------
+# 365scores public web API: reachable from GitHub Actions and covers early
+# Taça de Portugal rounds (referee, lineups with roles, events, statistics).
+# ---------------------------------------------------------------------------
+S365_API = "https://webws.365scores.com/web"
+S365_Q = {"appTypeId": 5, "langId": 1, "timezoneName": "Europe/Lisbon", "userCountryId": 131}
+S365_SPORTING_ID = 890
+
+
+def s365_get(path, params=None):
+    r = session.get(S365_API + path, params={**S365_Q, **(params or {})}, timeout=25,
+                    headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    r.raise_for_status()
+    return r.json()
+
+
+def _s365_role_abbr(member):
+    role = zz_norm(((member.get("formation") or {}).get("shortName")) or ((member.get("formation") or {}).get("name")) or "")
+    pos = zz_norm(((member.get("position") or {}).get("shortName")) or ((member.get("position") or {}).get("name")) or "")
+    table = [
+        ("goalkeeper", "G"), ("right wing back", "RWB"), ("left wing back", "LWB"),
+        ("right back", "RB"), ("left back", "LB"), ("centre back", "CD"), ("center back", "CD"),
+        ("defensive mid", "DM"), ("attacking mid", "AM"), ("right mid", "RM"), ("left mid", "LM"),
+        ("central mid", "CM"), ("centre mid", "CM"), ("right wing", "RW"), ("left wing", "LW"),
+        ("second striker", "F"), ("striker", "F"), ("forward", "F"), ("midfield", "M"), ("defender", "D"),
+    ]
+    for key, abbr in table:
+        if key in role:
+            return abbr
+    for key, abbr in (("goalkeeper", "G"), ("defender", "D"), ("midfield", "M"), ("forward", "F"), ("attack", "F")):
+        if key in pos:
+            return abbr
+    return ""
+
+
+def _s365_find_game(fixture):
+    ts = int(fixture.get("date") or 0)
+    home = (fixture.get("home") or {}).get("name") or ""
+    away = (fixture.get("away") or {}).get("name") or ""
+    rival = _team_tokens(away if "sporting" in zz_norm(home) else home)
+    games = (s365_get("/games/results/", {"competitors": S365_SPORTING_ID}) or {}).get("games") or []
+    best = None
+    for g in games:
+        try:
+            st = int(datetime.fromisoformat(str(g.get("startTime"))).timestamp())
+        except Exception:
+            continue
+        if not ts or abs(st - ts) > 36 * 3600:
+            continue
+        names = [(g.get("homeCompetitor") or {}).get("name") or "", (g.get("awayCompetitor") or {}).get("name") or ""]
+        other = names[1] if (g.get("homeCompetitor") or {}).get("id") == S365_SPORTING_ID else names[0]
+        if rival and not (rival & _team_tokens(other)):
+            continue
+        if best is None or abs(st - ts) < best[0]:
+            best = (abs(st - ts), g)
+    return best[1] if best else None
+
+
+def s365_match_detail(game_id):
+    g = (s365_get("/game/", {"gameId": game_id}) or {}).get("game") or {}
+    people = {m.get("id"): m for m in (g.get("members") or [])}
+    home_c, away_c = g.get("homeCompetitor") or {}, g.get("awayCompetitor") or {}
+    home_cid = home_c.get("id")
+
+    def name_of(mid):
+        return clean((people.get(mid) or {}).get("name"))
+
+    lineups = {}
+    for side, comp in (("home", home_c), ("away", away_c)):
+        lu = comp.get("lineups") or {}
+        players = []
+        for m in lu.get("members") or []:
+            p = people.get(m.get("id")) or {}
+            if not clean(p.get("name")):
+                continue
+            starter = str(m.get("statusText") or "").lower().startswith("start") or m.get("status") == 1
+            players.append({
+                "player": {"name": clean(p.get("name")), "shortName": clean(p.get("shortName") or p.get("name")), "id": p.get("athleteId")},
+                "shirtNumber": p.get("jerseyNumber"),
+                "position": _s365_role_abbr(m),
+                "substitute": not starter,
+                "horizontalLayout": None,
+                "statistics": {"rating": (m.get("ranking") if isinstance(m.get("ranking"), (int, float)) else None)},
+            })
+        starters = [p for p in players if not p["substitute"]]
+        formation = clean(lu.get("formation"))
+        if len(starters) == 11:
+            infer_pitch_layout(starters, formation)
+        lineups[side] = {"id": comp.get("id"), "name": clean(comp.get("name")), "formation": formation,
+                         "coach": "", "players": starters + [p for p in players if p["substitute"]]}
+
+    incidents = []
+    for e in g.get("events") or []:
+        t = zz_norm(((e.get("eventType") or {}).get("name")) or "")
+        minute = e.get("gameTime")
+        minute = int(minute) if isinstance(minute, (int, float)) else None
+        is_home = e.get("competitorId") == home_cid
+        who = name_of(e.get("playerId"))
+        if "substitution" in t:
+            out = name_of((e.get("extraPlayers") or [None])[0])
+            incidents.append({"incidentType": "substitution", "time": minute, "player": {"name": who}, "isHome": is_home,
+                              "description": "Substitution", "playerIn": {"name": who}, "playerOut": {"name": out},
+                              "swap": [{"name": who}, {"name": out}], "cardType": ""})
+        elif "card" in t:
+            ctype = "second_yellow" if "second" in t else ("red" if "red" in t else "yellow")
+            incidents.append({"incidentType": "card", "time": minute, "player": {"name": who}, "isHome": is_home,
+                              "description": who, "swap": [], "cardType": ctype})
+        elif "goal" in t and "disallow" not in t and "miss" not in t:
+            incidents.append({"incidentType": "goal", "time": minute, "player": {"name": who}, "isHome": is_home,
+                              "description": who, "swap": [], "cardType": "", "ownGoal": "own" in t, "penalty": "penalty" in t})
+
+    stats_items = []
+    try:
+        raw = (s365_get("/game/stats/", {"games": game_id}) or {}).get("statistics") or []
+        order, vals = [], {}
+        for st in raw:
+            nm = clean(st.get("name"))
+            if not nm:
+                continue
+            if nm not in vals:
+                order.append(nm); vals[nm] = {}
+            vals[nm]["home" if st.get("competitorId") == home_cid else "away"] = st.get("value")
+        canon = {"ball possession": "Ball possession", "possession": "Ball possession",
+                 "total shots": "Total shots", "shots": "Total shots",
+                 "shots on target": "Shots on target", "shots on goal": "Shots on target",
+                 "corners": "Corner kicks", "corner kicks": "Corner kicks",
+                 "fouls": "Fouls", "fouls committed": "Fouls", "yellow cards": "Yellow cards",
+                 "red cards": "Red cards", "offsides": "Offsides", "saves": "Saves",
+                 "goalkeeper saves": "Saves", "expected goals": "Expected goals (xG)", "xg": "Expected goals (xG)"}
+        stats_items = [{"name": canon.get(zz_norm(nm), nm), "home": vals[nm].get("home"), "away": vals[nm].get("away")} for nm in order]
+        print("365scores stats:", game_id, [x["name"] for x in stats_items])
+    except Exception as e:
+        print("365scores stats warning:", game_id, e)
+
+    referee = ""
+    for o in g.get("officials") or []:
+        if clean(o.get("name")):
+            referee = clean(o.get("name")); break
+    return {"lineups": lineups, "incidents": incidents, "stats": stats_items, "referee": referee,
+            "attendance": g.get("attendance"), "id": game_id}
+
+
+def enrich_details_with_365scores(details, fixtures):
+    by_id = {str(f.get("id")): f for f in fixtures}
+    for d in details:
+        if not _detail_needs_backup(d):
+            continue
+        f = by_id.get(str(d.get("match_id")))
+        if not f:
+            continue
+        try:
+            g = _s365_find_game(f)
+            if not g:
+                print("365scores backup: match not found:", d.get("match_id"))
+                continue
+            e = s365_match_detail(g.get("id"))
+        except Exception as ex:
+            print("365scores backup warning:", d.get("match_id"), ex)
+            continue
+        filled = []
+        lu = d.setdefault("lineups", {})
+        for side in ("home", "away"):
+            cur, new = lu.get(side) or {}, (e["lineups"] or {}).get(side)
+            if not new or len(_starters(new)) < 11 or _has_layout(cur):
+                continue
+            if _has_layout(new) or len(_starters(cur)) < 11:
+                ratings = {zz_norm((p.get("player") or {}).get("name")): (p.get("statistics") or {}).get("rating") for p in _lineup_players(cur)}
+                for p in new["players"]:
+                    r = ratings.get(zz_norm(p["player"]["name"]))
+                    if r is not None and p["statistics"].get("rating") is None:
+                        p["statistics"]["rating"] = r
+                new["coach"] = cur.get("coach") or ""
+                new["name"] = cur.get("name") or new.get("name")
+                lu[side] = new
+                filled.append(f"{side}-onze")
+        incs = d.setdefault("incidents", {}).setdefault("incidents", [])
+        have = {str(i.get("incidentType")) for i in incs if isinstance(i, dict)}
+        for kind in ("card", "substitution", "goal"):
+            if kind not in have:
+                add = [i for i in e["incidents"] if i["incidentType"] == kind]
+                if add:
+                    incs.extend(add); filled.append(kind)
+        incs.sort(key=lambda i: (i.get("time") is None, i.get("time") or 0))
+        cur_items = [it for per in ((d.get("statistics") or {}).get("statistics") or []) for g2 in per.get("groups") or [] for it in (g2.get("statisticsItems") or [])]
+        if not cur_items and e["stats"]:
+            d["statistics"] = {"statistics": [{"period": "ALL", "groups": [{"groupName": "365scores", "statisticsItems": e["stats"]}]}]}
+            filled.append("estatísticas")
+        ev = d.setdefault("event", {})
+        ref = ev.get("referee")
+        ref = ref.get("name") if isinstance(ref, dict) else ref
+        if not clean(ref) and e["referee"]:
+            ev["referee"] = {"name": e["referee"]}; filled.append("árbitro")
+        if not ev.get("attendance") and e.get("attendance"):
+            ev["attendance"] = e["attendance"]
+        if filled:
+            d.setdefault("backup_sources", [])
+            if "365scores" not in d["backup_sources"]:
+                d["backup_sources"].append("365scores")
+            d["s365_id"] = e["id"]
+        print("365scores backup:", d.get("match_id"), e["id"], "→", ", ".join(filled) or "nada novo")
 
 
 def enrich_details_with_espn(details, fixtures):
