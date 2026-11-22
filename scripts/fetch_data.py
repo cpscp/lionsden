@@ -1830,6 +1830,11 @@ def _espn_minute(clock):
 def espn_match_detail(league, event_id):
     s = espn_get(f"/{league}/summary", {"event": event_id})
     rosters = s.get("rosters") or []
+    print("ESPN summary:", event_id, "rosters=", [(r.get("homeAway"), r.get("formation"), len(r.get("roster") or []),
+          sum(1 for e in (r.get("roster") or []) if e.get("starter")),
+          sorted({str((e.get("position") or {}).get("abbreviation")) for e in (r.get("roster") or [])})[:12]) for r in rosters],
+          "keyEvents=", len(s.get("keyEvents") or []), "commentary=", len(s.get("commentary") or []),
+          "officials=", [o.get("displayName") for o in ((s.get("gameInfo") or {}).get("officials") or [])], "keys=", sorted(s.keys()))
     home_espn_id = None
     lineups = {}
     for r in rosters:
