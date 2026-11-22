@@ -2136,7 +2136,9 @@ def s365_match_detail(game_id):
             })
         starters = [p for p in players if not p["substitute"]]
         formation = clean(lu.get("formation"))
-        if len(starters) == 11:
+        # Without an official formation, only trust the roles when they form a
+        # realistic shape (e.g. never draw a "2-5-3").
+        if len(starters) == 11 and (formation or _plausible_shape(starters)):
             infer_pitch_layout(starters, formation)
         lineups[side] = {"id": comp.get("id"), "name": clean(comp.get("name")), "formation": formation,
                          "coach": "", "players": starters + [p for p in players if p["substitute"]]}
