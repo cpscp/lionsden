@@ -2402,7 +2402,11 @@ def _mod_standings(comp_id, cid):
     data = s365_get("/standings/", {"competitions": comp_id}) or {}
     st = (data.get("standings") or [{}])[0]
     rows = []
-    for r in st.get("rows") or []:
+    raw_rows = st.get("rows") or []
+    my_group = next((r.get("groupNum") for r in raw_rows if (r.get("competitor") or {}).get("id") == cid), None)
+    if my_group is not None:
+        raw_rows = [r for r in raw_rows if r.get("groupNum") == my_group]
+    for r in raw_rows:
         c = r.get("competitor") or {}
         rows.append({
             "pos": r.get("position"), "team": _mod_team(c.get("name")), "sporting": c.get("id") == cid,
@@ -2488,7 +2492,6 @@ def fetch_modalidades():
                         "venue": "", "labels": [], "tickets": None, "source": "365scores",
                     })
             domestic = [r for r in rows if not re.search(r"champions|campe|cup|ta[cç]a|ehf|fiba|cev|europe|euro|challenge", r["competition"] or "", re.I)]
-            domestic = domestic or rows  # sem liga nacional nas fontes: usa a competição mais recente
             if domestic:
                 try:
                     sp["standings"] = _mod_standings(domestic[0]["competition_id"], cid)
