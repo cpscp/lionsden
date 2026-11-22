@@ -8,11 +8,7 @@ jobs:
           set +e
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
           g(){ curl -sS -L -m 30 -A "$UA" "$@"; }
-          echo "== rinkhockey"; g https://www.rinkhockey.net/ | head -c 600; echo
-          g "https://www.rinkhockey.net/portugal/" -o /tmp/r -w "%{http_code} %{size_download}\n"; head -c 300 /tmp/r; echo
-          for u in https://www.abola.pt/modalidades/futsal https://www.abola.pt/modalidades/hoquei-em-patins https://www.record.pt/modalidades/futsal https://www.record.pt/modalidades/hoquei-em-patins https://www.zerozero.pt/equipa/sporting/16 https://www.fpp.pt/ https://www.fppatinagem.pt/ https://resultados.fpf.pt/ "https://www.sporting.pt/api/news?category=modalidades" https://www.sporting.pt/sitemap.xml https://www.sporting.pt/pt/noticias/modalidades/futsal; do
-            g -o /tmp/p -w "%{http_code} %{size_download} $u\n" "$u"
-          done
-          echo "== abola modalidades links"; g https://www.abola.pt/modalidades | grep -oE 'href="(https://www.abola.pt)?/modalidades/[a-z0-9-]+"' | sort -u | head -30
-          echo "== abola futsal sample"; g https://www.abola.pt/modalidades/futsal | grep -oE 'href="[^"]+"' | grep -iE 'jogo|calend|result|classif' | sort -u | head -15
-          echo "== sporting sitemap"; g https://www.sporting.pt/sitemap.xml | head -c 800; echo
+          txt(){ python3 -c "import sys,re,html;s=sys.stdin.read();t=re.sub(r'<script.*?</script>|<style.*?</style>',' ',s,flags=re.S);t=re.sub(r'<[^>]+>',' ',t);t=re.sub(r'\s+',' ',html.unescape(t));print(t[:${1:-1500}])"; }
+          echo "== sitemap"; g https://sporting.pt/sitemap.xml | grep -oE '<loc>[^<]+' | sed 's/<loc>//' | head -80
+          for u in https://sporting.pt/noticias https://sporting.pt/modalidades https://sporting.pt/modalidades/futsal https://sporting.pt/calendario; do echo "== $u"; g "$u" -o /tmp/p -w "%{http_code} %{size_download}\n"; txt 900 < /tmp/p; grep -oE 'href="/[^"]+"' /tmp/p | sort -u | grep -viE 'socios|loja|bilhete|museu' | head -25; grep -oE '"(https?:)?//[^"]*api[^"]*"' /tmp/p | sort -u | head -5; done
+          echo "== fpp"; g https://www.fpp.pt/ -o /tmp/f; grep -oE 'href="[^"]+"' /tmp/f | grep -iE 'hoquei|calend|result|compet|jogos' | sort -u | head -25
