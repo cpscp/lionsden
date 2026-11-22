@@ -7662,8 +7662,11 @@ def fill_cup_rounds_from_fixtures():
     changed = False
     for key in ("taca-portugal", "taca-liga"):
         comp = sc.get(key)
-        if not isinstance(comp, dict) or comp.get("rounds"):
+        if not isinstance(comp, dict):
             continue
+        existing = comp.get("rounds") or []
+        if existing and not all(m.get("sporting_only") for r in existing for m in (r.get("matchups") or [])):
+            continue  # quadro oficial do fornecedor já publicado
         mine = [f for f in fixtures if official_comp_key((f.get("competition") or {}).get("name")) == key]
         word = "taca de portugal" if key == "taca-portugal" else "taca da liga"
         rounds = {}

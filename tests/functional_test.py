@@ -216,6 +216,19 @@ def run_variant(browser, path, label, viewport, mobile):
     check(f"[{label}] modalidades: notícias", page.locator("#modContent .news-card").count() > 0)
     page.evaluate("go('home')")
     check(f"[{label}] início: bloco Modalidades com próximos jogos", page.locator("#homeModalidades .mod-home-row").count() > 0)
+    # Taça de Portugal nas estatísticas e na classificação; jogadores só com jogos oficiais
+    taca = page.evaluate("currentCompetitionStats('taca-portugal').matches")
+    check(f"[{label}] estatísticas: Taça de Portugal com jogos ({taca})", taca >= 1)
+    page.evaluate("window._classificationKey='taca-portugal';go('classification');renderClassification()")
+    page.wait_for_timeout(200)
+    check(f"[{label}] classificação: Taça de Portugal com eliminatórias", page.locator("#classificationList .knockout-match").count() >= 1)
+    friendly = page.evaluate("(D['squad.json'].squad||[]).filter(p=>Object.keys(p.stats?.byCompetition||{}).some(k=>/friend|amig/i.test(k))).length")
+    check(f"[{label}] jogadores: estatísticas sem jogos particulares", friendly == 0, f"{friendly} jogadores com particulares")
+    nodob = page.evaluate("(D['squad.json'].squad||[]).filter(p=>(p.stats?.matches||0)>0&&!p.dateOfBirth).map(p=>p.name)")
+    check(f"[{label}] jogadores: data de nascimento de quem já jogou", not nodob, ", ".join(nodob))
+    sp_news = page.evaluate("(D['news.json'].items||[]).filter(n=>n.source==='Sporting.pt').length")
+    check(f"[{label}] notícias: Sporting.pt presente ({sp_news})", sp_news > 0)
+
     real_errors = [e for e in js_errors if "tailwind" not in e.lower()]
     check(f"[{label}] sem erros de JavaScript", not real_errors, " | ".join(real_errors[:3]))
     ctx.close()
