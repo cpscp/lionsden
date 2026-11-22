@@ -1411,6 +1411,33 @@
             "sporting_only": true
           }
         ]
+      },
+      {
+        "stage": "Oitavos de final",
+        "label": "Oitavos de final",
+        "participantCount": null,
+        "matchups": [
+          {
+            "home": {
+              "id": 9768,
+              "name": "Sporting CP",
+              "shortName": "SPO",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+            },
+            "away": {
+              "id": null,
+              "name": "Atlético CP",
+              "shortName": "ATL",
+              "crest": null
+            },
+            "homeScore": null,
+            "awayScore": null,
+            "date_label": "15 a 17 dez · Estádio José Alvalade",
+            "venue": "Estádio José Alvalade",
+            "matches": [],
+            "sporting_only": true
+          }
+        ]
       }
     ]
   },

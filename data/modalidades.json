@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T16:05:50.438524+00:00",
+  "_updated_at": "2026-11-22T16:49:21.961512+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1529,6 +1529,19 @@
           },
           {
             "pos": 2,
+            "team": "FC Porto",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 15,
+            "ga": 5,
+            "gd": 10
+          },
+          {
+            "pos": 3,
             "team": "UD Oliveirense / Simoldes",
             "sporting": false,
             "points": 9,
@@ -1541,7 +1554,7 @@
             "gd": 8
           },
           {
-            "pos": 3,
+            "pos": 4,
             "team": "J. Pacense / Des Compagnons",
             "sporting": false,
             "points": 7,
@@ -1554,7 +1567,7 @@
             "gd": 4
           },
           {
-            "pos": 4,
+            "pos": 5,
             "team": "Sporting CP",
             "sporting": true,
             "points": 6,
@@ -1565,19 +1578,6 @@
             "gf": 8,
             "ga": 1,
             "gd": 7
-          },
-          {
-            "pos": 5,
-            "team": "FC Porto",
-            "sporting": false,
-            "points": 6,
-            "played": 2,
-            "won": 2,
-            "drawn": 0,
-            "lost": 0,
-            "gf": 9,
-            "ga": 3,
-            "gd": 6
           },
           {
             "pos": 6,
@@ -1659,19 +1659,6 @@
           },
           {
             "pos": 12,
-            "team": "AD Oeiras",
-            "sporting": false,
-            "points": 0,
-            "played": 2,
-            "won": 0,
-            "drawn": 0,
-            "lost": 2,
-            "gf": 5,
-            "ga": 13,
-            "gd": -8
-          },
-          {
-            "pos": 13,
             "team": "Candelária SC",
             "sporting": false,
             "points": 0,
@@ -1682,6 +1669,19 @@
             "gf": 2,
             "ga": 11,
             "gd": -9
+          },
+          {
+            "pos": 13,
+            "team": "AD Oeiras",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 7,
+            "ga": 19,
+            "gd": -12
           },
           {
             "pos": 14,
@@ -2888,22 +2888,22 @@
           },
           {
             "pos": 2,
+            "team": "SL Benfica",
+            "sporting": false,
+            "played": 6,
+            "won": 6,
+            "drawn": 0,
+            "lost": 0,
+            "points": 17.0
+          },
+          {
+            "pos": 3,
             "team": "Vitoria SC",
             "sporting": false,
             "played": 6,
             "won": 5,
             "drawn": 0,
             "lost": 1,
-            "points": 14.0
-          },
-          {
-            "pos": 3,
-            "team": "SL Benfica",
-            "sporting": false,
-            "played": 6,
-            "won": 5,
-            "drawn": 0,
-            "lost": 0,
             "points": 14.0
           },
           {
@@ -2973,7 +2973,7 @@
             "played": 6,
             "won": 1,
             "drawn": 0,
-            "lost": 4,
+            "lost": 5,
             "points": 3.0
           },
           {
@@ -3004,18 +3004,6 @@
       "key": "voleibol-feminino",
       "label": "Voleibol Feminino",
       "fixtures": [
-        {
-          "sport": "voleibol-feminino",
-          "sport_label": "Voleibol Feminino",
-          "date": "2026-11-22T15:00:00+00:00",
-          "competition": "Liga Solverde.Pt",
-          "opponent": "AA São Mamede",
-          "home_away": "fora",
-          "venue": "",
-          "labels": [],
-          "tickets": null,
-          "source": "365scores"
-        },
         {
           "sport": "voleibol-feminino",
           "sport_label": "Voleibol Feminino",
@@ -3348,11 +3336,11 @@
             "pos": 2,
             "team": "Fc Porto",
             "sporting": false,
-            "played": 7,
-            "won": 6,
+            "played": 8,
+            "won": 7,
             "drawn": 0,
             "lost": 1,
-            "points": 18.0
+            "points": 21.0
           },
           {
             "pos": 3,
@@ -3369,13 +3357,23 @@
             "team": "Leixões S.C.",
             "sporting": false,
             "played": 8,
-            "won": 5,
+            "won": 6,
             "drawn": 0,
             "lost": 2,
-            "points": 13.0
+            "points": 16.0
           },
           {
             "pos": 5,
+            "team": "S.C. Braga",
+            "sporting": false,
+            "played": 8,
+            "won": 5,
+            "drawn": 0,
+            "lost": 3,
+            "points": 15.0
+          },
+          {
+            "pos": 6,
             "team": "Clube Kairos",
             "sporting": false,
             "played": 8,
@@ -3383,16 +3381,6 @@
             "drawn": 0,
             "lost": 4,
             "points": 13.0
-          },
-          {
-            "pos": 6,
-            "team": "S.C. Braga",
-            "sporting": false,
-            "played": 7,
-            "won": 4,
-            "drawn": 0,
-            "lost": 3,
-            "points": 12.0
           },
           {
             "pos": 7,
@@ -3411,17 +3399,17 @@
             "played": 8,
             "won": 3,
             "drawn": 0,
-            "lost": 4,
+            "lost": 5,
             "points": 9.0
           },
           {
             "pos": 9,
             "team": "Vilacondense",
             "sporting": false,
-            "played": 7,
+            "played": 8,
             "won": 3,
             "drawn": 0,
-            "lost": 4,
+            "lost": 5,
             "points": 8.0
           },
           {
@@ -3448,15 +3436,15 @@
             "pos": 12,
             "team": "CD Fiães",
             "sporting": false,
-            "played": 7,
+            "played": 8,
             "won": 0,
             "drawn": 0,
-            "lost": 7,
+            "lost": 8,
             "points": 0.0
           }
         ]
       },
-      "news_count": 13
+      "news_count": 14
     },
     {
       "key": "atletismo",
@@ -3468,6 +3456,16 @@
     }
   ],
   "news": [
+    {
+      "title": "Boas sensações recuperadas em São Mamede de Infesta",
+      "summary": "Solidez e triunfo frente à AA São Mamede (0-3)",
+      "url": "https://sporting.pt/noticias/boas-sensacoes-recuperadas-em-sao-mamede-de-infesta",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795362002201-IISA8660.webp",
+      "published": "2026-11-22T12:00:00Z",
+      "sport": "voleibol-feminino",
+      "sport_label": "Voleibol Feminino",
+      "source": "Sporting.pt"
+    },
     {
       "title": "O longo caminho de Tiago Rodrigues: dos treinos com o pai ao topo do futsal mundial pelo Sporting",
       "summary": "João Rodrigues treinou várias equipas no Barreiro e incutiu no filho o amor pela modalidade",
