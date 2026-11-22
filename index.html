@@ -319,6 +319,7 @@
 .mod-home-when{text-align:right;font-size:10px;color:var(--muted);line-height:1.35;white-space:nowrap}
 .mod-home-when strong{display:block;color:#fff;font-size:12px}
 .mod-list>.card+.card{margin-top:10px}.mod-list>.mod-day+.card{margin-top:0}
+.sporting-day{background:linear-gradient(135deg,rgba(8,165,110,.10),rgba(13,21,16,.95));border-color:rgba(8,165,110,.25)}
 .mod-source{font-size:9px;color:var(--muted);text-align:center;padding:4px 0 2px}
 </style>
 <style id="lineup-list-v1">.lineup-list{display:flex;flex-direction:column;gap:2px;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:6px 10px;background:rgba(8,165,110,.06)}.lineup-list-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px}.lineup-list-row:last-child{border-bottom:0}.lineup-list-num{min-width:24px;height:24px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);color:#0b1410;font-weight:700;font-size:11px}.lineup-list-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lineup-list-note{margin-top:6px;font-size:9px;color:var(--muted);letter-spacing:.04em}</style>
@@ -333,6 +334,7 @@
 <main class="px-4 pt-4 space-y-5">
 <section id="home" class="screen active space-y-5">
 <div class="hero next-match-hero p-4"><div class="flex items-center justify-between"><span class="text-[10px] uppercase tracking-[.18em] muted">Próximo jogo</span><span id="homeComp" class="pill px-2 py-1 text-[9px] muted">—</span></div><div id="nextGame" class="mt-5"></div></div>
+<div id="sportingDay" style="display:none"></div>
 <div id="lastGame" class="home-last-card p-4"></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Classificação</h2><span class="text-[10px] uppercase tracking-widest muted">Liga Portugal</span></div><div class="card p-3 home-standings"><div class="grid grid-cols-[28px_1fr_42px_42px] text-[8px] uppercase tracking-widest muted px-1 pb-2 border-b border-white/5"><span>#</span><span>Clube</span><span class="text-right">J</span><span class="text-right">Pts</span></div><div id="standings"></div><button class="w-full mt-3 pt-3 border-t border-white/5 text-[10px] uppercase tracking-widest muted text-center" onclick="go('classification')">Ver classificação detalhada →</button></div></div>
 <div><div class="flex items-end justify-between mb-3"><h2 class="text-[18px] font-bold">Forma</h2></div><div class="form-order"><span>← Mais antigo</span><span>Mais recente →</span></div><div class="form-grid" id="form"></div></div>
@@ -676,7 +678,7 @@ function render(){
 const u=D['fixtures.json']?new Date(D['fixtures.json']._updated_at):null;document.getElementById('updated').textContent=u?`dados ${timeAgo(u)}`:'sem dados';
 renderHome();renderGames();renderSquad();
 renderStats();renderNews();renderClassification();renderTV();
-try{renderModalidades();renderHomeModalidades();}catch(e){console.warn("Lion's Den modalidades:",e)}
+try{renderModalidades();renderHomeModalidades();renderSportingDay();}catch(e){console.warn("Lion's Den modalidades:",e)}
 }
 function countdownHtml(ts){return '<div id="nextCountdown" class="mt-4 text-center"><div class="text-[9px] uppercase tracking-[.2em] muted">Contagem decrescente</div><div class="text-xl font-bold mt-1">a calcular…</div></div>';}
 function updateCountdown(ts){const el=document.getElementById('nextCountdown');if(!el)return;const tick=()=>{const diff=Math.max(0,Number(ts)*1000-Date.now());const total=Math.floor(diff/1000);const d=Math.floor(total/86400),h=Math.floor(total%86400/3600),m=Math.floor(total%3600/60),sec=total%60;el.querySelector('div:last-child').textContent=diff?'em '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s':'A começar agora';};tick();clearInterval(window._nextCountdown);window._nextCountdown=setInterval(tick,1000);}
@@ -1836,6 +1838,23 @@ function renderModalidades(){
  }else if(tab==='news'){cEl.innerHTML=modNewsHtml(news);}
  else if(tab==='table'){cEl.innerHTML='<div class="space-y-4">'+tables.map(s=>(all?'<div class="mod-day"><h3>'+modChip(s.key,s.label)+'</h3></div>':'')+modStandingsHtml(s.standings)).join('')+'</div>';}
  const s=data.sources||{};srcEl.textContent='Calendário: '+(s.calendario||'Sporting.pt')+' · Resultados: '+(s.resultados||'365scores')+' · Notícias: '+(s.noticias||'Sporting.pt, Record, O Jogo');
+}
+function renderSportingDay(){
+ const el=document.getElementById('sportingDay');if(!el)return;
+ const today=modDayKey(new Date().toISOString()),data=modData();
+ const fx=(data.sports||[]).flatMap(s=>s.fixtures||[]).filter(f=>modDayKey(f.date)===today);
+ const res=(data.sports||[]).flatMap(s=>s.results||[]).filter(r=>modDayKey(r.date)===today);
+ const items=fx.map(f=>{const r=res.find(x=>x.sport===f.sport&&Math.abs(Date.parse(x.date)-Date.parse(f.date))<6*3600e3);return {...f,result:r}});
+ res.forEach(r=>{if(!items.some(i=>i.result===r))items.push({sport:r.sport,sport_label:r.sport_label,date:r.date,competition:r.competition,opponent:r.sporting_home?r.away:r.home,home_away:r.sporting_home?'casa':'fora',labels:[],result:r})});
+ if(!items.length){el.innerHTML='';el.style.display='none';return}
+ items.sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
+ const now=Date.now();
+ const right=i=>{if(i.result){const r=i.result;return '<div class="mod-home-when"><strong>'+esc(r.home_score)+' - '+esc(r.away_score)+'</strong><span class="mod-outcome '+esc(r.outcome)+'" style="width:auto;height:auto;padding:2px 7px;border-radius:7px;font-size:9px;display:inline-block;margin-top:3px">'+(r.outcome==='V'?'Vitória':r.outcome==='D'?'Derrota':'Empate')+'</span></div>'}
+  const t=Date.parse(i.date),live=!modTimeTbc(i)&&now>=t&&now<t+2.5*3600e3;
+  return '<div class="mod-home-when"><strong>'+esc(modTimeTbc(i)?'—':modFmt(i.date,{hour:'2-digit',minute:'2-digit'}))+'</strong>'+(live?'<span style="color:#7fe0b5">a decorrer</span>':modTimeTbc(i)?esc(modTbcText(i)):'')+'</div>'};
+ el.style.display='';
+ el.innerHTML='<div class="card p-4 sporting-day"><div class="flex items-center justify-between mb-3"><div><h2 class="font-bold">Dia de Sporting</h2><div class="text-[10px] muted mt-1">'+items.length+' '+(items.length===1?'jogo':'jogos')+' das modalidades hoje</div></div><button class="text-[10px] uppercase tracking-widest muted" onclick="setModSport(\'all\');setModTab(\'calendar\');go(\'modalidades\')">Ver →</button></div>'+
+  items.map(i=>'<div class="mod-home-row" onclick="setModSport(\''+esc(i.sport)+'\');go(\'modalidades\')"><div class="min-w-0">'+modChip(i.sport,i.sport_label)+'<div class="mod-teams">'+modTeams(i)+'</div><div class="mod-meta" style="margin-top:3px"><span class="mod-ha '+(i.home_away==='casa'?'casa':'')+'" style="padding:2px 7px;margin-right:6px">'+(i.home_away==='casa'?'Casa':'Fora')+'</span>'+esc(i.competition||'')+'</div></div>'+right(i)+'</div>').join('')+'</div>';
 }
 function renderHomeModalidades(){
  const el=document.getElementById('homeModalidades');if(!el)return;
