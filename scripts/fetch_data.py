@@ -2469,7 +2469,8 @@ def fetch_modalidades():
                         "opponent": _mod_team((ac if home else hc).get("name")), "home_away": "casa" if home else "fora",
                         "venue": "", "labels": [], "tickets": None, "source": "365scores",
                     })
-            domestic = [r for r in rows if not re.search(r"champions|cup|ehf|fiba|cev|europe|euro|challenge", r["competition"] or "", re.I)]
+            domestic = [r for r in rows if not re.search(r"champions|campe|cup|ta[cç]a|ehf|fiba|cev|europe|euro|challenge", r["competition"] or "", re.I)]
+            domestic = domestic or rows  # sem liga nacional nas fontes: usa a competição mais recente
             if domestic:
                 try:
                     sp["standings"] = _mod_standings(domestic[0]["competition_id"], cid)
