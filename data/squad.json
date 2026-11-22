@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T15:17:39.949310+00:00",
+  "_updated_at": "2026-11-22T15:39:05.485560+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -12,9 +12,9 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/361717.png",
       "stats": {
-        "matches": 13,
+        "matches": 12,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -30,7 +30,7 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -45,17 +45,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 46,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1126,
+        "minutes": 1080,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -551,7 +543,7 @@
         "byCompetition": {
           "Liga Portugal": {
             "matches": 5,
-            "minutes": 399,
+            "minutes": 435,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
@@ -566,7 +558,7 @@
             "red": 0
           }
         },
-        "minutes": 405,
+        "minutes": 441,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -721,9 +713,9 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1119687.png",
       "stats": {
-        "matches": 9,
+        "matches": 8,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -731,7 +723,7 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -741,7 +733,7 @@
           },
           "Liga Portugal": {
             "matches": 5,
-            "minutes": 236,
+            "minutes": 237,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
@@ -754,17 +746,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 46,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 546,
+        "minutes": 501,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -934,7 +918,7 @@
       "stats": {
         "matches": 1,
         "byCompetition": {
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 73,
             "goals": 0,
@@ -1002,7 +986,7 @@
       "nationality": "Uruguay",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1031656.png",
       "stats": {
-        "matches": 15,
+        "matches": 14,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 10,
@@ -1019,17 +1003,9 @@
             "assists": 0,
             "yellow": 1,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 79,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1267,
+        "minutes": 1188,
         "goals": 1,
         "assists": 2,
         "yellow": 5,
@@ -1229,7 +1205,7 @@
       "nationality": "Spain",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1325998.png",
       "stats": {
-        "matches": 16,
+        "matches": 15,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 11,
@@ -1246,17 +1222,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 44,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1061,
+        "minutes": 1017,
         "goals": 0,
         "assists": 4,
         "yellow": 1,
@@ -1388,9 +1356,9 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
       "stats": {
-        "matches": 16,
+        "matches": 15,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 45,
             "goals": 0,
@@ -1413,18 +1381,10 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 46,
-            "goals": 1,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1351,
-        "goals": 2,
+        "minutes": 1305,
+        "goals": 1,
         "assists": 0,
         "yellow": 2,
         "red": 0
@@ -1647,9 +1607,9 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1703622.png",
       "stats": {
-        "matches": 3,
+        "matches": 2,
         "byCompetition": {
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 17,
             "goals": 0,
@@ -1664,17 +1624,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 11,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 118,
+        "minutes": 107,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -1723,9 +1675,9 @@
       "stats": {
         "matches": 3,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
-            "minutes": 45,
+            "minutes": 46,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
@@ -1740,7 +1692,7 @@
             "red": 0
           }
         },
-        "minutes": 225,
+        "minutes": 226,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -1854,7 +1806,7 @@
       "stats": {
         "matches": 2,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -1946,7 +1898,7 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1156380.png",
       "stats": {
-        "matches": 13,
+        "matches": 12,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 7,
@@ -1964,24 +1916,16 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
             "assists": 0,
             "yellow": 1,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 90,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1032,
+        "minutes": 942,
         "goals": 0,
         "assists": 0,
         "yellow": 3,
@@ -2191,9 +2135,9 @@
       "nationality": "Denmark",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1425101.png",
       "stats": {
-        "matches": 15,
+        "matches": 14,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 45,
             "goals": 0,
@@ -2217,24 +2161,16 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 63,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 632,
+        "minutes": 569,
         "goals": 0,
         "assists": 1,
         "yellow": 1,
@@ -2392,14 +2328,14 @@
       "nationality": "Spain",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1310480.png",
       "stats": {
-        "matches": 17,
+        "matches": 16,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
-            "minutes": 45,
+            "minutes": 46,
             "goals": 0,
             "assists": 0,
-            "yellow": 0,
+            "yellow": 1,
             "red": 0
           },
           "Liga Portugal": {
@@ -2417,20 +2353,12 @@
             "assists": 0,
             "yellow": 1,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 90,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1477,
+        "minutes": 1388,
         "goals": 1,
         "assists": 0,
-        "yellow": 3,
+        "yellow": 4,
         "red": 0
       },
       "shirtNumber": 5,
@@ -2574,7 +2502,7 @@
       "stats": {
         "matches": 7,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -2598,7 +2526,7 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 85,
             "goals": 0,
@@ -2788,17 +2716,17 @@
       "stats": {
         "matches": 12,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
-            "minutes": 75,
-            "goals": 0,
+            "minutes": 76,
+            "goals": 2,
             "assists": 0,
             "yellow": 0,
             "red": 0
           },
           "Liga Portugal": {
             "matches": 9,
-            "minutes": 414,
+            "minutes": 415,
             "goals": 0,
             "assists": 1,
             "yellow": 1,
@@ -2813,8 +2741,8 @@
             "red": 0
           }
         },
-        "minutes": 641,
-        "goals": 0,
+        "minutes": 643,
+        "goals": 2,
         "assists": 2,
         "yellow": 1,
         "red": 0
@@ -2995,9 +2923,9 @@
       "nationality": "Brazil",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1459257.png",
       "stats": {
-        "matches": 7,
+        "matches": 6,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 69,
             "goals": 0,
@@ -3013,7 +2941,7 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 78,
             "goals": 2,
@@ -3028,17 +2956,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 11,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 245,
+        "minutes": 234,
         "goals": 3,
         "assists": 0,
         "yellow": 0,
@@ -3199,9 +3119,9 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1648470.png",
       "stats": {
-        "matches": 4,
+        "matches": 3,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
@@ -3217,24 +3137,16 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 44,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 314,
+        "minutes": 270,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -3303,7 +3215,7 @@
       "nationality": "Italy",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1339345.png",
       "stats": {
-        "matches": 16,
+        "matches": 15,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 11,
@@ -3320,18 +3232,10 @@
             "assists": 0,
             "yellow": 1,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 79,
-            "goals": 1,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1254,
-        "goals": 3,
+        "minutes": 1175,
+        "goals": 2,
         "assists": 2,
         "yellow": 2,
         "red": 0
@@ -3481,7 +3385,7 @@
       "nationality": "Greece",
       "photo": "https://images.fotmob.com/image_resources/playerimages/899701.png",
       "stats": {
-        "matches": 16,
+        "matches": 15,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 10,
@@ -3499,24 +3403,16 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 85,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 63,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 573,
+        "minutes": 510,
         "goals": 2,
         "assists": 2,
         "yellow": 0,
@@ -3705,17 +3601,17 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1525416.png",
       "stats": {
-        "matches": 4,
+        "matches": 3,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 90,
-            "goals": 0,
+            "goals": 1,
             "assists": 0,
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 5,
             "goals": 0,
@@ -3730,18 +3626,10 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 27,
-            "goals": 2,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 137,
-        "goals": 2,
+        "minutes": 110,
+        "goals": 1,
         "assists": 0,
         "yellow": 0,
         "red": 0
@@ -3815,12 +3703,12 @@
       "nationality": "Mozambique",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1088753.png",
       "stats": {
-        "matches": 18,
+        "matches": 17,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 45,
-            "goals": 0,
+            "goals": 1,
             "assists": 0,
             "yellow": 0,
             "red": 0
@@ -3841,25 +3729,17 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 90,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 63,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 1203,
-        "goals": 3,
+        "minutes": 1140,
+        "goals": 4,
         "assists": 4,
         "yellow": 3,
         "red": 0
@@ -4237,9 +4117,9 @@
       "nationality": "Uruguay",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
       "stats": {
-        "matches": 13,
+        "matches": 12,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 21,
             "goals": 0,
@@ -4249,7 +4129,7 @@
           },
           "Liga Portugal": {
             "matches": 9,
-            "minutes": 562,
+            "minutes": 568,
             "goals": 2,
             "assists": 1,
             "yellow": 0,
@@ -4262,17 +4142,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 73,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 742,
+        "minutes": 675,
         "goals": 3,
         "assists": 1,
         "yellow": 0,
@@ -4443,9 +4315,9 @@
       "nationality": "England",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1526704.png",
       "stats": {
-        "matches": 9,
+        "matches": 8,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
             "minutes": 15,
             "goals": 0,
@@ -4453,7 +4325,7 @@
             "yellow": 0,
             "red": 0
           },
-          "League Cup": {
+          "Taça da Liga": {
             "matches": 1,
             "minutes": 73,
             "goals": 0,
@@ -4476,17 +4348,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 27,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 175,
+        "minutes": 148,
         "goals": 0,
         "assists": 1,
         "yellow": 1,
@@ -4625,11 +4489,11 @@
       "nationality": "Brazil",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1458757.png",
       "stats": {
-        "matches": 14,
+        "matches": 13,
         "byCompetition": {
-          "Taca de Portugal": {
+          "Taça de Portugal": {
             "matches": 1,
-            "minutes": 45,
+            "minutes": 46,
             "goals": 0,
             "assists": 0,
             "yellow": 0,
@@ -4650,17 +4514,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 27,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 549,
+        "minutes": 523,
         "goals": 0,
         "assists": 0,
         "yellow": 0,
@@ -4752,7 +4608,7 @@
       "nationality": "Portugal",
       "photo": "https://images.fotmob.com/image_resources/playerimages/1691190.png",
       "stats": {
-        "matches": 13,
+        "matches": 12,
         "byCompetition": {
           "Liga Portugal": {
             "matches": 10,
@@ -4769,17 +4625,9 @@
             "assists": 0,
             "yellow": 0,
             "red": 0
-          },
-          "Club Friendlies": {
-            "matches": 1,
-            "minutes": 17,
-            "goals": 0,
-            "assists": 0,
-            "yellow": 0,
-            "red": 0
           }
         },
-        "minutes": 603,
+        "minutes": 586,
         "goals": 3,
         "assists": 1,
         "yellow": 1,
@@ -4928,7 +4776,7 @@
         "byCompetition": {
           "Liga Portugal": {
             "matches": 11,
-            "minutes": 739,
+            "minutes": 740,
             "goals": 9,
             "assists": 1,
             "yellow": 4,
@@ -4943,7 +4791,7 @@
             "red": 0
           }
         },
-        "minutes": 1078,
+        "minutes": 1079,
         "goals": 13,
         "assists": 1,
         "yellow": 5,
@@ -5205,7 +5053,9 @@
         "goals": 0,
         "assists": 0,
         "yellow": 0,
-        "red": 0
+        "red": 0,
+        "byCompetition": {},
+        "cleanSheets": 0
       },
       "competitions": {},
       "careerStats": [],

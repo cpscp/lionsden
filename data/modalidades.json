@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T15:17:36.779274+00:00",
+  "_updated_at": "2026-11-22T15:38:53.545277+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -470,7 +470,7 @@
         ],
         "computed": true
       },
-      "news_count": 19
+      "news_count": 17
     },
     {
       "key": "andebol",
@@ -1698,7 +1698,7 @@
           }
         ]
       },
-      "news_count": 13
+      "news_count": 12
     },
     {
       "key": "basquetebol",
@@ -2400,22 +2400,22 @@
         "rows": [
           {
             "pos": 1,
+            "team": "Benfica",
+            "sporting": false,
+            "played": 8,
+            "won": 7,
+            "drawn": 0,
+            "lost": 1,
+            "points": 15.0
+          },
+          {
+            "pos": 2,
             "team": "Ovarense",
             "sporting": false,
             "played": 8,
             "won": 6,
             "drawn": 0,
-            "lost": 1,
-            "points": 14.0
-          },
-          {
-            "pos": 2,
-            "team": "Benfica",
-            "sporting": false,
-            "played": 8,
-            "won": 6,
-            "drawn": 0,
-            "lost": 1,
+            "lost": 2,
             "points": 14.0
           },
           {
@@ -3349,23 +3349,33 @@
             "team": "Fc Porto",
             "sporting": false,
             "played": 8,
-            "won": 6,
+            "won": 7,
             "drawn": 0,
             "lost": 1,
-            "points": 18.0
+            "points": 21.0
           },
           {
             "pos": 3,
             "team": "Sporting CP",
             "sporting": true,
             "played": 8,
-            "won": 5,
+            "won": 6,
             "drawn": 0,
             "lost": 2,
-            "points": 15.0
+            "points": 18.0
           },
           {
             "pos": 4,
+            "team": "S.C. Braga",
+            "sporting": false,
+            "played": 8,
+            "won": 5,
+            "drawn": 0,
+            "lost": 3,
+            "points": 15.0
+          },
+          {
+            "pos": 5,
             "team": "Leixões S.C.",
             "sporting": false,
             "played": 7,
@@ -3375,7 +3385,7 @@
             "points": 13.0
           },
           {
-            "pos": 5,
+            "pos": 6,
             "team": "Clube Kairos",
             "sporting": false,
             "played": 8,
@@ -3383,16 +3393,6 @@
             "drawn": 0,
             "lost": 4,
             "points": 13.0
-          },
-          {
-            "pos": 6,
-            "team": "S.C. Braga",
-            "sporting": false,
-            "played": 8,
-            "won": 4,
-            "drawn": 0,
-            "lost": 3,
-            "points": 12.0
           },
           {
             "pos": 7,
@@ -3421,7 +3421,7 @@
             "played": 8,
             "won": 3,
             "drawn": 0,
-            "lost": 4,
+            "lost": 5,
             "points": 8.0
           },
           {
@@ -3431,7 +3431,7 @@
             "played": 8,
             "won": 2,
             "drawn": 0,
-            "lost": 5,
+            "lost": 6,
             "points": 7.0
           },
           {
@@ -3451,7 +3451,7 @@
             "played": 8,
             "won": 0,
             "drawn": 0,
-            "lost": 7,
+            "lost": 8,
             "points": 0.0
           }
         ]
@@ -3697,36 +3697,6 @@
       "sport": "andebol",
       "sport_label": "Andebol",
       "source": "Sporting.pt"
-    },
-    {
-      "title": "Palma-Sporting: filho de Ronaldo atua antes da final da Taça Intercontinental de futsal",
-      "summary": "DJ Ronald, filho de Ronaldo Nazário, vai tocar no espetáculo de abertura da final da Taça Intercontinental de futsal, em que o Sporting defrontará o Palma",
-      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/palma-sporting-filho-de-ronaldo-atua-antes-da-final-da-taca-intercontinental-de-futsal/18149810?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
-      "image": "https://staticx.noticiasilimitadas.pt/oj/80f2ee4c-7878-4691-abb6-893b20dd833b_1200x675.jpg",
-      "published": "2026-11-19T10:00:00Z",
-      "sport": "futsal",
-      "sport_label": "Futsal",
-      "source": "O Jogo"
-    },
-    {
-      "title": "Sporting marca sete golos ao Pato e garante lugar na final da Taça Intercontinental de futsal",
-      "summary": "O Sporting derrotou o Pato por 7-4 e qualificou-se para a final da Taça Intercontinental de futsal. Palma é o adversário dos leões.",
-      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/sporting-marca-sete-golos-ao-pato-e-garante-lugar-na-final-da-taca-intercontinental-de-futsal/18149772?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
-      "image": "https://staticx.noticiasilimitadas.pt/oj/e9747ff3-aa73-4142-977b-a9930c3b22cc_1200x675.jpg",
-      "published": "2026-11-19T08:24:00Z",
-      "sport": "futsal",
-      "sport_label": "Futsal",
-      "source": "O Jogo"
-    },
-    {
-      "title": "Hóquei em patins: FC Porto goleia Sporting de Tomar no regresso ao campeonato",
-      "summary": "Partida em atraso da segunda jornada do campeonato nacional de hóquei em patins.",
-      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/fc-porto-goleia-sporting-de-tomar-no-regresso-ao-campeonato-placard/18149730?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
-      "image": "https://staticx.noticiasilimitadas.pt/oj/1084d9d2-33c5-441f-a843-643171397a44_1200x675.jpg",
-      "published": "2026-11-18T22:37:00Z",
-      "sport": "hoquei-em-patins",
-      "sport_label": "Hóquei em Patins",
-      "source": "O Jogo"
     },
     {
       "title": "Edy Silva: \"Sabemos que é um jogo difícil\"",

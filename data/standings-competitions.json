@@ -1378,10 +1378,41 @@
     "season": "2026/27",
     "table": [],
     "type": "knockout",
-    "note": "Competição a eliminar; as eliminatórias serão mostradas assim que o calendário oficial da fase estiver disponível.",
-    "source": "FotMob",
+    "note": "Percurso do Sporting na prova (o quadro completo aparece quando for publicado).",
+    "source": "FotMob + jogos do Sporting",
     "tournament_id": 186,
-    "rounds": []
+    "rounds": [
+      {
+        "stage": "4.ª eliminatória",
+        "label": "4.ª eliminatória",
+        "participantCount": null,
+        "matchups": [
+          {
+            "home": {
+              "id": 9768,
+              "name": "Sporting CP",
+              "shortName": "SPO",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png"
+            },
+            "away": {
+              "id": 188158,
+              "name": "União Serra",
+              "shortName": "UNI",
+              "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/188158.png"
+            },
+            "homeScore": 4,
+            "awayScore": 0,
+            "matches": [
+              {
+                "match_id": 6506259,
+                "date": 1795284000
+              }
+            ],
+            "sporting_only": true
+          }
+        ]
+      }
+    ]
   },
   "taca-liga": {
     "competition": "Taça da Liga",
