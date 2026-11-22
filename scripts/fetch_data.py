@@ -2490,12 +2490,16 @@ def fpp_hockey_competition(comp_id):
     hdr = {"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"}
     html_c = session.get(f"https://hp.fpp.pt/Competicao/{comp_id}", timeout=30, headers=hdr).text
     games, jornada = [], ""
-    for m in re.finditer(r"(\d+)\s*ª\s*Jornada|<tr>(.*?)</tr>", html_c, re.S):
+    html_c = html_c.replace("&ordf;", "ª").replace("&#170;", "ª").replace("&#xAA;", "ª")
+    for m in re.finditer(r"(\d+)\s*(?:<[^>]*>\s*)*[ªº]\s*(?:<[^>]*>\s*)*Jornada|<tr>(.*?)</tr>", html_c, re.S):
         if m.group(1):
             jornada = f"Jornada {m.group(1)}"
             continue
         row = m.group(2) or ""
         if "coluna-resultado" not in row:
+            jm = re.search(r"(\d+)\s*(?:<[^>]*>\s*)*[ªº]\s*(?:<[^>]*>\s*)*Jornada", row)
+            if jm:
+                jornada = f"Jornada {jm.group(1)}"
             continue
         dm = re.search(r"(\d{4}-\d{2}-\d{2})\s*<br>\s*(\d{1,2}:\d{2})", row)
         teams = [clean(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r'<p class="(?:visitada|visitante)[^"]*">(.*?)</p>', row, re.S)]
@@ -2537,7 +2541,9 @@ def _add_fixture_unique(sp, fx):
             ft = datetime.fromisoformat(str(f["date"]).replace("Z", "+00:00")).timestamp()
         except Exception:
             continue
-        if abs(ft - ts) < 14 * 3600 and (not opp or opp & _team_tokens(f.get("opponent"))):
+        same_opp = bool(opp and opp & _team_tokens(f.get("opponent")))
+        # O mesmo adversário em datas próximas é o mesmo jogo: mantém a data do calendário oficial.
+        if (same_opp and abs(ft - ts) < 4 * 86400) or (not opp and abs(ft - ts) < 14 * 3600):
             if not f.get("venue") and fx.get("venue"):
                 f["venue"] = fx["venue"]
             if fx.get("tv") and not f.get("tv"):
