@@ -1,0 +1,22 @@
+name: tmp probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          Q="appTypeId=5&langId=1&timezoneName=Europe/Lisbon&userCountryId=131"
+          j(){ curl -sS -L -m 40 -A "$UA" "https://webws.365scores.com/web/$1"; }
+          echo "== search"; j "search/?$Q&query=sporting" | jq -c '.competitors[]? | select(.countryId==11) | {id,name,sportId}'
+          j "search/?$Q&query=sporting%20cp" | jq -c '.competitors[]? | select(.countryId==11) | {id,name,sportId}'
+          echo "== sports"; j "search/?$Q&query=sporting" | jq -c '[.sports[]|{id,name}]'
+          for id in $(j "search/?$Q&query=sporting" | jq -r '.competitors[]? | select(.countryId==11 and (.name|test("^Sporting( CP)?$";"i"))) | .id' | sort -u); do
+            echo "== competitor $id fixtures"; j "games/fixtures/?$Q&competitors=$id" | jq -c '.games[:4][]? | {id,sportId,s:.startTime,c:.competitionDisplayName,h:.homeCompetitor.name,a:.awayCompetitor.name}'
+            echo "== competitor $id results"; j "games/results/?$Q&competitors=$id" | jq -c '[.games|length] , (.games[-3:][]? | {id,sportId,s:.startTime,c:.competitionDisplayName,h:.homeCompetitor.name,a:.awayCompetitor.name,hs:.homeCompetitor.score,as:.awayCompetitor.score})'
+          done
+          for u in https://www.sporting.pt/pt/noticias/modalidades https://www.sporting.pt/pt/calendario https://www.sporting.pt/pt/modalidades https://www.abola.pt/modalidades https://www.record.pt/modalidades https://www.ojogo.pt/modalidades "https://www.sporting.pt/pt/rss.xml"; do
+            curl -sS -L -m 30 -A "$UA" -o /tmp/p -w "%{http_code} %{size_download} $u\n" "$u"
+          done
+          curl -sS -L -m 30 -A "$UA" https://www.sporting.pt/pt/noticias/modalidades | grep -oE 'href="/pt/noticias/modalidades/[^"]+"' | head -5
+          curl -sS -L -m 30 -A "$UA" https://www.sporting.pt/pt/calendario | grep -oiE '(futsal|andebol|h[oó]quei|voleibol|basquetebol)[^<]{0,80}' | head -10
