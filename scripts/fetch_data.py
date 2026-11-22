@@ -2485,6 +2485,7 @@ def computed_standings(events, points, label):
 
 
 def fpp_hockey_competition(comp_id):
+    import html as _html_mod
     from zoneinfo import ZoneInfo
     lis = ZoneInfo("Europe/Lisbon")
     hdr = {"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"}
@@ -2502,7 +2503,7 @@ def fpp_hockey_competition(comp_id):
                 jornada = f"Jornada {jm.group(1)}"
             continue
         dm = re.search(r"(\d{4}-\d{2}-\d{2})\s*<br>\s*(\d{1,2}:\d{2})", row)
-        teams = [clean(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r'<p class="(?:visitada|visitante)[^"]*">(.*?)</p>', row, re.S)]
+        teams = [clean(_html_mod.unescape(re.sub(r"<[^>]+>", "", x))) for x in re.findall(r'<p class="(?:visitada|visitante)[^"]*">(.*?)</p>', row, re.S)]
         res = re.search(r'class="resultado"[^>]*>\s*([^<]*?)\s*<', row)
         jid = re.search(r'href="/jogo/(\d+)"', row)
         tv = re.search(r'href="(https://tv\.fpp\.pt/[^"]+)"', row)
@@ -2518,7 +2519,7 @@ def fpp_hockey_competition(comp_id):
     rows = []
     tbl = re.search(r"<table.*?</table>", html_k, re.S)
     for tr in re.findall(r"<tr>(.*?)</tr>", tbl.group(0) if tbl else "", re.S):
-        cells = [clean(re.sub(r"<[^>]+>", " ", c)) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+        cells = [clean(_html_mod.unescape(re.sub(r"<[^>]+>", " ", c))) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
         if len(cells) < 10:
             continue
         try:
