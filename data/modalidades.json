@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T14:35:09.620250+00:00",
+  "_updated_at": "2026-11-22T14:38:55.546869+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -2672,7 +2672,7 @@
           "sport": "voleibol-feminino",
           "sport_label": "Voleibol Feminino",
           "date": "2026-11-04T19:30:00+00:00",
-          "competition": "CEV Challenge Cup (W) · 1/32 de final",
+          "competition": "CEV Challenge Cup · 1/32 de final",
           "home": "Maccabi Ashdod",
           "away": "Sporting CP",
           "home_score": 3,
@@ -2688,7 +2688,7 @@
           "sport": "voleibol-feminino",
           "sport_label": "Voleibol Feminino",
           "date": "2026-11-03T19:30:00+00:00",
-          "competition": "CEV Challenge Cup (W) · 1/32 de final",
+          "competition": "CEV Challenge Cup · 1/32 de final",
           "home": "Sporting CP",
           "away": "Maccabi Ashdod",
           "home_score": 1,
