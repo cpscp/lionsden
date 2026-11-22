@@ -2447,6 +2447,24 @@ def fetch_modalidades():
             "tickets": ev.get("ticketsUrl") if not ev.get("ticketsBlocked") else None, "source": "Sporting.pt",
         })
 
+    # 1b) Jogos acrescentados à mão (data/manual.json) que faltem no calendário oficial
+    labels = {k: l for k, l, _ in MOD_SPORTS}
+    for mf in ((safe_existing("manual.json") or {}).get("modalidades_fixtures") or []):
+        try:
+            ts = datetime.fromisoformat(str(mf.get("date")).replace("Z", "+00:00")).timestamp()
+        except Exception:
+            continue
+        if ts < now - 3 * 3600:
+            continue
+        key = mf.get("sport")
+        label = labels.get(key.replace("-feminino", ""), key) + (" Feminino" if key.endswith("-feminino") else "")
+        sp = sport(key, label)
+        if any(abs(datetime.fromisoformat(str(f["date"]).replace("Z", "+00:00")).timestamp() - ts) < 6 * 3600 and zz_norm(f["opponent"])[:6] in zz_norm(mf.get("opponent")) for f in sp["fixtures"]):
+            continue
+        sp["fixtures"].append({"sport": key, "sport_label": label, "date": mf.get("date"), "competition": mf.get("competition"),
+                               "opponent": mf.get("opponent"), "home_away": mf.get("home_away", "casa"), "venue": mf.get("venue", ""),
+                               "labels": mf.get("labels") or [], "tickets": mf.get("tickets"), "source": "manual"})
+
     # 2) Resultados, jogos e classificações (365scores)
     for key, cid in MOD_365_TEAMS:
         label = dict((k, l) for k, l, _ in MOD_SPORTS).get(key.replace("-feminino", ""), key)

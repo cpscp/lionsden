@@ -318,6 +318,7 @@
 .mod-home-row .mod-teams{font-size:12px;margin-top:4px}
 .mod-home-when{text-align:right;font-size:10px;color:var(--muted);line-height:1.35;white-space:nowrap}
 .mod-home-when strong{display:block;color:#fff;font-size:12px}
+.mod-list>.card+.card{margin-top:10px}.mod-list>.mod-day+.card{margin-top:0}
 .mod-source{font-size:9px;color:var(--muted);text-align:center;padding:4px 0 2px}
 </style>
 <style id="lineup-list-v1">.lineup-list{display:flex;flex-direction:column;gap:2px;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:6px 10px;background:rgba(8,165,110,.06)}.lineup-list-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px}.lineup-list-row:last-child{border-bottom:0}.lineup-list-num{min-width:24px;height:24px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);color:#0b1410;font-weight:700;font-size:11px}.lineup-list-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lineup-list-note{margin-top:6px;font-size:9px;color:var(--muted);letter-spacing:.04em}</style>
@@ -1817,7 +1818,8 @@ function renderModalidades(){
  sEl.innerHTML='<div class="hero next-match-hero p-4">'+hero+kpis+'</div>';
  // Separadores
  const tabs=[['calendar','Calendário',fixtures.length],['results','Resultados',results.length],['news','Notícias',news.length]];
- if(sp?.standings?.rows?.length)tabs.push(['table','Classificação',null]);
+ const tables=key==='all'?sports.filter(s=>s.standings?.rows?.length):(sp?.standings?.rows?.length?[sp]:[]);
+ if(tables.length)tabs.push(['table',key==='all'?'Classificações':'Classificação',null]);
  if(!tabs.some(t=>t[0]===window._modTab))window._modTab='calendar';
  tEl.style.setProperty('--n',tabs.length);
  tEl.innerHTML=tabs.map(([k,l,n])=>'<button class="games-tab '+(k===window._modTab?'active':'')+'" onclick="setModTab(\''+k+'\')">'+esc(l)+(n!=null?'<span class="mod-tab-count">'+n+'</span>':'')+'</button>').join('');
@@ -1826,13 +1828,13 @@ function renderModalidades(){
  if(tab==='calendar'){
   if(!fixtures.length){cEl.innerHTML='<div class="card mod-empty">Sem jogos agendados.</div>';}
   else{let html='',day='';fixtures.slice(0,window._modLimit).forEach(f=>{const d=modDayKey(f.date);if(d!==day){day=d;const n=fixtures.filter(x=>modDayKey(x.date)===d).length;html+='<div class="mod-day"><h3>'+esc(modDayLabel(f.date))+'</h3><span>'+n+' '+(n===1?'jogo':'jogos')+'</span></div>'}html+=modEventHtml(f,all)});
-   if(fixtures.length>window._modLimit)html+='<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais jogos</button>';cEl.innerHTML=html;}
+   if(fixtures.length>window._modLimit)html+='<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais jogos</button>';cEl.innerHTML='<div class="mod-list">'+html+'</div>';}
  }else if(tab==='results'){
   const noRes=sports.filter(s=>(s.fixtures||[]).length&&!(s.results||[]).length).map(s=>s.label);
-  cEl.innerHTML=(results.length?'<div class="space-y-3">'+results.slice(0,window._modLimit).map(r=>modResultHtml(r,all)).join('')+'</div>'+(results.length>window._modLimit?'<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais resultados</button>':''):'<div class="card mod-empty">'+(sp?'Resultados de '+esc(sp.label)+' ainda indisponíveis nas fontes públicas.':'Sem resultados recentes.')+'</div>')+
+  cEl.innerHTML=(results.length?'<div class="mod-list">'+results.slice(0,window._modLimit).map(r=>modResultHtml(r,all)).join('')+'</div>'+(results.length>window._modLimit?'<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais resultados</button>':''):'<div class="card mod-empty">'+(sp?'Resultados de '+esc(sp.label)+' ainda indisponíveis nas fontes públicas.':'Sem resultados recentes.')+'</div>')+
    (all&&noRes.length?'<div class="mod-source mt-2">Sem resultados públicos disponíveis para: '+esc(noRes.join(', '))+'.</div>':'');
  }else if(tab==='news'){cEl.innerHTML=modNewsHtml(news);}
- else if(tab==='table'){cEl.innerHTML=modStandingsHtml(sp.standings);}
+ else if(tab==='table'){cEl.innerHTML='<div class="space-y-4">'+tables.map(s=>(all?'<div class="mod-day"><h3>'+modChip(s.key,s.label)+'</h3></div>':'')+modStandingsHtml(s.standings)).join('')+'</div>'+(all?'<div class="mod-source mt-2">Classificações nacionais de futsal, hóquei em patins e andebol ainda sem fonte pública acessível.</div>':'');}
  const s=data.sources||{};srcEl.textContent='Calendário: '+(s.calendario||'Sporting.pt')+' · Resultados e classificações: '+(s.resultados||'365scores')+' · Notícias: '+(s.noticias||'Sporting.pt, Record, O Jogo');
 }
 function renderHomeModalidades(){
