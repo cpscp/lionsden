@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T16:05:33.926780+00:00",
+  "_updated_at": "2026-11-22T16:05:50.438524+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1122,6 +1122,19 @@
         {
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
+          "date": "2026-11-22T19:30:00Z",
+          "competition": "Campeonato Placard · Jornada 3",
+          "opponent": "SL Benfica",
+          "home_away": "casa",
+          "venue": "",
+          "labels": [],
+          "tickets": null,
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/live?l=9960895B07BD4723826AA36AD712C8E6022992"
+        },
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
           "date": "2026-11-26T20:00:00.000Z",
           "competition": "Liga dos Campeões · Jornada 1",
           "opponent": "OC Barcelos",
@@ -1468,8 +1481,223 @@
           "source": "Sporting.pt"
         }
       ],
-      "results": [],
-      "standings": null,
+      "results": [
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-14T18:30:00Z",
+          "competition": "Campeonato Placard · Jornada 2",
+          "home": "AD Valongo / Colquímica",
+          "away": "Sporting CP",
+          "home_score": 1,
+          "away_score": 3,
+          "sporting_home": false,
+          "outcome": "V",
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/video?videoId=e-5578&metaname=compID&metavalue=CPHP&stageId=&metaseason="
+        },
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-10T20:30:00Z",
+          "competition": "Campeonato Placard · Jornada 1",
+          "home": "Sporting CP",
+          "away": "Candelária SC",
+          "home_score": 5,
+          "away_score": 0,
+          "sporting_home": true,
+          "outcome": "V",
+          "source": "FPP",
+          "tv": "https://tv.fpp.pt/video?videoId=e-5529&metaname=compID&metavalue=CPHP&stageId=&metaseason="
+        }
+      ],
+      "standings": {
+        "competition": "Campeonato Placard",
+        "rows": [
+          {
+            "pos": 1,
+            "team": "OC Barcelos SAD",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 22,
+            "ga": 9,
+            "gd": 13
+          },
+          {
+            "pos": 2,
+            "team": "UD Oliveirense / Simoldes",
+            "sporting": false,
+            "points": 9,
+            "played": 3,
+            "won": 3,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 12,
+            "ga": 4,
+            "gd": 8
+          },
+          {
+            "pos": 3,
+            "team": "J. Pacense / Des Compagnons",
+            "sporting": false,
+            "points": 7,
+            "played": 3,
+            "won": 2,
+            "drawn": 1,
+            "lost": 0,
+            "gf": 14,
+            "ga": 10,
+            "gd": 4
+          },
+          {
+            "pos": 4,
+            "team": "Sporting CP",
+            "sporting": true,
+            "points": 6,
+            "played": 2,
+            "won": 2,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 8,
+            "ga": 1,
+            "gd": 7
+          },
+          {
+            "pos": 5,
+            "team": "FC Porto",
+            "sporting": false,
+            "points": 6,
+            "played": 2,
+            "won": 2,
+            "drawn": 0,
+            "lost": 0,
+            "gf": 9,
+            "ga": 3,
+            "gd": 6
+          },
+          {
+            "pos": 6,
+            "team": "HC Braga SAD/SPORMEX",
+            "sporting": false,
+            "points": 6,
+            "played": 3,
+            "won": 2,
+            "drawn": 0,
+            "lost": 1,
+            "gf": 12,
+            "ga": 10,
+            "gd": 2
+          },
+          {
+            "pos": 7,
+            "team": "Riba d' Ave HC / CSJ Group",
+            "sporting": false,
+            "points": 4,
+            "played": 3,
+            "won": 1,
+            "drawn": 1,
+            "lost": 1,
+            "gf": 8,
+            "ga": 8,
+            "gd": 0
+          },
+          {
+            "pos": 8,
+            "team": "SL Benfica",
+            "sporting": false,
+            "points": 3,
+            "played": 2,
+            "won": 1,
+            "drawn": 0,
+            "lost": 1,
+            "gf": 6,
+            "ga": 3,
+            "gd": 3
+          },
+          {
+            "pos": 9,
+            "team": "AJ Viana",
+            "sporting": false,
+            "points": 3,
+            "played": 3,
+            "won": 1,
+            "drawn": 0,
+            "lost": 2,
+            "gf": 9,
+            "ga": 13,
+            "gd": -4
+          },
+          {
+            "pos": 10,
+            "team": "AD Valongo / Colquímica",
+            "sporting": false,
+            "points": 1,
+            "played": 3,
+            "won": 0,
+            "drawn": 1,
+            "lost": 2,
+            "gf": 6,
+            "ga": 9,
+            "gd": -3
+          },
+          {
+            "pos": 11,
+            "team": "AD Sanjoanense",
+            "sporting": false,
+            "points": 1,
+            "played": 3,
+            "won": 0,
+            "drawn": 1,
+            "lost": 2,
+            "gf": 11,
+            "ga": 17,
+            "gd": -6
+          },
+          {
+            "pos": 12,
+            "team": "AD Oeiras",
+            "sporting": false,
+            "points": 0,
+            "played": 2,
+            "won": 0,
+            "drawn": 0,
+            "lost": 2,
+            "gf": 5,
+            "ga": 13,
+            "gd": -8
+          },
+          {
+            "pos": 13,
+            "team": "Candelária SC",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 2,
+            "ga": 11,
+            "gd": -9
+          },
+          {
+            "pos": 14,
+            "team": "SCT / UP TOMAR",
+            "sporting": false,
+            "points": 0,
+            "played": 3,
+            "won": 0,
+            "drawn": 0,
+            "lost": 3,
+            "gf": 5,
+            "ga": 18,
+            "gd": -13
+          }
+        ]
+      },
       "news_count": 12
     },
     {
