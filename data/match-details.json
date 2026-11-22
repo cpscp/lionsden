@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-21T23:30:56.397764+00:00",
+  "_updated_at": "2026-11-22T07:08:56.756870+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -23438,11 +23438,11 @@
             },
             {
               "player": {
-                "name": "Pedro Lima",
-                "shortName": "Pedro Lima",
-                "id": 1459257
+                "name": "João Simões",
+                "shortName": "João Simões",
+                "id": 1663855
               },
-              "shirtNumber": "21",
+              "shirtNumber": "8",
               "position": "",
               "substitute": false,
               "horizontalLayout": null,
@@ -23480,11 +23480,11 @@
             },
             {
               "player": {
-                "name": "João Simões",
-                "shortName": "João Simões",
-                "id": 1663855
+                "name": "Pedro Lima",
+                "shortName": "Pedro Lima",
+                "id": 1459257
               },
-              "shirtNumber": "8",
+              "shirtNumber": "21",
               "position": "",
               "substitute": false,
               "horizontalLayout": null,
@@ -23578,20 +23578,6 @@
             },
             {
               "player": {
-                "name": "Rodrigo Zalazar",
-                "shortName": "Rodrigo Zalazar",
-                "id": 1070776
-              },
-              "shirtNumber": "17",
-              "position": "",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
-            },
-            {
-              "player": {
                 "name": "Silas Andersen",
                 "shortName": "Silas Andersen",
                 "id": 1425101
@@ -23606,11 +23592,39 @@
             },
             {
               "player": {
+                "name": "Jesse Derry",
+                "shortName": "Jesse Derry",
+                "id": 1526704
+              },
+              "shirtNumber": "28",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
                 "name": "Geny Catamo",
                 "shortName": "Geny Catamo",
                 "id": 1088753
               },
               "shirtNumber": "10",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rodrigo Zalazar",
+                "shortName": "Rodrigo Zalazar",
+                "id": 1070776
+              },
+              "shirtNumber": "17",
               "position": "",
               "substitute": true,
               "horizontalLayout": null,
@@ -23645,20 +23659,6 @@
               "statistics": {
                 "rating": null
               }
-            },
-            {
-              "player": {
-                "name": "Jesse Derry",
-                "shortName": "Jesse Derry",
-                "id": 1526704
-              },
-              "shirtNumber": "28",
-              "position": "",
-              "substitute": true,
-              "horizontalLayout": null,
-              "statistics": {
-                "rating": null
-              }
             }
           ]
         },
@@ -23667,7 +23667,288 @@
           "name": "União Serra",
           "formation": "",
           "coach": "",
-          "players": []
+          "players": [
+            {
+              "player": {
+                "name": "Willian Largura Garcia Costa",
+                "shortName": "Willian Largura Garcia Costa",
+                "id": 0
+              },
+              "shirtNumber": "20",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Iuri Afonso Sousa Alves",
+                "shortName": "Iuri Afonso Sousa Alves",
+                "id": 0
+              },
+              "shirtNumber": "5",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Francisco Neves Ferreira",
+                "shortName": "Francisco Neves Ferreira",
+                "id": 0
+              },
+              "shirtNumber": "8",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Gabriel Tobias Felizardo Justino",
+                "shortName": "Gabriel Tobias Felizardo Justino",
+                "id": 0
+              },
+              "shirtNumber": "3",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Rui Fernando Pereira Rodrigues",
+                "shortName": "Rui Fernando Pereira Rodrigues",
+                "id": 0
+              },
+              "shirtNumber": "6",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Guilherme Nuno Antunes Valente B",
+                "shortName": "Guilherme Nuno Antunes Valente B",
+                "id": 0
+              },
+              "shirtNumber": "23",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Miguel Alexandre Marques Pereira",
+                "shortName": "Miguel Alexandre Marques Pereira",
+                "id": 0
+              },
+              "shirtNumber": "10",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Pedro Miguel Garcia Faustino",
+                "shortName": "Pedro Miguel Garcia Faustino",
+                "id": 0
+              },
+              "shirtNumber": "21",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "David Duque Santos",
+                "shortName": "David Duque Santos",
+                "id": 0
+              },
+              "shirtNumber": "1",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Miguel Carvalho Vieira",
+                "shortName": "Miguel Carvalho Vieira",
+                "id": 0
+              },
+              "shirtNumber": "11",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Ivo Nabais",
+                "shortName": "Ivo Nabais",
+                "id": 1521378
+              },
+              "shirtNumber": "9",
+              "position": "",
+              "substitute": false,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Diogo Fernandes Gameiro",
+                "shortName": "Diogo Fernandes Gameiro",
+                "id": 0
+              },
+              "shirtNumber": "17",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Tiago Gordo Neto",
+                "shortName": "Tiago Gordo Neto",
+                "id": 0
+              },
+              "shirtNumber": "2",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Bruno Joaquim Silva de Castro",
+                "shortName": "Bruno Joaquim Silva de Castro",
+                "id": 0
+              },
+              "shirtNumber": "92",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "David Domingues Duarte",
+                "shortName": "David Domingues Duarte",
+                "id": 0
+              },
+              "shirtNumber": "66",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Gonçalo Estrela Ribeiro",
+                "shortName": "Gonçalo Estrela Ribeiro",
+                "id": 0
+              },
+              "shirtNumber": "70",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Ethan James Frazier",
+                "shortName": "Ethan James Frazier",
+                "id": 0
+              },
+              "shirtNumber": "19",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "José Manuel Cunha Lopes",
+                "shortName": "José Manuel Cunha Lopes",
+                "id": 0
+              },
+              "shirtNumber": "22",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Francisco Vieira Felizardo",
+                "shortName": "Francisco Vieira Felizardo",
+                "id": 0
+              },
+              "shirtNumber": "16",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            },
+            {
+              "player": {
+                "name": "Joel Lázaro Mendes Costa",
+                "shortName": "Joel Lázaro Mendes Costa",
+                "id": 0
+              },
+              "shirtNumber": "69",
+              "position": "",
+              "substitute": true,
+              "horizontalLayout": null,
+              "statistics": {
+                "rating": null
+              }
+            }
+          ]
         }
       },
       "incidents": {
