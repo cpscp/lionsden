@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T14:38:40.557072+00:00",
+  "_updated_at": "2026-11-22T14:53:17.704211+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -781,6 +781,18 @@
       "key": "hoquei-em-patins",
       "label": "Hóquei em Patins",
       "fixtures": [
+        {
+          "sport": "hoquei-em-patins",
+          "sport_label": "Hóquei em Patins",
+          "date": "2026-11-22T19:30:00Z",
+          "competition": "Campeonato Nacional · Jornada 3",
+          "opponent": "SL Benfica",
+          "home_away": "casa",
+          "venue": "Pavilhão João Rocha",
+          "labels": [],
+          "tickets": null,
+          "source": "manual"
+        },
         {
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
