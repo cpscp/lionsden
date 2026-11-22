@@ -7,19 +7,22 @@ jobs:
       - run: |
           set +e
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-          g(){ curl -sS -L -m 30 -A "$UA" "$@"; }
-          g https://sporting.pt/ -o home.html
-          echo "== inline data in home"; grep -oE '__[A-Z_]+__|window\.[A-Za-z_]+\s*=' home.html | sort | uniq -c | head
+          for p in / /noticias /modalidades /eventos; do curl -sS -L -m 30 -A "$UA" "https://sporting.pt$p" -o "page$(echo $p|tr / _).html"; done
           python3 - <<'PY'
-          import re
-          s=open('home.html',encoding='utf-8',errors='ignore').read()
-          for m in re.finditer(r'<script[^>]*>(.{0,200})',s):
-              if len(m.group(1))>50: print('SCRIPT:',m.group(1)[:200].replace('\n',' '))
-          for k in ['home-jogos','Futsal','Hóquei','Andebol','"date"','kickoff','opponent','modality']:
-              i=s.find(k); print('##',k,i, s[max(0,i-200):i+300].replace('\n',' ') if i>=0 else '')
+          import re,glob,collections
+          for f in sorted(glob.glob('page*.html')):
+              s=open(f,encoding='utf-8',errors='ignore').read()
+              ev=re.findall(r'\{id:"ecal-[^}]*?\}',s)
+              print('=====',f,'ecal items',len(ev))
+              teams=collections.Counter(re.search(r'team:"([^"]*)"',e).group(1) for e in ev if re.search(r'team:"([^"]*)"',e))
+              print(teams)
+              for e in ev[:3]: print('  ',e[:500])
+              keys=collections.Counter(k for e in ev for k in re.findall(r'([a-zA-Z]+):',e)); print('keys',keys)
+              dates=sorted(re.findall(r'date:"([^"]+)"',''.join(ev))); print('date range',dates[:1],dates[-1:])
+              sc=[e for e in ev if re.search(r'score|result|golos|homeScore',e)]; print('with score',len(sc), sc[:1])
+              # news objects
+              nw=re.findall(r'\{[^{}]{0,80}slug:"[^"]+"[^{}]{0,900}\}',s)
+              print('news-like objs',len(nw))
+              for n in nw[:3]: print('  N',n[:700])
+              i=s.find('categor'); print('categor ctx', s[i-200:i+300] if i>0 else '')
           PY
-          for a in index-BTlkSvbi.js matchContext-eZpU_Zo8.js assets-CwqqSMZF.js site-seo-paths-G1_lBHSz.js; do
-            g "https://sporting.pt/assets/$a" -o $a
-            echo "== $a $(wc -c < $a)"; grep -oE '"(/[a-z0-9_./-]*(api|__l5e|graphql|json)[a-z0-9_./?=&-]*)"|https://[a-z0-9.-]+/[a-z0-9_./-]*(api|graphql)[a-z0-9_./-]*' $a | sort -u | head -20
-            grep -oE '.{80}fetch\(.{120}' $a | head -5
-          done
