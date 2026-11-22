@@ -2417,6 +2417,204 @@ def _mod_standings(comp_id, cid):
     return {"competition": name, "rows": rows} if rows else None
 
 
+
+# ---- Fontes adicionais das modalidades (sem bloqueios a servidores) ----
+FS_LEAGUES = [
+    # chave da modalidade, caminho Flashscore, nome a mostrar, pontos (V, E, D)
+    ("futsal", "futsal/portugal/liga-placard", "Liga Placard", (3, 1, 0)),
+    ("andebol", "andebol/portugal/andebol-1", "Campeonato Betclic", (3, 2, 1)),
+]
+FPP_HP_COMPS = [(493, "Campeonato Placard")]
+
+
+def flashscore_league_events(path):
+    r = session.get(f"https://www.flashscore.pt/{path}/resultados/", timeout=30,
+                    headers={"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"})
+    r.raise_for_status()
+    events = []
+    for name, data in re.findall(r"cjs\.initialFeeds\['([^']+)'\]\s*=\s*\{\s*data:\s*`(.*?)`", r.text, re.S):
+        for rec in data.split("~"):
+            if not rec.startswith("AA÷"):
+                continue
+            f = dict(x.split("÷", 1) for x in rec.split("¬") if "÷" in x)
+            try:
+                ts = int(f.get("AD") or 0)
+            except ValueError:
+                continue
+            ev = {"id": f.get("AA"), "ts": ts, "status": f.get("AB"), "round": clean(f.get("ER")),
+                  "home": clean(f.get("AE") or f.get("CX")), "away": clean(f.get("AF")),
+                  "hs": f.get("AG"), "as": f.get("AH")}
+            if ev["home"] and ev["away"]:
+                events.append(ev)
+    uniq = {e["id"]: e for e in events}
+    return sorted(uniq.values(), key=lambda e: e["ts"])
+
+
+def _is_scp(name):
+    return zz_norm(name) in ("sporting cp", "sporting", "sporting clube de portugal")
+
+
+def _round_pt(r):
+    m = re.search(r"(\d+)", r or "")
+    return f"Jornada {m.group(1)}" if m and "ronda" in zz_norm(r) else (r or "")
+
+
+def computed_standings(events, points, label):
+    pv, pe, pd = points
+    tab = {}
+    for e in events:
+        if e["status"] != "3" or e["hs"] in (None, "") or e["as"] in (None, ""):
+            continue
+        try:
+            hs, as_ = int(e["hs"]), int(e["as"])
+        except ValueError:
+            continue
+        for team, gf, ga in ((e["home"], hs, as_), (e["away"], as_, hs)):
+            t = tab.setdefault(team, {"team": team, "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "points": 0})
+            t["played"] += 1; t["gf"] += gf; t["ga"] += ga
+            if gf > ga:
+                t["won"] += 1; t["points"] += pv
+            elif gf == ga:
+                t["drawn"] += 1; t["points"] += pe
+            else:
+                t["lost"] += 1; t["points"] += pd
+    rows = sorted(tab.values(), key=lambda t: (-t["points"], -(t["gf"] - t["ga"]), -t["gf"], t["team"]))
+    for i, t in enumerate(rows, 1):
+        t["pos"] = i; t["sporting"] = _is_scp(t["team"]); t["gd"] = t["gf"] - t["ga"]
+    return {"competition": label, "rows": rows, "computed": True} if rows else None
+
+
+def fpp_hockey_competition(comp_id):
+    from zoneinfo import ZoneInfo
+    lis = ZoneInfo("Europe/Lisbon")
+    hdr = {"User-Agent": USER_AGENT, "Accept-Language": "pt-PT,pt;q=0.9"}
+    html_c = session.get(f"https://hp.fpp.pt/Competicao/{comp_id}", timeout=30, headers=hdr).text
+    games, jornada = [], ""
+    for m in re.finditer(r"(\d+)\s*ª\s*Jornada|<tr>(.*?)</tr>", html_c, re.S):
+        if m.group(1):
+            jornada = f"Jornada {m.group(1)}"
+            continue
+        row = m.group(2) or ""
+        if "coluna-resultado" not in row:
+            continue
+        dm = re.search(r"(\d{4}-\d{2}-\d{2})\s*<br>\s*(\d{1,2}:\d{2})", row)
+        teams = [clean(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r'<p class="(?:visitada|visitante)[^"]*">(.*?)</p>', row, re.S)]
+        res = re.search(r'class="resultado"[^>]*>\s*([^<]*?)\s*<', row)
+        jid = re.search(r'href="/jogo/(\d+)"', row)
+        tv = re.search(r'href="(https://tv\.fpp\.pt/[^"]+)"', row)
+        if not dm or len(teams) != 2:
+            continue
+        dt = datetime.fromisoformat(f"{dm.group(1)}T{int(dm.group(2).split(':')[0]):02d}:{dm.group(2).split(':')[1]}").replace(tzinfo=lis)
+        sc = re.match(r"(\d+)\s*-\s*(\d+)", (res.group(1) if res else "").strip())
+        games.append({"date": dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "jornada": jornada,
+                      "home": teams[0], "away": teams[1], "hs": int(sc.group(1)) if sc else None,
+                      "as": int(sc.group(2)) if sc else None, "id": jid.group(1) if jid else None,
+                      "tv": tv.group(1).replace("&amp;", "&") if tv else None})
+    html_k = session.get(f"https://hp.fpp.pt/Classificacao/{comp_id}", timeout=30, headers=hdr).text
+    rows = []
+    tbl = re.search(r"<table.*?</table>", html_k, re.S)
+    for tr in re.findall(r"<tr>(.*?)</tr>", tbl.group(0) if tbl else "", re.S):
+        cells = [clean(re.sub(r"<[^>]+>", " ", c)) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+        if len(cells) < 10:
+            continue
+        try:
+            n = [int(x) for x in cells[2:10]]
+        except ValueError:
+            continue
+        rows.append({"pos": int(cells[0]), "team": cells[1], "sporting": _is_scp(cells[1]), "points": n[0], "played": n[1],
+                     "won": n[2], "drawn": n[3], "lost": n[4], "gf": n[5], "ga": n[6], "gd": n[7]})
+    return games, rows
+
+
+def _add_fixture_unique(sp, fx):
+    try:
+        ts = datetime.fromisoformat(str(fx["date"]).replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return
+    opp = _team_tokens(fx.get("opponent"))
+    for f in sp["fixtures"]:
+        try:
+            ft = datetime.fromisoformat(str(f["date"]).replace("Z", "+00:00")).timestamp()
+        except Exception:
+            continue
+        if abs(ft - ts) < 14 * 3600 and (not opp or opp & _team_tokens(f.get("opponent"))):
+            if not f.get("venue") and fx.get("venue"):
+                f["venue"] = fx["venue"]
+            if fx.get("tv") and not f.get("tv"):
+                f["tv"] = fx["tv"]
+            return
+    sp["fixtures"].append(fx)
+
+
+def enrich_modalidades_extra(sport, now):
+    """Futsal e andebol (Flashscore) e hóquei em patins (plataforma oficial da FPP)."""
+    used = {}
+    for key, path, label, points in FS_LEAGUES:
+        lbl = dict((k, l) for k, l, _ in MOD_SPORTS)[key]
+        sp = sport(key, lbl)
+        try:
+            evs = flashscore_league_events(path)
+        except Exception as e:
+            print("Modalidades: Flashscore indisponível:", key, e)
+            continue
+        mine = [e for e in evs if _is_scp(e["home"]) or _is_scp(e["away"])]
+        res = []
+        for e in mine:
+            if e["status"] == "3" and e["hs"] not in (None, "") and e["as"] not in (None, ""):
+                hs, as_ = int(e["hs"]), int(e["as"])
+                home = _is_scp(e["home"])
+                mine_s, theirs = (hs, as_) if home else (as_, hs)
+                res.append({"sport": key, "sport_label": lbl, "date": datetime.fromtimestamp(e["ts"], timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                            "competition": label + (" · " + _round_pt(e["round"]) if e["round"] else ""),
+                            "home": "Sporting CP" if home else e["home"], "away": e["away"] if home else "Sporting CP",
+                            "home_score": hs, "away_score": as_, "sporting_home": home,
+                            "outcome": "V" if mine_s > theirs else ("D" if mine_s < theirs else "E"), "source": "Flashscore"})
+            elif e["status"] == "1" and e["ts"] >= now - 3 * 3600:
+                home = _is_scp(e["home"])
+                _add_fixture_unique(sp, {"sport": key, "sport_label": lbl, "date": datetime.fromtimestamp(e["ts"], timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                         "competition": label + (" · " + _round_pt(e["round"]) if e["round"] else ""),
+                                         "opponent": e["away"] if home else e["home"], "home_away": "casa" if home else "fora",
+                                         "venue": "", "labels": [], "tickets": None, "source": "Flashscore"})
+        if res:
+            keep = [r for r in sp["results"] if not any(abs(datetime.fromisoformat(r["date"].replace("Z", "+00:00")).timestamp() - datetime.fromisoformat(x["date"].replace("Z", "+00:00")).timestamp()) < 14 * 3600 for x in res)]
+            sp["results"] = sorted(res + keep, key=lambda r: r["date"], reverse=True)[:25]
+        st = computed_standings(evs, points, label)
+        if st:
+            sp["standings"] = st
+        used[key] = "Flashscore"
+        print(f"Modalidades: {key} Flashscore → {len(res)} resultados, {len(evs)} jogos da liga")
+
+    lbl = dict((k, l) for k, l, _ in MOD_SPORTS)["hoquei-em-patins"]
+    sp = sport("hoquei-em-patins", lbl)
+    for comp_id, comp_label in FPP_HP_COMPS:
+        try:
+            games, table = fpp_hockey_competition(comp_id)
+        except Exception as e:
+            print("Modalidades: FPP indisponível:", comp_id, e)
+            continue
+        res = []
+        for g in games:
+            if not (_is_scp(g["home"]) or _is_scp(g["away"])):
+                continue
+            home = _is_scp(g["home"])
+            comp = comp_label + (" · " + g["jornada"] if g["jornada"] else "")
+            if g["hs"] is not None:
+                mine_s, theirs = (g["hs"], g["as"]) if home else (g["as"], g["hs"])
+                res.append({"sport": "hoquei-em-patins", "sport_label": lbl, "date": g["date"], "competition": comp,
+                            "home": g["home"], "away": g["away"], "home_score": g["hs"], "away_score": g["as"],
+                            "sporting_home": home, "outcome": "V" if mine_s > theirs else ("D" if mine_s < theirs else "E"),
+                            "source": "FPP", "tv": g["tv"]})
+            elif datetime.fromisoformat(g["date"].replace("Z", "+00:00")).timestamp() >= now - 3 * 3600:
+                _add_fixture_unique(sp, {"sport": "hoquei-em-patins", "sport_label": lbl, "date": g["date"], "competition": comp,
+                                         "opponent": g["away"] if home else g["home"], "home_away": "casa" if home else "fora",
+                                         "venue": "", "labels": [], "tickets": None, "source": "FPP", "tv": g["tv"]})
+        sp["results"] = sorted(res + sp["results"], key=lambda r: r["date"], reverse=True)[:25]
+        if table:
+            sp["standings"] = {"competition": comp_label, "rows": table}
+        used["hoquei-em-patins"] = "FPP"
+        print(f"Modalidades: hóquei FPP {comp_id} → {len(res)} resultados, {len(table)} equipas na classificação")
+    return used
+
 def fetch_modalidades():
     now = time.time()
     sports = {}
@@ -2503,6 +2701,13 @@ def fetch_modalidades():
         except Exception as e:
             print("Modalidades: 365scores indisponível:", key, e)
 
+    # 2b) Futsal e andebol (Flashscore) e hóquei em patins (FPP)
+    try:
+        extra = enrich_modalidades_extra(sport, now)
+    except Exception as e:
+        extra = {}
+        print("Modalidades: fontes adicionais indisponíveis:", e)
+
     # 3) Notícias: oficiais (Sporting.pt) + imprensa já recolhida (news.json)
     news, seen = [], set()
     for n in site_news:
@@ -2549,7 +2754,8 @@ def fetch_modalidades():
         "season": "2026/27",
         "sports": ordered,
         "news": news[:120],
-        "sources": {"calendario": "Sporting.pt", "resultados": "365scores", "noticias": "Sporting.pt, Record, O Jogo"},
+        "sources": {"calendario": "Sporting.pt, FPP, Flashscore", "resultados": "FPP (hóquei), Flashscore (futsal, andebol), 365scores (basquetebol, voleibol)",
+                    "noticias": "Sporting.pt, Record, O Jogo"},
     })
     print("Modalidades:", {s["key"]: (len(s["fixtures"]), len(s["results"]), bool(s["standings"]), s["news_count"]) for s in ordered}, "notícias:", len(news))
 

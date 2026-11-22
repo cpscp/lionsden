@@ -1766,19 +1766,19 @@ function modEventHtml(f,withSport=true){
  const tbc=modTimeTbc(f);
  return '<div class="card mod-event"><div class="mod-time"><strong>'+esc(tbc?'—':modFmt(f.date,{hour:'2-digit',minute:'2-digit'}))+'</strong><span>'+esc(modFmt(f.date,{day:'numeric',month:'short'}))+'</span></div>'+
   '<div class="mod-body">'+(withSport?modChip(f.sport,f.sport_label):'')+'<div class="mod-teams">'+modTeams(f)+'</div><div class="mod-meta">'+esc(f.competition||'')+(f.venue?' · '+esc(f.venue):'')+'</div>'+((f.labels||[]).map(l=>'<span class="mod-label">'+esc(l)+'</span>').join(' '))+'</div>'+
-  '<div class="mod-side"><span class="mod-ha '+(f.home_away==='casa'?'casa':'')+'">'+(f.home_away==='casa'?'Casa':'Fora')+'</span>'+(f.tickets?'<a class="mod-tickets" href="'+esc(f.tickets)+'" target="_blank" rel="noopener noreferrer">Bilhetes →</a>':'')+'</div></div>';
+  '<div class="mod-side"><span class="mod-ha '+(f.home_away==='casa'?'casa':'')+'">'+(f.home_away==='casa'?'Casa':'Fora')+'</span>'+(f.tickets?'<a class="mod-tickets" href="'+esc(f.tickets)+'" target="_blank" rel="noopener noreferrer">Bilhetes →</a>':'')+(f.tv?'<a class="mod-tickets" href="'+esc(f.tv)+'" target="_blank" rel="noopener noreferrer">FPP TV →</a>':'')+'</div></div>';
 }
 function modResultHtml(r,withSport=true){
  const hw=r.home_score>r.away_score,aw=r.away_score>r.home_score;
  return '<div class="card mod-result"><div class="min-w-0">'+(withSport?modChip(r.sport,r.sport_label):'')+'<div class="mod-meta" style="margin-top:'+(withSport?'5px':'0')+'">'+esc(modFmt(r.date,{weekday:'short',day:'numeric',month:'short'}))+' · '+esc(r.competition||'')+'</div>'+
-  '<div class="mod-score"><span class="n '+(hw?'win':'')+'">'+esc(r.home)+'</span><span class="s">'+esc(r.home_score)+'</span><span class="n '+(aw?'win':'')+'">'+esc(r.away)+'</span><span class="s">'+esc(r.away_score)+'</span></div></div>'+
+  '<div class="mod-score"><span class="n '+(hw?'win':'')+'">'+esc(r.home)+'</span><span class="s">'+esc(r.home_score)+'</span><span class="n '+(aw?'win':'')+'">'+esc(r.away)+'</span><span class="s">'+esc(r.away_score)+'</span></div>'+(r.tv?'<a class="mod-tickets" style="display:inline-block;margin-top:6px" href="'+esc(r.tv)+'" target="_blank" rel="noopener noreferrer">Ver jogo na FPP TV →</a>':'')+'</div>'+
   '<span class="mod-outcome '+esc(r.outcome)+'" title="'+(r.outcome==='V'?'Vitória':r.outcome==='D'?'Derrota':'Empate')+'">'+esc(r.outcome)+'</span></div>';
 }
 function modStandingsHtml(st){
  if(!st?.rows?.length)return '<div class="card mod-empty">Classificação indisponível para esta modalidade.</div>';
- const hasDraw=st.rows.some(r=>Number(r.drawn)>0);
- return '<div class="card p-3 overflow-x-auto"><div class="text-[10px] uppercase tracking-widest muted px-1 pb-2">'+esc(st.competition||'Classificação')+'</div><table class="class-table"><thead><tr><th>#</th><th>Equipa</th><th>J</th><th>V</th>'+(hasDraw?'<th>E</th>':'')+'<th>D</th><th>Pts</th></tr></thead><tbody>'+
-  st.rows.map(r=>'<tr class="'+(r.sporting?'sc-row':'')+'"><td>'+esc(r.pos??'')+'</td><td class="club">'+esc(r.team)+'</td><td>'+esc(r.played??'—')+'</td><td>'+esc(r.won??'—')+'</td>'+(hasDraw?'<td>'+esc(r.drawn??'—')+'</td>':'')+'<td>'+esc(r.lost??'—')+'</td><td><b>'+esc(r.points!=null?Math.round(r.points):'—')+'</b></td></tr>').join('')+'</tbody></table></div>';
+ const hasDraw=st.rows.some(r=>Number(r.drawn)>0),hasGd=st.rows.some(r=>r.gd!=null);
+ return '<div class="card p-3 overflow-x-auto"><div class="text-[10px] uppercase tracking-widest muted px-1 pb-2">'+esc(st.competition||'Classificação')+'</div><table class="class-table"><thead><tr><th>#</th><th>Equipa</th><th>J</th><th>V</th>'+(hasDraw?'<th>E</th>':'')+'<th>D</th>'+(hasGd?'<th>DG</th>':'')+'<th>Pts</th></tr></thead><tbody>'+
+  st.rows.map(r=>'<tr class="'+(r.sporting?'sc-row':'')+'"><td>'+esc(r.pos??'')+'</td><td class="club">'+esc(r.team)+'</td><td>'+esc(r.played??'—')+'</td><td>'+esc(r.won??'—')+'</td>'+(hasDraw?'<td>'+esc(r.drawn??'—')+'</td>':'')+'<td>'+esc(r.lost??'—')+'</td>'+(hasGd?'<td>'+esc(r.gd>0?'+'+r.gd:r.gd)+'</td>':'')+'<td><b>'+esc(r.points!=null?Math.round(r.points):'—')+'</b></td></tr>').join('')+'</tbody></table>'+(st.computed?'<div class="mod-source mt-2">Calculada a partir de todos os resultados da prova.</div>':'')+'</div>';
 }
 function modNewsHtml(list){
  if(!list.length)return '<div class="card mod-empty">Sem notícias recentes desta modalidade.</div>';
@@ -1834,8 +1834,8 @@ function renderModalidades(){
   cEl.innerHTML=(results.length?'<div class="mod-list">'+results.slice(0,window._modLimit).map(r=>modResultHtml(r,all)).join('')+'</div>'+(results.length>window._modLimit?'<button class="mod-more mt-3" onclick="window._modLimit+=30;renderModalidades()">Ver mais resultados</button>':''):'<div class="card mod-empty">'+(sp?'Resultados de '+esc(sp.label)+' ainda indisponíveis nas fontes públicas.':'Sem resultados recentes.')+'</div>')+
    (all&&noRes.length?'<div class="mod-source mt-2">Sem resultados públicos disponíveis para: '+esc(noRes.join(', '))+'.</div>':'');
  }else if(tab==='news'){cEl.innerHTML=modNewsHtml(news);}
- else if(tab==='table'){cEl.innerHTML='<div class="space-y-4">'+tables.map(s=>(all?'<div class="mod-day"><h3>'+modChip(s.key,s.label)+'</h3></div>':'')+modStandingsHtml(s.standings)).join('')+'</div>'+(all?'<div class="mod-source mt-2">Classificações nacionais de futsal, hóquei em patins e andebol ainda sem fonte pública acessível.</div>':'');}
- const s=data.sources||{};srcEl.textContent='Calendário: '+(s.calendario||'Sporting.pt')+' · Resultados e classificações: '+(s.resultados||'365scores')+' · Notícias: '+(s.noticias||'Sporting.pt, Record, O Jogo');
+ else if(tab==='table'){cEl.innerHTML='<div class="space-y-4">'+tables.map(s=>(all?'<div class="mod-day"><h3>'+modChip(s.key,s.label)+'</h3></div>':'')+modStandingsHtml(s.standings)).join('')+'</div>';}
+ const s=data.sources||{};srcEl.textContent='Calendário: '+(s.calendario||'Sporting.pt')+' · Resultados: '+(s.resultados||'365scores')+' · Notícias: '+(s.noticias||'Sporting.pt, Record, O Jogo');
 }
 function renderHomeModalidades(){
  const el=document.getElementById('homeModalidades');if(!el)return;

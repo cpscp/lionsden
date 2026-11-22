@@ -7,17 +7,5 @@
       "source": "Sporting CP"
     }
   },
-  "modalidades_fixtures": [
-    {
-      "sport": "hoquei-em-patins",
-      "date": "2026-11-22T19:30:00Z",
-      "competition": "Campeonato Nacional · Jornada 3",
-      "opponent": "SL Benfica",
-      "home_away": "casa",
-      "venue": "Pavilhão João Rocha",
-      "labels": [],
-      "tickets": null,
-      "note": "Confirmado em sporting.pt/noticias/bilhetes-para-o-derbi-de-hoquei-em-patins; hora indicada pelo utilizador"
-    }
-  ]
+  "modalidades_fixtures": []
 }
