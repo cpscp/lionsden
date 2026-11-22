@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T15:10:33.985017+00:00",
+  "_updated_at": "2026-11-22T15:13:22.995525+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -535,18 +535,6 @@
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
-        },
-        {
-          "sport": "andebol",
-          "sport_label": "Andebol",
-          "date": "2026-12-06T21:00:00Z",
-          "competition": "Campeonato Betclic · Jornada 15",
-          "opponent": "Benfica",
-          "home_away": "fora",
-          "venue": "",
-          "labels": [],
-          "tickets": null,
-          "source": "Flashscore"
         },
         {
           "sport": "andebol",
@@ -1135,7 +1123,7 @@
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
           "date": "2026-11-22T19:30:00Z",
-          "competition": "Campeonato Placard",
+          "competition": "Campeonato Placard · Jornada 3",
           "opponent": "SL Benfica",
           "home_away": "casa",
           "venue": "",
@@ -1498,7 +1486,7 @@
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
           "date": "2026-11-14T18:30:00Z",
-          "competition": "Campeonato Placard",
+          "competition": "Campeonato Placard · Jornada 2",
           "home": "AD Valongo / Colquímica",
           "away": "Sporting CP",
           "home_score": 1,
@@ -1512,7 +1500,7 @@
           "sport": "hoquei-em-patins",
           "sport_label": "Hóquei em Patins",
           "date": "2026-11-10T20:30:00Z",
-          "competition": "Campeonato Placard",
+          "competition": "Campeonato Placard · Jornada 1",
           "home": "Sporting CP",
           "away": "Candelária SC",
           "home_score": 5,
@@ -2412,22 +2400,22 @@
         "rows": [
           {
             "pos": 1,
-            "team": "Benfica",
-            "sporting": false,
-            "played": 8,
-            "won": 7,
-            "drawn": 0,
-            "lost": 1,
-            "points": 15.0
-          },
-          {
-            "pos": 2,
             "team": "Ovarense",
             "sporting": false,
             "played": 8,
             "won": 6,
             "drawn": 0,
-            "lost": 2,
+            "lost": 1,
+            "points": 14.0
+          },
+          {
+            "pos": 2,
+            "team": "Benfica",
+            "sporting": false,
+            "played": 8,
+            "won": 6,
+            "drawn": 0,
+            "lost": 1,
             "points": 14.0
           },
           {
