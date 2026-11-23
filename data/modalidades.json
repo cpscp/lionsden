@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-22T23:51:22.260002+00:00",
+  "_updated_at": "2026-11-23T04:07:03.773318+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -466,7 +466,7 @@
         ],
         "computed": true
       },
-      "news_count": 17
+      "news_count": 16
     },
     {
       "key": "andebol",
@@ -1778,10 +1778,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
-          "opponent": "AD Sanjoanense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
+          "opponent": "UD Oliveirense",
           "home_away": "fora",
-          "venue": "Pavilhão Municipal Paulo Pinto",
+          "venue": "Simoldes Arena",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
@@ -3699,16 +3699,6 @@
       "sport": "voleibol",
       "sport_label": "Voleibol",
       "source": "Sporting.pt"
-    },
-    {
-      "title": "Presidente da República felicita Sporting pela conquista da Taça Intercontinental de futsal",
-      "summary": "Leões fizeram história ao serem a primeira equipa portuguesa a conquistar a competição",
-      "url": "https://www.record.pt/futebol/futebol-nacional/liga-betclic/sporting/detalhe/presidente-da-republica-felicita-sporting-pela-conquista-da-taca-intercontinental-de-futsal?ref=Sporting_BucketDestaquesPrincipais",
-      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-20-10-14-32-2476131.jpg",
-      "published": "2026-11-20T11:00:54Z",
-      "sport": "futsal",
-      "sport_label": "Futsal",
-      "source": "Record"
     },
     {
       "title": "Leões na final da Taça Intercontinental",
