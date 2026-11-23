@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-23T07:56:08.765582+00:00",
+  "_updated_at": "2026-11-23T14:33:10.719649+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1478,7 +1478,7 @@
           "sporting_home": true,
           "outcome": "E",
           "source": "FPP",
-          "tv": "https://tv.fpp.pt/live?l=9960895B07BD4723826AA36AD712C8E6022992"
+          "tv": "https://tv.fpp.pt/video?videoId=e-5681&metaname=compID&metavalue=CPHP&stageId=&metaseason="
         },
         {
           "sport": "hoquei-em-patins",
@@ -1778,10 +1778,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
-          "opponent": "UD Oliveirense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
+          "opponent": "AD Sanjoanense",
           "home_away": "fora",
-          "venue": "Simoldes Arena",
+          "venue": "Pavilhão Municipal Paulo Pinto",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
@@ -3521,7 +3521,7 @@
       "source": "Sporting.pt"
     },
     {
-      "title": "Cinco títulos colectivos nos Nacionais de corta-mato",
+      "title": "Seis títulos colectivos nos Nacionais de corta-mato",
       "summary": "Seniores femininos terminaram no segundo lugar e equipa masculina no terceiro posto",
       "url": "https://sporting.pt/noticias/cinco-titulos-colectivos-nos-nacionais-de-corta-mato",
       "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795378601040-Corta-Mato_Valenc_a_TG_FPA_2026-217.webp",
