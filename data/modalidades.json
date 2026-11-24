@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-24T10:08:10.126727+00:00",
+  "_updated_at": "2026-11-24T11:42:09.938411+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -480,18 +480,6 @@
           "opponent": "ABC",
           "home_away": "casa",
           "venue": "Pavilhão Municipal de Caminha",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
-        {
-          "sport": "andebol",
-          "sport_label": "Andebol",
-          "date": "2026-12-03T19:45:00.000Z",
-          "competition": "Liga dos Campeões EHF - Grupo II - Fase Principal · Jornada 3",
-          "opponent": "FC Barcelona",
-          "home_away": "casa",
-          "venue": "Pavilhão João Rocha",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
