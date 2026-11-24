@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-23T07:57:46.278173+00:00",
+  "_updated_at": "2026-11-24T00:07:56.139435+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -859,7 +859,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/pol.png', 'text': 'Szymon Marciniak', 'countryCode': 'POL', 'country': 'Poland', 'id': 1001073072, 'leagueId': 196, 'leagueName': 'Ekstraklasa', 'stats': [{'type': 'matches', 'value': 44, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.64, 'valueType': 'perMatch', 'average': 4, 'total': 160, 'averageType': 'below', 'fillPercentage': 40.94, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 15, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.71, 'valueType': 'perMatch', 'average': 25, 'total': 1013, 'averageType': 'average', 'fillPercentage': 48.68, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
@@ -1058,6 +1058,46 @@
       "source": "FotMob"
     },
     {
+      "id": 6739522,
+      "date": 1797433200,
+      "kickoff_date": "2026-12-16",
+      "kickoff_local_time": "15:00",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
+      },
+      "competition": {
+        "name": "Taca de Portugal",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 4665,
+        "name": "Atlético"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
       "id": 5887716,
       "date": 1797786000,
       "kickoff_date": "2026-12-20",
@@ -1148,14 +1188,13 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": null,
       "venue": {
-        "name": "Estádio Dr. Magalhães Pessoa (old)",
-        "city": "Leiria",
-        "lat": 39.748815026,
-        "lon": -8.812955618,
-        "capacity": 11000.0,
-        "country": "Portugal"
+        "name": "Estádio José Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "League Cup",

@@ -1413,8 +1413,8 @@
         ]
       },
       {
-        "stage": "Oitavos de final",
-        "label": "Oitavos de final",
+        "stage": "5.ª eliminatória",
+        "label": "5.ª eliminatória",
         "participantCount": null,
         "matchups": [
           {
@@ -1426,15 +1426,18 @@
             },
             "away": {
               "id": 4665,
-              "name": "Atlético CP",
+              "name": "Atlético",
               "shortName": "ATL",
               "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/4665.png"
             },
             "homeScore": null,
             "awayScore": null,
-            "date_label": "15 a 17 dez · Estádio José Alvalade",
-            "venue": "Estádio José Alvalade",
-            "matches": [],
+            "matches": [
+              {
+                "match_id": 6739522,
+                "date": 1797433200
+              }
+            ],
             "sporting_only": true
           }
         ]

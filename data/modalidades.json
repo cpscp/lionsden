@@ -1,23 +1,11 @@
 {
-  "_updated_at": "2026-11-23T14:33:10.719649+00:00",
+  "_updated_at": "2026-11-24T00:06:23.539647+00:00",
   "season": "2026/27",
   "sports": [
     {
       "key": "futsal",
       "label": "Futsal",
       "fixtures": [
-        {
-          "sport": "futsal",
-          "sport_label": "Futsal",
-          "date": "2026-11-23T18:00:00.000Z",
-          "competition": "Liga dos Campeões · Oitavos-de-final, 1.ª mão",
-          "opponent": "TFK Beitar",
-          "home_away": "fora",
-          "venue": "Rimi Olimpiskais Centrs",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
         {
           "sport": "futsal",
           "sport_label": "Futsal",
@@ -466,7 +454,7 @@
         ],
         "computed": true
       },
-      "news_count": 16
+      "news_count": 19
     },
     {
       "key": "andebol",
@@ -3470,6 +3458,36 @@
     }
   ],
   "news": [
+    {
+      "title": "Sporting goleia por 18-2 e \"garante\" os quartos de final da Liga dos Campeões de futsal",
+      "summary": "O Sporting protagonizou uma goleada histórica na Liga dos Campeões de futsal, ao vencer o Beitar Riga por 18-2, na Letónia, na primeira mão dos oitavos de final. Os leões, atuais detentores do troféu, construíram uma vantagem confortável e estão praticamente apurados para a próxima fase, cuja segund",
+      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/sporting-goleia-beitar-riga-por-18-2-e-fica-com-um-pe-nos-quartos-de-final-da-liga-dos-campeoes/18151502?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
+      "image": "https://staticx.noticiasilimitadas.pt/oj/941bf7e2-ee23-493d-a60e-2e365bd7b950_1200x675.jpg",
+      "published": "2026-11-23T20:25:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "O Jogo"
+    },
+    {
+      "title": "Da Letónia com vista para os quartos-de-final",
+      "summary": "Goleada sobre o TFK Beitar Riga dá vantagem muito folgada para a segunda mão (2-18)",
+      "url": "https://sporting.pt/noticias/da-letonia-com-vista-para-os-quartos-de-final",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795459657546-ISAA5066.webp",
+      "published": "2026-11-23T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Filipe Rodrigues: \"Era importante conseguir aqui uma grande diferença\"",
+      "summary": "Reacção do adjunto à entrada a vencer na fase a eliminar da Champions",
+      "url": "https://sporting.pt/noticias/filipe-rodrigues-era-importante-conseguir-aqui-uma-grande-diferenca",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795464157528-20260801_jpm_-169.webp",
+      "published": "2026-11-23T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
     {
       "title": "Hóquei em patins: dérbi louco entre Sporting e Benfica teve 12 golos",
       "summary": "Sporting e Benfica empataram a seis golos no dérbi da terceira jornada do campeonato de hóquei em patins",
