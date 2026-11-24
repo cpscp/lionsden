@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-24T11:42:09.938411+00:00",
+  "_updated_at": "2026-11-24T21:32:15.690799+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -454,7 +454,7 @@
         ],
         "computed": true
       },
-      "news_count": 19
+      "news_count": 20
     },
     {
       "key": "andebol",
@@ -1086,7 +1086,7 @@
         ],
         "computed": true
       },
-      "news_count": 13
+      "news_count": 14
     },
     {
       "key": "hoquei-em-patins",
@@ -1672,7 +1672,7 @@
           }
         ]
       },
-      "news_count": 15
+      "news_count": 14
     },
     {
       "key": "basquetebol",
@@ -1754,10 +1754,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
-          "opponent": "AD Sanjoanense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
+          "opponent": "UD Oliveirense",
           "home_away": "fora",
-          "venue": "Pavilhão Municipal Paulo Pinto",
+          "venue": "Simoldes Arena",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
@@ -2523,18 +2523,6 @@
         {
           "sport": "voleibol",
           "sport_label": "Voleibol",
-          "date": "2026-12-01T18:30:00.000Z",
-          "competition": "Liga · Fase regular, Jornada 8",
-          "opponent": "Ala Nun'Álvares",
-          "home_away": "casa",
-          "venue": "Pavilhão João Rocha",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
-        {
-          "sport": "voleibol",
-          "sport_label": "Voleibol",
           "date": "2026-12-05T16:00:00.000Z",
           "competition": "Liga · Fase regular, Jornada 9",
           "opponent": "VC Viana",
@@ -2972,7 +2960,7 @@
           }
         ]
       },
-      "news_count": 14
+      "news_count": 13
     },
     {
       "key": "voleibol-feminino",
@@ -3447,6 +3435,26 @@
   ],
   "news": [
     {
+      "title": "Bilhetes para a recepção ao TFK Beitar Riga",
+      "summary": "Jogo da segunda mão dos oitavos-de-final da UEFA Futsal Champions League realiza-se a 5 de Dezembro, às 20h00",
+      "url": "https://sporting.pt/noticias/bilhetes-para-a-recepcao-ao-tfk-beitar-riga",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795517188902-ISAA1106.webp",
+      "published": "2026-11-24T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Ricardo Costa: “Dar a nossa melhor versão e procurar a vitória”",
+      "summary": "Leões do andebol viajam até Magdeburg, onde disputam mais uma jornada da EHF Champions League (quarta-feira, 19h45)",
+      "url": "https://sporting.pt/noticias/ricardo-costa-dar-a-nossa-melhor-versao-e-procurar-a-vitoria",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795523697047-20261025_jpm-248_1_.webp",
+      "published": "2026-11-24T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
+    {
       "title": "Sporting goleia por 18-2 e \"garante\" os quartos de final da Liga dos Campeões de futsal",
       "summary": "O Sporting protagonizou uma goleada histórica na Liga dos Campeões de futsal, ao vencer o Beitar Riga por 18-2, na Letónia, na primeira mão dos oitavos de final. Os leões, atuais detentores do troféu, construíram uma vantagem confortável e estão praticamente apurados para a próxima fase, cuja segund",
       "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/sporting-goleia-beitar-riga-por-18-2-e-fica-com-um-pe-nos-quartos-de-final-da-liga-dos-campeoes/18151502?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
@@ -3567,16 +3575,6 @@
       "source": "Record"
     },
     {
-      "title": "À terceira jornada do campeonato de hóquei em patins há novo duelo entre candidatos: dérbi este domingo para ver em direto no site de Record",
-      "summary": "Sporting recebe o campeão Benfica depois do confronto na Supertaça",
-      "url": "https://www.record.pt/modalidades/hoquei-em-patins/detalhe/a-terceira-jornada-do-campeonato-de-hoquei-em-patins-ha-novo-duelo-entre-candidatos-derbi-este-domingo-para-ver-em-direto-no-site-de-record?ref=Modalidades_BucketDestaquesPrincipais",
-      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-21-14-09-33-2476371.jpg",
-      "published": "2026-11-21T14:13:27Z",
-      "sport": "hoquei-em-patins",
-      "sport_label": "Hóquei em Patins",
-      "source": "Record"
-    },
-    {
       "title": "Campeões do Mundo de futsal do Sporting CP já estão de regresso a Lisboa",
       "summary": "Equipa recebida no Aeroporto por muitos Sportinguistas, depois da brilhante conquista no Brasil",
       "url": "https://sporting.pt/noticias/campeoes-do-mundo-de-futsal-do-sporting-cp-ja-estao-de-regresso-a-lisboa",
@@ -3635,16 +3633,6 @@
       "sport": "basquetebol",
       "sport_label": "Basquetebol",
       "source": "Sporting.pt"
-    },
-    {
-      "title": "Bicampeão Sporting continua pleno no campeonato de voleibol",
-      "summary": "No arranque da sexta jornada da Liga Una de voleibol, Sporting cumpriu diante do Clube K",
-      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/bicampeao-sporting-continua-pleno-no-campeonato-de-voleibol/18150590?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
-      "image": "https://staticx.noticiasilimitadas.pt/oj/bb54dcbc-4e40-45ab-9cad-a6b19e605679_1200x675.jpg",
-      "published": "2026-11-20T23:06:00Z",
-      "sport": "voleibol",
-      "sport_label": "Voleibol",
-      "source": "O Jogo"
     },
     {
       "title": "Depois da Europa, o Mundo!",
