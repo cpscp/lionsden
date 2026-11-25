@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T08:55:00.855304+00:00",
+  "_updated_at": "2026-11-25T21:54:00.594683+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -856,17 +856,16 @@
       "kickoff_date": "2026-11-25",
       "kickoff_local_time": "20:00",
       "status": {
-        "short": "scheduled",
-        "long": "Agendado"
+        "short": "live",
+        "long": "Em direto"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/pol.png', 'text': 'Szymon Marciniak', 'countryCode': 'POL', 'country': 'Poland', 'id': 1001073072, 'leagueId': 196, 'leagueName': 'Ekstraklasa', 'stats': [{'type': 'matches', 'value': 43, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.72, 'valueType': 'perMatch', 'average': 4.01, 'total': 160, 'averageType': 'average', 'fillPercentage': 42.81, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.71, 'valueType': 'perMatch', 'average': 24.97, 'total': 1013, 'averageType': 'average', 'fillPercentage': 48.78, 'averagePercentage': 50}]}",
+      "referee": null,
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207228,
-        "lon": -9.160875678,
-        "capacity": 52095.0,
-        "country": "Portugal"
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null
       },
       "competition": {
         "name": "Champions League",
@@ -1100,9 +1099,9 @@
     },
     {
       "id": 5887716,
-      "date": 1797786000,
-      "kickoff_date": "2026-12-20",
-      "kickoff_local_time": "17:00",
+      "date": 1797972300,
+      "kickoff_date": "2026-12-22",
+      "kickoff_local_time": "20:45",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
@@ -1141,9 +1140,9 @@
     },
     {
       "id": 5887724,
-      "date": 1798390800,
-      "kickoff_date": "2026-12-27",
-      "kickoff_local_time": "17:00",
+      "date": 1798577100,
+      "kickoff_date": "2026-12-29",
+      "kickoff_local_time": "20:45",
       "status": {
         "short": "scheduled",
         "long": "Agendado"
@@ -1169,6 +1168,47 @@
       "away": {
         "id": 9768,
         "name": "Sporting CP"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "half_time": {
+        "home": null,
+        "away": null
+      },
+      "source": "FotMob"
+    },
+    {
+      "id": 5887734,
+      "date": 1798921800,
+      "kickoff_date": "2027-01-02",
+      "kickoff_local_time": "20:30",
+      "status": {
+        "short": "scheduled",
+        "long": "Agendado"
+      },
+      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "venue": {
+        "name": "Estadio Jose Alvalade",
+        "city": "Lisboa",
+        "lat": 38.761207,
+        "lon": -9.160876,
+        "capacity": null,
+        "country": ""
+      },
+      "competition": {
+        "name": "Liga Portugal",
+        "round": "",
+        "season": "2026/27"
+      },
+      "home": {
+        "id": 9768,
+        "name": "Sporting CP"
+      },
+      "away": {
+        "id": 1567,
+        "name": "Santa Clara"
       },
       "goals": {
         "home": null,
@@ -1221,50 +1261,10 @@
       "source": "FotMob"
     },
     {
-      "id": 5887734,
-      "date": 1799600400,
-      "kickoff_date": "2027-01-10",
-      "kickoff_local_time": "17:00",
-      "status": {
-        "short": "scheduled",
-        "long": "Agendado"
-      },
-      "referee": null,
-      "venue": {
-        "name": "Estádio José Alvalade",
-        "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null
-      },
-      "competition": {
-        "name": "Liga Portugal",
-        "round": "",
-        "season": "2026/27"
-      },
-      "home": {
-        "id": 9768,
-        "name": "Sporting CP"
-      },
-      "away": {
-        "id": 1567,
-        "name": "Santa Clara"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "half_time": {
-        "home": null,
-        "away": null
-      },
-      "source": "FotMob"
-    },
-    {
       "id": 5887735,
-      "date": 1800205200,
-      "kickoff_date": "2027-01-17",
-      "kickoff_local_time": "17:00",
+      "date": 1800131400,
+      "kickoff_date": "2027-01-16",
+      "kickoff_local_time": "20:30",
       "status": {
         "short": "scheduled",
         "long": "Agendado"

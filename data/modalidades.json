@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T14:52:33.731315+00:00",
+  "_updated_at": "2026-11-25T21:52:37.062913+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1074,7 +1074,7 @@
         ],
         "computed": true
       },
-      "news_count": 14
+      "news_count": 16
     },
     {
       "key": "hoquei-em-patins",
@@ -1660,7 +1660,7 @@
           }
         ]
       },
-      "news_count": 14
+      "news_count": 15
     },
     {
       "key": "basquetebol",
@@ -3422,6 +3422,36 @@
     }
   ],
   "news": [
+    {
+      "title": "Sporting sofre primeira derrota na Champions de andebol na visita a Magdeburg",
+      "summary": "Leões com desaire por 37-31 na deslocação à Alemanha",
+      "url": "https://www.record.pt/modalidades/andebol/detalhe/sporting-sofre-primeira-derrota-na-champions-de-andebol-na-visita-a-magdeburg?ref=Modalidades_BucketDestaquesPrincipais",
+      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-25-20-36-37-2477452-im-639312358626354307.jpg",
+      "published": "2026-11-25T21:26:22Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Record"
+    },
+    {
+      "title": "Xano Edo: \"Estamos confiantes\"",
+      "summary": "Hóquei em patins dá 'stickada de saída' na WSE Champions League (quinta-feira, 20h00)",
+      "url": "https://sporting.pt/noticias/xano-edo-estamos-confiantes",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795627197873-IISA8822.webp",
+      "published": "2026-11-25T12:00:00Z",
+      "sport": "hoquei-em-patins",
+      "sport_label": "Hóquei em Patins",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Primeira parte ditou a diferença",
+      "summary": "Sporting CP perdeu na casa do SC Magdeburg (37-31), na 2.ª jornada da Main Round da EHF Champions League de andebol",
+      "url": "https://sporting.pt/noticias/primeira-parte-ditou-a-diferenca",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795642887364-20261119_SPORTINGCP_Dinamo_Bucuresti_JPM-127.webp",
+      "published": "2026-11-25T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
     {
       "title": "Bilhetes para a recepção ao TFK Beitar Riga",
       "summary": "Jogo da segunda mão dos oitavos-de-final da UEFA Futsal Champions League realiza-se a 5 de Dezembro, às 20h00",
