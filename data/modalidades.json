@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T08:53:34.848938+00:00",
+  "_updated_at": "2026-11-25T14:52:33.731315+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -17,18 +17,6 @@
           "labels": [],
           "tickets": null,
           "source": "Flashscore"
-        },
-        {
-          "sport": "futsal",
-          "sport_label": "Futsal",
-          "date": "2026-12-05T20:00:00.000Z",
-          "competition": "Liga dos Campeões · Oitavos-de-final, 2.ª mão",
-          "opponent": "TFK Beitar",
-          "home_away": "casa",
-          "venue": "Pavilhão João Rocha",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
         },
         {
           "sport": "futsal",
@@ -1754,10 +1742,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
-          "opponent": "UD Oliveirense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
+          "opponent": "AD Sanjoanense",
           "home_away": "fora",
-          "venue": "Simoldes Arena",
+          "venue": "Pavilhão Municipal Paulo Pinto",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
