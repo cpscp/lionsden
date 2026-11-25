@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T21:53:02.681094+00:00",
+  "_updated_at": "2026-11-25T23:25:51.788016+00:00",
   "fixtures": {
     "5887687": {
       "home": {
@@ -60,14 +60,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -96,6 +88,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -150,21 +150,13 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-25T21:53:00.311379+00:00"
+      "updated_at": "2026-11-25T23:25:48.040661+00:00"
     },
     "5887698": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -195,6 +187,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -301,21 +301,13 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-25T21:53:00.323652+00:00"
+      "updated_at": "2026-11-25T23:25:48.064374+00:00"
     },
     "6106275": {
       "home": {
         "id": 8686,
         "name": "Roma",
         "form": [
-          {
-            "result": "W",
-            "score": "4 - 2",
-            "date": "2026-10-27T19:45:00.000Z",
-            "competition": "Serie A",
-            "opponent": "Cagliari",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "2 - 5",
@@ -347,12 +339,20 @@
             "competition": "Serie A",
             "opponent": "Parma",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Paris Saint-Germain",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 23,
-          "played": 4,
-          "points": 4,
+          "position": 25,
+          "played": 5,
+          "points": 5,
           "name": "Roma"
         }
       },
@@ -360,14 +360,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -399,12 +391,20 @@
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 12,
-          "played": 4,
-          "points": 9,
+          "position": 9,
+          "played": 5,
+          "points": 10,
           "name": "Sporting CP"
         }
       },
@@ -434,7 +434,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-25T21:53:00.329855+00:00"
+      "updated_at": "2026-11-25T23:25:48.086646+00:00"
     },
     "5887702": {
       "home": {
@@ -495,14 +495,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -531,6 +523,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -585,21 +585,13 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-25T21:53:00.336765+00:00"
+      "updated_at": "2026-11-25T23:25:48.110154+00:00"
     },
     "6739522": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -630,6 +622,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -694,21 +694,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:00.342567+00:00"
+      "updated_at": "2026-11-25T23:25:48.158577+00:00"
     },
     "5887716": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -739,6 +731,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -845,7 +845,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-25T21:53:00.348969+00:00"
+      "updated_at": "2026-11-25T23:25:48.181572+00:00"
     },
     "5887724": {
       "home": {
@@ -906,14 +906,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -942,6 +934,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -996,21 +996,13 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-25T21:53:00.356514+00:00"
+      "updated_at": "2026-11-25T23:25:48.205821+00:00"
     },
     "5887734": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -1041,6 +1033,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -1147,21 +1147,13 @@
         "away_wins": 2,
         "total": 17
       },
-      "updated_at": "2026-11-25T21:53:00.364112+00:00"
+      "updated_at": "2026-11-25T23:25:48.228578+00:00"
     },
     "5985969": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -1192,6 +1184,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -1298,21 +1298,13 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-11-25T21:53:00.496000+00:00"
+      "updated_at": "2026-11-25T23:25:48.399959+00:00"
     },
     "5887735": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -1343,6 +1335,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -1449,21 +1449,13 @@
         "away_wins": 0,
         "total": 7
       },
-      "updated_at": "2026-11-25T21:53:00.645474+00:00"
+      "updated_at": "2026-11-25T23:25:48.572729+00:00"
     },
     "6106278": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -1495,12 +1487,20 @@
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 12,
-          "played": 4,
-          "points": 9,
+          "position": 9,
+          "played": 5,
+          "points": 10,
           "name": "Sporting CP"
         }
       },
@@ -1550,9 +1550,9 @@
           }
         ],
         "table": {
-          "position": 8,
-          "played": 4,
-          "points": 9,
+          "position": 4,
+          "played": 5,
+          "points": 12,
           "name": "Barcelona"
         }
       },
@@ -1582,7 +1582,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-25T21:53:00.769506+00:00"
+      "updated_at": "2026-11-25T23:25:48.739367+00:00"
     },
     "5887752": {
       "home": {
@@ -1643,14 +1643,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -1679,6 +1671,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -1733,7 +1733,7 @@
         "away_wins": 22,
         "total": 36
       },
-      "updated_at": "2026-11-25T21:53:00.955424+00:00"
+      "updated_at": "2026-11-25T23:25:48.943990+00:00"
     },
     "6106255": {
       "home": {
@@ -1782,7 +1782,7 @@
           }
         ],
         "table": {
-          "position": 6,
+          "position": 8,
           "played": 5,
           "points": 10,
           "name": "Manchester City"
@@ -1792,14 +1792,6 @@
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -1831,12 +1823,20 @@
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 12,
-          "played": 4,
-          "points": 9,
+          "position": 9,
+          "played": 5,
+          "points": 10,
           "name": "Sporting CP"
         }
       },
@@ -1884,7 +1884,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-25T21:53:01.093621+00:00"
+      "updated_at": "2026-11-25T23:25:49.130149+00:00"
     },
     "5887760": {
       "home": {
@@ -1945,14 +1945,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -1981,6 +1973,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -1998,21 +1998,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.230651+00:00"
+      "updated_at": "2026-11-25T23:25:49.293706+00:00"
     },
     "5887769": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -2043,6 +2035,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2112,7 +2112,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.373637+00:00"
+      "updated_at": "2026-11-25T23:25:49.454559+00:00"
     },
     "5887778": {
       "home": {
@@ -2173,14 +2173,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -2209,6 +2201,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2226,21 +2226,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.520619+00:00"
+      "updated_at": "2026-11-25T23:25:49.806802+00:00"
     },
     "5887784": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -2271,6 +2263,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2340,7 +2340,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.674240+00:00"
+      "updated_at": "2026-11-25T23:25:49.980117+00:00"
     },
     "5887796": {
       "home": {
@@ -2401,14 +2401,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -2437,6 +2429,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2454,21 +2454,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.813626+00:00"
+      "updated_at": "2026-11-25T23:25:50.150366+00:00"
     },
     "5887800": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -2499,6 +2491,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2568,7 +2568,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:01.947476+00:00"
+      "updated_at": "2026-11-25T23:25:50.369570+00:00"
     },
     "5887814": {
       "home": {
@@ -2629,14 +2629,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -2665,6 +2657,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2682,21 +2682,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.101247+00:00"
+      "updated_at": "2026-11-25T23:25:50.653761+00:00"
     },
     "5887819": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -2727,6 +2719,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2796,7 +2796,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.236108+00:00"
+      "updated_at": "2026-11-25T23:25:50.834616+00:00"
     },
     "5887832": {
       "home": {
@@ -2857,14 +2857,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -2893,6 +2885,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -2910,21 +2910,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.379412+00:00"
+      "updated_at": "2026-11-25T23:25:51.006977+00:00"
     },
     "5887840": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -2955,6 +2947,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -3024,7 +3024,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.517859+00:00"
+      "updated_at": "2026-11-25T23:25:51.193686+00:00"
     },
     "5887851": {
       "home": {
@@ -3085,14 +3085,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -3121,6 +3113,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -3138,21 +3138,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.656701+00:00"
+      "updated_at": "2026-11-25T23:25:51.700628+00:00"
     },
     "5887855": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -3183,6 +3175,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -3252,7 +3252,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.662925+00:00"
+      "updated_at": "2026-11-25T23:25:51.722889+00:00"
     },
     "5887869": {
       "home": {
@@ -3313,14 +3313,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -3349,6 +3341,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -3366,21 +3366,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.668711+00:00"
+      "updated_at": "2026-11-25T23:25:51.744820+00:00"
     },
     "5887877": {
       "home": {
         "id": 9768,
         "name": "Sporting CP",
         "form": [
-          {
-            "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
           {
             "result": "W",
             "score": "0 - 2",
@@ -3411,6 +3403,14 @@
             "date": "2026-11-21T18:00:00.000Z",
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
+            "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
             "match_id": null
           }
         ],
@@ -3480,7 +3480,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.674660+00:00"
+      "updated_at": "2026-11-25T23:25:51.766391+00:00"
     },
     "5887887": {
       "home": {
@@ -3541,14 +3541,6 @@
         "form": [
           {
             "result": "W",
-            "score": "2 - 1",
-            "date": "2026-10-27T20:15:00.000Z",
-            "competition": "League Cup",
-            "opponent": "Marítimo",
-            "match_id": null
-          },
-          {
-            "result": "W",
             "score": "0 - 2",
             "date": "2026-10-30T20:15:00.000Z",
             "competition": "Liga Portugal",
@@ -3578,6 +3570,14 @@
             "competition": "Taca de Portugal",
             "opponent": "União Serra",
             "match_id": null
+          },
+          {
+            "result": "D",
+            "score": "2 - 2",
+            "date": "2026-11-25T20:00:00.000Z",
+            "competition": "Champions League",
+            "opponent": "Manchester United",
+            "match_id": null
           }
         ],
         "table": {
@@ -3594,7 +3594,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-25T21:53:02.681088+00:00"
+      "updated_at": "2026-11-25T23:25:51.788006+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

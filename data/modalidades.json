@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T21:52:37.062913+00:00",
+  "_updated_at": "2026-11-25T23:25:18.523186+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -451,18 +451,6 @@
         {
           "sport": "andebol",
           "sport_label": "Andebol",
-          "date": "2026-11-25T19:45:00.000Z",
-          "competition": "Liga dos Campeões EHF - Grupo II - Fase Principal · Jornada 2",
-          "opponent": "SC Magdeburg",
-          "home_away": "fora",
-          "venue": "GETEC Arena",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
-        {
-          "sport": "andebol",
-          "sport_label": "Andebol",
           "date": "2026-11-28T17:00:00.000Z",
           "competition": "Campeonato Nacional - 1.ª Fase · Jornada 14",
           "opponent": "ABC",
@@ -630,6 +618,22 @@
         }
       ],
       "results": [
+        {
+          "sport": "andebol",
+          "sport_label": "Andebol",
+          "date": "2026-11-25T19:45:00+00:00",
+          "competition": "Liga dos Campeões",
+          "home": "SC Magdeburg",
+          "away": "Sporting CP",
+          "home_score": 37,
+          "away_score": 31,
+          "sporting_home": false,
+          "outcome": "D",
+          "date_iso": "2026-11-25T19:45:00Z",
+          "source": "365scores",
+          "id": 4896670,
+          "competition_id": 542
+        },
         {
           "sport": "andebol",
           "sport_label": "Andebol",
@@ -1074,7 +1078,7 @@
         ],
         "computed": true
       },
-      "news_count": 16
+      "news_count": 18
     },
     {
       "key": "hoquei-em-patins",
@@ -1742,10 +1746,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
-          "opponent": "AD Sanjoanense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
+          "opponent": "UD Oliveirense",
           "home_away": "fora",
-          "venue": "Pavilhão Municipal Paulo Pinto",
+          "venue": "Simoldes Arena",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
@@ -3423,6 +3427,16 @@
   ],
   "news": [
     {
+      "title": "Andebol: Ebbe Hakansson vai ser guarda-redes do Sporting",
+      "summary": "Sueco de 2,04 metros chegará ao João Rocha para ocupar a vaga de André Kristensen, que se mudará para a Dinamarca",
+      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/andebol-ebbe-hakansson-vai-ser-guarda-redes-do-sporting/18152361?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
+      "image": "https://staticx.noticiasilimitadas.pt/oj/6427a749-3c27-42fc-8c80-04c9ea7803c9_1200x675.jpg",
+      "published": "2026-11-25T22:20:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "O Jogo"
+    },
+    {
       "title": "Sporting sofre primeira derrota na Champions de andebol na visita a Magdeburg",
       "summary": "Leões com desaire por 37-31 na deslocação à Alemanha",
       "url": "https://www.record.pt/modalidades/andebol/detalhe/sporting-sofre-primeira-derrota-na-champions-de-andebol-na-visita-a-magdeburg?ref=Modalidades_BucketDestaquesPrincipais",
@@ -3447,6 +3461,16 @@
       "summary": "Sporting CP perdeu na casa do SC Magdeburg (37-31), na 2.ª jornada da Main Round da EHF Champions League de andebol",
       "url": "https://sporting.pt/noticias/primeira-parte-ditou-a-diferenca",
       "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795642887364-20261119_SPORTINGCP_Dinamo_Bucuresti_JPM-127.webp",
+      "published": "2026-11-25T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Ricardo Costa: \"Na segunda parte fomos mais intensos\"",
+      "summary": "Técnico da equipa de andebol do Sporting CP no rescaldo ao jogo em Magdeburg da EHF Champions League",
+      "url": "https://sporting.pt/noticias/ricardo-costa-na-segunda-parte-fomos-mais-intensos",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795646551929-20261022_SPORTINGCP_IFKKRISTIANSTAD-6191.webp",
       "published": "2026-11-25T12:00:00Z",
       "sport": "andebol",
       "sport_label": "Andebol",
