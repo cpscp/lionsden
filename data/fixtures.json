@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-24T22:40:40.182217+00:00",
+  "_updated_at": "2026-11-25T08:55:00.855304+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -859,7 +859,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/pol.png', 'text': 'Szymon Marciniak', 'countryCode': 'POL', 'country': 'Poland', 'id': 1001073072, 'leagueId': 196, 'leagueName': 'Ekstraklasa', 'stats': [{'type': 'matches', 'value': 43, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.72, 'valueType': 'perMatch', 'average': 4.01, 'total': 160, 'averageType': 'average', 'fillPercentage': 42.88, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.71, 'valueType': 'perMatch', 'average': 24.97, 'total': 1013, 'averageType': 'average', 'fillPercentage': 48.79, 'averagePercentage': 50}]}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/pol.png', 'text': 'Szymon Marciniak', 'countryCode': 'POL', 'country': 'Poland', 'id': 1001073072, 'leagueId': 196, 'leagueName': 'Ekstraklasa', 'stats': [{'type': 'matches', 'value': 43, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 3.72, 'valueType': 'perMatch', 'average': 4.01, 'total': 160, 'averageType': 'average', 'fillPercentage': 42.81, 'averagePercentage': 50}, {'type': 'redCards', 'value': 5, 'valueType': 'total'}, {'type': 'unknown', 'value': 3, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 24.71, 'valueType': 'perMatch', 'average': 24.97, 'total': 1013, 'averageType': 'average', 'fillPercentage': 48.78, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
@@ -1070,9 +1070,10 @@
       "venue": {
         "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Taca de Portugal",

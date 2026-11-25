@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T04:32:47.034929+00:00",
+  "_updated_at": "2026-11-25T08:53:34.848938+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -454,7 +454,7 @@
         ],
         "computed": true
       },
-      "news_count": 20
+      "news_count": 19
     },
     {
       "key": "andebol",
@@ -3563,16 +3563,6 @@
       "sport": "hoquei-em-patins",
       "sport_label": "Hóquei em Patins",
       "source": "Sporting.pt"
-    },
-    {
-      "title": "O longo caminho de Tiago Rodrigues: dos treinos com o pai ao topo do futsal mundial pelo Sporting",
-      "summary": "João Rodrigues treinou várias equipas no Barreiro e incutiu no filho o amor pela modalidade",
-      "url": "https://www.record.pt/futebol/futsal/detalhe/o-longo-caminho-de-tiago-rodrigues-dos-treinos-com-o-pai-ao-topo-do-futsal-mundial-pelo-sporting?ref=Sporting_BucketDestaquesPrincipais",
-      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-21-18-13-17-2476442.jpg",
-      "published": "2026-11-21T18:42:55Z",
-      "sport": "futsal",
-      "sport_label": "Futsal",
-      "source": "Record"
     },
     {
       "title": "Campeões do Mundo de futsal do Sporting CP já estão de regresso a Lisboa",
