@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T08:39:25.931344+00:00",
+  "_updated_at": "2026-11-26T15:19:26.521568+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1078,7 +1078,7 @@
         ],
         "computed": true
       },
-      "news_count": 18
+      "news_count": 19
     },
     {
       "key": "hoquei-em-patins",
@@ -3426,6 +3426,16 @@
     }
   ],
   "news": [
+    {
+      "title": "Bilhetes exclusivamente online para a deslocação à Luz",
+      "summary": "Jogo de andebol realiza-se a 6 de Dezembro, às 21h00",
+      "url": "https://sporting.pt/noticias/bilhetes-exclusivamente-online-para-a-deslocacao-a-luz",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795551860371-20260823_JPM-430_1_.webp",
+      "published": "2026-11-26T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
     {
       "title": "Andebol: Ebbe Hakansson vai ser guarda-redes do Sporting",
       "summary": "Sueco de 2,04 metros chegará ao João Rocha para ocupar a vaga de André Kristensen, que se mudará para a Dinamarca",
