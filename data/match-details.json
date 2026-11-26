@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T23:26:15.121185+00:00",
+  "_updated_at": "2026-11-26T08:40:10.542854+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -24625,7 +24625,7 @@
         "referee": {
           "name": "Szymon Marciniak"
         },
-        "attendance": null,
+        "attendance": 50856,
         "venue": {
           "name": "Estádio José Alvalade",
           "city": "Lisboa"
@@ -24736,7 +24736,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.5
+                "rating": 7.6
               }
             },
             {
@@ -24850,7 +24850,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 8.2
+                "rating": 8.1
               }
             },
             {
@@ -25102,7 +25102,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 7.5
+                "rating": 7.6
               }
             },
             {
@@ -25235,7 +25235,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 6.3
+                "rating": 6.1
               }
             },
             {
@@ -25943,18 +25943,18 @@
                   },
                   {
                     "name": "Ground duels won",
-                    "home": "29 (42%)",
-                    "away": "40 (58%)"
+                    "home": "29 (43%)",
+                    "away": "39 (57%)"
                   },
                   {
                     "name": "Aerial duels won",
-                    "home": "7 (47%)",
-                    "away": "8 (53%)"
+                    "home": "7 (44%)",
+                    "away": "9 (56%)"
                   },
                   {
                     "name": "Successful dribbles",
                     "home": "5 (45%)",
-                    "away": "2 (20%)"
+                    "away": "1 (11%)"
                   },
                   {
                     "name": "Discipline",

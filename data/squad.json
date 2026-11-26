@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-25T23:25:34.024491+00:00",
+  "_updated_at": "2026-11-26T08:39:39.390337+00:00",
   "team": "Sporting Clube de Portugal",
   "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
   "coach": "Paulo Fonseca",
@@ -391,7 +391,7 @@
         {
           "season": "2026/27",
           "club": "Sporting CP",
-          "matches": 5,
+          "matches": 6,
           "goals": 0,
           "assists": 0,
           "competitions": [
