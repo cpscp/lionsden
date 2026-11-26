@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T08:40:37.609915+00:00",
+  "_updated_at": "2026-11-26T21:46:47.569498+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -9,7 +9,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=B8-QVYcgNKc",
       "embed": "https://www.youtube.com/embed/B8-QVYcgNKc",
-      "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4IzqDa0gYY4OoEIOCoAQ==&rs=AOn4CLAgZAfTK1QnhFQBNRZ6557-rEpJ-g&usqp=CBU",
+      "thumbnail": "https://i.ytimg.com/vi/B8-QVYcgNKc/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAPx2ujTtRPCdoRWTfJO_4JUIgzFg",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 4 meses"
@@ -230,7 +230,7 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
       "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
-      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLAHU2AjitLlfd-oMbDMzsx2td7MBA",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBNzo-7fonC1wyk0p_6JPn9D5nNuA",
       "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 3 semanas"
@@ -256,7 +256,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=8poAq61s6sY",
       "embed": "https://www.youtube.com/embed/8poAq61s6sY",
-      "thumbnail": "https://i.ytimg.com/vi/8poAq61s6sY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4Iluq-1wYY4OoEIOCoAQ==&rs=AOn4CLBMtDdNS6QOuLjjYx2hGAFi9UYTvw&usqp=CBU",
+      "thumbnail": "https://i.ytimg.com/vi/8poAq61s6sY/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDjqULyDzOPBBXFkQbalqa_TqZvRQ",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 semanas"
@@ -272,7 +272,7 @@
       "thumbnail": "https://i.ytimg.com/vi/4kBk7pataZg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCfX7xtzwG0dx7L4cW4RpJeUtAl7Q",
       "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 4 dias"
+      "published_text": "há 5 dias"
     },
     {
       "match_id": 6106279,
@@ -285,7 +285,7 @@
       "thumbnail": "https://i.ytimg.com/vi/seMD2DHr9D0/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAQXcuiE_0jRFvNRqCFsDLeU8CYHw",
       "embed_allowed": true,
       "preferred_for_home": true,
-      "published_text": "há 13 horas"
+      "published_text": "há 1 dia"
     }
   ],
   "source": "YouTube · Sporting CP / VSPORTS Liga Portugal",

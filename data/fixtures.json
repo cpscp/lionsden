@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T08:41:00.068065+00:00",
+  "_updated_at": "2026-11-26T21:46:59.426108+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -899,7 +899,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'text': '', 'countryCode': '', 'country': ''}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Pinheiro', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080381, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 30, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.6, 'valueType': 'perMatch', 'average': 4.95, 'total': 138, 'averageType': 'average', 'fillPercentage': 38.6, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.57, 'valueType': 'perMatch', 'average': 27.51, 'total': 744, 'averageType': 'below', 'fillPercentage': 39.62, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio Do Dragão",
         "city": "Porto",
@@ -1058,9 +1058,9 @@
     },
     {
       "id": 6739522,
-      "date": 1797433200,
+      "date": 1797453900,
       "kickoff_date": "2026-12-16",
-      "kickoff_local_time": "15:00",
+      "kickoff_local_time": "20:45",
       "status": {
         "short": "scheduled",
         "long": "Agendado"

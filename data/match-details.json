@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T08:40:10.542854+00:00",
+  "_updated_at": "2026-11-26T21:46:18.993573+00:00",
   "fixtures": [
     {
       "match_id": 5789079,
@@ -24679,7 +24679,7 @@
                 "width": 0.385
               },
               "statistics": {
-                "rating": 7.1
+                "rating": 7.2
               }
             },
             {
@@ -24831,7 +24831,7 @@
                 "width": 0.192
               },
               "statistics": {
-                "rating": 6.9
+                "rating": 6.8
               }
             },
             {
@@ -25738,8 +25738,8 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "2.46",
-                    "away": "1.07"
+                    "home": "2.52",
+                    "away": "1.08"
                   },
                   {
                     "name": "Total shots",
@@ -25754,7 +25754,7 @@
                   {
                     "name": "Touches in opposition box",
                     "home": 26,
-                    "away": 16
+                    "away": 15
                   },
                   {
                     "name": "Big chances",
@@ -25828,23 +25828,23 @@
                   },
                   {
                     "name": "Expected goals (xG)",
-                    "home": "2.46",
-                    "away": "1.07"
+                    "home": "2.52",
+                    "away": "1.08"
                   },
                   {
                     "name": "xG open play",
-                    "home": "0.64",
-                    "away": "0.22"
+                    "home": "0.70",
+                    "away": "0.18"
                   },
                   {
                     "name": "xG set play",
                     "home": "0.25",
-                    "away": "0.07"
+                    "away": "0.12"
                   },
                   {
                     "name": "xG non-penalty",
-                    "home": "0.88",
-                    "away": "0.28"
+                    "home": "0.95",
+                    "away": "0.29"
                   },
                   {
                     "name": "xG on target (xGOT)",
@@ -25894,7 +25894,7 @@
                   {
                     "name": "Touches in opposition box",
                     "home": 26,
-                    "away": 16
+                    "away": 15
                   },
                   {
                     "name": "Offsides",
@@ -25913,8 +25913,8 @@
                   },
                   {
                     "name": "Interceptions",
-                    "home": 15,
-                    "away": 11
+                    "home": 14,
+                    "away": 12
                   },
                   {
                     "name": "Blocks",
@@ -25938,7 +25938,7 @@
                   },
                   {
                     "name": "Duels won",
-                    "home": 36,
+                    "home": 37,
                     "away": 48
                   },
                   {
@@ -25948,8 +25948,8 @@
                   },
                   {
                     "name": "Aerial duels won",
-                    "home": "7 (44%)",
-                    "away": "9 (56%)"
+                    "home": "8 (47%)",
+                    "away": "9 (53%)"
                   },
                   {
                     "name": "Successful dribbles",

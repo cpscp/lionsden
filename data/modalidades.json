@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T15:19:26.521568+00:00",
+  "_updated_at": "2026-11-26T21:45:40.856561+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -1664,7 +1664,7 @@
           }
         ]
       },
-      "news_count": 14
+      "news_count": 15
     },
     {
       "key": "basquetebol",
@@ -3423,9 +3423,27 @@
       "results": [],
       "standings": null,
       "news_count": 3
+    },
+    {
+      "key": "ginastica",
+      "label": "Ginástica",
+      "fixtures": [],
+      "results": [],
+      "standings": null,
+      "news_count": 1
     }
   ],
   "news": [
+    {
+      "title": "Sporting bate OC Barcelos no arranque da Liga dos Campeões de hóquei em patins",
+      "summary": "Leões chegaram a estar em desvantagem",
+      "url": "https://www.record.pt/modalidades/hoquei-em-patins/detalhe/sporting-bate-oc-barcelos-no-arranque-da-liga-dos-campeoes-de-hoquei-em-patins?ref=Modalidades_BucketDestaquesPrincipais",
+      "image": "https://cdn.record.pt/images/2026-11/img_1200x721uu2026-11-26-21-34-45-2477765.jpg",
+      "published": "2026-11-26T21:43:54Z",
+      "sport": "hoquei-em-patins",
+      "sport_label": "Hóquei em Patins",
+      "source": "Record"
+    },
     {
       "title": "Bilhetes exclusivamente online para a deslocação à Luz",
       "summary": "Jogo de andebol realiza-se a 6 de Dezembro, às 21h00",
@@ -3434,6 +3452,16 @@
       "published": "2026-11-26T12:00:00Z",
       "sport": "andebol",
       "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Bilhetes para o Sarau de Natal de Ginástica",
+      "summary": "Evento realiza-se a 12 de Dezembro, com duas sessões às 9h00 e às 12h00",
+      "url": "https://sporting.pt/noticias/bilhetes-para-o-sarau-de-natal-de-ginastica",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795716150170-20251220_jpm-29.webp",
+      "published": "2026-11-26T12:00:00Z",
+      "sport": "ginastica",
+      "sport_label": "Ginástica",
       "source": "Sporting.pt"
     },
     {
