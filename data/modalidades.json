@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T15:40:59.803401+00:00",
+  "_updated_at": "2026-11-27T21:30:29.158191+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -442,7 +442,7 @@
         ],
         "computed": true
       },
-      "news_count": 19
+      "news_count": 20
     },
     {
       "key": "andebol",
@@ -463,14 +463,14 @@
         {
           "sport": "andebol",
           "sport_label": "Andebol",
-          "date": "2026-12-05T15:00:00.000Z",
-          "competition": "Campeonato Nacional - 1.ª Fase · Jornada 15",
-          "opponent": "SL Benfica",
+          "date": "2026-12-06T21:00:00Z",
+          "competition": "Campeonato Betclic · Jornada 15",
+          "opponent": "Benfica",
           "home_away": "fora",
-          "venue": "Pavilhão n.º 2 do SL Benfica",
+          "venue": "",
           "labels": [],
           "tickets": null,
-          "source": "Sporting.pt"
+          "source": "Flashscore"
         },
         {
           "sport": "andebol",
@@ -1078,7 +1078,7 @@
         ],
         "computed": true
       },
-      "news_count": 19
+      "news_count": 20
     },
     {
       "key": "hoquei-em-patins",
@@ -1685,30 +1685,6 @@
         {
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
-          "date": "2026-12-05T15:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 9",
-          "opponent": "FC Porto",
-          "home_away": "casa",
-          "venue": "Pavilhão João Rocha",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
-        {
-          "sport": "basquetebol",
-          "sport_label": "Basquetebol",
-          "date": "2026-12-06T11:30:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 9",
-          "opponent": "C. União Sportiva",
-          "home_away": "casa",
-          "venue": "Pavilhão João Rocha",
-          "labels": [],
-          "tickets": null,
-          "source": "Sporting.pt"
-        },
-        {
-          "sport": "basquetebol",
-          "sport_label": "Basquetebol",
           "date": "2026-12-08T18:00:00.000Z",
           "competition": "Campeonato Portugal · Fase regular, Jornada 10",
           "opponent": "BC Barcelos",
@@ -1734,10 +1710,10 @@
           "sport": "basquetebol",
           "sport_label": "Basquetebol",
           "date": "2026-12-12T16:00:00.000Z",
-          "competition": "Campeonato Portugal · Fase regular, Jornada 11",
-          "opponent": "AD Sanjoanense",
+          "competition": "Campeonato Portugal · Fase regular, Jornada 10",
+          "opponent": "UD Oliveirense",
           "home_away": "fora",
-          "venue": "Pavilhão Municipal Paulo Pinto",
+          "venue": "Simoldes Arena",
           "labels": [],
           "tickets": null,
           "source": "Sporting.pt"
@@ -2482,7 +2458,7 @@
       "fixtures": [],
       "results": [],
       "standings": null,
-      "news_count": 3
+      "news_count": 4
     },
     {
       "key": "voleibol",
@@ -2840,6 +2816,16 @@
           },
           {
             "pos": 3,
+            "team": "Leixões SC",
+            "sporting": false,
+            "played": 7,
+            "won": 6,
+            "drawn": 0,
+            "lost": 1,
+            "points": 16.0
+          },
+          {
+            "pos": 4,
             "team": "Vitoria SC",
             "sporting": false,
             "played": 6,
@@ -2849,7 +2835,7 @@
             "points": 14.0
           },
           {
-            "pos": 4,
+            "pos": 5,
             "team": "SC Espinho",
             "sporting": false,
             "played": 6,
@@ -2857,16 +2843,6 @@
             "drawn": 0,
             "lost": 1,
             "points": 14.0
-          },
-          {
-            "pos": 5,
-            "team": "Leixões SC",
-            "sporting": false,
-            "played": 6,
-            "won": 5,
-            "drawn": 0,
-            "lost": 1,
-            "points": 13.0
           },
           {
             "pos": 6,
@@ -2882,10 +2858,10 @@
             "pos": 7,
             "team": "AA São Mamede",
             "sporting": false,
-            "played": 6,
+            "played": 7,
             "won": 2,
             "drawn": 0,
-            "lost": 4,
+            "lost": 5,
             "points": 7.0
           },
           {
@@ -3427,6 +3403,36 @@
       "summary": "Campeões do Mundo entregaram o troféu conquistado no Brasil na presença de Frederico Varandas",
       "url": "https://sporting.pt/noticias/taca-intercontinental-ja-esta-no-museu-sporting",
       "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795779744415-20261125_jpm-74.webp",
+      "published": "2026-11-27T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Ricardo Costa: \"Lutar pelo primeiro lugar, que é o nosso grande objectivo\"",
+      "summary": "Sporting CP defronta o ABC, este sábado, às 17h00, em Caminha",
+      "url": "https://sporting.pt/noticias/ricardo-costa-lutar-pelo-primeiro-lugar-que-e-o-nosso-grande-objectivo",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795788652753-20261112_jpm-135.webp",
+      "published": "2026-11-27T12:00:00Z",
+      "sport": "andebol",
+      "sport_label": "Andebol",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Emília Ferreira: \"Vamos tentar ditar desde o início o nosso ritmo de jogo\"",
+      "summary": "Sábado a equipa de basquetebol do Sporting CP joga na Madeira frente ao CAB e domingo as Leoas defrontam o CDE Francisco Franco",
+      "url": "https://sporting.pt/noticias/emilia-ferreira-vamos-tentar-ditar-desde-o-inicio-o-nosso-ritmo-de-jogo",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795799528013-JL2_0975_1_.webp",
+      "published": "2026-11-27T12:00:00Z",
+      "sport": "basquetebol-feminino",
+      "sport_label": "Basquetebol Feminino",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Diogo Santos: \"É jogar como sempre jogamos e ganhar\"",
+      "summary": "Equipa de futsal do Sporting CP recebe este sábado o SCU Torreense, às 21h15, para a Liga",
+      "url": "https://sporting.pt/noticias/diogo-santos-e-jogar-como-sempre-jogamos-e-ganhar",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795805394145-1A1oQ_UA.webp",
       "published": "2026-11-27T12:00:00Z",
       "sport": "futsal",
       "sport_label": "Futsal",

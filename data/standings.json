@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T08:51:03.346044+00:00",
+  "_updated_at": "2026-11-27T21:30:47.128422+00:00",
   "competition": "Primeira Liga",
   "season": "2026/27",
   "table": [
@@ -186,6 +186,24 @@
     {
       "position": 11,
       "team": {
+        "id": 10214,
+        "name": "Nacional",
+        "shortName": "Nacional",
+        "tla": null,
+        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
+      },
+      "playedGames": 12,
+      "won": 4,
+      "draw": 1,
+      "lost": 7,
+      "points": 13,
+      "goalsFor": 13,
+      "goalsAgainst": 19,
+      "goalDifference": -6
+    },
+    {
+      "position": 12,
+      "team": {
         "id": 9780,
         "name": "Alverca",
         "shortName": "Alverca",
@@ -202,7 +220,7 @@
       "goalDifference": -1
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 1074320,
         "name": "Estrela da Amadora",
@@ -218,24 +236,6 @@
       "goalsFor": 17,
       "goalsAgainst": 22,
       "goalDifference": -5
-    },
-    {
-      "position": 13,
-      "team": {
-        "id": 10214,
-        "name": "Nacional",
-        "shortName": "Nacional",
-        "tla": null,
-        "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10214.png"
-      },
-      "playedGames": 11,
-      "won": 3,
-      "draw": 1,
-      "lost": 7,
-      "points": 10,
-      "goalsFor": 11,
-      "goalsAgainst": 19,
-      "goalDifference": -8
     },
     {
       "position": 14,
@@ -264,14 +264,14 @@
         "tla": null,
         "crest": "https://images.fotmob.com/image_resources/logo/teamlogo/10212.png"
       },
-      "playedGames": 10,
+      "playedGames": 11,
       "won": 2,
       "draw": 2,
-      "lost": 6,
+      "lost": 7,
       "points": 8,
       "goalsFor": 9,
-      "goalsAgainst": 21,
-      "goalDifference": -12
+      "goalsAgainst": 23,
+      "goalDifference": -14
     },
     {
       "position": 16,
