@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T08:50:48.379689+00:00",
+  "_updated_at": "2026-11-27T15:40:59.803401+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -442,7 +442,7 @@
         ],
         "computed": true
       },
-      "news_count": 18
+      "news_count": 19
     },
     {
       "key": "andebol",
@@ -3422,6 +3422,16 @@
     }
   ],
   "news": [
+    {
+      "title": "Taça Intercontinental já está no Museu Sporting",
+      "summary": "Campeões do Mundo entregaram o troféu conquistado no Brasil na presença de Frederico Varandas",
+      "url": "https://sporting.pt/noticias/taca-intercontinental-ja-esta-no-museu-sporting",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795779744415-20261125_jpm-74.webp",
+      "published": "2026-11-27T12:00:00Z",
+      "sport": "futsal",
+      "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
     {
       "title": "Sporting bate OC Barcelos no arranque da Liga dos Campeões de hóquei em patins",
       "summary": "Leões chegaram a estar em desvantagem",
