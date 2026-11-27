@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T21:30:29.158191+00:00",
+  "_updated_at": "2026-11-27T23:45:29.834114+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -297,6 +297,19 @@
             "gd": 25
           },
           {
+            "team": "Leões Porto Salvo",
+            "played": 9,
+            "won": 5,
+            "drawn": 2,
+            "lost": 2,
+            "gf": 32,
+            "ga": 29,
+            "points": 17,
+            "pos": 2,
+            "sporting": false,
+            "gd": 3
+          },
+          {
             "team": "Braga",
             "played": 8,
             "won": 5,
@@ -305,7 +318,7 @@
             "gf": 32,
             "ga": 21,
             "points": 16,
-            "pos": 2,
+            "pos": 3,
             "sporting": false,
             "gd": 11
           },
@@ -318,7 +331,7 @@
             "gf": 24,
             "ga": 11,
             "points": 15,
-            "pos": 3,
+            "pos": 4,
             "sporting": false,
             "gd": 13
           },
@@ -331,7 +344,7 @@
             "gf": 22,
             "ga": 22,
             "points": 15,
-            "pos": 4,
+            "pos": 5,
             "sporting": false,
             "gd": 0
           },
@@ -344,22 +357,9 @@
             "gf": 25,
             "ga": 20,
             "points": 14,
-            "pos": 5,
-            "sporting": false,
-            "gd": 5
-          },
-          {
-            "team": "Leões Porto Salvo",
-            "played": 8,
-            "won": 4,
-            "drawn": 2,
-            "lost": 2,
-            "gf": 25,
-            "ga": 28,
-            "points": 14,
             "pos": 6,
             "sporting": false,
-            "gd": -3
+            "gd": 5
           },
           {
             "team": "Ferreira do Zêzere",
@@ -415,16 +415,16 @@
           },
           {
             "team": "Famalicão",
-            "played": 8,
+            "played": 9,
             "won": 1,
             "drawn": 1,
-            "lost": 6,
-            "gf": 15,
-            "ga": 34,
+            "lost": 7,
+            "gf": 16,
+            "ga": 41,
             "points": 4,
             "pos": 11,
             "sporting": false,
-            "gd": -19
+            "gd": -25
           },
           {
             "team": "Torreense",
@@ -986,13 +986,13 @@
           },
           {
             "team": "Águas Santas",
-            "played": 11,
+            "played": 12,
             "won": 6,
-            "drawn": 0,
+            "drawn": 1,
             "lost": 5,
-            "gf": 321,
-            "ga": 319,
-            "points": 23,
+            "gf": 347,
+            "ga": 345,
+            "points": 25,
             "pos": 6,
             "sporting": false,
             "gd": 2
@@ -1050,6 +1050,19 @@
             "gd": -92
           },
           {
+            "team": "Carvalhos",
+            "played": 14,
+            "won": 1,
+            "drawn": 1,
+            "lost": 12,
+            "gf": 360,
+            "ga": 466,
+            "points": 17,
+            "pos": 11,
+            "sporting": false,
+            "gd": -106
+          },
+          {
             "team": "AA Avanca",
             "played": 13,
             "won": 1,
@@ -1058,22 +1071,9 @@
             "gf": 317,
             "ga": 444,
             "points": 16,
-            "pos": 11,
-            "sporting": false,
-            "gd": -127
-          },
-          {
-            "team": "Carvalhos",
-            "played": 13,
-            "won": 1,
-            "drawn": 0,
-            "lost": 12,
-            "gf": 334,
-            "ga": 440,
-            "points": 15,
             "pos": 12,
             "sporting": false,
-            "gd": -106
+            "gd": -127
           }
         ],
         "computed": true
