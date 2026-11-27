@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-26T21:46:59.426108+00:00",
+  "_updated_at": "2026-11-27T08:52:22.259076+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -1108,12 +1108,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estadio Jose Alvalade",
+        "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null,
-        "country": ""
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1149,12 +1149,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estadio da Luz",
+        "name": "Estádio do Sport Lisboa e Benfica (da Luz)",
         "city": "Lisboa",
-        "lat": 38.752778,
-        "lon": -9.184722,
-        "capacity": null,
-        "country": ""
+        "lat": 38.75264836,
+        "lon": -9.184699059,
+        "capacity": 68100.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",
@@ -1190,12 +1190,12 @@
       },
       "referee": "{'text': '', 'countryCode': '', 'country': ''}",
       "venue": {
-        "name": "Estadio Jose Alvalade",
+        "name": "Estádio José Alvalade",
         "city": "Lisboa",
-        "lat": 38.761207,
-        "lon": -9.160876,
-        "capacity": null,
-        "country": ""
+        "lat": 38.761207228,
+        "lon": -9.160875678,
+        "capacity": 52095.0,
+        "country": "Portugal"
       },
       "competition": {
         "name": "Liga Portugal",

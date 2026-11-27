@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T05:54:32.170303+00:00",
+  "_updated_at": "2026-11-27T08:50:48.379689+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -442,7 +442,7 @@
         ],
         "computed": true
       },
-      "news_count": 19
+      "news_count": 18
     },
     {
       "key": "andebol",
@@ -3541,16 +3541,6 @@
       "sport": "andebol",
       "sport_label": "Andebol",
       "source": "Sporting.pt"
-    },
-    {
-      "title": "Sporting goleia por 18-2 e \"garante\" os quartos de final da Liga dos Campeões de futsal",
-      "summary": "O Sporting protagonizou uma goleada histórica na Liga dos Campeões de futsal, ao vencer o Beitar Riga por 18-2, na Letónia, na primeira mão dos oitavos de final. Os leões, atuais detentores do troféu, construíram uma vantagem confortável e estão praticamente apurados para a próxima fase, cuja segund",
-      "url": "https://www-ojogo-pt.translate.goog/modalidades/artigo/sporting-goleia-beitar-riga-por-18-2-e-fica-com-um-pe-nos-quartos-de-final-da-liga-dos-campeoes/18151502?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en",
-      "image": "https://staticx.noticiasilimitadas.pt/oj/941bf7e2-ee23-493d-a60e-2e365bd7b950_1200x675.jpg",
-      "published": "2026-11-23T20:25:00Z",
-      "sport": "futsal",
-      "sport_label": "Futsal",
-      "source": "O Jogo"
     },
     {
       "title": "Da Letónia com vista para os quartos-de-final",
