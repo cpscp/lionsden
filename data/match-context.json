@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T21:31:05.168913+00:00",
+  "_updated_at": "2026-11-28T08:08:06.547959+00:00",
   "fixtures": {
     "5887687": {
       "home": {
@@ -150,7 +150,7 @@
         "away_wins": 10,
         "total": 47
       },
-      "updated_at": "2026-11-27T21:31:01.527830+00:00"
+      "updated_at": "2026-11-28T08:08:03.835648+00:00"
     },
     "5887698": {
       "home": {
@@ -210,14 +210,6 @@
         "name": "Marítimo",
         "form": [
           {
-            "result": "W",
-            "score": "1 - 2",
-            "date": "2026-10-18T14:00:00.000Z",
-            "competition": "Taca de Portugal",
-            "opponent": "Alcochetense",
-            "match_id": null
-          },
-          {
             "result": "L",
             "score": "5 - 0",
             "date": "2026-10-23T19:45:00.000Z",
@@ -248,11 +240,19 @@
             "competition": "Taca de Portugal",
             "opponent": "Chaves",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-11-27T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
           }
         ],
         "table": {
           "position": 15,
-          "played": 10,
+          "played": 11,
           "points": 8,
           "name": "Marítimo"
         }
@@ -301,7 +301,7 @@
         "away_wins": 6,
         "total": 34
       },
-      "updated_at": "2026-11-27T21:31:01.535661+00:00"
+      "updated_at": "2026-11-28T08:08:03.852241+00:00"
     },
     "6106275": {
       "home": {
@@ -434,7 +434,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-27T21:31:01.542355+00:00"
+      "updated_at": "2026-11-28T08:08:03.869428+00:00"
     },
     "5887702": {
       "home": {
@@ -585,7 +585,7 @@
         "away_wins": 19,
         "total": 25
       },
-      "updated_at": "2026-11-27T21:31:01.549226+00:00"
+      "updated_at": "2026-11-28T08:08:03.890510+00:00"
     },
     "6739522": {
       "home": {
@@ -694,7 +694,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:01.557054+00:00"
+      "updated_at": "2026-11-28T08:08:03.906173+00:00"
     },
     "5887716": {
       "home": {
@@ -845,7 +845,7 @@
         "away_wins": 5,
         "total": 24
       },
-      "updated_at": "2026-11-27T21:31:01.563530+00:00"
+      "updated_at": "2026-11-28T08:08:03.922743+00:00"
     },
     "5887724": {
       "home": {
@@ -996,7 +996,7 @@
         "away_wins": 13,
         "total": 46
       },
-      "updated_at": "2026-11-27T21:31:01.570790+00:00"
+      "updated_at": "2026-11-28T08:08:03.939557+00:00"
     },
     "5887734": {
       "home": {
@@ -1147,7 +1147,7 @@
         "away_wins": 2,
         "total": 17
       },
-      "updated_at": "2026-11-27T21:31:01.577606+00:00"
+      "updated_at": "2026-11-28T08:08:03.955412+00:00"
     },
     "5985969": {
       "home": {
@@ -1298,7 +1298,7 @@
         "away_wins": 2,
         "total": 18
       },
-      "updated_at": "2026-11-27T21:31:01.784430+00:00"
+      "updated_at": "2026-11-28T08:08:04.105683+00:00"
     },
     "5887735": {
       "home": {
@@ -1399,7 +1399,7 @@
           }
         ],
         "table": {
-          "position": 12,
+          "position": 13,
           "played": 11,
           "points": 10,
           "name": "Estrela da Amadora"
@@ -1449,7 +1449,7 @@
         "away_wins": 0,
         "total": 7
       },
-      "updated_at": "2026-11-27T21:31:01.995365+00:00"
+      "updated_at": "2026-11-28T08:08:04.254101+00:00"
     },
     "6106278": {
       "home": {
@@ -1582,7 +1582,7 @@
         "away_wins": 2,
         "total": 2
       },
-      "updated_at": "2026-11-27T21:31:02.231908+00:00"
+      "updated_at": "2026-11-28T08:08:04.398294+00:00"
     },
     "5887752": {
       "home": {
@@ -1733,7 +1733,7 @@
         "away_wins": 22,
         "total": 36
       },
-      "updated_at": "2026-11-27T21:31:02.479190+00:00"
+      "updated_at": "2026-11-28T08:08:04.599908+00:00"
     },
     "6106255": {
       "home": {
@@ -1884,7 +1884,7 @@
         "away_wins": 3,
         "total": 6
       },
-      "updated_at": "2026-11-27T21:31:02.681708+00:00"
+      "updated_at": "2026-11-28T08:08:04.742768+00:00"
     },
     "5887760": {
       "home": {
@@ -1933,7 +1933,7 @@
           }
         ],
         "table": {
-          "position": 11,
+          "position": 12,
           "played": 11,
           "points": 12,
           "name": "Alverca"
@@ -1998,7 +1998,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:02.868744+00:00"
+      "updated_at": "2026-11-28T08:08:04.886193+00:00"
     },
     "5887769": {
       "home": {
@@ -2112,21 +2112,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:03.103601+00:00"
+      "updated_at": "2026-11-28T08:08:05.027574+00:00"
     },
     "5887778": {
       "home": {
         "id": 10214,
         "name": "Nacional",
         "form": [
-          {
-            "result": "L",
-            "score": "3 - 2",
-            "date": "2026-10-11T14:30:00.000Z",
-            "competition": "Liga Portugal",
-            "opponent": "Rio Ave",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "1 - 0",
@@ -2158,12 +2150,20 @@
             "competition": "Liga Portugal",
             "opponent": "Académico Viseu",
             "match_id": null
+          },
+          {
+            "result": "W",
+            "score": "1 - 2",
+            "date": "2026-11-27T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Marítimo",
+            "match_id": null
           }
         ],
         "table": {
-          "position": 13,
-          "played": 11,
-          "points": 10,
+          "position": 11,
+          "played": 12,
+          "points": 13,
           "name": "Nacional"
         }
       },
@@ -2226,7 +2226,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:03.300154+00:00"
+      "updated_at": "2026-11-28T08:08:05.179032+00:00"
     },
     "5887784": {
       "home": {
@@ -2340,7 +2340,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:03.531943+00:00"
+      "updated_at": "2026-11-28T08:08:05.328770+00:00"
     },
     "5887796": {
       "home": {
@@ -2491,7 +2491,7 @@
         "away_wins": 18,
         "total": 22
       },
-      "updated_at": "2026-11-27T21:31:03.773037+00:00"
+      "updated_at": "2026-11-28T08:08:05.509603+00:00"
     },
     "5887800": {
       "home": {
@@ -2605,7 +2605,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:03.986196+00:00"
+      "updated_at": "2026-11-28T08:08:05.690460+00:00"
     },
     "5887814": {
       "home": {
@@ -2719,7 +2719,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:04.228926+00:00"
+      "updated_at": "2026-11-28T08:08:05.840015+00:00"
     },
     "5887819": {
       "home": {
@@ -2833,7 +2833,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:04.418784+00:00"
+      "updated_at": "2026-11-28T08:08:05.988153+00:00"
     },
     "5887832": {
       "home": {
@@ -2947,7 +2947,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:04.626636+00:00"
+      "updated_at": "2026-11-28T08:08:06.170527+00:00"
     },
     "5887840": {
       "home": {
@@ -3061,21 +3061,13 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:04.885425+00:00"
+      "updated_at": "2026-11-28T08:08:06.328449+00:00"
     },
     "5887851": {
       "home": {
         "id": 10212,
         "name": "Marítimo",
         "form": [
-          {
-            "result": "W",
-            "score": "1 - 2",
-            "date": "2026-10-18T14:00:00.000Z",
-            "competition": "Taca de Portugal",
-            "opponent": "Alcochetense",
-            "match_id": null
-          },
           {
             "result": "L",
             "score": "5 - 0",
@@ -3107,11 +3099,19 @@
             "competition": "Taca de Portugal",
             "opponent": "Chaves",
             "match_id": null
+          },
+          {
+            "result": "L",
+            "score": "1 - 2",
+            "date": "2026-11-27T20:15:00.000Z",
+            "competition": "Liga Portugal",
+            "opponent": "Nacional",
+            "match_id": null
           }
         ],
         "table": {
           "position": 15,
-          "played": 10,
+          "played": 11,
           "points": 8,
           "name": "Marítimo"
         }
@@ -3175,7 +3175,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:05.141291+00:00"
+      "updated_at": "2026-11-28T08:08:06.485507+00:00"
     },
     "5887855": {
       "home": {
@@ -3289,7 +3289,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:05.148574+00:00"
+      "updated_at": "2026-11-28T08:08:06.501427+00:00"
     },
     "5887869": {
       "home": {
@@ -3403,7 +3403,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:05.155412+00:00"
+      "updated_at": "2026-11-28T08:08:06.517012+00:00"
     },
     "5887877": {
       "home": {
@@ -3517,7 +3517,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:05.161913+00:00"
+      "updated_at": "2026-11-28T08:08:06.532617+00:00"
     },
     "5887887": {
       "home": {
@@ -3631,7 +3631,7 @@
         "away_wins": 0,
         "total": 0
       },
-      "updated_at": "2026-11-27T21:31:05.168906+00:00"
+      "updated_at": "2026-11-28T08:08:06.547952+00:00"
     }
   },
   "source": "FotMob · current standings · team form · match H2H",

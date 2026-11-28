@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T21:31:51.104259+00:00",
+  "_updated_at": "2026-11-28T08:08:46.934269+00:00",
   "videos": [
     {
       "match_id": 5789079,
@@ -35,7 +35,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=bwME0BZ16eM",
       "embed": "https://www.youtube.com/embed/bwME0BZ16eM",
-      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4Iot2U0wYY4OoEIOCoAQ==&rs=AOn4CLBGncRQSrz1x1LHItKw3eH-PsDYDw&usqp=CBU",
+      "thumbnail": "https://i.ytimg.com/vi/bwME0BZ16eM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCFmIbLz9g1Fc6BP_Gicmeh1hSYRQ",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 4 meses"
@@ -56,12 +56,12 @@
     {
       "match_id": 5887558,
       "sofascore_id": null,
-      "video_id": "XB3vLFrwUjs",
-      "title": "Resumo: Alverca 2-2 Estrela Amadora (Liga 26/27 #2)",
+      "video_id": "HOae-HEHCy8",
+      "title": "Resumo: Estrela Amadora 2-2 Sporting (Liga 26/27 #1)",
       "channel": "VSPORTS - Liga Portugal",
-      "url": "https://www.youtube.com/watch?v=XB3vLFrwUjs",
-      "embed": "https://www.youtube.com/embed/XB3vLFrwUjs",
-      "thumbnail": "https://i.ytimg.com/vi/XB3vLFrwUjs/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLC5wDtutlakqCEnPi1-VmteJypsog",
+      "url": "https://www.youtube.com/watch?v=HOae-HEHCy8",
+      "embed": "https://www.youtube.com/embed/HOae-HEHCy8",
+      "thumbnail": "https://i.ytimg.com/vi/HOae-HEHCy8/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA27z1yGX0uGs4qVAfEXAu2KeNwfg",
       "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 3 meses"
@@ -113,7 +113,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=dxpcW8HJgGo",
       "embed": "https://www.youtube.com/embed/dxpcW8HJgGo",
-      "thumbnail": "https://i.ytimg.com/vi/dxpcW8HJgGo/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLDSkWDgOH4lf5GZw3VONiPmH_Xkgw",
+      "thumbnail": "https://i.ytimg.com/vi/dxpcW8HJgGo/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDBIo4mKDVFG3DNvjqphKr2Bj29NQ",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 2 meses"
@@ -178,7 +178,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=xUW-DuDF_EU",
       "embed": "https://www.youtube.com/embed/xUW-DuDF_EU",
-      "thumbnail": "https://i.ytimg.com/vi/xUW-DuDF_EU/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLBvlAFwprZXWks5VQHH6xOUuT7Ktw",
+      "thumbnail": "https://i.ytimg.com/vi/xUW-DuDF_EU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAW1P-AB5qvlSr_F1tqjdUywqwyvQ",
       "embed_allowed": true,
       "preferred_for_home": false,
       "published_text": "há 1 mês"
@@ -191,7 +191,7 @@
       "channel": "Sporting Clube de Portugal",
       "url": "https://www.youtube.com/watch?v=l2TvkaX310Y",
       "embed": "https://www.youtube.com/embed/l2TvkaX310Y",
-      "thumbnail": "https://i.ytimg.com/vi/l2TvkaX310Y/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAq21bOtd-nXVOegtmIt2spmW909A",
+      "thumbnail": "https://i.ytimg.com/vi/l2TvkaX310Y/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLALvjyTLDsEmjRvhPwciFQn3fL7ag",
       "embed_allowed": true,
       "preferred_for_home": true,
       "published_text": "há 1 mês"
@@ -230,10 +230,10 @@
       "channel": "VSPORTS - Liga Portugal",
       "url": "https://www.youtube.com/watch?v=8bFVmvAZj4o",
       "embed": "https://www.youtube.com/embed/8bFVmvAZj4o",
-      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEbCNAFEJQDSFryq4qpAw0IARUAAIhCGAG4AvMY&rs=AOn4CLAHU2AjitLlfd-oMbDMzsx2td7MBA",
+      "thumbnail": "https://i.ytimg.com/vi/8bFVmvAZj4o/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAGi85f_Aw4IirWU1wYY4OoEIOCoAQ==&rs=AOn4CLAf0xJiPlkuU_bRgIEZD6EdPZE3iw&usqp=CBU",
       "embed_allowed": true,
       "preferred_for_home": false,
-      "published_text": "há 3 semanas"
+      "published_text": "há 4 semanas"
     },
     {
       "match_id": 6106335,

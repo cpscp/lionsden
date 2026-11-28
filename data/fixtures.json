@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-27T21:32:05.785325+00:00",
+  "_updated_at": "2026-11-28T08:09:00.890457+00:00",
   "team_id": 9768,
   "fixtures": [
     {
@@ -899,7 +899,7 @@
         "short": "scheduled",
         "long": "Agendado"
       },
-      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Pinheiro', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080381, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 30, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.6, 'valueType': 'perMatch', 'average': 4.95, 'total': 138, 'averageType': 'average', 'fillPercentage': 38.6, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.57, 'valueType': 'perMatch', 'average': 27.51, 'total': 744, 'averageType': 'below', 'fillPercentage': 39.62, 'averagePercentage': 50}]}",
+      "referee": "{'imgUrl': 'https://images.fotmob.com/image_resources/logo/teamlogo/por.png', 'text': 'João Pinheiro', 'countryCode': 'POR', 'country': 'Portugal', 'id': 1001080381, 'leagueId': 61, 'leagueName': 'Liga Portugal', 'stats': [{'type': 'matches', 'value': 30, 'valueType': 'total'}, {'type': 'yellowCards', 'value': 4.6, 'valueType': 'perMatch', 'average': 4.96, 'total': 138, 'averageType': 'average', 'fillPercentage': 38.4, 'averagePercentage': 50}, {'type': 'redCards', 'value': 7, 'valueType': 'total'}, {'type': 'unknown', 'value': 1, 'valueType': 'total'}, {'type': 'penalties', 'value': 14, 'valueType': 'total'}, {'type': 'fouls', 'value': 26.57, 'valueType': 'perMatch', 'average': 27.51, 'total': 744, 'averageType': 'below', 'fillPercentage': 39.6, 'averagePercentage': 50}]}",
       "venue": {
         "name": "Estádio Do Dragão",
         "city": "Porto",
