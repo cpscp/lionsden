@@ -1,5 +1,5 @@
 {
-  "_updated_at": "2026-11-28T08:07:35.388559+00:00",
+  "_updated_at": "2026-11-28T14:00:56.892702+00:00",
   "season": "2026/27",
   "sports": [
     {
@@ -3378,7 +3378,7 @@
           }
         ]
       },
-      "news_count": 15
+      "news_count": 16
     },
     {
       "key": "atletismo",
@@ -3436,6 +3436,16 @@
       "published": "2026-11-27T12:00:00Z",
       "sport": "futsal",
       "sport_label": "Futsal",
+      "source": "Sporting.pt"
+    },
+    {
+      "title": "Eva Rodrigues: \"Entrar como se estivéssemos a jogar em nossa casa\"",
+      "summary": "Leoas do voleibol jogam em casa do Vitória SC este domingo, às 18h00",
+      "url": "https://sporting.pt/noticias/eva-rodrigues",
+      "image": "https://zeszpbvxjgtgjouzamrk.supabase.co/storage/v1/object/public/media/1795813950310-WhatsApp_Image_2026-11-27_at_21.16.21.webp",
+      "published": "2026-11-27T12:00:00Z",
+      "sport": "voleibol-feminino",
+      "sport_label": "Voleibol Feminino",
       "source": "Sporting.pt"
     },
     {
